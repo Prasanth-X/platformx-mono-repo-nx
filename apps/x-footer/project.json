@@ -1,0 +1,80 @@
+{
+  "name": "x-footer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/x-footer/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/x-footer",
+        "index": "apps/x-footer/src/index.html",
+        "baseHref": "/",
+        "main": "apps/x-footer/src/main.tsx",
+        "tsConfig": "apps/x-footer/tsconfig.app.json",
+        "assets": ["apps/x-footer/src/favicon.ico", "apps/x-footer/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/x-footer/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/x-footer/src/environments/environment.ts",
+              "with": "apps/x-footer/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "x-footer:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "x-footer:build:development"
+        },
+        "production": {
+          "buildTarget": "x-footer:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/x-footer/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/x-footer/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
