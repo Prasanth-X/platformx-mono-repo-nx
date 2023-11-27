@@ -1,40 +1,51 @@
-// apps/header/src/app/Header.tsx
-import React from 'react';
-import { AppBar, Toolbar, Typography } from '@mui/material';
-import { DropdownMenu } from '@x-prelems-monorepo-nx/x-components';
-import ThemeConstants from 'libs/x-components/src/theme/prelemVariableLight';
-const Header: React.FC = () => {
-  const menu1Options = [
-    { label: 'Option 1', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' },
-  ];
+// Header.js
+import React, { useState } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  MenuItem,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { DropdownMenu } from '@x-prelems/x-shared-components';
 
-  const menu2Options = [
-    { label: 'Option 1', value: 'option1' },
-    { label: 'Option 2', value: 'option2' },
-    { label: 'Option 3', value: 'option3' },
-  ];
+const Header = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
 
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+  const companyServiceOptions = [
+    { label: 'Web Development', value: 'web-development' },
+    { label: 'Mobile App Development', value: 'mobile-app-development' },
+    { label: 'Graphic Design', value: 'graphic-design' },
+    { label: 'Digital Marketing', value: 'digital-marketing' },
+    { label: 'Consulting Services', value: 'consulting-services' },
+  ];
   return (
-    <AppBar
-      position="static"
-      sx={{
-        backgroundColor: ThemeConstants.BLACK_COLOR,
-      }}
-    >
+    <AppBar position="static">
       <Toolbar>
-        <Typography
-          variant="h6"
-          color={ThemeConstants.WHITE_COLOR}
-          component="div"
-          sx={{ flexGrow: 1 }}
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={handleMenuClick}
         >
-          Platfom X
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Platform X
         </Typography>
-        <DropdownMenu buttonLabel="Menu 1" options={menu1Options} />
-        <DropdownMenu buttonLabel="Menu 2" options={menu2Options} />
-        {/* Add more DropdownMenu components with their respective options */}
+        <DropdownMenu
+          buttonLabel={'Services'}
+          options={companyServiceOptions}
+        />
       </Toolbar>
     </AppBar>
   );

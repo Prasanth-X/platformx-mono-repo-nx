@@ -1,7 +1,7 @@
 {
-  "name": "x-components",
+  "name": "x-common-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/x-components/src",
+  "sourceRoot": "libs/x-common-components/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,7 +9,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/x-components/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/x-common-components/**/*.{ts,tsx,js,jsx}"]
       }
     }
   }

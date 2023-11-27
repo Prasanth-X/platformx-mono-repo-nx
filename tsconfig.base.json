@@ -15,13 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@x-prelems-monorepo-nx/common-components": [
-        "libs/common-components/src/index.ts"
-      ],
       "@x-prelems-monorepo-nx/prelems-theme": [
         "libs/prelems-theme/src/index.ts"
       ],
-      "@x-prelems-monorepo-nx/x-components": ["libs/x-components/src/index.ts"]
+      "@x-prelems-monorepo-nx/x-common-components": [
+        "libs/x-common-components/src/index.ts"
+      ],
+      "@x-prelems-monorepo-nx/x-components": ["libs/x-components/src/index.ts"],
+      "@x-prelems/common-components": ["libs/common-components/src/index.ts"],
+      "@x-prelems/x-shared-components": [
+        "libs/x-shared-components/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

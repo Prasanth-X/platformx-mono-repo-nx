@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-import { ThemeProvider, Typography } from '@mui/material';
+import NxWelcome from './nx-welcome';
+import { DropdownMenu, PrelemTheme } from '@x-prelems/x-shared-components';
+import { ThemeProvider } from '@mui/material';
 import Header from '../components/Header';
-import { Theme } from '@x-prelems-monorepo-nx/x-components';
+
 export function App() {
   return (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={PrelemTheme}>
       <Header />
     </ThemeProvider>
   );

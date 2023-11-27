@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import ThemeConstants from './prelemVariableLight';
 
-const theme = createTheme({
+const PrelemTheme = createTheme({
   palette: {
     primary: {
       main: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -34,4 +34,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default PrelemTheme;
