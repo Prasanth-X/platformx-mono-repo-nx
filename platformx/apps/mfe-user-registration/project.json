@@ -1,0 +1,83 @@
+{
+  "name": "mfe-user-registration",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mfe-user-registration/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/mfe-user-registration",
+        "index": "apps/mfe-user-registration/src/index.html",
+        "baseHref": "/",
+        "main": "apps/mfe-user-registration/src/main.tsx",
+        "tsConfig": "apps/mfe-user-registration/tsconfig.app.json",
+        "assets": [
+          "apps/mfe-user-registration/src/favicon.ico",
+          "apps/mfe-user-registration/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/mfe-user-registration/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/mfe-user-registration/src/environments/environment.ts",
+              "with": "apps/mfe-user-registration/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "mfe-user-registration:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mfe-user-registration:build:development"
+        },
+        "production": {
+          "buildTarget": "mfe-user-registration:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mfe-user-registration/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/mfe-user-registration/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
