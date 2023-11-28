@@ -9,7 +9,7 @@ const StyledApp = styled.div`
 export function App() {
   return (
     <StyledApp>
-      <NxWelcome title="platformx" />
+      <NxWelcome title="contact-us-mfe" />
     </StyledApp>
   );
 }
