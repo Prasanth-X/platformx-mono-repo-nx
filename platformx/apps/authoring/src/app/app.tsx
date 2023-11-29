@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import NxWelcome from './nx-welcome';
+import { ThemeProvider } from '@mui/material';
 
 const StyledApp = styled.div`
   // Your style here
@@ -8,9 +9,9 @@ const StyledApp = styled.div`
 
 export function App() {
   return (
-    <StyledApp>
+    <ThemeProvider theme={{}}>
       <NxWelcome title="authoring" />
-    </StyledApp>
+    </ThemeProvider>
   );
 }
 

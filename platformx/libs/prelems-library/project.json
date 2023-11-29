@@ -1,7 +1,7 @@
 {
   "name": "prelems-library",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "prelems-library/src",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/prelems-library/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,23 +9,23 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["prelems-library/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/prelems-library/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/prelems-library",
-        "tsConfig": "prelems-library/tsconfig.lib.json",
-        "project": "prelems-library/package.json",
-        "entryFile": "prelems-library/src/index.ts",
+        "outputPath": "dist/libs/prelems-library",
+        "tsConfig": "libs/prelems-library/tsconfig.lib.json",
+        "project": "libs/prelems-library/package.json",
+        "entryFile": "libs/prelems-library/src/index.ts",
         "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "prelems-library/README.md",
+            "glob": "libs/prelems-library/README.md",
             "input": ".",
             "output": "."
           }
