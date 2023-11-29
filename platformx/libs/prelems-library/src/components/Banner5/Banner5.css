@@ -1,0 +1,384 @@
+.banner5-slideshow {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.banner5-slideshow .slider-dot.active,
+.banner5-slideshow .slider-dot.active .activeSlide.active {
+  background: transparent;
+}
+
+.banner5-slideshow .slides {
+  display: flex;
+  position: relative;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.banner5-slideshow .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.banner5-slideshow .slideWithoutStyles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner5-slideshow .slide.active {
+  opacity: 1;
+}
+
+.banner5-slideshow .slide-content {
+  top: 40%;
+  left: 40px;
+  position: absolute;
+  color: #fff;
+  text-align: left;
+  width: 70%;
+}
+
+.banner5-slideshow .slide-caption .animationEffect {
+  display: inline-block;
+  word-wrap: break-word;
+}
+
+.banner5-slideshow .slide-caption .animated {
+  display: inline-block;
+  animation: slideCaption 3s;
+  word-wrap: break-word;
+}
+
+.banner5-slideshow .banner_discover {
+  width: 125px;
+  margin-top: 20px;
+}
+
+@keyframes slideCaption {
+  from {
+    margin-left: 50%;
+    width: 600%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 500%;
+  }
+}
+
+.banner5-slideshow .controls {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner5-slideshow .slider-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.banner5-slideshow .slider-dot {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  color: #fff;
+  margin-bottom: 25px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.banner5-slideshow .slider-dot.active {
+  color: #fff;
+}
+
+.banner5-slideshow .activeSlide.active {
+  justify-content: left;
+  top: 10px;
+  left: 0;
+  width: 90%;
+  right: 20px;
+  -webkit-animation: slide 0.75s 1 forwards;
+  -moz-animation: slide 0.75s 1 forwards;
+  -o-animation: slide 0.75s 1 forwards;
+  animation: slide 0.75s 1 forwards;
+}
+
+.banner5-slideshow .hor-line.active {
+  height: 2px;
+  background: white;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 70%;
+  -webkit-animation: slide-left 0.75s 1 forwards;
+  -moz-animation: slide-left 0.75s 1 forwards;
+  -o-animation: slide-left 0.75s 1 forwards;
+  animation: slide-left 0.75s 1 forwards;
+}
+.banner5-slideshow .discover-button.style-4.banner {
+  border-radius: 0;
+  background: none;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #fff !important;
+  height: 30px;
+  width: 125px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.banner5-slideshow .discover.banner:hover {
+  width: 130px !important;
+}
+
+.banner5-slideshow .active {
+  background-color: transparent;
+}
+
+.banner5-slideshow .arrowIcon {
+  margin-top: 3px;
+  margin-left: 5px;
+  font-size: 14px !important;
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+@-moz-keyframes slide-left {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+@-o-keyframes slide-left {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 70%;
+  }
+}
+
+@-moz-keyframes slide {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 70%;
+  }
+}
+
+@-o-keyframes slide {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 70%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 70%;
+  }
+}
+
+.banner5-slideshow .prviousSelect {
+  justify-content: right;
+  right: 0;
+  width: 60%;
+  height: 2px;
+  background: white;
+  animation: slide-right 0.75s 1 forwards;
+  animation-direction: reverse;
+}
+
+@-webkit-keyframes slide-right {
+  100% {
+    width: 60%;
+  }
+
+  0% {
+    width: 0;
+  }
+}
+
+@-moz-keyframes slide-right {
+  100% {
+    width: 60%;
+  }
+
+  0% {
+    width: 0;
+  }
+}
+
+@-o-keyframes slide-right {
+  100% {
+    width: 60%;
+  }
+
+  0% {
+    width: 0;
+  }
+}
+
+@keyframes slide-right {
+  100% {
+    width: 60%;
+  }
+
+  0% {
+    width: 0;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .banner5-slideshow .controls {
+    position: initial;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .banner5-slideshow .activeSlide,
+  .banner5-slideshow .hor-line.active,
+  .banner5-slideshow .hor-line,
+  .banner5-slideshow .activeSlide.active {
+    display: none;
+  }
+
+  .banner5-slideshow .slider-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    position: relative;
+    bottom: 20px;
+  }
+
+  .banner5-slideshow .slider-dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    display: flex;
+    margin-right: 8px;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    margin-bottom: 25px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .banner5-slideshow .slider-dot.active {
+    background-color: transparent;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #d9d9d9;
+  }
+
+  .banner5-slideshow .slider-line {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 2px);
+    width: 4px;
+    height: 0;
+    background-color: #fff;
+    transform-origin: top center;
+    transition: height 0.5s ease-in-out;
+  }
+
+  .banner5-slideshow .slide-caption .animationEffect {
+    display: inline-block;
+    white-space: initial;
+    overflow: initial;
+  }
+
+  .banner5-slideshow .slide-caption .animated {
+    display: inline-block;
+    animation: none;
+    white-space: initial;
+    overflow: initial;
+  }
+}
+
+.animationEffect .animatedTitle {
+  width: 600px;
+}
+
+@media screen and (max-width: 767px) {
+  .animationEffect .animatedTitle {
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .animationEffect .animatedTitle {
+    width: 260px;
+  }
+}

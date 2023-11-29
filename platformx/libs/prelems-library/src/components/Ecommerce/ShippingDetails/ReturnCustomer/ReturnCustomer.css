@@ -1,0 +1,51 @@
+.return-customer-login {
+  padding-right: 15px;
+}
+.return-customer-login .accordian-wrapper {
+  margin-left: 0;
+}
+.return-customer-login .icon-with-text {
+  display: flex;
+}
+.return-customer-login .icon-with-text svg {
+  margin-right: 10px;
+}
+.return-customer-login .icon-with-text .underline {
+  text-decoration: underline;
+  padding-left: 6px;
+}
+.return-customer-login .accordian-wrapper {
+  padding: 0px;
+}
+.return-customer-login .accordian-wrapper .accordion-details {
+  padding: 25px;
+  padding-top: 6px;
+}
+.return-customer-login .or-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.return-customer-login .or-wrapper .line {
+  width: 100%;
+  height: 1px;
+  position: absolute;
+}
+.return-customer-login .login-cta-wrapper {
+  justify-content: space-between;
+  display: flex;
+}
+/* .return-customer-login .login-cta-wrapper .facebook-button-icon:hover img,
+.return-customer-login .login-cta-wrapper .google-button-icon:hover img{
+  filter: brightness(0) invert(1);
+} */
+
+.return-customer-login .login-cta-wrapper button {
+  width: 49%;
+  min-height: 50px;
+  @media only screen and (max-width: 600px) {
+    min-width: auto;
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,150 @@
+.service-card6 .slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.service-card6 .slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+.service-card6 .slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+}
+.service-card6 .slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.service-card6 .slick-track:before,
+.slick-track:after {
+  display: table;
+  content: "";
+}
+.service-card6 .slick-initialized .slick-slide {
+  display: block;
+}
+.service-card6 .slick-initialized .slick-slide div:empty {
+  display: flex;
+}
+.service-card6 .slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+/*
+.service-card6 .slick-slide img, .service-card6 .slick-slide video {
+  display: block;
+  width: 100%;
+  height: 230px;
+  margin: 0 auto;
+  object-fit: cover;
+  cursor: 'pointer',
+}*/
+.service-card6 .slick-prev {
+  left: 0;
+}
+.service-card6 .slick-prev,
+.service-card6 .slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0;
+}
+.service-card6:hover .slick-prev {
+  opacity: 1;
+}
+.service-card6:hover .slick-next {
+  opacity: 1;
+}
+.service-card6 .slick-prev:before,
+.slick-next:before {
+  font-size: 32px;
+  line-height: 1;
+  color: white;
+  margin-left: -3px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+.service-card6 .slick-prev:before {
+  content: "‹";
+}
+.service-card6 .slick-next {
+  right: 0px;
+}
+.service-card6 .slick-next:before {
+  content: "›";
+  margin-left: 3px;
+}
+.service-card6 .slick-track {
+  display: flex !important;
+}
+
+.service-card6 .slick-slide {
+  height: inherit !important;
+}
+
+.service-card6 .slick-slide {
+  margin: 0 10px;
+}
+/* ===== Scrollbar CSS ===== */
+/* width */
+.service-card6::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+.service-card6::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: inset 0 0 5px #dddddd;
+  border-radius: 4px;
+  border-left: 1.5px solid transparent;
+  border-right: 1.5px solid transparent;
+}
+/* Handle */
+.service-card6::-webkit-scrollbar-thumb {
+  background: #b1b1b1;
+  border-radius: 4px;
+}
+.serviceCard6 .sixbr {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+.serviceCard6 .singlebr {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 75px;
+}
+/* .servicecardsix {
+  color: inherit !important;
+} */

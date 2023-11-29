@@ -1,0 +1,47 @@
+.blogTimelineSeparator {
+  margin-top: 0px !important;
+}
+
+.shareIcon {
+  width: 16px;
+  height: 18px;
+  fill: #2d2d39;
+  margin-top: 4px;
+  font-size: 18px !important;
+}
+
+.blogTimelineItem {
+  margin: 15px 0;
+  -webkit-align-items: inherit;
+  -webkit-box-align: inherit;
+  -ms-flex-align: inherit;
+  align-items: inherit;
+}
+
+.blogTimelineItem:before {
+  flex: none !important;
+  padding: 0 !important;
+}
+
+.blogContent {
+  scroll-behavior: smooth;
+}
+
+.contentArea {
+  word-break: break-all;
+}
+
+.blogBorderRadius {
+  border-radius: 4px;
+}
+
+.horizontalDivider {
+  margin: 0 -16px !important;
+}
+
+.dotSeprator {
+  width: 4px;
+  height: 4px;
+  border-radius: 20px;
+  background-color: #ced3d9;
+}

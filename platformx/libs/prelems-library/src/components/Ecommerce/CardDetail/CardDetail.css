@@ -1,0 +1,21 @@
+.card-detail-wrapper .product-name-price {
+  display: flex;
+  justify-content: space-between;
+}
+.card-detail-wrapper .product-name-price .product-name {
+  width: 70%;
+}
+.card-detail-wrapper .product-name-price .product-price {
+  width: 30%;
+  text-align: right;
+}
+.card-detail-wrapper .shipping-address-wrapper-left {
+  padding-right: 15px;
+  padding-left: 0px;
+}
+@media screen and (max-width: 1023px) {
+  .card-detail-wrapper .shipping-address-wrapper-left {
+    padding-right: 0px;
+    margin-bottom: 24px;
+  }
+}
