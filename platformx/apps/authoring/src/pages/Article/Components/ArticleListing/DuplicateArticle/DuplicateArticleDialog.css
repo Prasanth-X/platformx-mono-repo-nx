@@ -1,0 +1,42 @@
+.duplicateContentPopupModal h2 {
+  text-align: center;
+  padding: 70px 0px 24px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.duplicateContentPopupModal .mainBox {
+  max-width: 400px;
+  margin: auto;
+}
+.duplicateContentPopupModal .inputesBox {
+  text-align: left;
+  margin-bottom: 35px;
+}
+.duplicateContentPopupModal .actionsButtons {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 10px 0;
+}
+.duplicateContentPopupModal .actionsButtons .buttonsBottom {
+  text-transform: capitalize;
+  min-width: 135px;
+}
+@media (max-width: 767px) {
+  .duplicateContentPopupModal h2 {
+    text-align: left;
+    padding: 0 0 22px 0;
+    font-weight: 600;
+  }
+  .duplicateContentPopupModal .mainBox {
+    max-width: 100%;
+  }
+  .duplicateContentPopupModal .inputesBox {
+    margin-bottom: 20px;
+  }
+  .duplicateContentPopupModal .actionsButtons {
+    justify-content: flex-start;
+  }
+  .duplicateContentPopupModal .actionsButtons .buttonsBottom {
+    min-width: calc(50% - 8px);
+  }
+}

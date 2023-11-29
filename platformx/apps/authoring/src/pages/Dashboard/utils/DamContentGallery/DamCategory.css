@@ -1,0 +1,78 @@
+.left-sidebar-tree {
+    width: 100%;
+    clear: both;
+    padding: 0px !important;
+    padding-top: 10px !important;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root>li>.Platform-x-TreeItem-content:hover {
+    background: transparent;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root>li>.Platform-x-TreeItem-content>.Platform-x-TreeItem-label {
+    padding-top: 9px;
+    padding-bottom: 6px;
+    font-weight: 700;
+    height: 40px;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root>li>.Platform-x-TreeItem-content.Mui-expanded {
+    background: transparent;
+    padding-top: 6px;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root > li > .Platform-x-TreeItem-content.Mui-expanded > .Platform-x-TreeItem-iconContainer > svg {
+    transform: rotate(180deg);
+  }
+  .left-sidebar-tree li.Platform-x-TreeItem-root.child-level .Platform-x-TreeItem-content.Mui-expanded .Platform-x-TreeItem-iconContainer > svg {
+    transform: rotate(0deg);
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root>li>.Platform-x-TreeItem-content.Mui-selected,
+  .left-sidebar-tree .Platform-x-TreeView-root>li>.Platform-x-TreeItem-content.Mui-selected.Mui-focused {
+    background: transparent;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root>li>.Platform-x-TreeItem-content+ul.Platform-x-Collapse-vertical {
+    margin-left: 20px;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content {
+    padding-left: 0px;
+    position: relative;
+    margin-top: 1px;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content {
+    background-color: transparent;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content.Mui-selected,
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content.Mui-expanded.Mui-selected.Mui-focused,
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content.Mui-focused {
+    background-color: transparent;
+  }
+  
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content.Mui-selected:hover,
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content.Mui-expanded.Mui-selected.Mui-focused:hover,
+  .left-sidebar-tree .Platform-x-TreeView-root .Platform-x-TreeItem-content.Mui-focused:hover {
+    background-color: transparent;
+  }
+  .left-sidebar-tree .parent-level-1 .parent-checkbox {
+    display: none
+  }
+  .left-sidebar-tree .Platform-x-Box-root .parent-menu { 
+    margin-bottom: 10px;
+  }
+  .leftsidebar-scroll::-webkit-scrollbar-track {
+    box-shadow: none;
+  }
+  .img:active,
+  .left-sidebar-tree .Mui-expanded .img,
+  .img:hover{
+    filter: brightness(0) saturate(100%) invert(69%) sepia(66%) saturate(4745%)
+    hue-rotate(190deg) brightness(102%) contrast(95%);
+  }
+
+      
+ 

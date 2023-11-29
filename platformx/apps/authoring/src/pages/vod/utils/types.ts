@@ -1,0 +1,65 @@
+export type VodlistProps = {
+  Name?: string;
+  Page: string;
+  ParentPageURL?: string;
+  Page_State?: string;
+  CurrentPageURL: string;
+  DspaceVideoUrl?: string;
+  Title?: string;
+  Tags?: [''];
+  Description?: string;
+  LastModificationDate: string;
+  LastModifiedBy?: string;
+  PublishedBy?: string;
+  Path: string;
+};
+export type VodInstance = {
+  Page: string;
+  Description: string;
+  ShortDescription: string;
+  AccountId: string;
+  PlayerID: string;
+  VideoId: string;
+  PlayerType: string;
+  Title: string;
+  CurrentPageURL: string;
+  ParentPageURL: string;
+  Page_State: string;
+  Thumbnail?: string;
+  DsapceVideoUrl?: string;
+  Author?: string;
+  Poster: string;
+  Tags: [];
+  IsEdit: boolean;
+  SeoEnable: boolean; //lastModifiedDate,Path,LastModifiedBy,LastPublishedDate
+  AnalyticsEnable: boolean;
+  RobotTxt: boolean;
+  SiteMap: boolean;
+  Page_CreatedBy: string;
+  Page_LastModifiedBy: string;
+  Page_PublishedBy: string;
+  Analytics: string;
+  Others: string;
+  StructureData: string;
+  PageSettings: any;
+  IsConfirm: boolean;
+};
+
+export type VodSocialShareProps = {
+  SeoTitle: string;
+  SocialOgTitle: string;
+  SocialOgDescription: string;
+  SocialOgSiteName: string;
+  SocialOgType: string;
+  SocialOgURL: string;
+  SocialOgLocale: string;
+  SocialOgImage: string;
+  SocialOgTwitterTitle: string;
+  SocialOgTwitterDescription: string;
+  SocialOgTwitterImage: string;
+  SocialOgTwitterURL: string;
+  SocialTwitterCardSize: string;
+  PageTags: string[];
+  SeoDescription: string;
+  SeoKeywords: string[];
+};

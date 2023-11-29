@@ -1,0 +1,22 @@
+.animation {
+  transition: margin-top 0.3s;
+}
+.activeAnimation {
+  margin-top: 100vh;
+  transition: margin-top 0.3s;
+}
+.scrollright {
+  overflow-y: auto;
+  padding-right: 5px;
+}
+.scrollright::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollright::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 5px;
+}
+.scrollright::-webkit-scrollbar-thumb {
+  background: rgb(177, 177, 177);
+  border-radius: 5px;
+}

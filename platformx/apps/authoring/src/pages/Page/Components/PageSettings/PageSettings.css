@@ -1,0 +1,39 @@
+.pageSettingmainWp {
+  padding: 10px 15px;
+}
+
+.pageSettingmainWp .rowBox {
+  margin: 12px 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.pageSettingmainWp .labelbox {
+  margin-bottom: 5px;
+  display: block;
+}
+
+.pageSettingmainWp .switchbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PageInfoWp {
+  max-height: calc(100vh - 61px);
+  overflow-y: auto;
+}
+
+.seobasicBox {
+  border: 1px solid #D9DBE9;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.ImageSecWp .deviderBox hr {
+  border-bottom: 1px solid #D9DBE9;
+  border-top: 0;
+}
+.ImageSecWp:last-child .deviderBox.rowBox {
+  display: none;
+}

@@ -1,0 +1,46 @@
+.card-detail-section {
+  padding: 24px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+.card-detail-section .form-field-container.card-holder-img {
+  position: relative;
+}
+.card-detail-section .form-field-container.card-holder-img input {
+  padding-right: 60px;
+}
+.card-detail-section .form-field-container .form-label {
+  margin-bottom: 12px;
+  float: left;
+}
+.card-detail-section .form-field-container .card-type-image {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}
+.card-detail-section .custom-textbox input {
+  padding: 14px;
+}
+.card-detail-section .bottom-button-text-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.card-detail-section .cancel {
+  border: solid 1px;
+  height: 50px;
+  margin-right: 10px;
+  min-width: 120px;
+}
+.card-detail-section .done {
+  min-width: 120px;
+  height: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .card-detail-section .bottom-button-text-wrapper {
+    flex-direction: column;
+  }
+  .card-detail-section .bottom-button-text-wrapper .cancel-done-wrapper {
+    margin-top: 20px;
+  }
+}

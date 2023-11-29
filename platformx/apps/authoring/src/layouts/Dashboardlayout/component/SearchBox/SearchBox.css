@@ -1,0 +1,131 @@
+.searchModelMain {
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.advSearch {
+  display: flex;
+  box-shadow: none;
+  border: 1px solid #D9DBE9;
+  border-radius: 8px;
+  min-width: 645px;
+  justify-content: space-between;
+  min-height: 60px;
+  align-items: center;
+}
+.advSearch .filterBtn {
+  color: #6E7191;
+  margin-right: 20px;
+  cursor: pointer;
+  display: flex;
+}
+.advSearch .filterBtn svg {
+  font-size: 20px;
+}
+.advFilterBox .labelText {
+  color: #14142B;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+.advFilterBox input {
+  height: 45px;
+  padding: 0 14px;
+}
+.advFilterBox .Platform-x-InputBase-root {
+  min-height: 45px !important;
+}
+.advSearch .leftCol{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-right: 10px;
+}
+.advSearch .leftCol .searchwp {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.allCatBtn {
+  background: #F7F7FC !important;
+  border-radius: 8px 0px 0px 8px !important;
+  color: #14142B !important;
+  font-size: 14px !important;
+  text-transform: capitalize !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  height: 60px;
+  border-right: 1px solid #D9DBE9 !important;
+}
+.gropuadvsearchlist .groupHeader{
+  position: sticky;
+  top: -8px;
+  padding: 4px 12px;
+  color: #6E7191;
+}
+.gropuadvsearchlist .listview {
+  padding: 4px 7px;
+  color: #000;
+  list-style: none;
+}
+.gropuadvsearchlist .listview li { 
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+.gropuadvsearchlist .listview li:hover { 
+  background: #F7F7FC;
+}
+.searchIconPos {
+  position: absolute;
+  color: #6E7191;
+  display: flex;
+  width: 40px;
+  height: 100%;
+  padding: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9;
+}
+.allcatctabox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.allcatctabox .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  margin-right: 12px;
+  max-width: 18px;
+}
+.searchBoxInput {
+  display: inline-block;
+}
+@media (max-width: 850px) and (min-width: 601px){
+  .searchBoxInput {
+    white-space: nowrap;
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    top: 5px;
+    position: relative;
+  }
+}
+@media (max-width: 700px) and (min-width: 601px){
+  .searchBoxInput {
+    width: 90px;
+  }
+}
+@media (max-width: 767px) {
+  .advSearch {
+    min-width: 100%;
+  }
+}

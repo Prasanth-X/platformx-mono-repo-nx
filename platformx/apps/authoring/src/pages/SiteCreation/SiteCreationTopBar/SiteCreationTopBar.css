@@ -1,0 +1,109 @@
+.sitecreationtophead {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #fff;
+    border-bottom: solid 1px #ced3d9;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  .sitecreationtophead .backarrow {
+    color: #2d2d39;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  .sitecreationtopbar {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    /* border-bottom: solid 1px #ced3d9; */
+    margin-bottom: 32px;
+    justify-content: space-between;
+    padding: 14px 20px;
+    position: sticky;
+    top: 58.7px;
+    background: #fff;
+    z-index: 2;
+  }
+  .sitecreationtopbar .backarrow {
+    color: #2d2d39;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #d9dbe9;
+    border-radius: 4px;
+  }
+  .draftspace {
+    display: flex;
+    justify-content: space-between;
+  }
+  .leftarrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .draftitem{
+    display: flex;
+    flex-wrap: 'wrap';
+    margin-right: '21px';
+    align-content: center;
+    justify-content: center;
+    height: '38px'
+  }
+  .sitecreationtopbar .usericon {
+    /* background: #dfe4ff; */
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .UserroleUserDetailsHead {
+    max-width: 800px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: auto;
+    border: solid 1px #f5f6f8;
+  }
+  .UserroleUserDetailsHead .title {
+    padding: 10px 20px;
+    background: #fbfaff;
+  }
+  .sitetool{
+    cursor: pointer;
+  }
+  
+  @media (max-width: 767px) {
+    .sitecreationtopbar {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+    .sitecreationtopbar .backarrow {
+      display: none;
+    }
+    .sitecreationtophead {
+      padding: 10px;
+    }
+    .sitecreationtophead .backarrow {
+      display: flex;
+    }
+    .UserroleUserDetailsHead {
+      max-width: 100%;
+    }
+  }
+  

@@ -1,0 +1,4 @@
+.content {
+    -webkit-user-modify: read-only;
+    user-select: none;
+}

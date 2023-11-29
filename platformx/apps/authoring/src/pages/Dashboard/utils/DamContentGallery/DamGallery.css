@@ -1,0 +1,28 @@
+.damcontent_container {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    overflow-y: hidden; 
+  }
+  
+  .damcontent_container .leftsidebar-scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 100px);
+  }
+  
+  .damcontent_container .right-topbar-container .right-topbar {
+    padding: 14px 0px 10px 12px;
+    display: flex;
+    align-items: center;
+    ;
+  }
+ .tagbtn{
+  padding: 8px 15px;
+  min-width: 110px;
+  text-transform: capitalize;
+  padding-top: 6px;
+  padding-bottom: 6px;
+ }

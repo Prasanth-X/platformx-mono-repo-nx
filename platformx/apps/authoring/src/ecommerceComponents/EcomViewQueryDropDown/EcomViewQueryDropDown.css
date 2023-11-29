@@ -1,0 +1,13 @@
+.ecommerce-dropdown-custom .dropdown-button {
+  position: absolute;
+  min-width: 15px;
+  right: 0px;
+}
+
+.ecommerce-dropdown-custom button:hover {
+  background: transparent;
+}
+
+#split-button-menu {
+  padding: 0;
+}

@@ -1,0 +1,9 @@
+@media screen and (max-width: 767px) {
+  .popup-radio-options .form-label{
+    width: 48%;
+    margin-right: 0px !important;
+  }
+}
+.popup-radio-options .form-label {
+  margin-right: 40px;
+}

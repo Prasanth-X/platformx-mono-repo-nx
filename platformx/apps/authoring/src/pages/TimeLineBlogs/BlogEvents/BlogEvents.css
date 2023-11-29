@@ -1,0 +1,44 @@
+.eventImage {
+    object-fit: cover;
+    aspect-ratio: 16/8;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: block;
+    width: 100%;
+}
+
+.eventLiveIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    object-fit: contain;
+    filter: drop-shadow(-6px 23px 30px rgba(0, 0, 0, 0.4));
+    width: 20px;
+    height: 20px;
+}
+
+.eventTitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.eventDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+    margin-bottom: 12px !important;
+}
+
+.eventArrowIcon {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 14px !important;
+    top: 14px;
+}

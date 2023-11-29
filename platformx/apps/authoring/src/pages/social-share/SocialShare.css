@@ -1,0 +1,17 @@
+.listdisc {
+  margin-right: 10px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 700px){
+  .listdisc {
+    max-width: 150px;
+  }
+}
+@media (max-width: 500px){
+  .listdisc {
+    max-width: 90px;
+  }
+}

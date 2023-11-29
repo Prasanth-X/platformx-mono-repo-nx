@@ -1,0 +1,186 @@
+.platx-blog .rotateIcon90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.platx-blog .rotateIcon45 {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-top: -3px;
+}
+
+.platx-blog .footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.platx-blog .contentArea {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    height: calc(100vh - 95px);
+}
+
+.platx-blog .attachments {
+    outline: none;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.platx-blog .editor {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #fff;
+    position: relative;
+    outline: none;
+    padding: 25px 25px 0 25px;
+    overflow-y: auto;
+    height: 200px;
+}
+
+.platx-blog .textArea::placeholder {
+    color: #ced3d9 !important;
+    font-size: 14px;
+}
+
+.platx-blog .textArea,
+.platx-blog .inputBase .Platform-x-InputBase-root {
+    width: 100% !important;
+    color: #19191a;
+    font-size: 14px;
+    resize: none !important;
+    background-color: #fff !important;
+}
+
+.platx-blog .textArea {
+    padding: 0px 5px;
+}
+
+.platx-blog .inputBase .Platform-x-InputBase-root {
+    padding: 5px 10px !important;
+    height: 30px;
+}
+
+.platx-blog .noBorder .Platform-x-InputBase-input,
+.platx-blog .noBorder .Platform-x-InputBase-root {
+    padding: 0px !important;
+    margin-right: 20px;
+}
+
+.platx-blog .noBorder {
+    border: none !important;
+    outline: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0 !important;
+    color: #5c6574;
+    line-height: 21px;
+    font-weight: 400px;
+    font-size: 14px;
+}
+
+.platx-blog .withBorder {
+    border: solid 1px #ced3d9 !important;
+    padding: 15px;
+    border-radius: 4px !important;
+}
+
+.platx-blog .editor .Platform-x-Typography-root {
+    margin-top: 0;
+}
+
+.platx-blog .Platform-x-OutlinedInput-notchedOutline {
+    border-color: transparent !important;
+}
+
+#desc[contenteditable] {
+    /* outline: 0px solid transparent; */
+    border: 0;
+}
+
+
+/* @media screen and (max-height: 600px) and (orientation: landscape) {
+    .platx-blog .blogContainer{
+        position:unset;
+        left:0;
+        top:0;
+        right:0;
+    }
+} */
+
+@media screen and (max-width: 1023px) {
+    .platx-blog .textArea.noBorder {
+        min-height: 150px !important;
+        height: 300px !important;
+    }
+    .platx-blog .blogContainer {
+        position: unset;
+        left: 0;
+        top: 0;
+        right: 0;
+    }
+    .platx-blog .contentArea {
+        height: auto;
+    }
+    .Platform-x-TabPanel-root {
+        height: calc(100vh - 105px) !important;
+    }
+    .platx-blog .editor {
+        height: 52vh;
+        padding: 30px;
+    }
+}
+
+@media screen and (min-height: 769px) and (orientation: portrait) {
+    .Platform-x-TabPanel-root {
+        height: calc(100vh - 105px) !important;
+    }
+    .platx-blog .contentArea {
+        height: auto;
+    }
+    .platx-blog .textArea.noBorder {
+        min-height: 150px !important;
+        height: 450px !important;
+    }
+}
+
+@media screen and (min-height: 840px) and (orientation: portrait) {
+    .Platform-x-TabPanel-root {
+        height: calc(100vh - 105px) !important;
+    }
+    .platx-blog .contentArea {
+        height: calc(100vh - 260px) !important;
+    }
+    .platx-blog .textArea.noBorder {
+        min-height: 145px !important;
+        height: 145px !important;
+    }
+}
+
+.blogAsset {
+    height: 169px;
+    width: 300px;
+    margin: 0 0 21px 0;
+}
+
+.blogVideo {
+    height: 169px;
+    width: 265px;
+    margin-top: 21px;
+}
+
+.blogImage {
+    /* margin-top: 21px; */
+    height: 169px;
+    width: 265px;
+}

@@ -1,0 +1,10 @@
+.flex_box {
+  display: flex;
+  overflow-y: hidden;
+}
+
+.content_text {
+  letter-spacing: 0;
+  color: #2d2d39;
+  font-size: 12px;
+}

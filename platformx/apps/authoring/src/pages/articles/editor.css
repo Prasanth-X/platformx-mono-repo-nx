@@ -1,0 +1,30 @@
+@media screen and (min-width: 360px) {
+    .descAsset{
+        width: 100%;
+    }
+}
+@media screen and (min-width: 480px) {
+    .descAsset{
+        width: 100%;
+    }
+  }
+@media screen and (min-width: 600px) {
+    .descAsset{
+        height: 200px;
+        width: 300px;
+    }
+}
+@media screen and (min-width: 750px) {
+    .descAsset{
+        height: 250px;
+        width: 400px;
+    }
+}
+@media screen and (min-width: 900px) {
+    .descAsset{
+        height: 366px;
+        width: 650px;
+    }
+}
+
+
