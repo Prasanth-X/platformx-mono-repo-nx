@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
 const InterRegular = require("../fonts/Inter/Inter-Regular.woff2") as string;

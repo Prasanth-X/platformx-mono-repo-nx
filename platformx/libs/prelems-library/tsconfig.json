@@ -16,7 +16,8 @@
     "noEmit": true, 
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "composite":true
   },
   "files": [],
   "include": ["src","font.d.ts"],
