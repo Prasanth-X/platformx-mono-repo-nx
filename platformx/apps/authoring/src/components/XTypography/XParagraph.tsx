@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Typography, styled, ThemeProvider } from '@mui/material';
 import React from 'react';
 import LightTheme from '../../theme/lightTheme';
 import ThemeConstants from '../../theme/variable';
-import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
+const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
 const fontStyle = `
 @font-face {

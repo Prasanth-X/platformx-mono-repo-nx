@@ -37,14 +37,14 @@ const useStyles = makeStyles(() => ({
     position: 'absolute',
     top: '0px',
     left: '50%',
-    zIndex: '2',
+    zIndex: 2,
     transform: 'translate(-50%,-50%)',
   },
   addiconBottom: {
     position: 'absolute',
     bottom: '-36px',
     left: '50%',
-    zIndex: '2',
+    zIndex: 2,
     transform: 'translate(-50%,-50%)',
   },
 }));
@@ -709,7 +709,7 @@ const PrelemCard: React.FC<Props> = ({
   const addSectionTouchPoint = (prelemPosition: string, position: string) => {
     return (
       <Button
-        variant='contained'
+        variant="contained"
         sx={{
           color: '#FFFFFF',
           backgroundColor: '#6d6dff',
@@ -819,7 +819,7 @@ const PrelemCard: React.FC<Props> = ({
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Box
-        component='div'
+        component="div"
         sx={{
           // backgroundColor: '#f1f1f1',
           position: 'relative',
@@ -895,7 +895,7 @@ const PrelemCard: React.FC<Props> = ({
                   backgroundColor: ThemeConstants.WHITE_COLOR,
                 },
               }}
-              variant='contained'
+              variant="contained"
               onClick={() =>
                 handlePrelemEditSubmit(
                   'reach-us',
@@ -917,7 +917,7 @@ const PrelemCard: React.FC<Props> = ({
           {!prelemEditState && showOptions ? (
             <>
               <Box
-                component='div'
+                component="div"
                 sx={{
                   position: 'absolute',
                   height: '100%',
@@ -955,22 +955,22 @@ const PrelemCard: React.FC<Props> = ({
                   <FormGroup sx={{ margin: '11px 23px' }}>
                     <FormControlLabel
                       control={<Checkbox onChange={handleChangeTop} />}
-                      label='Top'
+                      label="Top"
                     />
                     <FormControlLabel
                       control={<Checkbox onChange={handleChangeBottom} />}
-                      label='Bottom'
+                      label="Bottom"
                     />
                   </FormGroup>
                 </Box>
               )}
               {showAddSection.showAtTop ? (
-                <Box component='div' className={classes.addiconTop}>
+                <Box component="div" className={classes.addiconTop}>
                   {addSectionTouchPoint(keyIndex, 'top')}
                 </Box>
               ) : null}
               {showAddSection.showAtBottom ? (
-                <Box component='div' className={classes.addiconBottom}>
+                <Box component="div" className={classes.addiconBottom}>
                   {addSectionTouchPoint(keyIndex, 'bottom')}
                 </Box>
               ) : null}

@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Typography, styled, ThemeProvider } from '@mui/material';
 import React from 'react';
 import LightTheme from '../../theme/lightTheme';
 import ThemeConstants from '../../theme/variable';
-import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
+const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
-const fontStyle= `
+const fontStyle = `
 @font-face {
   font-family: ${ThemeConstants.FONTNAMEPRIMARY};
   src: url(${InterRegular}) format("truetype");
   font-display: block;
-}`
+}`;
 
 export interface TypographyProps {
   label: string;
@@ -45,7 +46,12 @@ export const XTypography = ({
 }: TypographyProps) => (
   <ThemeProvider theme={LightTheme}>
     <style>{fontStyle}</style>
-    <StyledTypography variant={variant} align={TextAlign} {...rest} style={style}>
+    <StyledTypography
+      variant={variant}
+      align={TextAlign}
+      {...rest}
+      style={style}
+    >
       {label}
     </StyledTypography>
   </ThemeProvider>

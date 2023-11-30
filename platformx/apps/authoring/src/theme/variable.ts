@@ -1,5 +1,6 @@
-import HCLRobort from '../fonts/HCLTechRoobert/HCLTechRoobert-Regular.ttf';
-import InterRegular from '../fonts/Inter/Inter-Regular.ttf';
+
+const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
+const InterRegular = require("../fonts/Inter/Inter-Regular.woff2") as string;
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#2d2d39',
@@ -121,18 +122,18 @@ const ThemeConstants = {
   EM: 1024,
   LG: 1280,
   XL: 1440,
- // CAT Height
- CTA_MEDIUM_HEIGHT: "47px",
- CTA_SMALL_HEIGHT: "38px",
- CTA_LARGE_HEIGHT: "63px",
- CTA_XLARGE_HEIGHT: "66px",
- // CAT Padding
- CTA_MEDIUM_PADDING: "5px 24px",
- CTA_SMALL_PADDING: "5px 16px",
- // Text Transform
- TEXTTRANSFORMUPPERCASE: "uppercase",
- TEXTTRANSFORMCAPITALIZECASE: "capitalize",
- TEXTTRANSFORMLOWERCASE: "lowercase",
+  // CAT Height
+  CTA_MEDIUM_HEIGHT: "47px",
+  CTA_SMALL_HEIGHT: "38px",
+  CTA_LARGE_HEIGHT: "63px",
+  CTA_XLARGE_HEIGHT: "66px",
+  // CAT Padding
+  CTA_MEDIUM_PADDING: "5px 24px",
+  CTA_SMALL_PADDING: "5px 16px",
+  // Text Transform
+  TEXTTRANSFORMUPPERCASE: "uppercase",
+  TEXTTRANSFORMCAPITALIZECASE: "capitalize",
+  TEXTTRANSFORMLOWERCASE: "lowercase",
   // Border Radius
   DEFAULT_BORDER_RADIUS: "3px",
   ROUND_BORDER_RADIUS: "35px",
@@ -228,7 +229,7 @@ const ThemeConstants = {
         md: '12px 24px',
         lg: '20px 32px',
         xl: '20px 32px',
-       },
+      },
       MARGIN: {
         TOP: '12px',
         RIGHT: '12px',

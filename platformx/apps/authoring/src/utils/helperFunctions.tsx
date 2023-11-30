@@ -1,21 +1,26 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import { format } from 'date-fns';
 import { showToastError } from '../components/toastNotification/toastNotificationReactTostify';
 import { authInfo } from './authConstants';
 import { DefaultLocale, LanguageList } from './constants';
 import siteLevelSchema from './siteLevelSettings.json';
+import { SetStateAction } from 'react';
 
-export const isTabView = () => {
-  if (typeof window !== 'undefined') {
-    if (window.innerWidth <= 1024) return true;
-  } else return false;
-};
+export const isTabView = () =>
+  typeof window !== 'undefined' && window.innerWidth <= 1024;
 
-export const isMobileView = () => {
-  if (typeof window !== 'undefined') {
-    if (window.innerWidth < 768) return true;
-  } else return false;
-};
-export const formatAddPrelem = (item) => {
+export const isMobileView = () =>
+  typeof window !== 'undefined' && window.innerWidth < 768;
+
+export const formatAddPrelem = (item: {
+  PrelemId: any;
+  PrelemName: any;
+  SeoEnabled: any;
+  AnalyticsEnabled: any;
+  DocumentPath: any;
+  DocumentCreationPath: any;
+  DocumentType: any;
+}) => {
   return {
     PrelemId: item.PrelemId, // Unique Name
     PrelemName: item.PrelemName,
@@ -30,14 +35,16 @@ export const formatAddPrelem = (item) => {
     StructuredData: '',
   };
 };
- export const getFirstTwoletters = (title) => {
+export const getFirstTwoletters = (title: string | null) => {
   if (!title) return '';
   const words = title.trim().split(' ');
   if (words.length === 1) return words[0].substring(0, 2);
   return words[0].charAt(0) + words[words.length - 1].charAt(0);
-
 };
-export const formatChildren = (children, content) => {
+export const formatChildren = (
+  children: string | any[],
+  content: { [x: string]: any }
+) => {
   const Children: any = [];
   for (let i = 0; i < children.length; i++) {
     const instance = { ...children[i] };
@@ -51,7 +58,7 @@ export const formatChildren = (children, content) => {
 export function setDuplicatePageSettings(
   name: string,
   url: string,
-  pageSettings
+  pageSettings: any
 ) {
   const pageSettingsCopy = {
     ...pageSettings,
@@ -72,10 +79,18 @@ export function setDuplicatePageSettings(
 }
 
 export const formatChildrenForPageDuplicate = (
-  pageModel,
-  pageName,
-  pageUrl,
-  currentUser
+  pageModel: {
+    Page: any;
+    Title: any;
+    CurrentPageURL: string;
+    DevelopedBy: any;
+    Page_LastModificationDate: Date;
+    PageSettings: any;
+    Children: string | any[];
+  },
+  pageName: string,
+  pageUrl: string,
+  currentUser: string
 ) => {
   const ChildrenArray: any = [];
   pageModel.Page = pageUrl;
@@ -98,9 +113,9 @@ export const formatChildrenForPageDuplicate = (
 };
 //function to format page model to be sent at backend to be saved
 export const consolidatePageModel = (
-  pageModel,
-  prelemMetaArray,
-  pageSettings,
+  pageModel: any,
+  prelemMetaArray: string | any[],
+  pageSettings: any,
   username = ''
 ) => {
   const newModel = {
@@ -177,9 +192,11 @@ export function setDefaultPageSettings(
     SocialTwitterCardSize: 'summary_large_image',
   };
 }
-export function removeParamsFromURL(sParam) {
-  let url = `${window.location.href.split('?')[0]}?`;
-  const sPageURL = decodeURIComponent(window.location.search.substring(1));
+export function removeParamsFromURL(sParam: string) {
+  let url = `${window.window.location?.href.split('?')[0]}?`;
+  const sPageURL = decodeURIComponent(
+    window.window.location?.search.substring(1)
+  );
   const sURLVariables = sPageURL.split('&');
   let sParameterName;
   let i;
@@ -193,17 +210,20 @@ export function removeParamsFromURL(sParam) {
   return url.substring(0, url.length - 1);
 }
 
-export const formatUrl = (enteredVal) => {
+export const formatUrl = (enteredVal: string) => {
   let tmp = enteredVal.toLowerCase();
   tmp = tmp.replace(/\s/g, '-');
   tmp = tmp.replace(/[^a-z0-9\- ]/gi, '');
   return tmp;
 };
 
-export const filterSelectedArticle = (state, articleName) => {
+export const filterSelectedArticle = (
+  state: { article: any },
+  articleName: any
+) => {
   const { article } = state;
   return article?.articleArray?.find(
-    (articleObj) => articleObj.Name === articleName
+    (articleObj: { Name: any }) => articleObj.Name === articleName
   );
 };
 
@@ -219,21 +239,21 @@ export const dateFormat = (dataTime: any = '') => {
   return dataTime;
 };
 
-export const handleHtmlTags = (inputString) => {
+export const handleHtmlTags = (inputString: string | undefined) => {
   if (inputString) {
     return inputString.replaceAll(/<[^>]*(>|$)|&nbsp;/g, '');
   }
   return inputString;
 };
 
-export const capitalizeFirstLetter = (inputString) => {
+export const capitalizeFirstLetter = (inputString: string | undefined) => {
   if (inputString) {
     return inputString.charAt(0).toUpperCase() + inputString.slice(1);
   }
   // return '';
 };
 
-export const trimString = (string, length) => {
+export const trimString = (string: string | undefined, length: number) => {
   if (string) {
     const trimmedString =
       string.length > length ? `${string.substring(0, length - 3)}...` : string;
@@ -290,16 +310,39 @@ export const nullToString = (stringData = '') => {
 };
 
 export const onBackButtonEvent = (
-  e,
-  unsavedChanges,
-  setDialogOpen,
-  navigateTo
+  e: PopStateEvent,
+  unsavedChanges: boolean,
+  setDialogOpen: {
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (value: SetStateAction<boolean>): void;
+    (arg0: boolean): void;
+  },
+  navigateTo: {
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+    (): void;
+  }
 ) => {
   e.preventDefault();
   window.history.pushState(
     null,
     '',
-    window.location.pathname + location?.search
+    window.window.location?.pathname + window.location?.search
   );
   if (unsavedChanges) {
     setDialogOpen(true);
@@ -323,24 +366,24 @@ export const updateStructureData = (content) => {
     hasPart:
       content.questions?.length > 0
         ? content.questions?.map(
-          ({ question, options_compound_fields }: any) => {
-            return {
-              '@type': 'Question',
-              name: question,
-              suggestedAnswer:
-                options_compound_fields?.length > 0
-                  ? options_compound_fields.map(
-                    ({ option_id, option_text }: any) => {
-                      return {
-                        '@type': 'Answer',
-                        text: option_text,
-                      };
-                    }
-                  )
-                  : '',
-            };
-          }
-        )
+            ({ question, options_compound_fields }: any) => {
+              return {
+                '@type': 'Question',
+                name: question,
+                suggestedAnswer:
+                  options_compound_fields?.length > 0
+                    ? options_compound_fields.map(
+                        ({ option_id, option_text }: any) => {
+                          return {
+                            '@type': 'Answer',
+                            text: option_text,
+                          };
+                        }
+                      )
+                    : '',
+              };
+            }
+          )
         : '',
   };
   return QuizStructureData;
@@ -401,7 +444,7 @@ export const debounce = (fn: any, ms = 300) => {
 
 export const getCurrentLang = () => {
   let lang = '';
-  const split = location.pathname.split('/');
+  const split = window.location?.pathname.split('/');
 
   if (LanguageList.find((x) => x.id === split[2])) {
     lang = split[2];
@@ -413,7 +456,7 @@ export const getCurrentLang = () => {
 
 export const getSelectedSite = () => {
   let site = '';
-  const split = location.pathname.split('/');
+  const split = window.location?.pathname.split('/');
   site = split[1];
   if (site === 'en' || site === 'fr' || site === 'de') {
     return localStorage.getItem('selectedSite');
@@ -424,7 +467,7 @@ export const getSelectedSite = () => {
 
 export const getSelectedRoute = () => {
   let site = '';
-  const split = location.pathname.split('/');
+  const split = window.location?.pathname.split('/');
   site = split[1];
   if (site === 'en' || site === 'fr' || site === 'de') {
     return '';
@@ -437,26 +480,25 @@ export const getSubDomain = () => {
   const sessions = localStorage.getItem('userSession');
   const storedSession = JSON.parse(sessions);
   const site_url = storedSession?.userInfo?.preferred_sites_urls;
-  const domain = site_url[getSelectedSite()]?.replace(".com.", ".com");
-    if (domain) {
-      if (domain.startsWith("http://")) {
-        return domain.replace("http://", "https://");
-      } else if (!domain.startsWith("https://")) {
-        return `https://${domain}`;
-      }
-      return domain;
+  const domain = site_url[getSelectedSite()]?.replace('.com.', '.com');
+  if (domain) {
+    if (domain.startsWith('http://')) {
+      return domain.replace('http://', 'https://');
+    } else if (!domain.startsWith('https://')) {
+      return `https://${domain}`;
     }
-   return null; // Return null if `domain` is null or undefined
-
-}
+    return domain;
+  }
+  return null; // Return null if `domain` is null or undefined
+};
 
 export const getCurrentPathName = () => {
   let pathname = '';
-  const split = location.pathname.split('/');
+  const split = window.location?.pathname.split('/');
   if (LanguageList.find((x) => x.id === split[2])) {
     pathname = `/${split.slice(3).join('/')}`;
   } else {
-    pathname = location.pathname;
+    pathname = window.location?.pathname;
   }
   return pathname;
 };
@@ -534,7 +576,6 @@ export const getRandomNumber = (answerArray = [], min, max) => {
 };
 
 export const getLocale = (language: string, location: string) => {
-  if (language === 'en')
-    return `${language}`
-  return `${language}_${location}`
-}
+  if (language === 'en') return `${language}`;
+  return `${language}_${location}`;
+};

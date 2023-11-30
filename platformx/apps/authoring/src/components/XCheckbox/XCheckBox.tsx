@@ -4,7 +4,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { ThemeProvider } from '@mui/system';
 import LightTheme from '../../theme/lightTheme';
 import ThemeConstants from '../../theme/variable';
-import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
 const fontStyle = `
 @font-face {
@@ -14,7 +15,7 @@ const fontStyle = `
 }`;
 export interface XCheckBoxProps {
   labelPlacement?: 'top' | 'start' | 'bottom' | 'end';
-  size?: "small" | "medium";
+  size?: 'small' | 'medium';
   label?: string;
   value?: string;
   color?:
@@ -34,17 +35,17 @@ export default function XCheckBox({
   value,
   size,
   color,
-}: XCheckBoxProps ) {
+}: XCheckBoxProps) {
   return (
     <ThemeProvider theme={LightTheme}>
       <style>{fontStyle}</style>
-    <FormControlLabel
-      value={value}
-      control={<Checkbox size={size} color={color} />}
-      // variant="outlined"
-      label={label}
-      labelPlacement={labelPlacement}
-    />
+      <FormControlLabel
+        value={value}
+        control={<Checkbox size={size} color={color} />}
+        // variant="outlined"
+        label={label}
+        labelPlacement={labelPlacement}
+      />
     </ThemeProvider>
   );
 }

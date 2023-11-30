@@ -18,7 +18,8 @@ import DOMPurify from 'isomorphic-dompurify';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDomServer from 'react-dom/server';
 import { useTranslation } from 'react-i18next';
-import { AiSvg, AiSvgDisabled } from '../../../../assets/svg';
+import AiSvgDisabled from '../../../../assets/svg/AiSvgDisabled.svg';
+import AiSvg from '../../../../assets/svg/AiSvg.svg';
 import { createChatGptRequest } from '../../../../services/chatGpt/chatGpt.api';
 import { handleHtmlTags, trimString } from '../../../../utils/helperFunctions';
 import Gallery from '../../../Gallery/Gallery';
@@ -529,7 +530,7 @@ const XArticleEditor = ({ title, state, setState, setCheckDesc }) => {
       {isChatGptLoading && <ChatGptLoader />}
       {isUrlDialog ? (
         <AddUrlDialog
-          titledata=''
+          titledata=""
           isDialogOpen={isUrlDialog}
           closeButtonHandle={() => setUrlDialog(false)}
           doneButtonHandle={onClickDone}
@@ -551,8 +552,8 @@ const XArticleEditor = ({ title, state, setState, setCheckDesc }) => {
         />
       </Dialog>
       <ButtonGroup
-        className='tools'
-        id='toolbar'
+        className="tools"
+        id="toolbar"
         style={{
           display: showToolbar ? 'inline-flex' : 'none',
           backgroundColor: 'black',
@@ -619,8 +620,8 @@ const XArticleEditor = ({ title, state, setState, setCheckDesc }) => {
               }}
             >
               <Tooltip
-                className='divTooltip'
-                placement='left'
+                className="divTooltip"
+                placement="left"
                 componentsProps={{
                   tooltip: {
                     sx: {
@@ -635,16 +636,16 @@ const XArticleEditor = ({ title, state, setState, setCheckDesc }) => {
                     },
                   },
                 }}
-                title='Generate AI Content'
+                title="Generate AI Content"
               >
                 <Box onClick={() => title?.length > 0 && chatGPT(index)}>
                   {title?.length > 0 ? (
-                    <AiSvg className='DivEnable' height='30px' width='30' />
+                    <AiSvg className="DivEnable" height="30px" width="30" />
                   ) : (
                     <AiSvgDisabled
-                      className='DivDisable'
-                      height='30px'
-                      width='30'
+                      className="DivDisable"
+                      height="30px"
+                      width="30"
                     />
                   )}
                 </Box>

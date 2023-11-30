@@ -129,7 +129,7 @@ export default function BlogSearchBox({ onSearch, style }) {
         />
       </Box>
       <Autocomplete
-        id='asynchronousSearch'
+        id="asynchronousSearch"
         classes={{
           input: classes.autoComplete,
           option: classes.autoComplete,
@@ -187,13 +187,15 @@ export default function BlogSearchBox({ onSearch, style }) {
             }}
             InputProps={{
               ...params.InputProps,
-              startAdornment: <SearchIcon style={{ marginRight: '10px' }} />,
+              startAdornment: (
+                <img src={SearchIcon} style={{ marginRight: '10px' }} />
+              ),
               endAdornment: (
                 // <React.Fragment>
                 //     {loading ? <CircularProgress color="inherit" size={15} /> : null}
                 //     {params.InputProps.endAdornment}
                 // </React.Fragment>
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   {inputValue && (
                     <Box
                       sx={{

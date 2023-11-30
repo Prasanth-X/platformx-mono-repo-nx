@@ -1,0 +1,52 @@
+apiVersion: v1
+data:
+  REACT_APP_ANALYTICS_PROVIDER: googleTagManager
+  REACT_APP_API_URI: https://api.hcl-x.com/platform-x/ 
+  REACT_APP_APM_ENVIRONMENT: live 
+  REACT_APP_APM_SERVER_URL: https://apm.hcl-x.com
+  REACT_APP_APM_TRACING: 'true'
+  REACT_APP_AUTHOR_URI: https://console.hcl-x.com/
+  REACT_APP_BLOG_API_URI: https://blogging.hcl-x.com/platform-x/
+  REACT_APP_CHATGPT_API_URI: https://api.hcl-x.com/platform-x/api/v1/web/
+  REACT_APP_CLIENT_ID: react
+  REACT_APP_COMPONENT_THEME: HclXPrelemTheme
+  REACT_APP_DELIVERY_URI: https://delivery.hcl-x.com/platform-x/
+  REACT_APP_DSPACE_IMAGES_UUID: c03888bc-d518-4549-a6b1-c51ddf7b4969
+  REACT_APP_DSPACE_URI: https://dam.hcl-x.com/
+  REACT_APP_DSPACE_VIDEOS_UUID: 080fc67d-b813-49e5-9c2c-34a2790d789b
+  REACT_APP_FOOTER: Footer
+  REACT_APP_FOOTER_THEME: HclXPrelemTheme
+  REACT_APP_GA_ID: G-69NYDPVH94
+  REACT_APP_GOOGLE_SEARCH_VERIFICATION: GA-12345
+  REACT_APP_GRANT_TYPE: authorization_code
+  REACT_APP_GRAPHQL_URI: https://api.hcl-x.com/platform-x/v1/authoring/gateway
+  REACT_APP_GTM_ID: GTM-WGS9WRS
+  REACT_APP_HEADER: Header
+  REACT_APP_HEADER_THEME: HclXPrelemTheme
+  REACT_APP_KEYCLOAK_URI: https://idp.hcl-x.com
+  REACT_APP_PUBLISH_URI: https://beta.hcl-x.com/
+  REACT_APP_REALM: platform-x
+  REACT_APP_REDIRECT_URI: https://console.hcl-x.com/en/
+  REACT_APP_CHAT_GPT_PROMPT: Please write 3 paragraph article about
+  REACT_APP_GCP_URL: https://storage.googleapis.com
+  REACT_APP_BUCKET_NAME: cropped_image_public_x_site_live
+  REACT_APP_DEFAULT_IMAGE: machine_assets/1689600462756/public/png/Prelem_UI_Icons1
+  REACT_APP_NAV_ICON_1: https://dam.hcl-x.com/server/api/core/bitstreams/7cc0f082-945f-4fe9-82ae-08d1530d4a88/content
+  REACT_APP_NAV_ICON_2: https://dam.hcl-x.com/server/api/core/bitstreams/fc528034-88bd-4280-8b3e-b200168bdd5a/content
+  REACT_APP_NAV_ICON_3: https://dam.hcl-x.com/server/api/core/bitstreams/2e517cf2-4450-49a4-be2b-bf7d3e24bbca/content
+  REACT_APP_NAV_ICON_4: https://dam.hcl-x.com/server/api/core/bitstreams/b5a81776-d605-47c8-b3dd-fa4ce94d2288/content
+  REACT_APP_NAV_ICON_5: https://dam.hcl-x.com/server/api/core/bitstreams/e611b28a-8942-4429-8d14-f31b4e2204d0/content
+  REACT_APP_NAV_ICON_6: https://dam.hcl-x.com/server/api/core/bitstreams/6c71b161-0626-45e5-be82-13048c6d7015/content
+  REACT_APP_NAV_ICON_7: https://dam.hcl-x.com/server/api/core/bitstreams/972ecfcd-455e-484b-83eb-862447867ec9/content
+  REACT_APP_NAV_ICON_8: https://dam.hcl-x.com/server/api/core/bitstreams/dabfd1ad-70d0-4290-a952-02a7b829c681/content
+  REACT_APP_NAV_ICON_9: https://dam.hcl-x.com/server/api/core/bitstreams/2e517cf2-4450-49a4-be2b-bf7d3e24bbca/content
+  REACT_APP_NAV_ICON_10: https://dam.hcl-x.com/server/api/core/bitstreams/fbecc9ac-554b-422b-ac45-179c5449d5d0/content
+  REACT_APP_NAV_ICON_11: https://dam.hcl-x.com/server/api/core/bitstreams/395afe3c-075a-47ba-b0c6-74a9617758a8/content
+  REACT_APP_NAV_ICON_12: https://dam.hcl-x.com/server/api/core/bitstreams/91edcf35-f83a-4e15-9f6b-71893872c40d/content
+  REACT_APP_BASE_URL: https://console.hcl-x.com
+  REACT_APP_PRELEM_THEME: light
+  REACT_APP_USERS_URI: https://console.users.hcl-x.com/platform-x/
+kind: ConfigMap
+metadata:
+  name: hep-authoring-ui-config
+  namespace: default

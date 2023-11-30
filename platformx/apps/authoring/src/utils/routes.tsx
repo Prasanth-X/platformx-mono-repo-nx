@@ -20,7 +20,6 @@ import CreateCourse from '../pages/Courses/CreateCourse';
 import CreateEvent from '../pages/CreateEvent/CreateEvent';
 import Dashboard from '../pages/Dashboard/Index';
 import XDashboard from '../pages/Dashboard/X-Dashboard/index';
-import HeaderCreation from '../pages/headerCreation';
 import Members from '../pages/Members/Members';
 import NavTreeCreation from '../pages/NavTree';
 import EditPage from '../pages/Page/Components/EditPageContainer/EditPageContainer';
@@ -52,13 +51,14 @@ import WorkflowDetails from '../pages/Workflow/WorkflowDetails';
 import WorkflowListing from '../pages/Workflow/WorkflowListing';
 import ProtectedRoute from '../router/protectedRoute';
 import { RouteConfig } from '../router/routes.types';
+import HeaderCreation from '../pages/headerCreation/HeaderCreation';
 const routes: RouteConfig[] = [
   {
     path: '/dashboard',
     element: (
       <ProtectedRoute
-        category='dashboard'
-        subCategory=''
+        category="dashboard"
+        subCategory=""
         allowedRoles={['admin', 'author', 'reviewer', 'publisher', 'editor']}
       >
         <Dashboard />
@@ -69,8 +69,8 @@ const routes: RouteConfig[] = [
     path: '/x-dashboard',
     element: (
       <ProtectedRoute
-        category='dashboard'
-        subCategory=''
+        category="dashboard"
+        subCategory=""
         allowedRoles={['admin', 'author', 'reviewer', 'publisher', 'editor']}
       >
         <XDashboard />
@@ -81,8 +81,8 @@ const routes: RouteConfig[] = [
     path: '/task-listing',
     element: (
       <ProtectedRoute
-        category='Task Listing'
-        subCategory=''
+        category="Task Listing"
+        subCategory=""
         hasSearch={false}
         allowedRoles={['admin', 'author', 'reviewer', 'publisher', 'editor']}
       >
@@ -93,7 +93,7 @@ const routes: RouteConfig[] = [
   {
     path: '/assets',
     element: (
-      <ProtectedRoute category='public' subCategory='public' name='content'>
+      <ProtectedRoute category="public" subCategory="public" name="content">
         <Assets />
       </ProtectedRoute>
     ),
@@ -101,7 +101,7 @@ const routes: RouteConfig[] = [
   {
     path: '/asset-picker',
     element: (
-      <ProtectedRoute category='public' subCategory='public' name='content'>
+      <ProtectedRoute category="public" subCategory="public" name="content">
         <AssetPicker />
       </ProtectedRoute>
     ),
@@ -110,7 +110,7 @@ const routes: RouteConfig[] = [
   {
     path: 'page-list',
     element: (
-      <ProtectedRoute name='pages' category='page' subCategory=''>
+      <ProtectedRoute name="pages" category="page" subCategory="">
         <PageListView />
       </ProtectedRoute>
     ),
@@ -119,9 +119,9 @@ const routes: RouteConfig[] = [
     path: '/edit-page',
     element: (
       <ProtectedRoute
-        name='page'
-        category='page'
-        subCategory=''
+        name="page"
+        category="page"
+        subCategory=""
         isSideBar={false}
         isHeader={false}
       >
@@ -133,9 +133,9 @@ const routes: RouteConfig[] = [
     path: '/preview-page/:device',
     element: (
       <ProtectedRoute
-        subCategory=''
-        category='page'
-        name='page'
+        subCategory=""
+        category="page"
+        name="page"
         isSideBar={false}
         isHeader={false}
       >
@@ -147,9 +147,9 @@ const routes: RouteConfig[] = [
     path: '/layouts',
     element: (
       <ProtectedRoute
-        subCategory=''
-        category='page'
-        name='page'
+        subCategory=""
+        category="page"
+        name="page"
         isSideBar={false}
         isHeader={false}
       >
@@ -161,9 +161,9 @@ const routes: RouteConfig[] = [
     path: '/prelem-search',
     element: (
       <ProtectedRoute
-        subCategory=''
-        category='page'
-        name='page'
+        subCategory=""
+        category="page"
+        name="page"
         isSideBar={false}
         isHeader={false}
       >
@@ -175,9 +175,9 @@ const routes: RouteConfig[] = [
     path: '/prelem-search/about',
     element: (
       <ProtectedRoute
-        subCategory=''
-        category='page'
-        name='page'
+        subCategory=""
+        category="page"
+        name="page"
         isSideBar={false}
         isHeader={false}
       >
@@ -189,9 +189,9 @@ const routes: RouteConfig[] = [
     path: '/prelem-search/preview',
     element: (
       <ProtectedRoute
-        subCategory=''
-        category='page'
-        name='page'
+        subCategory=""
+        category="page"
+        name="page"
         isSideBar={false}
         isHeader={false}
       >
@@ -203,9 +203,9 @@ const routes: RouteConfig[] = [
     path: 'content/create-article',
     element: (
       <ProtectedRoute
-        name='article'
-        category='content'
-        subCategory='article'
+        name="article"
+        category="content"
+        subCategory="article"
         isSideBar={false}
         isHeader={false}
       >
@@ -217,9 +217,9 @@ const routes: RouteConfig[] = [
     path: '/article-update/:id',
     element: (
       <ProtectedRoute
-        name='article'
-        subCategory='article'
-        category='content'
+        name="article"
+        subCategory="article"
+        category="content"
         isHeader={false}
         isSideBar={false}
       >
@@ -230,7 +230,7 @@ const routes: RouteConfig[] = [
   {
     path: 'content/article',
     element: (
-      <ProtectedRoute name='article' subCategory='article' category='content'>
+      <ProtectedRoute name="article" subCategory="article" category="content">
         <Content />
       </ProtectedRoute>
     ),
@@ -239,9 +239,9 @@ const routes: RouteConfig[] = [
     path: '/article-preview',
     element: (
       <ProtectedRoute
-        name='article'
-        subCategory='article'
-        category='content'
+        name="article"
+        subCategory="article"
+        category="content"
         isSideBar={false}
         isHeader={false}
       >
@@ -253,9 +253,9 @@ const routes: RouteConfig[] = [
     path: '/content/create-vod',
     element: (
       <ProtectedRoute
-        subCategory='vod'
-        name='vod'
-        category='content'
+        subCategory="vod"
+        name="vod"
+        category="content"
         // isHeader={false}
         // isSideBar={false}
         hasSearch={false}
@@ -268,9 +268,9 @@ const routes: RouteConfig[] = [
     path: '/vod/create-vod/:id',
     element: (
       <ProtectedRoute
-        name='vod'
-        subCategory='vod'
-        category='content'
+        name="vod"
+        subCategory="vod"
+        category="content"
         isHeader={false}
       >
         <CreateVod />
@@ -280,7 +280,7 @@ const routes: RouteConfig[] = [
   {
     path: '/content/vod',
     element: (
-      <ProtectedRoute name='vod' subCategory='vod' category='content'>
+      <ProtectedRoute name="vod" subCategory="vod" category="content">
         <Content />
       </ProtectedRoute>
     ),
@@ -289,9 +289,9 @@ const routes: RouteConfig[] = [
     path: '/vod-preview',
     element: (
       <ProtectedRoute
-        name='vod'
-        subCategory='vod'
-        category='content'
+        name="vod"
+        subCategory="vod"
+        category="content"
         isSideBar={false}
       >
         <VodPreview />
@@ -302,9 +302,9 @@ const routes: RouteConfig[] = [
     path: '/content-preview',
     element: (
       <ProtectedRoute
-        name='content'
-        category='content'
-        subCategory='content-preview'
+        name="content"
+        category="content"
+        subCategory="content-preview"
         isSideBar={false}
         isHeader={false}
       >
@@ -316,9 +316,9 @@ const routes: RouteConfig[] = [
     path: '/content/create-quiz',
     element: (
       <ProtectedRoute
-        name='quiz'
-        subCategory='quiz'
-        category='content'
+        name="quiz"
+        subCategory="quiz"
+        category="content"
         // isHeader={false}
         // isSideBar={false}
         hasSearch={false}
@@ -330,7 +330,7 @@ const routes: RouteConfig[] = [
   {
     path: '/content/quiz',
     element: (
-      <ProtectedRoute subCategory='quiz' name='quiz' category='content'>
+      <ProtectedRoute subCategory="quiz" name="quiz" category="content">
         <Content />
       </ProtectedRoute>
     ),
@@ -339,9 +339,9 @@ const routes: RouteConfig[] = [
     path: '/content/create-poll',
     element: (
       <ProtectedRoute
-        name='poll'
-        subCategory='poll'
-        category='content'
+        name="poll"
+        subCategory="poll"
+        category="content"
         // isHeader={false}
         // isSideBar={false}
         hasSearch={false}
@@ -353,7 +353,7 @@ const routes: RouteConfig[] = [
   {
     path: '/content/poll',
     element: (
-      <ProtectedRoute name='poll' subCategory='poll' category='content'>
+      <ProtectedRoute name="poll" subCategory="poll" category="content">
         <Content />
       </ProtectedRoute>
     ),
@@ -361,7 +361,7 @@ const routes: RouteConfig[] = [
   {
     path: '/content/quiz',
     element: (
-      <ProtectedRoute name='quiz' subCategory='quiz' category='content'>
+      <ProtectedRoute name="quiz" subCategory="quiz" category="content">
         <Content />
       </ProtectedRoute>
     ),
@@ -370,9 +370,9 @@ const routes: RouteConfig[] = [
     path: '/content/create-event',
     element: (
       <ProtectedRoute
-        name='event'
-        subCategory='event'
-        category='content'
+        name="event"
+        subCategory="event"
+        category="content"
         allowedRoles={['admin', 'author', 'content-manager', 'editor']}
         // isHeader={false}
         // isSideBar={false}
@@ -387,9 +387,9 @@ const routes: RouteConfig[] = [
 
     element: (
       <ProtectedRoute
-        name='event'
-        subCategory='event'
-        category='content'
+        name="event"
+        subCategory="event"
+        category="content"
         allowedRoles={[
           'admin',
           'author',
@@ -407,9 +407,9 @@ const routes: RouteConfig[] = [
     path: '/content/create-course',
     element: (
       <ProtectedRoute
-        name='course'
-        subCategory=''
-        category='content'
+        name="course"
+        subCategory=""
+        category="content"
         allowedRoles={[
           'admin',
           'author',
@@ -429,9 +429,9 @@ const routes: RouteConfig[] = [
     path: '/content/course',
     element: (
       <ProtectedRoute
-        name='course'
-        subCategory=''
-        category='content'
+        name="course"
+        subCategory=""
+        category="content"
         allowedRoles={[
           'admin',
           'author',
@@ -449,9 +449,9 @@ const routes: RouteConfig[] = [
     path: '/content/community',
     element: (
       <ProtectedRoute
-        name='community'
-        subCategory=''
-        category='content'
+        name="community"
+        subCategory=""
+        category="content"
         allowedRoles={[
           'admin',
           'author',
@@ -468,7 +468,7 @@ const routes: RouteConfig[] = [
   {
     path: '/create-navtree',
     element: (
-      <ProtectedRoute name='navigation' category='menu' subCategory=''>
+      <ProtectedRoute name="navigation" category="menu" subCategory="">
         <HeaderCreation />
       </ProtectedRoute>
     ),
@@ -477,9 +477,9 @@ const routes: RouteConfig[] = [
     path: '/navtree',
     element: (
       <ProtectedRoute
-        name='navigation'
-        category='menu'
-        subCategory=''
+        name="navigation"
+        category="menu"
+        subCategory=""
         isSideBar={false}
         isHeader={true}
       >
@@ -490,7 +490,7 @@ const routes: RouteConfig[] = [
   {
     path: '/post/social-share-list',
     element: (
-      <ProtectedRoute name='page' category='public' subCategory='public'>
+      <ProtectedRoute name="page" category="public" subCategory="public">
         <SocialShareList />
       </ProtectedRoute>
     ),
@@ -499,9 +499,9 @@ const routes: RouteConfig[] = [
     path: '/content/create-blog',
     element: (
       <ProtectedRoute
-        name='page'
-        category='public'
-        subCategory='public'
+        name="page"
+        category="public"
+        subCategory="public"
         isHeader={false}
         isSideBar={false}
       >
@@ -513,9 +513,9 @@ const routes: RouteConfig[] = [
     path: 'user-management/user-list',
     element: (
       <ProtectedRoute
-        name='user'
-        category='UserManagement'
-        subCategory='users'
+        name="user"
+        category="UserManagement"
+        subCategory="users"
         hasSearch={false}
       >
         <Users />
@@ -526,9 +526,9 @@ const routes: RouteConfig[] = [
     path: 'user-management/user-create',
     element: (
       <ProtectedRoute
-        name='user'
-        category='UserManagement'
-        subCategory=''
+        name="user"
+        category="UserManagement"
+        subCategory=""
         isHeader={false}
         isSideBar={false}
       >
@@ -540,9 +540,9 @@ const routes: RouteConfig[] = [
     path: 'user-management/user-details',
     element: (
       <ProtectedRoute
-        name='user'
-        category='UserManagement'
-        subCategory='users'
+        name="user"
+        category="UserManagement"
+        subCategory="users"
         hasSearch={false}
       >
         <UserDetails />
@@ -554,9 +554,9 @@ const routes: RouteConfig[] = [
     path: '/site-setting/footer-setting',
     element: (
       <ProtectedRoute
-        name='footer'
-        category='SiteSetting'
-        subCategory='FooterSetting'
+        name="footer"
+        category="SiteSetting"
+        subCategory="FooterSetting"
       >
         <FooterSetting />
       </ProtectedRoute>
@@ -566,7 +566,7 @@ const routes: RouteConfig[] = [
   {
     path: '/site-setting/cookie-setting',
     element: (
-      <ProtectedRoute category='SiteSetting' subCategory='CookieSetting'>
+      <ProtectedRoute category="SiteSetting" subCategory="CookieSetting">
         <CookieSetting />
       </ProtectedRoute>
     ),
@@ -575,9 +575,9 @@ const routes: RouteConfig[] = [
     path: '/site-setting/media-handle',
     element: (
       <ProtectedRoute
-        name='medis=a'
-        category='SiteSetting'
-        subCategory='MediaHandle'
+        name="medis=a"
+        category="SiteSetting"
+        subCategory="MediaHandle"
       >
         <MediaHandle />
       </ProtectedRoute>
@@ -586,7 +586,7 @@ const routes: RouteConfig[] = [
   {
     path: '/sites/site-listing',
     element: (
-      <ProtectedRoute category='site' subCategory='Sites'>
+      <ProtectedRoute category="site" subCategory="Sites">
         <SiteListing />
       </ProtectedRoute>
     ),
@@ -594,7 +594,9 @@ const routes: RouteConfig[] = [
   {
     path: '/sites/site-creation',
     element: (
-      <ProtectedRoute category='site' subCategory='Sites'
+      <ProtectedRoute
+        category="site"
+        subCategory="Sites"
         isHeader={false}
         isSideBar={false}
       >
@@ -605,7 +607,9 @@ const routes: RouteConfig[] = [
   {
     path: '/sites/site-creation/:siteName',
     element: (
-      <ProtectedRoute category='site' subCategory='Sites'
+      <ProtectedRoute
+        category="site"
+        subCategory="Sites"
         isHeader={false}
         isSideBar={false}
       >
@@ -616,7 +620,7 @@ const routes: RouteConfig[] = [
   {
     path: '/site-setting/header-setting',
     element: (
-      <ProtectedRoute category='SiteSetting' subCategory='HeaderSetting'>
+      <ProtectedRoute category="SiteSetting" subCategory="HeaderSetting">
         <HeaderSetting />
       </ProtectedRoute>
     ),
@@ -625,7 +629,7 @@ const routes: RouteConfig[] = [
   {
     path: '/site-setting/global-setting',
     element: (
-      <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
+      <ProtectedRoute category="SiteSetting" subCategory="GlobalSetting">
         <GlobalSetting />
       </ProtectedRoute>
     ),
@@ -662,7 +666,7 @@ const routes: RouteConfig[] = [
   {
     path: '/search-results',
     element: (
-      <ProtectedRoute category='public' subCategory='public'>
+      <ProtectedRoute category="public" subCategory="public">
         <SearchResults />
       </ProtectedRoute>
     ),
@@ -671,8 +675,8 @@ const routes: RouteConfig[] = [
     path: '/workflow/workflow-list',
     element: (
       <ProtectedRoute
-        category='Workflow'
-        subCategory=''
+        category="Workflow"
+        subCategory=""
         allowedRoles={[
           'admin',
           'author',
@@ -690,8 +694,8 @@ const routes: RouteConfig[] = [
     path: '/workflow/workflow-details',
     element: (
       <ProtectedRoute
-        category='public'
-        subCategory='public'
+        category="public"
+        subCategory="public"
         isHeader={false}
         isSideBar={false}
         hasSearch={false}
@@ -713,9 +717,9 @@ const routes: RouteConfig[] = [
     path: '/community/space',
     element: (
       <ProtectedRoute
-        name='space'
-        category='Community'
-        subCategory='spaces'
+        name="space"
+        category="Community"
+        subCategory="spaces"
         hasSearch={false}
         allowedRoles={['admin']}
       >
@@ -727,9 +731,9 @@ const routes: RouteConfig[] = [
     path: '/community/create-space',
     element: (
       <ProtectedRoute
-        name='space'
-        category='public'
-        subCategory='public'
+        name="space"
+        category="public"
+        subCategory="public"
         isHeader={false}
         isSideBar={false}
       >

@@ -1,15 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {
-  Box,
-  RadioProps,
-  styled,
-  ThemeProvider,
-} from '@mui/material';
+import { Box, RadioProps, styled, ThemeProvider } from '@mui/material';
 import LightTheme from '../../theme/lightTheme';
 import ThemeConstants from '../../theme/variable';
-import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
+const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
 const fontStyle = `
 @font-face {
@@ -54,7 +50,7 @@ export default function XRadioGroup({
   return (
     <ThemeProvider theme={LightTheme}>
       <style>{fontStyle}</style>
-      <Box className={ AlignmentVertical ? 'groupcolumn' : 'grouprow'}>
+      <Box className={AlignmentVertical ? 'groupcolumn' : 'grouprow'}>
         <StyledFormControlLabel
           value={value}
           disabled={disabled}

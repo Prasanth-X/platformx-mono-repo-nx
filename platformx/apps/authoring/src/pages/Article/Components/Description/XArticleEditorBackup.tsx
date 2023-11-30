@@ -242,7 +242,7 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
 
   const onPasteContent = (index, event) => {
     event.preventDefault();
-    let paste = event.clipboardData.getData('text');
+    const paste: any = event.clipboardData.getData('text');
     const selection = window.getSelection();
     if (!selection.rangeCount) return;
     selection.deleteFromDocument();
@@ -510,7 +510,7 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
       {isChatGptLoading && <ChatGptLoader />}
       {isUrlDialog ? (
         <AddUrlDialog
-          titledata=''
+          titledata=""
           isDialogOpen={isUrlDialog}
           closeButtonHandle={() => setUrlDialog(false)}
           doneButtonHandle={onClickDone}
@@ -532,8 +532,8 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
         />
       </Dialog>
       <ButtonGroup
-        className='tools'
-        id='toolbar'
+        className="tools"
+        id="toolbar"
         style={{
           display: showToolbar ? 'inline-flex' : 'none',
           backgroundColor: 'black',
@@ -611,8 +611,8 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
               }}
             >
               <Tooltip
-                className='divTooltip'
-                placement='left'
+                className="divTooltip"
+                placement="left"
                 componentsProps={{
                   tooltip: {
                     sx: {
@@ -627,16 +627,16 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
                     },
                   },
                 }}
-                title='Generate AI Content'
+                title="Generate AI Content"
               >
                 <Box onClick={() => title?.length > 0 && chatGPT(index)}>
                   {title?.length > 0 ? (
-                    <AiSvg className='DivEnable' height='30px' width='30' />
+                    <AiSvg className="DivEnable" height="30px" width="30" />
                   ) : (
                     <AiSvgDisabled
-                      className='DivDisable'
-                      height='30px'
-                      width='30'
+                      className="DivDisable"
+                      height="30px"
+                      width="30"
                     />
                   )}
                 </Box>

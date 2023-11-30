@@ -1,34 +1,35 @@
 import { handleHtmlTags } from './helperFunctions';
 
-const isValidEmail = (field, validation) => {
+const isValidEmail = (field: { value: any; }, validation: { [Symbol.match](string: string): RegExpMatchArray | null; }) => {
   if (String(field?.value).toLowerCase().match(validation) === null) {
     return true;
   }
   return false;
 };
 
-const isMaxLength = (field, validation, IsParagraph = false) => {
+const isMaxLength = (field: { textcontent: any; value: any; }, validation: { value: string; }, IsParagraph = false) => {
   const maxlength = parseInt(validation?.value);
   return IsParagraph
     ? handleHtmlTags(field.textcontent)?.length > maxlength
     : handleHtmlTags(field.value)?.length > maxlength;
 };
-const isRequired = (field, validation) => {
+const isRequired = (field: { value: any; }, validation: any) => {
   const required = validation;
   return handleHtmlTags(field.value)?.length === 0 && required;
 };
 
-function capitalize(str) {
+function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function arrayToObject(objectArray, property) {
-  return objectArray.reduce(function (acc, obj) {
+function arrayToObject(objectArray: any[], property: string) {
+  return objectArray.reduce(function (acc: { [x: string]: any; }, obj: { [x: string]: any; type: string; buttonKeysObject: undefined; value: any; }) {
     // checking if type is of button, giving special treatment
     if (obj.type == 'button' && obj?.buttonKeysObject != undefined) {
       //getting all relative objects
-      const keysObj = obj.buttonKeysObject;
+      const keysObj = obj.buttonKeysObject || {};
       // fethcing all keys
+
       const allKeysArray = Object.keys(keysObj);
       allKeysArray.forEach((key) => {
         if (!acc[key]) {
@@ -37,6 +38,7 @@ function arrayToObject(objectArray, property) {
         // setting key and its value in a flat structure
         acc[key] = keysObj[key];
       });
+
     } else {
       const key = obj[property];
       if (!acc[key]) {
@@ -47,7 +49,7 @@ function arrayToObject(objectArray, property) {
     return acc;
   }, {});
 }
-const onPasteRemoveCss = (event) => {
+const onPasteRemoveCss = (event: { preventDefault: () => void; clipboardData: { getData: (arg0: string) => string; }; }) => {
   event.preventDefault();
   const paste = event.clipboardData?.getData('text') || '';
   const selection = window.getSelection();
@@ -57,7 +59,7 @@ const onPasteRemoveCss = (event) => {
     .getRangeAt(0)
     .insertNode(document.createTextNode(paste.replace(/(\r\n|\n|\r)/gm, '')));
 };
-export const initInsituEditing = (keys, ref) => {
+export const initInsituEditing = (keys: string | any[], ref: { current: { addEventListener: (arg0: string, arg1: (event: any) => void, arg2: boolean) => void; style: { overflowY: string; height: string; }; querySelector: (arg0: string) => any; }; }) => {
   //console.info(keys, ref, 'ref');
   if (ref && ref.current) {
     ref.current.addEventListener('paste', onPasteRemoveCss, false);
@@ -84,9 +86,9 @@ export const initInsituEditing = (keys, ref) => {
 };
 
 export const doneInsituEditing = (
-  keys,
-  ref,
-  buttonsKeysPopulatedObj,
+  keys: any,
+  ref: { current: { removeEventListener: (arg0: string, arg1: (event: any) => void, arg2: boolean) => void; querySelector: (arg0: string) => any; style: { overflowY: string; height: string; }; }; },
+  buttonsKeysPopulatedObj: { [x: string]: any; },
   prelemId?: any
 ) => {
   const updatedEditableList = [...keys]; // destructring
@@ -169,7 +171,7 @@ export const doneInsituEditing = (
       field.errorString = '';
       // Return errorString with the specific error state
 
-      field.errors.forEach((errorObj) => {
+      field.errors.forEach((errorObj: { [x: string]: any; }) => {
         Object.keys(errorObj).map((errorKey) => {
           if (errorObj[errorKey]) {
             //adding error boarder if any error found
