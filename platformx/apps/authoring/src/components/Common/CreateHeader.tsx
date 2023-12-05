@@ -107,7 +107,7 @@ export const CreateHeader = ({
         sx={{ display: 'flex', alignItems: 'center' }}
       >
         <Button
-          variant='text'
+          variant="text"
           disableRipple
           disableFocusRipple
           startIcon={<ArrowBack />}
@@ -119,7 +119,7 @@ export const CreateHeader = ({
           onClick={returnBack}
         >
           {!noWeb && (
-            <Typography variant='h4bold'>
+            <Typography variant="h4bold">
               {id ? editText : createText}
             </Typography>
           )}
@@ -132,9 +132,9 @@ export const CreateHeader = ({
         em={8}
         sm={12}
         sx={{ display: { xs: 'none', em: 'flex' }, alignItems: 'center' }}
-        direction='row-reverse'
+        direction="row-reverse"
         container
-        alignItems='flex-end'
+        alignItems="flex-end"
       >
         {/* {publishText && (
           <ErrorTooltip
@@ -177,11 +177,11 @@ export const CreateHeader = ({
         <ErrorTooltip
           component={
             <Button
-              variant='secondaryButton'
+              variant="secondaryButton"
               disabled={
                 !canAccessAction(category, subCategory, 'Create') || saveButton
               }
-              className='sm'
+              className="sm"
               sx={{ marginRight: '12px', marginLeft: '12px' }}
               onClick={() => saveorPublish(false)}
             >
@@ -194,13 +194,13 @@ export const CreateHeader = ({
           <ToolTip
             className={classes.buttonWrapper}
             Title={previewButton ? toolTipText : ''}
-            position='bottom'
+            position="bottom"
             component={
               <Button
                 disabled={previewButton}
                 startIcon={<img src={PreviewNewIcon} />}
                 onClick={handelPreview}
-                className='iconBtn'
+                className="iconBtn"
               ></Button>
             }
           />
@@ -214,7 +214,7 @@ export const CreateHeader = ({
               className={classes.buttonWrapper}
             >
               <span
-                color='error'
+                color="error"
                 style={{
                   display: 'inline-block',
                   marginLeft: ' 5px',
@@ -233,10 +233,10 @@ export const CreateHeader = ({
                 {' '}
               </span>
               <Button
-                aria-label='chat'
+                aria-label="chat"
                 onClick={handleReview}
-                className='iconBtn'
-                startIcon={<img src={DefaultStateCommentIcon} width='20px' />}
+                className="iconBtn"
+                startIcon={<img src={DefaultStateCommentIcon} width="20px" />}
               >
                 {/* <ReviewsOutlinedIcon color={'info'}></ReviewsOutlinedIcon> */}
 
@@ -248,10 +248,11 @@ export const CreateHeader = ({
             enableReferBack(workflow) && (
               <Box className={classes.buttonWrapper}>
                 <Button
-                  aria-label='chat'
+                  aria-label="chat"
                   onClick={handleReview}
-                  className='iconBtn'
-                  startIcon={<DefaultStateCommentIcon width='20px' />}
+                  className="iconBtn"
+                  startIcon={<img src={DefaultStateCommentIcon} width="20px" />}
+                  // startIcon={<DefaultStateCommentIcon width='20px' />}
                 >
                   {/* <ReviewsOutlinedIcon color={'info'}></ReviewsOutlinedIcon> */}
                   {/* <DefaultStateCommentIcon height='24px' width='24px' /> */}
@@ -275,9 +276,9 @@ export const CreateHeader = ({
         em={8}
         sm={7}
         sx={{ display: { xs: 'flex', em: 'none' } }}
-        direction='row-reverse'
+        direction="row-reverse"
         container
-        alignItems='flex-end'
+        alignItems="flex-end"
       >
         {publishText && (
           <ErrorTooltip
@@ -309,7 +310,7 @@ export const CreateHeader = ({
           }
           doAccess={!canAccessAction(category, subCategory, 'Create')}
         />
-        <Tooltip title={previewButton ? toolTipText : ''} placement='left'>
+        <Tooltip title={previewButton ? toolTipText : ''} placement="left">
           <span style={{ cursor: 'pointer' }}>
             <Button
               disabled={previewButton}

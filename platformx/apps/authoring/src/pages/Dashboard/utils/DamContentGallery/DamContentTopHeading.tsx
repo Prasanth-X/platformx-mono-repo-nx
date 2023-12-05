@@ -1,39 +1,41 @@
-import { useState } from 'react';
-import { Box } from '@mui/system';
-import EcomSearchBox from '../../../EcommerceAuthoring/EcomSearchBox';
-import { useTranslation } from 'react-i18next';
 import DoneIcon from '@mui/icons-material/Done';
+import { Drawer, Fab, Grid, Grow, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ThemeConstants from '../../../../theme/variable';
-import { Drawer, Grid, Typography, Fab, Grow } from '@mui/material';
-import { MobileMenuIconSvg, SearchBlackSvg, CloseSearchSvg } from '../../../../assets/svg';
+import EcomSearchBox from '../../../EcommerceAuthoring/EcomSearchBox';
+// import { MobileMenuIconSvg, SearchBlackSvg, CloseSearchSvg } from '../../../../assets/svg';
+const MobileMenuIconSvg = require('../../../../assets/svg') as string;
+const SearchBlackSvg = require('../../../../assets/svg') as string;
+const CloseSearchSvg = require('../../../../assets/svg') as string;
+
 import CtaEditAndDone from '../../../../ecommerceComponents/CtaEditAndDone/CtaEditAndDone';
-import EcomLeftSidebar from '../../../../ecommerceComponents/EcomLeftSidebar/EcomLeftSidebar';
 import DamContentLeftSidebar from './DamContentLeftSidebar';
-import './DamContentTopHeading.css';
 import DamContentSearchBox from './DamContentSearchBox';
+import './DamContentTopHeading.css';
 
 type damcontentTopHeadingprops = {
-  loading?: boolean
-  onSearch?: any
-  doneClick?: any
-  cancelClick?: any,
-  inputValue?: string
-  onNodeIdHandle?: any,
-  categoriesFilter?: any,
-  setInputValueHandle?: any
+  loading?: boolean;
+  onSearch?: any;
+  doneClick?: any;
+  cancelClick?: any;
+  inputValue?: string;
+  onNodeIdHandle?: any;
+  categoriesFilter?: any;
+  setInputValueHandle?: any;
 };
 
 const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
-
   const {
-    inputValue = "",
+    inputValue = '',
     loading = false,
-    onSearch = () => { },
+    onSearch = () => {},
     categoriesFilter = [],
-    doneClick = () => { },
-    cancelClick = () => { },
-    onNodeIdHandle = () => { },
-    setInputValueHandle = () => { }
+    doneClick = () => {},
+    cancelClick = () => {},
+    onNodeIdHandle = () => {},
+    setInputValueHandle = () => {},
   } = _props;
 
   const { t } = useTranslation();
@@ -45,19 +47,19 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
   };
 
   const searchCloseToggle = () => {
-    onSearch("");
-    setInputValueHandle("");
+    onSearch('');
+    setInputValueHandle('');
     setShowSearch(!showSearch);
   };
 
   /**
-    * only for mobile view
-    * result is come back to search header
-  */
+   * only for mobile view
+   * result is come back to search header
+   */
   const mobileonSearch = (e) => {
     onSearch(e);
     setTimeout(() => {
-      setShowSearch(!showSearch)
+      setShowSearch(!showSearch);
     }, 3000);
   };
 
@@ -66,8 +68,10 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
   };
 
   return (
-    <Box className='damcontent-topbar'
-      sx={{ background: ThemeConstants.WHITE_COLOR }}>
+    <Box
+      className="damcontent-topbar"
+      sx={{ background: ThemeConstants.WHITE_COLOR }}
+    >
       {/* {Large view design} */}
       <Grid
         container
@@ -77,8 +81,10 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
         pr={4}
         sx={{
           display: {
-            xs: 'none', em: 'flex', borderBottom: '1px solid',
-            borderColor: ThemeConstants.DIVIDER_COLOR
+            xs: 'none',
+            em: 'flex',
+            borderBottom: '1px solid',
+            borderColor: ThemeConstants.DIVIDER_COLOR,
           },
         }}
       >
@@ -94,7 +100,7 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
           }}
         >
           <Typography
-            variant='h4bold'
+            variant="h4bold"
             sx={{
               fontSize: ThemeConstants.FONTSIZE_H3,
               fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
@@ -119,7 +125,12 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
             paddingBottom: { xs: '20px', sm: '20px', display: 'flex' },
           }}
         >
-          <Grid item xs={12} sm={12} em={8} lg={8}
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            em={8}
+            lg={8}
             sx={{ margin: '0px auto' }}
             className="searchWrapper"
           >
@@ -128,8 +139,11 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
               inputValue={inputValue}
               setInputValueHandle={setInputValueHandle}
               style={{
-                height: '47px', minHeight: '47px', width: '100%',
-                backgroundColor: ThemeConstants.LIGHT_GRAY_COLOR, borderRadius: '8px'
+                height: '47px',
+                minHeight: '47px',
+                width: '100%',
+                backgroundColor: ThemeConstants.LIGHT_GRAY_COLOR,
+                borderRadius: '8px',
               }}
             />
           </Grid>
@@ -143,14 +157,12 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
           lg={3}
           container
           spacing={0}
-          direction='column'
-          alignItems='end'
-          justifyContent='end'
+          direction="column"
+          alignItems="end"
+          justifyContent="end"
           sx={{ margin: '0 0 1.25rem 0', display: 'flex' }}
         >
-          <CtaEditAndDone
-            cancelClick={cancelClick}
-            doneClick={doneClick} />
+          <CtaEditAndDone cancelClick={cancelClick} doneClick={doneClick} />
         </Grid>
       </Grid>
 
@@ -163,22 +175,26 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
         pr={6}
         sx={{
           display: {
-            xs: "flex", em: "none", borderBottom: '1px solid',
-            borderColor: ThemeConstants.DIVIDER_COLOR, padding: '16px 16px 4px 16px',
-            height: '60px'
+            xs: 'flex',
+            em: 'none',
+            borderBottom: '1px solid',
+            borderColor: ThemeConstants.DIVIDER_COLOR,
+            padding: '16px 16px 4px 16px',
+            height: '60px',
           },
-        }}>
+        }}
+      >
         <Box
           className="fixed-screen-inner"
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
             width: '100%',
-            fontSize: ThemeConstants.FONTSIZE_H4
+            fontSize: ThemeConstants.FONTSIZE_H4,
           }}
         >
-          {!showSearch
-            ? <>
+          {!showSearch ? (
+            <>
               <Grow
                 in={!showSearch}
                 style={{ transformOrigin: '0 0 0' }}
@@ -186,14 +202,16 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
               >
                 <Box>
                   <Grid item>
-                    <Typography variant="h4medium">{t("prelem_choose_content")}</Typography>
+                    <Typography variant="h4medium">
+                      {t('prelem_choose_content')}
+                    </Typography>
                   </Grid>
                 </Box>
               </Grow>
 
-              <Grid item className='icon-container'>
+              <Grid item className="icon-container">
                 <Typography
-                  className='top-icons right-search-icon'
+                  className="top-icons right-search-icon"
                   sx={{
                     fontSize: ThemeConstants.FONTSIZE_LG,
                   }}
@@ -203,7 +221,7 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
                 </Typography>
 
                 <Typography
-                  className='top-icons'
+                  className="top-icons"
                   sx={{
                     fontSize: ThemeConstants.FONTSIZE_LG,
                   }}
@@ -213,8 +231,8 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
                 </Typography>
               </Grid>
             </>
-            :
-            <Grid item className='search-item-container small-device'>
+          ) : (
+            <Grid item className="search-item-container small-device">
               <Grow
                 in={showSearch}
                 style={{ transformOrigin: '0 0 0' }}
@@ -226,14 +244,18 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
                     onSearch={mobileonSearch}
                     setInputValueHandle={setInputValueHandle}
                     style={{
-                      height: '47px', minHeight: '47px', width: '97%', marginLeft: "10px",
-                      backgroundColor: ThemeConstants.LIGHT_GRAY_COLOR, borderRadius: '8px',
+                      height: '47px',
+                      minHeight: '47px',
+                      width: '97%',
+                      marginLeft: '10px',
+                      backgroundColor: ThemeConstants.LIGHT_GRAY_COLOR,
+                      borderRadius: '8px',
                     }}
                   />
                 </Box>
               </Grow>
               <Typography
-                className='icon-inside-search'
+                className="icon-inside-search"
                 sx={{
                   fontSize: ThemeConstants.FONTSIZE_LG,
                 }}
@@ -242,7 +264,7 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
                 <CloseSearchSvg />
               </Typography>
             </Grid>
-          }
+          )}
         </Box>
 
         <Box
@@ -255,7 +277,7 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
           }}
         >
           <Box sx={{ margin: '0 25px 25px 0' }} onClick={doneClick}>
-            <Fab size='large' color='primary' aria-label='add'>
+            <Fab size="large" color="primary" aria-label="add">
               <DoneIcon style={{ color: '#fff' }} />
             </Fab>
           </Box>
@@ -270,15 +292,13 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
         xl={2}
         lg={2}
         sx={{
-          display: { xs: "block", em: "none" },
+          display: { xs: 'block', em: 'none' },
           background: ThemeConstants.WHITE_COLOR,
           padding: { lg: '14px 32px 10px 15px' },
           top: { lg: '50px !important' },
-        }}>
-        <Drawer
-          anchor='right'
-          open={open}
-        >
+        }}
+      >
+        <Drawer anchor="right" open={open}>
           <Box role="presentation">
             <DamContentLeftSidebar
               loading={loading}
@@ -289,8 +309,7 @@ const DamContentTopHeading = (_props: damcontentTopHeadingprops) => {
           </Box>
         </Drawer>
       </Grid>
-
-    </Box >
+    </Box>
   );
 };
 

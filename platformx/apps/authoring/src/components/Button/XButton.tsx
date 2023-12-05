@@ -1,14 +1,13 @@
+import SaveIcon from '@mui/icons-material/Save';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   ButtonProps as MuiButtonProps,
   ThemeProvider,
   styled,
 } from '@mui/material';
-import React from 'react';
-import SaveIcon from '@mui/icons-material/Save';
-import ThemeConstants from '../../theme/variable';
 import LightTheme from '../../theme/lightTheme';
-import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
+import ThemeConstants from '../../theme/variable';
+const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
 const fontStyle = `
 @font-face {

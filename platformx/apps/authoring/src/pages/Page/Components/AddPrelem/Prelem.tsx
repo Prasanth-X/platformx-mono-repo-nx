@@ -1,9 +1,8 @@
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import { Box, Button, CssBaseline } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ThemeProvider } from '@mui/material/styles';
 import CommentListPanel from '../../../../components/ContentRewiew/CommentListPanel';
 import CommentWrapper from '../../../../components/ContentRewiew/CommentWrapper';
 import ButtonEditLink from '../../../../components/buttonEditLink';
@@ -11,14 +10,17 @@ import ButtonEditWindow from '../../../../components/buttonEditWindow';
 import { useComment } from '../../../../hooks/useComment/useComment';
 import { updateContentForCard } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import PrelemTheme from '../../../../theme/prelemTheme';
 import { authInfo } from '../../../../utils/authConstants';
-import { convertToLowerCase, getSelectedSite, getSubDomain } from '../../../../utils/helperFunctions';
+import {
+  convertToLowerCase,
+  getSelectedSite,
+  getSubDomain,
+} from '../../../../utils/helperFunctions';
 import { PrelemActions } from '../../utils/constant';
 import { iconsSet } from '../../utils/icons';
 import { useStyles } from './AddPrelem.styles';
 import PrelemButtons from './PrelemButtons';
-import PrelemTheme from '../../../../theme/prelemTheme';
 
 //mapping dynamic instance
 const mappingDynamicInstance = {};
@@ -186,11 +188,11 @@ const Prelem = ({
       currentButtonObject.current[`${buttonId.replace('Name', 'Type')}`];
     const selectedPageUrl =
       currentButtonObject.current[
-      `${buttonId.replace('Name', 'RedirectURL_Internal')}`
+        `${buttonId.replace('Name', 'RedirectURL_Internal')}`
       ];
     const selectedExternalLink =
       currentButtonObject.current[
-      `${buttonId.replace('Name', 'RedirectURL_External')}`
+        `${buttonId.replace('Name', 'RedirectURL_External')}`
       ];
 
     const selectedAction =
@@ -198,14 +200,14 @@ const Prelem = ({
     const selectedContentLink =
       convertToLowerCase(selectedAction) !== convertToLowerCase('Content')
         ? currentButtonObject.current[
-        `${buttonId.replace('Name', 'RedirectURL_Content')}`
-        ]
+            `${buttonId.replace('Name', 'RedirectURL_Content')}`
+          ]
         : currentButtonObject.current[`${buttonId.replace('Name', 'Content')}`];
     const jsValue =
       selectedAction === 'Js'
         ? currentButtonObject.current[
-        `${buttonId.replace('Name', 'RedirectURL')}`
-        ]
+            `${buttonId.replace('Name', 'RedirectURL')}`
+          ]
         : '';
     setWindowValue(selectedWindowValue);
     setPageUrl(selectedPageUrl);
@@ -290,7 +292,7 @@ const Prelem = ({
     // bucketName: process.env.REACT_APP_BUCKET_NAME
     bucketName: authInfo.gcpBucketName,
     gcpUrl: authInfo.gcpUri,
-    sitename: getSelectedSite()
+    sitename: getSelectedSite(),
   };
   prelemContentProp = { ...page?.prelemMetaArray?.[index].content };
   prelemAnalyticsProp = {
@@ -336,7 +338,7 @@ const Prelem = ({
   const handleEdit = (action) => {
     const validationKeysArray =
       page?.prelemsValidationObject[
-      page?.prelemMetaArray?.[index].DocumentType
+        page?.prelemMetaArray?.[index].DocumentType
       ];
     const prelemKeys = validationKeysArray.map((element) => {
       let ele = {};
@@ -580,8 +582,8 @@ const Prelem = ({
       ?.currentEditWindow?.windowTarget
       ? buttonStateTarget.currentEditWindow.windowTarget
       : prelemState?.[buttonRef.Button_Type] !== ''
-        ? prelemState?.[buttonRef.Button_Type]
-        : 'current window';
+      ? prelemState?.[buttonRef.Button_Type]
+      : 'current window';
     buttonState[buttonRef.Button_Value] = buttonStateTarget.target.innerText;
     updateCurrentButtonObject(
       buttonStateTarget.target.innerText,
@@ -660,12 +662,12 @@ const Prelem = ({
       if (selectedAction === 'Internal')
         selectedUrl =
           currentButtonObject.current[
-          `${item.replace('Name', 'RedirectURL_Internal')}`
+            `${item.replace('Name', 'RedirectURL_Internal')}`
           ];
       else if (selectedAction === 'External')
         selectedUrl =
           currentButtonObject.current[
-          `${item.replace('Name', 'RedirectURL_External')}`
+            `${item.replace('Name', 'RedirectURL_External')}`
           ];
       else if (selectedAction === 'Js')
         selectedUrl =
@@ -673,7 +675,7 @@ const Prelem = ({
       else if (selectedAction === 'Content')
         selectedUrl =
           currentButtonObject.current[
-          `${item.replace('Name', 'RedirectURL_Content')}`
+            `${item.replace('Name', 'RedirectURL_Content')}`
           ];
       const ContentData =
         currentButtonObject.current[`${item.replace('Name', 'Content')}`];
@@ -699,7 +701,7 @@ const Prelem = ({
   const addSectionTouchPoint = (prelemPosition: string, position: string) => {
     return (
       <Button
-        variant='quaternaryButton'
+        variant="quaternaryButton"
         onClick={() => addSectionTouchPointClick(prelemPosition, position)}
       >
         {t('add_prelem')}
@@ -764,7 +766,6 @@ const Prelem = ({
               })}
           </ul>
         </Box>
-        {console.log('time', new Date().getTime().toString())}
         <CommentWrapper
           elementId={PrelemId} //{(count + 1).toString()}
           scrollRef={scrollToRef}
@@ -775,10 +776,11 @@ const Prelem = ({
               position: 'relative',
               // padding: prelemEditState ? '70px 0px' : '',
               opacity: `${showIconsState.showVisible ? '0.5' : ''}`,
-              pointerEvents: `${showIconsState.showVisible || (!prelemEditState && isHover)
-                ? 'none'
-                : ''
-                }`,
+              pointerEvents: `${
+                showIconsState.showVisible || (!prelemEditState && isHover)
+                  ? 'none'
+                  : ''
+              }`,
             }}
           >
             <ThemeProvider theme={PrelemTheme}>
@@ -826,7 +828,7 @@ const Prelem = ({
                   position: 'absolute',
                   top: '-1px',
                   right: '-1px',
-                  zIndex: 2
+                  zIndex: 2,
                 }}
                 variant="primaryButton"
                 onClick={() =>
@@ -851,7 +853,7 @@ const Prelem = ({
         </CommentWrapper>
         {showAddSection.showAtTop ? (
           <Box
-            component='div'
+            component="div"
             className={classes.topaddCtaWp}
             style={showOnHover}
           >
@@ -860,7 +862,7 @@ const Prelem = ({
         ) : null}
         {showAddSection.showAtBottom ? (
           <Box
-            component='div'
+            component="div"
             className={classes.bottomaddCtaWp}
             style={showOnHover}
           >
@@ -868,7 +870,7 @@ const Prelem = ({
           </Box>
         ) : (
           <Box
-            component='div'
+            component="div"
             className={classes.bottomaddCtaWp}
             style={showOnHover}
           >

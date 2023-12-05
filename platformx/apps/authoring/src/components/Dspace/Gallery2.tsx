@@ -582,7 +582,7 @@ const Gallery2 = ({
       <Grid container pt={2} pb={2} pl={4} pr={4}>
         <Grid item xs={12} md={3} lg={3} sx={{ margin: 'auto 0' }}>
           <Typography
-            variant='h5'
+            variant="h5"
             sx={{ fontSize: ThemeConstants.FONTSIZE_LG }}
           >
             {galleryMode == 'Images'
@@ -593,16 +593,16 @@ const Gallery2 = ({
         <Grid item xs={12} md={4} lg={5} sx={{ margin: 'auto 0' }}>
           <Box sx={{ display: 'none' }} mt={1}>
             <TextField
-              variant='outlined'
-              placeholder='Search'
+              variant="outlined"
+              placeholder="Search"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position='start'>
+                  <InputAdornment position="start">
                     <SearchIcon />
                   </InputAdornment>
                 ),
                 endAdornment: searchValue && (
-                  <InputAdornment position='start'>
+                  <InputAdornment position="start">
                     <CloseRoundedIcon
                       sx={{
                         cursor: 'pointer',
@@ -650,15 +650,15 @@ const Gallery2 = ({
                   borderLeft: '0px solid #fff',
                 }}
               >
-                <MenuItem value='All'>All</MenuItem>
-                <MenuItem value='title'>Title</MenuItem>
+                <MenuItem value="All">All</MenuItem>
+                <MenuItem value="title">Title</MenuItem>
               </Select>
             </FormControl>
           </Box>
         </Grid>
         <Grid item xs={12} md={5} lg={4} mt={2} sx={{ textAlign: 'right' }}>
           <Button
-            variant='outlined'
+            variant="outlined"
             onClick={() => toggleGallery(false, 'cancel')}
           >
             {t('cancel')}
@@ -666,7 +666,7 @@ const Gallery2 = ({
           <LoadingButton
             onClick={handleDone}
             loading={doneLoader}
-            loadingPosition='start'
+            loadingPosition="start"
             sx={{
               marginLeft: '20px',
               '&:disabled': {
@@ -679,7 +679,7 @@ const Gallery2 = ({
             disabled={
               selectedImage.Thumbnail == '' && selectedVideo.Thumbnail == ''
             }
-            variant='contained'
+            variant="contained"
           >
             {t('save')}
           </LoadingButton>
@@ -695,7 +695,7 @@ const Gallery2 = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
@@ -704,7 +704,7 @@ const Gallery2 = ({
       ) : (
         <Box
           sx={{ height: 'calc(100vh - 90px)', overflowY: 'scroll' }}
-          id='scrollableDiv'
+          id="scrollableDiv"
         >
           {isLoading && (
             <Box
@@ -745,11 +745,11 @@ const Gallery2 = ({
               </Box>
             }
             style={{ overflow: 'hidden' }}
-            scrollableTarget='scrollableDiv'
+            scrollableTarget="scrollableDiv"
           >
             {galleryMode == 'Images' && (
               <Masonry columns={4} spacing={2}>
-                {images.map((item, i) => (
+                {images.map((item: any, i) => (
                   <Box
                     sx={{
                       cursor: 'pointer',
@@ -768,7 +768,7 @@ const Gallery2 = ({
                     onClick={() => handleSelectedImage(item)}
                     key={i}
                   >
-                    <img src={`${item.Thumbnail}`} width='100%' height='100%' />
+                    <img src={`${item.Thumbnail}`} width="100%" height="100%" />
                     <Box
                       sx={{
                         backgroundColor:
@@ -809,11 +809,11 @@ const Gallery2 = ({
                         display: 'none',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -827,7 +827,7 @@ const Gallery2 = ({
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
@@ -840,7 +840,7 @@ const Gallery2 = ({
             )}
             {galleryMode == 'Videos' && (
               <Masonry columns={4} spacing={2}>
-                {images.map((item, i) => (
+                {images.map((item: any, i) => (
                   <Box
                     sx={{
                       cursor: 'pointer',
@@ -862,7 +862,7 @@ const Gallery2 = ({
                     {/* <video controls width="100%" height="100%" >
                       <source src={item.Thumbnail} />
                     </video> */}
-                    <img src={`${item.Thumbnail}`} width='100%' height='100%' />
+                    <img src={`${item.Thumbnail}`} width="100%" height="100%" />
                     <Box
                       sx={{
                         backgroundColor:
@@ -903,11 +903,11 @@ const Gallery2 = ({
                         display: 'none',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -921,7 +921,7 @@ const Gallery2 = ({
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}

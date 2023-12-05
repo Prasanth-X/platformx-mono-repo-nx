@@ -30,12 +30,11 @@ export const formatAddPrelem = (item) => {
     StructuredData: '',
   };
 };
- export const getFirstTwoletters = (title) => {
+export const getFirstTwoletters = (title) => {
   if (!title) return '';
   const words = title.trim().split(' ');
   if (words.length === 1) return words[0].substring(0, 2);
   return words[0].charAt(0) + words[words.length - 1].charAt(0);
-
 };
 export const formatChildren = (children, content) => {
   const Children: any = [];
@@ -323,24 +322,24 @@ export const updateStructureData = (content) => {
     hasPart:
       content.questions?.length > 0
         ? content.questions?.map(
-          ({ question, options_compound_fields }: any) => {
-            return {
-              '@type': 'Question',
-              name: question,
-              suggestedAnswer:
-                options_compound_fields?.length > 0
-                  ? options_compound_fields.map(
-                    ({ option_id, option_text }: any) => {
-                      return {
-                        '@type': 'Answer',
-                        text: option_text,
-                      };
-                    }
-                  )
-                  : '',
-            };
-          }
-        )
+            ({ question, options_compound_fields }: any) => {
+              return {
+                '@type': 'Question',
+                name: question,
+                suggestedAnswer:
+                  options_compound_fields?.length > 0
+                    ? options_compound_fields.map(
+                        ({ option_id, option_text }: any) => {
+                          return {
+                            '@type': 'Answer',
+                            text: option_text,
+                          };
+                        }
+                      )
+                    : '',
+              };
+            }
+          )
         : '',
   };
   return QuizStructureData;
@@ -437,18 +436,17 @@ export const getSubDomain = () => {
   const sessions = localStorage.getItem('userSession');
   const storedSession = JSON.parse(sessions);
   const site_url = storedSession?.userInfo?.preferred_sites_urls;
-  const domain = site_url[getSelectedSite()]?.replace(".com.", ".com");
-    if (domain) {
-      if (domain.startsWith("http://")) {
-        return domain.replace("http://", "https://");
-      } else if (!domain.startsWith("https://")) {
-        return `https://${domain}`;
-      }
-      return domain;
+  const domain = site_url[getSelectedSite()]?.replace('.com.', '.com');
+  if (domain) {
+    if (domain.startsWith('http://')) {
+      return domain.replace('http://', 'https://');
+    } else if (!domain.startsWith('https://')) {
+      return `https://${domain}`;
     }
-   return null; // Return null if `domain` is null or undefined
-
-}
+    return domain;
+  }
+  return null; // Return null if `domain` is null or undefined
+};
 
 export const getCurrentPathName = () => {
   let pathname = '';
@@ -498,7 +496,7 @@ export const getUniqueTimeZone = () => {
 };
 
 //export const formCroppedUrl = (gcpUrl = "", bucketName = "", url = "", ext = "") => `${gcpUrl}/${bucketName}/${url}.${ext}`;
-export const formCroppedUrl = (url = '', ext = '') => {
+export const formCroppedUrl = (url: any = '', ext = '') => {
   return `${authInfo.gcpUri}/${authInfo.gcpBucketName}/${url.replaceAll(
     ' ',
     '%20'
@@ -534,7 +532,6 @@ export const getRandomNumber = (answerArray = [], min, max) => {
 };
 
 export const getLocale = (language: string, location: string) => {
-  if (language === 'en')
-    return `${language}`
-  return `${language}_${location}`
-}
+  if (language === 'en') return `${language}`;
+  return `${language}_${location}`;
+};

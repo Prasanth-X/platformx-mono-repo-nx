@@ -1,3 +1,4 @@
+import { makeStyles } from '@material-ui/core';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
@@ -11,14 +12,16 @@ import {
   IconButton,
   Tooltip,
 } from '@mui/material';
-import { makeStyles } from '@material-ui/core';
 
 import i18next from 'i18next';
 import DOMPurify from 'isomorphic-dompurify';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDomServer from 'react-dom/server';
 import { useTranslation } from 'react-i18next';
-import { AiSvg, AiSvgDisabled } from '../../../../assets/svg';
+// import { AiSvg, AiSvgDisabled } from '../../../../assets/svg';
+const AiSvg = require('../../../../assets/svg') as string;
+const AiSvgDisabled = require('../../../../assets/svg') as string;
+
 import { createChatGptRequest } from '../../../../services/chatGpt/chatGpt.api';
 import { handleHtmlTags, trimString } from '../../../../utils/helperFunctions';
 import Gallery from '../../../Gallery/Gallery';
@@ -510,7 +513,7 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
       {isChatGptLoading && <ChatGptLoader />}
       {isUrlDialog ? (
         <AddUrlDialog
-          titledata=''
+          titledata=""
           isDialogOpen={isUrlDialog}
           closeButtonHandle={() => setUrlDialog(false)}
           doneButtonHandle={onClickDone}
@@ -532,8 +535,8 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
         />
       </Dialog>
       <ButtonGroup
-        className='tools'
-        id='toolbar'
+        className="tools"
+        id="toolbar"
         style={{
           display: showToolbar ? 'inline-flex' : 'none',
           backgroundColor: 'black',
@@ -611,8 +614,8 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
               }}
             >
               <Tooltip
-                className='divTooltip'
-                placement='left'
+                className="divTooltip"
+                placement="left"
                 componentsProps={{
                   tooltip: {
                     sx: {
@@ -627,16 +630,28 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
                     },
                   },
                 }}
-                title='Generate AI Content'
+                title="Generate AI Content"
               >
                 <Box onClick={() => title?.length > 0 && chatGPT(index)}>
                   {title?.length > 0 ? (
-                    <AiSvg className='DivEnable' height='30px' width='30' />
+                    // <AiSvg className="DivEnable" height="30px" width="30" />
+                    <img
+                      src={AiSvg}
+                      className="DivEnable"
+                      height="30px"
+                      width="30"
+                    />
                   ) : (
-                    <AiSvgDisabled
-                      className='DivDisable'
-                      height='30px'
-                      width='30'
+                    // <AiSvgDisabled
+                    //   className="DivDisable"
+                    //   height="30px"
+                    //   width="30"
+                    // />
+                    <img
+                      src={AiSvgDisabled}
+                      className="DivDisable"
+                      height="30px"
+                      width="30"
                     />
                   )}
                 </Box>

@@ -1,6 +1,6 @@
+import { makeStyles } from '@material-ui/core';
 import { Box, Button } from '@mui/material/';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { makeStyles } from '@material-ui/core';
 
 import React, {
   Suspense,
@@ -10,15 +10,15 @@ import React, {
   useState,
 } from 'react';
 // import Mapping from '../../utils/mapping.json';
-import { ThemeProvider } from '@mui/material/styles';
-import Mapping from 'platform-x-prelems/prelems/mapping';
-import EditTray from '../../components/EditTray';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
+import { ThemeProvider } from '@mui/material/styles';
+import Mapping from 'platform-x-prelems/prelems/mapping';
 import { useTranslation } from 'react-i18next';
+import EditTray from '../../components/EditTray';
 import ButtonEditLink from '../../components/buttonEditLink';
 import ButtonEditWindow from '../../components/buttonEditWindow';
 import {
@@ -28,23 +28,23 @@ import {
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
 import LightTheme from '../../theme/lightTheme';
+import PrelemTheme from '../../theme/prelemTheme';
 import ThemeConstants from '../../theme/variable';
 import { convertToLowerCase, getSubDomain } from '../../utils/helperFunctions';
-import PrelemTheme from '../../theme/prelemTheme';
 // Custom css classes to add centered "add icon" on each prelem card on top ad bottom
 const useStyles = makeStyles(() => ({
   addiconTop: {
     position: 'absolute',
     top: '0px',
     left: '50%',
-    zIndex: '2',
+    zIndex: 2,
     transform: 'translate(-50%,-50%)',
   },
   addiconBottom: {
     position: 'absolute',
     bottom: '-36px',
     left: '50%',
-    zIndex: '2',
+    zIndex: 2,
     transform: 'translate(-50%,-50%)',
   },
 }));
@@ -709,7 +709,7 @@ const PrelemCard: React.FC<Props> = ({
   const addSectionTouchPoint = (prelemPosition: string, position: string) => {
     return (
       <Button
-        variant='contained'
+        variant="contained"
         sx={{
           color: '#FFFFFF',
           backgroundColor: '#6d6dff',
@@ -819,7 +819,7 @@ const PrelemCard: React.FC<Props> = ({
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Box
-        component='div'
+        component="div"
         sx={{
           // backgroundColor: '#f1f1f1',
           position: 'relative',
@@ -895,7 +895,7 @@ const PrelemCard: React.FC<Props> = ({
                   backgroundColor: ThemeConstants.WHITE_COLOR,
                 },
               }}
-              variant='contained'
+              variant="contained"
               onClick={() =>
                 handlePrelemEditSubmit(
                   'reach-us',
@@ -917,7 +917,7 @@ const PrelemCard: React.FC<Props> = ({
           {!prelemEditState && showOptions ? (
             <>
               <Box
-                component='div'
+                component="div"
                 sx={{
                   position: 'absolute',
                   height: '100%',
@@ -955,22 +955,22 @@ const PrelemCard: React.FC<Props> = ({
                   <FormGroup sx={{ margin: '11px 23px' }}>
                     <FormControlLabel
                       control={<Checkbox onChange={handleChangeTop} />}
-                      label='Top'
+                      label="Top"
                     />
                     <FormControlLabel
                       control={<Checkbox onChange={handleChangeBottom} />}
-                      label='Bottom'
+                      label="Bottom"
                     />
                   </FormGroup>
                 </Box>
               )}
               {showAddSection.showAtTop ? (
-                <Box component='div' className={classes.addiconTop}>
+                <Box component="div" className={classes.addiconTop}>
                   {addSectionTouchPoint(keyIndex, 'top')}
                 </Box>
               ) : null}
               {showAddSection.showAtBottom ? (
-                <Box component='div' className={classes.addiconBottom}>
+                <Box component="div" className={classes.addiconBottom}>
                   {addSectionTouchPoint(keyIndex, 'bottom')}
                 </Box>
               ) : null}

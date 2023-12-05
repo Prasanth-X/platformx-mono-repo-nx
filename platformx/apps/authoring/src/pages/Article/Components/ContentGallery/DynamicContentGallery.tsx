@@ -22,7 +22,6 @@ import TextField from '@mui/material/TextField';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Loader from '../../../../Common/Loader';
-import { IconListViewSvg } from '../../../../assets/svg';
 import { showToastError } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { fetchTagList } from '../../../../services/common/tags.aps';
 import { fetchAllMultislotContentList } from '../../../../services/contentGallery/contentGallery.api';
@@ -32,6 +31,8 @@ import GalleryItems from '../../../ContentGallery/GalleryItems';
 import GalleryItemSearchResults from './GalleryItemSearchResult';
 import GalleryLeftSideBar from './GalleryLeftSideBar';
 import { ContentProps, TagMagic } from './utils/contentGalleryTypes';
+// import { IconListViewSvg } from '../../../../assets/svg';
+const IconListViewSvg = require('../../../../assets/svg') as string;
 
 const DynamicContentGallery = ({
   handleSelectedContent,
@@ -405,19 +406,19 @@ const DynamicContentGallery = ({
                     borderBottomRightRadius: '0px',
                   },
                 }}
-                variant='outlined'
-                placeholder='Search'
+                variant="outlined"
+                placeholder="Search"
                 value={search}
                 onChange={onSearchChange}
                 onKeyPress={handleKeyPress}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position='start'>
+                    <InputAdornment position="start">
                       <ArrowBackIosIcon onClick={backToContentHandel} />
                     </InputAdornment>
                   ),
                   endAdornment: (
-                    <InputAdornment position='end'>
+                    <InputAdornment position="end">
                       {search && (
                         <CloseRoundedIcon
                           onClick={resetSearch}
@@ -468,7 +469,7 @@ const DynamicContentGallery = ({
             }}
           >
             <ArrowBackIosIcon onClick={() => onToggleContentGallery(-1)} />
-            <Typography variant='h4medium'>
+            <Typography variant="h4medium">
               {t('prelem_choose_content')}
             </Typography>
           </Grid>
@@ -483,7 +484,7 @@ const DynamicContentGallery = ({
             }}
           >
             <Typography
-              variant='h5'
+              variant="h5"
               sx={{
                 fontSize: ThemeConstants.FONTSIZE_LG,
                 marginRight: '20px',
@@ -494,12 +495,12 @@ const DynamicContentGallery = ({
               <SearchIcon />
             </Typography>
             <Typography
-              variant='h5'
+              variant="h5"
               sx={{ fontSize: ThemeConstants.FONTSIZE_LG, cursor: 'pointer' }}
               onClick={categoryClickHandle}
             >
               {selectedTag?.length > 0 ? (
-                <Badge badgeContent={selectedTag.length} color='error'>
+                <Badge badgeContent={selectedTag.length} color="error">
                   <TagIcon />
                 </Badge>
               ) : (
@@ -531,7 +532,7 @@ const DynamicContentGallery = ({
           }}
         >
           <Typography
-            variant='h4bold'
+            variant="h4bold"
             sx={{
               padding: '0 0 10px 0px',
 
@@ -556,7 +557,7 @@ const DynamicContentGallery = ({
           <Grid item xs={12} sm={12} em={8} lg={8}>
             <FormControl fullWidth>
               <TextField
-                className='contentTypeCard'
+                className="contentTypeCard"
                 sx={{
                   ml: 5,
                   backgroundColor: '#f5f6f8',
@@ -571,19 +572,19 @@ const DynamicContentGallery = ({
                     borderBottom: '2px solid #c3c3cb',
                   },
                 }}
-                variant='outlined'
-                placeholder='Search'
+                variant="outlined"
+                placeholder="Search"
                 value={search}
                 onChange={onSearchChange}
                 onKeyPress={handleKeyPress}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position='start'>
+                    <InputAdornment position="start">
                       <SearchIcon />
                     </InputAdornment>
                   ),
                   endAdornment: (
-                    <InputAdornment position='end'>
+                    <InputAdornment position="end">
                       {search && (
                         <CloseRoundedIcon
                           onClick={resetSearch}
@@ -612,14 +613,14 @@ const DynamicContentGallery = ({
           lg={3}
           container
           spacing={0}
-          direction='column'
-          alignItems='end'
-          justifyContent='end'
+          direction="column"
+          alignItems="end"
+          justifyContent="end"
           sx={{ margin: '0 0 1.25rem 0', display: 'flex' }}
         >
-          <Box justifyContent='end'>
+          <Box justifyContent="end">
             <Button
-              variant='outlined'
+              variant="outlined"
               startIcon={<CloseIcon />}
               sx={{
                 paddingTop: '6px !important',
@@ -631,7 +632,7 @@ const DynamicContentGallery = ({
               {t('cancel')}
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               startIcon={<CheckIcon />}
               sx={{
                 marginLeft: '20px',
@@ -669,15 +670,15 @@ const DynamicContentGallery = ({
                 backgroundColor: '#ced3d9',
               }}
             >
-              <Stack direction='row' alignItems='center' gap={1}>
-                <Box component='span'>
+              <Stack direction="row" alignItems="center" gap={1}>
+                <Box component="span">
                   <ArrowBackIosIcon onClick={backButtonHandle} />
                 </Box>
-                <Typography variant='h4medium' component='span'>
+                <Typography variant="h4medium" component="span">
                   CATEGORIES
                 </Typography>
                 <Box
-                  component='span'
+                  component="span"
                   sx={{
                     margin: '0px 15px 0px 0',
                     // float: 'right',
@@ -727,10 +728,10 @@ const DynamicContentGallery = ({
               backgroundColor: '#ced3d9',
             }}
           >
-            <Typography variant='h6bold'>CATEGORIES</Typography>
+            <Typography variant="h6bold">CATEGORIES</Typography>
 
             <Box
-              component='span'
+              component="span"
               sx={{
                 margin: '0px 15px 0px 0',
                 float: 'right',
@@ -790,9 +791,9 @@ const DynamicContentGallery = ({
                     display: { xs: 'block', em: 'none' },
                   }}
                 >
-                  <Box component='span'>Selected Tags</Box>
+                  <Box component="span">Selected Tags</Box>
                   <Box
-                    component='span'
+                    component="span"
                     sx={{
                       float: 'right',
                       display: 'inline-block',
@@ -807,7 +808,7 @@ const DynamicContentGallery = ({
                   </Box>
                 </Box>
                 <Box
-                  component='span'
+                  component="span"
                   sx={{
                     width: { xs: '100%', em: '90%' },
                     display: 'inline-block',
@@ -839,7 +840,7 @@ const DynamicContentGallery = ({
                     })}
                 </Box>
                 <Box
-                  component='span'
+                  component="span"
                   sx={{
                     float: 'right',
                     position: 'absolute',
@@ -884,7 +885,7 @@ const DynamicContentGallery = ({
                 Search Results
               </Typography>
               <Typography
-                component='span'
+                component="span"
                 sx={{
                   display: {
                     xs: 'block',
@@ -893,13 +894,13 @@ const DynamicContentGallery = ({
                     // lg: 'none',
                   },
                 }}
-                variant='h4medium'
+                variant="h4medium"
               >
                 Recently added
               </Typography>
 
               <Box
-                component='span'
+                component="span"
                 sx={{
                   width: '34px',
                   height: '34px',
@@ -950,7 +951,7 @@ const DynamicContentGallery = ({
                   width: { xs: '70%', sm: '70%', em: '46%', lg: '32%' },
                   zIndex: '999999',
                 }}
-                className='searchsuggestion'
+                className="searchsuggestion"
               >
                 <GalleryItemSearchResults
                   searchResults={searchItems}
@@ -973,7 +974,7 @@ const DynamicContentGallery = ({
         }}
       >
         <Box sx={{ margin: '0 25px 25px 0' }} onClick={handleDone}>
-          <Fab size='large' color='primary' aria-label='add'>
+          <Fab size="large" color="primary" aria-label="add">
             <DoneIcon style={{ color: '#fff' }} />
           </Fab>
         </Box>

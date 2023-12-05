@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Checkbox, TextField, Grid } from '@mui/material';
-import Badge from '@mui/material/Badge';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Tabs from '@mui/material/Tabs';
+import { Box, Grid } from '@mui/material';
 import Tab from '@mui/material/Tab';
-import CloseIcon from '@mui/icons-material/Close';
+import Tabs from '@mui/material/Tabs';
+import Typography from '@mui/material/Typography';
+import React, { useState } from 'react';
 // import TabCard from './TabCard';
 // import MobileCard from './MobileCard';
 // import DesktopCard from './DesktopCard';
@@ -26,16 +23,17 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <div
-      role='tabpanel'
+      role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index &&
+      {value === index && (
         <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
-        </Box>}
+        </Box>
+      )}
     </div>
   );
 }
@@ -55,11 +53,8 @@ const ModalContent = ({ selectedItem }) => {
     setICopyStatus(false);
   };
   const pageURL =
-    `${process.env.REACT_APP_PUBLISH_URI +
-    i18n.language
-    }/` +
-    `embed/video/${
-    selectedItem?.Page}`;
+    `${process.env.REACT_APP_PUBLISH_URI + i18n.language}/` +
+    `embed/video/${selectedItem?.Page}`;
 
   const content = {
     Title: selectedItem?.Title,
@@ -132,18 +127,17 @@ const ModalContent = ({ selectedItem }) => {
                 <Tabs
                   value={value}
                   onChange={handleChange}
-                  aria-label='basic tabs example'
+                  aria-label="basic tabs example"
                 >
                   <Tab
-                    label='Small'
+                    label="Small"
                     {...a11yProps(0)}
                     sx={{ minHeight: '26px', minWidth: '86px' }}
                   />
-                  <Tab label='Medium' {...a11yProps(1)} />
-                  <Tab label='Large' {...a11yProps(2)} />
+                  <Tab label="Medium" {...a11yProps(1)} />
+                  <Tab label="Large" {...a11yProps(2)} />
                 </Tabs>
               </Box>
-              {console.log('selectedItem', selectedItem)}
 
               <TabPanel value={value} index={0}>
                 <Box
@@ -208,10 +202,10 @@ const ModalContent = ({ selectedItem }) => {
           >
             <Box>
               <Box>
-                <Typography variant='h3medium'>Social Embed link</Typography>
+                <Typography variant="h3medium">Social Embed link</Typography>
               </Box>
               <Box>
-                <Typography variant='h7regular' sx={{ color: '#89909a' }}>
+                <Typography variant="h7regular" sx={{ color: '#89909a' }}>
                   Embed this content type anywhere on the web
                 </Typography>
               </Box>

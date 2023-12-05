@@ -10,7 +10,7 @@ export const useStyles = makeStyles(() => ({
     backgroundColor: '#fff',
     width: '100%',
     height: '100%',
-    zIndex: '999',
+    zIndex: 999,
   },
   logoDispaly: {
     [`@media (min-width:${ThemeConstants.SM}px)`]: {
@@ -116,5 +116,5 @@ export const useStyles = makeStyles(() => ({
         pointerEvents: 'auto',
       },
     },
-  }
+  },
 }));

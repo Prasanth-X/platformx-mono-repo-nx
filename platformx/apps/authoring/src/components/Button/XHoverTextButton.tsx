@@ -5,18 +5,16 @@ import {
   ThemeProvider,
   styled,
 } from '@mui/material';
-import React from 'react';
-import SaveIcon from '@mui/icons-material/Save';
-import ThemeConstants from '../../theme/variable';
 import LightTheme from '../../theme/lightTheme';
-import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
+import ThemeConstants from '../../theme/variable';
+const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
-const fontStyle= `
+const fontStyle = `
 @font-face {
   font-family: ${ThemeConstants.FONTNAMEPRIMARY};
   src: url(${InterRegular}) format("truetype");
   font-display: block;
-}`
+}`;
 
 // Only include variant, size, and color
 type ButtonBaseProps = Pick<MuiButtonProps, 'variant'>;
@@ -81,15 +79,15 @@ export const XHoverTextButton = ({
   <ThemeProvider theme={LightTheme}>
     <style>{fontStyle}</style>
     <StyledXHoverTextButton
-        variant={variant}
-        startIcon={Icon}
-        disabled={disabled}
-        onClick={onClick}
-        className={`${className} onhoverbutton`}
-        style={style}
-        {...rest}
-      >
-        <Box className='buttonLabel'>{label}</Box>
-      </StyledXHoverTextButton>
+      variant={variant}
+      startIcon={Icon}
+      disabled={disabled}
+      onClick={onClick}
+      className={`${className} onhoverbutton`}
+      style={style}
+      {...rest}
+    >
+      <Box className="buttonLabel">{label}</Box>
+    </StyledXHoverTextButton>
   </ThemeProvider>
 );
