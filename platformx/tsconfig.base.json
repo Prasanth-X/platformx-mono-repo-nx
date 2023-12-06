@@ -17,6 +17,7 @@
     "paths": {
       "@platformx/micro-frontends": ["libs/micro-frontends/src/index.ts"],
       "@platformx/prelems-library": ["libs/prelems-library/src/index.ts"],
+      "@platformx/shared-ui": ["libs/shared-ui/src/index.ts"],
       "@platformx/utilities": ["libs/utilities/src/index.ts"]
     }
   },

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import FallBackImage from '../assets/fallBackImage.png';
 import { countries } from './helperConstants';
-import ToastService from 'lib/components/ToastContainer/ToastService';
+// import ToastService from 'lib/components/ToastContainer/ToastService';
 import { CONTENT_TYPE_WITH_ABSOLUTEURL } from './constants';
 
 const errorRequest =
@@ -33,7 +33,7 @@ export const getRestApiCall = (
     });
   } catch (err: any) {
     // const { } = err.response;
-    ToastService.failToast(errorRequest);
+    // failToast(errorRequest); // TODO: uncomment this line
     return err?.response;
   }
 };
@@ -60,7 +60,7 @@ export const postRestApiCall = (
     });
   } catch (err: any) {
     // const { } = err.response;
-    ToastService.failToast(errorRequest);
+    // failToast(errorRequest); // TODO: uncomment this line
     return err?.response;
   }
 };
@@ -88,7 +88,7 @@ export const putRestApiCall = (
     });
   } catch (err: any) {
     // const { } = err.response;
-    ToastService.failToast(errorRequest);
+    // failToast(errorRequest); // TODO: uncomment this line
     return err?.response;
   }
 };
@@ -355,7 +355,7 @@ export const fetchCroppedUrl = (
   // mediaQuery: any,
   Url: string,
   publishedImages: [],
-  imgOrder = {},
+  imgOrder: any = {},
   breakpoints: any = {}
 ) => {
   let returnUrl = '';
@@ -623,7 +623,7 @@ export const inputNonEmptyFieldValidate = (errors = {}) => {
  * @param toFixed number of decimal which we have to show after decimal value
  * @returns float
  */
-export const formateNumber = (value: number, toFixedVal?: number) => {
+export const formateNumber = (value: number, toFixedVal: number) => {
   if (!isNaN(value)) {
     return (Math.round(value * 100) / 100).toFixed(
       !isNaN(toFixedVal) ? toFixedVal : 2

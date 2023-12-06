@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import { Button, Typography } from '@mui/material';
 import axios from 'axios';
-import { Button } from '@mui/material';
+import usePlatformAnalytics from '../../hooks/usePlatformAnalytics';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  nullToObject,
-  convertToLowerCase,
-  encodeGetParams,
-  completeExternalUrl,
-  uriToJSON,
-  conCatUrlPath,
-  eComTypeUriToJSON,
-} from '../../utils/helperFns';
-import usePlatformAnalytics from 'lib/hooks/usePlatformAnalytics';
 import { IMPRESSIONS } from '../../hooks/usePrelemImpression/constants';
-import ToastService from '../ToastContainer/ToastService';
-import { errorRequest } from 'lib/utils/constants';
 import {
   createClickImpression,
   snowplowPrelemClickImpression,
-} from 'lib/hooks/usePrelemImpression/helper';
+} from '../../hooks/usePrelemImpression/helper';
+import {
+  completeExternalUrl,
+  conCatUrlPath,
+  convertToLowerCase,
+  eComTypeUriToJSON,
+  encodeGetParams,
+  nullToObject,
+  uriToJSON,
+} from '../../utils/helperFns';
+import { ButtonObjInfo } from '../../hooks/usePrelemImpression/usePrelemImpression.types';
+// import { useToast } from '../../hooks/useToast/useToast';
 
 const BasicButton = (props: BasicButtonProps) => {
   const {
@@ -41,6 +41,7 @@ const BasicButton = (props: BasicButtonProps) => {
   const [sliderData, setSliderData] = useState([]);
   const [contentType, setContentType] = useState('');
   const [handleTrack] = usePlatformAnalytics();
+  // const { failToast } = useToast();
   const buttonClickEvent = async () => {
     const { prelemBaseEndpoint = {} } = nullToObject(secondaryArgs);
     const {
@@ -52,17 +53,17 @@ const BasicButton = (props: BasicButtonProps) => {
 
     if (!isAuthoring && analyticsEnabled) {
       const buttonClickImpressionObj = createClickImpression(
-        analytics,
+        analytics || ({} as Analytics),
         IMPRESSIONS.Button,
         secondaryArgs,
-        buttonDataObj,
+        buttonDataObj || ({} as ButtonObjInfo),
         undefined
       );
       const cardClickSnowplowObj = snowplowPrelemClickImpression(
-        analytics,
+        analytics || ({} as Analytics),
         IMPRESSIONS.Button,
         secondaryArgs,
-        buttonDataObj,
+        buttonDataObj || ({} as ButtonObjInfo),
         undefined
       );
       handleTrack(IMPRESSIONS?.TRACKID, cardClickSnowplowObj);
@@ -130,7 +131,7 @@ const BasicButton = (props: BasicButtonProps) => {
             setModalStatus(false);
             setContentType('');
             setSliderData([]);
-            ToastService.failToast(t(errorRequest));
+            // ToastService.failToast(t(errorRequest)); // TODO: need to check
           }
         }
         break;
@@ -138,7 +139,12 @@ const BasicButton = (props: BasicButtonProps) => {
         const functionName = buttonDataObj.Button_RedirectURL;
         const { functionList, context, actions } = secondaryArgs;
         const { state, dispatch } = context;
-        functionList[functionName]({ state, dispatch, actions });
+
+        if (functionName && typeof functionList[functionName] === 'function') {
+          functionList[functionName]({ state, dispatch, actions });
+        } else {
+          console.error(`Invalid function name: ${functionName}`);
+        }
         break;
       default:
         break;
@@ -248,7 +254,8 @@ const BasicButton = (props: BasicButtonProps) => {
           disableRipple
           endIcon={endIcon || ''}
         >
-          <span
+          <Typography
+            component="span"
             className="tabbtn"
             contentEditable={
               isEditing && currentBtnEditing === ButtonObj?.Button_Name
@@ -257,7 +264,7 @@ const BasicButton = (props: BasicButtonProps) => {
             onClick={(e) => buttonContentEditable && e.stopPropagation()}
           >
             {buttonDataObj?.Button_Value}
-          </span>
+          </Typography>
         </Button>
       ) : (
         <Button
@@ -284,7 +291,8 @@ const BasicButton = (props: BasicButtonProps) => {
           id={ButtonObj?.Button_Name}
           disableRipple
         >
-          <span
+          <Typography
+            component="span"
             contentEditable={
               isEditing && currentBtnEditing === ButtonObj?.Button_Name
             } // move to AU
@@ -292,7 +300,7 @@ const BasicButton = (props: BasicButtonProps) => {
             onClick={(e) => buttonContentEditable && e.stopPropagation()}
           >
             {buttonDataObj?.Button_Value}
-          </span>
+          </Typography>
         </Button>
       )}
       {/* {modalStatus &&   // TODO: need to check
@@ -325,7 +333,7 @@ interface Analytics {
 }
 interface BasicButtonProps {
   endIcon?: any;
-  style?: React.CSSProperties;
+  style?: any;
   ButtonObj?: {
     Button_Name?: string;
     Button_RedirectURL?: string;

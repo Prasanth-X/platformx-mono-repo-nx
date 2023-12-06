@@ -1,16 +1,20 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, ThemeProvider, Typography } from '@mui/material';
 import React, { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Typewriter from 'typewriter-effect';
-import frame1 from 'assets/Frame1.png';
-import frame2 from 'assets/Frame2.png';
-import frame3 from 'assets/Frame3.png';
-import { TwoColumnLayout, usePrelemImpression } from '@platformx/utilities';
+import frame1 from '../../assets/Frame1.png';
+import frame2 from '../../assets/Frame2.png';
+import frame3 from '../../assets/Frame3.png';
+import {
+  ImageRender,
+  PrelemTheme,
+  TwoColumnLayout,
+  usePrelemImpression,
+} from '@platformx/utilities';
 import { completeButtonUrl, formCroppedUrl } from '@platformx/utilities';
 import { BasicButton } from '@platformx/utilities';
 import { prelemTypes } from '@platformx/utilities';
 import { useCustomStyle } from './AboutUS2.style';
-import '../../Style.css';
 
 const AboutUs2 = ({
   content,
@@ -256,27 +260,29 @@ const AboutUs2 = ({
     );
   };
   return (
-    <div
-      ref={authoringHelper?.innerRef}
-      className={`${classes.aboutUs2Wrapper} ${globalClasses.prelemType1} prelem prelemType1 about-us2 aboutUs2Bg`}
-    >
-      <Container
-        className={
-          authoringHelper?.isEditPage
-            ? `grid_full_width prelem-py`
-            : `grid_container prelem-py`
-        }
-        ref={ref}
+    <ThemeProvider theme={PrelemTheme}>
+      <div
+        ref={authoringHelper?.innerRef}
+        className={`${classes.aboutUs2Wrapper} ${globalClasses.prelemType1} prelem prelemType1 about-us2 aboutUs2Bg`}
       >
-        <TwoColumnLayout
-          firstColumnContent={firstColumnContent()}
-          secondColumnContent={secondColumnContent()}
-          gridVal={gridVal}
-          customClassName="aboutUs2"
-          noGap={true}
-        />
-      </Container>
-    </div>
+        <Container
+          className={
+            authoringHelper?.isEditPage
+              ? `grid_full_width prelem-py`
+              : `grid_container prelem-py`
+          }
+          ref={ref}
+        >
+          <TwoColumnLayout
+            firstColumnContent={firstColumnContent()}
+            secondColumnContent={secondColumnContent()}
+            gridVal={gridVal}
+            customClassName="aboutUs2"
+            noGap={true}
+          />
+        </Container>
+      </div>
+    </ThemeProvider>
   );
 };
 
