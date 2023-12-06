@@ -52,7 +52,7 @@ const CommentContext = createContext<CommentContextData>({
 export const useCommentContext = () => useContext(CommentContext);
 // export const CommentProvider: React.FC = ({children} ) => {
 
-export const CommentProvider: React.FC = (props: ContainerProps) => {
+export const CommentProvider = (props: ContainerProps) => {
   const [comments, setComments] = useState<ReviewComment[]>([]);
   const [isCommentsPanelOpen, setIsCommentPanelOpen] = useState(false);
   const [isReviewEnabled, setIsReviewEnabled] = useState(false);
