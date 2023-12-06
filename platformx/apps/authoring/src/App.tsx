@@ -19,7 +19,8 @@ import { CommentProvider } from './context/CommentsContext/CommentsContext';
 import { ActionProvider } from './context/actionContext/ActionProvider';
 import RootRouter from './router/rootRouter';
 import { StoreProvider } from './store/ContextStore';
-import LightTheme from './theme/lightTheme';
+// import LightTheme from './theme/lightTheme';
+import { AuthoringTheme } from '@platformx/utilities';
 import { authUrl } from './utils/authConstants';
 import { DefaultLocale } from './utils/constants';
 import {
@@ -90,11 +91,11 @@ function App() {
   }, []);
   return (
     <Suspense fallback={<div>...Loading</div>}>
-      <div className='App'>
+      <div className="App">
         <I18nextProvider i18n={i18n}>
           <ApolloProvider client={client}>
             <AnalyticsProvider instance={instances}>
-              <ThemeProvider theme={LightTheme}>
+              <ThemeProvider theme={AuthoringTheme}>
                 <CssBaseline />
                 <StoreProvider>
                   <BrowserRouter
@@ -112,13 +113,13 @@ function App() {
               </ThemeProvider>
             </AnalyticsProvider>
             <ToastContainer
-              position='bottom-center'
+              position="bottom-center"
               autoClose={4000}
               newestOnTop
               closeOnClick
               pauseOnFocusLoss
               pauseOnHover
-              theme='colored'
+              theme="colored"
               icon={false}
               className={classes.toastContainer}
             />

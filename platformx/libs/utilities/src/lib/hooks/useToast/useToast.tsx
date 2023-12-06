@@ -2,11 +2,10 @@ import { Typography } from '@mui/material';
 import React from 'react';
 import { ToastContent, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+export const useToast = () => {
+  const toastPosition = 'top-right';
 
-const toastPosition = 'bottom-left';
-
-const convertFontSize = (mag = '') => {
-  return (
+  const convertFontSize = (mag = '') => (
     <React.Fragment>
       <Typography
         component="span"
@@ -18,10 +17,8 @@ const convertFontSize = (mag = '') => {
       </Typography>
     </React.Fragment>
   );
-};
 
-const ToastService = {
-  defaultToast: (message: any, id = '') =>
+  const defaultToast = (message: any, id = '') =>
     toast(convertFontSize(message) as ToastContent, {
       toastId: id,
       autoClose: 3000,
@@ -30,9 +27,9 @@ const ToastService = {
       pauseOnHover: true,
       hideProgressBar: true,
       position: toastPosition,
-    }),
+    });
 
-  SuccessToast: (message: any, id = '') =>
+  const successToast = (message: any, id = '') =>
     toast.success(convertFontSize(message) as ToastContent, {
       toastId: id,
       autoClose: 3000,
@@ -43,9 +40,9 @@ const ToastService = {
       position: toastPosition,
       theme: 'colored',
       style: { background: '#2E7D32' },
-    }),
+    });
 
-  failToast: (message: any, id = '') =>
+  const failToast = (message: any, id = '') =>
     toast.error(convertFontSize(message) as ToastContent, {
       toastId: id,
       autoClose: 3000,
@@ -56,9 +53,9 @@ const ToastService = {
       position: toastPosition,
       theme: 'colored',
       style: { background: '#d32f2f' },
-    }),
+    });
 
-  warnToast: (message: any, id = '') =>
+  const warnToast = (message: any, id = '') =>
     toast.warn(convertFontSize(message) as ToastContent, {
       toastId: id,
       autoClose: 3000,
@@ -67,9 +64,9 @@ const ToastService = {
       pauseOnHover: true,
       hideProgressBar: true,
       position: toastPosition,
-    }),
+    });
 
-  infoToast: (message: any, id = '') =>
+  const infoToast = (message: any, id = '') =>
     toast.info(convertFontSize(message) as ToastContent, {
       toastId: id,
       autoClose: 3000,
@@ -78,9 +75,16 @@ const ToastService = {
       pauseOnHover: true,
       hideProgressBar: true,
       position: toastPosition,
-    }),
+    });
 
-  dismissToast: (toastId = '') => toast.dismiss(toastId),
+  const dismissToast = (toastId = '') => toast.dismiss(toastId);
+
+  return {
+    defaultToast,
+    successToast,
+    failToast,
+    warnToast,
+    infoToast,
+    dismissToast,
+  };
 };
-
-export default ToastService;

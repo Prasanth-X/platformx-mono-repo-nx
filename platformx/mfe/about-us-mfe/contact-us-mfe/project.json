@@ -77,6 +77,49 @@
       "options": {
         "jestConfig": "apps/contact-us-mfe/jest.config.ts"
       }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/contact-us-mfe/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/contact-us-mfe",
+        "configDir": "apps/contact-us-mfe/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/contact-us-mfe/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "contact-us-mfe:build-storybook",
+        "staticFilePath": "dist/storybook/contact-us-mfe"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "contact-us-mfe:build-storybook:ci"
+        }
+      }
     }
   },
   "tags": []

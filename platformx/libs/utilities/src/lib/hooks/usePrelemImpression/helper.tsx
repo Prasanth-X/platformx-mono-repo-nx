@@ -1,17 +1,17 @@
-import { IMPRESSIONS } from 'lib/hooks/usePrelemImpression/constants';
-import {
-  Analytics,
-  ButtonObjInfo,
-  CardDataObj,
-  secondaryArgsObj,
-} from './usePrelemImpression.types';
 import {
   completeExternalUrl,
   conCatUrlPath,
   eComTypeUriToJSON,
   nullToObject,
   uriToJSON,
-} from 'lib/utils/helperFns';
+} from '../../utils/helperFns';
+import { IMPRESSIONS } from '../usePrelemImpression/constants';
+import {
+  Analytics,
+  ButtonObjInfo,
+  CardDataObj,
+  secondaryArgsObj,
+} from './usePrelemImpression.types';
 
 export const createPrelemImpression = (analytics: Analytics) => {
   return {
@@ -44,7 +44,7 @@ export const createClickImpression = (
   type: string,
   secondaryArgs: any,
   buttonDataObj: ButtonObjInfo,
-  cardDataObj: CardDataObj
+  cardDataObj?: CardDataObj
 ) => {
   let buttonURL = IMPRESSIONS.NA;
   let contentTitle = IMPRESSIONS.NA;
@@ -57,9 +57,13 @@ export const createClickImpression = (
     (localStorage.getItem('userId') ? IMPRESSIONS.YES : IMPRESSIONS.NO) ||
     IMPRESSIONS.NA;
   const age = IMPRESSIONS.NA;
-  const gender =
-    JSON.parse(localStorage.getItem('userLoginDetails'))?.data?.gender ||
-    IMPRESSIONS.NA;
+
+  const userLoginDetailsString = localStorage.getItem('userLoginDetails');
+  const userLoginDetails = userLoginDetailsString
+    ? JSON.parse(userLoginDetailsString).data
+    : null;
+
+  const gender = userLoginDetails?.gender || IMPRESSIONS.NA;
 
   if (type === IMPRESSIONS.Button) {
     const { prelemBaseEndpoint = {} } = nullToObject(secondaryArgs);
@@ -167,7 +171,7 @@ export const snowplowPrelemClickImpression = (
   type: string,
   secondaryArgs: any,
   buttonDataObj: ButtonObjInfo,
-  cardDataObj: CardDataObj
+  cardDataObj: CardDataObj = {}
 ) => {
   return {
     schema: secondaryArgs?.clickImpressionSchema,
