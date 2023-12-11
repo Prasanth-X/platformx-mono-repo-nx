@@ -2,14 +2,31 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "allowJs": false,
+    "strict": true,
+    "ignoreDeprecations": "5.0", 
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es6", "dom", "es5"],
+    "declaration": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedParameters": false,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
     "noImplicitAny": false,
-    "resolveJsonModule": true
+    "strictNullChecks": false, 
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "lib/*": ["src/lib/*"],
+      "assets/*": ["src/assets/*"]
+    }
   },
   "files": [],
-  "include": [],
+  "include": ["src", "additional.d.ts", "moduleType.d.ts", "fonts.d.ts"],
   "references": [
     {
       "path": "./tsconfig.app.json"
