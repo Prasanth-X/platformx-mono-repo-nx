@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   prelemsearchheader: {
@@ -14,6 +14,6 @@ export const useStyles = makeStyles(() => ({
     zIndex: 9,
   },
   headerAvatarIcon: {
-    marginLeft: '20px'
-  }
+    marginLeft: '20px',
+  },
 }));

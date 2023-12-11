@@ -5,31 +5,57 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/authoring"
+        "compiler": "babel",
+        "outputPath": "dist/apps/authoring",
+        "index": "apps/authoring/src/index.html",
+        "baseHref": "/",
+        "main": "apps/authoring/src/main.tsx",
+        "tsConfig": "apps/authoring/tsconfig.app.json",
+        "assets": [
+          "apps/authoring/src/favicon.ico",
+          "apps/authoring/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "apps/authoring/webpack.config.js"
       },
       "configurations": {
         "development": {
-          "mode": "development"
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         },
         "production": {
-          "mode": "production"
+          "fileReplacements": [
+            {
+              "replace": "apps/authoring/src/environments/environment.ts",
+              "with": "apps/authoring/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
         }
       }
     },
     "serve": {
-      "executor": "@nx/vite:dev-server",
+      "executor": "@nx/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "authoring:build"
+        "buildTarget": "authoring:build",
+        "hmr": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "authoring:build:development",
-          "hmr": true
+          "buildTarget": "authoring:build:development"
         },
         "production": {
           "buildTarget": "authoring:build:production",
@@ -37,40 +63,28 @@
         }
       }
     },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"]
+    },
     "preview": {
-      "executor": "@nx/vite:preview-server",
-      "defaultConfiguration": "development",
+      "executor": "@nx/webpack:dev-server",
       "options": {
         "buildTarget": "authoring:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "authoring:build:development"
-        },
-        "production": {
-          "buildTarget": "authoring:build:production"
-        }
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/authoring"
+        "jestConfig": "apps/authoring/jest.config.js"
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/authoring/**/*.{ts,tsx,js,jsx}"]
-      }
-    },
+
     "serve-static": {
-      "executor": "@nx/web:file-server",
+      "executor": "@nrwl/web:file-server",
       "options": {
-        "buildTarget": "authoring:build"
+        "root": "dist/apps/authoring"
       }
     }
   },

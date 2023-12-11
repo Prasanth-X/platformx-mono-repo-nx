@@ -12,7 +12,7 @@ import {
   fetchAllPrelemSearchList,
   prelemsApi,
 } from '../../../services/prelems/prelems.api';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { removeParamsFromURL } from '../../../utils/helperFunctions';
 import LeftBox from '../Components/PageContainer/LeftBox';
 import PageLayout from '../Components/PageContainer/PageContainer';
@@ -312,10 +312,10 @@ const SearchPrelem = () => {
         {/* {layoutList.length > 0 && ( */}
         <LeftBox>
           <Box className={classes.leftTop}>
-            <Typography component='p' variant='p3semibold'>
+            <Typography component="p" variant="p3semibold">
               {t('layouts')}
             </Typography>
-            <Typography component='p' variant='h7regular'>
+            <Typography component="p" variant="h7regular">
               {t('layouts_sub_text')}
             </Typography>
             <Box sx={{ mt: 1 }}>
@@ -350,10 +350,10 @@ const SearchPrelem = () => {
               <RightBox>
                 {noMob && <PrelemSearchHeader />}
                 <Box sx={{ padding: '15px' }}>
-                  <Typography component='p' variant='p1semibold'>
+                  <Typography component="p" variant="p1semibold">
                     {t('choose_prelem_text')}
                   </Typography>
-                  <Typography component='p' variant='p4regular'>
+                  <Typography component="p" variant="p4regular">
                     {t('choose_prelem_sub_text')}
                   </Typography>
                   <PrelemList searchCardList={searchCardList} />
@@ -376,10 +376,10 @@ const SearchPrelem = () => {
               >
                 <NoSearchResult />
                 <Button
-                  variant='primaryButton'
+                  variant="primaryButton"
                   onClick={handleResetInputFilter}
                   sx={{ marginTop: '15px' }}
-                  className='sm'
+                  className="sm"
                 >
                   Search Again
                 </Button>

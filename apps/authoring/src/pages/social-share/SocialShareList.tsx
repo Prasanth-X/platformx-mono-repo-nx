@@ -18,7 +18,7 @@ import {
   cancelSocialSharePost,
   fetchSocialShareList,
 } from '../../services/socialShare/socialShare.api';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { nullToArray, nullToObject } from '../../utils/helperFunctions';
 import ArticelSearchHeader from '../articles/article-search-header/ArticleSearchHeader';
 import SocialShareDeskTopView from './SocialShareDeskTopView';
@@ -425,7 +425,7 @@ const SocialShareList = () => {
             overflowX: 'hidden',
             paddingBottom: { xs: '150px', sm: '0' },
           }}
-          id='scrollableDiv'
+          id="scrollableDiv"
         >
           <Box
             sx={{
@@ -443,7 +443,7 @@ const SocialShareList = () => {
                 }}
               >
                 <Typography
-                  variant='h5regular'
+                  variant="h5regular"
                   sx={{
                     letterSpacing: '0',
                     fontSize: { xs: '12px', sm: '14px' },
@@ -454,15 +454,15 @@ const SocialShareList = () => {
                   {t('post')}
                 </Typography>
                 <NavigateNextRoundedIcon
-                  fontSize='small'
+                  fontSize="small"
                   sx={{ color: 'gray', margin: '0 5px' }}
                 />
                 <FolderRoundedIcon
-                  fontSize='small'
+                  fontSize="small"
                   sx={{ color: '#fdbf00', marginRight: '5px' }}
                 />
                 <Typography
-                  variant='h5regular'
+                  variant="h5regular"
                   sx={{
                     letterSpacing: '0',
                     fontSize: { xs: '12px', sm: '14px' },
@@ -535,7 +535,7 @@ const SocialShareList = () => {
                     ? socialShareArticleData
                     : socialShareData
                 }
-                contentType='video'
+                contentType="video"
               />
             ) : null}
             {isCancel ? (

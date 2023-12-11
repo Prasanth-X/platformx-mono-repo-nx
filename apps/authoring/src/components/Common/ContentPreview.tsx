@@ -13,10 +13,10 @@ import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../utils/authConstants';
-import PrelemTheme from '../../theme/prelemTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 
 const theme = {
   LightTheme,
@@ -34,7 +34,6 @@ const prelemAuthoringHelper = {
 const secondaryArgs = {
   gcpUrl: authInfo.gcpUri,
   bucketName: authInfo.gcpBucketName,
-
 };
 const ContentPreview = () => {
   const navigate = useNavigate();
@@ -100,9 +99,10 @@ const ContentPreview = () => {
   const ContentType = React.lazy(
     () =>
       import(
-        `platform-x-prelems/prelems/${previewObject?.contentType === 'Event'
-          ? 'EventLandingPage'
-          : previewObject?.contentType
+        `platform-x-prelems/prelems/${
+          previewObject?.contentType === 'Event'
+            ? 'EventLandingPage'
+            : previewObject?.contentType
         }`
       )
   );
@@ -134,7 +134,7 @@ const ContentPreview = () => {
             margin: '18px 4px 18px 16px',
           }}
         />
-        <Typography variant='h3medium'>
+        <Typography variant="h3medium">
           {t('resend_text_left_button')}
         </Typography>
       </Box>
@@ -189,7 +189,7 @@ const ContentPreview = () => {
             </Box>
           ))}
         </Box>
-        <Box>{ }</Box>
+        <Box>{}</Box>
       </Box>
       <Divider sx={{ mb: { sm: '31px' } }} />
       <Box>
@@ -203,20 +203,20 @@ const ContentPreview = () => {
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '100%'
-                    : '402px',
+                  ? '100%'
+                  : '402px',
               md:
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '768px'
-                    : '402px',
+                  ? '768px'
+                  : '402px',
               lg:
                 deviceType === 'desktop'
                   ? '1092px'
                   : deviceType === 'tablet'
-                    ? '909px'
-                    : '402px',
+                  ? '909px'
+                  : '402px',
             },
             margin: 'auto',
             transition: 'width 0.50s',
@@ -234,16 +234,16 @@ const ContentPreview = () => {
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '100%'
-                    : '100%'
+                  ? '100%'
+                  : '100%'
               }
               height={height}
               initialContent={initialContent}
-              id='site-frame'
+              id="site-frame"
               ref={iframeRef}
               contentDidMount={() => handleResize(iframeRef)}
               contentDidUpdate={() => handleResize(iframeRef)}
-              frameBorder='0'
+              frameBorder="0"
             >
               <FrameContextConsumer>
                 {({ document }: any) => {
@@ -251,9 +251,7 @@ const ContentPreview = () => {
                     <CacheProvider
                       value={memoizedCreateCacheWithContainer(document.head)}
                     >
-                      <ThemeProvider
-                        theme={PrelemTheme}
-                      >
+                      <ThemeProvider theme={PrelemTheme}>
                         <ContentType
                           content={previewObject}
                           showLoading={false}

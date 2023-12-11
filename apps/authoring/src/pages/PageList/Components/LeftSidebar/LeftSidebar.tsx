@@ -2,7 +2,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Box, Divider, Tab, Tabs } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PAGE_TYPES } from '../../Utils/constants';
 import { LeftSidebarProps } from './LeftSidebar.types';
 
@@ -12,7 +12,7 @@ export default function PageLeftSidebar({
   const searchPageUrl = new URL(window.location.href);
   const [selectedType, setSelectedType] = useState<string>(
     searchPageUrl.searchParams.get('searchCat')
-      ? searchPageUrl.searchParams.get('searchCat') as string
+      ? (searchPageUrl.searchParams.get('searchCat') as string)
       : 'All'
   );
   const [value, setValue] = React.useState(0);
@@ -34,7 +34,7 @@ export default function PageLeftSidebar({
     <>
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{
             padding: '10px 25px 10px 25px',
             backgroundColor: '#c0c0c0',
@@ -63,7 +63,7 @@ export default function PageLeftSidebar({
                 onClick={() => handlePagesType(item)}
               >
                 <Typography
-                  variant='h6'
+                  variant="h6"
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
@@ -84,10 +84,11 @@ export default function PageLeftSidebar({
                 </Typography>
                 {selectedType &&
                   item.name &&
-                  selectedType.toLowerCase() == item.name.toLowerCase() &&
+                  selectedType.toLowerCase() == item.name.toLowerCase() && (
                     <ChevronRightIcon
                       sx={{ fontSize: { xs: '24px', xl: '30px' } }}
-                    />}
+                    />
+                  )}
               </Box>
               <Divider />
             </Box>
@@ -104,7 +105,7 @@ export default function PageLeftSidebar({
         <Tabs
           value={value}
           onChange={handleChange}
-          variant='scrollable'
+          variant="scrollable"
           scrollButtons={false}
         >
           {PAGE_TYPES.map((item, index) => {

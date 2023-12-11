@@ -1,7 +1,7 @@
 import { Grid, Link, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { styled } from '@mui/system';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useEmptyResultStyle = makeStyles((theme) => ({
   noresult: {
@@ -10,8 +10,8 @@ export const useEmptyResultStyle = makeStyles((theme) => ({
     fontStyle: 'normal',
     lineHeight: '34px',
     fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
-    
-    
+
+
   },
   creathide: {
     [theme.breakpoints.up('xs')]: {
@@ -27,11 +27,11 @@ export const useEmptyResultStyle = makeStyles((theme) => ({
     fontStyle: 'normal',
     fontWeight: 400,
     lineHeight: '24px',
-  
+
 
   },
   emptysite: {
-    textAlign: 'center', 
+    textAlign: 'center',
     marginTop: '5%'
 
   },
@@ -70,7 +70,7 @@ export const useEmptyResultStyle = makeStyles((theme) => ({
       minWidth: 'inherit',
     },
 
-   
+
 
   }
 }));

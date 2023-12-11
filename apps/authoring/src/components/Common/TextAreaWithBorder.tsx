@@ -2,7 +2,7 @@ import { TextareaAutosize, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { convertToLowerCase } from '../../utils/helperFunctions';
 
 interface AutoTextAreaProps {
@@ -67,7 +67,7 @@ const TextAreaWithBorder = ({
   return (
     <Box>
       <TextareaAutosize
-        className='textArea withBorder'
+        className="textArea withBorder"
         placeholder={placeHolder}
         name={name}
         id={name}
@@ -86,7 +86,7 @@ const TextAreaWithBorder = ({
       />
       {maxCharLength ? (
         <Typography
-          variant='h7regular'
+          variant="h7regular"
           sx={{ color: '#5c6574', marginTop: '10px' }}
         >
           {reachLimit ? (

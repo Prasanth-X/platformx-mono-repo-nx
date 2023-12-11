@@ -4,7 +4,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import { KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 interface PageHeaderList {
   handlePageSearch?: (pageSearchName?: string) => void;
@@ -36,17 +36,17 @@ export default function ArticelSearchHeader({
     <>
       <TextField
         inputProps={{ maxLength: 200 }}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('search')}
         fullWidth
         InputProps={{
           startAdornment: (
-            <InputAdornment position='start'>
+            <InputAdornment position="start">
               <SearchIcon onClick={() => setIsSearchHeaderOpen(false)} />
             </InputAdornment>
           ),
           endAdornment: (
-            <InputAdornment position='start'>
+            <InputAdornment position="start">
               {searchTerm && (
                 <CloseRoundedIcon
                   sx={{

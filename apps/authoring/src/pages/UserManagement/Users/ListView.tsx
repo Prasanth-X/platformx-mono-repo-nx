@@ -27,7 +27,7 @@ import {
   APPROVE_REJECT_USER,
 } from '../../../graphql/mutateQueries';
 import { useDialog } from '../../../hooks/useDialog/useDialog';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../editPage/Switch';
 import MoreDialog from '../Component/MoreDialog';
 import { ListViewProps } from '../UserManagement.Types';
@@ -204,24 +204,24 @@ const ListView = ({
   return (
     <>
       {isLoading && <Loader />}
-      <Box className='userlistbox listbox'>
-        <Grid container className='d-flex align-items-center'>
+      <Box className="userlistbox listbox">
+        <Grid container className="d-flex align-items-center">
           <Grid xs={11} em={8}>
-            <Box className='d-flex align-items-center'>
-              <Box className='img'>
+            <Box className="d-flex align-items-center">
+              <Box className="img">
                 {image ? (
                   <img
                     src={image}
                     style={{ width: '100%', objectFit: 'cover' }}
                   />
                 ) : (
-                  <Avatar src='/broken-image.jpg' variant='rounded' />
+                  <Avatar src="/broken-image.jpg" variant="rounded" />
                 )}
               </Box>
               <Box>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Typography variant='h5semibold'>{first_name}</Typography>
-                  <Typography variant='h5semibold' sx={{ marginLeft: '5px' }}>
+                  <Typography variant="h5semibold">{first_name}</Typography>
+                  <Typography variant="h5semibold" sx={{ marginLeft: '5px' }}>
                     {last_name}
                   </Typography>
 
@@ -241,7 +241,7 @@ const ListView = ({
                   rolename && (
                     <Typography
                       //key={role._id}
-                      variant='h7medium'
+                      variant="h7medium"
                       //className='doticon'
                       sx={{
                         marginLeft: { xs: 0, em: '10px' },
@@ -258,7 +258,7 @@ const ListView = ({
                 filterValue === USERTYPES.COMMUNITYUSER ||
                   filterValue === USERTYPES.ENDUSER ? (
                   <Typography
-                    variant='h7medium'
+                    variant="h7medium"
                     //className='doticon'
                     sx={{
                       marginLeft: { xs: 0, em: '10px' },
@@ -272,23 +272,23 @@ const ListView = ({
                 ) : null}
 
                 <Box
-                  className='d-flex'
+                  className="d-flex"
                   sx={{
                     flexWrap: { xs: 'wrap', em: 'inherit' },
                     alignItems: 'center',
                   }}
                 >
-                  <Box display='flex'>
+                  <Box display="flex">
                     <Typography
-                      variant='h7regular'
+                      variant="h7regular"
                       sx={{ order: { xs: 2, em: 1 } }}
                     >
                       {email}
                     </Typography>
                     {action_pending ? (
                       <Typography
-                        variant='h7medium'
-                        className='doticon'
+                        variant="h7medium"
+                        className="doticon"
                         sx={{
                           marginLeft: { xs: 0, em: '10px' },
                           order: { xs: 1, em: 2 },
@@ -306,8 +306,8 @@ const ListView = ({
                       rolename && (
                         <Typography
                           //  key={role._id}
-                          variant='h7medium'
-                          className='doticon'
+                          variant="h7medium"
+                          className="doticon"
                           sx={{
                             marginLeft: { xs: 0, em: '10px' },
                             order: { xs: 1, em: 2 },
@@ -324,7 +324,7 @@ const ListView = ({
                     filterValue === USERTYPES.COMMUNITYUSER ||
                       filterValue === USERTYPES.ENDUSER ? (
                       <Typography
-                        variant='h7medium'
+                        variant="h7medium"
                         //className='doticon'
                         sx={{
                           marginLeft: { xs: 0, em: '10px' },
@@ -339,7 +339,7 @@ const ListView = ({
                     ) : null}
                   </Box>
 
-                  <Typography variant='h7regular' className='doticonmobile'>
+                  <Typography variant="h7regular" className="doticonmobile">
                     {DateTime}
                   </Typography>
                 </Box>
@@ -347,13 +347,13 @@ const ListView = ({
             </Box>
           </Grid>
           <Grid xs={1} em={4}>
-            <Box className='d-flex align-items-center justify-content-end'>
-              <Box className='datetimeweb'>
-                <Typography variant='h7regular' component='div'>
+            <Box className="d-flex align-items-center justify-content-end">
+              <Box className="datetimeweb">
+                <Typography variant="h7regular" component="div">
                   {DateTime}
                 </Typography>
               </Box>
-              <Box color='#89909A' className='d-inline-flex align-items-center'>
+              <Box color="#89909A" className="d-inline-flex align-items-center">
                 <Box
                   className={`d-flex align-items-center ${
                     filterValue === USERTYPES.COMMUNITYUSER ||
@@ -382,7 +382,7 @@ const ListView = ({
                   ) : (
                     <>
                       <MenuItem
-                        className='icons'
+                        className="icons"
                         onClick={(e) =>
                           !isRejectedUser && handleEditUser(e, user_id)
                         }
@@ -390,24 +390,24 @@ const ListView = ({
                           cursor: isRejectedUser ? 'not-allowed' : 'pointer',
                         }}
                       >
-                        <IconButton className='hoverIcon'>
-                          <img src={EditIcon} alt='Edit Icon' />
+                        <IconButton className="hoverIcon">
+                          <img src={EditIcon} alt="Edit Icon" />
                         </IconButton>
                       </MenuItem>
 
                       {action_pending ? (
                         <MenuItem
-                          className='icons'
+                          className="icons"
                           onClick={() => handleReSendMail()}
                           disabled={isRejectedUser}
                         >
-                          <IconButton className='hoverIcon'>
+                          <IconButton className="hoverIcon">
                             <ForwardToInboxIcon sx={{ marginLeft: '19px' }} />
                           </IconButton>
                         </MenuItem>
                       ) : (
                         <MenuItem
-                          className='icons'
+                          className="icons"
                           sx={{
                             cursor: isRejectedUser ? 'not-allowed' : 'pointer',
                           }}

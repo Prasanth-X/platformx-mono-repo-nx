@@ -1,33 +1,33 @@
-import Step from "@material-ui/core/Step";
-import StepConnector from "@material-ui/core/StepConnector";
-import StepLabel from "@material-ui/core/StepLabel";
-import Stepper from "@material-ui/core/Stepper";
-import { withStyles } from "@material-ui/core/styles";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { Box, Button, Divider, Slide, Typography } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import TextField from "@mui/material/TextField";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import * as React from "react";
-import { useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { showToastError } from "../../../components/toastNotification/toastNotificationReactTostify";
-import { Store } from "../../../store/ContextStore";
-import ThemeConstants from "../../../theme/variable";
-import LinkThirdPg from "./LinkThirdPg";
+import Step from '@material-ui/core/Step';
+import StepConnector from '@material-ui/core/StepConnector';
+import StepLabel from '@material-ui/core/StepLabel';
+import Stepper from '@material-ui/core/Stepper';
+import { withStyles } from '@material-ui/core/styles';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { Box, Button, Divider, Slide, Typography } from '@mui/material';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import TextField from '@mui/material/TextField';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import * as React from 'react';
+import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { showToastError } from '../../../components/toastNotification/toastNotificationReactTostify';
+import { Store } from '../../../store/ContextStore';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import LinkThirdPg from './LinkThirdPg';
 
-const steps = ["Create", "Add", "Confirm"];
+const steps = ['Create', 'Add', 'Confirm'];
 const styles = () => ({
   stepIcon: {
-    color: "#2d2d39 !important",
+    color: '#2d2d39 !important',
   },
   root: {
     '& .MuiStepIcon-active': { color: ThemeConstants.PRIMARY_MAIN_COLOR },
@@ -68,11 +68,11 @@ function LinkSecondPg({
   const { state, dispatch } = useContext(Store);
   const [isContinueLink, setIsContinueLink] = useState(false);
   const [hover, setHover] = useState(false);
-  const [menu, setMenu] = React.useState("");
+  const [menu, setMenu] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [linkFinalPage, setLinkFinalPage] = React.useState(false);
   const [isMenuSecondPg, setIsMenuSecondPg] = React.useState(false);
-  const [linkMenuItemName, setLinkMenuItemName] = useState("");
+  const [linkMenuItemName, setLinkMenuItemName] = useState('');
   const [isLinkThirdPg, setIsLinkThirdPg] = React.useState(false);
 
   const onHover = () => {
@@ -92,8 +92,8 @@ function LinkSecondPg({
       /(https?:\/\/|www)(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g
     );
     if (res == null && event.target.value) {
-      setLinkMenuItemName("");
-      showToastError(t("invalid_url_toast"));
+      setLinkMenuItemName('');
+      showToastError(t('invalid_url_toast'));
     } else setLinkMenuItemName(event.target.value);
   };
   const handleLinkTabChange = (evnt) => {
@@ -109,15 +109,15 @@ function LinkSecondPg({
   React.useEffect(() => {
     if (editData) {
       if (editData?.Internal) {
-        setAlignment("Page");
-        setLinkMenuItemName("");
+        setAlignment('Page');
+        setLinkMenuItemName('');
       } else {
-        setAlignment("Link");
+        setAlignment('Link');
         setLinkMenuItemName(editData?.URL);
         if (editData?.isCurrentTab) {
-          setRadioSelectedLink("Current Tab");
+          setRadioSelectedLink('Current Tab');
         } else {
-          setRadioSelectedLink("New Tab");
+          setRadioSelectedLink('New Tab');
         }
       }
     }
@@ -149,9 +149,9 @@ function LinkSecondPg({
               setOpenFirstPage(true);
             }}
             sx={{
-              width: "20px",
-              height: "20px",
-              cursor: "pointer",
+              width: '20px',
+              height: '20px',
+              cursor: 'pointer',
               margin: 1,
             }}
           />
@@ -178,7 +178,7 @@ function LinkSecondPg({
             alternativeLabel
             className={classes.root}
             style={{
-              padding: "15px",
+              padding: '15px',
             }}
             connector={
               <StepConnector
@@ -190,13 +190,13 @@ function LinkSecondPg({
               />
             }
           >
-            {steps.map((label) =>
-              (<Step key={label}>
+            {steps.map((label) => (
+              <Step key={label}>
                 <StepLabel style={{ marginTop: '0px' }}>
                   {t(label.toLowerCase())}
                 </StepLabel>
-              </Step>)
-            )}
+              </Step>
+            ))}
           </Stepper>
         </Box>
 
@@ -227,20 +227,21 @@ function LinkSecondPg({
                     backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
                     borderRadius: '21px',
                   },
-                  textTransform: "none",
-                  borderRadius: "21px 0 0 21px",
-                  width: "149px",
-                  height: "42px",
-                  border: "none",
-                  backgroundColor: "#f5f6f8",
-                  padding: "11px 56px 11px 57px",
-                  borderRight: "none",
-                  ":hover": {
-                    backgroundColor: "#f5f6f8",
+                  textTransform: 'none',
+                  borderRadius: '21px 0 0 21px',
+                  width: '149px',
+                  height: '42px',
+                  border: 'none',
+                  backgroundColor: '#f5f6f8',
+                  padding: '11px 56px 11px 57px',
+                  borderRight: 'none',
+                  ':hover': {
+                    backgroundColor: '#f5f6f8',
                   },
                   fontSize: ThemeConstants.FONTSIZE_SM,
-                }}>
-                {t("page")}
+                }}
+              >
+                {t('page')}
               </ToggleButton>
               <ToggleButton
                 value="Link"
@@ -250,19 +251,20 @@ function LinkSecondPg({
                     backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
                     borderRadius: '21px',
                   },
-                  ":hover": {
-                    backgroundColor: "#f5f6f8",
+                  ':hover': {
+                    backgroundColor: '#f5f6f8',
                   },
-                  textTransform: "none",
-                  borderRadius: "0 21px 21px 0",
-                  width: "149px",
-                  height: "42px",
-                  backgroundColor: "#f5f6f8",
+                  textTransform: 'none',
+                  borderRadius: '0 21px 21px 0',
+                  width: '149px',
+                  height: '42px',
+                  backgroundColor: '#f5f6f8',
                   fontSize: ThemeConstants.FONTSIZE_SM,
-                  padding: "11px 56px 11px 57px",
-                  borderLeft: "none",
-                  border: "none",
-                }}>
+                  padding: '11px 56px 11px 57px',
+                  borderLeft: 'none',
+                  border: 'none',
+                }}
+              >
                 Link
               </ToggleButton>
             </ToggleButtonGroup>
@@ -270,29 +272,32 @@ function LinkSecondPg({
           <Box>
             <Box
               sx={{
-                marginLeft: "11px",
-                marginTop: "40px",
-                display: "flex",
-                flexDirection: "column",
-              }}>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                <Typography variant="h6medium">{t("insert_url")}</Typography>
+                marginLeft: '11px',
+                marginTop: '40px',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Typography variant="h6medium">{t('insert_url')}</Typography>
                 <Typography
                   sx={{
                     fontSize: ThemeConstants.FONTSIZE_XS,
-                    color: "#89909a",
-                  }}>
-                  {" "}
-                  {t("menu_subname")}
+                    color: '#89909a',
+                  }}
+                >
+                  {' '}
+                  {t('menu_subname')}
                 </Typography>
               </Box>
               <Box
                 sx={{
                   paddingTop: 1,
                   pr: 1,
-                  display: "flex",
-                  alignItems: "center",
-                }}>
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
                 <TextField
                   size="small"
                   type="url"
@@ -301,9 +306,9 @@ function LinkSecondPg({
                   onChange={handleLinkMenuItemName}
                   onBlur={checkUrl}
                   InputProps={{
-                    endAdornment:
-  <InputAdornment position='end'>
-    <CancelOutlinedIcon
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <CancelOutlinedIcon
                           onClick={() => setLinkMenuItemName('')}
                           sx={{
                             cursor: 'pointer',
@@ -312,27 +317,28 @@ function LinkSecondPg({
                             color: ThemeConstants.PRIMARY_MAIN_COLOR,
                           }}
                         />
-  </InputAdornment>
-                    ,
+                      </InputAdornment>
+                    ),
                   }}
                   sx={{
-                    color: "#6d6dff",
-                    width: "267px",
-                    ".Platform-x-InputBase-root": {
-                      height: "50px",
+                    color: '#6d6dff',
+                    width: '267px',
+                    '.Platform-x-InputBase-root': {
+                      height: '50px',
                       fontSize: ThemeConstants.FONTSIZE_XS,
-                      color: "#6d6dff",
+                      color: '#6d6dff',
                     },
-                  }}></TextField>
+                  }}
+                ></TextField>
                 <ContentCopyIcon
                   onClick={copyText}
                   onMouseEnter={onHover}
                   onMouseLeave={onLeave}
                   sx={{
-                    cursor: "pointer",
-                    width: "20.7px",
-                    height: "23.9px",
-                    marginLeft: "31.2px",
+                    cursor: 'pointer',
+                    width: '20.7px',
+                    height: '23.9px',
+                    marginLeft: '31.2px',
                   }}
                 />
               </Box>
@@ -340,13 +346,14 @@ function LinkSecondPg({
 
             <Box
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                marginLeft: "11px",
-                marginTop: "25px",
-              }}>
-              <Typography variant="h6medium">{t("select_tab")}</Typography>
-              <Box sx={{ display: "flex", flexDirection: "row", mb: "23px" }}>
+                display: 'flex',
+                flexDirection: 'column',
+                marginLeft: '11px',
+                marginTop: '25px',
+              }}
+            >
+              <Typography variant="h6medium">{t('select_tab')}</Typography>
+              <Box sx={{ display: 'flex', flexDirection: 'row', mb: '23px' }}>
                 <RadioGroup
                   name="page-radio-buttons-group"
                   value={radioSelectedLink}
@@ -355,7 +362,7 @@ function LinkSecondPg({
                 >
                   <FormControlLabel
                     sx={{
-                      ".Platform-x-FormControlLabel-label": {
+                      '.Platform-x-FormControlLabel-label': {
                         fontSize: ThemeConstants.FONTSIZE_SM,
                       },
                     }}
@@ -365,7 +372,7 @@ function LinkSecondPg({
                   />
                   <FormControlLabel
                     sx={{
-                      ".Platform-x-FormControlLabel-label": {
+                      '.Platform-x-FormControlLabel-label': {
                         fontSize: ThemeConstants.FONTSIZE_SM,
                       },
                     }}
@@ -380,18 +387,19 @@ function LinkSecondPg({
         </Box>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            position: "absolute",
-            bottom: "20px",
-            width: "100%",
-          }}>
+            display: 'flex',
+            justifyContent: 'center',
+            position: 'absolute',
+            bottom: '20px',
+            width: '100%',
+          }}
+        >
           <Button
             variant="contained"
             disableElevation
             sx={{
-              width: "163px",
-              height: "50px",
+              width: '163px',
+              height: '50px',
               fontSize: ThemeConstants.FONTSIZE_SM,
               backgroundColor: ThemeConstants.WHITE_COLOR,
               color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -401,24 +409,26 @@ function LinkSecondPg({
                 backgroundColor: ThemeConstants.WHITE_COLOR,
                 color: ThemeConstants.BLACK_COLOR,
               },
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
             }}
             onClick={() => {
               handleBack();
               setActiveStep(0);
               setIsLinkSecondPg(false);
               setOpenFirstPage(true);
-            }}>
-            <ChevronLeftIcon sx={{ mr: "5px" }} />
+            }}
+          >
+            <ChevronLeftIcon sx={{ mr: '5px' }} />
 
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                mr: "5px",
-              }}>
-              {t("back")}
+                display: 'flex',
+                alignItems: 'center',
+                mr: '5px',
+              }}
+            >
+              {t('back')}
             </Box>
           </Button>
           <Button
@@ -426,8 +436,8 @@ function LinkSecondPg({
             disableElevation
             disabled={linkMenuItemName ? false : true}
             sx={{
-              width: "163px",
-              height: "50px",
+              width: '163px',
+              height: '50px',
               fontSize: ThemeConstants.FONTSIZE_SM,
               backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
               color: '#fff',
@@ -435,31 +445,33 @@ function LinkSecondPg({
               ml: '16px',
               borderRadius: '3px',
 
-              "&:hover": {
+              '&:hover': {
                 backgroundColor: ThemeConstants.BLACK_COLOR,
                 color: ThemeConstants.WHITE_COLOR,
               },
-              "&:disabled": {
-                backgroundColor: "#ced3d9",
-                color: "#89909a",
+              '&:disabled': {
+                backgroundColor: '#ced3d9',
+                color: '#89909a',
                 fontSize: ThemeConstants.FONTSIZE_SM,
               },
             }}
             onClick={() => {
               handleNext();
               setIsLinkThirdPg(true);
-            }}>
+            }}
+          >
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                ml: "3px",
-              }}>
-              {t("continue")}
+                display: 'flex',
+                alignItems: 'center',
+                ml: '3px',
+              }}
+            >
+              {t('continue')}
             </Box>
 
             <ArrowForwardIosIcon
-              sx={{ ml: "10px", width: "15px", height: "15px" }}
+              sx={{ ml: '10px', width: '15px', height: '15px' }}
             />
           </Button>
         </Box>
@@ -468,11 +480,12 @@ function LinkSecondPg({
             sx={{
               backgroundColor: ThemeConstants.WHITE_COLOR,
               zIndex: 100,
-              position: "fixed",
-              width: "100%",
-              height: "100%",
+              position: 'fixed',
+              width: '100%',
+              height: '100%',
               top: 0,
-            }}>
+            }}
+          >
             <LinkThirdPg
               setIsLinkThirdPg={setIsLinkThirdPg}
               setIsLinkSecondPg={setIsLinkSecondPg}

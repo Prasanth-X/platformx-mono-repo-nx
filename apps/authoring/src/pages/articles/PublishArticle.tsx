@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { makeStyles } from '@material-ui/core';
 
 import { useState } from 'react';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 interface DialogList {
   isDialogOpen: boolean;
@@ -71,10 +71,10 @@ export default function PublishArticle({
       <Dialog
         fullWidth
         open={isDialogOpen}
-        maxWidth='sm'
+        maxWidth="sm"
         onClose={closeButtonHandle}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
         sx={{
           '.Platform-x-Dialog-paper': {
             // maxWidth: { xs: '500px', xl: '600px' },
@@ -104,7 +104,7 @@ export default function PublishArticle({
         )} */}
 
         <DialogTitle
-          id='alert-dialog-title'
+          id="alert-dialog-title"
           sx={{
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             textAlign: 'center',
@@ -134,12 +134,12 @@ export default function PublishArticle({
             //defaultValue={pageUrl}
             onKeyPress={(e: any) => updateTags(e)}
             onChange={(e: any) => setCurrentTag(e.target.value)}
-            placeholder='Enter Tags'
-            margin='dense'
-            id='name'
-            type='text'
-            variant='outlined'
-            autoComplete='off'
+            placeholder="Enter Tags"
+            margin="dense"
+            id="name"
+            type="text"
+            variant="outlined"
+            autoComplete="off"
             sx={{
               '.Platform-x-Input-root:after': {
                 borderBottom: '10px solid #000000',
@@ -186,7 +186,7 @@ export default function PublishArticle({
           }}
         >
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               marginRight: '20px',
             }}
@@ -194,7 +194,7 @@ export default function PublishArticle({
           >
             Skip and Publish
           </Button>
-          <Button variant='contained' onClick={() => publish(tags)} autoFocus>
+          <Button variant="contained" onClick={() => publish(tags)} autoFocus>
             Publish
           </Button>
         </DialogActions>

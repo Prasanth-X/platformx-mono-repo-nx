@@ -3,7 +3,7 @@ import { Box, Button, Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { prelemsApi } from '../../services/prelems/prelems.api';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Layout, LocationData } from './utils/prelemTypes';
 const PrelemLayoutsList = () => {
   const location = useLocation();
@@ -26,7 +26,7 @@ const PrelemLayoutsList = () => {
     <Box>
       <Box sx={{ padding: '0px 30px' }}>
         <Button
-          variant='outlined'
+          variant="outlined"
           sx={{
             marginTop: '15px',
             marginBottom: '15px',
@@ -49,8 +49,8 @@ const PrelemLayoutsList = () => {
         }}
       >
         <Grid container>
-          {layouts.map((layout, key) =>
-            (<Grid
+          {layouts.map((layout, key) => (
+            <Grid
               item
               xs={12}
               sm={4}
@@ -65,11 +65,11 @@ const PrelemLayoutsList = () => {
                 src={`${layout.thumbnail}`}
                 srcSet={`${layout.thumbnail}`}
                 alt={layout.thumbnail}
-                loading='lazy'
+                loading="lazy"
                 style={{ width: '100%' }}
               />
-            </Grid>)
-          )}
+            </Grid>
+          ))}
         </Grid>
       </Box>
     </Box>

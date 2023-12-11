@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoResults from '../../assets/images/no-results.png';
 import { showToastError } from '../../components/toastNotification/toastNotificationReactTostify';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../utils/authConstants';
 import './Gallery.css';
 import { GalleryProps, ImageProps } from './utils/galleryTypes';

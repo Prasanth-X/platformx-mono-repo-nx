@@ -6,74 +6,74 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PageStatusProps } from './PageStatus.types';
 
 export default function PageStatus({ pageType, colorType }: PageStatusProps) {
   let iconName;
   if (pageType == 'Scheduled Publish') {
     colorType = ThemeConstants.SCEDULED_PUBLISHED_COLOR;
-    iconName =
-      (<ScheduleSendIcon
+    iconName = (
+      <ScheduleSendIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   } else if (pageType == 'Scheduled Unpublish') {
     colorType = ThemeConstants.SCEDULED_UNPUBLISHED_COLOR;
-    iconName =
-      (<CancelScheduleSendIcon
+    iconName = (
+      <CancelScheduleSendIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   } else if (pageType == 'draft') {
     colorType = ThemeConstants.DRAFT_COLOR;
-    iconName =
-      (<SaveAsIcon
+    iconName = (
+      <SaveAsIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   } else if (pageType == 'published') {
     colorType = ThemeConstants.PUBLISHED_COLOR;
-    iconName =
-      (<TelegramIcon
+    iconName = (
+      <TelegramIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   } else if (pageType == 'approved') {
     colorType = ThemeConstants.APPROVED_COLOR;
-    iconName =
-      (<CheckCircleIcon
+    iconName = (
+      <CheckCircleIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   } else if (pageType == 'unpublished') {
     colorType = ThemeConstants.UNPUBLISHED_COLOR;
-    iconName =
-      (<UnpublishedIcon
+    iconName = (
+      <UnpublishedIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   } else {
     colorType = ThemeConstants.PUBLISHED_COLOR;
-    iconName =
-      (<TelegramIcon
+    iconName = (
+      <TelegramIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
   }
   return (
     <>
@@ -100,9 +100,9 @@ export default function PageStatus({ pageType, colorType }: PageStatusProps) {
       >
         {iconName}
         <Typography
-          variant='body1'
+          variant="body1"
           sx={{ fontSize: '11px', display: 'none' }}
-          className='status-text'
+          className="status-text"
         >
           {pageType}
         </Typography>

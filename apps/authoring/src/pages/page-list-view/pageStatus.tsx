@@ -8,7 +8,7 @@ import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PageStatusList } from '../PageList/Page.types';
 
 export default function PageStatus({
@@ -144,13 +144,13 @@ export default function PageStatus({
         {iconName}
         {!gridView && (
           <Typography
-            variant='body1'
+            variant="body1"
             sx={{
               fontSize: '12px',
               lineHeight: '1.8',
               display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
             }}
-            className='status-text'
+            className="status-text"
           >
             {iconLabel}
           </Typography>

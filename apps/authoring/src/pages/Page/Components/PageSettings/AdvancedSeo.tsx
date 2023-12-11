@@ -16,7 +16,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageModel } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BackButton from '../BackButton/BackButton';
 import './PageSettings.css';
 
@@ -179,17 +179,17 @@ const AdvancedSeo = ({ setPageId }) => {
     handleImpression(pageDataObj.eventType, pageDataObj);
   };
   return (
-    <Box className='pageSettingmainWp'>
-      <BackButton setPageId={setPageId} Title='Advanced SEO' />
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+    <Box className="pageSettingmainWp">
+      <BackButton setPageId={setPageId} Title="Advanced SEO" />
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_meta_tag')}
         </Typography>
         <FormGroup>
           {tags.map((tag, index) => {
             return (
               <Box key={index}>
-                <Typography className='labelbox' variant='p4regular'>
+                <Typography className="labelbox" variant="p4regular">
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -204,17 +204,17 @@ const AdvancedSeo = ({ setPageId }) => {
                       />
                     }
                     label={
-                      <Typography variant='p4regular'>{t(tag.id)}</Typography>
+                      <Typography variant="p4regular">{t(tag.id)}</Typography>
                     }
                   />
                 </Typography>
                 {tag.tagState == true && tag.tagName == 'max-image-preview' ? (
-                  <FormControl variant='standard' sx={{ width: '100%' }}>
+                  <FormControl variant="standard" sx={{ width: '100%' }}>
                     <Select
-                      variant='outlined'
-                      size='small'
-                      labelId='demo-simple-select-standard-label'
-                      id='demo-simple-select-standard'
+                      variant="outlined"
+                      size="small"
+                      labelId="demo-simple-select-standard-label"
+                      id="demo-simple-select-standard"
                       value={tag.previewType}
                       onChange={(e) => handlePreviewChange(e, index)}
                       sx={{
@@ -252,16 +252,16 @@ const AdvancedSeo = ({ setPageId }) => {
                 )}
                 {tag.tagState == true && tag.tagName == 'max-snippet' ? (
                   <Box>
-                    <Typography className='labelbox' variant='p4regular'>
+                    <Typography className="labelbox" variant="p4regular">
                       Characters
                     </Typography>
                     <TextField
                       value={tag.characters}
                       onChange={(e) => handleDataChange(e, index)}
-                      variant='outlined'
-                      size='small'
-                      type='number'
-                      placeholder='write characters here'
+                      variant="outlined"
+                      size="small"
+                      type="number"
+                      placeholder="write characters here"
                       inputProps={{ min: -1 }}
                     />
                   </Box>
@@ -270,16 +270,16 @@ const AdvancedSeo = ({ setPageId }) => {
                 )}
                 {tag.tagState == true && tag.tagName == 'max-video-preview' ? (
                   <Box>
-                    <Typography className='labelbox' variant='p4regular'>
+                    <Typography className="labelbox" variant="p4regular">
                       Seconds
                     </Typography>
                     <TextField
                       value={tag.seconds}
                       onChange={(e) => handleDataChange(e, index)}
-                      variant='outlined'
-                      size='small'
-                      type='number'
-                      placeholder='write seconds here'
+                      variant="outlined"
+                      size="small"
+                      type="number"
+                      placeholder="write seconds here"
                       inputProps={{ min: -1 }}
                       sx={{
                         width: '100%',
@@ -297,22 +297,22 @@ const AdvancedSeo = ({ setPageId }) => {
           })}
         </FormGroup>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_canonical_url')}
         </Typography>
         <TextField
-          size='small'
+          size="small"
           multiline
           value={canonicalURL}
           onChange={(e) => setCanonicalURL(e.target.value)}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('canonical_url')}
         />
       </Box>
-      <Box className='rowBox'>
+      <Box className="rowBox">
         <Button
-          variant='contained'
+          variant="contained"
           disabled={
             initialTags.current === tags &&
             initialCanonical.current === canonicalURL

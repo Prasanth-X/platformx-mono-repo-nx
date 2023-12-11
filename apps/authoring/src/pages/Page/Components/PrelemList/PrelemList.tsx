@@ -17,7 +17,7 @@ import {
 
 import { addPrelem } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { SearchCardListProps } from '../../utils/prelemTypes';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {

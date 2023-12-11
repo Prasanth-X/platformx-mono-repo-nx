@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 // [theme.breakpoints.up('xs')]: {
 
@@ -44,8 +44,8 @@ export const useStyles = makeStyles((theme) => ({
     // padding: '40px',
     borderRadius: '5px',
   },
-  cookieInput:{
-    boxShadow: 'none'
+  cookieInput: {
+    boxShadow: 'none',
   },
   leftGridItem: {
     display: 'flex',
@@ -90,18 +90,18 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: '820px',
     margin: 'auto',
   },
-  textboxStyle:{
+  textboxStyle: {
     borderRadius: '5px',
     fontFamily: 'Inter !important',
     fontStyle: 'normal',
     height: '57px',
   },
-  placeholderStyle:{
+  placeholderStyle: {
     top: '4px',
     left: '9px',
     fontFamily: 'Inter',
     fontSize: '14px',
-    color:'#6E7191'
+    color: '#6E7191',
   },
   informativeLeft: {
     [theme.breakpoints.up('xs')]: {
@@ -140,10 +140,10 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: '25px',
     paddingTop: '25px',
     [theme.breakpoints.up('xs')]: {
-      display:'block'
+      display: 'block',
     },
     [theme.breakpoints.up('sm')]: {
-      display:'none'
+      display: 'none',
     },
   },
 }));

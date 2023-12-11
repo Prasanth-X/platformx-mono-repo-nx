@@ -13,7 +13,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageModel } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const AdvancedSeo = () => {
   const { t } = useTranslation();
@@ -92,21 +92,29 @@ const AdvancedSeo = () => {
       seconds: -1,
       id: 'page_seconds',
     },
-  ]
-  const initialTags = useRef(data)
+  ];
+  const initialTags = useRef(data);
   const [tags, setTags] = useState(initialTags.current);
   const pageInfo = { ...page?.pageSettings };
   const { PageURL } = pageInfo;
-  const initialCanonical = useRef(tagsPrefilled == '' ? PageURL == undefined ? '' : PageURL : CanonicalURL)
-  const [canonicalURL, setCanonicalURL] = useState<string>(initialCanonical.current);
+  const initialCanonical = useRef(
+    tagsPrefilled == '' ? (PageURL == undefined ? '' : PageURL) : CanonicalURL
+  );
+  const [canonicalURL, setCanonicalURL] = useState<string>(
+    initialCanonical.current
+  );
 
   useEffect(() => {
-    initialTags.current = data
-    setTags(initialTags.current)
-    initialCanonical.current = tagsPrefilled == '' ? PageURL == undefined ? '' : PageURL : CanonicalURL
-    setCanonicalURL(initialCanonical.current)
-
-  }, [page?.pageModel.Others, page?.pageSettings])
+    initialTags.current = data;
+    setTags(initialTags.current);
+    initialCanonical.current =
+      tagsPrefilled == ''
+        ? PageURL == undefined
+          ? ''
+          : PageURL
+        : CanonicalURL;
+    setCanonicalURL(initialCanonical.current);
+  }, [page?.pageModel.Others, page?.pageSettings]);
 
   const handleTagCheckChange = (e, index) => {
     const tagsUpdated = [...tags];
@@ -168,7 +176,7 @@ const AdvancedSeo = () => {
   return (
     <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignimageInstances: 'center',
@@ -176,7 +184,7 @@ const AdvancedSeo = () => {
         }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_meta_tag')}
         <Tooltip
@@ -187,7 +195,7 @@ const AdvancedSeo = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -207,7 +215,7 @@ const AdvancedSeo = () => {
             <Box key={index}>
               <Typography
                 sx={{ display: 'flex', alignItems: 'center' }}
-                className='drawer-label'
+                className="drawer-label"
               >
                 <FormControlLabel
                   control={
@@ -235,7 +243,7 @@ const AdvancedSeo = () => {
                       </Typography>
                     </Box>
                   }
-                  placement='right'
+                  placement="right"
                 >
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <InfoOutlinedIcon
@@ -249,11 +257,11 @@ const AdvancedSeo = () => {
                   </Box>
                 </Tooltip>
               </Typography>
-              {tag.tagState == true && tag.tagName == 'max-image-preview' ?
-                <FormControl variant='standard' sx={{ width: '100%' }}>
+              {tag.tagState == true && tag.tagName == 'max-image-preview' ? (
+                <FormControl variant="standard" sx={{ width: '100%' }}>
                   <Select
-                    labelId='demo-simple-select-standard-label'
-                    id='demo-simple-select-standard'
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
                     value={tag.previewType}
                     onChange={(e) => handlePreviewChange(e, index)}
                     sx={{
@@ -286,15 +294,16 @@ const AdvancedSeo = () => {
                     })}
                   </Select>
                 </FormControl>
-                :
-                <></>}
-              {tag.tagState == true && tag.tagName == 'max-snippet' ?
+              ) : (
+                <></>
+              )}
+              {tag.tagState == true && tag.tagName == 'max-snippet' ? (
                 <Box>
                   <Typography
-                    variant='subtitle1'
+                    variant="subtitle1"
                     sx={{ display: 'flex', alignimageInstances: 'center' }}
                     mt={2}
-                    className='drawer-label'
+                    className="drawer-label"
                   >
                     Characters
                     <Tooltip
@@ -308,7 +317,7 @@ const AdvancedSeo = () => {
                           </Typography>
                         </Box>
                       }
-                      placement='right'
+                      placement="right"
                     >
                       <Box>
                         <InfoOutlinedIcon
@@ -325,9 +334,9 @@ const AdvancedSeo = () => {
                   <TextField
                     value={tag.characters}
                     onChange={(e) => handleDataChange(e, index)}
-                    variant='standard'
-                    type='number'
-                    placeholder='write characters here'
+                    variant="standard"
+                    type="number"
+                    placeholder="write characters here"
                     inputProps={{ min: -1 }}
                     sx={{
                       width: '100%',
@@ -337,15 +346,16 @@ const AdvancedSeo = () => {
                     }}
                   />
                 </Box>
-                :
-                <></>}
-              {tag.tagState == true && tag.tagName == 'max-video-preview' ?
+              ) : (
+                <></>
+              )}
+              {tag.tagState == true && tag.tagName == 'max-video-preview' ? (
                 <Box>
                   <Typography
-                    variant='subtitle1'
+                    variant="subtitle1"
                     sx={{ display: 'flex', alignimageInstances: 'center' }}
                     mt={2}
-                    className='drawer-label'
+                    className="drawer-label"
                   >
                     Seconds
                     <Tooltip
@@ -359,7 +369,7 @@ const AdvancedSeo = () => {
                           </Typography>
                         </Box>
                       }
-                      placement='right'
+                      placement="right"
                     >
                       <Box>
                         <InfoOutlinedIcon
@@ -376,9 +386,9 @@ const AdvancedSeo = () => {
                   <TextField
                     value={tag.seconds}
                     onChange={(e) => handleDataChange(e, index)}
-                    variant='standard'
-                    type='number'
-                    placeholder='write seconds here'
+                    variant="standard"
+                    type="number"
+                    placeholder="write seconds here"
                     inputProps={{ min: -1 }}
                     sx={{
                       width: '100%',
@@ -388,19 +398,20 @@ const AdvancedSeo = () => {
                     }}
                   />
                 </Box>
-                :
-                <></>}
+              ) : (
+                <></>
+              )}
             </Box>
           );
         })}
       </FormGroup>
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_canonical_url')}
         <Tooltip
@@ -411,7 +422,7 @@ const AdvancedSeo = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -429,13 +440,16 @@ const AdvancedSeo = () => {
         multiline
         value={canonicalURL}
         onChange={(e) => setCanonicalURL(e.target.value)}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('canonical_url')}
       />
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
-          disabled={(initialTags.current === tags && initialCanonical.current === canonicalURL)}
+          variant="contained"
+          disabled={
+            initialTags.current === tags &&
+            initialCanonical.current === canonicalURL
+          }
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,
             '&:hover': {

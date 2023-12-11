@@ -19,11 +19,11 @@ import {
 } from '../../services/prelems/prelems.api';
 import { addPrelem } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import PrelemPreviewFrame from './PrelemPreviewFrame';
 import { SearchCardObjecType } from './utils/prelemTypes';
-import PrelemTheme from '../../theme/prelemTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import { getSubDomain } from '../../utils/helperFunctions';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
@@ -61,7 +61,7 @@ const PrelemPreview = () => {
       >
         <Box>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               borderColor: ThemeConstants.PRIMARY_MAIN_COLOR,
               color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -73,7 +73,7 @@ const PrelemPreview = () => {
               },
               display: { xs: 'none', md: 'flex', lg: 'flex' },
             }}
-            data-testid='prelem-back-button'
+            data-testid="prelem-back-button"
             onClick={() => {
               history.go(-1);
             }}
@@ -81,7 +81,7 @@ const PrelemPreview = () => {
             <ChevronLeftIcon />{' '}
             <Typography
               pl={1}
-              variant='body1'
+              variant="body1"
               sx={{ textTransform: 'capitalize' }}
             >
               {t('back')}
@@ -93,7 +93,7 @@ const PrelemPreview = () => {
               fontSize: ThemeConstants.FONTSIZE_XL,
               display: { xs: 'flex', md: 'none', lg: 'none' },
             }}
-            data-testid='prelem-back-mobile-button'
+            data-testid="prelem-back-mobile-button"
             onClick={() => {
               history.go(-1);
             }}
@@ -101,7 +101,7 @@ const PrelemPreview = () => {
         </Box>
         <Box>
           <Typography
-            variant='h4'
+            variant="h4"
             sx={{
               color: ThemeConstants.PRIMARY_MAIN_COLOR,
               position: 'absolute',
@@ -118,7 +118,7 @@ const PrelemPreview = () => {
               },
               textTransform: 'capitalize',
             }}
-            data-testid='page-title'
+            data-testid="page-title"
           >
             {t('prelem_preview')}
           </Typography>
@@ -126,7 +126,7 @@ const PrelemPreview = () => {
         <Box>
           <Box sx={{ display: 'flex', justifyContent: 'end' }}>
             <Button
-              variant='outlined'
+              variant="outlined"
               sx={{
                 borderColor: ThemeConstants.PRIMARY_MAIN_COLOR,
                 color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -139,7 +139,7 @@ const PrelemPreview = () => {
                 },
                 display: { xs: 'none', md: 'flex', lg: 'flex' },
               }}
-              data-testid='prelem-info-button'
+              data-testid="prelem-info-button"
               onClick={() => {
                 navigate('/prelem-search/about', {
                   state: prelemMetaInfo,
@@ -153,13 +153,13 @@ const PrelemPreview = () => {
                   paddingLeft: '0px',
                   textTransform: 'capitalize',
                 }}
-                variant='body1'
+                variant="body1"
               >
                 {t('about')}
               </Typography>
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderColor: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -174,7 +174,7 @@ const PrelemPreview = () => {
                 display: { xs: 'none', md: 'flex', lg: 'flex' },
                 cursor: 'pointer',
               }}
-              data-testid='add-prelem-button'
+              data-testid="add-prelem-button"
               onClick={() => {
                 addPrelem(
                   dispatch,
@@ -189,7 +189,7 @@ const PrelemPreview = () => {
               <AddIcon />{' '}
               <Typography
                 pl={1}
-                variant='body2'
+                variant="body2"
                 sx={{ textTransform: 'capitalize' }}
               >
                 {t('add_prelem')}
@@ -201,7 +201,7 @@ const PrelemPreview = () => {
                 fontSize: ThemeConstants.FONTSIZE_XL,
                 display: { xs: 'flex', md: 'none', lg: 'none' },
               }}
-              data-testid='prelem-info-mobile-button'
+              data-testid="prelem-info-mobile-button"
               onClick={() => {
                 addPrelem(
                   dispatch,
@@ -224,12 +224,12 @@ const PrelemPreview = () => {
         }}
       >
         <Box>
-          <Container maxWidth='xl'>
-            {loader ?
+          <Container maxWidth="xl">
+            {loader ? (
               <Box>
                 <PlatformXLoader />
               </Box>
-              :
+            ) : (
               <Box
                 sx={{
                   display: 'flex',
@@ -262,19 +262,18 @@ const PrelemPreview = () => {
                     {t('web_preview')}
                   </Typography>
 
-                  {PrelemComponent &&
+                  {PrelemComponent && (
                     <Box sx={{ display: 'none' }}>
-                      <ThemeProvider
-                        theme={PrelemTheme}
-                      >
+                      <ThemeProvider theme={PrelemTheme}>
                         <PrelemComponent />
                       </ThemeProvider>
-                    </Box>}
+                    </Box>
+                  )}
                   <PrelemPreviewFrame
                     device="desktop"
                     prelemid={prelemMetaInfo?.PrelemId}
                   >
-                    {PrelemComponent ?
+                    {PrelemComponent ? (
                       <PrelemComponent
                         secondaryArgs={{
                           prelemBaseEndpoint: {
@@ -288,8 +287,9 @@ const PrelemPreview = () => {
                           },
                         }}
                       />
-                      :
-                      <Grid>Selected Prelem Not Load</Grid>}
+                    ) : (
+                      <Grid>Selected Prelem Not Load</Grid>
+                    )}
                   </PrelemPreviewFrame>
                 </Box>
 
@@ -318,19 +318,18 @@ const PrelemPreview = () => {
                     {t('tablet_preview')}
                   </Typography>
 
-                  {PrelemComponent &&
+                  {PrelemComponent && (
                     <Box sx={{ display: 'none' }}>
-                      <ThemeProvider
-                        theme={PrelemTheme}
-                      >
+                      <ThemeProvider theme={PrelemTheme}>
                         <PrelemComponent />
                       </ThemeProvider>
-                    </Box>}
+                    </Box>
+                  )}
                   <PrelemPreviewFrame
                     device="tablet"
                     prelemid={prelemMetaInfo?.PrelemId}
                   >
-                    {PrelemComponent ?
+                    {PrelemComponent ? (
                       <PrelemComponent
                         secondaryArgs={{
                           prelemBaseEndpoint: {
@@ -344,8 +343,9 @@ const PrelemPreview = () => {
                           },
                         }}
                       />
-                      :
-                      <Grid>Selected Prelem Not Load</Grid>}
+                    ) : (
+                      <Grid>Selected Prelem Not Load</Grid>
+                    )}
                   </PrelemPreviewFrame>
                 </Box>
                 <Box
@@ -372,19 +372,18 @@ const PrelemPreview = () => {
                     {t('mobile_preview')}
                   </Typography>
 
-                  {PrelemComponent &&
+                  {PrelemComponent && (
                     <Box sx={{ display: 'none' }}>
-                      <ThemeProvider
-                        theme={PrelemTheme}
-                      >
+                      <ThemeProvider theme={PrelemTheme}>
                         <PrelemComponent />
                       </ThemeProvider>
-                    </Box>}
+                    </Box>
+                  )}
                   <PrelemPreviewFrame
                     device="mobile"
                     prelemid={prelemMetaInfo?.PrelemId}
                   >
-                    {PrelemComponent ?
+                    {PrelemComponent ? (
                       <PrelemComponent
                         secondaryArgs={{
                           prelemBaseEndpoint: {
@@ -398,11 +397,13 @@ const PrelemPreview = () => {
                           },
                         }}
                       />
-                      :
-                      <Grid>Selected Prelem Not Load</Grid>}
+                    ) : (
+                      <Grid>Selected Prelem Not Load</Grid>
+                    )}
                   </PrelemPreviewFrame>
                 </Box>
-              </Box>}
+              </Box>
+            )}
           </Container>
         </Box>
       </Box>

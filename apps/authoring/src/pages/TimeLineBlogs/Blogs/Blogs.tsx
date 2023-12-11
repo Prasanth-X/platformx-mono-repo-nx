@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Blogs.css';
-import { Dialog, } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { blockQuotes } from '../blogCss';
 import Button from '@mui/material/Button';
 import Loader from '../../../Common/Loader';
@@ -12,12 +12,15 @@ import BlogContentEdit from './BlogContentEdit';
 import ContentTypeCard from './ContentTypeCard';
 import SaveIcon from '@mui/icons-material/Save';
 import SendIcon from '@mui/icons-material/Send';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../utils/authConstants';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Box, Card, TextField, Typography } from '@mui/material';
 import ContentGallery from '../../ContentGallery/ContentGallery';
-import { convertToLowerCase, formCroppedUrl } from '../../../utils/helperFunctions';
+import {
+  convertToLowerCase,
+  formCroppedUrl,
+} from '../../../utils/helperFunctions';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import BlogContentTypeWeb from './BlogContentType/BlogContentTypeWeb';
 import BlogContentTypeMobile from './BlogContentType/BlogContentTypeMobile';
@@ -26,7 +29,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import TextBoxWithoutBorder from '../../../components/Common/TextBoxWithoutBorder';
 import { defaultFalBackImage } from '../../../utils/helper';
 
-const bQuotes = blockQuotes()
+const bQuotes = blockQuotes();
 const useStyles = makeStyles({
   buttonArea: {
     display: 'flex',
@@ -96,15 +99,15 @@ const useStyles = makeStyles({
 
 const Blogs = ({
   contentItem = {},
-  onRemoveContentType = () => { },
+  onRemoveContentType = () => {},
   selectedVideo = {},
   selectedImage = {},
-  starClickHandel = () => { },
-  quoteClickHandel = () => { },
+  starClickHandel = () => {},
+  quoteClickHandel = () => {},
   handleBlogChange,
   blogData,
-  saveButtonHandle = () => { },
-  savePublishHandle = () => { },
+  saveButtonHandle = () => {},
+  savePublishHandle = () => {},
   isBlogLoad,
   setImageOrVideoToDefault,
   handleSelectedImage,
@@ -115,10 +118,11 @@ const Blogs = ({
   isStarOpen,
   publishButton,
   embeddURLValue,
-  onRemoveImage = () => { },
-  onRemoveVideo = () => { },
-  handleContentType = (e) => { e },
-
+  onRemoveImage = () => {},
+  onRemoveVideo = () => {},
+  handleContentType = (e) => {
+    e;
+  },
 }) => {
   const classes = useStyles();
 
@@ -127,12 +131,13 @@ const Blogs = ({
   const desc = useRef<any>('');
   const [galleryState, setGalleryState] = useState<boolean>(false);
   const galleryType = useRef<string>('Images');
-  const [contentGalleryState, setContentGalleryState] = useState<boolean>(false);
+  const [contentGalleryState, setContentGalleryState] =
+    useState<boolean>(false);
   const contentType = useRef<string[]>();
   const contentTypes: string[] = ['Quiz', 'Poll', 'Article', 'Vod'];
   const secondaryArgs = {
     gcpUrl: authInfo.gcpUri,
-    bucketName: authInfo.gcpBucketName
+    bucketName: authInfo.gcpBucketName,
   };
 
   const toggleGallery = (toggleState) => {
@@ -144,13 +149,13 @@ const Blogs = ({
     galleryType.current = gType;
 
     switch (convertToLowerCase(gType)) {
-      case "videos":
+      case 'videos':
         setGalleryState(true);
         break;
-      case "images":
+      case 'images':
         setGalleryState(true);
         break;
-      case "content":
+      case 'content':
         contentType.current = contentTypes;
         setContentGalleryState(true);
         break;
@@ -172,25 +177,29 @@ const Blogs = ({
   };
 
   const handleSelectedContent = async (item) => {
-
     const newObj = {
       ...item,
       Thumbnail: {
         ...item?.Thumbnail,
-        Url: item?.Thumbnail?.Url ? formCroppedUrl(item?.Thumbnail?.Url, item?.Thumbnail?.ext) : defaultFalBackImage(),
-      }
-    }
+        Url: item?.Thumbnail?.Url
+          ? formCroppedUrl(item?.Thumbnail?.Url, item?.Thumbnail?.ext)
+          : defaultFalBackImage(),
+      },
+    };
 
     const contentAdded = ReactDomServer.renderToString(
-      <Box className='contentTypeBox'>
-        <ContentTypeCard content={newObj} secondaryArgs={secondaryArgs}></ContentTypeCard>
+      <Box className="contentTypeBox">
+        <ContentTypeCard
+          content={newObj}
+          secondaryArgs={secondaryArgs}
+        ></ContentTypeCard>
       </Box>
     );
     setContentGalleryState(!contentGalleryState);
     handleContentType({
       contentItem: newObj,
-      contentHtml: contentAdded
-    })
+      contentHtml: contentAdded,
+    });
   };
 
   const onToggleContentGallery = () => {
@@ -235,13 +244,12 @@ const Blogs = ({
 
   return (
     <>
-      <Box className='blogContainer'>
+      <Box className="blogContainer">
         <style>{bQuotes}</style>
         <Box
-          className='contentArea'
+          className="contentArea"
           sx={{ margin: { lg: '0 16px 0px', xs: '0' } }}
         >
-
           {/* gallery dialog */}
           <Dialog fullScreen open={galleryState}>
             <Gallery
@@ -277,7 +285,7 @@ const Blogs = ({
           />
 
           <Card
-            className='editor'
+            className="editor"
             sx={{
               margin: { xs: '15px -24px 0 -24px', lg: '0' },
               borderRadius: { xs: '0' },
@@ -289,8 +297,8 @@ const Blogs = ({
               <>
                 {!isQuoteOpen ? (
                   <TextBoxWithoutBorder
-                    name='BlogTitle'
-                    placeHolder='Blog Title'
+                    name="BlogTitle"
+                    placeHolder="Blog Title"
                     handleChange={handleBlogChange}
                     maxCharLength={60}
                     state={blogData?.BlogTitle}
@@ -303,16 +311,15 @@ const Blogs = ({
                   maxCharLength={1000}
                   handleDescriptionChange={handleDescriptionChange}
                 />
-
               </>
             )}
 
             {/* <Box dangerouslySetInnerHTML={{__html: addContentTypes}}></Box> */}
           </Card>
-          <Box className='attachments'>
+          <Box className="attachments">
             {isStarOpen ? (
               <Box
-                className='KeyHighlighterArea '
+                className="KeyHighlighterArea "
                 sx={{
                   display: 'flex ',
                   flexDirection: { xs: 'column', lg: 'row' },
@@ -320,15 +327,15 @@ const Blogs = ({
               >
                 <Box sx={{ flexGrow: 1, mr: { lg: 2, xs: '0' } }}>
                   <Typography
-                    variant='h6semibold'
-                    component='h6'
+                    variant="h6semibold"
+                    component="h6"
                     sx={{ mt: 2, mb: 1 }}
                   >
                     Key Highlighter
                   </Typography>
                   <TextBoxWidthBorder
-                    name='BlogKeyHighlighter'
-                    placeHolder='Please enter your highlighter'
+                    name="BlogKeyHighlighter"
+                    placeHolder="Please enter your highlighter"
                     handleChange={handleBlogChange}
                     maxCharLength={30}
                     state={blogData?.BlogKeyHighlighter}
@@ -336,8 +343,8 @@ const Blogs = ({
                 </Box>
                 <Box>
                   <Typography
-                    variant='h6semibold'
-                    component='h6'
+                    variant="h6semibold"
+                    component="h6"
                     sx={{ mt: 2, mb: 1 }}
                   >
                     Time Stamp
@@ -345,7 +352,7 @@ const Blogs = ({
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateTimePicker
                       disabled={false}
-                      inputFormat='MM/DD/YYYY | HH:mm'
+                      inputFormat="MM/DD/YYYY | HH:mm"
                       value={
                         blogData?.BlogTimeStamp ? blogData?.BlogTimeStamp : null
                       }
@@ -356,7 +363,7 @@ const Blogs = ({
                           sx={{
                             padding: '0px !important',
                           }}
-                          className='inputBase withBorder'
+                          className="inputBase withBorder"
                           InputProps={{ readOnly: true }}
                           onKeyDown={handleDateChangeRaw}
                           {...params}
@@ -368,38 +375,38 @@ const Blogs = ({
               </Box>
             ) : null}
 
-            {isQuoteOpen ?
+            {isQuoteOpen ? (
               <>
                 <Typography
-                  variant='h6semibold'
-                  component='h6'
+                  variant="h6semibold"
+                  component="h6"
                   sx={{ mt: 2, mb: 1 }}
                 >
                   Author Name
                 </Typography>
                 <TextBoxWidthBorder
-                  name='BlogAuthorName'
-                  placeHolder='Please write author name'
+                  name="BlogAuthorName"
+                  placeHolder="Please write author name"
                   handleChange={handleBlogChange}
                   maxCharLength={30}
                   state={blogData?.BlogAuthorName}
                 />
               </>
-              : null}
+            ) : null}
 
-            {isCode ?
+            {isCode ? (
               <>
                 <Typography
-                  variant='h6semibold'
-                  component='h6'
+                  variant="h6semibold"
+                  component="h6"
                   sx={{ mt: 2, mb: 1 }}
                 >
                   Embed
                 </Typography>
                 <TextareaAutosize
-                  name='BlogEmbed'
-                  className='textArea withBorder'
-                  placeholder='Please paste your embed code here'
+                  name="BlogEmbed"
+                  className="textArea withBorder"
+                  placeholder="Please paste your embed code here"
                   value={blogData?.BlogEmbed}
                   style={{
                     fontFamily: ThemeConstants.PRIMARY_FONT_FAMILY,
@@ -409,11 +416,10 @@ const Blogs = ({
                   onChange={(e) => handleBlogChange(e)}
                 />
               </>
-              : null}
+            ) : null}
           </Box>
 
-          <Box className='footer' sx={{ display: 'flex ' }}>
-
+          <Box className="footer" sx={{ display: 'flex ' }}>
             {/*  content type attachment web view */}
             <BlogContentTypeWeb
               isCode={isCode}
@@ -439,7 +445,7 @@ const Blogs = ({
               }}
             >
               <Button
-                variant='secondaryButton'
+                variant="secondaryButton"
                 disabled={
                   blogData?.BlogTitle || blogData.BlogTextArea ? false : true
                 }
@@ -464,16 +470,18 @@ const Blogs = ({
 
               <Button
                 disabled={
-                  (blogData?.BlogTitle || blogData.BlogTextArea ? false : true) || publishButton
+                  (blogData?.BlogTitle || blogData.BlogTextArea
+                    ? false
+                    : true) || publishButton
                 }
-                variant='primaryButton'
+                variant="primaryButton"
                 sx={{ minWidth: '110px', width: { xs: '50%', md: 'unset' } }}
                 className={
                   blogData?.BlogTitle || blogData.BlogTextArea || publishButton
                     ? `${classes.publishActive} sm`
                     : `${classes.publishDisabled} sm`
                 }
-                startIcon={<SendIcon className='rotateIcon45' />}
+                startIcon={<SendIcon className="rotateIcon45" />}
                 onClick={savePublishHandle}
               >
                 Publish

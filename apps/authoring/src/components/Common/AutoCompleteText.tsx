@@ -1,7 +1,7 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Autocomplete, Box, Chip, TextField } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import ThemeConstants from "../../theme/variable";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Autocomplete, Box, Chip, TextField } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const AutoCompleteText = ({ socialShareInfo, setSocialShareInfo }) => {
   const { t } = useTranslation();
@@ -9,7 +9,7 @@ const AutoCompleteText = ({ socialShareInfo, setSocialShareInfo }) => {
     <Box>
       <Autocomplete
         multiple
-        id='tags-filled'
+        id="tags-filled"
         value={
           socialShareInfo?.tagsSocialShare?.length > 0
             ? [...socialShareInfo.tagsSocialShare]
@@ -29,35 +29,39 @@ const AutoCompleteText = ({ socialShareInfo, setSocialShareInfo }) => {
         renderTags={(value: string[], getTagProps) =>
           value.map(
             (option: string, index: number) =>
-              option &&
-              <Chip
-                variant='outlined'
-                label={option}
-                deleteIcon={
-                  <DeleteIcon
-                    sx={{ color: ThemeConstants.PRIMARY_MAIN_COLOR, cursor: 'pointer' }}
-                  />
-                }
-                sx={{
-                  '.Platform-x-Chip-deleteIcon': {
-                    color: ThemeConstants.BLACK_COLOR,
-                  },
-                }}
-                {...getTagProps({ index })}
-              />
-
-          )}
-        renderInput={(params) =>
-        (<TextField
-          {...params}
-          variant='outlined'
-          placeholder={
-            socialShareInfo?.tagsSocialShare?.length > 0
-              ? ''
-              : t('quiz_tags_placeholder')
-          }
-        />)
+              option && (
+                <Chip
+                  variant="outlined"
+                  label={option}
+                  deleteIcon={
+                    <DeleteIcon
+                      sx={{
+                        color: ThemeConstants.PRIMARY_MAIN_COLOR,
+                        cursor: 'pointer',
+                      }}
+                    />
+                  }
+                  sx={{
+                    '.Platform-x-Chip-deleteIcon': {
+                      color: ThemeConstants.BLACK_COLOR,
+                    },
+                  }}
+                  {...getTagProps({ index })}
+                />
+              )
+          )
         }
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            placeholder={
+              socialShareInfo?.tagsSocialShare?.length > 0
+                ? ''
+                : t('quiz_tags_placeholder')
+            }
+          />
+        )}
         sx={{
           '.Platform-x-OutlinedInput-root ': {
             display: 'flex',

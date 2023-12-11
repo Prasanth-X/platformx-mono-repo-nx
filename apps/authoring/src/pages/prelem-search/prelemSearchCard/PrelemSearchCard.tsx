@@ -19,7 +19,7 @@ import {
 } from '../../../services/prelems/prelems.api';
 import { addPrelem } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { SearchCardListProps } from '../utils/prelemTypes';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
@@ -47,7 +47,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
           xs: 'calc(100vh - 300px)',
         },
       }}
-      data-testid='prelem-search-card-wrap'
+      data-testid="prelem-search-card-wrap"
     >
       <Container>
         <Box
@@ -83,7 +83,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                         zIndex: 1,
                       },
                     }}
-                    data-testid='prelem-search-card'
+                    data-testid="prelem-search-card"
                   >
                     <Card
                       sx={{
@@ -99,8 +99,8 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                       }}
                     >
                       <CardMedia
-                        component='img'
-                        alt='green iguana'
+                        component="img"
+                        alt="green iguana"
                         image={item?.PreviewThumbnail}
                         sx={{
                           '&.Platform-x-CardMedia-root': {
@@ -108,7 +108,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                             objectFit: 'contain',
                           },
                         }}
-                        data-testid='card-media'
+                        data-testid="card-media"
                       />
                     </Card>
                     <Card
@@ -130,8 +130,8 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                       }}
                     >
                       <CardMedia
-                        component='img'
-                        alt='green iguana'
+                        component="img"
+                        alt="green iguana"
                         image={item?.PreviewThumbnail}
                         sx={{
                           '&.Platform-x-CardMedia-root': {
@@ -139,7 +139,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                             objectFit: 'contain',
                           },
                         }}
-                        data-testid='card-media'
+                        data-testid="card-media"
                       />
                     </Card>
                     <Box
@@ -159,7 +159,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                           lg: 'flex',
                         },
                       }}
-                      className='card-overlay'
+                      className="card-overlay"
                     >
                       <Box sx={{ width: '355px' }}>
                         <Box
@@ -170,7 +170,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                         >
                           <Box sx={{ width: '48%' }}>
                             <Button
-                              variant='contained'
+                              variant="contained"
                               sx={{
                                 backgroundColor:
                                   ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -198,7 +198,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                                   state: item,
                                 });
                               }}
-                              data-testid='preview-button'
+                              data-testid="preview-button"
                             >
                               <PreviewIcon />
                               <Typography
@@ -211,7 +211,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                           </Box>
                           <Box sx={{ width: '48%' }}>
                             <Button
-                              variant='contained'
+                              variant="contained"
                               sx={{
                                 backgroundColor:
                                   ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -239,7 +239,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                                   state: item,
                                 });
                               }}
-                              data-testid='info-button'
+                              data-testid="info-button"
                             >
                               <InfoIcon />
                               <Typography
@@ -257,7 +257,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                           }}
                         >
                           <Button
-                            variant='contained'
+                            variant="contained"
                             sx={{
                               backgroundColor:
                                 ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -290,7 +290,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                                 page?.insertPrelemAt
                               );
                             }}
-                            data-testid='add-button'
+                            data-testid="add-button"
                           >
                             <AddIcon />{' '}
                             <Typography
@@ -305,7 +305,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                     </Box>
                   </Box>
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       textAlign: 'left',
                       pt: { xs: 2, lg: 3 },
@@ -320,12 +320,12 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                       color: '#1f2021',
                       fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
                     }}
-                    data-testid='prelem-card-title-web'
+                    data-testid="prelem-card-title-web"
                   >
                     {item?.PrelemName}
                   </Typography>
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       textAlign: 'left',
                       pt: { xs: 2, lg: 3 },
@@ -344,13 +344,13 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                         state: item,
                       });
                     }}
-                    data-testid='prelem-card-title-mobile'
+                    data-testid="prelem-card-title-mobile"
                   >
                     {item?.PrelemName}
                   </Typography>
                   <Box sx={{ width: '100%', display: 'flex' }}>
                     <Typography
-                      variant='body2'
+                      variant="body2"
                       sx={{
                         textAlign: 'left',
                         fontSize: {
@@ -360,7 +360,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                         },
                         letterSpacing: 'normal',
                       }}
-                      data-testid='prelem-card-description'
+                      data-testid="prelem-card-description"
                     >
                       {item?.Description}
                     </Typography>
@@ -410,7 +410,7 @@ export const PrelemSearchCard = ({ searchCardList }: SearchCardListProps) => {
                             page?.insertPrelemAt
                           );
                         }}
-                        data-testid='add-button'
+                        data-testid="add-button"
                       >
                         <AddIcon />
                       </Box>

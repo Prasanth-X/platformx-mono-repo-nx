@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextareaAutosize } from '@mui/material';
 import { ThemeProvider } from '@mui/system';
-import LightTheme from '../../../src/theme/lightTheme';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
 
 interface AutoTextAreaProps {
   placeHolder?: string;
@@ -13,15 +13,13 @@ interface AutoTextAreaProps {
 }
 // eslint-disable-next-line no-empty-pattern
 export const XTextArea = ({
-   placeHolder='Write your text here',
+  placeHolder = 'Write your text here',
   minRows,
   maxRows,
   isDisabled,
   onBlur,
-  maxLength
-}:AutoTextAreaProps
-
-) => {
+  maxLength,
+}: AutoTextAreaProps) => {
   return (
     <ThemeProvider theme={LightTheme}>
       <TextareaAutosize

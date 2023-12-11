@@ -25,7 +25,7 @@ import Loader from '../../../../Common/Loader';
 import { showToastError } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { fetchTagList } from '../../../../services/common/tags.aps';
 import { fetchAllMultislotContentList } from '../../../../services/contentGallery/contentGallery.api';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { hasOwnProp } from '../../../../utils/helper';
 import GalleryItems from '../../../ContentGallery/GalleryItems';
 import GalleryItemSearchResults from './GalleryItemSearchResult';

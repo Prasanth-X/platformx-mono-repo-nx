@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material';
 import ContentTypeCard from 'platform-x-prelems/prelems/ContentTypeCard';
 import { useState } from 'react';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import NoResults from '../../assets/images/no-results.png';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -19,9 +19,9 @@ const GalleryItems = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedItem, setSelectedItem] = useState<ContentProps>({});
-  const secondaryArgs = { 
+  const secondaryArgs = {
     gcpUrl: authInfo.gcpUri,
-    bucketName: authInfo.gcpBucketName
+    bucketName: authInfo.gcpBucketName,
   };
 
   const isError = false;
@@ -84,7 +84,7 @@ const GalleryItems = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
@@ -96,7 +96,7 @@ const GalleryItems = ({
             height: 'calc(100vh - 160px)',
             overflowY: 'scroll',
           }}
-          id='scrollablegallerydiv'
+          id="scrollablegallerydiv"
         >
           {galleryObj && galleryObj?.length === 0 && !loading ? (
             <NoResultsFound />
@@ -116,7 +116,7 @@ const GalleryItems = ({
                 next={fetchMoreData}
                 hasMore={isLazyLoad}
                 loader={null}
-                scrollableTarget='scrollablegallerydiv'
+                scrollableTarget="scrollablegallerydiv"
               >
                 {galleryObj?.map((item, index) => {
                   return getContentType(item, index);

@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import TitleSubTitle from '../../../components/Common/TitleSubTitle';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../editPage/Switch';
 import { useStyles } from '../Seo/Seo.styles';
 
@@ -30,8 +30,8 @@ const Analytics = ({ state, setState }) => {
           <TitleSubTitle
             title={t('analytics')}
             subTitle={t('subheading_description')}
-            titleVarient='h6medium'
-            subTitleVarient='h7regular'
+            titleVarient="h6medium"
+            subTitleVarient="h7regular"
           />
         </Box>
         <Box className={classes.width60}>
@@ -54,8 +54,8 @@ const Analytics = ({ state, setState }) => {
           <TitleSubTitle
             title={t('impression')}
             subTitle={t('subheading_description')}
-            titleVarient='h6medium'
-            subTitleVarient='h7regular'
+            titleVarient="h6medium"
+            subTitleVarient="h7regular"
           />
         </Box>
         <Box className={classes.width60}>

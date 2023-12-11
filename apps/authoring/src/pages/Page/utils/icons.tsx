@@ -8,14 +8,14 @@ import {
   RefreshOutlined,
   RemoveRedEyeOutlined,
   SettingsOutlined,
-  ContentCopyOutlined
+  ContentCopyOutlined,
 } from '@mui/icons-material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 export const iconsSet = [
   {
     id: 'prelemInfo',
-    tooltipId:'Prelem Info',
+    tooltipId: 'Prelem Info',
     Icon: () => <InfoOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />,
     disabledIcon: () => (
       <InfoOutlined style={{ color: ThemeConstants.LIGHT_GREY_COLOR }} />
@@ -23,7 +23,7 @@ export const iconsSet = [
   },
   {
     id: 'edit',
-    tooltipId:'Edit',
+    tooltipId: 'Edit',
     Icon: () => (
       <BorderColorOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -33,7 +33,7 @@ export const iconsSet = [
   },
   {
     id: 'show',
-    tooltipId:'Show',
+    tooltipId: 'Show',
     Icon: () => (
       <RemoveRedEyeOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -45,7 +45,7 @@ export const iconsSet = [
   },
   {
     id: 'hide',
-    tooltipId:'Hide',
+    tooltipId: 'Hide',
     Icon: () => (
       <VisibilityOffIcon style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -55,7 +55,7 @@ export const iconsSet = [
   },
   {
     id: 'prelemSetting',
-    tooltipId:'Settings',
+    tooltipId: 'Settings',
     Icon: () => (
       <SettingsOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -65,7 +65,7 @@ export const iconsSet = [
   },
   {
     id: 'copy',
-    tooltipId:'Duplicate',
+    tooltipId: 'Duplicate',
     Icon: () => (
       <ContentCopyOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -75,7 +75,7 @@ export const iconsSet = [
   },
   {
     id: 'up',
-    tooltipId:'Move Up',
+    tooltipId: 'Move Up',
     Icon: () => (
       <ArrowUpwardOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -85,7 +85,7 @@ export const iconsSet = [
   },
   {
     id: 'down',
-    tooltipId:'Move Down',
+    tooltipId: 'Move Down',
     Icon: () => (
       <ArrowDownwardOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -97,7 +97,7 @@ export const iconsSet = [
   },
   {
     id: 'reset',
-    tooltipId:'Undo',
+    tooltipId: 'Undo',
     Icon: () => (
       <RefreshOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),
@@ -107,7 +107,7 @@ export const iconsSet = [
   },
   {
     id: 'delete',
-    tooltipId:'Delete',
+    tooltipId: 'Delete',
     Icon: () => (
       <DeleteOutlineOutlined style={{ color: ThemeConstants.WHITE_COLOR }} />
     ),

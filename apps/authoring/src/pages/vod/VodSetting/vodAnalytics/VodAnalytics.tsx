@@ -9,7 +9,7 @@ import {
   showToastSuccess,
 } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { publish_vod, update_vod } from '../../../../services/vod/vod.api';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../../editPage/Switch';
 import { useStyles } from './vodAnanlytics.styles';
 
@@ -74,7 +74,7 @@ const VodAnalytics = ({ selectedVod, setSelectedVod }) => {
     <AccordionDetails>
       <Box className={classes.analyticsContainer}>
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           className={`${classes.analyticsText} drawer-label`}
         >
           {`${t('vod')} ${t('analytics')}`}
@@ -89,7 +89,7 @@ const VodAnalytics = ({ selectedVod, setSelectedVod }) => {
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon className={classes.iconHover} />
@@ -98,13 +98,14 @@ const VodAnalytics = ({ selectedVod, setSelectedVod }) => {
         </Typography>
         <BasicSwitch
           onChange={(e: any) =>
-            handlePrelemAnalyticsChange(e, 'AnalyticsEnabled')}
+            handlePrelemAnalyticsChange(e, 'AnalyticsEnabled')
+          }
           checked={analyticsEnabled}
           color={ThemeConstants.BLACK_COLOR}
           disabled
         />
       </Box>
-      <Typography variant='subtitle1' className={classes.analyticsContainer}>
+      <Typography variant="subtitle1" className={classes.analyticsContainer}>
         {t('impression')}
         <BasicSwitch
           checked={impressionEnabled}
@@ -112,14 +113,14 @@ const VodAnalytics = ({ selectedVod, setSelectedVod }) => {
           disabled
         />
       </Typography>
-      <Typography variant='subtitle1' className={classes.analyticsContainer}>
+      <Typography variant="subtitle1" className={classes.analyticsContainer}>
         {t('content_insight')}
         <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
       </Typography>
 
       <Box className={classes.doneButton}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={disabledState}
           onClick={saveAnalytics}
         >

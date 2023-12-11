@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import EditIcon from '@mui/icons-material/Edit';
 import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded';
 
@@ -43,7 +43,7 @@ export const ButtonEditLink = ({
         top: top,
         zIndex: zIndex,
       }}
-      data-testid='button-edit-link'
+      data-testid="button-edit-link"
       ref={buttonRef}
     >
       <EditIcon

@@ -3,13 +3,20 @@ import './EcommerceAuthoring.css';
 import EComTopHeading from './EComTopHeading';
 import { useLazyQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Box, Grid, Typography } from '@mui/material';
 import EcommerceCard from '../../ecommerceComponents/EcommerceCard/EcommerceCard';
-import { nullToArray, nullToObject, nullToString, } from '../../utils/helperFunctions';
+import {
+  nullToArray,
+  nullToObject,
+  nullToString,
+} from '../../utils/helperFunctions';
 import EcomLeftSidebar from '../../ecommerceComponents/EcomLeftSidebar/EcomLeftSidebar';
 import EcomViewQueryDropDown from '../../ecommerceComponents/EcomViewQueryDropDown/EcomViewQueryDropDown';
-import { fetchAllEcomProductContentList, fetchAllFilterProductList, } from '../../services/contentGallery/contentGallery.api';
+import {
+  fetchAllEcomProductContentList,
+  fetchAllFilterProductList,
+} from '../../services/contentGallery/contentGallery.api';
 
 type EcommerceAuthoring = {
   ecomDoneClick?: any;
@@ -19,8 +26,8 @@ type EcommerceAuthoring = {
 
 const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
   const {
-    ecomDoneClick = () => { },
-    ecomCancelClick = () => { },
+    ecomDoneClick = () => {},
+    ecomCancelClick = () => {},
     fromPageContentType = '',
   } = _props;
 
@@ -36,14 +43,14 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
 
   const startData = 12;
   const [items, setItems] = useState<any>([]);
-  const [inputValue, setInputValue] = useState<any>("");
+  const [inputValue, setInputValue] = useState<any>('');
   const [contentLoading, setContentLoading] = useState(true);
   const [categoryLoading, setCategoryLoading] = useState(true);
   const [categoriesFilter, setCategoriesFilter] = useState<any>([...filter]);
   const [stateManage, setStateManage] = useState({
     start: 0,
     rows: 12,
-    searchTerm: "",
+    searchTerm: '',
     nodeIdData: [...filter],
   });
 
@@ -111,7 +118,12 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
    * get all contentType list
    */
   const getContent = async () => {
-    const { start = 0, rows = 0, nodeIdData = [], searchTerm = "" } = stateManage;
+    const {
+      start = 0,
+      rows = 0,
+      nodeIdData = [],
+      searchTerm = '',
+    } = stateManage;
     await fetchMultiSlotContentList({
       variables: {
         tags: [],
@@ -123,7 +135,6 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
       },
     })
       .then((res) => {
-
         if (res?.data?.authoring_getDynamicContentSearch) {
           const newArray = res?.data?.authoring_getDynamicContentSearch.map(
             (ele: any) => {
@@ -228,7 +239,7 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
    * final obj making
    */
   const makeFinalObj = () => {
-    const { nodeIdData = [], searchTerm = "" } = stateManage;
+    const { nodeIdData = [], searchTerm = '' } = stateManage;
     const newObj = {
       tags: [],
       filter: 'Ecommerce',
@@ -250,12 +261,12 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
       ...stateManage,
       searchTerm: searchData,
       start: 0,
-      rows: 12
+      rows: 12,
     };
     setStateManage(newObj);
   };
 
-  const setInputValueHandle = (searchData = "") => {
+  const setInputValueHandle = (searchData = '') => {
     setInputValue(searchData);
   };
 
@@ -272,7 +283,7 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
       sx={{
         backgroundColor: ThemeConstants.WHITE_COLOR,
       }}
-      className='ecommerce_container'
+      className="ecommerce_container"
     >
       {/* Done and cancel handle here */}
       <EComTopHeading
@@ -289,7 +300,7 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
       <Grid container spacing={0}>
         <Grid
           container
-          className='leftsidebar-scroll'
+          className="leftsidebar-scroll"
           item
           xs={12}
           em={3}
@@ -301,11 +312,11 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
           }}
         >
           <EcomLeftSidebar
-            toggleDrawer={() => { }}
+            toggleDrawer={() => {}}
             loading={categoryLoading}
             onNodeIdHandle={onNodeIdHandle}
             categoriesFilter={categoriesFilter}
-          // onClearAll={onClearAll}
+            // onClearAll={onClearAll}
           />
         </Grid>
 
@@ -318,9 +329,9 @@ const EcommerceAuthoring = (_props: EcommerceAuthoring) => {
           sx={{
             padding: { xs: '8px', em: '8px 16px 10px 16px' },
           }}
-          className='right-topbar-container'
+          className="right-topbar-container"
         >
-          <Box className='right-topbar'>
+          <Box className="right-topbar">
             <Typography
               sx={{
                 fontSize: ThemeConstants.FONTSIZE_H3,

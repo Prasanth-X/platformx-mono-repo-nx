@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 export const useFooterSettingStyle = ({ isShowPreview }) =>
   makeStyles((theme) => ({
     pageContainer: {
@@ -50,11 +50,11 @@ export const useFooterSettingStyle = ({ isShowPreview }) =>
       lineHeight: ThemeConstants.LINE_HEIGHT_H6,
       color: '#6E7191',
     },
-    pictureiconinner:{
+    pictureiconinner: {
       display: 'flex'
     },
-    deleteicon:{
-      marginTop: '12px', 
+    deleteicon: {
+      marginTop: '12px',
       marginLeft: '10px',
       cursor: 'pointer'
     },

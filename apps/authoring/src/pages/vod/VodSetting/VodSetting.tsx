@@ -7,7 +7,7 @@ import { Box, Divider, Grid, Typography } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import VodAnalytics from './vodAnalytics/VodAnalytics';
 import VodSEO from './vodSEO/VodSEO';
 import { Accordions, useStyles } from './vodSettings.styles';
@@ -51,7 +51,7 @@ const VodSettings = ({
           {/* to show Structured data for desktop */}
         </Grid>
         <Grid item xs={12} md={4} className={classes.settingsContainerRight}>
-          <Typography variant='subtitle1' className={classes.containerHead}>
+          <Typography variant="subtitle1" className={classes.containerHead}>
             {`${t('vod')} ${t('setting')}`}
             <CloseIcon className={classes.closeIcon} onClick={handleClose} />
           </Typography>
@@ -64,10 +64,10 @@ const VodSettings = ({
                 expandIcon={
                   <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
                 }
-                aria-controls='social-share-content'
-                id='social-share-header'
+                aria-controls="social-share-content"
+                id="social-share-header"
               >
-                <Typography variant='h6' className={classes.accordionText}>
+                <Typography variant="h6" className={classes.accordionText}>
                   <PeopleAltIcon className={classes.icons} />
                   {t('social_share')}
                 </Typography>
@@ -99,10 +99,10 @@ const VodSettings = ({
                 expandIcon={
                   <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
                 }
-                aria-controls='analytics-content'
-                id='analytics-header'
+                aria-controls="analytics-content"
+                id="analytics-header"
               >
-                <Typography variant='h6' className={classes.accordionText}>
+                <Typography variant="h6" className={classes.accordionText}>
                   <AnalyticsIcon className={classes.icons} />
                   {t('analytics')}
                 </Typography>
@@ -124,10 +124,10 @@ const VodSettings = ({
                 expandIcon={
                   <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
                 }
-                aria-controls='seo-content'
-                id='seo-header'
+                aria-controls="seo-content"
+                id="seo-header"
               >
-                <Typography variant='h6' className={classes.accordionText}>
+                <Typography variant="h6" className={classes.accordionText}>
                   <FindInPageIcon className={classes.icons} />
                   {t('seo')}
                 </Typography>

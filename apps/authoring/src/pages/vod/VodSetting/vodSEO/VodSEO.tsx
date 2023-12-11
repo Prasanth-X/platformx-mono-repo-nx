@@ -14,7 +14,7 @@ import {
   showToastSuccess,
 } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { publish_vod, update_vod } from '../../../../services/vod/vod.api';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../../editPage/Switch';
 import { useStyles } from './vodSEO.styles';
 import { SeoInfo, SeoProps } from './vodSEO.types';
@@ -153,7 +153,7 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
 
   return (
     <AccordionDetails>
-      <Typography variant='subtitle1' className={classes.switchText}>
+      <Typography variant="subtitle1" className={classes.switchText}>
         {t('page_prelem_find')}
         <BasicSwitch
           checked={seoInfo.showContent}
@@ -161,7 +161,7 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
           color={ThemeConstants.BLACK_COLOR}
         />
       </Typography>
-      <Typography variant='subtitle1' className={classes.switchText}>
+      <Typography variant="subtitle1" className={classes.switchText}>
         {t('page_prelem_share')}
         <BasicSwitch
           disabled
@@ -173,18 +173,18 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
       <Box className={classes.sdContainer}>
         <Typography
           className={`${classes.sdText} drawer-label`}
-          variant='subtitle1'
+          variant="subtitle1"
         >
           {t('page_structure_data')}
           <Tooltip
             title={
               <Box m={1}>
-                <Typography variant='h7regular' mb={1}>
+                <Typography variant="h7regular" mb={1}>
                   {t('page_structure_data_tp')}
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon className={classes.iconHover} />
@@ -287,7 +287,7 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
               }}
               onClick={copyStructureData}
             >
-              <ContentCopyIcon fontSize='small' sx={{ marginRight: '2px' }} />
+              <ContentCopyIcon fontSize="small" sx={{ marginRight: '2px' }} />
               {copyStatus ? t('copied') : t('copy')}
             </Typography>
           </Box>
@@ -302,7 +302,7 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
               }}
             >
               <Button
-                variant='contained'
+                variant="contained"
                 sx={{
                   backgroundColor: ThemeConstants.WHITE_COLOR,
                   color: ThemeConstants.BLACK_COLOR,
@@ -340,14 +340,14 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: '#000000',
@@ -367,14 +367,14 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: '#000000',
@@ -391,7 +391,7 @@ const VodSEO: React.FC<SeoProps> = ({ selectedVod, setSelectedVod }) => {
       )}
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={disabledState}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

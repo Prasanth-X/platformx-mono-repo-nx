@@ -9,7 +9,7 @@ import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 import { showToastSuccess } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PrelemSeoProps, SeoInfo } from '../../utils/editTypes';
 import BackButton from '../BackButton/BackButton';
 import '../PageSettings/PageSettings.css';
@@ -96,10 +96,10 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
   }, [seoInstance]);
 
   return (
-    <Box className='pageSettingmainWp'>
-      <BackButton setPageId={setPageId} Title='SEO' backTo='prelemSetting' />
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+    <Box className="pageSettingmainWp">
+      <BackButton setPageId={setPageId} Title="SEO" backTo="prelemSetting" />
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('page_prelem_find')}
           <BasicSwitch
             checked={seoInfo?.showContent}
@@ -108,8 +108,8 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('page_prelem_share')}
           <BasicSwitch
             disabled
@@ -119,8 +119,8 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('page_structure_data')}
           <span
             style={{
@@ -192,14 +192,14 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
             />
           </Box>
           <JSONInput
-            id='json-editor'
+            id="json-editor"
             confirmGood={false}
             placeholder={seoInfo.structureData}
             onChange={(e) => handleStructureData(e, 'structureData')}
-            theme='light_mitsuketa_tribute'
+            theme="light_mitsuketa_tribute"
             locale={locale}
-            height='100%'
-            width='100%'
+            height="100%"
+            width="100%"
             colors={{
               string: '#1984bc',
               keys: ThemeConstants.BLACK_COLOR,
@@ -212,9 +212,9 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
           />
         </Box>
       )}
-      <Box className='rowBox'>
+      <Box className="rowBox">
         <Button
-          variant='contained'
+          variant="contained"
           disabled={JSON.stringify(seoInstance) === JSON.stringify(seoInfo)}
           sx={{ width: '100%' }}
           onClick={saveSeoInfo}

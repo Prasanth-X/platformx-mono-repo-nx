@@ -1,17 +1,16 @@
-
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import GuidelineImage from '../../assets/images/Guideline_image.png';
 import SSGuideline from '../../assets/images/SS_Guideline.png';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export default function Guideline() {
   const { t } = useTranslation();
   return (
     <>
-      <Box sx={{ display: "flex", position: "relative" }}>
+      <Box sx={{ display: 'flex', position: 'relative' }}>
         <Box
           sx={{
             display: { xs: 'block', md: 'none' },
@@ -25,23 +24,25 @@ export default function Guideline() {
         ></Box>
         <Box
           sx={{
-            width: { sm: "100%", xs: "100%", md: "100%", lg: "100%" },
-          }}>
+            width: { sm: '100%', xs: '100%', md: '100%', lg: '100%' },
+          }}
+        >
           <Box
             sx={{
-              width: "100%",
-              backgroundColor: "#fff",
-              display: "flex",
-              alignItems: "center",
-            }}>
+              width: '100%',
+              backgroundColor: '#fff',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
             <CloseIcon
               sx={{
-                width: "19.1px",
-                height: "19.1px",
-                position: "absolute",
+                width: '19.1px',
+                height: '19.1px',
+                position: 'absolute',
                 right: 10,
                 top: 10,
-                cursor: "pointer",
+                cursor: 'pointer',
               }}
             />
             <Typography
@@ -58,11 +59,12 @@ export default function Guideline() {
           </Box>
           <Box
             sx={{
-              margin: "30px 0px 0px 178px",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
+              margin: '30px 0px 0px 178px',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
             <Typography
               variant="subtitle2"
               sx={{
@@ -74,24 +76,24 @@ export default function Guideline() {
             <Button
               disableElevation
               sx={{
-                width: "150px",
-                height: "35px",
-                borderRadius: "3px",
+                width: '150px',
+                height: '35px',
+                borderRadius: '3px',
                 fontSize: ThemeConstants.FONTSIZE_XS,
-                backgroundColor: "#2d2d39",
-                color: "#fff",
-                textTransform: "none",
+                backgroundColor: '#2d2d39',
+                color: '#fff',
+                textTransform: 'none',
                 margin: 1,
-                "&:hover": {
+                '&:hover': {
                   backgroundColor: ThemeConstants.BLACK_COLOR,
                   color: ThemeConstants.WHITE_COLOR,
                 },
               }}
             >
               <AddIcon
-                sx={{ width: "10.6px", height: "10.6px", margin: 0.5 }}
-              />{" "}
-              {t("menu_create_button")}
+                sx={{ width: '10.6px', height: '10.6px', margin: 0.5 }}
+              />{' '}
+              {t('menu_create_button')}
             </Button>
             <Typography
               variant="subtitle2"
@@ -105,7 +107,7 @@ export default function Guideline() {
           <Box>
             <Typography
               sx={{
-                color: "#89909a",
+                color: '#89909a',
                 fontSize: ThemeConstants.FONTSIZE_XS,
                 margin: '0px 0px 0px 178px',
               }}
@@ -114,15 +116,16 @@ export default function Guideline() {
             </Typography>
           </Box>
           <Box sx={{ margin: '30px 0px 0px 178px', objectFit: 'contain' }}>
-            <img src={GuidelineImage} width='500px' height='150px' />
+            <img src={GuidelineImage} width="500px" height="150px" />
           </Box>
           <Box
             sx={{
-              margin: "20px 0px 0px 178px",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
+              margin: '20px 0px 0px 178px',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
             <Typography
               variant="subtitle2"
               sx={{
@@ -135,17 +138,18 @@ export default function Guideline() {
           <Box>
             <Typography
               sx={{
-                color: "#89909a",
+                color: '#89909a',
                 fontSize: ThemeConstants.FONTSIZE_XS,
-                width: "550px",
-                height: "63px",
-                margin: "10px 0px 0px 178px",
-              }}>
-              {t("menu_step2_details")}
+                width: '550px',
+                height: '63px',
+                margin: '10px 0px 0px 178px',
+              }}
+            >
+              {t('menu_step2_details')}
             </Typography>
           </Box>
           <Box sx={{ margin: '0px 0px 0px 178px', objectFit: 'contain' }}>
-            <img src={SSGuideline} width='500px' height='150px' />
+            <img src={SSGuideline} width="500px" height="150px" />
           </Box>
         </Box>
       </Box>

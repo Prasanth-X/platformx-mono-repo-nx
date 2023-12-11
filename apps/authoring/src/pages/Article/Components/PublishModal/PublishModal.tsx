@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import CloudIcon from '../../../../../src/assets/CloudIcon.png';
 import { Tags } from '../../../../components/Common/tags/Tags';
 import Submit from '../../../../components/Submit/Submit';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import CommonImageRender from '../../../Gallery/CommonImageRender';
 import { useStyles } from './PublishModal.styles';
 
@@ -76,7 +76,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
     >
       <Button
         onClick={onClose}
-        variant='outlined'
+        variant="outlined"
         sx={{
           position: 'absolute',
           left: 15,
@@ -135,12 +135,12 @@ export default function PublishModal({
     <Box sx={{ width: '100%' }}>
       <BootstrapDialog
         onClose={handleClose}
-        aria-labelledby='customized-dialog-title'
+        aria-labelledby="customized-dialog-title"
         open={open}
         sx={{ margin: '0px' }}
       >
         <BootstrapDialogTitle
-          id='customized-dialog-title'
+          id="customized-dialog-title"
           onClose={handleClose}
           onPublish={onPublish}
           category={category}
@@ -154,7 +154,7 @@ export default function PublishModal({
 
         <DialogContent dividers className={classes.dialogContentStyle}>
           <Box className={classes.innerBoxContent}>
-            <Typography variant='h5medium'>{t('better_engagement')}</Typography>
+            <Typography variant="h5medium">{t('better_engagement')}</Typography>
             <Box
               className={classes.publishImgUploadBox}
               sx={{
@@ -220,7 +220,7 @@ export default function PublishModal({
                     <img src={CloudIcon} />
                   </Box>
                   <Typography
-                    variant='h4regular'
+                    variant="h4regular"
                     sx={{ textAlign: 'center', padding: '15px' }}
                   >
                     {t('drag_drop')}
@@ -231,7 +231,7 @@ export default function PublishModal({
                       border: 'inherit',
                       ':hover': { backgroundColor: '#4B9EF9' },
                     }}
-                    variant='contained'
+                    variant="contained"
                     onClick={() => {
                       handleClose();
                       onUploadClick('Images', 'choose');
@@ -243,7 +243,7 @@ export default function PublishModal({
               )}
             </Box>
 
-            <Typography variant='h7medium'>
+            <Typography variant="h7medium">
               {t('article_banner_note')}
             </Typography>
             <Box className={classes.dividerStyle}>

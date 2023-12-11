@@ -5,9 +5,8 @@ import { useLazyQuery } from '@apollo/client';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useTranslation } from 'react-i18next';
 import '../../../../components/Common/Search.css';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { debounce } from '../../../../utils/helperFunctions';
-// import { SearchBlackSvg, SearchGraySvg } from '../../../../assets/svg';
 const SearchBlackSvg = require('../../../../assets/svg') as string;
 const SearchGraySvg = require('../../../../assets/svg') as string;
 

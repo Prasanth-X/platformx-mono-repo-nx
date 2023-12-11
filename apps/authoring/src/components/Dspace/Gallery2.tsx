@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField';
 import { KeyboardEvent, useEffect, useRef, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoResults from '../../assets/images/no-results.png';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../utils/authConstants';
 // import { AtomicBlockUtils, EditorState } from 'draft-js';
 import { useTranslation } from 'react-i18next';

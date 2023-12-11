@@ -5,7 +5,7 @@ import SettingIcon from '../../../../assets/svg/settingIcon.svg';
 import EditIcon from '../../../../assets/svg/editIcon.svg';
 import PageSettingList from '../PageSettingList/PageSettingList';
 import { useStyles } from './PageSettingMenuTabs.styles';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const LeftTabs = ({ setPageId }) => {
   const classes = useStyles();
@@ -27,35 +27,35 @@ const LeftTabs = ({ setPageId }) => {
             }}
             className={classes.TabButtons}
             onChange={handleChange}
-            aria-label='lab API tabs example'
+            aria-label="lab API tabs example"
           >
             {DesignTab && (
               <Tab
-                icon={<img src={EditIcon} alt='icon' />}
-                iconPosition='start'
-                label='Design'
-                value='Page_Design'
+                icon={<img src={EditIcon} alt="icon" />}
+                iconPosition="start"
+                label="Design"
+                value="Page_Design"
               />
             )}
             <Tab
-              icon={<img src={SettingIcon} alt='icon' />}
-              iconPosition='start'
-              label='Page Setting'
-              value='Page_Setting'
+              icon={<img src={SettingIcon} alt="icon" />}
+              iconPosition="start"
+              label="Page Setting"
+              value="Page_Setting"
             />
           </TabList>
         </Box>
         <TabPanel
           sx={{ padding: 0 }}
           className={classes.tabPanelSettingPage}
-          value='Page_Design'
+          value="Page_Design"
         >
           Design
         </TabPanel>
         <TabPanel
           sx={{ padding: 0 }}
           className={classes.tabPanelSettingPage}
-          value='Page_Setting'
+          value="Page_Setting"
         >
           <PageSettingList setPageId={setPageId} />
         </TabPanel>

@@ -5,7 +5,7 @@ import { Box, Button, Tooltip, Typography } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from './Switch';
 import { PrelemVideoProps } from './utils/editTypes';
 const PrelemVideos: React.FC<PrelemVideoProps> = ({
@@ -178,11 +178,11 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
       {playerFlow == 'youtube' ? (
         <>
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{ display: 'flex', alignimageInstances: 'center' }}
             mt={2}
             mb={1}
-            className='drawer-label'
+            className="drawer-label"
           >
             Video URL*
             <Tooltip
@@ -196,7 +196,7 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
                   </Typography>
                 </Box>
               }
-              placement='right'
+              placement="right"
             >
               <Box>
                 <InfoOutlinedIcon
@@ -214,15 +214,15 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
             multiline
             value={content.Url}
             onChange={(e) => handleDataChange(e, 'Url')}
-            variant='outlined'
-            placeholder='write a Url here'
+            variant="outlined"
+            placeholder="write a Url here"
           />
         </>
       ) : null}
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignItems: 'center' }}
-        className='drawer-label'
+        className="drawer-label"
       >
         What is the title of the Video?*
         <Tooltip
@@ -233,7 +233,7 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -251,15 +251,15 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
         multiline
         value={content.Title}
         onChange={(e) => handleDataChange(e, 'Title')}
-        variant='outlined'
-        placeholder='write a title here'
+        variant="outlined"
+        placeholder="write a title here"
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignItems: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         What is this Video about?
         <Tooltip
@@ -270,7 +270,7 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -288,11 +288,11 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
         multiline
         value={content.Description}
         onChange={(e) => handleDataChange(e, 'Description')}
-        variant='outlined'
-        placeholder='write a description here'
+        variant="outlined"
+        placeholder="write a description here"
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -309,7 +309,7 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -326,7 +326,7 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -345,21 +345,21 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
       {(content.Title == '' ||
         content.Title.trim().length == 0 ||
         content.Url == '') && (
-          <Typography
-            variant='subtitle2'
-            p={1}
-            sx={{
-              color: ThemeConstants.NOTIFICATION_ERROR,
-              textAlign: 'center',
-            }}
-          >
-            *Please fill the mandatory fields
-          </Typography>
-        )}
+        <Typography
+          variant="subtitle2"
+          p={1}
+          sx={{
+            color: ThemeConstants.NOTIFICATION_ERROR,
+            textAlign: 'center',
+          }}
+        >
+          *Please fill the mandatory fields
+        </Typography>
+      )}
       <Box sx={{ textAlign: 'right' }} mb={2}>
         <Button
           disabled={getDisabledState()}
-          variant='contained'
+          variant="contained"
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,
             '&:hover': {

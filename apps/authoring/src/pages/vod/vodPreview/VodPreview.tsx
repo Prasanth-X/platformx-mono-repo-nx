@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useUserSession from '../../../hooks/useUserSession/useUserSession';
 import { Store } from '../../../store/ContextStore';
-import LightTheme from '../../../theme/lightTheme';
-import ThemeConstants from '../../../theme/variable';
+import LightTheme from '../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { tabs, theme } from './utils/constants';
 import { useStyles } from './vodPreview.styles';
-import PrelemTheme from '../../../theme/prelemTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 
 const prelemAuthoringHelper = {
   isAuthoring: true,
@@ -156,7 +156,7 @@ const VodPreview = () => {
             navigate(`/content/create-vod?path=${vod?.currentVod.Page}`);
           }}
         >
-          <Typography variant='body2' className={classes.editText}>
+          <Typography variant="body2" className={classes.editText}>
             <EditIcon className={classes.editIcon} />
             {`${t('edit')} ${t('vod')}`}
           </Typography>
@@ -217,20 +217,20 @@ const VodPreview = () => {
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '100%'
-                    : '402px',
+                  ? '100%'
+                  : '402px',
               md:
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '768px'
-                    : '402px',
+                  ? '768px'
+                  : '402px',
               lg:
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '809px'
-                    : '402px',
+                  ? '809px'
+                  : '402px',
             },
             margin: 'auto',
             transition: 'width 0.50s',
@@ -248,21 +248,19 @@ const VodPreview = () => {
                 deviceType === 'desktop'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '100%'
-                    : '100%'
+                  ? '100%'
+                  : '100%'
               }
               height={height}
               initialContent={initialContent}
-              id='site-frame'
+              id="site-frame"
               ref={iframeRef}
               contentDidMount={() => handleResize(iframeRef)}
               contentDidUpdate={() => handleResize(iframeRef)}
-              frameBorder='0'
+              frameBorder="0"
             >
               {renderHeader()}
-              <ThemeProvider
-                theme={PrelemTheme}
-              >
+              <ThemeProvider theme={PrelemTheme}>
                 <ContentType
                   content={previewObject}
                   authoringHelper={prelemAuthoringHelper}

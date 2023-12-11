@@ -13,7 +13,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageSettings } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import siteLevelSchema from '../../../utils/siteLevelSettings.json';
 import { PageSocialShareInformation } from '../utils/editTypes';
 import TwitterSettings from './TwitterSettings';
@@ -46,35 +46,33 @@ const SocialShare = ({
       SocialOgTitle !== undefined
         ? SocialOgTitle
         : PageName === undefined
-          ? ''
-          : `${PageName} | ${siteLevelSchema.siteName}`,
+        ? ''
+        : `${PageName} | ${siteLevelSchema.siteName}`,
     SocialOgDescription:
       SocialOgDescription !== undefined
         ? SocialOgDescription
         : PageDescription === undefined
-          ? ''
-          : PageDescription,
+        ? ''
+        : PageDescription,
     SocialOgSiteName:
       SocialOgSiteName !== undefined
         ? SocialOgSiteName
         : PageName === undefined
-          ? ''
-          : `${PageName} | ${siteLevelSchema.siteName}`,
+        ? ''
+        : `${PageName} | ${siteLevelSchema.siteName}`,
     SocialOgType: SocialOgType !== undefined ? SocialOgType : t('Website'),
     SocialOgURL:
       SocialOgURL !== undefined
         ? SocialOgURL
         : PageURL === undefined
-          ? ''
-          : PageURL,
-    SocialOgLocale:
-      SocialOgLocale !== undefined ? SocialOgLocale : t('en_US'),
+        ? ''
+        : PageURL,
+    SocialOgLocale: SocialOgLocale !== undefined ? SocialOgLocale : t('en_US'),
     SocialOgImage: SocialOgImage !== undefined ? SocialOgImage : '',
-  }
-  const initialSocialShare = useRef<PageSocialShareInformation>(data)
+  };
+  const initialSocialShare = useRef<PageSocialShareInformation>(data);
   const [socialShareInfo, setSocialShareInfo] =
     useState<PageSocialShareInformation>(initialSocialShare.current);
-
 
   const ogTypes = [t('website'), t('article')];
   const ogLocale = [t('page_en_us'), t('page_en_gb'), t('page_en_fr')];
@@ -85,7 +83,10 @@ const SocialShare = ({
 
   useEffect(() => {
     if (page?.pageSettings) {
-      initialSocialShare.current = { ...initialSocialShare.current, ...page.pageSettings }
+      initialSocialShare.current = {
+        ...initialSocialShare.current,
+        ...page.pageSettings,
+      };
       setSocialShareInfo(initialSocialShare.current);
     }
   }, [page?.pageSettings]);
@@ -127,7 +128,7 @@ const SocialShare = ({
   return (
     <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
       <Box sx={{ border: '2px solid #e2e2e2', borderRadius: '5px' }} mt={2}>
-        {socialShareInfo.SocialOgImage === '' ?
+        {socialShareInfo.SocialOgImage === '' ? (
           <Box
             sx={{
               borderRadius: '5px',
@@ -171,12 +172,12 @@ const SocialShare = ({
               {t('page_choose_image')}
             </Typography>
           </Box>
-          :
+        ) : (
           <Box sx={{ position: 'relative' }}>
             <img
               src={socialShareInfo.SocialOgImage}
-              alt='image file'
-              width='100%'
+              alt="image file"
+              width="100%"
             />
             <Box
               sx={{
@@ -253,13 +254,14 @@ const SocialShare = ({
                 </Box>
               </Box>
             </Box>
-          </Box>}
+          </Box>
+        )}
         <Box m={2}>
-          <Typography variant='subtitle2' mt={2}>
+          <Typography variant="subtitle2" mt={2}>
             {socialShareInfo.SocialOgURL ? socialShareInfo.SocialOgURL : ''}
           </Typography>
           <Typography
-            variant='h6'
+            variant="h6"
             sx={{ fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD }}
           >
             {socialShareInfo.SocialOgTitle.substring(
@@ -269,7 +271,7 @@ const SocialShare = ({
             {socialShareInfo.SocialOgTitle.length >
               socialSharePreviewNameLength && <span>...</span>}
           </Typography>
-          <Typography variant='subtitle2'>
+          <Typography variant="subtitle2">
             {socialShareInfo.SocialOgDescription.substring(
               0,
               socialSharePreviewDescriptionLength
@@ -280,11 +282,11 @@ const SocialShare = ({
         </Box>
       </Box>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_seo_title')}
         <Tooltip
@@ -295,7 +297,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -313,16 +315,16 @@ const SocialShare = ({
         multiline
         value={socialShareInfo.SocialOgTitle}
         onChange={(e) => handleDataChange(e, 'SocialOgTitle')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_title_placeholder')}
         inputProps={{ maxLength: socialShareNameLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_seo_description')}
         <Tooltip
@@ -333,7 +335,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -351,16 +353,16 @@ const SocialShare = ({
         multiline
         value={socialShareInfo.SocialOgDescription}
         onChange={(e) => handleDataChange(e, 'SocialOgDescription')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_info_about_placeholder')}
         inputProps={{ maxLength: socialShareDescriptionLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_seo_url')}
         <Tooltip
@@ -371,7 +373,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -389,7 +391,7 @@ const SocialShare = ({
         multiline
         value={socialShareInfo.SocialOgImage}
         onChange={(e) => handleDataChange(e, 'SocialOgImage')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_seo_url_placeholder')}
         inputProps={{ readOnly: true }}
       />
@@ -403,11 +405,11 @@ const SocialShare = ({
       />
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_ogsite')}
         <Tooltip
@@ -418,7 +420,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -436,16 +438,16 @@ const SocialShare = ({
         multiline
         value={socialShareInfo.SocialOgSiteName}
         onChange={(e) => handleDataChange(e, 'SocialOgSiteName')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_info_about_placeholder')}
         inputProps={{ maxLength: socialShareNameLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_ogtype')}
         <Tooltip
@@ -456,7 +458,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -470,10 +472,10 @@ const SocialShare = ({
           </Box>
         </Tooltip>
       </Typography>
-      <FormControl variant='outlined' sx={{ width: '100%' }}>
+      <FormControl variant="outlined" sx={{ width: '100%' }}>
         <Select
-          labelId='demo-simple-select-standard-label'
-          id='demo-simple-select-standard'
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
           value={socialShareInfo.SocialOgType}
           onChange={(e) => handleDataChange(e, 'SocialOgType')}
           sx={{
@@ -507,11 +509,11 @@ const SocialShare = ({
         </Select>
       </FormControl>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_ogurl')}
         <Tooltip
@@ -522,7 +524,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -540,16 +542,16 @@ const SocialShare = ({
         multiline
         value={socialShareInfo.SocialOgURL}
         onChange={(e) => handleDataChange(e, 'SocialOgURL')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_ogurl_placeholder')}
         inputProps={{ readOnly: true }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_oglocal')}
         <Tooltip
@@ -560,7 +562,7 @@ const SocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -574,10 +576,10 @@ const SocialShare = ({
           </Box>
         </Tooltip>
       </Typography>
-      <FormControl variant='outlined' sx={{ width: '100%' }}>
+      <FormControl variant="outlined" sx={{ width: '100%' }}>
         <Select
-          labelId='demo-simple-select-standard-label'
-          id='demo-simple-select-standard'
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
           value={socialShareInfo.SocialOgLocale}
           onChange={(e) => handleDataChange(e, 'SocialOgLocale')}
           sx={{
@@ -612,7 +614,7 @@ const SocialShare = ({
       </FormControl>
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={initialSocialShare.current === socialShareInfo}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

@@ -9,7 +9,7 @@ import {
 import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 // import { FilterProps } from '../utils/prelemTypes';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { FilterProps } from '../../utils/prelemTypes';
 import { useState } from 'react';
 
@@ -48,8 +48,8 @@ const SearchBar = ({
     <>
       <style>{stylenw}</style>
       <Paper
-        data-testid='prelem-search-header-wrap'
-        component='form'
+        data-testid="prelem-search-header-wrap"
+        component="form"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -58,7 +58,7 @@ const SearchBar = ({
           height: '50px',
         }}
       >
-        <IconButton type='button'>
+        <IconButton type="button">
           <SearchIcon />
         </IconButton>
         <Autocomplete
@@ -82,9 +82,9 @@ const SearchBar = ({
             handleImpression(pageDataObj.eventType, pageDataObj);
           }}
           disableClearable
-          clearIcon=''
-          clearText='clear'
-          id='search'
+          clearIcon=""
+          clearText="clear"
+          id="search"
           sx={{
             width: '100%',
             padding: '0px',
@@ -93,11 +93,11 @@ const SearchBar = ({
             },
           }}
           options={suggestiveSearchList}
-          popupIcon=''
+          popupIcon=""
           renderInput={(params) => (
             <TextField
               {...params}
-              placeholder='Search'
+              placeholder="Search"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
@@ -108,7 +108,7 @@ const SearchBar = ({
                 ...params.InputProps,
                 type: 'search',
                 endAdornment: (
-                  <InputAdornment position='start'>
+                  <InputAdornment position="start">
                     {inputValue && (
                       <CloseRoundedIcon
                         sx={{

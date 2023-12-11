@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, Button, TextField, Grid } from '@mui/material';
 import CachedIcon from '@mui/icons-material/Cached';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { useTranslation } from 'react-i18next';
 import CommonImageRender from '../../Gallery/CommonImageRender';
 import UploadImageIcon from '../../../assets/UploadImageIcon.svg';
@@ -84,8 +84,8 @@ const AddImage = ({
               <Box sx={{ textAlign: 'center' }}>
                 <img src={UploadImageIcon} />
                 <Typography
-                  variant='h5medium'
-                  component='h5'
+                  variant="h5medium"
+                  component="h5"
                   className={classes.uploadTypo}
                 >
                   {t('upload_image')}

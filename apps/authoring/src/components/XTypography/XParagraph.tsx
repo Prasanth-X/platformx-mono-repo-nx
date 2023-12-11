@@ -1,6 +1,6 @@
 import { ThemeProvider, Typography, styled } from '@mui/material';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 
 const fontStyle = `

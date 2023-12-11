@@ -15,7 +15,7 @@ import {
 } from '../../../components/toastNotification/toastNotificationReactTostify';
 import { CREATE_USER } from '../../../graphql/mutateQueries';
 import userManagementAPI from '../../../services/userManagement/UserManagement.api';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { USERNAME_EMAIL_EXIST } from '../../../utils/constants';
 import Gallery from '../../Gallery/Gallery';
 import TopBar from '../Component/TopBar';
@@ -106,10 +106,12 @@ const CreateUser = () => {
       (val, index, arr) => arr.indexOf(val) === index
     );
     //const temp = default_site_checked ? sites : accessible_sites || sites;
-    const isRoleExist = prevRoles.find(obj => obj?.site === getSelectedSite());
-    const roleid = prevRoles.map((obj)=> {
-      if(obj?.site === getSelectedSite()){
-        return roleSelected
+    const isRoleExist = prevRoles.find(
+      (obj) => obj?.site === getSelectedSite()
+    );
+    const roleid = prevRoles.map((obj) => {
+      if (obj?.site === getSelectedSite()) {
+        return roleSelected;
       } else {
         return obj._id;
       }
@@ -251,7 +253,9 @@ const CreateUser = () => {
       );
       const ISD = phone.substring(0, phone.lastIndexOf('-'));
       formik.setValues(tempObj);
-      setRoleSelected(role?.find(obj => obj?.site === getSelectedSite())?._id || '');
+      setRoleSelected(
+        role?.find((obj) => obj?.site === getSelectedSite())?._id || ''
+      );
       setPrevRoles(role);
       setISD(ISD);
       setPhone(tempPhone);
@@ -650,7 +654,7 @@ const CreateUser = () => {
           parentToolTip={parentToolTip}
         />
         <Box
-          id='scrollableDiv'
+          id="scrollableDiv"
           sx={{
             height: {
               sm: 'calc(100vh - 127px)',
@@ -705,13 +709,13 @@ const CreateUser = () => {
         title={t('save_warn_title')}
         subTitle={t('save_warn_subtitle')}
         closeButtonText={t('take_me_out')}
-        confirmButtonText='Stay Here'
+        confirmButtonText="Stay Here"
         closeButtonHandle={handleConfirm}
         confirmButtonHandle={() => setShowExitWarning(false)}
         crossButtonHandle={() => {
           setShowExitWarning(false);
         }}
-        modalType='unsavedChanges'
+        modalType="unsavedChanges"
       />
       <PlateformXDialog
         isDialogOpen={onSavedModal}

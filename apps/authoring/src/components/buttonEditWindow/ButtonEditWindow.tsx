@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useTranslation } from 'react-i18next';
 import TextField from '@mui/material/TextField';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import Typography from '@mui/material/Typography';
 import RadioGroup from '@mui/material/RadioGroup';
 import upload from '../../assets/images/upload.png';
@@ -72,7 +72,12 @@ export const ButtonEditWindow = ({
   handleJsValueChange,
 }: ButtonEditWindowProps) => {
   const { PrelemId = '' } = nullToObject(prelemData);
-  const isEcom = ['Prelem_073', 'Prelem_074', 'Prelem_075', 'Prelem_072'].includes(PrelemId);
+  const isEcom = [
+    'Prelem_073',
+    'Prelem_074',
+    'Prelem_075',
+    'Prelem_072',
+  ].includes(PrelemId);
 
   const { t } = useTranslation();
   const { state } = useContext(Store);
@@ -89,15 +94,15 @@ export const ButtonEditWindow = ({
   const commonRadioButton = () => {
     return (
       <RadioGroup
-        name='window-radio-buttons-group'
+        name="window-radio-buttons-group"
         value={windowValue}
         onChange={handleWindowOptionChange}
         row
       >
         <FormControlLabel
-          value='current window'
+          value="current window"
           control={<Radio />}
-          label='Current Tab'
+          label="Current Tab"
           sx={{
             '.Platform-x-FormControlLabel-label': {
               fontSize: ThemeConstants.FONTSIZE_SM,
@@ -106,9 +111,9 @@ export const ButtonEditWindow = ({
           }}
         />
         <FormControlLabel
-          value='new window'
+          value="new window"
           control={<Radio />}
-          label='New Tab'
+          label="New Tab"
           sx={{
             '.Platform-x-FormControlLabel-label': {
               fontSize: ThemeConstants.FONTSIZE_SM,
@@ -167,63 +172,63 @@ export const ButtonEditWindow = ({
           left: '50%',
           transform: `translate(-50%,-50%)`,
         }}
-        data-testid='empty-state-wrap'
+        data-testid="empty-state-wrap"
         ref={buttonRef}
       >
         <style>{style}</style>
         <RadioGroup
-          name='page-radio-buttons-group'
+          name="page-radio-buttons-group"
           value={urlValue}
           onChange={handleUrlChange}
-          className='popup-radio-options'
+          className="popup-radio-options"
           row
           sx={{ marginBottom: urlValue === 'Content' ? '15px' : '25px' }}
         >
           <FormControlLabel
-            className='form-label'
+            className="form-label"
             sx={{
               '.Platform-x-FormControlLabel-label': {
                 fontSize: ThemeConstants.FONTSIZE_SM,
               },
             }}
-            value='Internal'
+            value="Internal"
             control={<Radio />}
-            label='Page'
+            label="Page"
           />
           <FormControlLabel
-            className='form-label'
+            className="form-label"
             sx={{
               '.Platform-x-FormControlLabel-label': {
                 fontSize: ThemeConstants.FONTSIZE_SM,
               },
             }}
-            value='External'
+            value="External"
             control={<Radio />}
-            label='Link'
+            label="Link"
           />
           <FormControlLabel
-            className='form-label'
+            className="form-label"
             sx={{
               '.Platform-x-FormControlLabel-label': {
                 fontSize: ThemeConstants.FONTSIZE_SM,
               },
             }}
-            value='Content'
+            value="Content"
             control={<Radio />}
-            label='Content'
+            label="Content"
           />
 
           {isEcom && (
             <FormControlLabel
-              className='form-label'
+              className="form-label"
               sx={{
                 '.Platform-x-FormControlLabel-label': {
                   fontSize: ThemeConstants.FONTSIZE_SM,
                 },
               }}
-              value='Ecommerce'
+              value="Ecommerce"
               control={<Radio />}
-              label='Ecommerce'
+              label="Ecommerce"
             />
           )}
         </RadioGroup>
@@ -233,7 +238,7 @@ export const ButtonEditWindow = ({
             displayEmpty
             value={pageUrl}
             onChange={handleSelectPageUrlChange}
-            placeholder='Choose Page'
+            placeholder="Choose Page"
             input={<OutlinedInput />}
             sx={{
               width: '100%',
@@ -263,8 +268,8 @@ export const ButtonEditWindow = ({
 
         {urlValue === 'External' && (
           <TextField
-            id='outlined-name'
-            placeholder='Paste URL here'
+            id="outlined-name"
+            placeholder="Paste URL here"
             value={externalLink}
             onChange={handleUrlInputChange}
             sx={{
@@ -374,7 +379,7 @@ export const ButtonEditWindow = ({
                   lg={10}
                   xs={12}
                   sm={12}
-                  className='contentInputHandle'
+                  className="contentInputHandle"
                 >
                   {ContentType && iconReplaceBasedCondition(ContentTypeData)}
                   <Box
@@ -419,7 +424,7 @@ export const ButtonEditWindow = ({
                         </Box>
                       </>
                     ) : (
-                      <Box component='span'>{t('content_type_added')}</Box>
+                      <Box component="span">{t('content_type_added')}</Box>
                     )}
                     {/* {ContentType ? `"${ContentType}" Added!` : t("content_type_added")} */}
                   </Box>
@@ -454,7 +459,7 @@ export const ButtonEditWindow = ({
                     }}
                   >
                     <img
-                      alt='uploadAndReplace'
+                      alt="uploadAndReplace"
                       src={ContentType ? replace : upload}
                       style={{
                         width: '20px',
@@ -470,7 +475,7 @@ export const ButtonEditWindow = ({
 
             {!isGalleryArray ? <>{commonRadioButton()}</> : null}
           </>
-        ) : (urlValue === 'Ecommerce' && isEcom) ? (
+        ) : urlValue === 'Ecommerce' && isEcom ? (
           <>
             <Box
               sx={{
@@ -508,7 +513,7 @@ export const ButtonEditWindow = ({
                   lg={10}
                   xs={12}
                   sm={12}
-                  className='contentInputHandle'
+                  className="contentInputHandle"
                 >
                   <Box
                     sx={{
@@ -549,7 +554,7 @@ export const ButtonEditWindow = ({
                         </Box>
                       </>
                     ) : (
-                      <Box component='span'>{t('ecom_no_product')}</Box>
+                      <Box component="span">{t('ecom_no_product')}</Box>
                     )}
                   </Box>
                 </Grid>
@@ -583,7 +588,7 @@ export const ButtonEditWindow = ({
                     }}
                   >
                     <img
-                      alt='uploadAndReplace'
+                      alt="uploadAndReplace"
                       src={ContentType ? replace : upload}
                       style={{
                         width: '20px',

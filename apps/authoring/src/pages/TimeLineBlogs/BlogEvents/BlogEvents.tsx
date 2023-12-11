@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core';
 
 import { useLazyQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import liveIcon from '../../../assets/red_blinking_gif.gif';
 import { Box, Button, Divider, Typography } from '@mui/material';
 import SkeltonLoader from '../../../components/Skeleton-loader/skeleton';
@@ -148,7 +148,7 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
       {selectedEventDetaiils && selectedEventDetaiils?.banner_image ? (
         <Box sx={{ position: 'relative', left: '0', top: '0', right: '0' }}>
           <Box
-            className='eventArea'
+            className="eventArea"
             sx={{
               display: { xs: 'unset', em: 'flex' },
               flexDirection: 'column',
@@ -158,7 +158,7 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
             }}
           >
             <Box
-              className='innerContentArea'
+              className="innerContentArea"
               sx={{
                 display: { md: 'flex', xs: 'unset !important' },
                 flexDirection: 'column',
@@ -178,43 +178,43 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
                 <Box sx={{ position: 'relative', width: '100%' }}>
                   <img
                     src={selectedEventDetaiils?.banner_image}
-                    className='eventImage'
-                    width='100%'
+                    className="eventImage"
+                    width="100%"
                   />
                   <Box
                     sx={{
                       visibility: eventState == 'live' ? 'initial' : 'hidden',
                     }}
                   >
-                    <img src={liveIcon} className='eventLiveIcon' />
+                    <img src={liveIcon} className="eventLiveIcon" />
                   </Box>
                 </Box>
                 <Box sx={{ margin: '12px 18px 5px 18px' }}>
                   <Typography
-                    variant='h6semibold'
-                    component='h6'
+                    variant="h6semibold"
+                    component="h6"
                     sx={{ color: ThemeConstants.BLACK_COLOR_VARIANT1 }}
-                    className='eventTitle'
+                    className="eventTitle"
                   >
                     {selectedEventDetaiils?.title}
                   </Typography>
                   <Typography
-                    variant='h6regular'
-                    component='p'
-                    className='eventDescription'
+                    variant="h6regular"
+                    component="p"
+                    className="eventDescription"
                   >
                     {selectedEventDetaiils?.description}
                   </Typography>
                   <Divider sx={{ margin: { xs: '0 -18px', lg: '0 0px' } }} />
                   {selectedEventDetaiils?.event_start_date ? (
                     <Box className={classes.eventSpacer}>
-                      <Typography variant='h6semibold' component='h6'>
+                      <Typography variant="h6semibold" component="h6">
                         Event Start
                       </Typography>
                       <Box sx={{ display: 'flex' }}>
                         <Typography
-                          variant='h6regular'
-                          component='h6'
+                          variant="h6regular"
+                          component="h6"
                           className={classes.timeField}
                         >
                           <CalendarTodayOutlined
@@ -230,8 +230,8 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
                             : ''}
                         </Typography>
                         <Typography
-                          variant='h6regular'
-                          component='h6'
+                          variant="h6regular"
+                          component="h6"
                           className={`${classes.timeField} ${classes.noGapRight}`}
                         >
                           <ScheduleOutlined className={classes.eventIcon} />
@@ -249,16 +249,16 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
                   {selectedEventDetaiils?.event_end_date ? (
                     <Box>
                       <Typography
-                        variant='h6semibold'
-                        component='h6'
+                        variant="h6semibold"
+                        component="h6"
                         className={classes.eventSpacer}
                       >
                         Event End
                       </Typography>
                       <Box sx={{ display: 'flex' }}>
                         <Typography
-                          variant='h6regular'
-                          component='h6'
+                          variant="h6regular"
+                          component="h6"
                           className={classes.timeField}
                         >
                           <CalendarTodayOutlined
@@ -271,8 +271,8 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
                             )}
                         </Typography>
                         <Typography
-                          variant='h6regular'
-                          component='h6'
+                          variant="h6regular"
+                          component="h6"
                           className={`${classes.timeField} ${classes.noGapRight}`}
                         >
                           <ScheduleOutlined className={classes.eventIcon} />
@@ -298,21 +298,21 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
               }}
             >
               <Button
-                variant='outlined'
+                variant="outlined"
                 sx={{
                   mr: 2,
                   background: '#fff !important',
                   width: '100%',
                   justifyContent: 'flex-start !important',
                 }}
-                size='large'
+                size="large"
                 endIcon={
-                  <ArrowForwardIosOutlinedIcon className='eventArrowIcon' />
+                  <ArrowForwardIosOutlinedIcon className="eventArrowIcon" />
                 }
                 className={classes.button}
                 onClick={viewEventHandle}
               >
-                <Typography variant='h6semibold' component='h6'>
+                <Typography variant="h6semibold" component="h6">
                   {' '}
                   View Full Event{' '}
                 </Typography>
@@ -326,7 +326,7 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
             }}
           >
             <Button
-              variant='outlined'
+              variant="outlined"
               sx={{
                 mr: 2,
                 background: '#fff !important',
@@ -334,14 +334,14 @@ const BlogEvents: React.FC<EventsProps> = (_props: any) => {
                 justifyContent: 'flex-start !important',
                 mt: 2,
               }}
-              size='large'
+              size="large"
               endIcon={
-                <ArrowForwardIosOutlinedIcon className='eventArrowIcon' />
+                <ArrowForwardIosOutlinedIcon className="eventArrowIcon" />
               }
               className={classes.button}
               onClick={viewEventHandle}
             >
-              <Typography variant='h6semibold' component='h6'>
+              <Typography variant="h6semibold" component="h6">
                 {' '}
                 View Full Event{' '}
               </Typography>

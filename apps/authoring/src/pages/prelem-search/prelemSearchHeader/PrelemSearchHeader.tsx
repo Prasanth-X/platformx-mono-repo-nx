@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import Icons from '../../../components/Icons';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { FilterProps } from '../utils/prelemTypes';
 export const PrelemSearchHeader = ({
   categoryList,
@@ -27,7 +27,7 @@ export const PrelemSearchHeader = ({
   const routeTo = '/edit-page';
   const [handleImpression] = usePlatformAnalytics();
   return (
-    <Box data-testid='prelem-search-header-wrap'>
+    <Box data-testid="prelem-search-header-wrap">
       <Box sx={{ padding: { xs: '15px 20px 0', lg: '10px 50px' } }}>
         <Box
           sx={{
@@ -37,13 +37,13 @@ export const PrelemSearchHeader = ({
           }}
         >
           <Icons
-            nameIcon='back'
+            nameIcon="back"
             enable
             styleObject={{
               color: '',
               border: {
                 xs: 'none',
-                md: `1px solid ${  ThemeConstants.PRIMARY_MAIN_COLOR}`,
+                md: `1px solid ${ThemeConstants.PRIMARY_MAIN_COLOR}`,
               },
               borderRadius: '8px',
               float: 'left',
@@ -64,7 +64,7 @@ export const PrelemSearchHeader = ({
             }}
           />{' '}
           <Typography
-            variant='h5'
+            variant="h5"
             sx={{
               display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' },
               marginTop: '4px',
@@ -114,9 +114,9 @@ export const PrelemSearchHeader = ({
               handleImpression(pageDataObj.eventType, pageDataObj);
             }}
             disableClearable
-            clearIcon=''
-            clearText='clear'
-            id='search'
+            clearIcon=""
+            clearText="clear"
+            id="search"
             sx={{
               width: { xs: '100%', sm: '100%', md: '35%', lg: '35%' },
               padding: { xs: '0px', md: '0px 10px' },
@@ -126,21 +126,21 @@ export const PrelemSearchHeader = ({
             }}
             options={suggestiveSearchList}
             popupIcon=""
-            renderInput={(params) =>
-              (<TextField
+            renderInput={(params) => (
+              <TextField
                 {...params}
-                placeholder='Search'
+                placeholder="Search"
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
                   startAdornment: (
-                    <InputAdornment position='start'>
+                    <InputAdornment position="start">
                       {' '}
                       <SearchIcon />
                     </InputAdornment>
                   ),
                   endAdornment: (
-                    <InputAdornment position='start'>
+                    <InputAdornment position="start">
                       {inputValue && (
                         <CloseRoundedIcon
                           sx={{
@@ -176,8 +176,8 @@ export const PrelemSearchHeader = ({
                     },
                   },
                 }}
-              />)
-            }
+              />
+            )}
           />
           <List
             sx={{
@@ -204,7 +204,7 @@ export const PrelemSearchHeader = ({
                       padding: { xs: '2px 15px', md: '6px 15px' },
                       borderRadius: '35px',
                       backgroundColor: ThemeConstants.WHITE_COLOR,
-                      border: `1px solid ${  ThemeConstants.PRIMARY_MAIN_COLOR}`,
+                      border: `1px solid ${ThemeConstants.PRIMARY_MAIN_COLOR}`,
                       color: ThemeConstants.PRIMARY_MAIN_COLOR,
                       '.Platform-x-Typography-root': {
                         fontSize: {

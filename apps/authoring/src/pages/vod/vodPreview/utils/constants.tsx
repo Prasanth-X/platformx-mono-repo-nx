@@ -1,8 +1,8 @@
 import ComputerRoundedIcon from '@mui/icons-material/ComputerRounded';
 import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
 import TabletAndroidRoundedIcon from '@mui/icons-material/TabletAndroidRounded';
-import LightTheme from '../../../../theme/lightTheme';
-import ThemeConstants from '../../../../theme/variable';
+import LightTheme from '../../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const themeConstant =
   process.env?.REACT_APP_COMPONENT_THEME == 'LightTheme'

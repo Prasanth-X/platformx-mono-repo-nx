@@ -1,5 +1,5 @@
 import { FormControlLabel, Radio } from '@mui/material';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const RadioControlLabel = ({ value, label = '', disabled = false }) => {
   return (

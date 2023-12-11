@@ -3,7 +3,7 @@ import { Button, Typography, Box, Tooltip } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import TextField from '@mui/material/TextField';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
@@ -48,7 +48,7 @@ const PrelemEcom: React.FC<Props> = ({
     <AccordionDetails>
       {
         <>
-          <Box key={`${index  }_content`}>
+          <Box key={`${index}_content`}>
             <Typography variant="subtitle1" mb={1}>
               {t('ecom_prelem_setting_text1')}
             </Typography>

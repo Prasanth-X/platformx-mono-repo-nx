@@ -13,7 +13,7 @@ import {
 } from 'date-fns';
 import { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import './default.css';
 import './styles.css';
 
@@ -53,9 +53,9 @@ export default function CalendarDesktop({ isClicked, onclickDesk }) {
           moveRangeOnFirstSelection={false}
           showDateDisplay={false}
           months={2}
-          color='#272727'
+          color="#272727"
           ranges={state}
-          direction='horizontal'
+          direction="horizontal"
           inputRanges={[]}
           staticRanges={[
             {
@@ -125,7 +125,7 @@ export default function CalendarDesktop({ isClicked, onclickDesk }) {
           }}
         >
           <Button
-            variant='contained'
+            variant="contained"
             sx={{
               backgroundColor: ThemeConstants.WHITE_COLOR,
               color: ThemeConstants.BLACK_COLOR,
@@ -146,7 +146,7 @@ export default function CalendarDesktop({ isClicked, onclickDesk }) {
           </Button>
 
           <Button
-            variant='contained'
+            variant="contained"
             sx={{
               backgroundColor: ThemeConstants.BLACK_COLOR,
               color: ThemeConstants.WHITE_COLOR,

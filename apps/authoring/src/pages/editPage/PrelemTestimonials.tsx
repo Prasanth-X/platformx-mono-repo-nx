@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import React, { memo, useState } from 'react';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { TestimonialProps } from './utils/editTypes';
 const PrelemTestimonials: React.FC<TestimonialProps> = ({
   data,
@@ -79,21 +79,21 @@ const PrelemTestimonials: React.FC<TestimonialProps> = ({
               expandIcon={
                 <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
               }
-              aria-controls='images-content'
-              id='images-header'
+              aria-controls="images-content"
+              id="images-header"
             >
               {Object.entries(content).length > 1 && (
                 <IconButton
-                  color='primary'
-                  aria-label='delete testimonial'
-                  component='span'
+                  color="primary"
+                  aria-label="delete testimonial"
+                  component="span"
                   onClick={() => deleteTestimonial(key)}
                 >
                   <DeleteIcon />
                 </IconButton>
               )}
               <Typography
-                variant='h6'
+                variant="h6"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
@@ -115,8 +115,8 @@ const PrelemTestimonials: React.FC<TestimonialProps> = ({
             <AccordionDetails>
               <Typography>Description</Typography>
               <TextField
-                id='outlined-textarea'
-                placeholder='description'
+                id="outlined-textarea"
+                placeholder="description"
                 multiline
                 error={value?.TestimonialText?.length === 0}
                 value={value.TestimonialText}
@@ -125,8 +125,8 @@ const PrelemTestimonials: React.FC<TestimonialProps> = ({
               />
               <Typography>Name</Typography>
               <TextField
-                id='outlined-textarea'
-                placeholder='name'
+                id="outlined-textarea"
+                placeholder="name"
                 error={value?.AuthorName?.length === 0}
                 value={value.AuthorName}
                 inputProps={{ maxLength: 25 }}
@@ -134,8 +134,8 @@ const PrelemTestimonials: React.FC<TestimonialProps> = ({
               />
               <Typography>Designation</Typography>
               <TextField
-                id='outlined-textarea'
-                placeholder='designation'
+                id="outlined-textarea"
+                placeholder="designation"
                 value={value.AuthorDesignation}
                 inputProps={{ maxLength: 20 }}
                 onChange={(e) => handleDataChange(e, key, 'AuthorDesignation')}
@@ -146,7 +146,7 @@ const PrelemTestimonials: React.FC<TestimonialProps> = ({
       })}
       <Box sx={{ textAlign: 'center' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,
             '&:hover': {
@@ -160,7 +160,7 @@ const PrelemTestimonials: React.FC<TestimonialProps> = ({
       </Box>
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={getDisabledState()}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

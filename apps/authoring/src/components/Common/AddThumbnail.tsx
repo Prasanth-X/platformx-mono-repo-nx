@@ -1,35 +1,41 @@
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import CachedIcon from "@mui/icons-material/Cached";
-import { Box, TextField, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import ThemeConstants from "../../theme/variable";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import CachedIcon from '@mui/icons-material/Cached';
+import { Box, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const AddThumbnail = ({ url, onUploadClick, handleChange, type }) => {
-const { t }= useTranslation();
+  const { t } = useTranslation();
   return (
     <Box>
       <Box sx={{ display: 'none' }}>
         <TextField
-          variant='outlined'
-          name='thumbnailURL'
+          variant="outlined"
+          name="thumbnailURL"
           value={url || ''}
           // onChange={handleChange('thumbnailURL')}
           onChange={(e) => handleChange(e)}
         />
       </Box>
 
-      {url ?
+      {url ? (
         <Box
           sx={{
-            position: "relative",
-            width: { xs: "100%", sm: "100%", md: "80%" },
-            height: "91%", borderRadius: "4px",
+            position: 'relative',
+            width: { xs: '100%', sm: '100%', md: '80%' },
+            height: '91%',
+            borderRadius: '4px',
           }}
           mb={2}
         >
           <img
             src={url}
-            style={{ width: "100%", height: "206px", objectFit: "cover", borderRadius: "4px", }}
+            style={{
+              width: '100%',
+              height: '206px',
+              objectFit: 'cover',
+              borderRadius: '4px',
+            }}
           />
           <Box
             sx={{
@@ -76,7 +82,7 @@ const { t }= useTranslation();
             </Box>
           </Box>
         </Box>
-       :
+      ) : (
         <Box
           sx={{
             borderRadius: '5px',
@@ -121,12 +127,13 @@ const { t }= useTranslation();
             <Typography
               variant="h5medium"
               component="h5"
-              sx={{ color: "#000000", textTransform: 'capitalize' }}
+              sx={{ color: '#000000', textTransform: 'capitalize' }}
             >
               {t('event_thumbnail_placeholder')}
             </Typography>
           </Box>
-        </Box>}
+        </Box>
+      )}
     </Box>
   );
 };

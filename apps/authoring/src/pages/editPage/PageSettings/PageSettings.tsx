@@ -11,7 +11,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import AdvancedSeo from './AdvancedSeo';
 import Analytics from './Analytics';
 import PageInfo from './PageInfo';
@@ -47,7 +47,7 @@ const PageSettings = ({
   return (
     <>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           padding: '10px 25px 10px 25px',
           backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -86,11 +86,11 @@ const PageSettings = ({
             expandIcon={
               <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
             }
-            aria-controls='page-info-content'
-            id='page-info-header'
+            aria-controls="page-info-content"
+            id="page-info-header"
           >
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -129,11 +129,11 @@ const PageSettings = ({
             expandIcon={
               <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
             }
-            aria-controls='seo-basics-content'
-            id='seo-basics-header'
+            aria-controls="seo-basics-content"
+            id="seo-basics-header"
           >
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -172,11 +172,11 @@ const PageSettings = ({
             expandIcon={
               <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
             }
-            aria-controls='social-share-content'
-            id='social-share-header'
+            aria-controls="social-share-content"
+            id="social-share-header"
           >
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -202,7 +202,7 @@ const PageSettings = ({
             </Typography>
           </AccordionSummary>
           <Divider />
-          {expanded === 'social-share' &&
+          {expanded === 'social-share' && (
             <SocialShare
               handleImageDelete={handleImageDelete}
               handleGallery={handleGallery}
@@ -213,7 +213,8 @@ const PageSettings = ({
                   ? confirmImageOrVideoDelete
                   : false
               }
-            />}
+            />
+          )}
         </Accordion>
         <Divider />
         <Accordion
@@ -230,11 +231,11 @@ const PageSettings = ({
             expandIcon={
               <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
             }
-            aria-controls='analytics-content'
-            id='analytics-header'
+            aria-controls="analytics-content"
+            id="analytics-header"
           >
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -277,11 +278,11 @@ const PageSettings = ({
             expandIcon={
               <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
             }
-            aria-controls='publish-content'
-            id='publish-header'
+            aria-controls="publish-content"
+            id="publish-header"
           >
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 display: 'flex',
                 alignItems: 'center',

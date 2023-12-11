@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Box, Typography, Grid } from '@mui/material';
 import NoResultsFound from '../../../../Common/NoResultsFound';
 import { nullToArray } from '../../../../utils/helperFunctions';
@@ -7,12 +7,7 @@ import NoResults from '../../../../assets/images/no-results.png';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ContentTypeCard from 'platform-x-prelems/prelems/ContentTypeCard';
 
-const DamContentCard = ({
-  cardObj,
-  fetchMoreData,
-  isLazyLoad,
-  isLoading
-}) => {
+const DamContentCard = ({ cardObj, fetchMoreData, isLazyLoad, isLoading }) => {
   const isError = false;
   const getContentType = (item, index) => {
     return (
@@ -32,9 +27,7 @@ const DamContentCard = ({
           height: 'auto',
           aspectRatio: '1/1',
         }}
-        onClick={
-          () => { }
-        }
+        onClick={() => {}}
         key={index}
         p={1}
       >
@@ -59,7 +52,7 @@ const DamContentCard = ({
 
   return (
     <>
-      {isError ?
+      {isError ? (
         <Box
           sx={{
             marginTop: '200px',
@@ -69,25 +62,25 @@ const DamContentCard = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
           </Typography>
         </Box>
-        :
+      ) : (
         <>
-
           <Box
             sx={{
               height: 'calc(100vh - 160px)',
               overflowY: 'scroll',
             }}
-            id='scrollablegallerydiv'
+            id="scrollablegallerydiv"
           >
-            {(!isLoading && nullToArray(cardObj)?.length === 0) ?
+            {!isLoading && nullToArray(cardObj)?.length === 0 ? (
               <NoResultsFound />
-              : <Grid
+            ) : (
+              <Grid
                 container
                 sx={{
                   backgroundColor: '#ffffff',
@@ -102,19 +95,23 @@ const DamContentCard = ({
                   next={fetchMoreData}
                   hasMore={isLazyLoad}
                   dataLength={cardObj.length}
-                  scrollableTarget='scrollablegallerydiv'
+                  scrollableTarget="scrollablegallerydiv"
                 >
                   {/* {console.log("shadow", cardObj, isLoading)} */}
-                  {isLoading ? Array.from(Array(8)).map((element, index) => getContentType(element, index))
+                  {isLoading
+                    ? Array.from(Array(8)).map((element, index) =>
+                        getContentType(element, index)
+                      )
                     : cardObj?.map((item, index) => {
-                      return getContentType(item, index);
-                    })}
+                        return getContentType(item, index);
+                      })}
                 </InfiniteScroll>
-              </Grid>}
+              </Grid>
+            )}
           </Box>
-        </>}
+        </>
+      )}
     </>
-
   );
 };
 

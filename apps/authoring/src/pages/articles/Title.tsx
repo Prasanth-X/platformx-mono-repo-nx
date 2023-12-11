@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { formatUrl } from '../../utils/helperFunctions';
 //import { updateField } from '../../articles/Actions';
 
@@ -74,14 +74,14 @@ export default function Title({
     >
       <TextField
         classes={{ root: classes.customTextField }}
-        variant='standard' // <== changed this
-        margin='normal'
+        variant="standard" // <== changed this
+        margin="normal"
         required
         fullWidth
         inputProps={{ style: { fontSize: '28px' }, maxLength: 350 }}
-        id='title'
-        name='title'
-        autoComplete='title'
+        id="title"
+        name="title"
+        autoComplete="title"
         autoFocus
         onBlur={handleTitleChange}
         onChange={handleChange}

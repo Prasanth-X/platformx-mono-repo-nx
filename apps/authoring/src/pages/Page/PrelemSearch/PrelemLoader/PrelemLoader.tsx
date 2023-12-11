@@ -4,7 +4,7 @@ import ChatGptCommonLoader from '../../../../assets/svg/ChatGptCommonLoader.gif'
 import CircularProgress from '@mui/material/CircularProgress';
 import { useStyles } from './PrelemLoader.Style';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const PrelemLoader = () => {
   const { t } = useTranslation();
@@ -13,8 +13,7 @@ const PrelemLoader = () => {
     <Box className={classes.LoaderMainBox}>
       <Box className={classes.ImageBox}>
         <Box>
-          <img 
-           src={ChatGptCommonLoader} />
+          <img src={ChatGptCommonLoader} />
         </Box>
       </Box>
     </Box>

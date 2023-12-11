@@ -20,9 +20,13 @@ import {
   showToastSuccess,
 } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { publish_vod, update_vod } from '../../../../services/vod/vod.api';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../../utils/authConstants';
-import { getSubDomain, handleHtmlTags, trimString } from '../../../../utils/helperFunctions';
+import {
+  getSubDomain,
+  handleHtmlTags,
+  trimString,
+} from '../../../../utils/helperFunctions';
 import { AutoText, useStyles } from './vodSocialShare.styles';
 import { SocialShareProps } from './vosSocialShare.types';
 
@@ -121,9 +125,7 @@ const VodSocialShare = ({
           ? selectedVod?.PageSettings?.SocialOgTwitterURL
           : selectedVod?.Page_State === 'DRAFT'
           ? selectedVod?.CurrentPageURL
-          : `${getSubDomain()}/${i18n.language}/${
-              selectedVod?.CurrentPageURL
-            }`,
+          : `${getSubDomain()}/${i18n.language}/${selectedVod?.CurrentPageURL}`,
       SocialTwitterCardSize:
         selectedVod?.PageSettings?.SocialTwitterCardSize != ''
           ? selectedVod?.PageSettings?.SocialTwitterCardSize
@@ -259,9 +261,7 @@ const VodSocialShare = ({
     navigator.clipboard.writeText(
       selectedVod?.Page_State === 'DRAFT'
         ? selectedVod?.CurrentPageURL
-        : `${getSubDomain()}/${i18n.language}/${
-            selectedVod?.CurrentPageURL
-          }`
+        : `${getSubDomain()}/${i18n.language}/${selectedVod?.CurrentPageURL}`
     );
   };
   useEffect(() => {
@@ -306,7 +306,7 @@ const VodSocialShare = ({
       <Box className={classes.socialOgImageContainer} mt={2}>
         {socialShareInfo?.SocialOgImage == '' ? (
           <Box className={classes.noImage} onClick={onUploadClick}>
-            <Typography variant='h5regular' className={classes.noImageText}>
+            <Typography variant="h5regular" className={classes.noImageText}>
               <Box className={classes.arrowUpContainer} mr={2}>
                 <ArrowUpwardIcon className={classes.arrowUpIcon} />
               </Box>
@@ -317,15 +317,15 @@ const VodSocialShare = ({
           <Box className={classes.hasImage}>
             <img
               src={socialShareInfo?.SocialOgImage}
-              alt='image file'
-              width='100%'
+              alt="image file"
+              width="100%"
             />
             <Box className={classes.imageReplaceContainer}>
               <Box sx={{ cursor: 'pointer' }} onClick={onUploadClick}>
                 <Box className={classes.cashedIconContainer}>
                   <CachedIcon />
                 </Box>
-                <Typography variant='h7regular' className={classes.replaceText}>
+                <Typography variant="h7regular" className={classes.replaceText}>
                   {t('replace')}
                 </Typography>
               </Box>
@@ -334,19 +334,19 @@ const VodSocialShare = ({
         )}
       </Box>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         className={`${classes.titleLabel} drawer-label`}
       >
         {t('vod_ss_title')}
         <Tooltip
           title={
             <Box m={1}>
-              <Typography variant='h7regular' mb={1}>
+              <Typography variant="h7regular" mb={1}>
                 {t('vod_ss_title_tp')}
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon className={classes.iconHover} />
@@ -357,24 +357,24 @@ const VodSocialShare = ({
         multiline
         value={socialShareInfo?.SocialOgTitle}
         onChange={(e) => handleDataChange(e, 'SocialOgTitle')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_title_placeholder')}
         inputProps={{ maxLength: socialShareNameLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         className={`${classes.titleLabel} drawer-label`}
       >
         {t('vod_ss_about')}
         <Tooltip
           title={
             <Box m={1}>
-              <Typography variant='h7regular' mb={1}>
+              <Typography variant="h7regular" mb={1}>
                 {t('vod_ss_about_tp')}
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon className={classes.iconHover} />
@@ -385,26 +385,26 @@ const VodSocialShare = ({
         multiline
         value={socialShareInfo?.SocialOgDescription}
         onChange={(e) => handleDataChange(e, 'SocialOgDescription')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_description_placeholder')}
         inputProps={{ maxLength: socialShareDescriptionLength }}
       />
 
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         className={`${classes.titleLabel} drawer-label`}
       >
         {t('Keywords')}
         <Tooltip
           title={
             <Box m={1}>
-              <Typography variant='h7regular' mb={1}>
+              <Typography variant="h7regular" mb={1}>
                 {t('vod_keywords_tp')}
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon className={classes.iconHover} />
@@ -413,7 +413,7 @@ const VodSocialShare = ({
       </Typography>
       <Autocomplete
         multiple
-        id='tags-filled'
+        id="tags-filled"
         value={
           socialShareInfo?.PageTags?.length > 0
             ? [...socialShareInfo.PageTags]
@@ -435,7 +435,7 @@ const VodSocialShare = ({
             (option: string, index: number) =>
               option && (
                 <Chip
-                  variant='outlined'
+                  variant="outlined"
                   label={option}
                   key={index}
                   deleteIcon={
@@ -456,7 +456,7 @@ const VodSocialShare = ({
         renderInput={(params) => (
           <AutoText
             {...params}
-            variant='outlined'
+            variant="outlined"
             placeholder={
               socialShareInfo?.PageTags?.length > 0
                 ? ''
@@ -469,7 +469,7 @@ const VodSocialShare = ({
 
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={getDisabledState()}
           onClick={saveSocialShare}
         >

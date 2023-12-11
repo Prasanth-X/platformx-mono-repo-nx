@@ -8,7 +8,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useState } from 'react';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { useStyles } from './Reschedule.styles';
 import { RescheduleProps } from './Reschedule.types';
 import ScheduleIcon from '../../../../assets/svg/schedulePopupIcon.svg';
@@ -60,8 +60,8 @@ const Reschedule = ({
     <Dialog
       fullWidth
       open={isOpen}
-      aria-labelledby='alert-dialog-title'
-      aria-describedby='alert-dialog-description'
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
       sx={{
         '.Platform-x-Paper-root': {
           padding: '25px !important',
@@ -98,7 +98,7 @@ const Reschedule = ({
         <img src={ScheduleIcon} />
       </Box>
       {title ? (
-        <Typography variant='h3bold' mt={4} sx={{ textAlign: 'center' }}>
+        <Typography variant="h3bold" mt={4} sx={{ textAlign: 'center' }}>
           {title}
         </Typography>
       ) : (
@@ -111,11 +111,7 @@ const Reschedule = ({
             textAlign: 'center',
           }}
         >
-          <Typography
-            variant='h5semibold'
-          >
-            Enter the new schedule
-          </Typography>
+          <Typography variant="h5semibold">Enter the new schedule</Typography>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateTimePicker
               PopperProps={{ className: classes.popperStyle }}
@@ -128,7 +124,7 @@ const Reschedule = ({
               renderInput={(params) => (
                 <TextField
                   onKeyDown={handleDateChangeRaw}
-                  size='small'
+                  size="small"
                   {...params}
                   sx={{
                     border: 'none',
@@ -156,7 +152,7 @@ const Reschedule = ({
         }}
       >
         <Button
-          variant='contained'
+          variant="contained"
           sx={{
             backgroundColor: ThemeConstants.WHITE_COLOR,
             color: ThemeConstants.BLACK_COLOR,
@@ -175,7 +171,7 @@ const Reschedule = ({
         </Button>
 
         <Button
-          variant='contained'
+          variant="contained"
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,
             color: ThemeConstants.WHITE_COLOR,
@@ -201,7 +197,7 @@ const Reschedule = ({
         }}
       >
         <Button
-          variant='contained'
+          variant="contained"
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,
             color: ThemeConstants.WHITE_COLOR,
@@ -218,7 +214,7 @@ const Reschedule = ({
         </Button>
 
         <Button
-          variant='contained'
+          variant="contained"
           sx={{
             backgroundColor: ThemeConstants.WHITE_COLOR,
             color: ThemeConstants.BLACK_COLOR,

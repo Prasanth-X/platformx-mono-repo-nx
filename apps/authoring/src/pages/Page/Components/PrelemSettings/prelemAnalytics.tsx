@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PrelemAnalyticsSave } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BackButton from '../BackButton/BackButton';
 import '../PageSettings/PageSettings.css';
 import BasicSwitch from '../Switch';
@@ -27,14 +27,14 @@ const PrelemAnalytics = ({ setPageId, selectedPrelemIndex }) => {
   }, [selectedPrelemIndex]);
 
   return (
-    <Box className='pageSettingmainWp'>
+    <Box className="pageSettingmainWp">
       <BackButton
         setPageId={setPageId}
-        Title='Analytics'
-        backTo='prelemSetting'
+        Title="Analytics"
+        backTo="prelemSetting"
       />
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('prelem_analytics')}
           <BasicSwitch
             onChange={(e: any) => handlePrelemAnalyticsChange(e)}
@@ -43,26 +43,26 @@ const PrelemAnalytics = ({ setPageId, selectedPrelemIndex }) => {
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('impression')}
           <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('button_click')}
           <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('link_click')}
           <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('content_insight')}
           <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
         </Typography>

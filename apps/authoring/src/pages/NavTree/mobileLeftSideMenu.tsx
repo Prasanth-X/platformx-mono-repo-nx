@@ -27,7 +27,7 @@ import {
   update_menu,
 } from '../../services/navTree/navTree.api';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import PageLeftSidebar from '../sidebar/pageLeftSidebar';
 import { updateInitialState } from './Actions';
 import DeleteDialog from './MobileViewPages/DeleteDialog';
@@ -114,7 +114,7 @@ export default function MobileLeftSideMenu({
     },
     ref: React.Ref<unknown>
   ) {
-    return <Slide direction='up' ref={ref} {...props} />;
+    return <Slide direction="up" ref={ref} {...props} />;
   });
   const handleListClose = () => {
     setListMenu(null);
@@ -520,7 +520,7 @@ export default function MobileLeftSideMenu({
             overflow: 'hidden',
           }}
         >
-          <Slide direction='right' in={isSideMenuOpen} timeout={300}>
+          <Slide direction="right" in={isSideMenuOpen} timeout={300}>
             <Box
               sx={{
                 backgroundColor: '#fff',
@@ -552,7 +552,7 @@ export default function MobileLeftSideMenu({
               }}
             />
             <Typography
-              variant='h4medium'
+              variant="h4medium"
               sx={{
                 ml: '10px',
               }}
@@ -576,23 +576,23 @@ export default function MobileLeftSideMenu({
           </Box>
           <Divider />
           <Box
-            className='navTreeMenuBox'
+            className="navTreeMenuBox"
             sx={{ overflowY: 'auto', height: 'calc(100vh - 210px)' }}
           >
             <DragAndDrop onDragEnd={handleDragEnd}>
-              <Drop id='droppable' type='droppable-category'>
+              <Drop id="droppable" type="droppable-category">
                 {leftSideBarContent?.length > 0 &&
                   leftSideBarContent?.map((item, index) => {
                     return (
                       <>
                         {item.ParentId == '0' && (
                           <Drag
-                            className='draggable-category'
+                            className="draggable-category"
                             key={item.Menu_Id + item.Score}
                             id={item.Menu_Id + item.Score}
                             index={index}
                           >
-                            <div className='category-container'>
+                            <div className="category-container">
                               <Box
                                 sx={{
                                   boxShadow: 'none',
@@ -602,10 +602,10 @@ export default function MobileLeftSideMenu({
                                   position: 'relative',
                                 }}
                               >
-                                <Typography variant='h6regular'>
+                                <Typography variant="h6regular">
                                   {item.Label}
                                 </Typography>
-                                <Box className='NavTreeHomeIcon'>
+                                <Box className="NavTreeHomeIcon">
                                   {item.HomePage === true ? (
                                     <HomeOutlinedIcon
                                       sx={{
@@ -622,11 +622,11 @@ export default function MobileLeftSideMenu({
                                   onClick={(event) =>
                                     handleListClick(event, item)
                                   }
-                                  className='NavTreeSettingIcon'
+                                  className="NavTreeSettingIcon"
                                 >
                                   <img
                                     src={SettingIcon}
-                                    alt='Setting Icon'
+                                    alt="Setting Icon"
                                     onClick={() =>
                                       onButtonClicked(index, item.Label)
                                     }
@@ -636,7 +636,7 @@ export default function MobileLeftSideMenu({
                               <Drop
                                 key={index.toString()}
                                 id={index.toString()}
-                                type='droppable-item'
+                                type="droppable-item"
                               >
                                 {leftSideBarContent?.length > 0 &&
                                   leftSideBarContent?.map((item1, index1) => {
@@ -644,7 +644,7 @@ export default function MobileLeftSideMenu({
                                       <>
                                         {item1.ParentId == item.Menu_Id && (
                                           <Drag
-                                            className='draggable'
+                                            className="draggable"
                                             key={item1.Label + item1.Menu_Id}
                                             id={item1.Label + item1.Menu_Id}
                                             index={index1}
@@ -663,7 +663,7 @@ export default function MobileLeftSideMenu({
                                               }
                                             >
                                               <Typography
-                                                variant='subtitle2'
+                                                variant="subtitle2"
                                                 sx={{
                                                   display: 'flex',
                                                   alignItems: 'center',
@@ -733,8 +733,8 @@ export default function MobileLeftSideMenu({
                       boxShadow: 'none',
                       color: '#000',
                     }}
-                    size='medium'
-                    aria-label='add'
+                    size="medium"
+                    aria-label="add"
                     disabled={
                       !canAccessAction(Category.Menu, '', ContentAction.Publish)
                     }
@@ -757,9 +757,9 @@ export default function MobileLeftSideMenu({
                       zIndex: 99,
                       boxShadow: 'none',
                     }}
-                    size='medium'
-                    color='primary'
-                    aria-label='add'
+                    size="medium"
+                    color="primary"
+                    aria-label="add"
                     disabled={
                       !canAccessAction(Category.Menu, '', ContentAction.Create)
                     }
@@ -825,7 +825,7 @@ export default function MobileLeftSideMenu({
               TransitionComponent={Transition}
               keepMounted
               onClose={handleCloseMenu}
-              aria-describedby='alert-dialog-slide-description'
+              aria-describedby="alert-dialog-slide-description"
             >
               <DialogTitle sx={{ marginLeft: '13px' }}>
                 Select main menu item

@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 export const useHeaderSettingStyle = ({ isShowPreview }) =>
   makeStyles((theme) => ({
     pageContainer: {
@@ -83,11 +83,11 @@ export const useHeaderSettingStyle = ({ isShowPreview }) =>
       marginLeft: '13px',
     },
     dragIconContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-      },
-  
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+    },
+
 
     ctaTitleLeft: {
       [theme.breakpoints.up('xs')]: {

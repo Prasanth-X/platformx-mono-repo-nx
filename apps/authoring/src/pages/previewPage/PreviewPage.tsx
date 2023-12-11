@@ -28,13 +28,13 @@ import { FETCH_PAGE_MODEL_DRAFT } from '../../graphql/fetchQueries';
 import { FETCH_PRELEM_VALIDATION } from '../../graphql/prelemQueries';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { fetchPageModel } from '../../store/Actions';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PrelemInstance } from '../prelem-search/utils/prelemTypes';
 import ComputerRoundedIcon from '@mui/icons-material/ComputerRounded';
 import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
 import TabletAndroidRoundedIcon from '@mui/icons-material/TabletAndroidRounded';
-import PrelemTheme from '../../theme/prelemTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import { getSubDomain } from '../../utils/helperFunctions';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
@@ -84,7 +84,7 @@ export const PreviewPage = () => {
   );
 
   const theme = {
-    LightTheme
+    LightTheme,
   };
 
   useEffect(() => {
@@ -169,7 +169,8 @@ body {
           margin: '10px 0',
         }}
       >
-        <Box pl={2}
+        <Box
+          pl={2}
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -179,7 +180,8 @@ body {
           }}
           onClick={() => {
             history.go(-1);
-          }}>
+          }}
+        >
           <ArrowBackIcon sx={{ marginRight: '10px' }} /> {t('back')}
         </Box>
         <Box
@@ -191,7 +193,7 @@ body {
             borderRadius: '24px',
           }}
         >
-          {tabs.map((tab, index) =>
+          {tabs.map((tab, index) => (
             <Box
               key={index}
               sx={{
@@ -220,9 +222,9 @@ body {
                 }}
               />
             </Box>
-          )}
+          ))}
         </Box>
-        <Box>{ }</Box>
+        <Box>{}</Box>
       </Box>
       <Divider sx={{ mb: { sm: '31px' } }} />
       <Box
@@ -235,111 +237,117 @@ body {
               deviceType === 'window'
                 ? '100%'
                 : deviceType === 'tablet'
-                  ? '100%'
-                  : '390px',
+                ? '100%'
+                : '390px',
             md:
               deviceType === 'window'
                 ? '100%'
                 : deviceType === 'tablet'
-                  ? '820px'
-                  : '390px',
+                ? '820px'
+                : '390px',
             lg:
               deviceType === 'window'
                 ? '1280px'
                 : deviceType === 'tablet'
-                  ? '820px'
-                  : '390px',
+                ? '820px'
+                : '390px',
           },
           margin: 'auto',
           backgroundColor: 'whitesmoke',
         }}
       >
-        <Box sx={{
-          border: '1px solid #ced3d9',
-          borderRadius: '30px', overflow: 'hidden',
-        }}>
-          {state && page?.prelemMetaArray && page?.prelemMetaArray.length &&
+        <Box
+          sx={{
+            border: '1px solid #ced3d9',
+            borderRadius: '30px',
+            overflow: 'hidden',
+          }}
+        >
+          {state && page?.prelemMetaArray && page?.prelemMetaArray.length && (
             <Frame
               width={
                 deviceType === 'window'
                   ? '100%'
                   : deviceType === 'tablet'
-                    ? '100%'
-                    : '100%'
+                  ? '100%'
+                  : '100%'
               }
               height={height}
               initialContent={initialContent}
-              id='site-frame'
+              id="site-frame"
               ref={iframeRef}
               contentDidMount={() => handleResize(iframeRef)}
               contentDidUpdate={() => handleResize(iframeRef)}
-              frameBorder='0'
+              frameBorder="0"
             >
               {/* {renderHeader()} */}
-              <ThemeProvider
-                theme={PrelemTheme}
-              >
+              <ThemeProvider theme={PrelemTheme}>
                 <Box
                   sx={{
                     margin: (themeOptions) => themeOptions.prelemMargin.value,
                   }}
                 >
-                  {page?.prelemMetaArray?.map((arrayTuple: PrelemInstance, i) => {
-                    if (!arrayTuple.IsHidden) {
-                      const PrelemComponent =
-                        mappingDynamicInstance[arrayTuple.PrelemId];
-                      const prelemSchema = { ...arrayTuple, isAuthoring: true };
-                      const prelemContent = { ...prelemSchema?.content };
-                      const prelemAnalytics = {
-                        pageId: page?.pageSettings?.PageName,
-                        pageTitle: page?.pageModel?.Title,
-                        pageDesc: page?.pageSettings?.PageName,
-                        pageTags: page?.pageSettings?.PageTags,
-                        prelemID: arrayTuple.PrelemId,
-                        prelemTitle: arrayTuple.PrelemName,
-                        isAuthoring: true,
-                        prelemPosition: i,
-                      };
-                      const prelemAuthoringHelper = {
-                        isAuthoring: true,
-                        isSeoEnabled: true,
-                        isAnalyticsEnabled: true,
-                        innerRef: myRefs.current[i],
-                        isModalShow: true,
-                      };
-                      const prelemBaseEndpoint = {
-                        APIEndPoint: process.env.REACT_APP_API_URI,
-                        PublishEndPoint: `${getSubDomain()}/`,
-                        buttonBaseUrl: `${getSubDomain()}/`,
-                        device: deviceType,
-                        deliveryEndPoint: process.env.REACT_APP_DELIVERY_URI,
-                        language: i18n.language,
-                      };
-                      const secondaryArgs = {
-                        prelemBaseEndpoint,
-                        gcpUrl: process.env.REACT_APP_GCP_URL,
-                        bucketName: process.env.REACT_APP_BUCKET_NAME
-                      };
-                      return (
-                        <Box
-                          key={i}
-                          sx={{
-                            paddingTop: (themeOptions) =>
-                              themeOptions.prelemPaddingTop.value,
-                            paddingBottom: (themeOptions) =>
-                              themeOptions.prelemPaddingBottom.value,
-                          }}
-                        >
-                          <PrelemComponent
-                            content={prelemContent}
-                            analytics={prelemAnalytics}
-                            authoringHelper={prelemAuthoringHelper}
-                            secondaryArgs={secondaryArgs}
-                          />
-                        </Box>
-                      );
+                  {page?.prelemMetaArray?.map(
+                    (arrayTuple: PrelemInstance, i) => {
+                      if (!arrayTuple.IsHidden) {
+                        const PrelemComponent =
+                          mappingDynamicInstance[arrayTuple.PrelemId];
+                        const prelemSchema = {
+                          ...arrayTuple,
+                          isAuthoring: true,
+                        };
+                        const prelemContent = { ...prelemSchema?.content };
+                        const prelemAnalytics = {
+                          pageId: page?.pageSettings?.PageName,
+                          pageTitle: page?.pageModel?.Title,
+                          pageDesc: page?.pageSettings?.PageName,
+                          pageTags: page?.pageSettings?.PageTags,
+                          prelemID: arrayTuple.PrelemId,
+                          prelemTitle: arrayTuple.PrelemName,
+                          isAuthoring: true,
+                          prelemPosition: i,
+                        };
+                        const prelemAuthoringHelper = {
+                          isAuthoring: true,
+                          isSeoEnabled: true,
+                          isAnalyticsEnabled: true,
+                          innerRef: myRefs.current[i],
+                          isModalShow: true,
+                        };
+                        const prelemBaseEndpoint = {
+                          APIEndPoint: process.env.REACT_APP_API_URI,
+                          PublishEndPoint: `${getSubDomain()}/`,
+                          buttonBaseUrl: `${getSubDomain()}/`,
+                          device: deviceType,
+                          deliveryEndPoint: process.env.REACT_APP_DELIVERY_URI,
+                          language: i18n.language,
+                        };
+                        const secondaryArgs = {
+                          prelemBaseEndpoint,
+                          gcpUrl: process.env.REACT_APP_GCP_URL,
+                          bucketName: process.env.REACT_APP_BUCKET_NAME,
+                        };
+                        return (
+                          <Box
+                            key={i}
+                            sx={{
+                              paddingTop: (themeOptions) =>
+                                themeOptions.prelemPaddingTop.value,
+                              paddingBottom: (themeOptions) =>
+                                themeOptions.prelemPaddingBottom.value,
+                            }}
+                          >
+                            <PrelemComponent
+                              content={prelemContent}
+                              analytics={prelemAnalytics}
+                              authoringHelper={prelemAuthoringHelper}
+                              secondaryArgs={secondaryArgs}
+                            />
+                          </Box>
+                        );
+                      }
                     }
-                  })}
+                  )}
                 </Box>
                 {/* <ThemeProvider
                   theme={theme[`${process.env?.REACT_APP_FOOTER_THEME}`]}
@@ -347,7 +355,8 @@ body {
                   <Footer />
                 </ThemeProvider> */}
               </ThemeProvider>
-            </Frame>}
+            </Frame>
+          )}
         </Box>
       </Box>
     </>

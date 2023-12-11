@@ -1,22 +1,20 @@
 import Card from './Card';
 import { LayoutData } from '../../utils/constant';
-import { LayoutList } from "../../utils/prelemTypes";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import ThemeConstants from "../../../../theme/variable";
+import { LayoutList } from '../../utils/prelemTypes';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const CardList = ({
   layoutList,
   handleLayoutFilter,
   searchValue,
   categoryState,
-} : LayoutList ) => {
-
+}: LayoutList) => {
   const navigate = useNavigate();
   const maxLimit = 4;
   const [limit, setLimit] = useState(maxLimit);
   const [index, setIndex] = useState({ prevIndex: 0, nextIndex: limit });
- 
 
   const getPreviousLayouts = () => {
     setIndex((prevState) => {
@@ -35,11 +33,16 @@ const CardList = ({
     });
   };
 
-
   return (
     <>
       {layoutList.map((layout, key) => {
-        return <Card key={key} layout={layout}  handleLayoutFilter={handleLayoutFilter} />;
+        return (
+          <Card
+            key={key}
+            layout={layout}
+            handleLayoutFilter={handleLayoutFilter}
+          />
+        );
       })}
     </>
   );

@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import DOMPurify from 'isomorphic-dompurify';
-import { useTranslation } from "react-i18next";
-import { Box, Typography } from "@mui/material";
-import ThemeConstants from "../../../theme/variable";
-import { convertToLowerCase, handleHtmlTags } from "../../../utils/helperFunctions";
+import { useTranslation } from 'react-i18next';
+import { Box, Typography } from '@mui/material';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import {
+  convertToLowerCase,
+  handleHtmlTags,
+} from '../../../utils/helperFunctions';
 
 type BlogContentEditProps = {
-  desc: any
-  blogData: any
-  maxCharLength: any
-  handleDescriptionChange: any
-}
+  desc: any;
+  blogData: any;
+  maxCharLength: any;
+  handleDescriptionChange: any;
+};
 
 const restOfLengthCall = (ch) => {
   if (ch < 0) {
-    return 0
+    return 0;
   }
-  return ch
+  return ch;
 };
 
 const BlogContentEdit = (_props: BlogContentEditProps) => {
   const {
-    desc = "",
+    desc = '',
     blogData = {},
     maxCharLength = 0,
-    handleDescriptionChange = () => { },
+    handleDescriptionChange = () => {},
   } = _props;
 
   const { t } = useTranslation();
@@ -36,7 +39,7 @@ const BlogContentEdit = (_props: BlogContentEditProps) => {
   });
   const { restOfLength = 0, reachLimit = false } = restOfChar;
 
-  const handleLength = (valueData = "") => {
+  const handleLength = (valueData = '') => {
     if (maxCharLength) {
       const lengthOfChar = convertToLowerCase(handleHtmlTags(valueData)).length;
       const rest = valueData ? maxCharLength - lengthOfChar : 0;
@@ -51,20 +54,24 @@ const BlogContentEdit = (_props: BlogContentEditProps) => {
   };
 
   const keyPressEvent = (e) => {
-    if ((e.keyCode !== 8 && e.keyCode !== 46) && desc.current?.textContent?.length >= maxCharLength) {
-      e.preventDefault()
+    if (
+      e.keyCode !== 8 &&
+      e.keyCode !== 46 &&
+      desc.current?.textContent?.length >= maxCharLength
+    ) {
+      e.preventDefault();
     }
-  }
+  };
 
   const onPaste = (ev: any) => {
     ev.preventDefault();
-    const text = ev.clipboardData.getData("text");
+    const text = ev.clipboardData.getData('text');
     document.execCommand('insertText', false, text);
   };
 
   const getTextForFirefox = (el: any) => {
-    let text = "";
-    if (typeof window.getSelection != "undefined") {
+    let text = '';
+    if (typeof window.getSelection != 'undefined') {
       const sel: any = window.getSelection();
       const tempRange = sel.getRangeAt(0);
       sel.removeAllRanges();
@@ -85,10 +92,13 @@ const BlogContentEdit = (_props: BlogContentEditProps) => {
   const onTextChange = (ev) => {
     const text = getText(ev.target);
     handleLength(handleHtmlTags(text));
-  }
+  };
 
   useEffect(() => {
-    if (blogData?.BlogTextArea !== undefined && blogData?.BlogTextArea !== null) {
+    if (
+      blogData?.BlogTextArea !== undefined &&
+      blogData?.BlogTextArea !== null
+    ) {
       handleLength(handleHtmlTags(blogData?.BlogTextArea));
     }
   }, [blogData?.BlogTextArea]);
@@ -96,7 +106,7 @@ const BlogContentEdit = (_props: BlogContentEditProps) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
       <Box
-        id='desc'
+        id="desc"
         ref={desc}
         sx={{
           paddingLeft: '0px',
@@ -120,23 +130,29 @@ const BlogContentEdit = (_props: BlogContentEditProps) => {
             { ADD_ATTR: ['target'] } || ''
           ),
         }}
-        className='placeholdertext'
+        className="placeholdertext"
       />
 
-      {
-        maxCharLength ?
-          <Typography
-            variant="h7regular"
-            sx={{ color: ThemeConstants.BLACK_COLOR_VARIANT1, marginTop: "15px !important" }}
-          >
-            {reachLimit ?
-              <>0</>
-              :
-              <>{restOfLength ? `${restOfLengthCall(restOfLength)}` : `${maxCharLength}`}</>}
-          </Typography>
-          : null
-      }
-    </Box >
+      {maxCharLength ? (
+        <Typography
+          variant="h7regular"
+          sx={{
+            color: ThemeConstants.BLACK_COLOR_VARIANT1,
+            marginTop: '15px !important',
+          }}
+        >
+          {reachLimit ? (
+            <>0</>
+          ) : (
+            <>
+              {restOfLength
+                ? `${restOfLengthCall(restOfLength)}`
+                : `${maxCharLength}`}
+            </>
+          )}
+        </Typography>
+      ) : null}
+    </Box>
   );
 };
 export default React.memo(BlogContentEdit);

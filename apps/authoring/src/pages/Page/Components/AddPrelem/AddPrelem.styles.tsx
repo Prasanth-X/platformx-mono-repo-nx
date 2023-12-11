@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { theme } from '../../../vod/vodPreview/utils/constants';
 
 export const useStyles = makeStyles(() => ({
@@ -10,7 +10,7 @@ export const useStyles = makeStyles(() => ({
     marginTop: '20px',
     background: ThemeConstants.WHITE_COLOR,
     '&:hover': {
-       outlineColor: ThemeConstants.BLUE_COLOR,
+      outlineColor: ThemeConstants.BLUE_COLOR,
     },
   },
   prelemButtonsWp: {
@@ -59,7 +59,7 @@ export const useStyles = makeStyles(() => ({
     '& button': {
       minWidth: '159px',
       margin: 0,
-    }
+    },
   },
   topaddCtaWp: {
     position: 'absolute',
@@ -72,6 +72,6 @@ export const useStyles = makeStyles(() => ({
     '& button': {
       minWidth: '159px',
       margin: 0,
-    }
+    },
   },
 }));

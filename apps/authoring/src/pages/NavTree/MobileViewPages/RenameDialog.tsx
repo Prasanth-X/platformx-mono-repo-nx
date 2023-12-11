@@ -9,7 +9,7 @@ import Slide from '@mui/material/Slide';
 import React, { useRef, useState } from 'react';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const Transition = React.forwardRef(function Transition(
   props: {
@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function RenameDialog({
   isRenameOpen,
@@ -53,7 +53,7 @@ export default function RenameDialog({
   };
 
   return (
-    <div className='App'>
+    <div className="App">
       <Dialog
         sx={{
           display: { sm: 'none' },
@@ -72,7 +72,7 @@ export default function RenameDialog({
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby='alert-dialog-slide-description'
+        aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle sx={{ marginLeft: '13px' }}>Rename</DialogTitle>
         <Divider />
@@ -91,14 +91,14 @@ export default function RenameDialog({
             }}
           >
             <TextField
-              size='small'
-              type='url'
+              size="small"
+              type="url"
               value={value}
               onChange={onChangeInput}
               InputProps={{
-                endAdornment:
-  <InputAdornment position='end'>
-    <CancelOutlinedIcon
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <CancelOutlinedIcon
                       onClick={() => setValue('')}
                       sx={{
                         cursor: 'pointer',
@@ -107,8 +107,8 @@ export default function RenameDialog({
                         color: '#2d2d39',
                       }}
                     />
-  </InputAdornment>
-                ,
+                  </InputAdornment>
+                ),
               }}
               sx={{
                 width: '347px',
@@ -129,7 +129,7 @@ export default function RenameDialog({
             }}
           >
             <Button
-              variant='contained'
+              variant="contained"
               disableElevation
               // onClick={onBack}
               sx={{
@@ -166,7 +166,7 @@ export default function RenameDialog({
               </Box>
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               disableElevation
               sx={{
                 width: '163px',
@@ -211,7 +211,7 @@ export default function RenameDialog({
           </Box>
         </Box>
         <Keyboard
-          keyboardRef={(r) => keyboard.current = r}
+          keyboardRef={(r) => (keyboard.current = r)}
           layoutName={layout}
           onChange={onChange}
           onKeyPress={onKeyPress}

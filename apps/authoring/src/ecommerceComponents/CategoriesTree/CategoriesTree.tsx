@@ -1,7 +1,7 @@
 import './CategoriesTree.css';
 import TreeView from '@mui/lab/TreeView';
 import TreeItem from '@mui/lab/TreeItem';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Box, Checkbox, Typography } from '@mui/material';
 import { nullToArray } from '../../utils/helperFunctions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -14,7 +14,7 @@ type CategoriesTreeProps = {
 };
 
 const CategoriesTree = (_props: CategoriesTreeProps) => {
-  const { categoriesFilter = [], onNodeIdHandle = () => { } } = _props;
+  const { categoriesFilter = [], onNodeIdHandle = () => {} } = _props;
 
   const handleExpandClick = (event, nodeId) => {
     event?.stopPropagation();
@@ -25,7 +25,7 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
 
   return (
     <Box
-      className='left-sidebar-tree'
+      className="left-sidebar-tree"
       sx={{
         padding: { xs: '16px', em: '0px' },
         paddingTop: { xs: '6px', em: '0px' },
@@ -45,7 +45,7 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
             />
           }
           defaultExpanded={[filterMap[0].id]}
-          className='all-categories'
+          className="all-categories"
           sx={{
             '& .Platform-x-Checkbox-root': {
               paddingLeft: '0px',
@@ -63,20 +63,20 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
                 {/* parent */}
                 <TreeItem
                   nodeId={ele?.id}
-                  className='parent-menu'
+                  className="parent-menu"
                   label={
-                    <Box className='parent-level-1'>
+                    <Box className="parent-level-1">
                       <Checkbox
-                        className='parent-checkbox'
+                        className="parent-checkbox"
                         checked={ele.isCheck}
                         tabIndex={-1}
                         disableRipple
                         onClick={(e) => handleExpandClick(e, ele?.id)}
                       />
                       <Typography
-                        className='parent-title'
-                        variant='h6regular'
-                        color='textSecondary'
+                        className="parent-title"
+                        variant="h6regular"
+                        color="textSecondary"
                       >
                         {ele?.name}
                       </Typography>
@@ -91,9 +91,9 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
                           <TreeItem
                             key={elem?.id}
                             nodeId={elem?.id}
-                            className='child-level'
+                            className="child-level"
                             label={
-                              <Box className='ecommerce-tree-box'>
+                              <Box className="ecommerce-tree-box">
                                 <Checkbox
                                   checked={elem.isCheck}
                                   tabIndex={-1}
@@ -103,8 +103,8 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
                                   }
                                 />
                                 <Typography
-                                  variant='h6regular'
-                                  color='textSecondary'
+                                  variant="h6regular"
+                                  color="textSecondary"
                                 >
                                   {elem?.name}
                                 </Typography>
@@ -120,7 +120,7 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
                                       key={elem1?.id}
                                       nodeId={elem1?.id}
                                       label={
-                                        <Box className='ecommerce-tree-box'>
+                                        <Box className="ecommerce-tree-box">
                                           <Checkbox
                                             checked={elem1.isCheck}
                                             tabIndex={-1}
@@ -130,8 +130,8 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
                                             }
                                           />
                                           <Typography
-                                            variant='h6regular'
-                                            color='textSecondary'
+                                            variant="h6regular"
+                                            color="textSecondary"
                                           >
                                             {elem1?.name}
                                           </Typography>
@@ -154,7 +154,7 @@ const CategoriesTree = (_props: CategoriesTreeProps) => {
         </TreeView>
       ) : (
         <Box>
-          <Typography variant='h6regular'> No Data found..</Typography>
+          <Typography variant="h6regular"> No Data found..</Typography>
         </Box>
       )}
     </Box>

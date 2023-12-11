@@ -9,7 +9,7 @@ import NoResults from '../../assets/images/no-results.png';
 import ArticleListDesktopLoader from '../../pages/articles/articel-list-loder-desktop';
 import ArticleListMobileLoader from '../../pages/articles/article-list-loader-mobile';
 import { fetchContentTypeList } from '../../services/contentTypes/contentTypes.api';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { debounce } from '../../utils/helperFunctions';
 import DesktopListing from '../Common/selectListing/DesktopListing';
 import ListHeader from '../Common/selectListing/ListHeader';
@@ -73,11 +73,10 @@ const QuestionListing = ({
       },
     })
       .then((res) => {
-        const filtered = (res?.data?.authoring_getContentTypeItems || []).filter((val) => !val.current_page_url.startsWith('/'))
-        const newData = [
-          ...(questions || []),
-          ...(filtered || []),
-        ];
+        const filtered = (
+          res?.data?.authoring_getContentTypeItems || []
+        ).filter((val) => !val.current_page_url.startsWith('/'));
+        const newData = [...(questions || []), ...(filtered || [])];
 
         setQuestions(() => newData);
         if (res?.data?.authoring_getContentTypeItems?.length == 0) {
@@ -299,7 +298,7 @@ const QuestionListing = ({
               xs: 'none',
             },
           }}
-          id='questionListing'
+          id="questionListing"
         >
           {isloading ? (
             <Box sx={{ width: '100%' }}>
@@ -317,7 +316,7 @@ const QuestionListing = ({
                 >
                   <img src={NoResults} />
                   <Typography
-                    variant='h5'
+                    variant="h5"
                     sx={{
                       color: '#c3c3c3',
                     }}
@@ -339,7 +338,7 @@ const QuestionListing = ({
                   next={fetchMoreData}
                   hasMore={isLazyLoad}
                   loader={<ArticleListDesktopLoader />}
-                  scrollableTarget='questionListing'
+                  scrollableTarget="questionListing"
                 >
                   <Box sx={{ width: '-webkit-fill-available' }}>
                     {questions?.map((item, index) => (
@@ -375,7 +374,7 @@ const QuestionListing = ({
               xs: 'flex',
             },
           }}
-          id='mobquestionListing'
+          id="mobquestionListing"
         >
           {isloading ? (
             <Box sx={{ width: '100%' }}>
@@ -393,7 +392,7 @@ const QuestionListing = ({
                 >
                   <img src={NoResults} />
                   <Typography
-                    variant='h5'
+                    variant="h5"
                     sx={{
                       color: '#c3c3c3',
                     }}
@@ -407,7 +406,7 @@ const QuestionListing = ({
                   next={fetchMoreData}
                   hasMore={isLazyLoad}
                   loader={<ArticleListMobileLoader />}
-                  scrollableTarget='mobquestionListing'
+                  scrollableTarget="mobquestionListing"
                 >
                   <Box sx={{ width: '-webkit-fill-available' }}>
                     {questions?.map((item, index) => (
@@ -426,7 +425,7 @@ const QuestionListing = ({
                     {isDone && (
                       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Button
-                          variant='contained'
+                          variant="contained"
                           disableElevation
                           onClick={handleDone}
                           sx={{
@@ -457,9 +456,9 @@ const QuestionListing = ({
                           right: '5%',
                           zIndex: 99,
                         }}
-                        size='medium'
-                        color='primary'
-                        aria-label='add'
+                        size="medium"
+                        color="primary"
+                        aria-label="add"
                         onClick={onClickAddQue}
                       >
                         <AddIcon />

@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   PageContainer: {
@@ -9,7 +9,6 @@ export const useStyles = makeStyles(() => ({
     [`@media(max-width:${ThemeConstants.SM}px)`]: {
       flexDirection: 'column',
     },
-
   },
   leftBox: {
     maxWidth: '300px',
@@ -21,7 +20,7 @@ export const useStyles = makeStyles(() => ({
       maxWidth: '100%',
       borderRight: '0',
       height: 'auto',
-    }
+    },
   },
   logowp: {
     padding: '14px 15px',
@@ -40,6 +39,6 @@ export const useStyles = makeStyles(() => ({
     overflowY: 'auto',
     [`@media(max-width:${ThemeConstants.SM}px)`]: {
       height: 'auto',
-    }
+    },
   },
 }));

@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import NoResults from '../../../../assets/images/no-results.png';
 import { fetchAllMultislotContentList } from '../../../../services/contentGallery/contentGallery.api';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { ContentGalleryTypes } from '../../../../utils/constants';
 
 import { ContentProps } from './utils/contentGalleryTypes';
@@ -43,9 +43,9 @@ const ContentGallery = ({
   const [items, setItems] = useState<ContentProps[]>([]);
   const [loading, setLoading] = useState(true);
   const isError = false;
-  const secondaryArgs = { 
+  const secondaryArgs = {
     gcpUrl: authInfo.gcpUri,
-    bucketName: authInfo.gcpBucketName
+    bucketName: authInfo.gcpBucketName,
   };
 
   function debounce(func, timeout = 500) {
@@ -203,7 +203,7 @@ const ContentGallery = ({
           }}
         >
           <Typography
-            variant='h4'
+            variant="h4"
             sx={{
               fontSize: ThemeConstants.FONTSIZE_H4,
               fontWeight: ThemeConstants.FONTWEIGHT_BOLD,
@@ -225,7 +225,7 @@ const ContentGallery = ({
           <Grid item xs={12} sm={6} md={8} lg={8}>
             <FormControl fullWidth>
               <TextField
-                className='contentTypeCard'
+                className="contentTypeCard"
                 sx={{
                   ml: 5,
                   backgroundColor: '#f5f6f8',
@@ -244,18 +244,18 @@ const ContentGallery = ({
                     borderBottomRightRadius: '0px !important',
                   },
                 }}
-                variant='outlined'
+                variant="outlined"
                 placeholder={t('search')}
                 value={search}
                 onChange={onSearchChange}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position='start'>
+                    <InputAdornment position="start">
                       <SearchIcon />
                     </InputAdornment>
                   ),
                   endAdornment: (
-                    <InputAdornment position='end'>
+                    <InputAdornment position="end">
                       {search !== '' && (
                         <CloseRoundedIcon
                           onClick={resetSearch}
@@ -276,8 +276,8 @@ const ContentGallery = ({
           <Grid item xs={12} sm={6} md={4} lg={4}>
             <FormControl fullWidth>
               <Select
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
                 value={filter}
                 style={{
                   backgroundColor: '#f5f6f8',
@@ -306,22 +306,22 @@ const ContentGallery = ({
           lg={3}
           container
           spacing={0}
-          direction='column'
-          alignItems='center'
-          justifyContent='center'
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
           sx={{ margin: '0 0 1.25rem 0', display: 'flex' }}
         >
-          <Box justifyContent='end'>
+          <Box justifyContent="end">
             <Button
               sx={{ textTransform: 'capitalize', ml: 1 }}
-              variant='outlined'
+              variant="outlined"
               onClick={() => onToggleContentGallery(-1)}
             >
               {t('cancel')}
             </Button>
 
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 padding: selectedIndex === -1 ? '14px' : '11px',
                 marginLeft: '20px',
@@ -349,7 +349,7 @@ const ContentGallery = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
@@ -358,7 +358,7 @@ const ContentGallery = ({
       ) : (
         <Box
           sx={{ height: 'calc(100vh - 90px)', overflowY: 'scroll' }}
-          id='scrollableDiv'
+          id="scrollableDiv"
         >
           {loading ? (
             <Box
@@ -384,7 +384,7 @@ const ContentGallery = ({
                 textAlign: 'center',
               }}
             >
-              <Typography variant='overline' display='block' gutterBottom>
+              <Typography variant="overline" display="block" gutterBottom>
                 {t('no_results')}
               </Typography>
             </Box>

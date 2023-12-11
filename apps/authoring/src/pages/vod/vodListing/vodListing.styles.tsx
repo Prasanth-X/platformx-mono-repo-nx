@@ -1,6 +1,6 @@
 import { Box, makeStyles } from '@material-ui/core';
 import { styled } from '@material-ui/core';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles((theme) => ({
   listingContainer: {

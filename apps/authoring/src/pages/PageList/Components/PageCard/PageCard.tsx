@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import PageStatus from '../../../../components/Common/pageStatus/PageStatus';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import CardMenu from '../CardMenu/CardMenu';
 import { BaseCard } from './PageCard.styles';
 import { PageCardProps } from './PageCard.types';
@@ -113,7 +113,7 @@ function PageCard({
             }}
           >
             <Typography
-              variant='h5'
+              variant="h5"
               sx={{
                 fontSize: ThemeConstants.FONTSIZE_SECONDARY_DEFAULT,
                 display: 'flex',
@@ -156,20 +156,20 @@ function PageCard({
                   {Title}
                 </Box>
                 {ScheduledPublishTriggerDateTime && (
-                  <PageStatus pageType='Scheduled Publish'></PageStatus>
+                  <PageStatus pageType="Scheduled Publish"></PageStatus>
                 )}
 
                 {ScheduledUnPublishTriggerDateTime && (
-                  <PageStatus pageType='Scheduled Unpublish'></PageStatus>
+                  <PageStatus pageType="Scheduled Unpublish"></PageStatus>
                 )}
                 <PageStatus pageType={Status}></PageStatus>
               </Box>
               <IconButton
-                aria-label='settings'
-                id='long-button'
+                aria-label="settings"
+                id="long-button"
                 aria-controls={open ? 'long-menu' : undefined}
                 aria-expanded={open ? 'true' : undefined}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleClick}
                 sx={{ padding: '5px' }}
               >
@@ -208,7 +208,7 @@ function PageCard({
               ></Divider>
 
               <Typography
-                variant='h5'
+                variant="h5"
                 sx={{
                   fontSize: {
                     xs: ThemeConstants.FONTSIZE_XS,
@@ -231,7 +231,7 @@ function PageCard({
                   : `${t('modified_by')} ${LastModifiedBy}`}
               </Typography>
               <Typography
-                variant='body2'
+                variant="body2"
                 sx={{
                   fontSize: {
                     xs: ThemeConstants.FONTSIZE_XS,
@@ -244,7 +244,7 @@ function PageCard({
               >
                 {ScheduledUnPublishTriggerDateTime &&
                 ScheduledPublishTriggerDateTime ? (
-                  <Box component='div'>
+                  <Box component="div">
                     Scheduled to Publish at
                     <span
                       style={{
@@ -261,21 +261,21 @@ function PageCard({
                     </span>
                   </Box>
                 ) : ScheduledPublishTriggerDateTime ? (
-                  <Box component='div'>
+                  <Box component="div">
                     Scheduled to Publish at
                     <span style={{ fontWeight: 'bold', paddingLeft: '5px' }}>
                       {dateFormat(ScheduledPublishTriggerDateTime)}
                     </span>
                   </Box>
                 ) : ScheduledUnPublishTriggerDateTime ? (
-                  <Box component='div'>
+                  <Box component="div">
                     Scheduled to Unpublish at
                     <span style={{ fontWeight: 'bold', paddingLeft: '5px' }}>
                       {dateFormat(ScheduledUnPublishTriggerDateTime)}
                     </span>
                   </Box>
                 ) : Status === 'published' ? (
-                  <Box component='div'>
+                  <Box component="div">
                     {t('published_by')}
                     <span style={{ paddingLeft: '5px' }}>
                       {dateFormat(PublishedDate)}

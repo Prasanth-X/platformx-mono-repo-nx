@@ -2,7 +2,7 @@ import { useSwitch } from '@mui/base/SwitchUnstyled';
 import { styled } from '@mui/system';
 import clsx from 'clsx';
 
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const blue = {
   500: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -22,7 +22,9 @@ const BasicSwitchRoot = styled('span')<BasicSwitchProps>(
   width: 40px;
   height: 20px;
   margin: 10px;
-  background:  ${bgcolor ? bgcolor : theme.palette.mode === 'dark' ? grey[600] : grey[400]};
+  background:  ${
+    bgcolor ? bgcolor : theme.palette.mode === 'dark' ? grey[600] : grey[400]
+  };
   border-radius: 10px;
   cursor: pointer;
 
@@ -37,7 +39,7 @@ const BasicSwitchRoot = styled('span')<BasicSwitchProps>(
   `
 );
 
-const BasicSwitchInput = styled('input') `
+const BasicSwitchInput = styled('input')`
   cursor: inherit;
   position: absolute;
   width: 100%;
@@ -49,7 +51,7 @@ const BasicSwitchInput = styled('input') `
   margin: 0;
 `;
 
-const BasicSwitchThumb = styled('span') `
+const BasicSwitchThumb = styled('span')`
   display: block;
   width: 14px;
   height: 14px;
@@ -77,7 +79,6 @@ interface BasicSwitchProps {
   disabled?: any;
   onChange?: any;
   checked?: any;
- 
 }
 function BasicSwitch(props: BasicSwitchProps) {
   const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
@@ -89,9 +90,13 @@ function BasicSwitch(props: BasicSwitchProps) {
   };
 
   return (
-    <BasicSwitchRoot className={clsx(stateClasses)} color={props.color} bgcolor={props.bgcolor}>
+    <BasicSwitchRoot
+      className={clsx(stateClasses)}
+      color={props.color}
+      bgcolor={props.bgcolor}
+    >
       <BasicSwitchThumb className={clsx(stateClasses)} />
-      <BasicSwitchInput {...getInputProps()} aria-label='Demo switch' />
+      <BasicSwitchInput {...getInputProps()} aria-label="Demo switch" />
     </BasicSwitchRoot>
   );
 }

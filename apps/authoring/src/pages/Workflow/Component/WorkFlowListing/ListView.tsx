@@ -17,7 +17,7 @@ import {
 import { DialogBoxContentProps } from '../../../../context/actionContext/ActionContext.types';
 import { WorkflowQueries } from '../../../../graphql/workflow/workflowQueries';
 import { useDialog } from '../../../../hooks/useDialog/useDialog';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../../editPage/Switch';
 import { ListViewProps } from '../../Workflow.Types';
 import MoreDialog from './MoreDialog';
@@ -108,16 +108,16 @@ const ListView = ({
     <>
       {isLoading && <Loader />}
       <Box
-        className='userlistbox'
+        className="userlistbox"
         sx={{
           '&:hover': {
             border: '1px solid #14142B',
           },
         }}
       >
-        <Grid container className='d-flex align-items-center'>
+        <Grid container className="d-flex align-items-center">
           <Grid xs={11} em={8}>
-            <Box className='d-flex align-items-center'>
+            <Box className="d-flex align-items-center">
               <Box
                 className={classes.workflowIconStyle}
                 sx={{
@@ -132,7 +132,7 @@ const ListView = ({
                   onClick={(e) => handleViewWorkflow(e, id)}
                 >
                   <Typography
-                    variant='h5semibold'
+                    variant="h5semibold"
                     className={classes.onHoverHighlight}
                   >
                     {name}
@@ -140,7 +140,7 @@ const ListView = ({
                 </Box>
 
                 <Box
-                  className='d-flex'
+                  className="d-flex"
                   sx={{
                     flexWrap: { xs: 'wrap', em: 'inherit' },
                     flexDirection: 'column',
@@ -179,7 +179,7 @@ const ListView = ({
                             alignItems: 'center',
                           }}
                         >
-                          <Typography variant='h7regular'>
+                          <Typography variant="h7regular">
                             {step.state}
                             {index < steps.length - 1 && (
                               <span style={{ padding: '3px' }}>{'>'}</span>
@@ -191,7 +191,7 @@ const ListView = ({
                   </Box>
                   <Box>
                     <Typography
-                      variant='h7regular'
+                      variant="h7regular"
                       sx={{ display: { xs: 'flex', em: 'none' } }}
                     >
                       {DateTime}
@@ -202,7 +202,7 @@ const ListView = ({
             </Box>
           </Grid>
           <Grid xs={1} em={4}>
-            <Box className='d-flex align-items-center justify-content-end'>
+            <Box className="d-flex align-items-center justify-content-end">
               <Box
                 className={classes.contentTypeBox}
                 sx={{
@@ -210,7 +210,7 @@ const ListView = ({
                 }}
               >
                 <Box>
-                  <Typography variant='h7regular' sx={{ color: '#6E7191' }}>
+                  <Typography variant="h7regular" sx={{ color: '#6E7191' }}>
                     {t('applying_on')}
                   </Typography>
                 </Box>
@@ -220,11 +220,11 @@ const ListView = ({
                     display: { xs: 'none', em: 'flex' },
                   }}
                 >
-                  <Tooltip placement='top-start' title={contentType}>
+                  <Tooltip placement="top-start" title={contentType}>
                     <Typography
-                      variant='h7regular'
+                      variant="h7regular"
                       className={classes.contentTypeTextStyle}
-                      component='div'
+                      component="div"
                     >
                       {contentType}
                     </Typography>
@@ -232,16 +232,16 @@ const ListView = ({
                 </Box>
               </Box>
 
-              <Box color='#89909A' className='d-inline-flex align-items-center'>
-                <Box className='d-flex align-items-center'>
+              <Box color="#89909A" className="d-inline-flex align-items-center">
+                <Box className="d-flex align-items-center">
                   <MenuItem
-                    className='icons'
+                    className="icons"
                     onClick={(e) => handleViewWorkflow(e, id)}
                   >
                     <RemoveRedEyeOutlinedIcon />
                   </MenuItem>
 
-                  <MenuItem className='icons'>
+                  <MenuItem className="icons">
                     <BasicSwitch
                       checked={checked}
                       onChange={() => handleChange(checked)}

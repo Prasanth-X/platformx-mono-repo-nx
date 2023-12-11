@@ -3,7 +3,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { showToastSuccess } from '../../components/toastNotification/toastNotificationReactTostify';
 
@@ -101,7 +101,7 @@ const Assets = () => {
         sx={{ display: 'flex', justifyContent: 'space-between' }}
       >
         <Button
-          variant='outlined'
+          variant="outlined"
           sx={{
             borderColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -117,12 +117,12 @@ const Assets = () => {
           }}
         >
           <ChevronLeftIcon />{' '}
-          <Typography pl={1} variant='body1'>
+          <Typography pl={1} variant="body1">
             Back
           </Typography>
         </Button>
         <Button
-          variant='outlined'
+          variant="outlined"
           sx={{
             borderColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -136,27 +136,28 @@ const Assets = () => {
           onClick={handleCopy}
         >
           <ContentCopyIcon />{' '}
-          <Typography pl={1} variant='body1'>
+          <Typography pl={1} variant="body1">
             Copy
           </Typography>
         </Button>
       </Box>
       <Box p={2}>
-        {jsonArr.length > 0 &&
+        {jsonArr.length > 0 && (
           <Typography
             sx={{
-              border: `3px solid ${  ThemeConstants.PRIMARY_MAIN_COLOR}`,
+              border: `3px solid ${ThemeConstants.PRIMARY_MAIN_COLOR}`,
               height: 'calc(100vh - 165px)',
               overflowY: 'scroll',
               margin: '20px',
               padding: '30px',
             }}
-            variant='subtitle1'
+            variant="subtitle1"
           >
             {jsonArr?.length === 1
               ? JSON.stringify(JSON.stringify(jsonArr[0]))
               : JSON.stringify(JSON.stringify(jsonArr))}
-          </Typography>}
+          </Typography>
+        )}
       </Box>
     </>
   );

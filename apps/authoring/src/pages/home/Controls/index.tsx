@@ -4,7 +4,7 @@ import ControlsCreate from '../../../assets/images/controls-create.png';
 import ControlsDomain from '../../../assets/images/controls-domain.png';
 import ControlsOptimised from '../../../assets/images/controls-optimized.png';
 import ControlsSecure from '../../../assets/images/controls-secure.png';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { HorizontalLine } from '../HorizontalLine';
 
 export const Controls = () => {
@@ -16,7 +16,7 @@ export const Controls = () => {
         textAlign: 'center',
       }}
     >
-      <Typography variant='h3regular' color='primary.main' mt={4}>
+      <Typography variant="h3regular" color="primary.main" mt={4}>
         Deliver digital experiences like never before
       </Typography>
       <Box
@@ -29,18 +29,18 @@ export const Controls = () => {
         <HorizontalLine />
       </Box>
       <Box sx={{ mt: 3, mb: 3 }}>
-        <Button className='buttonclick' variant='contained'>
+        <Button className="buttonclick" variant="contained">
           Know More
         </Button>
       </Box>
       <Grid container spacing={3} mb={4}>
         <Grid item xs={12} md={3}>
           <img src={ControlsOptimised} />
-          <Typography variant='h4regular' sx={{ height: '60px' }}>
+          <Typography variant="h4regular" sx={{ height: '60px' }}>
             Content Publishing
           </Typography>
           <Typography
-            variant='p4regular'
+            variant="p4regular"
             pt={2}
             sx={{
               width: '80%',
@@ -54,13 +54,13 @@ export const Controls = () => {
         <Grid item xs={12} md={3}>
           <img src={ControlsDomain} />
           <Typography
-            variant='h4regular'
+            variant="h4regular"
             sx={{ height: { xs: '60px', md: '110px', lg: '60px' } }}
           >
             Drive Engagement, Loyalty, Monetization
           </Typography>
           <Typography
-            variant='p4regular'
+            variant="p4regular"
             pt={2}
             sx={{
               width: '80%',
@@ -73,11 +73,11 @@ export const Controls = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           <img src={ControlsCreate} />
-          <Typography variant='h4regular' sx={{ height: '60px' }}>
+          <Typography variant="h4regular" sx={{ height: '60px' }}>
             Own Data & Insights
           </Typography>
           <Typography
-            variant='p4regular'
+            variant="p4regular"
             pt={2}
             sx={{
               width: '80%',
@@ -91,11 +91,11 @@ export const Controls = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           <img src={ControlsSecure} />
-          <Typography variant='h4regular' sx={{ height: '60px' }}>
+          <Typography variant="h4regular" sx={{ height: '60px' }}>
             Optimized for scale
           </Typography>
           <Typography
-            variant='p4regular'
+            variant="p4regular"
             pt={2}
             sx={{
               width: '80%',

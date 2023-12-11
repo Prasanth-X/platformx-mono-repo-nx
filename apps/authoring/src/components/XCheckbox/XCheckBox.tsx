@@ -1,8 +1,8 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { ThemeProvider } from '@mui/system';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;
 

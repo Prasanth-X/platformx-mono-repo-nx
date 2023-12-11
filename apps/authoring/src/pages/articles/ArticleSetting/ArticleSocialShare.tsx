@@ -25,7 +25,7 @@ import {
   publish_article,
   update_article,
 } from '../../../services/article/article.api';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../utils/authConstants';
 import { handleHtmlTags } from '../../../utils/helperFunctions';
 import { SocialShareInfoProps } from '../utils/types';
@@ -92,11 +92,8 @@ const ArticleSocialShare = ({
           ? selectedArticle?.ArticleSettings?.SocialOgURL
           : selectedArticle?.Page_State === 'DRAFT'
           ? selectedArticle?.CurrentPageURL
-          : `${authInfo.publishUri +
-            i18n.language
-            }/` +
-            `article/${
-            selectedArticle?.CurrentPageURL}`,
+          : `${authInfo.publishUri + i18n.language}/` +
+            `article/${selectedArticle?.CurrentPageURL}`,
       // SocialOgLocale:
       // selectedArticle?.ArticleSettings?.SocialOgLocale != undefined
       //     ? selectedArticle?.ArticleSettings?.SocialOgLocale
@@ -122,11 +119,8 @@ const ArticleSocialShare = ({
           ? selectedArticle?.ArticleSettings?.SocialOgTwitterURL
           : selectedArticle?.Page_State === 'DRAFT'
           ? selectedArticle?.CurrentPageURL
-          : `${authInfo.publishUri +
-            i18n.language
-            }/` +
-            `article/${
-            selectedArticle?.CurrentPageURL}`,
+          : `${authInfo.publishUri + i18n.language}/` +
+            `article/${selectedArticle?.CurrentPageURL}`,
       SocialTwitterCardSize:
         selectedArticle?.ArticleSettings?.SocialTwitterCardSize != ''
           ? selectedArticle?.ArticleSettings?.SocialTwitterCardSize
@@ -262,7 +256,7 @@ const ArticleSocialShare = ({
   return (
     <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
       <Box sx={{ border: '2px solid #e2e2e2', borderRadius: '5px' }} mt={2}>
-        {socialShareInfo?.SocialOgImage == '' ?
+        {socialShareInfo?.SocialOgImage == '' ? (
           <Box
             sx={{
               borderRadius: '5px',
@@ -303,12 +297,12 @@ const ArticleSocialShare = ({
               {t('page_choose_image')}
             </Typography>
           </Box>
-         :
+        ) : (
           <Box sx={{ position: 'relative' }}>
             <img
               src={socialShareInfo?.SocialOgImage}
-              alt='image file'
-              width='100%'
+              alt="image file"
+              width="100%"
             />
             <Box
               sx={{
@@ -351,14 +345,15 @@ const ArticleSocialShare = ({
                 </Box>
               </Box>
             </Box>
-          </Box>}
+          </Box>
+        )}
       </Box>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('article_seo_title')}
         <Tooltip
@@ -369,7 +364,7 @@ const ArticleSocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -387,16 +382,16 @@ const ArticleSocialShare = ({
         multiline
         value={socialShareInfo?.SocialOgTitle}
         onChange={(e) => handleDataChange(e, 'SocialOgTitle')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_title_placeholder')}
         inputProps={{ maxLength: socialShareNameLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('article_seo_about')}
         <Tooltip
@@ -407,7 +402,7 @@ const ArticleSocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -425,28 +420,28 @@ const ArticleSocialShare = ({
         multiline
         value={socialShareInfo?.SocialOgDescription}
         onChange={(e) => handleDataChange(e, 'SocialOgDescription')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_description_placeholder')}
         inputProps={{ maxLength: socialShareDescriptionLength }}
       />
 
-      <Typography variant='subtitle1' mt={2} mb={1}>
+      <Typography variant="subtitle1" mt={2} mb={1}>
         {t('article_seo_url')}
       </Typography>
       <TextField
         multiline
         value={socialShareInfo?.SocialOgURL}
         // onChange={(e) => handleDataChange(e, 'PageURL')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('article_seo_url_placeholder')}
         sx={{
           '.Platform-x-OutlinedInput-root': { color: '#1a0db1' },
         }}
         InputProps={{
           readOnly: true,
-          endAdornment:
-  <InputAdornment position='start'>
-    <ContentCopyRoundedIcon
+          endAdornment: (
+            <InputAdornment position="start">
+              <ContentCopyRoundedIcon
                 sx={{
                   cursor: 'pointer',
                   position: 'absolute',
@@ -455,13 +450,13 @@ const ArticleSocialShare = ({
                 }}
                 onClick={() => handleCopyURL()}
               />
-  </InputAdornment>
-          ,
+            </InputAdornment>
+          ),
         }}
       />
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignimageInstances: 'center',
@@ -469,7 +464,7 @@ const ArticleSocialShare = ({
         }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('Keywords')}
         <Tooltip
@@ -480,7 +475,7 @@ const ArticleSocialShare = ({
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -496,7 +491,7 @@ const ArticleSocialShare = ({
       </Typography>
       <Autocomplete
         multiple
-        id='tags-filled'
+        id="tags-filled"
         value={
           socialShareInfo?.PageTags?.length > 0
             ? [...socialShareInfo.PageTags]
@@ -516,10 +511,10 @@ const ArticleSocialShare = ({
         renderTags={(value: string[], getTagProps) =>
           value.map(
             (option: string, index: number) =>
-              option &&
+              option && (
                 <Chip
                   key={index}
-                  variant='outlined'
+                  variant="outlined"
                   label={option}
                   deleteIcon={
                     <DeleteIcon
@@ -533,19 +528,20 @@ const ArticleSocialShare = ({
                   }}
                   {...getTagProps({ index })}
                 />
-
-          )}
-        renderInput={(params) =>
-          (<TextField
+              )
+          )
+        }
+        renderInput={(params) => (
+          <TextField
             {...params}
-            variant='outlined'
+            variant="outlined"
             placeholder={
               socialShareInfo?.PageTags?.length > 0
                 ? ''
                 : t('page_info_tags_placeholder')
             }
-          />)
-        }
+          />
+        )}
         sx={{
           '.Platform-x-OutlinedInput-root ': {
             display: 'flex',
@@ -569,7 +565,7 @@ const ArticleSocialShare = ({
 
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={getDisabledState()}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

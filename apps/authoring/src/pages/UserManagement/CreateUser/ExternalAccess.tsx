@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 import TitleSubTitle from '../../../components/Common/TitleSubTitle';
 import BasicSwitch from '../../editPage/Switch';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { useStyles } from './CreateUser.styles';
 
 export default function ExternalAccess({ t, state, setState }) {
@@ -17,12 +17,12 @@ export default function ExternalAccess({ t, state, setState }) {
   };
   return (
     <>
-      <Box className='UserroleUserDetailsHead' id='external'>
-        <Box className='title'>
+      <Box className="UserroleUserDetailsHead" id="external">
+        <Box className="title">
           <TitleSubTitle
             title={t('external_access')}
-            titleVarient='h3medium'
-            subTitleVarient='h7regular'
+            titleVarient="h3medium"
+            subTitleVarient="h7regular"
           />
         </Box>
         <Grid container sx={{ padding: '0 20px 30px 20px' }}>
@@ -31,8 +31,8 @@ export default function ExternalAccess({ t, state, setState }) {
               <TitleSubTitle
                 title={t('community_user')}
                 subTitle={t('Select if the user is community user')}
-                titleVarient='h6medium'
-                subTitleVarient='h7regular'
+                titleVarient="h6medium"
+                subTitleVarient="h7regular"
               />
             </Box>
           </Grid>

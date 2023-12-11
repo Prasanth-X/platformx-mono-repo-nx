@@ -9,7 +9,7 @@ import Tab from '@mui/material/Tab';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import Pdf from '../../assets/images/pdf.png';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../utils/authConstants';
 
 interface Collection {

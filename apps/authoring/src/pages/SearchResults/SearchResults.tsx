@@ -8,7 +8,7 @@ import NoResultsFound from '../../Common/NoResultsFound';
 import useContentListing from '../../hooks/useContentListing/useContentListing';
 import usePage from '../../hooks/usePage/usePage';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export default function SearchResults() {
   const { t } = useTranslation();
@@ -42,7 +42,7 @@ export default function SearchResults() {
 
   useEffect(() => {
     fetchContentSync();
-  },[location]);
+  }, [location]);
 
   const fetchContentSync = async () => {
     dispatch(await fetchContent('ALL', location, 'ALL', state));
@@ -54,7 +54,7 @@ export default function SearchResults() {
 
   return (
     <Box mt={2}>
-      <Typography variant='h4bold' sx={{ padding: '10px 15px' }}>
+      <Typography variant="h4bold" sx={{ padding: '10px 15px' }}>
         {t('results')}
       </Typography>
       <Box

@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 export const useGlobalSettingStyle = ({ isShowPreview }) =>
   makeStyles((theme) => ({
     pageContainer: {
@@ -81,7 +81,7 @@ export const useGlobalSettingStyle = ({ isShowPreview }) =>
       lineHeight: '25px',
       marginLeft: '13px',
     },
-    globalbread:{
+    globalbread: {
       marginLeft: '10px',
       display: 'flex',
       alignItems: 'center'
@@ -92,7 +92,7 @@ export const useGlobalSettingStyle = ({ isShowPreview }) =>
       //   marginTop: '11px'
       //   },
     },
-    marginTop5px:{
+    marginTop5px: {
       marginTop: '5px'
     }
 

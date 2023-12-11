@@ -59,7 +59,7 @@ import {
   updateSaveWarning,
 } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { CATEGORY_PAGE } from '../../../../utils/constants';
 import { uriToJSON } from '../../../../utils/helper';
 import {
@@ -111,7 +111,7 @@ import { useCommentContext } from '../../../../context/CommentsContext/CommentsC
 import useUserSession from '../../../../hooks/useUserSession/useUserSession';
 import useWorkflow from '../../../../hooks/useWorkflow/useWorkflow';
 import commentsApi from '../../../../services/comments/comments.api';
-import LightTheme from '../../../../theme/lightTheme';
+import LightTheme from '../../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
 import { Dashboard_Keys } from '../../../Dashboard/utils/constant';
 import PrelemLoader from '../../PrelemSearch/PrelemLoader/PrelemLoader';
 import PageSettingList from '../PageSettingList/PageSettingList';
@@ -1412,7 +1412,7 @@ const EditPageContainer = () => {
                 }
                 confirmButtonHandle={onCloseSaveWarningHandler}
                 crossButtonHandle={unsavedChangesCrossButtonHandle}
-                modalType='unsavedChanges'
+                modalType="unsavedChanges"
               />
             ) : null}
             {galleryState && (
@@ -1512,29 +1512,29 @@ const EditPageContainer = () => {
                           }}
                           className={classes.TabButtons}
                           onChange={handleChangeTab}
-                          aria-label='lab API tabs example'
+                          aria-label="lab API tabs example"
                         >
                           (
                           <Tab
-                            icon={<img src={EditIcon} alt='icon' />}
-                            iconPosition='start'
-                            label='Design'
-                            value='Page_Design'
+                            icon={<img src={EditIcon} alt="icon" />}
+                            iconPosition="start"
+                            label="Design"
+                            value="Page_Design"
                           />
                           )
                           {DesignWeb && (
                             <Tab
-                              icon={<img src={SettingIcon} alt='icon' />}
-                              iconPosition='start'
-                              label='Page Setting'
-                              value='Page_Setting'
+                              icon={<img src={SettingIcon} alt="icon" />}
+                              iconPosition="start"
+                              label="Page Setting"
+                              value="Page_Setting"
                             />
                           )}
                         </TabList>
                       )}
 
                       {!DesignWeb && (
-                        <Typography variant='p3semibold'>
+                        <Typography variant="p3semibold">
                           Page Setting
                         </Typography>
                       )}
@@ -1543,7 +1543,7 @@ const EditPageContainer = () => {
                       <TabPanel
                         sx={{ padding: 0 }}
                         className={classes.tabPanelSettingPage}
-                        value='Page_Design'
+                        value="Page_Design"
                       >
                         {loader ? (
                           <Box
@@ -1654,7 +1654,7 @@ const EditPageContainer = () => {
                           </Box>
                         ) : (
                           <Box
-                            component='div'
+                            component="div"
                             sx={{
                               width: '100%',
                               display: 'flex',
@@ -1688,16 +1688,16 @@ const EditPageContainer = () => {
                                       fontSize: '50px',
                                     },
                                   }}
-                                  nameIcon='add'
+                                  nameIcon="add"
                                   enable
-                                  listIndx='top'
+                                  listIndx="top"
                                   handleClick={() => routeChange()}
                                 />
                               </Box>
                               <Typography
-                                variant='p3regular'
-                                mb='10px'
-                                mt='10px'
+                                variant="p3regular"
+                                mb="10px"
+                                mt="10px"
                               >
                                 {t('create_first_section_now')}
                               </Typography>
@@ -1712,7 +1712,7 @@ const EditPageContainer = () => {
                     <TabPanel
                       sx={{ padding: 0 }}
                       className={classes.tabPanelSettingPage}
-                      value='Page_Setting'
+                      value="Page_Setting"
                     >
                       <PageSettingList setPageId={setPageId} />
                     </TabPanel>
@@ -1875,7 +1875,7 @@ const EditPageContainer = () => {
                   </Box>
                 ) : (
                   <Box
-                    component='div'
+                    component="div"
                     sx={{
                       width: '100%',
                       display: 'flex',
@@ -1904,16 +1904,16 @@ const EditPageContainer = () => {
                               fontSize: '50px',
                             },
                           }}
-                          nameIcon='add'
+                          nameIcon="add"
                           enable
-                          listIndx='top'
+                          listIndx="top"
                           handleClick={() => routeChange()}
                         />
                       </Box>
-                      <Typography variant='p3regular' mb='10px' mt='10px'>
+                      <Typography variant="p3regular" mb="10px" mt="10px">
                         {t('create_first_section_now')}
                       </Typography>
-                      <Typography variant='p3regular' sx={{ color: '#4B9EF9' }}>
+                      <Typography variant="p3regular" sx={{ color: '#4B9EF9' }}>
                         {t('add_prelem')}
                       </Typography>
                     </Box>

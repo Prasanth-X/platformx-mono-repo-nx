@@ -1,9 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import {
-  showToastSuccess
-} from '../../components/toastNotification/toastNotificationReactTostify';
-import ThemeConstants from '../../theme/variable';
+import { showToastSuccess } from '../../components/toastNotification/toastNotificationReactTostify';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 //import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { useTranslation } from 'react-i18next';
@@ -155,7 +153,7 @@ export const DspaceSelector = ({
   };
   return (
     <>
-      {galleryState &&
+      {galleryState && (
         <Gallery2
           handleImageSelected={handleSelectedImage}
           toggleGallery={toggleGallery}
@@ -164,7 +162,8 @@ export const DspaceSelector = ({
           // editorState={editorState}
           // setEditorState={setEditorState}
           // contentState={contentState}
-        />}
+        />
+      )}
       {/* {contentGalleryStatus && (
         <ContentGallery
           handleSelectedContent={handleSelectedContent}
@@ -172,11 +171,11 @@ export const DspaceSelector = ({
         />
       )} setShowImageupload(false),*/}
       {content?.Url ? (
-        appendHtmlforAsset(
+        (appendHtmlforAsset(
           `<img src='${content?.Url}' width="100%" height="250px"/>`
         ),
-        setShowImageupload(false)
-      ) :
+        setShowImageupload(false))
+      ) : (
         //   <Box sx={{ /*position: 'relative' */}} mb={2}>
         // <img
         //   src={content?.Url}
@@ -295,7 +294,8 @@ export const DspaceSelector = ({
             </Box>
             {t('page_choose_image')}
           </Typography>
-        </Box>}
+        </Box>
+      )}
     </>
   );
 };

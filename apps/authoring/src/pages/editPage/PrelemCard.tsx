@@ -27,9 +27,9 @@ import {
   updateContentForCard,
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../theme/lightTheme';
-import PrelemTheme from '../../theme/prelemTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { convertToLowerCase, getSubDomain } from '../../utils/helperFunctions';
 // Custom css classes to add centered "add icon" on each prelem card on top ad bottom
 const useStyles = makeStyles(() => ({

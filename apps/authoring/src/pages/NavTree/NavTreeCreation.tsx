@@ -10,7 +10,7 @@ import SSGuideline from '../../assets/images/SS_Guideline.png';
 import LadyImage from '../../assets/images/lady_Image.svg';
 import { ErrorTooltip } from '../../components/Common/ErrorTooltip';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import CreateMenuPage from './CreateMenuPage';
 import NavMenuView from './MobileViewPages/NavMenuView';
 import NavTree from './NavTree';
@@ -165,10 +165,10 @@ export default function NavTreeCreation() {
               }}
             >
               <Box sx={{ margin: '0 auto 10px' }}>
-                <img src={LadyImage} width='301px' height='218px' />
+                <img src={LadyImage} width="301px" height="218px" />
               </Box>
               <Box>
-                <Typography variant='h3medium' sx={{ color: '#89909a' }}>
+                <Typography variant="h3medium" sx={{ color: '#89909a' }}>
                   {t('menu_head')}
                 </Typography>
               </Box>
@@ -182,7 +182,7 @@ export default function NavTreeCreation() {
                 <ErrorTooltip
                   component={
                     <Button
-                      variant='contained'
+                      variant="contained"
                       disabled={
                         !canAccessAction(
                           Category.Menu,
@@ -205,7 +205,7 @@ export default function NavTreeCreation() {
                   }
                 />
                 <Button
-                  variant='outlined'
+                  variant="outlined"
                   sx={{
                     marginLeft: '15px',
                     minWidth: 'auto',
@@ -250,7 +250,7 @@ export default function NavTreeCreation() {
               }}
             >
               <Typography
-                variant='h4medium'
+                variant="h4medium"
                 sx={{
                   color: '#2d2d38',
                 }}
@@ -280,11 +280,11 @@ export default function NavTreeCreation() {
                     alignItems: 'center',
                   }}
                 >
-                  <Typography variant='h4medium' sx={{ color: '#2d2d39' }}>
+                  <Typography variant="h4medium" sx={{ color: '#2d2d39' }}>
                     {t('menu_creation_step1')}{' '}
                   </Typography>
                   <Button
-                    variant='contained'
+                    variant="contained"
                     disableElevation
                     sx={{
                       height: { xs: '40px', md: '50px' },
@@ -303,17 +303,17 @@ export default function NavTreeCreation() {
                     />{' '}
                     {t('menu_create_button')}
                   </Button>
-                  <Typography variant='h4medium' sx={{ color: '#2d2d39' }}>
+                  <Typography variant="h4medium" sx={{ color: '#2d2d39' }}>
                     {t('cta_or_button')}{' '}
                   </Typography>
                 </Box>
                 <Box>
-                  <Typography variant='h5regular' sx={{ color: '#89909a' }}>
+                  <Typography variant="h5regular" sx={{ color: '#89909a' }}>
                     {t('menu_step1_details')}
                   </Typography>
                 </Box>
                 <Box sx={{ margin: '39px 0 23px', objectFit: 'contain' }}>
-                  <img src={GuidelineImage} width='695px' />
+                  <img src={GuidelineImage} width="695px" />
                 </Box>
                 <Box
                   sx={{
@@ -323,12 +323,12 @@ export default function NavTreeCreation() {
                     alignItems: 'center',
                   }}
                 >
-                  <Typography variant='h4medium' sx={{ color: '#2d2d39' }}>
+                  <Typography variant="h4medium" sx={{ color: '#2d2d39' }}>
                     {t('menu_creation_step2')}
                   </Typography>
                 </Box>
                 <Box sx={{ maxWidth: '694px' }}>
-                  <Typography variant='h5regular' sx={{ color: '#89909a' }}>
+                  <Typography variant="h5regular" sx={{ color: '#89909a' }}>
                     {t('menu_step2_details')}
                   </Typography>
                 </Box>

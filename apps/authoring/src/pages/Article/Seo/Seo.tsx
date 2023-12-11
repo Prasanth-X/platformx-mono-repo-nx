@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import TitleSubTitle from '../../../components/Common/TitleSubTitle';
 import { showToastSuccess } from '../../../components/toastNotification/toastNotificationReactTostify';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../editPage/Switch';
 import StructureData from '../StructureData/StructureData';
 import { useStyles } from './Seo.styles';
@@ -41,8 +41,8 @@ const Seo = ({ state, setState, updateStructureDataArticle }) => {
           <TitleSubTitle
             title={t('page_prelem_find')}
             subTitle={t('subheading_description')}
-            titleVarient='h6medium'
-            subTitleVarient='h7regular'
+            titleVarient="h6medium"
+            subTitleVarient="h7regular"
           />
         </Box>
         <Box className={classes.width60}>
@@ -80,13 +80,13 @@ const Seo = ({ state, setState, updateStructureDataArticle }) => {
           <TitleSubTitle
             title={t('page_structure_data')}
             subTitle={t('click_to_sd')}
-            titleVarient='h6medium'
-            subTitleVarient='h7regular'
+            titleVarient="h6medium"
+            subTitleVarient="h7regular"
           />
         </Box>
         <Box className={classes.flexBox}>
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             className={classes.typo}
             onClick={() => openStructureData()}
           >
@@ -94,7 +94,7 @@ const Seo = ({ state, setState, updateStructureDataArticle }) => {
           </Typography>
           <Box className={classes.typoDivider}></Box>
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             className={classes.typo}
             onClick={() => copyStructureData()}
           >

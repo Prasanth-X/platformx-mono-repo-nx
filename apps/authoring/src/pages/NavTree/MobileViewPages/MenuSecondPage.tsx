@@ -15,7 +15,7 @@ import {
 } from '../../../services/page/page.api';
 import { setDefaultPageModel } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import ArticleListMobileLoader from '../../articles/article-list-loader-mobile';
 import CalendarDesktop from '../../page-list-view/articleCalendar/calendarDesktop';
 import CalendarDialogBox from '../../page-list-view/articleCalendar/calendarDialogBox';
@@ -194,7 +194,7 @@ export default function MenuSecondPage({
           }}
         />
         <Typography
-          variant='h4medium'
+          variant="h4medium"
           sx={{
             width: '393px',
             height: '35px',
@@ -233,7 +233,7 @@ export default function MenuSecondPage({
                   <Box sx={{ textAlign: 'center', marginTop: '10%' }}>
                     <img src={NoResults} />
                     <Typography
-                      variant='h5'
+                      variant="h5"
                       sx={{
                         color: '#c3c3c3',
                       }}
@@ -255,7 +255,7 @@ export default function MenuSecondPage({
                   next={fetchMoreData}
                   hasMore={isLazyLoad}
                   loader={<ArticleListMobileLoader />}
-                  scrollableTarget='scrollableDiv2'
+                  scrollableTarget="scrollableDiv2"
                 >
                   <Box>
                     {items?.map((item, index) => (
@@ -305,7 +305,7 @@ export default function MenuSecondPage({
         {t('all_pages')}
       </Typography>
       <Typography
-        variant='h5'
+        variant="h5"
         sx={{
           ml: '16px',
           mt: '12px',
@@ -315,7 +315,7 @@ export default function MenuSecondPage({
         {t('recently_added')}
       </Typography>
       <Box
-        id='scrollableDiv2'
+        id="scrollableDiv2"
         sx={{
           padding: '15px',
           position: 'relative',
@@ -336,7 +336,7 @@ export default function MenuSecondPage({
                 <Box sx={{ textAlign: 'center', marginTop: '10%' }}>
                   <img src={NoResults} />
                   <Typography
-                    variant='h5'
+                    variant="h5"
                     sx={{
                       color: '#c3c3c3',
                     }}
@@ -350,7 +350,7 @@ export default function MenuSecondPage({
                 next={fetchMoreData}
                 hasMore={isLazyLoad}
                 loader={<ArticleListMobileLoader />}
-                scrollableTarget='scrollableDiv2'
+                scrollableTarget="scrollableDiv2"
               >
                 <Box>
                   {items?.map((item, index) => (
@@ -376,16 +376,16 @@ export default function MenuSecondPage({
         {!isDone && (
           <Fab
             sx={{ position: 'fixed', bottom: '4%', right: '5%', zIndex: 99 }}
-            size='large'
-            color='primary'
-            aria-label='add'
+            size="large"
+            color="primary"
+            aria-label="add"
           >
             <AddIcon />
           </Fab>
         )}
         {isDone && (
           <Button
-            variant='contained'
+            variant="contained"
             disableElevation
             sx={{
               width: '347px',
@@ -414,7 +414,7 @@ export default function MenuSecondPage({
         )}
       </Box>
 
-      <Slide direction='right' in={isMenuThirdPg} timeout={300}>
+      <Slide direction="right" in={isMenuThirdPg} timeout={300}>
         <Box
           sx={{
             backgroundColor: '#fff',

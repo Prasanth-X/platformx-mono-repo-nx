@@ -17,7 +17,7 @@ import {
   publish_article,
   update_article,
 } from '../../../../../services/article/article.api';
-import ThemeConstants from '../../../../../theme/variable';
+import ThemeConstants from '../../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../../../editPage/Switch';
 import type {
   ArticleSEOProps,
@@ -160,7 +160,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
   return (
     <AccordionDetails>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -177,7 +177,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -210,8 +210,8 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
             alignItems: 'center',
             textTransform: 'capitalize',
           }}
-          className='drawer-label'
-          variant='subtitle1'
+          className="drawer-label"
+          variant="subtitle1"
         >
           {t('page_structure_data')}
           <Tooltip
@@ -225,7 +225,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -343,7 +343,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
               }}
               onClick={copyStructureData}
             >
-              <ContentCopyIcon fontSize='small' sx={{ marginRight: '2px' }} />
+              <ContentCopyIcon fontSize="small" sx={{ marginRight: '2px' }} />
               {copyStatus ? t('copied') : t('copy')}
             </Typography>
           </Box>
@@ -358,7 +358,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
               }}
             >
               <Button
-                variant='contained'
+                variant="contained"
                 sx={{
                   backgroundColor: ThemeConstants.WHITE_COLOR,
                   color: ThemeConstants.BLACK_COLOR,
@@ -396,14 +396,14 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: '#000000',
@@ -423,14 +423,14 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: '#000000',
@@ -447,7 +447,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       )}
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={disabledState}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

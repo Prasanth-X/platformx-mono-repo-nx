@@ -14,7 +14,7 @@ import {
 import useUserSession from '../../../hooks/useUserSession/useUserSession';
 import articleApi from '../../../services/article/article.api';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import Gallery from '../../Gallery/Gallery';
 import { ArticleActionDialog } from '../Components/ArticleActionDialog/ArticleActionDialog';
 import { ArticleDetails } from '../Components/ArticleDetails';

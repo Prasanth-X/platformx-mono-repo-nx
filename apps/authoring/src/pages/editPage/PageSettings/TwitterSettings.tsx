@@ -15,7 +15,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageSettings } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import siteLevelSchema from '../../../utils/siteLevelSettings.json';
 import {
   descriptionLength,
@@ -53,29 +53,31 @@ const TwitterSettings = ({
       SocialOgTwitterTitle != undefined
         ? SocialOgTwitterTitle
         : PageName == undefined
-          ? ''
-          : `${PageName} | ${siteLevelSchema.siteName}`,
+        ? ''
+        : `${PageName} | ${siteLevelSchema.siteName}`,
     SocialOgTwitterDescription:
       SocialOgTwitterDescription != undefined
         ? SocialOgTwitterDescription
         : PageDescription == undefined
-          ? ''
-          : PageDescription,
+        ? ''
+        : PageDescription,
     SocialOgTwitterImage:
       SocialOgTwitterImage != undefined ? SocialOgTwitterImage : '',
     SocialOgTwitterURL:
       SocialOgTwitterURL != undefined
         ? SocialOgTwitterURL
         : PageURL == undefined
-          ? ''
-          : PageURL,
+        ? ''
+        : PageURL,
     SocialTwitterCardSize:
       SocialTwitterCardSize != undefined
         ? SocialTwitterCardSize
         : 'summary_large_image',
-  }
-  const initialTwitter = useRef(data)
-  const [twitterInfo, setTwitterInfo] = useState<PageTwitterInformation>(initialTwitter.current);
+  };
+  const initialTwitter = useRef(data);
+  const [twitterInfo, setTwitterInfo] = useState<PageTwitterInformation>(
+    initialTwitter.current
+  );
   const [expanded, setExpanded] = React.useState<string | false>('page-info');
   const twitterNameLength = nameLength;
   const twitterDescriptionLength = descriptionLength;
@@ -101,7 +103,10 @@ const TwitterSettings = ({
 
   useEffect(() => {
     if (page?.pageSettings) {
-      initialTwitter.current = { ...initialTwitter.current, ...page.pageSettings }
+      initialTwitter.current = {
+        ...initialTwitter.current,
+        ...page.pageSettings,
+      };
       setTwitterInfo(initialTwitter.current);
     }
   }, [page?.pageSettings]);
@@ -139,11 +144,11 @@ const TwitterSettings = ({
         expandIcon={
           <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
         }
-        aria-controls='twitter-setings-content'
-        id='twitter-setings-header'
+        aria-controls="twitter-setings-content"
+        id="twitter-setings-header"
       >
         <Typography
-          variant='h6'
+          variant="h6"
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -158,7 +163,7 @@ const TwitterSettings = ({
       </AccordionSummary>
       <Divider />
       <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
-        {twitterInfo.SocialTwitterCardSize == 'summary_large_image' ?
+        {twitterInfo.SocialTwitterCardSize == 'summary_large_image' ? (
           <Box
             sx={{
               border: `2px solid ${ThemeConstants.LIGHT_BG_COLOR}`,
@@ -166,7 +171,7 @@ const TwitterSettings = ({
             }}
             mt={2}
           >
-            {twitterInfo.SocialOgTwitterImage == '' ?
+            {twitterInfo.SocialOgTwitterImage == '' ? (
               <Box
                 sx={{
                   borderRadius: '5px',
@@ -209,12 +214,12 @@ const TwitterSettings = ({
                   {t('page_choose_image')}
                 </Typography>
               </Box>
-              :
+            ) : (
               <Box sx={{ position: 'relative' }}>
                 <img
                   src={twitterInfo.SocialOgTwitterImage}
-                  alt='image file'
-                  width='100%'
+                  alt="image file"
+                  width="100%"
                 />
                 <Box
                   sx={{
@@ -291,13 +296,14 @@ const TwitterSettings = ({
                     </Box>
                   </Box>
                 </Box>
-              </Box>}
+              </Box>
+            )}
             <Box m={2}>
-              <Typography variant='subtitle2' mt={2}>
+              <Typography variant="subtitle2" mt={2}>
                 {twitterInfo.SocialOgTwitterURL}
               </Typography>
               <Typography
-                variant='h6'
+                variant="h6"
                 sx={{ fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD }}
               >
                 {twitterInfo.SocialOgTwitterTitle.substring(
@@ -307,7 +313,7 @@ const TwitterSettings = ({
                 {twitterInfo.SocialOgTwitterTitle.length >
                   twitterLargePreviewNameLength && <span>...</span>}
               </Typography>
-              <Typography variant='subtitle2'>
+              <Typography variant="subtitle2">
                 {twitterInfo.SocialOgTwitterDescription.substring(
                   0,
                   twitterLargePreviewDescriptionLength
@@ -317,7 +323,7 @@ const TwitterSettings = ({
               </Typography>
             </Box>
           </Box>
-          :
+        ) : (
           <Box
             mt={2}
             sx={{
@@ -328,7 +334,7 @@ const TwitterSettings = ({
               position: 'relative',
             }}
           >
-            {twitterInfo.SocialOgTwitterImage &&
+            {twitterInfo.SocialOgTwitterImage && (
               <Box
                 sx={{
                   position: 'absolute',
@@ -403,7 +409,8 @@ const TwitterSettings = ({
                     </Typography>
                   </Box>
                 </Box>
-              </Box>}
+              </Box>
+            )}
             <Box
               sx={{
                 display: 'flex',
@@ -414,7 +421,7 @@ const TwitterSettings = ({
                 flex: 3,
               }}
             >
-              {twitterInfo.SocialOgTwitterImage == '' ?
+              {twitterInfo.SocialOgTwitterImage == '' ? (
                 <Box
                   sx={{
                     borderRadius: '5px',
@@ -456,16 +463,17 @@ const TwitterSettings = ({
                     {t('page_choose_image')}
                   </Typography>
                 </Box>
-                :
+              ) : (
                 <img
                   src={twitterInfo.SocialOgTwitterImage}
-                  alt='image file'
-                  width='100%'
-                />}
+                  alt="image file"
+                  width="100%"
+                />
+              )}
             </Box>
             <Box p={1} sx={{ flex: 2 }}>
               <Typography
-                variant='h6'
+                variant="h6"
                 sx={{ fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD }}
               >
                 {twitterInfo.SocialOgTwitterTitle.substring(
@@ -476,7 +484,7 @@ const TwitterSettings = ({
                   twitterSmallPreviewNameLength && <span>...</span>}
               </Typography>
               <Typography
-                variant='subtitle2'
+                variant="subtitle2"
                 sx={{ fontSize: ThemeConstants.FONTSIZE_SM }}
               >
                 {twitterInfo.SocialOgTwitterDescription.substring(
@@ -487,19 +495,20 @@ const TwitterSettings = ({
                   twitterSmallPreviewDescriptionLength && <span>...</span>}
               </Typography>
               <Typography
-                variant='subtitle2'
+                variant="subtitle2"
                 sx={{ fontSize: ThemeConstants.FONTSIZE_XS }}
               >
                 {twitterInfo.SocialOgTwitterURL}
               </Typography>
             </Box>
-          </Box>}
+          </Box>
+        )}
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{ display: 'flex', alignimageInstances: 'center' }}
           mt={2}
           mb={1}
-          className='drawer-label'
+          className="drawer-label"
         >
           {t('page_twitter_size')}
           <Tooltip
@@ -513,7 +522,7 @@ const TwitterSettings = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -530,13 +539,13 @@ const TwitterSettings = ({
         <FormControl>
           <RadioGroup
             row
-            aria-labelledby='demo-row-radio-buttons-group-label'
-            name='row-radio-buttons-group'
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
             value={twitterInfo.SocialTwitterCardSize}
             onChange={(e) => handleDataChange(e, 'SocialTwitterCardSize')}
           >
             <FormControlLabel
-              value='summary'
+              value="summary"
               control={<Radio />}
               label={t('small')}
               sx={{
@@ -550,7 +559,7 @@ const TwitterSettings = ({
               }}
             />
             <FormControlLabel
-              value='summary_large_image'
+              value="summary_large_image"
               control={<Radio />}
               label={t('large')}
               sx={{
@@ -566,11 +575,11 @@ const TwitterSettings = ({
           </RadioGroup>
         </FormControl>
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{ display: 'flex', alignimageInstances: 'center' }}
           mt={2}
           mb={1}
-          className='drawer-label'
+          className="drawer-label"
         >
           {t('page_twitter_ogtitle')}
           <Tooltip
@@ -584,7 +593,7 @@ const TwitterSettings = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -602,16 +611,16 @@ const TwitterSettings = ({
           multiline
           value={twitterInfo.SocialOgTwitterTitle}
           onChange={(e) => handleDataChange(e, 'SocialOgTwitterTitle')}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('page_search_title_placeholder')}
           inputProps={{ maxLength: twitterNameLength }}
         />
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{ display: 'flex', alignimageInstances: 'center' }}
           mt={2}
           mb={1}
-          className='drawer-label'
+          className="drawer-label"
         >
           {t('page_twitter_ogdescription')}
           <Tooltip
@@ -625,7 +634,7 @@ const TwitterSettings = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -643,16 +652,16 @@ const TwitterSettings = ({
           multiline
           value={twitterInfo.SocialOgTwitterDescription}
           onChange={(e) => handleDataChange(e, 'SocialOgTwitterDescription')}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('page_info_about_placeholder')}
           inputProps={{ maxLength: twitterDescriptionLength }}
         />
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{ display: 'flex', alignimageInstances: 'center' }}
           mt={2}
           mb={1}
-          className='drawer-label'
+          className="drawer-label"
         >
           {t('page_twitter_url')}
           <Tooltip
@@ -666,7 +675,7 @@ const TwitterSettings = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -684,13 +693,13 @@ const TwitterSettings = ({
           multiline
           value={twitterInfo.SocialOgTwitterImage}
           onChange={(e) => handleDataChange(e, 'SocialOgTwitterImage')}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('page_seo_url_placeholder')}
           inputProps={{ readOnly: true }}
         />
         <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
           <Button
-            variant='contained'
+            variant="contained"
             disabled={initialTwitter.current === twitterInfo}
             sx={{
               backgroundColor: ThemeConstants.BLACK_COLOR,

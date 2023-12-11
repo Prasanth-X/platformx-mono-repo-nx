@@ -18,7 +18,7 @@ import {
 import useUserSession from '../../../hooks/useUserSession/useUserSession';
 import { save_menu, update_menu } from '../../../services/navTree/navTree.api';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { dateFormat } from '../../../utils/helperFunctions';
 import { createMenu } from '../Actions';
 
@@ -202,7 +202,7 @@ function MenuThirdPage({
     const isItemExist = tempArr.find((val) => {
       return val
         ? val.Label.toLowerCase() === menuItemName.toLowerCase() &&
-        val.Menu_Id !== editData.Menu_Id
+            val.Menu_Id !== editData.Menu_Id
         : '';
     });
     if (isItemExist) {
@@ -332,7 +332,7 @@ function MenuThirdPage({
           />
 
           <Typography
-            variant='h4medium'
+            variant="h4medium"
             sx={{
               width: '393px',
               height: '35px',
@@ -405,11 +405,11 @@ function MenuThirdPage({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '18px' }}
               >
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {' '}
                   {t('menu_added_title')}
                 </Typography>
-                <Typography variant='h7regular' sx={{ color: '#89909a' }}>
+                <Typography variant="h7regular" sx={{ color: '#89909a' }}>
                   {' '}
                   {t('menu_added_subtitle')}
                 </Typography>
@@ -448,7 +448,7 @@ function MenuThirdPage({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {t('menu_item_name')}
                 </Typography>
                 <Typography
@@ -496,7 +496,7 @@ function MenuThirdPage({
                 <Box
                   sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
                 >
-                  <Typography variant='h6medium'>
+                  <Typography variant="h6medium">
                     {' '}
                     {t('menu_description')}
                   </Typography>
@@ -544,7 +544,7 @@ function MenuThirdPage({
                 mt: '25px',
               }}
             >
-              <Typography variant='h6medium'>
+              <Typography variant="h6medium">
                 {' '}
                 {t('menu_added_icon')}
               </Typography>
@@ -574,7 +574,7 @@ function MenuThirdPage({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {t('menu_item_type')}
                 </Typography>
               </Box>
@@ -612,7 +612,7 @@ function MenuThirdPage({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {' '}
                   {t('menu_item_selected')}
                 </Typography>
@@ -651,7 +651,7 @@ function MenuThirdPage({
                   mt: '25px',
                 }}
               >
-                <Typography variant='h6medium'> Added content type</Typography>
+                <Typography variant="h6medium"> Added content type</Typography>
                 <Box
                   sx={{
                     marginTop: 1,
@@ -665,8 +665,8 @@ function MenuThirdPage({
                 >
                   <img
                     src={selectedItem.Image}
-                    width='100%'
-                    height='100%'
+                    width="100%"
+                    height="100%"
                     style={{ borderRadius: '5px' }}
                   />
                   <div
@@ -690,23 +690,23 @@ function MenuThirdPage({
                     }}
                   >
                     <Typography
-                      variant='h5medium'
-                      component='div'
+                      variant="h5medium"
+                      component="div"
                       sx={{ color: '#fff', marginBottom: '5px' }}
-                      className='singlebr'
+                      className="singlebr"
                     >
                       {selectedItem.Title}
                     </Typography>
                     <Typography
-                      variant='h7medium'
-                      component='div'
+                      variant="h7medium"
+                      component="div"
                       sx={{ color: '#ced3d9' }}
                     >
                       {selectedItem.Author}
                     </Typography>
                     <Typography
-                      variant='h7medium'
-                      component='div'
+                      variant="h7medium"
+                      component="div"
                       sx={{ color: '#ced3d9' }}
                     >
                       {' '}
@@ -722,7 +722,7 @@ function MenuThirdPage({
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: '18px' }}>
           <Button
-            variant='contained'
+            variant="contained"
             disableElevation
             onClick={onBack}
             sx={{
@@ -741,15 +741,15 @@ function MenuThirdPage({
                 color: ThemeConstants.BLACK_COLOR,
               },
             }}
-          // onClick = {generateArticle}
-          //  onClick={() => onDuplicatePage(false, undefined)}
+            // onClick = {generateArticle}
+            //  onClick={() => onDuplicatePage(false, undefined)}
           >
             <ChevronLeftIcon />
 
             {t('back')}
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             disableElevation
             sx={{
               width: '165px',
@@ -767,7 +767,7 @@ function MenuThirdPage({
               },
             }}
             onClick={onConfirm}
-          //  onClick={() => onDuplicatePage(false, undefined)}
+            //  onClick={() => onDuplicatePage(false, undefined)}
           >
             <DoneOutlinedIcon sx={{ marginRight: '10px' }} />
             {t('confirm')}

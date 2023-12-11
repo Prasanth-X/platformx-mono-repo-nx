@@ -9,7 +9,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from './Switch';
 import { PrelemSeoProps, SeoInfo } from './utils/editTypes';
 const PrelemSEO: React.FC<PrelemSeoProps> = ({
@@ -94,7 +94,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
   return (
     <AccordionDetails>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -111,7 +111,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -130,7 +130,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -145,8 +145,8 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
             alignItems: 'center',
             textTransform: 'capitalize',
           }}
-          className='drawer-label'
-          variant='subtitle1'
+          className="drawer-label"
+          variant="subtitle1"
         >
           {t('page_structure_data')}
           <Tooltip
@@ -160,7 +160,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -174,7 +174,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
             </Box>
           </Tooltip>
         </Typography>
-        {seoInfo.showContent == false ?
+        {seoInfo.showContent == false ? (
           <span
             style={{
               display: 'flex',
@@ -186,7 +186,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
           >
             <EditIcon sx={{ marginRight: '2px' }} /> {t('edit')}
           </span>
-         :
+        ) : (
           <>
             <Typography
               sx={{
@@ -217,7 +217,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
               />{' '}
               {t('edit')}
             </Typography>
-            {isOpen &&
+            {isOpen && (
               <Box
                 sx={{
                   display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
@@ -236,10 +236,12 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
                   }}
                 />
                 {t('done')}
-              </Box>}
-          </>}
+              </Box>
+            )}
+          </>
+        )}
       </Typography>
-      {isOpen &&
+      {isOpen && (
         <Box>
           <Box
             sx={{
@@ -275,7 +277,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
               }}
               onClick={copyStructureData}
             >
-              <ContentCopyIcon fontSize='small' sx={{ marginRight: '2px' }} />
+              <ContentCopyIcon fontSize="small" sx={{ marginRight: '2px' }} />
               {copyStatus ? t('copied') : t('copy')}
             </Typography>
           </Box>
@@ -290,7 +292,7 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
               }}
             >
               <Button
-                variant='contained'
+                variant="contained"
                 sx={{
                   backgroundColor: ThemeConstants.WHITE_COLOR,
                   color: ThemeConstants.BLACK_COLOR,
@@ -321,9 +323,9 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
                 },
                 height: '90%',
                 top: '5%',
-               "*::-webkit-scrollbar" :{
-                display: 'block !Important',
-               },
+                '*::-webkit-scrollbar': {
+                  display: 'block !Important',
+                },
                 padding: '10px 0px 10px 10px',
                 overflow: 'scroll !important',
                 paddingBottom: '30px',
@@ -331,14 +333,14 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: ThemeConstants.BLACK_COLOR,
@@ -358,14 +360,14 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: ThemeConstants.BLACK_COLOR,
@@ -378,10 +380,11 @@ const PrelemSEO: React.FC<PrelemSeoProps> = ({
               />
             </Box>
           </Box>
-        </Box>}
+        </Box>
+      )}
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={JSON.stringify(seoInstance) === JSON.stringify(seoInfo)}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

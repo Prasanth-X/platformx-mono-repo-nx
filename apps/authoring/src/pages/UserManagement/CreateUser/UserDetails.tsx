@@ -24,7 +24,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import BasicSwitch from '../../editPage/Switch';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { useCustomStyle } from '../../../components/Quiz/Quiz.style';
 import CommonBoxWithNumber from '../../../Common/CommonBoxWithNumber/CommonBoxWithNumber';
 import AddImage from '../../../components/Common/AddImage';
@@ -121,41 +121,41 @@ const UserDetails = ({
   }, []);
   const classess = useCustomStyle();
   return (
-    <Box className={classess.mainStyleWrapper} id='user'>
+    <Box className={classess.mainStyleWrapper} id="user">
       <CommonBoxWithNumber
-        number='02'
+        number="02"
         title={t('users_details')}
-        titleVarient='p3semibold'
-        subTitleVarient='p4regular'
+        titleVarient="p3semibold"
+        subTitleVarient="p4regular"
         subTitle={t('subhead')}
       >
         <Grid container>
-          <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} className="leftFiled">
             <TitleSubTitle
               title={t('profile_picture')}
               subTitle={`${t('sub_title')} ${t('profile_picture')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} className="textFiled">
             <AddImage
-              type='Images'
+              type="Images"
               onUploadClick={onUploadClick}
               url={state.image}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} lg={5} className="leftFiled">
             <TitleSubTitle
               title={t('first_name')}
               subTitle={`${t('sub_title')} ${t('first_name')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
             <TextBox
-              name='first_name'
+              name="first_name"
               placeHolder={t('first_name_placeholder')}
               handleOnBlur={formik.handleBlur}
               error={
@@ -166,17 +166,17 @@ const UserDetails = ({
               state={formik.values.first_name}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} lg={5} className="leftFiled">
             <TitleSubTitle
               title={t('last_name')}
               subTitle={`${t('sub_title')} ${t('last_name')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
             <TextBox
-              name='last_name'
+              name="last_name"
               placeHolder={t('last_name_placeholder')}
               handleOnBlur={formik.handleBlur}
               error={
@@ -187,17 +187,17 @@ const UserDetails = ({
               state={formik.values.last_name}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} lg={5} className="leftFiled">
             <TitleSubTitle
               title={t('email')}
               subTitle={`${t('sub_title')} ${t('email')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
             <TextBox
-              name='email'
+              name="email"
               placeHolder={t('email_placeholder')}
               isDisabled={isDisabled}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -213,7 +213,7 @@ const UserDetails = ({
             />
             {isEmailExist ? (
               <Typography
-                variant='h7regular'
+                variant="h7regular"
                 sx={{
                   color: 'rgb(211,47,47)',
                   marginTop: '10px',
@@ -225,29 +225,29 @@ const UserDetails = ({
               </Typography>
             ) : null}
           </Grid>
-          <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} className="leftFiled">
             <TitleSubTitle
               title={t('phone')}
               subTitle={`${t('sub_title')} ${t('phone')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={2.5} md={2.5} className='textFiled'>
+          <Grid item xs={12} sm={2.5} md={2.5} className="textFiled">
             <Autocomplete
-              id='combo-box-demo'
+              id="combo-box-demo"
               sx={{
                 width: 'auto',
                 marginRight: '5px',
               }}
               options={countries}
-              size='small'
+              size="small"
               popupIcon={<ExpandMoreIcon />}
               value={isd}
               onChange={handleISD}
               renderOption={(props, option) => (
                 <Box
-                  component='li'
+                  component="li"
                   sx={{
                     display: 'flex',
                     padding: 0,
@@ -268,23 +268,23 @@ const UserDetails = ({
                     }}
                   >
                     <img
-                      loading='lazy'
-                      width='25'
+                      loading="lazy"
+                      width="25"
                       src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
                       srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-                      alt=''
+                      alt=""
                     />
                   </Box>
                   {option.label}
                 </Box>
               )}
               renderInput={(params) => (
-                <TextField {...params} placeholder='ISD' />
+                <TextField {...params} placeholder="ISD" />
               )}
             />
             {isPhone ? (
               <Typography
-                variant='h7regular'
+                variant="h7regular"
                 sx={{
                   color: 'rgb(211,47,47)',
                   marginTop: '10px',
@@ -296,11 +296,11 @@ const UserDetails = ({
               </Typography>
             ) : null}
           </Grid>
-          <Grid item xs={12} sm={4.5} md={4.5} className='textFiled'>
+          <Grid item xs={12} sm={4.5} md={4.5} className="textFiled">
             <TextField
-              variant='outlined'
-              size='small'
-              name='phone'
+              variant="outlined"
+              size="small"
+              name="phone"
               placeholder={t('phone_placeholder')}
               error={formik.touched.phone && Boolean(formik.errors.phone)}
               helperText={formik.touched.phone && formik.errors.phone}
@@ -324,27 +324,27 @@ const UserDetails = ({
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} lg={5} className="leftFiled">
             <TitleSubTitle
               title={`${t('gender')}`}
               subTitle={`${t('sub_title')} ${t('gender')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
             <FormControl
               fullWidth
               // error={formik.touched.gender && Boolean(formik.errors.gender)}
             >
-              <InputLabel id='demo-simple-select-label'>
+              <InputLabel id="demo-simple-select-label">
                 {t('gender')}
               </InputLabel>
               <Select
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
                 value={formik.values.gender}
-                name='gender'
+                name="gender"
                 label={t('gender')}
                 onChange={(e) =>
                   formik.setFieldValue('gender', e.target.value as string)
@@ -362,28 +362,28 @@ const UserDetails = ({
                 </FormHelperText> */}
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} lg={5} className="leftFiled">
             <TitleSubTitle
               title={`${t('date_of_birth')}`}
               subTitle={`${t('sub_title')} ${t('date_of_birth')}`}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    name='dob'
+                    name="dob"
                     // onBlur={formik.handleBlur}
                     onKeyDown={handleDateChangeRaw}
                     // error={formik.touched.dob && Boolean(formik.errors.dob)}
                     // helperText={formik.touched.dob && formik.errors.dob}
                   />
                 )}
-                inputFormat='DD/MM/YYYY'
+                inputFormat="DD/MM/YYYY"
                 value={formik.values.dob}
                 onChange={(e) => {
                   formik.setFieldValue('dob', new Date(e).toISOString());
@@ -392,12 +392,12 @@ const UserDetails = ({
               />
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} className="leftFiled">
             <TitleSubTitle
               title={t('time_zone')}
               subTitle={t('time_subHead')}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
           <Grid
@@ -406,47 +406,47 @@ const UserDetails = ({
             sm={7}
             md={7}
             sx={{ zIndex: 1 }}
-            className='textFiled'
+            className="textFiled"
           >
             <Autocomplete
               disablePortal
-              id='combo-box-demo'
+              id="combo-box-demo"
               options={usdTime}
-              size='small'
+              size="small"
               sx={{ width: '100%' }}
               value={state.timezone}
               onChange={handleChangeTimeZone}
               renderInput={(params) => (
-                <TextField {...params} name='timezone' />
+                <TextField {...params} name="timezone" />
               )}
               popupIcon={<ExpandMoreIcon />}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+          <Grid item xs={12} sm={5} md={5} className="leftFiled">
             <TitleSubTitle
               title={t('default_language')}
               subTitle={t('choose_language')}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} className='textFiled'>
+          <Grid item xs={12} sm={7} md={7} className="textFiled">
             <Autocomplete
               disablePortal
-              id='combo-box-demo'
+              id="combo-box-demo"
               options={LanguageList}
-              size='small'
+              size="small"
               sx={{ width: '100%' }}
               value={state.default_language}
               onChange={handleChangeLanguage}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  name='default_language'
+                  name="default_language"
                   InputProps={{
                     ...params.InputProps,
                     startAdornment: (
-                      <InputAdornment position='start'>
+                      <InputAdornment position="start">
                         <img
                           src={require(`../../../assets/${flag}_flag.png`)}
                           style={{
@@ -464,16 +464,16 @@ const UserDetails = ({
               popupIcon={<ExpandMoreIcon />}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={5} className='leftFiledLast'>
+          <Grid item xs={12} sm={5} md={5} className="leftFiledLast">
             <TitleSubTitle
               title={t('default_site')}
               subTitle={t('is_it_your_default_site')}
-              titleVarient='h6medium'
-              subTitleVarient='h7regular'
+              titleVarient="h6medium"
+              subTitleVarient="h7regular"
             />
           </Grid>
-          <Grid item xs={12} sm={7} md={7} className='textFiledLast'>
-            <MenuItem className='icons'>
+          <Grid item xs={12} sm={7} md={7} className="textFiledLast">
+            <MenuItem className="icons">
               <BasicSwitch
                 checked={state.default_site_checked}
                 onChange={() => handleChange()}

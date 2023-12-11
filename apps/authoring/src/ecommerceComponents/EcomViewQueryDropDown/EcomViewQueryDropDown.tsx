@@ -1,32 +1,41 @@
 import './EcomViewQueryDropDown.css';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { useRef, useState, useEffect } from 'react';
 import { nullToArray } from '../../utils/helperFunctions';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {
-  Box, Button, ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList,
-  Paper, Popper, Typography
+  Box,
+  Button,
+  ButtonGroup,
+  ClickAwayListener,
+  Grow,
+  MenuItem,
+  MenuList,
+  Paper,
+  Popper,
+  Typography,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-
 const EcomViewQueryDropDown = ({ filterData, stateManage = {} }: any) => {
-  const { searchTerm = "" } = stateManage
+  const { searchTerm = '' } = stateManage;
 
   const { t } = useTranslation();
 
-  const filterQueryAdd = (filteredNames = [], searchTerm = "") => {
-    if (nullToArray(filteredNames).length > 0 && ("" + searchTerm).length > 0) {
-      return `${t("categories")} = ${filteredNames.join(', ')} ${t("and_search_terms")} ${searchTerm}`;
+  const filterQueryAdd = (filteredNames = [], searchTerm = '') => {
+    if (nullToArray(filteredNames).length > 0 && ('' + searchTerm).length > 0) {
+      return `${t('categories')} = ${filteredNames.join(', ')} ${t(
+        'and_search_terms'
+      )} ${searchTerm}`;
     } else if (nullToArray(filteredNames).length > 0) {
-      return `${t("categories")} = ${filteredNames.join(', ')}`;
-    } else if (("" + searchTerm).length > 0) {
-      return `${t("search_term")} = ${searchTerm}`;
+      return `${t('categories')} = ${filteredNames.join(', ')}`;
+    } else if (('' + searchTerm).length > 0) {
+      return `${t('search_term')} = ${searchTerm}`;
     } else {
-      return `${t("all")}`;
+      return `${t('all')}`;
     }
-  }
+  };
 
   // const options = ['Product = "SHOES" ORDER BY Created Desc'];
   const [options, setOptions] = useState([]);
@@ -34,7 +43,7 @@ const EcomViewQueryDropDown = ({ filterData, stateManage = {} }: any) => {
   const anchorRef = useRef<HTMLDivElement>(null);
   const [, setIndex] = useState(0);
 
-  const handleViewQueryClick = (index: number,) => {
+  const handleViewQueryClick = (index: number) => {
     setIndex(index);
     setOpen(false);
   };
@@ -44,7 +53,8 @@ const EcomViewQueryDropDown = ({ filterData, stateManage = {} }: any) => {
   };
 
   const handleQueryClose = (event: Event) => {
-    if (anchorRef.current &&
+    if (
+      anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
     ) {
       return;
@@ -53,20 +63,35 @@ const EcomViewQueryDropDown = ({ filterData, stateManage = {} }: any) => {
   };
 
   useEffect(() => {
-    const filteredNames = filterData.filter((item) => item.isCheck).map(item => `"${item.name}"`)
-    const finalData = `${filterQueryAdd(filteredNames, searchTerm)} ${t("orderByCreateQuery")}`
+    const filteredNames = filterData
+      .filter((item) => item.isCheck)
+      .map((item) => `"${item.name}"`);
+    const finalData = `${filterQueryAdd(filteredNames, searchTerm)} ${t(
+      'orderByCreateQuery'
+    )}`;
     const newOption = Object.assign([], options, { 0: finalData });
     setOptions(newOption);
-  }, [filterData, searchTerm])
+  }, [filterData, searchTerm]);
 
   return (
-    <Box component='span' className='ecommerce-dropdown-custom' >
+    <Box component="span" className="ecommerce-dropdown-custom">
       <ButtonGroup
-        onClick={handleQueryToggle} sx={{ position: 'relative' }}
-        disableRipple size="small" variant="text" ref={anchorRef} aria-label="View Query"
+        onClick={handleQueryToggle}
+        sx={{ position: 'relative' }}
+        disableRipple
+        size="small"
+        variant="text"
+        ref={anchorRef}
+        aria-label="View Query"
       >
-        <Button sx={{ paddingRight: '30px', color: ThemeConstants.BLUE_COLOR, textTransform: 'none' }}>
-          <Typography variant="h5medium">{t("View_Query")}</Typography>
+        <Button
+          sx={{
+            paddingRight: '30px',
+            color: ThemeConstants.BLUE_COLOR,
+            textTransform: 'none',
+          }}
+        >
+          <Typography variant="h5medium">{t('View_Query')}</Typography>
         </Button>
         <Button
           size="small"
@@ -77,7 +102,6 @@ const EcomViewQueryDropDown = ({ filterData, stateManage = {} }: any) => {
           className="dropdown-button"
           sx={{
             color: ThemeConstants.BLUE_COLOR,
-
           }}
         >
           {open ? <KeyboardArrowDownIcon /> : <NavigateNextIcon />}
@@ -106,7 +130,10 @@ const EcomViewQueryDropDown = ({ filterData, stateManage = {} }: any) => {
                   {options.map((option, index) => (
                     <MenuItem
                       key={option}
-                      sx={{ width: { sx: '300px', md: '600px' }, whiteSpace: 'normal' }}
+                      sx={{
+                        width: { sx: '300px', md: '600px' },
+                        whiteSpace: 'normal',
+                      }}
                       selected={index === 0}
                       disabled={index === 0}
                       onClick={(event) => handleViewQueryClick(index)}

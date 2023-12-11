@@ -9,11 +9,11 @@ import {
   isSameDay,
   startOfMonth,
   startOfWeek,
-  startOfYear
+  startOfYear,
 } from 'date-fns';
 import { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import './default.css'; // theme css file
 import './styles.css'; // main style file
 
@@ -41,9 +41,11 @@ export default function CalendarDesktop({ isClicked, onclickDesk, sendData }) {
       onClose={handleClose}
       sx={{
         display: { xs: 'none', sm: 'block' },
-        ".Platform-x-Dialog-paper": {
-          top: 15, maxWidth: 900,
-          bottom: 50, left: { md: 50 }
+        '.Platform-x-Dialog-paper': {
+          top: 15,
+          maxWidth: 900,
+          bottom: 50,
+          left: { md: 50 },
         },
       }}
     >
@@ -55,9 +57,9 @@ export default function CalendarDesktop({ isClicked, onclickDesk, sendData }) {
           moveRangeOnFirstSelection={false}
           showDateDisplay={false}
           months={2}
-          color='#272727'
+          color="#272727"
           ranges={state}
-          direction='horizontal'
+          direction="horizontal"
           // rangeColors={['#272727', '#e6edf2', '#e6edf2']}
           inputRanges={[]}
           staticRanges={[
@@ -128,7 +130,7 @@ export default function CalendarDesktop({ isClicked, onclickDesk, sendData }) {
           }}
         >
           <Button
-            variant='contained'
+            variant="contained"
             sx={{
               backgroundColor: ThemeConstants.WHITE_COLOR,
               color: ThemeConstants.BLACK_COLOR,
@@ -149,7 +151,7 @@ export default function CalendarDesktop({ isClicked, onclickDesk, sendData }) {
           </Button>
 
           <Button
-            variant='contained'
+            variant="contained"
             sx={{
               backgroundColor: ThemeConstants.BLACK_COLOR,
               color: ThemeConstants.WHITE_COLOR,
@@ -163,7 +165,10 @@ export default function CalendarDesktop({ isClicked, onclickDesk, sendData }) {
               borderRadius: '3px',
             }}
             disableElevation
-           onClick={() => {sendData(state[0]); handleClose();}}
+            onClick={() => {
+              sendData(state[0]);
+              handleClose();
+            }}
           >
             Done
           </Button>

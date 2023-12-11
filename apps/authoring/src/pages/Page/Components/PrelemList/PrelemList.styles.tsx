@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   prelemboxwp: {
@@ -19,7 +19,7 @@ export const useStyles = makeStyles(() => ({
     [`@media(max-width:${ThemeConstants.SM}px)`]: {
       maxHeight: '190px',
     },
-    [`@media(max-width:${ThemeConstants.EM -1}px)`]: {
+    [`@media(max-width:${ThemeConstants.EM - 1}px)`]: {
       width: 'calc(100% - 15px)',
     },
     '& img': {
@@ -39,7 +39,8 @@ export const useStyles = makeStyles(() => ({
     position: 'absolute',
     left: '0',
     top: '0',
-    background: 'linear-gradient(0deg, #000000 20.5%, rgba(45, 45, 57, 0) 89.96%)',
+    background:
+      'linear-gradient(0deg, #000000 20.5%, rgba(45, 45, 57, 0) 89.96%)',
     width: '100%',
     height: '100%',
     color: '#fff',
@@ -53,7 +54,7 @@ export const useStyles = makeStyles(() => ({
     },
     '&:hover': {
       opacity: 1,
-    }
+    },
   },
   contentwp: {
     color: '#fff',
@@ -92,10 +93,10 @@ export const useStyles = makeStyles(() => ({
     top: 0,
     right: 0,
     [`@media(max-width:${ThemeConstants.SM}px)`]: {
-      display: 'flex'
-    }
+      display: 'flex',
+    },
   },
   iconButton: {
-    padding: '5px'
-  }
+    padding: '5px',
+  },
 }));

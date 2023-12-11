@@ -35,7 +35,7 @@ import {
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { save_menu, update_menu } from '../../services/navTree/navTree.api';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { dateFormat } from '../../utils/helperFunctions';
 import ContentGallery from '../ContentGallery/ContentGallery';
 import BasicSwitch from '../editPage/Switch';
@@ -292,8 +292,8 @@ function CreateMenuPage({
       alignment === 'Page'
         ? true
         : radioSelectedLink === t('current_tab')
-          ? true
-          : false;
+        ? true
+        : false;
     const menuToSend = {
       Tagging: 'Navigation',
       Description: menuDescription,
@@ -320,7 +320,7 @@ function CreateMenuPage({
     const isItemExist = tempArr.find((val) => {
       return val
         ? val.Label.toLowerCase() === menuItemName.toLowerCase() &&
-        val.Menu_Id !== editData.Menu_Id
+            val.Menu_Id !== editData.Menu_Id
         : '';
     });
     if (isItemExist) {
@@ -372,8 +372,8 @@ function CreateMenuPage({
       alignment === 'Page'
         ? true
         : radioSelectedLink === t('current_tab')
-          ? true
-          : false;
+        ? true
+        : false;
 
     const menuToSend = {
       ParentId: parentId,
@@ -596,11 +596,11 @@ function CreateMenuPage({
               sx={{ width: '20px', height: '20px', cursor: 'pointer' }}
             />
             {activeStep === 0 ? (
-              <Typography variant='h4medium' sx={{ color: '#2d2d38' }}>
+              <Typography variant="h4medium" sx={{ color: '#2d2d38' }}>
                 {t('menu_create_button')}
               </Typography>
             ) : (
-              <Typography variant='h4medium' sx={{ color: '#2d2d38' }}>
+              <Typography variant="h4medium" sx={{ color: '#2d2d38' }}>
                 {t('menu_item_details')}
               </Typography>
             )}
@@ -666,7 +666,7 @@ function CreateMenuPage({
                   }}
                 >
                   <ToggleButton
-                    value='Page'
+                    value="Page"
                     sx={{
                       '&.Mui-selected, &.Mui-selected:hover': {
                         color: '#fff',
@@ -689,7 +689,7 @@ function CreateMenuPage({
                     {t('page')}
                   </ToggleButton>
                   <ToggleButton
-                    value='Link'
+                    value="Link"
                     sx={{
                       '&.Mui-selected, &.Mui-selected:hover': {
                         color: '#fff',
@@ -716,16 +716,16 @@ function CreateMenuPage({
                   <Grid container sx={{ mb: 5 }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Typography
-                        component='div'
-                        variant='h6medium'
+                        component="div"
+                        variant="h6medium"
                         sx={{ color: '#2d2d37', textTransform: 'capitalize' }}
                       >
                         {' '}
                         {t('menu_name')}
                       </Typography>
                       <Typography
-                        component='div'
-                        variant='h7regular'
+                        component="div"
+                        variant="h7regular"
                         sx={{ color: '#89909a' }}
                       >
                         {' '}
@@ -739,8 +739,8 @@ function CreateMenuPage({
                       lg={8}
                     >
                       <TextField
-                        variant='outlined'
-                        size='small'
+                        variant="outlined"
+                        size="small"
                         placeholder={t('menu_name_placeholder')}
                         value={menuItemName}
                         onChange={handleMenuItemName}
@@ -751,17 +751,17 @@ function CreateMenuPage({
                           // borderColor: 'rgb(211,47,47) !important',
                         }}
                         error={itemExist}
-                      // InputProps={{
-                      //   classes: {
-                      //     notchedOutline: itemExist
-                      //       ? classes.notchedOutline
-                      //       : null,
-                      //   },
-                      // }}
+                        // InputProps={{
+                        //   classes: {
+                        //     notchedOutline: itemExist
+                        //       ? classes.notchedOutline
+                        //       : null,
+                        //   },
+                        // }}
                       ></TextField>
                       {itemExist ? (
                         <Typography
-                          variant='h7regular'
+                          variant="h7regular"
                           sx={{
                             color: 'rgb(211,47,47)',
                             marginTop: '10px',
@@ -777,16 +777,16 @@ function CreateMenuPage({
                   <Grid container sx={{ mb: 5 }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Typography
-                        component='div'
-                        variant='h6medium'
+                        component="div"
+                        variant="h6medium"
                         sx={{ color: '#2d2d37', textTransform: 'capitalize' }}
                       >
                         {' '}
                         {t('menu_description')}
                       </Typography>
                       <Typography
-                        component='div'
-                        variant='h7regular'
+                        component="div"
+                        variant="h7regular"
                         sx={{ color: '#89909a' }}
                       >
                         {t('menu_subdes')}
@@ -809,7 +809,7 @@ function CreateMenuPage({
                   <Grid container sx={{ mb: 5 }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Typography
-                        variant='h6medium'
+                        variant="h6medium"
                         sx={{ color: '#2d2d37', textTransform: 'capitalize' }}
                       >
                         {t('menu_add_icon')}
@@ -846,7 +846,7 @@ function CreateMenuPage({
                     <Grid container sx={{ mb: 5 }}>
                       <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                         <Typography
-                          variant='h6medium'
+                          variant="h6medium"
                           sx={{
                             color: '#2d2d37',
                             textTransform: 'capitalize',
@@ -870,7 +870,7 @@ function CreateMenuPage({
                   <Grid container sx={{ mb: 5 }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Typography
-                        variant='h6medium'
+                        variant="h6medium"
                         sx={{
                           color: '#2d2d37',
                           textTransform: 'capitalize',
@@ -881,7 +881,7 @@ function CreateMenuPage({
                     </Grid>
                     <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
                       <RadioGroup
-                        name='page-radio-buttons-group'
+                        name="page-radio-buttons-group"
                         value={radioSelected}
                         onChange={handleMenuChange}
                         row
@@ -893,7 +893,7 @@ function CreateMenuPage({
                             },
                             marginRight: '40px',
                           }}
-                          value='Main Menu'
+                          value="Main Menu"
                           control={<Radio />}
                           label={t('main_menu')}
                         />
@@ -904,7 +904,7 @@ function CreateMenuPage({
                             },
                             marginRight: '40px',
                           }}
-                          value='Sub Menu'
+                          value="Sub Menu"
                           control={<Radio />}
                           label={t('sub_menu')}
                         />
@@ -915,7 +915,7 @@ function CreateMenuPage({
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}></Grid>
                     <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
                       <Typography
-                        variant='h6regular'
+                        variant="h6regular"
                         sx={{
                           height: '20px',
                           color:
@@ -929,12 +929,12 @@ function CreateMenuPage({
                       <Box sx={{ minWidth: 120 }}>
                         <FormControl fullWidth>
                           <Select
-                            labelId='demo-simple-select-label'
-                            id='demo-simple-select'
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
                             disabled={
                               radioSelected == 'Main Menu' ? true : false
                             }
-                            size='small'
+                            size="small"
                             sx={{
                               maxWidth: { md: '500px', sm: '260px' },
                               height: '48px',
@@ -949,13 +949,13 @@ function CreateMenuPage({
                             value={menu}
                             onChange={handleChangeMenu}
                             IconComponent={ExpandMoreIcon}
-                          // IconComponent={() => (
-                          //   <ExpandMoreIcon
-                          //   sx={{ mr: '10px', color: '#ced3d9' }}
-                          //   />
-                          // )}
+                            // IconComponent={() => (
+                            //   <ExpandMoreIcon
+                            //   sx={{ mr: '10px', color: '#ced3d9' }}
+                            //   />
+                            // )}
                           >
-                            <MenuItem value='No Menu Item Selected' disabled>
+                            <MenuItem value="No Menu Item Selected" disabled>
                               {t('menu_drop_placeholder')}
                             </MenuItem>
                             {leftSideBarContent.map(
@@ -974,7 +974,7 @@ function CreateMenuPage({
                   <Grid container sx={{ mb: 5 }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Typography
-                        variant='h6medium'
+                        variant="h6medium"
                         sx={{ textTransform: 'capitalize' }}
                       >
                         {' '}
@@ -994,8 +994,8 @@ function CreateMenuPage({
                         >
                           <img
                             src={selectedItem.Image}
-                            width='100%'
-                            height='100%'
+                            width="100%"
+                            height="100%"
                             style={{ borderRadius: '5px', objectFit: 'cover' }}
                           />
                           <div
@@ -1030,23 +1030,23 @@ function CreateMenuPage({
                             }}
                           >
                             <Typography
-                              variant='h5medium'
-                              component='div'
+                              variant="h5medium"
+                              component="div"
                               sx={{ color: '#fff', marginBottom: '5px' }}
-                              className='singlebr'
+                              className="singlebr"
                             >
                               {selectedItem.Title}
                             </Typography>
                             <Typography
-                              variant='h7medium'
-                              component='div'
+                              variant="h7medium"
+                              component="div"
                               sx={{ color: '#ced3d9' }}
                             >
                               {selectedItem.Author}
                             </Typography>
                             <Typography
-                              variant='h7medium'
-                              component='div'
+                              variant="h7medium"
+                              component="div"
                               sx={{ color: '#ced3d9' }}
                             >
                               {' '}
@@ -1093,8 +1093,8 @@ function CreateMenuPage({
                             }}
                           >
                             <Typography
-                              variant='h5medium'
-                              component='h5'
+                              variant="h5medium"
+                              component="h5"
                               sx={{ color: '#000000' }}
                             >
                               {t('menu_content_placeholder')}
@@ -1120,13 +1120,13 @@ function CreateMenuPage({
               >
                 <Grid container sx={{ mb: 5 }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography component='div' variant='h6medium'>
+                    <Typography component="div" variant="h6medium">
                       {' '}
                       {t('insert_url')}{' '}
                     </Typography>
                     <Typography
-                      component='div'
-                      variant='h7regular'
+                      component="div"
+                      variant="h7regular"
                       sx={{ color: '#89909a' }}
                     >
                       {' '}
@@ -1136,15 +1136,15 @@ function CreateMenuPage({
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <TextField
-                        size='small'
-                        type='url'
-                        placeholder='http://www.google.com'
+                        size="small"
+                        type="url"
+                        placeholder="http://www.google.com"
                         value={linkMenuItemName}
                         onChange={handleLinkMenuItemName}
                         onBlur={checkUrl}
                         InputProps={{
                           endAdornment: (
-                            <InputAdornment position='end'>
+                            <InputAdornment position="end">
                               <CancelOutlinedIcon
                                 onClick={() => setLinkMenuItemName('')}
                                 sx={{
@@ -1165,9 +1165,9 @@ function CreateMenuPage({
                             color: '#6d6dff',
                           },
                           '.css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input':
-                          {
-                            color: '#6d6dff',
-                          },
+                            {
+                              color: '#6d6dff',
+                            },
                           mt: '5px',
                         }}
                       ></TextField>
@@ -1187,13 +1187,13 @@ function CreateMenuPage({
                 </Grid>
                 <Grid container sx={{ mb: 5 }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography variant='h6medium'>
+                    <Typography variant="h6medium">
                       {t('select_tab')}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
                     <RadioGroup
-                      name='page-radio-buttons-group'
+                      name="page-radio-buttons-group"
                       value={radioSelectedLink}
                       onChange={handleLinkTabChange}
                       row
@@ -1237,38 +1237,38 @@ function CreateMenuPage({
               >
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography variant='h6medium'>
+                    <Typography variant="h6medium">
                       {' '}
                       {t('insert_url')}{' '}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold' sx={{ color: '#6d6dff' }}>
+                    <Typography variant="h6bold" sx={{ color: '#6d6dff' }}>
                       {linkMenuItemName}
                     </Typography>
                   </Grid>
                 </Grid>
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography variant='h6medium'>
+                    <Typography variant="h6medium">
                       {' '}
                       {t('menu_item_name')}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>{menuItemName}</Typography>
+                    <Typography variant="h6bold">{menuItemName}</Typography>
                   </Grid>
                 </Grid>
                 {menuDescription && (
                   <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                      <Typography variant='h6medium'>
+                      <Typography variant="h6medium">
                         {' '}
                         {t('menu_description')}{' '}
                       </Typography>
                     </Grid>
                     <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                      <Typography variant='h6bold'>
+                      <Typography variant="h6bold">
                         {menuDescription}
                       </Typography>
                     </Grid>
@@ -1277,7 +1277,7 @@ function CreateMenuPage({
                 {selectedIcon && (
                   <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                      <Typography variant='h6medium'>
+                      <Typography variant="h6medium">
                         {t('menu_added_icon')}
                       </Typography>
                     </Grid>
@@ -1299,24 +1299,24 @@ function CreateMenuPage({
                 )}
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography variant='h6medium'>
+                    <Typography variant="h6medium">
                       {' '}
                       {t('menu_item_type')}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>{radioSelected}</Typography>
+                    <Typography variant="h6bold">{radioSelected}</Typography>
                   </Grid>
                 </Grid>
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography variant='h6medium'>
+                    <Typography variant="h6medium">
                       {' '}
                       {t('menu_item_selected')}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>
+                    <Typography variant="h6bold">
                       {menu && menu !== 'No Menu Item Selected'
                         ? menuName
                         : t('no_menu_selected')}
@@ -1325,12 +1325,12 @@ function CreateMenuPage({
                 </Grid>
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                    <Typography variant='h6medium'>
+                    <Typography variant="h6medium">
                       {t('selected_tab')}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>
+                    <Typography variant="h6bold">
                       {radioSelectedLink}
                     </Typography>
                   </Grid>
@@ -1338,7 +1338,7 @@ function CreateMenuPage({
                 {selectedItem.Title !== '' && (
                   <Grid container>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                      <Typography variant='h6medium'>
+                      <Typography variant="h6medium">
                         {' '}
                         Added content type
                       </Typography>
@@ -1354,8 +1354,8 @@ function CreateMenuPage({
                       >
                         <img
                           src={selectedItem.Image}
-                          width='100%'
-                          height='100%'
+                          width="100%"
+                          height="100%"
                           style={{ borderRadius: '5px' }}
                         />
                         <div
@@ -1379,23 +1379,23 @@ function CreateMenuPage({
                           }}
                         >
                           <Typography
-                            variant='h5medium'
-                            component='div'
+                            variant="h5medium"
+                            component="div"
                             sx={{ color: '#fff', marginBottom: '5px' }}
-                            className='singlebr'
+                            className="singlebr"
                           >
                             {selectedItem.Title}
                           </Typography>
                           <Typography
-                            variant='h7medium'
-                            component='div'
+                            variant="h7medium"
+                            component="div"
                             sx={{ color: '#ced3d9' }}
                           >
                             {selectedItem.Author}
                           </Typography>
                           <Typography
-                            variant='h7medium'
-                            component='div'
+                            variant="h7medium"
+                            component="div"
                             sx={{ color: '#ced3d9' }}
                           >
                             {selectedItem.CreatedDate
@@ -1425,52 +1425,52 @@ function CreateMenuPage({
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                       <Typography
-                        variant='h6medium'
+                        variant="h6medium"
                         sx={{ textTransform: 'capitalize' }}
                       >
                         {' '}
                         {t('menu_added_title')}
                       </Typography>
-                      <Typography variant='h7regular' sx={{ color: '#89909a' }}>
+                      <Typography variant="h7regular" sx={{ color: '#89909a' }}>
                         {' '}
                         {t('menu_added_subtitle')}
                       </Typography>
                     </Box>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>{pageName1}</Typography>
+                    <Typography variant="h6bold">{pageName1}</Typography>
                   </Grid>
                 </Grid>
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                       <Typography
-                        variant='h6medium'
+                        variant="h6medium"
                         sx={{ textTransform: 'capitalize' }}
                       >
                         {' '}
                         {t('menu_item_name')}
                       </Typography>
-                      <Typography variant='h7regular' sx={{ color: '#89909a' }}>
+                      <Typography variant="h7regular" sx={{ color: '#89909a' }}>
                         {' '}
                         {t('menu_item_subname')}
                       </Typography>
                     </Box>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>{menuItemName}</Typography>
+                    <Typography variant="h6bold">{menuItemName}</Typography>
                   </Grid>
                 </Grid>
                 {menuDescription && (
                   <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <Typography variant='h6medium'>
+                        <Typography variant="h6medium">
                           {' '}
                           {t('menu_description')}
                         </Typography>
                         <Typography
-                          variant='h7regular'
+                          variant="h7regular"
                           sx={{ color: '#89909a' }}
                         >
                           {' '}
@@ -1479,7 +1479,7 @@ function CreateMenuPage({
                       </Box>
                     </Grid>
                     <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                      <Typography variant='h6bold'>
+                      <Typography variant="h6bold">
                         {menuDescription}
                       </Typography>
                     </Grid>
@@ -1489,7 +1489,7 @@ function CreateMenuPage({
                   <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                       <Typography
-                        variant='h6medium'
+                        variant="h6medium"
                         sx={{ color: '#2d2d37', textTransform: 'capitalize' }}
                       >
                         {t('menu_added_icon')}
@@ -1514,7 +1514,7 @@ function CreateMenuPage({
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                     <Typography
-                      variant='h6medium'
+                      variant="h6medium"
                       sx={{ textTransform: 'capitalize' }}
                     >
                       {' '}
@@ -1522,20 +1522,20 @@ function CreateMenuPage({
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>{radioSelected}</Typography>
+                    <Typography variant="h6bold">{radioSelected}</Typography>
                   </Grid>
                 </Grid>
                 <Grid container sx={{ mb: 5, alignItems: 'center' }}>
                   <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
                     <Typography
-                      variant='h6medium'
+                      variant="h6medium"
                       sx={{ textTransform: 'capitalize' }}
                     >
                       {t('menu_item_selected')}
                     </Typography>
                   </Grid>
                   <Grid sx={{ px: 1 }} xs={12} md={7} lg={8}>
-                    <Typography variant='h6bold'>
+                    <Typography variant="h6bold">
                       {menu && menu !== 'No Menu Item Selected'
                         ? menuName
                         : t('no_menu_selected')}
@@ -1545,7 +1545,7 @@ function CreateMenuPage({
                 {selectedItem.Title !== '' && (
                   <Grid container>
                     <Grid sx={{ px: 1 }} xs={12} md={5} lg={4}>
-                      <Typography variant='h6medium'>
+                      <Typography variant="h6medium">
                         {' '}
                         Added content type
                       </Typography>
@@ -1561,8 +1561,8 @@ function CreateMenuPage({
                       >
                         <img
                           src={selectedItem.Image}
-                          width='100%'
-                          height='100%'
+                          width="100%"
+                          height="100%"
                           style={{ borderRadius: '5px' }}
                         />
                         <div
@@ -1586,23 +1586,23 @@ function CreateMenuPage({
                           }}
                         >
                           <Typography
-                            variant='h5medium'
-                            component='div'
+                            variant="h5medium"
+                            component="div"
                             sx={{ color: '#fff', marginBottom: '5px' }}
-                            className='singlebr'
+                            className="singlebr"
                           >
                             {selectedItem.Title}
                           </Typography>
                           <Typography
-                            variant='h7medium'
-                            component='div'
+                            variant="h7medium"
+                            component="div"
                             sx={{ color: '#ced3d9' }}
                           >
                             {selectedItem.Author}
                           </Typography>
                           <Typography
-                            variant='h7medium'
-                            component='div'
+                            variant="h7medium"
+                            component="div"
                             sx={{ color: '#ced3d9' }}
                           >
                             {selectedItem.CreatedDate
@@ -1628,7 +1628,7 @@ function CreateMenuPage({
               >
                 <Button
                   disableElevation
-                  variant='outlined'
+                  variant="outlined"
                   sx={{
                     height: '46px',
                     marginRight: '12px',
@@ -1648,7 +1648,7 @@ function CreateMenuPage({
                   onClick={() => {
                     onConfirm();
                   }}
-                  variant='contained'
+                  variant="contained"
                 >
                   {activeStep == 2 ? (
                     <DoneOutlinedIcon
@@ -1675,7 +1675,7 @@ function CreateMenuPage({
                   disableElevation
                   disabled={checkContinue() || itemExist}
                   onClick={handleNext}
-                  variant='contained'
+                  variant="contained"
                 >
                   {t('continue')}
                   <ArrowForwardIosIcon

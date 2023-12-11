@@ -6,7 +6,7 @@ import RefreshIcon from '../../assets/RefreshIcon.svg';
 import ArrowUpwardIcon from '../../assets/svg/UploadThumbnail.svg';
 import useAccess from '../../hooks/usePermissions/useAccess';
 import CommonImageRender from '../../pages/Gallery/CommonImageRender';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import {
   Category,
   ContentAction,
@@ -220,7 +220,7 @@ export const AddImageBackgroundColor = ({
                   }}
                   m={1}
                 >
-                  <img src={ArrowUpwardIcon} alt='ArrowUpwardIcon' />
+                  <img src={ArrowUpwardIcon} alt="ArrowUpwardIcon" />
                 </Box>
                 <Box
                   sx={{
@@ -230,8 +230,8 @@ export const AddImageBackgroundColor = ({
                   }}
                 >
                   <Typography
-                    variant='h5medium'
-                    component='h5'
+                    variant="h5medium"
+                    component="h5"
                     sx={{ color: '#000000' }}
                   >
                     {label}
@@ -268,7 +268,7 @@ export const AddImageBackgroundColor = ({
                 cursor: 'pointer',
               }}
             >
-              <img src={Icon} alt='Icon' />
+              <img src={Icon} alt="Icon" />
             </Box>
 
             {colorCode.map((val, index) => {
@@ -311,7 +311,7 @@ export const AddImageBackgroundColor = ({
                 },
               }}
             >
-              <img src={RefreshIcon} alt='Icon' />
+              <img src={RefreshIcon} alt="Icon" />
             </Box>
           </Box>
         </Box>

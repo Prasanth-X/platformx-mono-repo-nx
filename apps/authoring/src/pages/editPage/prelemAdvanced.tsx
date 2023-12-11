@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from './Switch';
 
 const PrelemAdvanced = () => {
@@ -10,7 +10,7 @@ const PrelemAdvanced = () => {
   return (
     <AccordionDetails>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -28,7 +28,7 @@ const PrelemAdvanced = () => {
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -47,7 +47,7 @@ const PrelemAdvanced = () => {
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',

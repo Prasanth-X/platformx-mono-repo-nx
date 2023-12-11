@@ -59,8 +59,8 @@ import {
   updateSaveWarning,
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { CATEGORY_PAGE } from '../../utils/constants';
 import { uriToJSON } from '../../utils/helper';
 import { consolidatePageModel } from '../../utils/helperFunctions';
@@ -1229,7 +1229,7 @@ export const EditPage: React.FC = () => {
         >
           <Box sx={{ width: '10%' }}>
             <Icons
-              nameIcon='back'
+              nameIcon="back"
               enable
               styleObject={{
                 color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -1237,17 +1237,17 @@ export const EditPage: React.FC = () => {
                 borderRadius: 0,
                 fontSize: '40px',
               }}
-              listIndx='back'
+              listIndx="back"
               handleClick={() => backToPageList()}
             />
           </Box>
           {pageSettingsPanelState && (
-            <Typography variant='h6' sx={{ width: '90%', textAlign: 'center' }}>
+            <Typography variant="h6" sx={{ width: '90%', textAlign: 'center' }}>
               Manage Page
             </Typography>
           )}
           {settingsPanelState && (
-            <Typography variant='h6' sx={{ width: '90%', textAlign: 'center' }}>
+            <Typography variant="h6" sx={{ width: '90%', textAlign: 'center' }}>
               Prelem Setting
             </Typography>
           )}
@@ -1262,7 +1262,7 @@ export const EditPage: React.FC = () => {
           }}
         >
           <Icons
-            nameIcon='back'
+            nameIcon="back"
             enable
             styleObject={{
               color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -1270,11 +1270,11 @@ export const EditPage: React.FC = () => {
               borderRadius: 0,
               fontSize: '40px',
             }}
-            listIndx='back'
+            listIndx="back"
             handleClick={() => backToPageList()}
           />
           <Icons
-            nameIcon='settings'
+            nameIcon="settings"
             enable
             styleObject={{
               color: pageSettingsPanelState
@@ -1283,17 +1283,17 @@ export const EditPage: React.FC = () => {
               borderRight: `1px solid ${ThemeConstants.LIGHT_BG_COLOR}`,
               borderRadius: 0,
             }}
-            listIndx='settings'
+            listIndx="settings"
             handleClick={openPageSettingsPanel}
           />
           <Icons
-            nameIcon='undo'
+            nameIcon="undo"
             enable
             styleObject={{
               color: ThemeConstants.DIVIDER_COLOR,
               borderRadius: 0,
             }}
-            listIndx='undo'
+            listIndx="undo"
             handleClick={function (
               prelemIndex: string,
               operation: string
@@ -1302,13 +1302,13 @@ export const EditPage: React.FC = () => {
             }} // handleClick={() => handleScreenLayout('undo')}
           />
           <Icons
-            nameIcon='redo'
+            nameIcon="redo"
             enable
             styleObject={{
               color: ThemeConstants.DIVIDER_COLOR,
               borderRadius: 0,
             }}
-            listIndx='redo'
+            listIndx="redo"
             handleClick={function (
               prelemIndex: string,
               operation: string
@@ -1317,14 +1317,14 @@ export const EditPage: React.FC = () => {
             }} // handleClick={() => handleScreenLayout('redo')}
           />
           <Icons
-            nameIcon='reset'
+            nameIcon="reset"
             enable
             styleObject={{
               color: ThemeConstants.DIVIDER_COLOR,
               borderRight: '1px solid #dfe1e3',
               borderRadius: 0,
             }}
-            listIndx='reset'
+            listIndx="reset"
             handleClick={function (
               prelemIndex: string,
               operation: string
@@ -1333,7 +1333,7 @@ export const EditPage: React.FC = () => {
             }}
           />
           <Icons
-            nameIcon='mobile'
+            nameIcon="mobile"
             enable
             styleObject={{
               color: Object.values(data).every((v: any) => v.IsHidden)
@@ -1345,14 +1345,14 @@ export const EditPage: React.FC = () => {
               marginLeft: 'auto',
               borderRadius: 0,
             }}
-            listIndx='mobile'
+            listIndx="mobile"
             handleClick={() => handleScreenPreview('mobile')}
           />
           <Box sx={{ marginLeft: 'auto' }}>
             <ErrorTooltip
               component={
                 <Icons
-                  nameIcon='save'
+                  nameIcon="save"
                   enable={
                     canAccessAction(CATEGORY_PAGE, '', 'Create')
                       ? isSaveButtonEnabled
@@ -1375,7 +1375,7 @@ export const EditPage: React.FC = () => {
             <ErrorTooltip
               component={
                 <Icons
-                  nameIcon='publish'
+                  nameIcon="publish"
                   enable={
                     canAccessAction(CATEGORY_PAGE, '', 'publish') ? true : false
                   }
@@ -1414,7 +1414,7 @@ export const EditPage: React.FC = () => {
       >
         <Box>
           <Icons
-            nameIcon='back'
+            nameIcon="back"
             enable
             styleObject={{
               color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -1422,11 +1422,11 @@ export const EditPage: React.FC = () => {
               borderRadius: 0,
               fontSize: '40px',
             }}
-            listIndx='back'
+            listIndx="back"
             handleClick={() => backToPageList()}
           />
           <Icons
-            nameIcon='settings'
+            nameIcon="settings"
             enable
             styleObject={{
               color: pageSettingsPanelState
@@ -1435,18 +1435,18 @@ export const EditPage: React.FC = () => {
               borderRight: `1px solid ${ThemeConstants.LIGHT_BG_COLOR}`,
               borderRadius: 0,
             }}
-            listIndx='settings'
+            listIndx="settings"
             handleClick={openPageSettingsPanel}
           />
           <Icons
-            nameIcon='undo'
+            nameIcon="undo"
             enable
             styleObject={{
               color: ThemeConstants.DIVIDER_COLOR,
               borderLeft: `1px solid ${ThemeConstants.LIGHT_BG_COLOR}`,
               borderRadius: 0,
             }}
-            listIndx='undo'
+            listIndx="undo"
             handleClick={function (
               prelemIndex: string,
               operation: string
@@ -1455,13 +1455,13 @@ export const EditPage: React.FC = () => {
             }} // handleClick={() => handleScreenLayout('undo')}
           />
           <Icons
-            nameIcon='redo'
+            nameIcon="redo"
             enable
             styleObject={{
               color: ThemeConstants.DIVIDER_COLOR,
               borderRadius: 0,
             }}
-            listIndx='redo'
+            listIndx="redo"
             handleClick={function (
               prelemIndex: string,
               operation: string
@@ -1470,14 +1470,14 @@ export const EditPage: React.FC = () => {
             }} // handleClick={() => handleScreenLayout('redo')}
           />
           <Icons
-            nameIcon='reset'
+            nameIcon="reset"
             enable
             styleObject={{
               color: ThemeConstants.DIVIDER_COLOR,
               borderRight: `1px solid ${ThemeConstants.LIGHT_BG_COLOR}`,
               borderRadius: 0,
             }}
-            listIndx='reset'
+            listIndx="reset"
             handleClick={function (
               prelemIndex: string,
               operation: string
@@ -1499,7 +1499,7 @@ export const EditPage: React.FC = () => {
             }}
           >
             <Icons
-              nameIcon='desktop'
+              nameIcon="desktop"
               enable
               styleObject={{
                 color:
@@ -1508,11 +1508,11 @@ export const EditPage: React.FC = () => {
                     : ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderRadius: 0,
               }}
-              listIndx='desktop'
+              listIndx="desktop"
               handleClick={() => handleScreenPreview('desktop')}
             />
             <Icons
-              nameIcon='tablet'
+              nameIcon="tablet"
               enable
               styleObject={{
                 color:
@@ -1521,11 +1521,11 @@ export const EditPage: React.FC = () => {
                     : ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderRadius: 0,
               }}
-              listIndx='tablet'
+              listIndx="tablet"
               handleClick={() => handleScreenPreview('tablet')}
             />
             <Icons
-              nameIcon='mobile'
+              nameIcon="mobile"
               enable
               styleObject={{
                 color:
@@ -1534,7 +1534,7 @@ export const EditPage: React.FC = () => {
                     : ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderRadius: 0,
               }}
-              listIndx='mobile'
+              listIndx="mobile"
               handleClick={() => handleScreenPreview('mobile')}
             />
           </Box>
@@ -1547,7 +1547,7 @@ export const EditPage: React.FC = () => {
             }}
           >
             <Icons
-              nameIcon='desktop'
+              nameIcon="desktop"
               enable
               styleObject={{
                 color:
@@ -1556,11 +1556,11 @@ export const EditPage: React.FC = () => {
                     : ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderRadius: 0,
               }}
-              listIndx='desktop'
+              listIndx="desktop"
               handleClick={() => handleScreenPreview('desktop')}
             />
             <Icons
-              nameIcon='tablet'
+              nameIcon="tablet"
               enable
               styleObject={{
                 color:
@@ -1569,11 +1569,11 @@ export const EditPage: React.FC = () => {
                     : ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderRadius: 0,
               }}
-              listIndx='tablet'
+              listIndx="tablet"
               handleClick={() => handleScreenPreview('tablet')}
             />
             <Icons
-              nameIcon='mobile'
+              nameIcon="mobile"
               enable
               styleObject={{
                 color:
@@ -1582,7 +1582,7 @@ export const EditPage: React.FC = () => {
                     : ThemeConstants.PRIMARY_MAIN_COLOR,
                 borderRadius: 0,
               }}
-              listIndx='mobile'
+              listIndx="mobile"
               handleClick={() => handleScreenPreview('mobile')}
             />
           </Box>
@@ -1591,7 +1591,7 @@ export const EditPage: React.FC = () => {
           <ErrorTooltip
             component={
               <Icons
-                nameIcon='save'
+                nameIcon="save"
                 enable={
                   canAccessAction(CATEGORY_PAGE, '', 'Create')
                     ? isSaveButtonEnabled
@@ -1614,7 +1614,7 @@ export const EditPage: React.FC = () => {
           <ErrorTooltip
             component={
               <Icons
-                nameIcon='publish'
+                nameIcon="publish"
                 enable={
                   canAccessAction(CATEGORY_PAGE, '', 'publish') ? true : false
                 }
@@ -1689,7 +1689,7 @@ export const EditPage: React.FC = () => {
           closeButtonHandle={saveAsDraftViewButtonHandle}
           confirmButtonHandle={saveAsDraftGoToPagesButtonHandle}
           crossButtonHandle={saveAsDraftCrossButtonHandle}
-          modalType='save'
+          modalType="save"
         />
       ) : null}
       {openPublishModal ? (
@@ -1700,7 +1700,7 @@ export const EditPage: React.FC = () => {
           confirmButtonText={t('go_to_pages')}
           confirmButtonHandle={publishGoToPagesButtonHandle}
           // crossButtonHandle={publishCrossButtonHandle}
-          modalType='publish'
+          modalType="publish"
         />
       ) : null}
       {showSaveWarning ? (
@@ -1719,14 +1719,14 @@ export const EditPage: React.FC = () => {
           }
           confirmButtonHandle={onCloseSaveWarningHandler}
           crossButtonHandle={unsavedChangesCrossButtonHandle}
-          modalType='unsavedChanges'
+          modalType="unsavedChanges"
         />
       ) : null}
       {isNotificationToast ? (
         <PlateformXSnackbar
           isDefaultOpen={isNotificationToast}
           message={t('page_save_toast')}
-          messageType='success'
+          messageType="success"
           onCloseButtonClick={onCloseSaveHandler}
         />
       ) : null}
@@ -1734,7 +1734,7 @@ export const EditPage: React.FC = () => {
         <PlateformXSnackbar
           isDefaultOpen={isDeleteSuccess}
           message={`${t('prelem')} ${t('deleted_toast')}`}
-          messageType='success'
+          messageType="success"
           onCloseButtonClick={onCloseDeleteHandler}
         />
       ) : null}
@@ -1781,8 +1781,8 @@ export const EditPage: React.FC = () => {
           </Box>
         ) : page?.prelemMetaArray.length > 0 ? (
           <Box
-            id='container_editpg'
-            data-testid='container_editpg'
+            id="container_editpg"
+            data-testid="container_editpg"
             sx={{
               backgroundColor: 'white',
               paddingTop: '20px',
@@ -1887,7 +1887,7 @@ export const EditPage: React.FC = () => {
           </Box>
         ) : (
           <Box
-            component='div'
+            component="div"
             sx={{
               width: '100%',
               display: 'flex',
@@ -1898,7 +1898,7 @@ export const EditPage: React.FC = () => {
             }}
           >
             <Box
-              component='div'
+              component="div"
               sx={{
                 width: '100%',
                 display: 'flex',
@@ -1923,9 +1923,9 @@ export const EditPage: React.FC = () => {
                         fontSize: '40px',
                       },
                     }}
-                    nameIcon='add'
+                    nameIcon="add"
                     enable
-                    listIndx='top'
+                    listIndx="top"
                     handleClick={() => routeChange()}
                   />
                 </Box>

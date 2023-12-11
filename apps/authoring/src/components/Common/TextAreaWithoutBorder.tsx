@@ -1,9 +1,9 @@
-import { TextareaAutosize } from "@mui/base";
-import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import ThemeConstants from "../../theme/variable";
-import { convertToLowerCase } from "../../utils/helperFunctions";
+import { TextareaAutosize } from '@mui/base';
+import { Box, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import { convertToLowerCase } from '../../utils/helperFunctions';
 
 interface TextBoxProps {
   name?: any;
@@ -20,7 +20,6 @@ const TextAreaWithoutBorder = ({
   maxCharLength,
   state,
   handleOnBlur,
-
 }: TextBoxProps) => {
   const { t } = useTranslation();
   const [restOfChar, setRestOfChar] = useState({
@@ -48,7 +47,7 @@ const TextAreaWithoutBorder = ({
     if (handleChange) {
       handleChange(event);
     }
-    const { target: { value = "" } = {} } = event;
+    const { target: { value = '' } = {} } = event;
     handleLength(value);
   };
 
@@ -64,30 +63,32 @@ const TextAreaWithoutBorder = ({
     }
   }, [state]);
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <TextareaAutosize
         name={name}
         value={state}
-        className='textArea noBorder'
+        className="textArea noBorder"
         placeholder={placeHolder}
         id={name}
         maxLength={maxCharLength}
         minRows={4}
-        style={{  }}
+        style={{}}
         onChange={(e) => onChange(e)}
         onBlur={(e) => handleOnBlur && handleOnBlur(e)}
       />
 
-      {maxCharLength ?
+      {maxCharLength ? (
         <Typography
           variant="h7regular"
-          sx={{ color: ThemeConstants.BLACK_COLOR_VARIANT1, marginTop: "10px" }}>
-          {reachLimit ?
+          sx={{ color: ThemeConstants.BLACK_COLOR_VARIANT1, marginTop: '10px' }}
+        >
+          {reachLimit ? (
             <>0</>
-           :
-            <>{restOfLength ? `${restOfLength}` : `${maxCharLength}`}</>}
+          ) : (
+            <>{restOfLength ? `${restOfLength}` : `${maxCharLength}`}</>
+          )}
         </Typography>
-       : null}
+      ) : null}
     </Box>
   );
 };

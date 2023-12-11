@@ -18,7 +18,9 @@ import DOMPurify from 'isomorphic-dompurify';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDomServer from 'react-dom/server';
 import { useTranslation } from 'react-i18next';
-import { AiSvg, AiSvgDisabled } from '../../../../assets/svg';
+import AiSvg from '../../../../assets/svg/ai.svg';
+import AiSvgDisabled from '../../../../assets/svg/aiDisabled.svg';
+
 import { createChatGptRequest } from '../../../../services/chatGpt/chatGpt.api';
 import { handleHtmlTags, trimString } from '../../../../utils/helperFunctions';
 import Gallery from '../../../Gallery/Gallery';
@@ -639,12 +641,18 @@ const XArticleEditor = ({ title, state, setState, setCheckDesc }) => {
               >
                 <Box onClick={() => title?.length > 0 && chatGPT(index)}>
                   {title?.length > 0 ? (
-                    <AiSvg className="DivEnable" height="30px" width="30" />
-                  ) : (
-                    <AiSvgDisabled
-                      className="DivDisable"
+                    <img
+                      className="DivEnable"
                       height="30px"
                       width="30"
+                      src={AiSvg}
+                    />
+                  ) : (
+                    <img
+                      className="DivEnable"
+                      height="30px"
+                      width="30"
+                      src={AiSvgDisabled}
                     />
                   )}
                 </Box>

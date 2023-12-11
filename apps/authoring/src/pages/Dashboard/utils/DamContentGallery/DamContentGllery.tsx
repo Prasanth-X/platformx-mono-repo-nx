@@ -3,17 +3,22 @@ import './DamGallery.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { useLazyQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { nullToArray, nullToObject, nullToString, } from '../../../../utils/helperFunctions';
-import { fetchAllEcomProductContentList, fetchAllFilterProductList, } from '../../../../services/contentGallery/contentGallery.api';
+import {
+  nullToArray,
+  nullToObject,
+  nullToString,
+} from '../../../../utils/helperFunctions';
+import {
+  fetchAllEcomProductContentList,
+  fetchAllFilterProductList,
+} from '../../../../services/contentGallery/contentGallery.api';
 import DamContentLeftSidebar from './DamContentLeftSidebar';
 
 import DamContentTopHeading from './DamContentTopHeading';
 import DamDropdown from './DamDropdown';
 import DamContentCard from './DamContentCard';
-;
-
 type DamContentGallery = {
   damcontentDoneClick?: any;
   damcontentCancelClick?: any;
@@ -22,8 +27,8 @@ type DamContentGallery = {
 
 const DamContentGallery = (_props: DamContentGallery) => {
   const {
-    damcontentDoneClick = () => { },
-    damcontentCancelClick = () => { },
+    damcontentDoneClick = () => {},
+    damcontentCancelClick = () => {},
     fromPageContentType = '',
   } = _props;
 
@@ -37,16 +42,16 @@ const DamContentGallery = (_props: DamContentGallery) => {
   const [fetchFilterContentList] = useLazyQuery(fetchAllFilterProductList);
 
   const startData = 12;
-  const [tagArray, setTagArray] = useState<any>([])
+  const [tagArray, setTagArray] = useState<any>([]);
   const [items, setItems] = useState<any>([]);
-  const [inputValue, setInputValue] = useState<any>("");
+  const [inputValue, setInputValue] = useState<any>('');
   const [contentLoading, setContentLoading] = useState(true);
   const [categoryLoading, setCategoryLoading] = useState(true);
   const [categoriesFilter, setCategoriesFilter] = useState<any>([...filter]);
   const [stateManage, setStateManage] = useState({
     start: 0,
     rows: 12,
-    searchTerm: "",
+    searchTerm: '',
     nodeIdData: [...filter],
   });
 
@@ -113,7 +118,12 @@ const DamContentGallery = (_props: DamContentGallery) => {
    * get all contentType list
    */
   const getContent = async () => {
-    const { start = 0, rows = 0, nodeIdData = [], searchTerm = "" } = stateManage;
+    const {
+      start = 0,
+      rows = 0,
+      nodeIdData = [],
+      searchTerm = '',
+    } = stateManage;
     await fetchMultiSlotContentList({
       variables: {
         tags: [],
@@ -219,14 +229,11 @@ const DamContentGallery = (_props: DamContentGallery) => {
     setStateManage(newObj);
   };
 
- 
-  
-
   /**
    * final obj making
    */
   const makeFinalObj = () => {
-    const { nodeIdData = [], searchTerm = "" } = stateManage;
+    const { nodeIdData = [], searchTerm = '' } = stateManage;
     const newObj = {
       tags: [],
       filter: 'DamContent',
@@ -251,7 +258,7 @@ const DamContentGallery = (_props: DamContentGallery) => {
     setStateManage(newObj);
   };
 
-  const setInputValueHandle = (searchData = "") => {
+  const setInputValueHandle = (searchData = '') => {
     setInputValue(searchData);
   };
 
@@ -263,15 +270,15 @@ const DamContentGallery = (_props: DamContentGallery) => {
     getAllFilterList(); //getFilter api call
   }, []);
 
-  const removetag=(index)=>{
-    setTagArray([...tagArray.filter((val,i)=> i !== index)])
-  }
+  const removetag = (index) => {
+    setTagArray([...tagArray.filter((val, i) => i !== index)]);
+  };
   return (
     <Box
       sx={{
         backgroundColor: ThemeConstants.WHITE_COLOR,
       }}
-      className='damcontent_container'
+      className="damcontent_container"
     >
       {/* Done and cancel handle here */}
       <DamContentTopHeading
@@ -288,7 +295,7 @@ const DamContentGallery = (_props: DamContentGallery) => {
       <Grid container spacing={0}>
         <Grid
           container
-          className='leftsidebar-scroll'
+          className="leftsidebar-scroll"
           item
           xs={12}
           em={3}
@@ -300,11 +307,11 @@ const DamContentGallery = (_props: DamContentGallery) => {
           }}
         >
           <DamContentLeftSidebar
-            toggleDrawer={() => { }}
+            toggleDrawer={() => {}}
             onNodeIdHandle={onNodeIdHandle}
             categoriesFilter={categoriesFilter}
             loading={categoryLoading}
-          // onClearAll={onClearAll}
+            // onClearAll={onClearAll}
           />
         </Grid>
 
@@ -317,38 +324,44 @@ const DamContentGallery = (_props: DamContentGallery) => {
           sx={{
             padding: { xs: '8px', em: '8px 16px 10px 16px' },
           }}
-          className='right-topbar-container'
+          className="right-topbar-container"
         >
-          <Box className='right-topbar' sx={{
-            display: 'flex',
-            marginRight: '5px'
-            
-          }}>
-            <DamDropdown
-            setTagArray= { setTagArray}
-            />
-           
+          <Box
+            className="right-topbar"
+            sx={{
+              display: 'flex',
+              marginRight: '5px',
+            }}
+          >
+            <DamDropdown setTagArray={setTagArray} />
           </Box>
-          <Box sx={{
-            marginLeft: '6px',
-          }}>
-            {tagArray.length>0 &&tagArray.map((val, index)=>{
-              if(val!= ""){
-                return(
-                <Button sx={{
-                  marginRight: '10px',
-                  marginBottom: '9px'
-                }} className='tagbtn'
-                key={val}
-                disabled={false}
-                variant='contained'
-                onClick={()=>removetag(index)}
-                endIcon={<CloseIcon />}
-              >
-              {val}
-              </Button>)}
-            })}
-      </Box>
+          <Box
+            sx={{
+              marginLeft: '6px',
+            }}
+          >
+            {tagArray.length > 0 &&
+              tagArray.map((val, index) => {
+                if (val != '') {
+                  return (
+                    <Button
+                      sx={{
+                        marginRight: '10px',
+                        marginBottom: '9px',
+                      }}
+                      className="tagbtn"
+                      key={val}
+                      disabled={false}
+                      variant="contained"
+                      onClick={() => removetag(index)}
+                      endIcon={<CloseIcon />}
+                    >
+                      {val}
+                    </Button>
+                  );
+                }
+              })}
+          </Box>
 
           <DamContentCard
             cardObj={items}

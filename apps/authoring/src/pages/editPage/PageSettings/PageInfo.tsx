@@ -17,7 +17,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageModel, updatePageSettings } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../utils/authConstants';
 import { setDefaultPageSettings } from '../../../utils/helperFunctions';
 import BasicSwitch from '../Switch';
@@ -36,7 +36,7 @@ const PageInfo = () => {
     PageCaching,
     PageMobileFriendly,
   } = page.pageSettings;
-  const initialPageInfo = useRef<PageInformation>()
+  const initialPageInfo = useRef<PageInformation>();
   const [pageInfo, setPageInfo] = useState<PageInformation>({
     PageName: '',
     PageDescription: '',
@@ -52,7 +52,6 @@ const PageInfo = () => {
   const pageDescriptionLength = descriptionLength;
   useEffect(() => {
     if (page?.pageSettings) {
-
       initialPageInfo.current = {
         PageName: PageName !== undefined ? PageName : '',
         PageDescription: PageDescription !== undefined ? PageDescription : '',
@@ -65,7 +64,7 @@ const PageInfo = () => {
         PageCaching: PageCaching !== undefined ? PageCaching : false,
         PageMobileFriendly:
           PageMobileFriendly !== undefined ? PageMobileFriendly : false,
-      }
+      };
       setPageInfo(initialPageInfo.current);
     }
   }, [page?.pageSettings, page?.pageModel.Page]);
@@ -133,7 +132,7 @@ const PageInfo = () => {
       }}
     >
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignimageInstances: 'center',
@@ -141,9 +140,9 @@ const PageInfo = () => {
         }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
-        <span className='sentence_case'>{t('page_info_title')}</span>
+        <span className="sentence_case">{t('page_info_title')}</span>
         <Tooltip
           title={
             <Box m={1}>
@@ -152,7 +151,7 @@ const PageInfo = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -170,13 +169,13 @@ const PageInfo = () => {
         multiline
         value={pageInfo.PageName}
         onChange={(e) => handleDataChange(e, 'PageName')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_info_title_placeholder')}
         inputProps={{ maxLength: pageNameLength }}
       />
       {getDisabledState() && (
         <Typography
-          variant='subtitle2'
+          variant="subtitle2"
           pl={1}
           pt={1}
           sx={{
@@ -187,11 +186,11 @@ const PageInfo = () => {
         </Typography>
       )}
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_info_about')}
         <Tooltip
@@ -202,7 +201,7 @@ const PageInfo = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -220,13 +219,13 @@ const PageInfo = () => {
         multiline
         value={pageInfo.PageDescription}
         onChange={(e) => handleDataChange(e, 'PageDescription')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_info_about_placeholder')}
         inputProps={{ maxLength: pageDescriptionLength }}
       />
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignimageInstances: 'center',
@@ -234,7 +233,7 @@ const PageInfo = () => {
         }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_info_tags')}
         <Tooltip
@@ -245,7 +244,7 @@ const PageInfo = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -261,7 +260,7 @@ const PageInfo = () => {
       </Typography>
       <Autocomplete
         multiple
-        id='tags-filled'
+        id="tags-filled"
         value={[...getValue()]}
         options={[]}
         onChange={(event: object, value) => {
@@ -280,7 +279,7 @@ const PageInfo = () => {
               option && (
                 <Box key={index} mt={1}>
                   <Chip
-                    variant='outlined'
+                    variant="outlined"
                     label={option}
                     deleteIcon={
                       <DeleteIcon
@@ -301,7 +300,7 @@ const PageInfo = () => {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant='outlined'
+            variant="outlined"
             placeholder={t('page_info_tags_placeholder')}
           />
         )}
@@ -321,22 +320,22 @@ const PageInfo = () => {
         }}
       />
       <Divider sx={{ marginTop: '20px' }} />
-      <Typography variant='subtitle1' mt={2} mb={1}>
+      <Typography variant="subtitle1" mt={2} mb={1}>
         {t('page_info_url')}
       </Typography>
       <TextField
         multiline
         value={pageInfo.PageURL}
         onChange={(e) => handleDataChange(e, 'PageURL')}
-        variant='outlined'
-        placeholder='Write a page URL here'
+        variant="outlined"
+        placeholder="Write a page URL here"
         sx={{
           '.Platform-x-OutlinedInput-root': { color: '#1a0db1' },
         }}
         inputProps={{ readOnly: true }}
       />
       <Divider sx={{ marginTop: '20px' }} />
-      <Typography variant='subtitle1' mt={2} mb={1}>
+      <Typography variant="subtitle1" mt={2} mb={1}>
         {t('page_info_view')}
       </Typography>
       <Box sx={{ minWidth: 120 }}>
@@ -345,13 +344,13 @@ const PageInfo = () => {
             onChange={(e) => handlePageViewerChangeDropDown(e)}
             value={pageInfo.PageViewer}
           >
-            <option value='free'>{t('page_info_free')}</option>
-            <option value='behindlogin'>{t('page_info_behindlogin')}</option>
+            <option value="free">{t('page_info_free')}</option>
+            <option value="behindlogin">{t('page_info_behindlogin')}</option>
           </NativeSelect>
         </FormControl>
       </Box>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -369,7 +368,7 @@ const PageInfo = () => {
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -388,7 +387,7 @@ const PageInfo = () => {
       </Typography>
       <Box sx={{ textAlign: 'right' }} mb={2}>
         <Button
-          variant='contained'
+          variant="contained"
           onClick={savePageInfo}
           disabled={getDisabledState() || initialPageInfo.current === pageInfo}
           sx={{ textTransform: 'capitalize' }}

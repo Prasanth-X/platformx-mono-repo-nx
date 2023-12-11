@@ -19,7 +19,7 @@ import {
   updatePageSettings,
 } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import siteLevelSchema from '../../../utils/siteLevelSettings.json';
 import BasicSwitch from '../Switch';
 import {
@@ -41,35 +41,37 @@ const SEOBasics = () => {
       SeoTitle != undefined
         ? SeoTitle
         : pageInfo.PageName == undefined
-          ? ''
-          : `${pageInfo.PageName} | ${siteLevelSchema.siteName}`,
+        ? ''
+        : `${pageInfo.PageName} | ${siteLevelSchema.siteName}`,
     SeoDescription:
       SeoDescription != undefined
         ? SeoDescription
         : pageInfo.PageDescription == undefined
-          ? ''
-          : pageInfo.PageDescription,
+        ? ''
+        : pageInfo.PageDescription,
     SeoKeywords:
       SeoKeywords != undefined
         ? [...page.pageSettings.SeoKeywords]
         : pageInfo.PageTags == undefined
-          ? []
-          : [...pageInfo.PageTags],
+        ? []
+        : [...pageInfo.PageTags],
     SeoURL:
       SeoURL != undefined
         ? SeoURL
         : pageInfo.PageURL == undefined
-          ? ''
-          : pageInfo.PageURL,
+        ? ''
+        : pageInfo.PageURL,
     SeoBlockIndexing: SeoEnable != undefined ? SeoEnable : true,
-  }
-  const initialSeoInfo = useRef<PageSeoInformation>(data)
-  const [seoInfo, setSeoInfo] = useState<PageSeoInformation>(initialSeoInfo.current);
+  };
+  const initialSeoInfo = useRef<PageSeoInformation>(data);
+  const [seoInfo, setSeoInfo] = useState<PageSeoInformation>(
+    initialSeoInfo.current
+  );
 
   useEffect(() => {
-    initialSeoInfo.current = data
-    setSeoInfo(initialSeoInfo.current)
-  }, [page?.pageSettings])
+    initialSeoInfo.current = data;
+    setSeoInfo(initialSeoInfo.current);
+  }, [page?.pageSettings]);
 
   const [tags, setTags] = useState<string[]>(seoInfo.SeoKeywords);
   const [keyword, setKeyword] = useState<string>('');
@@ -127,14 +129,14 @@ const SEOBasics = () => {
   return (
     <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
       <Typography
-        variant='body1'
+        variant="body1"
         sx={{
           display: 'flex',
           alignimageInstances: 'center',
           textTransform: 'capitalize',
         }}
         mt={2}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_search_preview')}
         <Tooltip
@@ -145,7 +147,7 @@ const SEOBasics = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -159,14 +161,14 @@ const SEOBasics = () => {
           </Box>
         </Tooltip>
       </Typography>
-      <Typography variant='body2' mt={2}>
+      <Typography variant="body2" mt={2}>
         {seoInfo.SeoURL}
       </Typography>
-      <Typography variant='h6' color='#1a0db1'>
+      <Typography variant="h6" color="#1a0db1">
         {seoInfo.SeoTitle.substring(0, seoPreviewNameLength)}
         {seoInfo.SeoTitle.length > seoPreviewNameLength && <span>...</span>}
       </Typography>
-      <Typography variant='subtitle2'>
+      <Typography variant="subtitle2">
         {seoInfo.SeoDescription.substring(0, seoPreviewDescriptionLength)}
         {seoInfo.SeoDescription.length > seoPreviewDescriptionLength && (
           <span>...</span>
@@ -174,11 +176,11 @@ const SEOBasics = () => {
       </Typography>
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_search_title')}
         <Tooltip
@@ -189,7 +191,7 @@ const SEOBasics = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -207,16 +209,16 @@ const SEOBasics = () => {
         multiline
         value={seoInfo.SeoTitle}
         onChange={(e) => handleDataChange(e, 'SeoTitle')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_title_placeholder')}
         inputProps={{ maxLength: seoNameLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_search_description')}
         <Tooltip
@@ -227,7 +229,7 @@ const SEOBasics = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -245,16 +247,16 @@ const SEOBasics = () => {
         multiline
         value={seoInfo.SeoDescription}
         onChange={(e) => handleDataChange(e, 'SeoDescription')}
-        variant='outlined'
+        variant="outlined"
         placeholder={t('page_search_description_placeholder')}
         inputProps={{ maxLength: seoDescriptionLength }}
       />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         {t('page_search_keywords')}
         <Tooltip
@@ -265,7 +267,7 @@ const SEOBasics = () => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -281,7 +283,7 @@ const SEOBasics = () => {
       </Typography>
       <Autocomplete
         multiple
-        id='tags-filled'
+        id="tags-filled"
         value={[...getValue()]}
         options={[]}
         onChange={(event: object, value) => {
@@ -301,7 +303,7 @@ const SEOBasics = () => {
               option && (
                 <Box key={index} mt={1}>
                   <Chip
-                    variant='outlined'
+                    variant="outlined"
                     label={option}
                     deleteIcon={<DeleteIcon sx={{ color: '#2d2d39' }} />}
                     sx={{
@@ -318,7 +320,7 @@ const SEOBasics = () => {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant='outlined'
+            variant="outlined"
             placeholder={t('page_info_tags_placeholder')}
           />
         )}
@@ -345,7 +347,7 @@ const SEOBasics = () => {
         mt={2}
         mb={1}
       >
-        <Typography variant='subtitle1' sx={{ width: '90%' }}>
+        <Typography variant="subtitle1" sx={{ width: '90%' }}>
           {t('page_search_seokey')}
         </Typography>
         <BasicSwitch
@@ -356,7 +358,7 @@ const SEOBasics = () => {
       </Box>
       <Box sx={{ textAlign: 'right' }} mb={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={initialSeoInfo.current === seoInfo}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

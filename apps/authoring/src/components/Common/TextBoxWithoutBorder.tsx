@@ -1,8 +1,8 @@
-import { Box, TextField, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { convertToLowerCase } from "../../utils/helperFunctions";
-import ThemeConstants from "../../theme/variable";
+import { Box, TextField, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { convertToLowerCase } from '../../utils/helperFunctions';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 interface TextBoxProps {
   name?: any;
@@ -27,7 +27,7 @@ const TextBoxWithoutBorder = ({
     reachLimit: false,
   });
   const { restOfLength = 0, reachLimit = false } = restOfChar;
-  const handleLength = (valueData = "") => {
+  const handleLength = (valueData = '') => {
     if (maxCharLength) {
       const lengthOfChar = convertToLowerCase(valueData).length;
       const rest = valueData ? maxCharLength - lengthOfChar : 0;
@@ -45,7 +45,7 @@ const TextBoxWithoutBorder = ({
     if (handleChange) {
       handleChange(event);
     }
-    const { target: { value = "" } = {} } = event;
+    const { target: { value = '' } = {} } = event;
     handleLength(value);
   };
 
@@ -63,20 +63,20 @@ const TextBoxWithoutBorder = ({
     }
   }, [state]);
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <TextField
-        variant='outlined'
-        size='small'
+        variant="outlined"
+        size="small"
         name={name}
         value={state}
-        className='inputBase noBorder'
+        className="inputBase noBorder"
         placeholder={placeHolder}
         id={name}
         sx={{
-          border: "none ",
-          "& fieldset ": { border: "none " },
-          padding: "0px !important",
-          height: "auto !important",
+          border: 'none ',
+          '& fieldset ': { border: 'none ' },
+          padding: '0px !important',
+          height: 'auto !important',
         }}
         inputProps={{
           maxLength: maxCharLength,
@@ -86,17 +86,21 @@ const TextBoxWithoutBorder = ({
         onBlur={(e) => handleOnBlur && handleOnBlur(e)}
       />
 
-      {maxCharLength ?
+      {maxCharLength ? (
         <Typography
           variant="h7regular"
-          sx={{ color: ThemeConstants.BLACK_COLOR_VARIANT1, marginTop: "15px !important" }}
+          sx={{
+            color: ThemeConstants.BLACK_COLOR_VARIANT1,
+            marginTop: '15px !important',
+          }}
         >
-          {reachLimit ?
+          {reachLimit ? (
             <>0</>
-           :
-            <>{restOfLength ? `${restOfLength}` : `${maxCharLength}`}</>}
+          ) : (
+            <>{restOfLength ? `${restOfLength}` : `${maxCharLength}`}</>
+          )}
         </Typography>
-       : null}
+      ) : null}
     </Box>
   );
 };

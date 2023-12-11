@@ -6,7 +6,7 @@ import Slide from '@mui/material/Slide';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../../editPage/Switch';
 
 const Transition = React.forwardRef(function Transition(
@@ -15,11 +15,11 @@ const Transition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const styles = `
@@ -67,7 +67,7 @@ const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby='alert-dialog-slide-description'
+        aria-describedby="alert-dialog-slide-description"
       >
         <Box
           // className={!canDelete && 'disable'}
@@ -77,7 +77,7 @@ const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
           }}
         >
           <Box sx={{ margin: '12px' }}>
-            <Typography variant='h4medium' color='BLACK_COLOR_VARIANT1'>
+            <Typography variant="h4medium" color="BLACK_COLOR_VARIANT1">
               {name}
             </Typography>
           </Box>
@@ -85,7 +85,7 @@ const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
             sx={{ display: 'flex', alignItems: 'stretch', margin: '12px' }}
             onClick={(e) => handleViewWorkflow(e, id)}
           >
-            <Box className='edit-Box'>
+            <Box className="edit-Box">
               <RemoveRedEyeOutlinedIcon />
             </Box>
             <Box sx={{ fontSize: '16px', textTransform: 'capitalize' }}>
@@ -93,7 +93,7 @@ const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
             </Box>
           </Box>
           <Box
-            className='boxbasicswitch'
+            className="boxbasicswitch"
             sx={{ display: 'flex', alignItems: 'center', margin: '12px' }}
             onClick={() => onChange(checked)}
           >

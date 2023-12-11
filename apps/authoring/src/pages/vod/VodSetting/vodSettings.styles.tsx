@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import Accordion from '@mui/material/Accordion';
 import { styled } from '@mui/system';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const Accordions = styled(Accordion)(() => ({
   boxShadow: 'none',

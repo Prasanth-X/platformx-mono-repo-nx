@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   pageSettingWp: {
@@ -8,7 +8,7 @@ export const useStyles = makeStyles(() => ({
   listItem: {
     display: 'flex',
     alignItems: 'center',
-    color:ThemeConstants.BLACK_COLOR_V1,
+    color: ThemeConstants.BLACK_COLOR_V1,
     justifyContent: 'space-between',
     margin: '15px 0',
     cursor: 'pointer',

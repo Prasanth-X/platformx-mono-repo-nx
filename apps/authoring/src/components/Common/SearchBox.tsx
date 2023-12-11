@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 
 import { useLazyQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { debounce } from '../../utils/helperFunctions';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import SearchBlackSvg from '../../assets/svg/SearchBlack.svg';
@@ -124,7 +124,7 @@ export default function SearchBox({ contentType, onSearch, style }) {
         />
       </Box>
       <Autocomplete
-        id='asynchronousSearch'
+        id="asynchronousSearch"
         freeSolo
         forcePopupIcon={false}
         sx={{ display: { xs: showSearch ? 'block' : 'none', md: 'block' } }}
@@ -182,7 +182,7 @@ export default function SearchBox({ contentType, onSearch, style }) {
                 //     {loading ? <CircularProgress color="inherit" size={15} /> : null}
                 //     {params.InputProps.endAdornment}
                 // </React.Fragment>
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   {inputValue && (
                     <Box
                       sx={{

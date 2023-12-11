@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { MenuItemLinkProp } from './types';
 
 const style = {
@@ -51,8 +51,8 @@ export const ExternalLinkModal = ({
       <Modal
         open={openPageModal}
         onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
         <Box
           sx={{
@@ -63,7 +63,7 @@ export const ExternalLinkModal = ({
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <Typography
-              variant='h5'
+              variant="h5"
               mt={2}
               sx={{
                 textAlign: 'center',
@@ -85,8 +85,8 @@ export const ExternalLinkModal = ({
               value={menuItemName}
               error={menuItemName?.length === 0}
               onChange={(e: any) => setMenuItemName(e.target.value)}
-              variant='standard'
-              placeholder='Menu Item Name'
+              variant="standard"
+              placeholder="Menu Item Name"
               inputProps={{ maxLength: 15 }}
               sx={{
                 p: 1,
@@ -94,7 +94,7 @@ export const ExternalLinkModal = ({
                 height: '1rem',
                 margin: '25px',
                 '.Platform-x-Input-root:after': {
-                  borderBottom: `1px solid ${  ThemeConstants.BLACK_COLOR}`,
+                  borderBottom: `1px solid ${ThemeConstants.BLACK_COLOR}`,
                 },
               }}
             />
@@ -102,8 +102,8 @@ export const ExternalLinkModal = ({
               value={menuExternalLink}
               error={menuExternalLink?.length === 0}
               onChange={(e: any) => setMenuExternalLink(e.target.value)}
-              variant='standard'
-              placeholder='https://www.google.com'
+              variant="standard"
+              placeholder="https://www.google.com"
               inputProps={{ maxLength: 25 }}
               sx={{
                 p: 1,
@@ -111,7 +111,7 @@ export const ExternalLinkModal = ({
                 height: '1rem',
                 margin: '25px',
                 '.Platform-x-Input-root:after': {
-                  borderBottom: `1px solid ${  ThemeConstants.BLACK_COLOR}`,
+                  borderBottom: `1px solid ${ThemeConstants.BLACK_COLOR}`,
                 },
               }}
             />
@@ -121,31 +121,31 @@ export const ExternalLinkModal = ({
               }}
             >
               <FormControl>
-                <FormLabel id='demo-row-radio-buttons-group-label'>
+                <FormLabel id="demo-row-radio-buttons-group-label">
                   Open as
                 </FormLabel>
                 <RadioGroup
                   row
-                  aria-labelledby='demo-row-radio-buttons-group-label'
-                  name='row-radio-buttons-group'
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
                   value={linkTarget}
                   onChange={(e) => setLinkTarget(e.target.value)}
                 >
                   <FormControlLabel
-                    value='existingTab'
+                    value="existingTab"
                     control={<Radio />}
-                    label='Existing Tab'
+                    label="Existing Tab"
                   />
                   <FormControlLabel
-                    value='newTab'
+                    value="newTab"
                     control={<Radio />}
-                    label='New Tab'
+                    label="New Tab"
                   />
                 </RadioGroup>
               </FormControl>
             </Box>
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 marginRight: '10px',
                 alignSelf: 'flex-end',

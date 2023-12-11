@@ -1,7 +1,7 @@
 import { Grid, Link, makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { styled } from '@mui/system';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useSiteListingStyle = makeStyles((theme) => ({
   container: {
@@ -119,11 +119,11 @@ export const useSiteListingStyle = makeStyles((theme) => ({
     borderRadius: '5px',
     objectFit: 'cover',
     cursor: 'pointer',
-    width:"100%",
-    height:"100%",
+    width: "100%",
+    height: "100%",
     [theme.breakpoints.up('xs')]: {
-      width:"100%",
-      height:"85%",
+      width: "100%",
+      height: "85%",
     },
   },
 
@@ -142,7 +142,7 @@ export const useSiteListingStyle = makeStyles((theme) => ({
     [theme.breakpoints.up('xs')]: {
       display: 'none',
       wordwrap: 'break-word',
-      
+
     },
     [theme.breakpoints.up('sm')]: {
       //display: 'inline',
@@ -201,7 +201,7 @@ export const useSiteListingStyle = makeStyles((theme) => ({
       marginTop: '8px',
     },
   },
-  sitenameTypo:{
+  sitenameTypo: {
     alignItems: 'center',
     display: 'flex',
     [theme.breakpoints.down('md')]: {
@@ -209,7 +209,7 @@ export const useSiteListingStyle = makeStyles((theme) => ({
       display: 'inline'
     },
   },
-  siteLinkType:{
+  siteLinkType: {
     wordBreak: 'break-all'
   },
 
@@ -239,7 +239,7 @@ export const useSiteListingStyle = makeStyles((theme) => ({
     width: '99%',
   },
   cancelBtn: {
-    padding:'12px 24px',
+    padding: '12px 24px',
     cursor: 'pointer',
     border: '1px solid',
     borderRadius: '5px',
@@ -247,7 +247,7 @@ export const useSiteListingStyle = makeStyles((theme) => ({
     marginRight: '20px'
   },
   doneBtn: {
-    padding:'12px 24px',
+    padding: '12px 24px',
     cursor: 'pointer',
     border: '1px solid',
     borderRadius: '5px',
@@ -258,7 +258,7 @@ export const useSiteListingStyle = makeStyles((theme) => ({
     width: '98.52%',
     marginBottom: '25px'
   },
-  opacity:{
+  opacity: {
     opacity: 0.5
   }
 }));

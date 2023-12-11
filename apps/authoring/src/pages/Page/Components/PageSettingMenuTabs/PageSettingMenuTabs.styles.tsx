@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   PageSettingMenuTabs: {
@@ -9,7 +9,7 @@ export const useStyles = makeStyles(() => ({
     [`@media(max-width:${ThemeConstants.SM}px)`]: {
       flexDirection: 'column-reverse',
       height: 'calc(100vh - 60px)',
-    justifyContent: 'flex-end',
+      justifyContent: 'flex-end',
     },
   },
   TabButtons: {
@@ -34,7 +34,7 @@ export const useStyles = makeStyles(() => ({
         alignItems: 'center',
         flexDirection: 'column',
       },
-      '&:last-child':{
+      '&:last-child': {
         justifyContent: 'center',
       },
       '& img': {
@@ -42,7 +42,7 @@ export const useStyles = makeStyles(() => ({
         [`@media(max-width:${ThemeConstants.SM}px)`]: {
           marginRight: 0,
           marginBottom: '7px',
-        }
+        },
       },
       '&.Mui-selected': {
         fontWeight: 600,
@@ -52,7 +52,7 @@ export const useStyles = makeStyles(() => ({
   },
   tabPanelSettingPage: {
     padding: 0,
-    height: 'calc(100vh - 160px) !important'
+    height: 'calc(100vh - 160px) !important',
   },
   tabButtonsBottom: {
     [`@media(max-width:${ThemeConstants.SM}px)`]: {
@@ -64,5 +64,5 @@ export const useStyles = makeStyles(() => ({
       padding: '10px 15px',
       borderTop: '1px solid rgba(0, 0, 0, 0.12)',
     },
-  }
+  },
 }));

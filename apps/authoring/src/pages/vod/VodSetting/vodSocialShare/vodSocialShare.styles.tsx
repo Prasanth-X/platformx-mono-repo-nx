@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import Accordion from '@mui/material/Accordion';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const AutoText = styled(TextField)(() => ({
   '.Platform-x-OutlinedInput-root ': {

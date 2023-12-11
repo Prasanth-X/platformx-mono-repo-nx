@@ -8,7 +8,7 @@ import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 import VerticalTabsArticle from '../../VerticalTabsArticle/VerticalTabsArticle';
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -60,7 +60,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
     >
       <Button
         onClick={onClose}
-        variant='outlined'
+        variant="outlined"
         sx={{
           position: 'absolute',
           left: 15,
@@ -72,7 +72,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
 
       <Button
         onClick={onClose}
-        variant='contained'
+        variant="contained"
         sx={{
           position: 'absolute',
           right: 15,
@@ -100,11 +100,11 @@ export default function PublishSocialShare({
     <Box sx={{ width: '100%' }}>
       <BootstrapDialog
         onClose={handleClose}
-        aria-labelledby='customized-dialog-title'
+        aria-labelledby="customized-dialog-title"
         open={open}
       >
         <BootstrapDialogTitle
-          id='customized-dialog-title'
+          id="customized-dialog-title"
           onClose={handleClose}
         >
           Settings

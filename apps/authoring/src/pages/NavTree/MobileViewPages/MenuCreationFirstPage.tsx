@@ -20,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import iconMapping from '../../../assets/iconMapping';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { dateFormat } from '../../../utils/helperFunctions';
 import ContentGallery from '../../ContentGallery/ContentGallery';
 import BasicSwitch from '../../editPage/Switch';
@@ -368,7 +368,7 @@ function MenuCreationFirstPage({
           />
 
           <Typography
-            variant='h4medium'
+            variant="h4medium"
             sx={{
               width: '393px',
               height: '35px',
@@ -439,7 +439,7 @@ function MenuCreationFirstPage({
               }}
             >
               <ToggleButton
-                value='Page'
+                value="Page"
                 sx={{
                   '&.Mui-selected, &.Mui-selected:hover': {
                     color: '#fff',
@@ -463,7 +463,7 @@ function MenuCreationFirstPage({
                 {t('page')}
               </ToggleButton>
               <ToggleButton
-                value='Link'
+                value="Link"
                 sx={{
                   '&.Mui-selected, &.Mui-selected:hover': {
                     color: '#fff',
@@ -498,7 +498,7 @@ function MenuCreationFirstPage({
               }}
             >
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {t('menu_item_name')}
                 </Typography>
                 <Typography
@@ -519,8 +519,8 @@ function MenuCreationFirstPage({
                 }}
               >
                 <TextField
-                  size='small'
-                  variant='outlined'
+                  size="small"
+                  variant="outlined"
                   placeholder={t('menu_name_placeholder')}
                   value={menuItemName}
                   onChange={handleMenuItemName}
@@ -536,7 +536,7 @@ function MenuCreationFirstPage({
                 ></TextField>
                 {itemExist ? (
                   <Typography
-                    variant='h7regular'
+                    variant="h7regular"
                     sx={{
                       color: 'rgb(211,47,47)',
                       marginTop: '10px',
@@ -558,7 +558,7 @@ function MenuCreationFirstPage({
               }}
             >
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {' '}
                   {t('menu_description')}
                 </Typography>
@@ -592,7 +592,7 @@ function MenuCreationFirstPage({
                 flexDirection: 'column',
               }}
             >
-              <Typography variant='h6medium' sx={{ color: '#2d2d37' }}>
+              <Typography variant="h6medium" sx={{ color: '#2d2d37' }}>
                 {t('menu_add_icon')}
               </Typography>
               <Box sx={{ paddingTop: 1, pr: 1 }}>
@@ -632,7 +632,7 @@ function MenuCreationFirstPage({
                   marginTop: '32px',
                 }}
               >
-                <Typography variant='h6medium'>{t('menu_set')}</Typography>
+                <Typography variant="h6medium">{t('menu_set')}</Typography>
                 <Box sx={{ marginLeft: '129px' }}>
                   <BasicSwitch
                     onChange={(e: any) => handleHomePage(e)}
@@ -651,10 +651,10 @@ function MenuCreationFirstPage({
                 marginTop: '25px',
               }}
             >
-              <Typography variant='h6medium'>{t('make_menu_as')}</Typography>
+              <Typography variant="h6medium">{t('make_menu_as')}</Typography>
               <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                 <RadioGroup
-                  name='page-radio-buttons-group'
+                  name="page-radio-buttons-group"
                   value={radioSelected}
                   onChange={handleMenuChange}
                   row
@@ -667,7 +667,7 @@ function MenuCreationFirstPage({
                       },
                       marginRight: '30px',
                     }}
-                    value='Main Menu'
+                    value="Main Menu"
                     control={<Radio />}
                     label={t('main_menu')}
                   />
@@ -678,7 +678,7 @@ function MenuCreationFirstPage({
                       },
                       //   marginRight: '40px',
                     }}
-                    value='Sub Menu'
+                    value="Sub Menu"
                     control={<Radio />}
                     label={t('sub_menu')}
                   />
@@ -687,7 +687,7 @@ function MenuCreationFirstPage({
             </Box>
             <Box sx={{ ml: '11px', marginTop: '25px' }}>
               <Typography
-                variant='h6medium'
+                variant="h6medium"
                 sx={{
                   // width: '164px',
                   height: '20px',
@@ -728,7 +728,7 @@ function MenuCreationFirstPage({
                 flexDirection: 'column',
               }}
             >
-              <Typography variant='h6medium' sx={{ color: '#2d2d37' }}>
+              <Typography variant="h6medium" sx={{ color: '#2d2d37' }}>
                 {t('menu_content')}
               </Typography>
               {selectedItem.Title !== '' ? (
@@ -746,8 +746,8 @@ function MenuCreationFirstPage({
                 >
                   <img
                     src={selectedItem.Image}
-                    width='100%'
-                    height='100%'
+                    width="100%"
+                    height="100%"
                     style={{ borderRadius: '5px' }}
                   />
                   <div
@@ -782,23 +782,23 @@ function MenuCreationFirstPage({
                     }}
                   >
                     <Typography
-                      variant='h5medium'
-                      component='div'
+                      variant="h5medium"
+                      component="div"
                       sx={{ color: '#fff', marginBottom: '5px' }}
-                      className='singlebr'
+                      className="singlebr"
                     >
                       {selectedItem.Title}
                     </Typography>
                     <Typography
-                      variant='h7medium'
-                      component='div'
+                      variant="h7medium"
+                      component="div"
                       sx={{ color: '#ced3d9' }}
                     >
                       {selectedItem.Author}
                     </Typography>
                     <Typography
-                      variant='h7medium'
-                      component='div'
+                      variant="h7medium"
+                      component="div"
                       sx={{ color: '#ced3d9' }}
                     >
                       {' '}
@@ -848,8 +848,8 @@ function MenuCreationFirstPage({
                     }}
                   >
                     <Typography
-                      variant='h5medium'
-                      component='h5'
+                      variant="h5medium"
+                      component="h5"
                       sx={{ color: '#000000' }}
                     >
                       {t('menu_content_placeholder')}
@@ -878,7 +878,7 @@ function MenuCreationFirstPage({
           }}
         >
           <Button
-            variant='contained'
+            variant="contained"
             disableElevation
             disabled={checkValidation() || itemExist}
             onClick={handleNext}
@@ -897,7 +897,7 @@ function MenuCreationFirstPage({
           </Button>
         </Box>
         {isMenuSecondPg && (
-          <Slide direction='right' in={isMenuSecondPg} timeout={300}>
+          <Slide direction="right" in={isMenuSecondPg} timeout={300}>
             <Box
               sx={{
                 backgroundColor: '#fff',
@@ -943,7 +943,7 @@ function MenuCreationFirstPage({
           </Slide>
         )}
         {isLinkSecondPg && (
-          <Slide direction='right' in={isLinkSecondPg} timeout={300}>
+          <Slide direction="right" in={isLinkSecondPg} timeout={300}>
             <Box
               sx={{
                 backgroundColor: '#fff',

@@ -6,7 +6,7 @@ import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { showToastSuccess } from '../../../../components/toastNotification/toastNotificationReactTostify';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { ImageCropOrder } from '../../../../utils/constants';
 import CommonImageRender from '../../../Gallery/CommonImageRender';
 import { PrelemImagesProps } from '../../utils/editTypes';
@@ -63,10 +63,14 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
         handleSave(
           sectionToUpdate,
           {
-            ImageCompound : {
+            ImageCompound: {
               published_images: publishedImages,
-              original_image: {...content, bitStreamId: originalImage?.bitStreamId, ext: originalImage?.ext},
-            }
+              original_image: {
+                ...content,
+                bitStreamId: originalImage?.bitStreamId,
+                ext: originalImage?.ext,
+              },
+            },
           },
           index
         );
@@ -108,7 +112,11 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
         Url: selectedImage?.Thumbnail,
         // Title: selectedImage?.Title,
         // Description: selectedImage?.Description,
-        MetaFields : {...content?.MetaFields, Title: selectedImage.Title, Description: selectedImage.Description }
+        MetaFields: {
+          ...content?.MetaFields,
+          Title: selectedImage.Title,
+          Description: selectedImage.Description,
+        },
       };
       setContent(contentNew);
       setImageContent({
@@ -142,17 +150,19 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
   };
   return (
     <Box className="ImageSecWp">
-      <Box className='rowBox'>
+      <Box className="rowBox">
         {content?.original_image_relative_path ? (
-          <Box sx={{
-            position: 'relative',
-            '& img': {
-              display: 'flex',
-              height: 'initial !important',
-              borderRadius: '5px !important',
-            },
-          }}
-          mb={2}>
+          <Box
+            sx={{
+              position: 'relative',
+              '& img': {
+                display: 'flex',
+                height: 'initial !important',
+                borderRadius: '5px !important',
+              },
+            }}
+            mb={2}
+          >
             <CommonImageRender
               content={imageContent}
               imgOrder={ImageCropOrder}
@@ -251,34 +261,34 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
           </Box>
         )}
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('prelem_image_title')}
         </Typography>
         <TextField
           multiline
           value={content?.MetaFields?.Title}
           onChange={(e) => handleDataChange(e, 'Title')}
-          variant='outlined'
-          size='small'
+          variant="outlined"
+          size="small"
           placeholder={t('page_search_title_placeholder')}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('prelem_image_about')}
         </Typography>
         <TextField
           multiline
           value={content?.MetaFields?.Description}
           onChange={(e) => handleDataChange(e, 'Description')}
-          variant='outlined'
-          size='small'
+          variant="outlined"
+          size="small"
           placeholder={t('page_info_about_placeholder')}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('prelem_image_attribution')}
           <BasicSwitch
             color={ThemeConstants.BLACK_COLOR}
@@ -291,7 +301,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
         content?.MetaFields?.Title?.trim()?.length == 0 ||
         content?.Url == '') && (
         <Typography
-          variant='p4regular'
+          variant="p4regular"
           sx={{
             color: ThemeConstants.NOTIFICATION_ERROR,
           }}
@@ -299,9 +309,9 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
           {t('mandatory_fields')}
         </Typography>
       )}
-      <Box className='rowBox' key={`${index}_save`}>
+      <Box className="rowBox" key={`${index}_save`}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={getDisabledState()}
           sx={{ width: '100%' }}
           onClick={UpdatePrelemInfo}
@@ -309,7 +319,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
           {t('done')}
         </Button>
       </Box>
-      <Box className='rowBox deviderBox'>
+      <Box className="rowBox deviderBox">
         <hr />
       </Box>
     </Box>

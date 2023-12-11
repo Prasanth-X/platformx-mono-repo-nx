@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import NoResults from '../../assets/images/no-results.png';
 import { fetchAllMultislotContentList } from '../../services/contentGallery/contentGallery.api';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import {
   ContentGalleryTypes,
   ContentGalleryTypes1,
@@ -218,7 +218,7 @@ const ContentGallery = ({
             margin: 'auto 0',
           }}
         >
-          <Typography variant='h4bold'>{t('prelem_choose_content')}</Typography>
+          <Typography variant="h4bold">{t('prelem_choose_content')}</Typography>
         </Grid>
         <Grid
           item
@@ -238,8 +238,8 @@ const ContentGallery = ({
           <Grid item xs={12} sm={6} md={4} lg={4}>
             <FormControl fullWidth>
               <Select
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
                 value={filter}
                 style={{
                   borderTopRightRadius: '0px',
@@ -260,7 +260,7 @@ const ContentGallery = ({
           <Grid item xs={12} sm={6} md={8} lg={8}>
             <FormControl fullWidth>
               <TextField
-                className='contentTypeCard'
+                className="contentTypeCard"
                 sx={{
                   '.Platform-x-InputBase-root.Platform-x-OutlinedInput-root': {
                     borderTopLeftRadius: '0px !important',
@@ -268,18 +268,18 @@ const ContentGallery = ({
                     borderLeft: 0,
                   },
                 }}
-                variant='outlined'
+                variant="outlined"
                 placeholder={t('search')}
                 value={search}
                 onChange={onSearchChange}
                 InputProps={{
                   startAdornment: (
-                    <InputAdornment position='start'>
+                    <InputAdornment position="start">
                       <SearchIcon />
                     </InputAdornment>
                   ),
                   endAdornment: (
-                    <InputAdornment position='end'>
+                    <InputAdornment position="end">
                       {search !== '' && (
                         <CloseRoundedIcon
                           onClick={resetSearch}
@@ -306,24 +306,24 @@ const ContentGallery = ({
           lg={3}
           container
           spacing={0}
-          direction='column'
-          alignItems='end'
-          justifyContent='center'
+          direction="column"
+          alignItems="end"
+          justifyContent="center"
           sx={{
             display: 'flex',
             marginTop: { xs: '0px', sm: '10px', em: '0' },
           }}
         >
-          <Box justifyContent='end'>
+          <Box justifyContent="end">
             <Button
-              variant='secondaryButton'
+              variant="secondaryButton"
               onClick={() => onToggleContentGallery(-1)}
             >
               {t('cancel')}
             </Button>
 
             <Button
-              variant='primaryButton'
+              variant="primaryButton"
               sx={{
                 padding: selectedIndex === -1 ? '14px' : '11px',
                 marginLeft: '12px',
@@ -347,7 +347,7 @@ const ContentGallery = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
@@ -356,7 +356,7 @@ const ContentGallery = ({
       ) : (
         <Box
           sx={{ height: 'calc(100vh - 90px)', overflowY: 'scroll' }}
-          id='scrollableDiv'
+          id="scrollableDiv"
         >
           {loading ? (
             <Box
@@ -382,7 +382,7 @@ const ContentGallery = ({
                 textAlign: 'center',
               }}
             >
-              <Typography variant='overline' display='block' gutterBottom>
+              <Typography variant="overline" display="block" gutterBottom>
                 {t('no_results')}
               </Typography>
             </Box>

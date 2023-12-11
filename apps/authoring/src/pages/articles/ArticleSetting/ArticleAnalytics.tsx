@@ -12,7 +12,7 @@ import {
   publish_article,
   update_article,
 } from '../../../services/article/article.api';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../editPage/Switch';
 
 const ArticleAnalytics = ({
@@ -99,13 +99,13 @@ const ArticleAnalytics = ({
         mb={1}
       >
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{
             display: 'flex',
             alignItems: 'center',
             textTransform: 'capitalize',
           }}
-          className='drawer-label'
+          className="drawer-label"
         >
           {`${t('article')} ${t('analytics')}`}
           <Tooltip
@@ -122,7 +122,7 @@ const ArticleAnalytics = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -138,13 +138,14 @@ const ArticleAnalytics = ({
         </Typography>
         <BasicSwitch
           onChange={(e: any) =>
-            handlePrelemAnalyticsChange(e, 'AnalyticsEnabled')}
+            handlePrelemAnalyticsChange(e, 'AnalyticsEnabled')
+          }
           checked={analyticsEnabled}
           color={ThemeConstants.BLACK_COLOR}
         />
       </Box>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -158,7 +159,7 @@ const ArticleAnalytics = ({
         <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -174,7 +175,7 @@ const ArticleAnalytics = ({
 
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={disabledState}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

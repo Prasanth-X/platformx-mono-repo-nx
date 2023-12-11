@@ -1,7 +1,7 @@
 import { Box, Dialog, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { showToastSuccess } from '../../components/toastNotification/toastNotificationReactTostify';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 //import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import CachedIcon from '@mui/icons-material/Cached';
@@ -39,7 +39,7 @@ export const DspaceSelectorBanner = ({
   handleEnableArticlePreview,
   originalImage,
   publishedImages,
-  id
+  id,
 }) => {
   const { t } = useTranslation();
   const { state, dispatch } = useContext(Store);
@@ -63,12 +63,12 @@ export const DspaceSelectorBanner = ({
     Description: '',
   });
   const setImageOrVideoToDefault = () => {
-      // setSelectedImage({
-      //   Title: '',
-      //   Thumbnail: '',
-      //   Description: '',
-      //   bitStreamId: '',
-      // });
+    // setSelectedImage({
+    //   Title: '',
+    //   Thumbnail: '',
+    //   Description: '',
+    //   bitStreamId: '',
+    // });
     setSelectedVideo({
       Title: '',
       Thumbnail: '',
@@ -161,7 +161,7 @@ export const DspaceSelectorBanner = ({
   };
 
   useEffect(() => {
-    if (id && (originalImage && Object.keys(originalImage).length !== 0)) {
+    if (id && originalImage && Object.keys(originalImage).length !== 0) {
       setContent({
         Url: originalImage.Thumbnail,
         Title: '',
@@ -190,7 +190,7 @@ export const DspaceSelectorBanner = ({
       Description: '',
       bitStreamId: '',
     });
-  }
+  };
 
   return (
     <>
@@ -202,7 +202,7 @@ export const DspaceSelectorBanner = ({
           handleVideoSelected={handleSelectedVideo}
         />
       </Dialog>
-      {selectedImage?.Thumbnail ?
+      {selectedImage?.Thumbnail ? (
         <Box
           sx={{
             zIndex: 998,
@@ -221,7 +221,14 @@ export const DspaceSelectorBanner = ({
         >
           <CommonImageRender
             content={selectedImage}
-            imgOrder={{ 1440: 'hero', 1280: 'landscape', 1024: 'card2', 768: 'square', 600: 'card1', 320: 'portrait' }}
+            imgOrder={{
+              1440: 'hero',
+              1280: 'landscape',
+              1024: 'card2',
+              768: 'square',
+              600: 'card1',
+              320: 'portrait',
+            }}
             updateField={updateField}
             originalImage={originalImage}
             publishedImages={publishedImages}
@@ -258,7 +265,7 @@ export const DspaceSelectorBanner = ({
               <Box
                 sx={{ cursor: 'pointer' }}
                 onClick={() => onUploadClick(0, 'replace')}
-              //onClick={() => onUploadClick(index, 'replace')}
+                //onClick={() => onUploadClick(index, 'replace')}
               >
                 <Box
                   sx={{
@@ -316,7 +323,7 @@ export const DspaceSelectorBanner = ({
             </Box>
           </Box>
         </Box>
-        :
+      ) : (
         <Box
           sx={{
             //height: { xs:'107px', sm: '200px', md: '256px', em: '342px', lg: '427px', xl: '480px'},
@@ -384,7 +391,7 @@ export const DspaceSelectorBanner = ({
                 }}
               >
                 {t('upload_image')}
-                <Typography variant='h7regular'>
+                <Typography variant="h7regular">
                   <span
                     style={{ color: '#374fd5', textTransform: 'capitalize' }}
                   >
@@ -395,7 +402,8 @@ export const DspaceSelectorBanner = ({
               </Box>
             </Typography>
           </Box>
-        </Box>}
+        </Box>
+      )}
     </>
   );
 };

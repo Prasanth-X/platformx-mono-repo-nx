@@ -4,7 +4,7 @@ import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import CommonImageRender from '../../pages/Gallery/CommonImageRender';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 interface ImageProps {
   url?: any;
@@ -160,9 +160,9 @@ const AddImage = ({
               m={1}
             >
               {diffIcon ? (
-                <img src={ArrowUpwardIcon} alt='ArrowUpwardIcon' />
+                <img src={ArrowUpwardIcon} alt="ArrowUpwardIcon" />
               ) : (
-                <img src={ArrowUpwardIcon} alt='ArrowUpwardIcon' />
+                <img src={ArrowUpwardIcon} alt="ArrowUpwardIcon" />
               )}
             </Box>
             <Box
@@ -172,9 +172,7 @@ const AddImage = ({
                 color: ThemeConstants.PRIMARY_MAIN_COLOR,
               }}
             >
-              <Typography
-                variant='h5medium'
-              >
+              <Typography variant="h5medium">
                 {t('page_choose_image')}
               </Typography>
             </Box>

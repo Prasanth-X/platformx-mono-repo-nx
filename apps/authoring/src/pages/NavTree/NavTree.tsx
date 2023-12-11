@@ -30,7 +30,7 @@ import {
   update_menu,
 } from '../../services/navTree/navTree.api';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { updateInitialState } from './Actions';
 import DeleteDialog from './DeleteDialog';
 import { Drag, DragAndDrop, Drop } from './drag-and-drop';
@@ -223,7 +223,7 @@ export default function NavTree({
     const isItemExist = tempArr.find((val) => {
       return val
         ? val.Label.toLowerCase() === label.toLowerCase() &&
-        val.Menu_Id !== selectedItem.Menu_Id
+            val.Menu_Id !== selectedItem.Menu_Id
         : '';
     });
     if (isItemExist) {
@@ -326,8 +326,9 @@ export default function NavTree({
   };
 
   const publishMenu = () => {
-    const defaultTimeZone = `${Intl.DateTimeFormat().resolvedOptions().timeZone
-      }`;
+    const defaultTimeZone = `${
+      Intl.DateTimeFormat().resolvedOptions().timeZone
+    }`;
     const tempArr: any = JSON.parse(JSON.stringify(leftSideBarContent));
     const isHomePage = tempArr.find((val) => {
       if (val.HomePage === true) {
@@ -547,8 +548,8 @@ export default function NavTree({
         }}
       >
         <Box
-          id='scrollableDiv'
-          className='navTreeMenuBox'
+          id="scrollableDiv"
+          className="navTreeMenuBox"
           sx={{
             display: {
               xs: 'none',
@@ -569,7 +570,7 @@ export default function NavTree({
                       scrollableTarget="scrollableDiv"
                     > */}
           <DragAndDrop onDragEnd={handleDragEnd}>
-            <Drop id='droppable' type='droppable-category'>
+            <Drop id="droppable" type="droppable-category">
               {leftSideBarContent?.length > 0 &&
                 leftSideBarContent?.map((item, index) => {
                   {
@@ -579,13 +580,13 @@ export default function NavTree({
                     <div key={index}>
                       {item.ParentId == '0' && (
                         <Drag
-                          className='draggable-category'
+                          className="draggable-category"
                           key={item.Menu_Id + item.Score}
                           id={item.Menu_Id + item.Score}
                           index={index}
-                        // style={{display:'flex',alignItems:'flex-start'}}
+                          // style={{display:'flex',alignItems:'flex-start'}}
                         >
-                          <div className='category-container'>
+                          <div className="category-container">
                             {/* {item.ParentId == "0" &&  */}
                             <Box
                               sx={{
@@ -606,10 +607,10 @@ export default function NavTree({
                             marginRight: '10px',
                             width: '16px',
                           }} /> */}
-                              <Typography variant='h6regular'>
+                              <Typography variant="h6regular">
                                 {item.Label}
                               </Typography>
-                              <Box className='NavTreeHomeIcon'>
+                              <Box className="NavTreeHomeIcon">
                                 {item.HomePage === true ? (
                                   <HomeOutlinedIcon
                                     sx={{
@@ -626,11 +627,11 @@ export default function NavTree({
                                 onClick={(event) =>
                                   handleListClick(event, item)
                                 }
-                                className='NavTreeSettingIcon'
+                                className="NavTreeSettingIcon"
                               >
                                 <img
                                   src={SettingIcon}
-                                  alt='Setting Icon'
+                                  alt="Setting Icon"
                                   onClick={() => onButtonClicked(index)}
                                 />
                               </Box>
@@ -641,7 +642,7 @@ export default function NavTree({
                             <Drop
                               key={index.toString()}
                               id={index.toString()}
-                              type='droppable-item'
+                              type="droppable-item"
                             >
                               {leftSideBarContent?.length > 0 &&
                                 leftSideBarContent?.map((item1, index1) => {
@@ -649,7 +650,7 @@ export default function NavTree({
                                     <>
                                       {item1.ParentId == item.Menu_Id && (
                                         <Drag
-                                          className='draggable'
+                                          className="draggable"
                                           key={item1.Label + item1.Menu_Id}
                                           id={item1.Label + item1.Menu_Id}
                                           index={index1}
@@ -670,7 +671,7 @@ export default function NavTree({
                                             }
                                           >
                                             <Typography
-                                              variant='h6regular'
+                                              variant="h6regular"
                                               sx={{
                                                 display: 'flex',
                                                 alignItems: 'center',
@@ -694,11 +695,11 @@ export default function NavTree({
                                               onClick={(event) =>
                                                 handleListClick(event, item1)
                                               }
-                                              className='NavTreeSettingIcon'
+                                              className="NavTreeSettingIcon"
                                             >
                                               <img
                                                 src={SettingIcon}
-                                                alt='Setting Icon'
+                                                alt="Setting Icon"
                                                 onClick={() =>
                                                   onButtonClicked(index1)
                                                 }
@@ -735,9 +736,9 @@ export default function NavTree({
           <LoadingButton
             disabled={menuToPublish.length > 0 ? false : true}
             loading={isLoaded}
-            loadingPosition='end'
+            loadingPosition="end"
             startIcon={<TelegramIcon />}
-            variant='contained'
+            variant="contained"
             sx={{
               height: '47px',
               width: '100%',
@@ -839,10 +840,10 @@ export default function NavTree({
         <MenuItem
           disableRipple
           disabled
-        //   onClick={() => {
-        //     handleListClose();
-        //     handleDeleteArticle();
-        //   }}
+          //   onClick={() => {
+          //     handleListClose();
+          //     handleDeleteArticle();
+          //   }}
         >
           {t('duplicate')}
         </MenuItem>
@@ -888,7 +889,7 @@ export default function NavTree({
           }}
         >
           <Typography
-            variant='h5'
+            variant="h5"
             sx={{
               margin: '55px 358px 0px 348px',
             }}
@@ -896,7 +897,7 @@ export default function NavTree({
             {t('rename')}
           </Typography>
           <TextField
-            size='small'
+            size="small"
             value={rename}
             onChange={(e) => {
               setRename(e.target.value);
@@ -919,7 +920,7 @@ export default function NavTree({
             }}
           >
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.WHITE_COLOR,
                 color: ThemeConstants.BLACK_COLOR,
@@ -942,7 +943,7 @@ export default function NavTree({
               {t('cancel')}
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.BLACK_COLOR,
                 color: ThemeConstants.WHITE_COLOR,
@@ -1026,14 +1027,14 @@ export default function NavTree({
         >
           <FormControl>
             <Select
-              labelId='demo-simple-select-label'
-              id='demo-simple-select'
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
               // disabled={radioSelected=='Main Menu'?true:false}
-              size='small'
+              size="small"
               sx={{ width: '250px', mt: '5px' }}
               value={subMenu}
               onChange={handleChangeSetMenu}
-            // IconComponent={() => <ExpandMoreIcon/>}
+              // IconComponent={() => <ExpandMoreIcon/>}
             >
               {leftSideBarContent.map(
                 (val) =>
@@ -1073,7 +1074,7 @@ export default function NavTree({
             }}
           >
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.WHITE_COLOR,
                 color: ThemeConstants.BLACK_COLOR,
@@ -1095,7 +1096,7 @@ export default function NavTree({
               {t('cancel')}
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.BLACK_COLOR,
                 color: ThemeConstants.WHITE_COLOR,

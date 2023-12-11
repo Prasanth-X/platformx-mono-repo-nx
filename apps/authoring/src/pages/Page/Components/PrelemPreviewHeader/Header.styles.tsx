@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   prelemPreviewHeader: {
@@ -40,10 +40,11 @@ export const useStyles = makeStyles(() => ({
     left: 0,
     width: '100%',
     padding: '15px',
-    background: 'linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)',
+    background:
+      'linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)',
 
     '& button': {
-      width: '100%'
-    }
-  }
+      width: '100%',
+    },
+  },
 }));

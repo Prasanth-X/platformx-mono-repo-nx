@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles((theme) => ({
   headerwp: {
@@ -32,11 +32,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   mobHeader: {
     paddingLeft: 0,
-    minHeight: '62px'
+    minHeight: '62px',
   },
-  timer:{
-    display:'flex',
-    alignItems: 'center'
+  timer: {
+    display: 'flex',
+    alignItems: 'center',
   },
   buttonWrapper: {
     '& .iconBtn': {
@@ -58,5 +58,5 @@ export const useStyles = makeStyles((theme) => ({
         pointerEvents: 'auto',
       },
     },
-  }
+  },
 }));

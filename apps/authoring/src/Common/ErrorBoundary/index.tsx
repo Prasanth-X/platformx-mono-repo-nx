@@ -1,13 +1,13 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { CATSvg } from '../../assets/images';
 import './ErrorBoundary.css';
 // import { CATSvg } from '../../assets/images';
 
 type ReactProps = {
   navigate?: any;
-  component?: string;
+  children: ReactNode;
 };
 
 type ReactState = {
@@ -43,7 +43,7 @@ class ErrorBoundary extends React.Component<ReactProps, ReactState> {
             }}
           >
             <Typography
-              variant='h1'
+              variant="h1"
               sx={{
                 color: '#006092 !important',
                 fontSize: '69px !important',
@@ -52,12 +52,12 @@ class ErrorBoundary extends React.Component<ReactProps, ReactState> {
                 marginBottom: '30px',
                 padding: '20px 0 10px 0',
               }}
-              id='Heading'
+              id="Heading"
             >
               Oops.....
             </Typography>
             <Typography
-              variant='h1'
+              variant="h1"
               sx={{
                 color: '#006092 !important',
                 fontSize: '21px !important',
@@ -66,7 +66,7 @@ class ErrorBoundary extends React.Component<ReactProps, ReactState> {
                 marginBottom: '30px',
                 padding: '0px 0 30px 0',
               }}
-              id='Heading'
+              id="Heading"
             >
               {`The page you requested isn't available right now, please try again later.`}
             </Typography>
@@ -77,7 +77,7 @@ class ErrorBoundary extends React.Component<ReactProps, ReactState> {
                 padding: '0px 0 30px 0',
               }}
             >
-              <img src={CATSvg} alt='errorBoundary' className='errorBoundary' />
+              <img src={CATSvg} alt="errorBoundary" className="errorBoundary" />
             </Typography>
           </Box>
         </div>

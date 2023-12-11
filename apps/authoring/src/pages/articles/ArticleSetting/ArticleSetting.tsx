@@ -9,7 +9,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PlateformXLoader from '../../../components/Loader/loader';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import ArticleAnalytics from './ArticleAnalytics';
 import ArticleSEO from './ArticleSEO';
 import ArticleSocialShare from './ArticleSocialShare';
@@ -54,7 +54,7 @@ const ArticleSettings = ({
         </Grid>
         <Grid item xs={12} md={4} sx={{ backgroundColor: '#f5f5f5' }}>
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{
               padding: '10px 25px 10px 25px',
               backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -79,7 +79,7 @@ const ArticleSettings = ({
               overflowY: 'scroll',
             }}
           >
-            {selectedArticle && Object.keys(selectedArticle).length > 0 ?
+            {selectedArticle && Object.keys(selectedArticle).length > 0 ? (
               <>
                 <Accordion
                   expanded={expanded === 'social-share'}
@@ -98,11 +98,11 @@ const ArticleSettings = ({
                         sx={{ color: ThemeConstants.BLACK_COLOR }}
                       />
                     }
-                    aria-controls='social-share-content'
-                    id='social-share-header'
+                    aria-controls="social-share-content"
+                    id="social-share-header"
                   >
                     <Typography
-                      variant='h6'
+                      variant="h6"
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -128,7 +128,7 @@ const ArticleSettings = ({
                     </Typography>
                   </AccordionSummary>
                   <Divider />
-                  {selectedArticle &&
+                  {selectedArticle && (
                     <ArticleSocialShare
                       handleImageDelete={handleImageDelete}
                       handleGallery={handleGallery}
@@ -143,7 +143,8 @@ const ArticleSettings = ({
                       setSelectedArticle={setSelectedArticle}
                       articleSettingsPanelState={articleSettingsPanelState}
                       getArticle={getArticle}
-                    />}
+                    />
+                  )}
                 </Accordion>
                 <Divider />
                 <Accordion
@@ -163,11 +164,11 @@ const ArticleSettings = ({
                         sx={{ color: ThemeConstants.BLACK_COLOR }}
                       />
                     }
-                    aria-controls='analytics-content'
-                    id='analytics-header'
+                    aria-controls="analytics-content"
+                    id="analytics-header"
                   >
                     <Typography
-                      variant='h6'
+                      variant="h6"
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -189,13 +190,14 @@ const ArticleSettings = ({
                     </Typography>
                   </AccordionSummary>
                   <Divider />
-                  {selectedArticle &&
+                  {selectedArticle && (
                     <ArticleAnalytics
                       // analyticsInfo={selectedArticle?.AnalyticsEnable}
                       selectedArticle={selectedArticle}
                       setSelectedArticle={setSelectedArticle}
                       getArticle={getArticle}
-                    />}
+                    />
+                  )}
                 </Accordion>
                 <Divider />
                 <Accordion
@@ -215,11 +217,11 @@ const ArticleSettings = ({
                         sx={{ color: ThemeConstants.BLACK_COLOR }}
                       />
                     }
-                    aria-controls='seo-content'
-                    id='seo-header'
+                    aria-controls="seo-content"
+                    id="seo-header"
                   >
                     <Typography
-                      variant='h6'
+                      variant="h6"
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -241,17 +243,19 @@ const ArticleSettings = ({
                     </Typography>
                   </AccordionSummary>
                   <Divider />
-                  {selectedArticle &&
+                  {selectedArticle && (
                     <ArticleSEO
                       selectedArticle={selectedArticle}
                       setSelectedArticle={setSelectedArticle}
                       getArticle={getArticle}
-                    />}
+                    />
+                  )}
                 </Accordion>
                 <Divider />
               </>
-             :
-              <PlateformXLoader />}
+            ) : (
+              <PlateformXLoader />
+            )}
           </Box>
         </Grid>
       </Grid>

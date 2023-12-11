@@ -1,9 +1,11 @@
-import PrelemTheme from "./lib/theme/prelemTheme"
-import { prelemTypes } from "./lib/theme/globalStyle"
+import PrelemTheme from "./lib/themes/prelems/prelemTheme"
+import AuthoringTheme from "./lib/themes/authoring/lightTheme"
+import { prelemTypes } from "./lib/themes/prelems/globalStyle"
 import { ThemeProvider } from "@material-ui/core/styles";
 import BasicButton from "./lib/components/BasicButton/BasicButton"
 import TwoColumnLayout from "./lib/layouts/TwoColumns/TwoColumnLayout";
 export { PrelemTheme }
+export { AuthoringTheme }
 export { prelemTypes }
 export { BasicButton }
 export { usePrelemImpression } from "./lib/hooks/usePrelemImpression/usePrelemImpression";

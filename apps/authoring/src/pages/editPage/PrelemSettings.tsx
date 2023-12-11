@@ -22,7 +22,7 @@ import {
   updatePrelemContent,
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import PrelemBrightcoveVideo from './PrelemBrightcoveVideo';
 import PrelemEcom from './PrelemEcom';
 import PrelemImages from './PrelemImages';
@@ -188,7 +188,7 @@ const PrelemSettings = ({
       <Grid item md={8} sx={{ backgroundColor: 'transparent' }}></Grid>
       <Grid item sm={12} md={4} sx={{ backgroundColor: '#f5f5f5' }}>
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{
             padding: '10px 25px 10px 25px',
             backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -228,11 +228,11 @@ const PrelemSettings = ({
                 expandIcon={
                   <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
                 }
-                aria-controls='Ecom-content'
-                id='Ecom-header'
+                aria-controls="Ecom-content"
+                id="Ecom-header"
               >
                 <Typography
-                  variant='h6'
+                  variant="h6"
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
@@ -276,11 +276,11 @@ const PrelemSettings = ({
                 expandIcon={
                   <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
                 }
-                aria-controls='twitter-content'
-                id='twitter-header'
+                aria-controls="twitter-content"
+                id="twitter-header"
               >
                 <Typography
-                  variant='h6'
+                  variant="h6"
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
@@ -328,11 +328,11 @@ const PrelemSettings = ({
                       sx={{ color: ThemeConstants.BLACK_COLOR }}
                     />
                   }
-                  aria-controls='images-content'
-                  id='images-header'
+                  aria-controls="images-content"
+                  id="images-header"
                 >
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -356,7 +356,7 @@ const PrelemSettings = ({
                 <Divider />
                 <PrelemTestimonials
                   data={prelemModelData.content.Testimonials}
-                  sectionToUpdate='Testimonials'
+                  sectionToUpdate="Testimonials"
                   handleSave={handleSave}
                 />
               </Accordion>
@@ -381,11 +381,11 @@ const PrelemSettings = ({
                       sx={{ color: ThemeConstants.BLACK_COLOR }}
                     />
                   }
-                  aria-controls='images-content'
-                  id='images-header'
+                  aria-controls="images-content"
+                  id="images-header"
                 >
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -419,7 +419,7 @@ const PrelemSettings = ({
                           ]
                         }
                         handleSave={handleSave}
-                        sectionToUpdate='Images'
+                        sectionToUpdate="Images"
                         handleGallery={handleGallery}
                         selectedIndex={selectedImageIndex}
                         selectedImage={
@@ -457,11 +457,11 @@ const PrelemSettings = ({
                         sx={{ color: ThemeConstants.BLACK_COLOR }}
                       />
                     }
-                    aria-controls='videos-content'
-                    id='videos-header'
+                    aria-controls="videos-content"
+                    id="videos-header"
                   >
                     <Typography
-                      variant='h6'
+                      variant="h6"
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -492,7 +492,7 @@ const PrelemSettings = ({
                           playerFlow={prelemModelData?.content?.PlayerType}
                           videoInstance={value}
                           handleSave={handleSave}
-                          sectionToUpdate='Videos'
+                          sectionToUpdate="Videos"
                           handleGallery={handleGallery}
                           selectedIndex={selectedVideoIndex}
                           selectedVideo={
@@ -528,11 +528,11 @@ const PrelemSettings = ({
                       sx={{ color: ThemeConstants.BLACK_COLOR }}
                     />
                   }
-                  aria-controls='twitter-content'
-                  id='twitter-header'
+                  aria-controls="twitter-content"
+                  id="twitter-header"
                 >
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -585,11 +585,11 @@ const PrelemSettings = ({
                       sx={{ color: ThemeConstants.BLACK_COLOR }}
                     />
                   }
-                  aria-controls='seo-content'
-                  id='seo-header'
+                  aria-controls="seo-content"
+                  id="seo-header"
                 >
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -634,11 +634,11 @@ const PrelemSettings = ({
               expandIcon={
                 <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
               }
-              aria-controls='advanced-content'
-              id='advanced-header'
+              aria-controls="advanced-content"
+              id="advanced-header"
             >
               <Typography
-                variant='h6'
+                variant="h6"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
@@ -677,11 +677,11 @@ const PrelemSettings = ({
               expandIcon={
                 <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
               }
-              aria-controls='analytics-content'
-              id='analytics-header'
+              aria-controls="analytics-content"
+              id="analytics-header"
             >
               <Typography
-                variant='h6'
+                variant="h6"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',

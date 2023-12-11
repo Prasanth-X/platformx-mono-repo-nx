@@ -15,9 +15,12 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageModel, updatePageSettings } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../../utils/authConstants';
-import { getSubDomain, setDefaultPageSettings } from '../../../../utils/helperFunctions';
+import {
+  getSubDomain,
+  setDefaultPageSettings,
+} from '../../../../utils/helperFunctions';
 import { descriptionLength, nameLength } from '../../utils/constant';
 import { PageInformation } from '../../utils/editTypes';
 import BackButton from '../BackButton/BackButton';
@@ -125,24 +128,24 @@ const PageInfo = ({ setPageId }) => {
   };
 
   return (
-    <Box className='pageSettingmainWp'>
-      <BackButton setPageId={setPageId} Title='Page Info' />
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+    <Box className="pageSettingmainWp">
+      <BackButton setPageId={setPageId} Title="Page Info" />
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_info_title')}
         </Typography>
         <TextField
-          size='small'
+          size="small"
           multiline
           value={pageInfo.PageName}
           onChange={(e) => handleDataChange(e, 'PageName')}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('page_info_title_placeholder')}
           inputProps={{ maxLength: pageNameLength }}
         />
         {getDisabledState() && (
           <Typography
-            variant='h7regular'
+            variant="h7regular"
             sx={{
               color: ThemeConstants.NOTIFICATION_ERROR,
             }}
@@ -151,28 +154,28 @@ const PageInfo = ({ setPageId }) => {
           </Typography>
         )}
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_info_about')}
         </Typography>
         <TextField
           multiline
           value={pageInfo.PageDescription}
           onChange={(e) => handleDataChange(e, 'PageDescription')}
-          variant='outlined'
-          size='small'
+          variant="outlined"
+          size="small"
           placeholder={t('page_info_about_placeholder')}
           inputProps={{ maxLength: pageDescriptionLength }}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_info_tags')}
         </Typography>
         <Autocomplete
-          size='small'
+          size="small"
           multiple
-          id='tags-filled'
+          id="tags-filled"
           value={[...getValue()]}
           options={[]}
           onChange={(event: object, value) => {
@@ -191,7 +194,7 @@ const PageInfo = ({ setPageId }) => {
                 option && (
                   <Box key={index} mt={1}>
                     <Chip
-                      variant='outlined'
+                      variant="outlined"
                       label={option}
                       deleteIcon={
                         <DeleteIcon
@@ -211,8 +214,8 @@ const PageInfo = ({ setPageId }) => {
           }
           renderInput={(params) => (
             <TextField
-              size='small'
-              variant='outlined'
+              size="small"
+              variant="outlined"
               {...params}
               placeholder={t('page_info_tags_placeholder')}
             />
@@ -232,43 +235,43 @@ const PageInfo = ({ setPageId }) => {
           }}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_info_url')}
         </Typography>
         <TextField
-          size='small'
+          size="small"
           multiline
           value={pageInfo.PageURL}
           onChange={(e) => handleDataChange(e, 'PageURL')}
-          variant='outlined'
-          placeholder='Write a page URL here'
+          variant="outlined"
+          placeholder="Write a page URL here"
           sx={{
             '.Platform-x-OutlinedInput-root': { color: '#1a0db1' },
           }}
           inputProps={{ readOnly: true }}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_info_view')}
         </Typography>
         <FormControl fullWidth>
           <Select
-            size='small'
+            size="small"
             value={pageInfo.PageViewer}
-            variant='outlined'
+            variant="outlined"
             onChange={(e) => handlePageViewerChangeDropDown(e)}
           >
-            <MenuItem value='free'>{t('page_info_free')}</MenuItem>
-            <MenuItem value='behindlogin'>
+            <MenuItem value="free">{t('page_info_free')}</MenuItem>
+            <MenuItem value="behindlogin">
               {t('page_info_behindlogin')}
             </MenuItem>
           </Select>
         </FormControl>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('page_info_friendly')}
           <BasicSwitch
             color={ThemeConstants.BLACK_COLOR}
@@ -277,9 +280,9 @@ const PageInfo = ({ setPageId }) => {
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
+      <Box className="rowBox">
         <Button
-          variant='contained'
+          variant="contained"
           onClick={savePageInfo}
           disabled={getDisabledState() || initialPageInfo.current === pageInfo}
           sx={{ width: '100%' }}

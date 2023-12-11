@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import StepConnector from '@material-ui/core/StepConnector';
 import { withStyles } from '@material-ui/core/styles';
 import { styled } from '@mui/material/styles';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const StyledConnector = withStyles((theme) => ({
   alternativeLabel: {

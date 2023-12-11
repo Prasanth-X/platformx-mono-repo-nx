@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PrelemAnalyticsSave } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from './Switch';
 
 const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
@@ -22,7 +22,7 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
   return (
     <AccordionDetails>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -32,13 +32,13 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
         mb={1}
       >
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{
             display: 'flex',
             alignItems: 'center',
             textTransform: 'capitalize',
           }}
-          className='drawer-label'
+          className="drawer-label"
         >
           {t('prelem_analytics')}
           <Tooltip
@@ -52,7 +52,7 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -73,7 +73,7 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -87,7 +87,7 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
         <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -101,7 +101,7 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
         <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -115,7 +115,7 @@ const PrelemAnalytics = ({ analyticsInfo, prelemIndex }) => {
         <BasicSwitch disabled color={ThemeConstants.BLACK_COLOR} />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',

@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { showToastError } from '../../components/toastNotification/toastNotificationReactTostify';
 
 import { createMenuItem } from '../../services/menu/menu.api';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { ExternalLinkModal } from './ExternalLinkModal';
 import { PageLinkPopover } from './PageLinkPopover';
 

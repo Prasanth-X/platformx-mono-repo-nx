@@ -1,16 +1,16 @@
-import React from "react";
-import { Box, Typography, Grid, Container } from "@mui/material";
-import { styled } from "@mui/system";
-import ThemeConstants from "../../theme/variable";
-import warningIcon from "../../assets/svg/warningIcon.svg";
-import "./AccessDenied.css";
+import React from 'react';
+import { Box, Typography, Grid, Container } from '@mui/material';
+import { styled } from '@mui/system';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import warningIcon from '../../assets/svg/warningIcon.svg';
+import './AccessDenied.css';
 
-const AccessDeniedBox = styled("div")({
+const AccessDeniedBox = styled('div')({
   color: ThemeConstants.BLACK_COLOR_VARIANT1,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  height: "calc(100vh - 62px)",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: 'calc(100vh - 62px)',
 });
 const AccessDenied = () => {
   return (

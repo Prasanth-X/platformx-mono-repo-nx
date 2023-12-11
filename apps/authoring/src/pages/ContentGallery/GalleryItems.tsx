@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import ContentTypeCard from 'platform-x-prelems/prelems/ContentTypeCard';
 import { useState } from 'react';
 import NoResults from '../../assets/images/no-results.png';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoResultsFound from '../../Common/NoResultsFound';
@@ -19,15 +19,15 @@ const GalleryItems = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [selectedItem, setSelectedItem] = useState<ContentProps>({});
-  const secondaryArgs = { 
-                          gcpUrl: authInfo.gcpUri,
-                          bucketName: authInfo.gcpBucketName
-                        }
-  console.log("secondaryArgs", secondaryArgs)
+  const secondaryArgs = {
+    gcpUrl: authInfo.gcpUri,
+    bucketName: authInfo.gcpBucketName,
+  };
+  console.log('secondaryArgs', secondaryArgs);
   const isError = false;
   const handleSelectedItem = (item, index) => {
-    console.log(item, "item");
-    console.log(index, "index");
+    console.log(item, 'item');
+    console.log(index, 'index');
 
     if (selectedItem == item) {
       setSelectedItem({});
@@ -57,7 +57,7 @@ const GalleryItems = ({
         key={index}
         p={1}
       >
-        <ContentTypeCard content={item} secondaryArgs={secondaryArgs}/>
+        <ContentTypeCard content={item} secondaryArgs={secondaryArgs} />
         <Box
           sx={{
             position: 'absolute',
@@ -77,7 +77,7 @@ const GalleryItems = ({
   };
   return (
     <>
-      {isError ?
+      {isError ? (
         <Box
           sx={{
             marginTop: '200px',
@@ -87,23 +87,23 @@ const GalleryItems = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
           </Typography>
         </Box>
-        :
+      ) : (
         <Box
           sx={{
             height: 'calc(100vh - 160px)',
             overflowY: 'scroll',
           }}
-          id='scrollablegallerydiv'
+          id="scrollablegallerydiv"
         >
-          {galleryObj && galleryObj?.length === 0 && !loading ?
+          {galleryObj && galleryObj?.length === 0 && !loading ? (
             <NoResultsFound />
-            :
+          ) : (
             <Grid
               container
               sx={{
@@ -119,14 +119,16 @@ const GalleryItems = ({
                 next={fetchMoreData}
                 hasMore={isLazyLoad}
                 loader={null}
-                scrollableTarget='scrollablegallerydiv'
+                scrollableTarget="scrollablegallerydiv"
               >
                 {galleryObj?.map((item, index) => {
                   return getContentType(item, index);
                 })}
               </InfiniteScroll>
-            </Grid>}
-        </Box>}
+            </Grid>
+          )}
+        </Box>
+      )}
     </>
   );
 };

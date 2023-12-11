@@ -8,7 +8,7 @@ import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PageStatusList } from './utils/contentTypes';
 
 export default function PageStatus({
@@ -21,101 +21,101 @@ export default function PageStatus({
   let iconLabel;
   if (pageType == 'Scheduled Publish') {
     colorType = ThemeConstants.SCEDULED_PUBLISHED_COLOR;
-    iconName =
-      (<ScheduleSendIcon
+    iconName = (
+      <ScheduleSendIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('scheduled_publish');
   } else if (pageType == 'Scheduled Unpublish') {
     colorType = ThemeConstants.SCEDULED_UNPUBLISHED_COLOR;
-    iconName =
-      (<CancelScheduleSendIcon
+    iconName = (
+      <CancelScheduleSendIcon
         sx={{
           height: '16px',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('scheduled_unpublish');
   } else if (pageType == 'draft') {
     colorType = ThemeConstants.DRAFT_COLOR;
-    iconName =
-      (<SaveAsIcon
+    iconName = (
+      <SaveAsIcon
         sx={{
           height: '16px',
           width: 'auto',
           marginRight: gridView ? '0' : '4px',
           padding: gridView ? '0 5px' : '0',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('draft');
   } else if (pageType == 'published') {
     colorType = ThemeConstants.PUBLISHED_COLOR;
-    iconName =
-      (<TelegramIcon
+    iconName = (
+      <TelegramIcon
         sx={{
           height: '16px',
           width: 'auto',
           marginRight: gridView ? '0' : '4px',
           padding: gridView ? '0' : '0',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('published');
   } else if (pageType == 'approved') {
     colorType = ThemeConstants.APPROVED_COLOR;
-    iconName =
-      (<CheckCircleIcon
+    iconName = (
+      <CheckCircleIcon
         sx={{
           height: '16px',
           width: 'auto',
           marginRight: gridView ? '0' : '4px',
           padding: gridView ? '0 5px' : '0',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('approved');
   } else if (pageType == 'unpublished') {
     colorType = ThemeConstants.UNPUBLISHED_COLOR;
-    iconName =
-      (<UnpublishedIcon
+    iconName = (
+      <UnpublishedIcon
         sx={{
           height: '16px',
           width: 'auto',
           marginRight: gridView ? '0' : '4px',
           padding: gridView ? '0 5px' : '0',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('unpublished');
   } else if (pageType == 'pending') {
     colorType = ThemeConstants.PENDING_COLOR;
-    iconName =
-      (<PendingRoundedIcon
+    iconName = (
+      <PendingRoundedIcon
         sx={{
           height: '16px',
           width: 'auto',
           marginRight: gridView ? '0' : '4px',
           padding: gridView ? '0 5px' : '0',
         }}
-      />)
-    ;
+      />
+    );
     iconLabel = t('pending');
   } else {
     colorType = ThemeConstants.PUBLISHED_COLOR;
-    iconName =
-      (<TelegramIcon
+    iconName = (
+      <TelegramIcon
         sx={{
           height: '16px',
           width: 'auto',
           marginRight: gridView ? '0' : '4px',
           padding: gridView ? '0' : '0',
         }}
-      />)
-    ;
+      />
+    );
   }
   const additionalStyle = () => {
     if (gridView) {
@@ -142,18 +142,19 @@ export default function PageStatus({
         // ml={1}
       >
         {iconName}
-        {!gridView &&
+        {!gridView && (
           <Typography
-            variant='body1'
+            variant="body1"
             sx={{
               fontSize: '12px',
               lineHeight: '1.8',
               display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
             }}
-            className='status-text'
+            className="status-text"
           >
             {iconLabel}
-          </Typography>}
+          </Typography>
+        )}
       </Box>
     </>
   );

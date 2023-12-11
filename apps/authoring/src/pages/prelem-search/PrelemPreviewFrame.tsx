@@ -3,10 +3,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import React, { useState } from 'react';
 import Frame from 'react-frame-component';
-import LightTheme from '../../theme/lightTheme';
-import ThemeConstants from '../../theme/variable';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PrelemPreviewFrameType } from './utils/prelemTypes';
-import PrelemTheme from '../../theme/prelemTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
   mappingDynamicInstance[item] = React.lazy(
@@ -90,26 +90,26 @@ const PrelemPreviewFrame = ({
             device === 'desktop'
               ? '1280px'
               : device === 'tablet'
-                ? '794px'
-                : '100%',
+              ? '794px'
+              : '100%',
           sm:
             device === 'desktop'
               ? '1280px'
               : device === 'tablet'
-                ? '794px'
-                : '431px',
+              ? '794px'
+              : '431px',
           md:
             device === 'desktop'
               ? '1280px'
               : device === 'tablet'
-                ? '794px'
-                : '431px',
+              ? '794px'
+              : '431px',
           lg:
             device === 'desktop'
               ? '100%'
               : device === 'tablet'
-                ? '55vw'
-                : '30vw',
+              ? '55vw'
+              : '30vw',
         },
       }}
     >
@@ -120,12 +120,10 @@ const PrelemPreviewFrame = ({
         contentDidMount={() => handleResize(iframeRef)}
         contentDidUpdate={() => handleResize(iframeRef)}
         scrolling={prelemid == 'Prelem_028' ? 'yes' : 'no'}
-        frameBorder='0'
+        frameBorder="0"
         initialContent={initialContent}
       >
-        <ThemeProvider
-          theme={PrelemTheme}
-        >
+        <ThemeProvider theme={PrelemTheme}>
           <Box
             sx={{ margin: (themeOptions) => themeOptions.prelemMargin.value }}
           >

@@ -14,9 +14,12 @@ import { useContext, useEffect, useState } from 'react';
 // import BasicSwitch from '../Switch';
 import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../utils/authConstants';
-import { filterSelectedArticle, getSubDomain } from '../../../utils/helperFunctions';
+import {
+  filterSelectedArticle,
+  getSubDomain,
+} from '../../../utils/helperFunctions';
 // import { updateArticleSettings } from '../../../articles/Actions';
 import { useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
@@ -128,11 +131,11 @@ const VodInfo = ({ selectedArticle }) => {
   return (
     <Box sx={{ paddingLeft: '20px', paddingRight: '20px' }}>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         <> What's the title of the article?*</>
         <Tooltip
@@ -143,7 +146,7 @@ const VodInfo = ({ selectedArticle }) => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -161,13 +164,13 @@ const VodInfo = ({ selectedArticle }) => {
         multiline
         value={articleInfo.ArticleName}
         onChange={(e) => handleDataChange(e, 'ArticleName')}
-        variant='outlined'
-        placeholder='Write a name here'
+        variant="outlined"
+        placeholder="Write a name here"
         inputProps={{ maxLength: pageNameLength }}
       />
-      {getDisabledState() &&
+      {getDisabledState() && (
         <Typography
-          variant='subtitle2'
+          variant="subtitle2"
           pl={1}
           pt={1}
           sx={{
@@ -175,13 +178,14 @@ const VodInfo = ({ selectedArticle }) => {
           }}
         >
           *Please fill the Page Name
-        </Typography>}
+        </Typography>
+      )}
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         <>What's this article about?</>
         <Tooltip
@@ -193,7 +197,7 @@ const VodInfo = ({ selectedArticle }) => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -211,20 +215,20 @@ const VodInfo = ({ selectedArticle }) => {
         multiline
         value={articleInfo.PageDescription}
         onChange={(e) => handleDataChange(e, 'PageDescription')}
-        variant='outlined'
-        placeholder='Write a description here'
+        variant="outlined"
+        placeholder="Write a description here"
         inputProps={{ maxLength: pageDescriptionLength }}
       />
       <Divider sx={{ marginTop: '20px' }} />
-      <Typography variant='subtitle1' mt={2} mb={1}>
+      <Typography variant="subtitle1" mt={2} mb={1}>
         Article URL?
       </Typography>
       <TextField
         multiline
         // value={articleInfo.PageURL}
         onChange={(e) => handleDataChange(e, 'PageURL')}
-        variant='outlined'
-        placeholder='Write a article URL here'
+        variant="outlined"
+        placeholder="Write a article URL here"
         sx={{
           '.Platform-x-OutlinedInput-root': { color: '#1a0db1' },
         }}
@@ -232,11 +236,11 @@ const VodInfo = ({ selectedArticle }) => {
       />
       <Divider sx={{ marginTop: '20px' }} />
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{ display: 'flex', alignimageInstances: 'center' }}
         mt={2}
         mb={1}
-        className='drawer-label'
+        className="drawer-label"
       >
         Tags
         <Tooltip
@@ -248,7 +252,7 @@ const VodInfo = ({ selectedArticle }) => {
               </Typography>
             </Box>
           }
-          placement='right'
+          placement="right"
         >
           <Box>
             <InfoOutlinedIcon
@@ -264,7 +268,7 @@ const VodInfo = ({ selectedArticle }) => {
       </Typography>
       <Autocomplete
         multiple
-        id='tags-filled'
+        id="tags-filled"
         value={
           articleInfo?.PageTags?.length > 0 ? [...articleInfo.PageTags] : []
         }
@@ -282,10 +286,10 @@ const VodInfo = ({ selectedArticle }) => {
         renderTags={(value: string[], getTagProps) =>
           value.map(
             (option: string, index: number) =>
-              option &&
+              option && (
                 <Chip
                   key={`key${index}`}
-                  variant='outlined'
+                  variant="outlined"
                   label={option}
                   deleteIcon={
                     <DeleteIcon
@@ -299,15 +303,16 @@ const VodInfo = ({ selectedArticle }) => {
                   }}
                   {...getTagProps({ index })}
                 />
-
-          )}
-        renderInput={(params) =>
-          (<TextField
-            {...params}
-            variant='outlined'
-            placeholder={t('page_info_tags_placeholder')}
-          />)
+              )
+          )
         }
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            placeholder={t('page_info_tags_placeholder')}
+          />
+        )}
         sx={{
           height: '48px',
           marginBottom: '10px',
@@ -316,7 +321,7 @@ const VodInfo = ({ selectedArticle }) => {
       />
       <Box sx={{ textAlign: 'right' }} mb={2}>
         <Button
-          variant='contained'
+          variant="contained"
           onClick={saveArticleInfo}
           disabled={getDisabledState()}
         >

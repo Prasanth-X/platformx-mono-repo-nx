@@ -4,7 +4,7 @@ import { Box } from '@mui/system';
 import EcomSearchBox from './EcomSearchBox';
 import { useTranslation } from 'react-i18next';
 import DoneIcon from '@mui/icons-material/Done';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Drawer, Grid, Typography, Fab, Grow } from '@mui/material';
 import MobileMenuIconSvg from '../../assets/svg/mobileMenuIconSvg.svg';
 import SearchBlackSvg from '../../assets/svg/SearchBlack.svg';
@@ -66,7 +66,7 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
 
   return (
     <Box
-      className='ecommerce-topbar'
+      className="ecommerce-topbar"
       sx={{ background: ThemeConstants.WHITE_COLOR }}
     >
       {/* {Large view design} */}
@@ -95,7 +95,7 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
             margin: 'auto 0',
           }}
         >
-          <Typography variant='h4bold'>{t('prelem_choose_content')}</Typography>
+          <Typography variant="h4bold">{t('prelem_choose_content')}</Typography>
         </Grid>
 
         <Grid
@@ -113,7 +113,7 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
             },
           }}
         >
-          <Grid item xs={12} sm={12} em={12} lg={9} className='searchWrapper'>
+          <Grid item xs={12} sm={12} em={12} lg={9} className="searchWrapper">
             <EcomSearchBox
               onSearch={onSearch}
               inputValue={inputValue}
@@ -130,9 +130,9 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
           lg={3}
           container
           spacing={0}
-          direction='column'
-          alignItems='end'
-          justifyContent='center'
+          direction="column"
+          alignItems="end"
+          justifyContent="center"
           sx={{ display: 'flex' }}
         >
           <CtaEditAndDone cancelClick={cancelClick} doneClick={doneClick} />
@@ -158,7 +158,7 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
         }}
       >
         <Box
-          className='fixed-screen-inner'
+          className="fixed-screen-inner"
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -175,37 +175,37 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
               >
                 <Box>
                   <Grid item>
-                    <Typography variant='h4medium'>
+                    <Typography variant="h4medium">
                       {t('prelem_choose_content')}
                     </Typography>
                   </Grid>
                 </Box>
               </Grow>
 
-              <Grid item className='icon-container'>
+              <Grid item className="icon-container">
                 <Typography
-                  className='top-icons right-search-icon'
+                  className="top-icons right-search-icon"
                   sx={{
                     fontSize: ThemeConstants.FONTSIZE_LG,
                   }}
                   onClick={searchToggle}
                 >
-                  <img src={SearchBlackSvg} alt='Search Black Icon' />
+                  <img src={SearchBlackSvg} alt="Search Black Icon" />
                 </Typography>
 
                 <Typography
-                  className='top-icons'
+                  className="top-icons"
                   sx={{
                     fontSize: ThemeConstants.FONTSIZE_LG,
                   }}
                   onClick={toggleDrawer}
                 >
-                  <img src={MobileMenuIconSvg} alt='Mobile Menu Icon' />
+                  <img src={MobileMenuIconSvg} alt="Mobile Menu Icon" />
                 </Typography>
               </Grid>
             </>
           ) : (
-            <Grid item className='search-item-container small-device'>
+            <Grid item className="search-item-container small-device">
               <Grow
                 in={showSearch}
                 style={{ transformOrigin: '0 0 0' }}
@@ -228,13 +228,13 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
                 </Box>
               </Grow>
               <Typography
-                className='icon-inside-search'
+                className="icon-inside-search"
                 sx={{
                   fontSize: ThemeConstants.FONTSIZE_LG,
                 }}
                 onClick={searchCloseToggle}
               >
-                <img src={CloseSearchSvg} alt='Close Search Icon' />
+                <img src={CloseSearchSvg} alt="Close Search Icon" />
               </Typography>
             </Grid>
           )}
@@ -250,7 +250,7 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
           }}
         >
           <Box sx={{ margin: '0 25px 25px 0' }} onClick={doneClick}>
-            <Fab size='large' color='primary' aria-label='add'>
+            <Fab size="large" color="primary" aria-label="add">
               <DoneIcon style={{ color: '#fff' }} />
             </Fab>
           </Box>
@@ -271,8 +271,8 @@ const EComTopHeading = (_props: eComTopHeadingprops) => {
           top: { lg: '50px !important' },
         }}
       >
-        <Drawer anchor='right' open={open} sx={{ zIndex: 10000 }}>
-          <Box role='presentation'>
+        <Drawer anchor="right" open={open} sx={{ zIndex: 10000 }}>
+          <Box role="presentation">
             <EcomLeftSidebar
               loading={loading}
               toggleDrawer={toggleDrawer}

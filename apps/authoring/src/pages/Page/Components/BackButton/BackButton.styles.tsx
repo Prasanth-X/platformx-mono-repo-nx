@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const useStyles = makeStyles(() => ({
   topLeftCta: {
@@ -10,10 +10,10 @@ export const useStyles = makeStyles(() => ({
     '&:hover': {
       color: ThemeConstants.PRIMARY_COLOR,
     },
-    '& svg':  {
+    '& svg': {
       fontSize: ThemeConstants.FONTSIZE_28,
       marginRight: '2px',
       marginLeft: '-10px',
-    }
-  }
+    },
+  },
 }));

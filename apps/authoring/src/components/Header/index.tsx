@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router';
 import Profile from '../../assets/images/avatar.png';
 import Logo from '../../assets/images/platform-x-logo.png';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { logoutUrl } from '../../utils/authConstants';
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +18,11 @@ import LanguageDropDown from '../../Common/LanguageDropDown';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { callSaveandResetWarning } from '../../store/Actions';
 import PlateformXDialog from '../Modal';
-import { getCurrentLang, getSelectedRoute, getSelectedSite } from '../../utils/helperFunctions';
+import {
+  getCurrentLang,
+  getSelectedRoute,
+  getSelectedSite,
+} from '../../utils/helperFunctions';
 
 const saveWarningMessage = {
   saveWarnTitle: 'Unsaved Changes',
@@ -115,9 +119,13 @@ export const Header = (props) => {
   };
   const handleLogoClick = () => {
     if (!hasUnsavedChanges()) {
-      getSelectedRoute() ? 
-      navigate('/dashboard') : 
-      window.location.replace(`${process.env.REACT_APP_BASE_URL}/${getSelectedSite()}/en/dashboard`);
+      getSelectedRoute()
+        ? navigate('/dashboard')
+        : window.location.replace(
+            `${
+              process.env.REACT_APP_BASE_URL
+            }/${getSelectedSite()}/en/dashboard`
+          );
     } else {
       setTriggerCase('PAGE_LIST');
     }
@@ -154,7 +162,7 @@ export const Header = (props) => {
       >
         {isActive ? (
           <Box onClick={handleLogoClick} sx={{ cursor: 'pointer' }}>
-            <img src={Logo} height='30' />
+            <img src={Logo} height="30" />
           </Box>
         ) : (
           <Typography
@@ -207,10 +215,10 @@ export const Header = (props) => {
                   key={index}
                 >
                   <Typography
-                    variant='subtitle1'
+                    variant="subtitle1"
                     color={ThemeConstants.WHITE_COLOR}
                     sx={{ paddingRight: '20px', cursor: 'pointer' }}
-                    className='homepagenav'
+                    className="homepagenav"
                   >
                     {item}
                   </Typography>
@@ -223,8 +231,8 @@ export const Header = (props) => {
                 }}
               >
                 <Button
-                  variant='outlined'
-                  className='homepagenav'
+                  variant="outlined"
+                  className="homepagenav"
                   sx={{
                     textTransform: 'none',
                     borderColor: ThemeConstants.WHITE_COLOR,
@@ -248,8 +256,8 @@ export const Header = (props) => {
                 }}
               >
                 <Button
-                  variant='outlined'
-                  className='homepagenav'
+                  variant="outlined"
+                  className="homepagenav"
                   sx={{
                     textTransform: 'none',
                     borderColor: ThemeConstants.WHITE_COLOR,
@@ -269,8 +277,8 @@ export const Header = (props) => {
             </Box>
             <Box>
               <IconButton
-                aria-label='upload picture'
-                component='span'
+                aria-label="upload picture"
+                component="span"
                 onClick={handleClick}
                 sx={{
                   display: { xs: 'flex', md: 'flex', lg: 'none' },
@@ -279,7 +287,7 @@ export const Header = (props) => {
                 <MenuIcon style={{ color: ThemeConstants.WHITE_COLOR }} />
               </IconButton>
               <Menu
-                id='basic-menu'
+                id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
@@ -289,20 +297,20 @@ export const Header = (props) => {
               >
                 {props.pages.map((item, index) => (
                   <MenuItem onClick={handleClose} key={index}>
-                    <Typography variant='subtitle1'>{item}</Typography>
+                    <Typography variant="subtitle1">{item}</Typography>
                   </MenuItem>
                 ))}
                 <MenuItem onClick={handleClose}>
                   <Button
-                    className='homepagenav'
-                    variant='contained'
+                    className="homepagenav"
+                    variant="contained"
                     onClick={props.onLoginClick}
                   >
                     Sign In
                   </Button>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <Button className='homepagenav' variant='contained'>
+                  <Button className="homepagenav" variant="contained">
                     Price
                   </Button>
                 </MenuItem>
@@ -359,7 +367,7 @@ export const Header = (props) => {
           confirmButtonHandle={onCloseSaveWarningHandler}
           closeButtonHandle={() => callFnsCase(triggerCase)}
           crossButtonHandle={unsavedCrossButtonHandle}
-          modalType='unsavedChanges'
+          modalType="unsavedChanges"
         />
       ) : null}
       {/* <ToastContainer

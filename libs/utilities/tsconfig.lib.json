@@ -2,13 +2,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "composite": true,
     "types": [
       "node",
 
       "@nx/react/typings/cssmodule.d.ts",
       "@nx/react/typings/image.d.ts"
     ],
-    "composite": true
+    
   },
   "exclude": [
     "jest.config.ts",

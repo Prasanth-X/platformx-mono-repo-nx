@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Theme } from '@mui/material';
 
 export const useStyles = makeStyles((theme: Theme) => ({

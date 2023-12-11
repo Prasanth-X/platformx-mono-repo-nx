@@ -13,7 +13,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { format } from 'date-fns';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const MyActionBar = ({ onAccept, onCancel }) => {
   return (
@@ -24,7 +24,7 @@ const MyActionBar = ({ onAccept, onCancel }) => {
       }}
     >
       <Button
-        variant='contained'
+        variant="contained"
         disableElevation
         sx={{
           backgroundColor: ThemeConstants.WHITE_COLOR,
@@ -45,7 +45,7 @@ const MyActionBar = ({ onAccept, onCancel }) => {
       </Button>
       <Button
         onClick={onAccept}
-        variant='contained'
+        variant="contained"
         disableElevation
         sx={{
           backgroundColor: ThemeConstants.BLACK_COLOR,
@@ -73,7 +73,7 @@ const Transition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
@@ -129,7 +129,7 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
           TransitionComponent={Transition}
           keepMounted
           onClose={handleDialogClose}
-          aria-describedby='alert-dialog-slide-description'
+          aria-describedby="alert-dialog-slide-description"
         >
           <Box
             sx={{
@@ -216,7 +216,7 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack spacing={3}>
                 <MobileDatePicker
-                  toolbarTitle='Select From Date'
+                  toolbarTitle="Select From Date"
                   value={value}
                   open={isOpen}
                   onOpen={handleIsOpen}
@@ -276,8 +276,8 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
                       {...params}
                       InputProps={{
                         endAdornment: (
-                          <InputAdornment position='end'>
-                            <IconButton edge='end' onClick={handleIsOpen}>
+                          <InputAdornment position="end">
+                            <IconButton edge="end" onClick={handleIsOpen}>
                               <CalendarMonthIcon sx={{ color: '#000000' }} />{' '}
                             </IconButton>
                           </InputAdornment>
@@ -304,7 +304,7 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack spacing={3}>
                 <MobileDatePicker
-                  toolbarTitle='Select To Date'
+                  toolbarTitle="Select To Date"
                   value={valueTo}
                   open={isToOpen}
                   onOpen={handleToOpen}
@@ -364,8 +364,8 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
                       {...params}
                       InputProps={{
                         endAdornment: (
-                          <InputAdornment position='end'>
-                            <IconButton edge='end' onClick={handleToOpen}>
+                          <InputAdornment position="end">
+                            <IconButton edge="end" onClick={handleToOpen}>
                               <CalendarMonthIcon sx={{ color: '#000000' }} />{' '}
                             </IconButton>
                           </InputAdornment>
@@ -384,7 +384,7 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
             }}
           >
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.WHITE_COLOR,
                 color: ThemeConstants.BLACK_COLOR,
@@ -405,7 +405,7 @@ export default function DateRangeDialogBox({ openCustom, handleCustomOpen }) {
             </Button>
 
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 backgroundColor: ThemeConstants.BLACK_COLOR,
                 color: ThemeConstants.WHITE_COLOR,

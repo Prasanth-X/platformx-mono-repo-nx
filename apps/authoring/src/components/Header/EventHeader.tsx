@@ -5,7 +5,7 @@ import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Profile from '../../assets/images/avatar.png';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { logoutUrl } from '../../utils/authConstants';
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -133,7 +133,7 @@ export const EventHeader = (props) => {
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant='h6medium' mr={1}>
+          <Typography variant="h6medium" mr={1}>
             {userInfo?.name}
           </Typography>
           <Avatar src={Profile} onClick={handleOpen} />
@@ -187,7 +187,7 @@ export const EventHeader = (props) => {
           confirmButtonHandle={onCloseSaveWarningHandler}
           closeButtonHandle={() => callFnsCase(triggerCase)}
           crossButtonHandle={unsavedCrossButtonHandle}
-          modalType='unsavedChanges'
+          modalType="unsavedChanges"
         />
       ) : null}
       {/* <ToastContainer

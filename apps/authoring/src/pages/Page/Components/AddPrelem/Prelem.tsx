@@ -10,7 +10,7 @@ import ButtonEditWindow from '../../../../components/buttonEditWindow';
 import { useComment } from '../../../../hooks/useComment/useComment';
 import { updateContentForCard } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import PrelemTheme from '../../../../theme/prelemTheme';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import { authInfo } from '../../../../utils/authConstants';
 import {
   convertToLowerCase,

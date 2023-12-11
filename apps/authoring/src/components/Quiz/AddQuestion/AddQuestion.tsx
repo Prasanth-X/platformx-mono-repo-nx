@@ -18,7 +18,7 @@ import {
   publishContentType,
   updateContentType,
 } from '../../../services/contentTypes/contentTypes.api';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { ContentType } from '../../../utils/Enums/ContentType';
 import { CATEGORY_CONTENT } from '../../../utils/constants';
 import {
@@ -626,10 +626,10 @@ const AddQuestion = ({
               saveButton={false}
               saveorPublish={onSaveQuestion}
               saveText={questionId !== '' ? t('update') : t('done')}
-              previewText='Preview'
+              previewText="Preview"
               showPreview={false}
-              toolTipText='Unable to preview please add required details'
-              saveVariant='contained'
+              toolTipText="Unable to preview please add required details"
+              saveVariant="contained"
               category={CATEGORY_CONTENT}
               subCategory={ContentType.Quiz}
             />
@@ -643,39 +643,39 @@ const AddQuestion = ({
               overflowY: 'scroll',
               overflowX: 'hidden',
             }}
-            id='scrollableDiv'
+            id="scrollableDiv"
             className={classes.mainStyleWrapper}
           >
             <CommonBoxWithNumber
-              number='01'
+              number="01"
               title={t('quiz_question_content')}
-              titleVarient='p3semibold'
-              subTitleVarient='p4regular'
+              titleVarient="p3semibold"
+              subTitleVarient="p4regular"
               subTitle={t('subhead')}
             >
               <Grid container>
-                <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+                <Grid item xs={12} sm={5} md={5} className="leftFiled">
                   <TitleSubTitle
                     title={t('quiz_question_type')}
                     subTitle={t('quiz_question_type_subtitle')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
-                <Grid item xs={12} sm={7} md={7} className='textFiled'>
+                <Grid item xs={12} sm={7} md={7} className="textFiled">
                   <Box>
                     <RadioGroup
-                      name='questionType'
+                      name="questionType"
                       value={addQuestionInfo.questionType}
                       onChange={handleChange}
                       row
                     >
                       <RadioControlLabel
-                        value='Single'
+                        value="Single"
                         label={t('quiz_sigle_choise')}
                       />
                       <RadioControlLabel
-                        value='Multiple'
+                        value="Multiple"
                         label={t('quiz_multi_choise')}
                       />
                     </RadioGroup>
@@ -683,34 +683,34 @@ const AddQuestion = ({
                 </Grid>
               </Grid>
               <Grid container rowSpacing={1}>
-                <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+                <Grid item xs={12} sm={5} md={5} className="leftFiled">
                   <TitleSubTitle
                     title={`${t('quiz_question_head')}*`}
                     subTitle={t('quiz_addqus_subtitle')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
-                <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+                <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
                   <TextBox
-                    name='question'
+                    name="question"
                     placeHolder={t('qus_placeholder')}
                     handleChange={handleChange}
                     maxCharLength={120}
                     state={addQuestionInfo.question}
                   />
                 </Grid>
-                <Grid item xs={12} sm={5} md={5} className='leftFiled'>
+                <Grid item xs={12} sm={5} md={5} className="leftFiled">
                   <TitleSubTitle
                     title={t('quiz_addqus_description')}
                     subTitle={t('quiz_addqus_subdes')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
-                <Grid item xs={12} sm={7} md={7} className='textFiled'>
+                <Grid item xs={12} sm={7} md={7} className="textFiled">
                   <AutoTextArea
-                    name='shortDesc'
+                    name="shortDesc"
                     placeHolder={t('quiz_description_placeholder')}
                     handleChange={handleChange}
                     maxCharLength={400}
@@ -719,15 +719,15 @@ const AddQuestion = ({
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid item xs={12} sm={5} md={5} className='leftFiledLast'>
+                <Grid item xs={12} sm={5} md={5} className="leftFiledLast">
                   <TitleSubTitle
                     title={t('quiz_addqus_image_title')}
                     subTitle={t('quiz_addqus_image_subtitle')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
-                <Grid item xs={12} sm={7} md={7} className='textFiledLast'>
+                <Grid item xs={12} sm={7} md={7} className="textFiledLast">
                   {addQuestionInfo.queBackgroundImg && addQuestionInfo.isImg ? (
                     <Box
                       sx={{
@@ -877,7 +877,7 @@ const AddQuestion = ({
                           }}
                           m={1}
                         >
-                          <img src={ArrowUpwardIcon} alt='ArrowUpwardIcon' />
+                          <img src={ArrowUpwardIcon} alt="ArrowUpwardIcon" />
                         </Box>
                         <Box
                           sx={{
@@ -887,8 +887,8 @@ const AddQuestion = ({
                           }}
                         >
                           <Typography
-                            variant='h5medium'
-                            component='h5'
+                            variant="h5medium"
+                            component="h5"
                             sx={{ color: '#000000' }}
                           >
                             {t('page_choose_image')}
@@ -992,7 +992,7 @@ const AddQuestion = ({
           isDialogOpen={showDuplicateModal}
           closeButtonHandle={onClickClose}
           doneButtonHandle={onSaveQuestion}
-          contentType='Question'
+          contentType="Question"
         />
       ) : null}
       {openPageExistModal ? (
@@ -1005,7 +1005,7 @@ const AddQuestion = ({
           closeButtonHandle={pageExistCloseHandle}
           confirmButtonHandle={pageExistYesButtonHandle}
           crossButtonHandle={pageExistCloseHandle}
-          modalType=''
+          modalType=""
         />
       ) : null}
       {exitPopUp ? (
@@ -1018,7 +1018,7 @@ const AddQuestion = ({
           closeButtonHandle={onHandleCloseButton}
           confirmButtonHandle={onSaveQuestion}
           crossButtonHandle={onHandleCrossButton}
-          modalType='unsavedChanges'
+          modalType="unsavedChanges"
         />
       ) : null}
     </>

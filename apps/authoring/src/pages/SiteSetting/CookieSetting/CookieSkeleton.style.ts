@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { border } from '@mui/system';
 export const useCookieSkeletonStyle = makeStyles((theme) => ({
 
@@ -12,7 +12,7 @@ export const useCookieSkeletonStyle = makeStyles((theme) => ({
         zIndex: 1000,
     },
 
-    ConsetCookieSkeleton:{
+    ConsetCookieSkeleton: {
         backgroundColor: '#F3FAFF',
         display: 'flex',
         justifyContent: 'center',
@@ -22,13 +22,13 @@ export const useCookieSkeletonStyle = makeStyles((theme) => ({
         padding: '0 4px 0 15px',
         marginTop: '16px',
     },
-    ConsetCookieSkeletonbox:{
+    ConsetCookieSkeletonbox: {
         width: '100%'
     },
-    ConsetCookieSkeletonboxtype:{
-       
+    ConsetCookieSkeletonboxtype: {
+
     },
-    cookieTextfield:{
+    cookieTextfield: {
         background: '#EFF0F7',
         borderRadius: '5px',
         fontFamily: 'Inter !important',
@@ -36,36 +36,36 @@ export const useCookieSkeletonStyle = makeStyles((theme) => ({
         padding: '5px 20px',
         height: '57px',
     },
-    cookieTypo:{
+    cookieTypo: {
         color: 'rgb(211,47,47)',
         marginTop: '10px',
         fontSize: '14px',
         marginLeft: '14px',
 
     },
-    InputLabelProps:{
+    InputLabelProps: {
         top: '4px',
         left: '9px',
         fontFamily: 'Inter',
         fontSize: '14px',
         color: '#6E7191',
     },
-    cookietextboxtypo:{
-        color: '#5c6574', 
+    cookietextboxtypo: {
+        color: '#5c6574',
         marginTop: '10px'
     },
-    cookieTextAreaTypo:{
-        color: '#5c6574', 
+    cookieTextAreaTypo: {
+        color: '#5c6574',
         marginTop: '10px'
     },
 
-    textAreAuto:{
+    textAreAuto: {
         width: '100%',
-          resize: 'none',
-          padding: '20px',
-          borderRadius: '5px',
-          backgroundColor: '#EFF0F6',
-          border: '0',
-          fontFamily: 'inter'
+        resize: 'none',
+        padding: '20px',
+        borderRadius: '5px',
+        backgroundColor: '#EFF0F6',
+        border: '0',
+        fontFamily: 'inter'
     },
 }));

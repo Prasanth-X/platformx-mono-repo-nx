@@ -2,7 +2,7 @@ import { Button, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { dateFormat, handleHtmlTags } from '../../../utils/helperFunctions';
 
 interface DesktopListingProps {
@@ -60,7 +60,7 @@ const DesktopListing = ({
           }}
         >
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             sx={{
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -78,7 +78,7 @@ const DesktopListing = ({
           sx={{ display: 'flex', justifyContent: 'flex-start' }}
         >
           <Typography
-            variant='h6regular'
+            variant="h6regular"
             sx={{
               color: '#b3b3b3',
               overflow: 'hidden',
@@ -105,7 +105,7 @@ const DesktopListing = ({
               WebkitBoxOrient: 'vertical',
               textTransform: 'capitalize',
             }}
-            variant='h6regular'
+            variant="h6regular"
           >
             {author}
           </Typography>
@@ -115,15 +115,15 @@ const DesktopListing = ({
           sm={2.4}
           sx={{ display: 'flex', justifyContent: 'flex-start' }}
         >
-          <Typography variant='h6regular'>{dateFormat(time)}</Typography>
+          <Typography variant="h6regular">{dateFormat(time)}</Typography>
         </Grid>
         <Grid
           item
           sm={1} //sx={{ marginRight: "3.1%" }}
         >
           <Button
-            variant='secondaryButton'
-            className='sm'
+            variant="secondaryButton"
+            className="sm"
             sx={{
               backgroundColor: isSelected(item)
                 ? ThemeConstants.BLACK_COLOR

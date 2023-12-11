@@ -16,7 +16,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updatePageSettings } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import siteLevelSchema from '../../../../utils/siteLevelSettings.json';
 import { useStyles } from '../PrelemSettings/PrelemSettings.styles';
 import './PageSettings.css';
@@ -148,45 +148,45 @@ const TwitterSettings = ({
       expanded={expanded === 'twitter-setings'}
       onChange={handleChange('twitter-setings')}
       sx={{
-        boxShadow: "none",
+        boxShadow: 'none',
         minHeight: 0,
-        "&.Mui-expanded": {
-          margin: "0px",
+        '&.Mui-expanded': {
+          margin: '0px',
           minHeight: 0,
         },
-        "& .Platform-x-AccordionSummary-root": {
+        '& .Platform-x-AccordionSummary-root': {
           padding: 0,
-          margin: "0 !important",
-          minHeight: "0 !important",
+          margin: '0 !important',
+          minHeight: '0 !important',
         },
       }}
     >
       <AccordionSummary
-      sx={{
-        "&.mui-expanded": {
-          minHeight: 0,
-          margin: "0",
-        },
-        "& .Platform-x-AccordionSummary-content": {
-          margin: "0 !important",
-        },
-      }}
+        sx={{
+          '&.mui-expanded': {
+            minHeight: 0,
+            margin: '0',
+          },
+          '& .Platform-x-AccordionSummary-content': {
+            margin: '0 !important',
+          },
+        }}
         expandIcon={
           <ExpandMoreIcon sx={{ color: ThemeConstants.BLACK_COLOR }} />
         }
-        aria-controls='twitter-setings-content'
-        id='twitter-setings-header'
+        aria-controls="twitter-setings-content"
+        id="twitter-setings-header"
       >
-          <Typography className='labelbox' variant='p4bold'>
-            {t('page_twitter_title')}
-          </Typography>
+        <Typography className="labelbox" variant="p4bold">
+          {t('page_twitter_title')}
+        </Typography>
       </AccordionSummary>
-      <Box className='rowBox'>
+      <Box className="rowBox">
         {twitterInfo.SocialTwitterCardSize == 'summary_large_image' ? (
           <Box>
             {twitterInfo.SocialOgTwitterImage == '' ? (
               <Box className={classes.uploadImageBox} onClick={onUploadClick}>
-                <Typography className='switchbox' variant='p4regular'>
+                <Typography className="switchbox" variant="p4regular">
                   <Box className={classes.blackRoundIcon}>
                     <ArrowUpward />
                   </Box>
@@ -205,7 +205,7 @@ const TwitterSettings = ({
                       <Box className={classes.blackRoundIcon}>
                         <Cached />
                       </Box>
-                      <Typography className='labelbox' variant='p4regular'>
+                      <Typography className="labelbox" variant="p4regular">
                         {t('replace')}
                       </Typography>
                     </Box>
@@ -217,7 +217,7 @@ const TwitterSettings = ({
                       <Box className={classes.blackRoundIcon}>
                         <Delete />
                       </Box>
-                      <Typography className='labelbox' variant='p4regular'>
+                      <Typography className="labelbox" variant="p4regular">
                         {t('delete')}
                       </Typography>
                     </Box>
@@ -225,11 +225,11 @@ const TwitterSettings = ({
                 </Box>
               </Box>
             )}
-            <Box className='rowBox'>
-              <Typography className='labelbox' variant='p4regular'>
+            <Box className="rowBox">
+              <Typography className="labelbox" variant="p4regular">
                 {twitterInfo.SocialOgTwitterURL}
               </Typography>
-              <Typography className='labelbox' variant='p4regular'>
+              <Typography className="labelbox" variant="p4regular">
                 {twitterInfo.SocialOgTwitterTitle.substring(
                   0,
                   twitterLargePreviewNameLength
@@ -237,7 +237,7 @@ const TwitterSettings = ({
                 {twitterInfo.SocialOgTwitterTitle.length >
                   twitterLargePreviewNameLength && <span>...</span>}
               </Typography>
-              <Typography className='labelbox' variant='p4regular'>
+              <Typography className="labelbox" variant="p4regular">
                 {twitterInfo.SocialOgTwitterDescription.substring(
                   0,
                   twitterLargePreviewDescriptionLength
@@ -256,7 +256,7 @@ const TwitterSettings = ({
                     <Box className={classes.blackRoundIcon}>
                       <Cached />
                     </Box>
-                    <Typography className='labelbox' variant='p4regular'>
+                    <Typography className="labelbox" variant="p4regular">
                       {t('replace')}
                     </Typography>
                   </Box>
@@ -268,7 +268,7 @@ const TwitterSettings = ({
                     <Box className={classes.blackRoundIcon}>
                       <Delete />
                     </Box>
-                    <Typography className='labelbox' variant='p4regular'>
+                    <Typography className="labelbox" variant="p4regular">
                       {t('delete')}
                     </Typography>
                   </Box>
@@ -278,7 +278,7 @@ const TwitterSettings = ({
             <Box className={classes.TwiterInfoBox}>
               {twitterInfo.SocialOgTwitterImage == '' ? (
                 <Box className={classes.uploadImageBox} onClick={onUploadClick}>
-                  <Typography className='switchbox' variant='p4regular'>
+                  <Typography className="switchbox" variant="p4regular">
                     <Box className={classes.blackRoundIcon}>
                       <ArrowUpward />
                     </Box>
@@ -288,14 +288,14 @@ const TwitterSettings = ({
               ) : (
                 <img
                   src={twitterInfo.SocialOgTwitterImage}
-                  alt='image file'
-                  width='100%'
+                  alt="image file"
+                  width="100%"
                   style={{ height: 'auto' }}
                 />
               )}
             </Box>
             <Box p={1} className={classes.imageTitle}>
-              <Typography className='labelbox' variant='p4regular'>
+              <Typography className="labelbox" variant="p4regular">
                 {twitterInfo.SocialOgTwitterTitle.substring(
                   0,
                   twitterSmallPreviewNameLength
@@ -303,7 +303,7 @@ const TwitterSettings = ({
                 {twitterInfo.SocialOgTwitterTitle.length >
                   twitterSmallPreviewNameLength && <span>...</span>}
               </Typography>
-              <Typography className='labelbox' variant='p4regular'>
+              <Typography className="labelbox" variant="p4regular">
                 {twitterInfo.SocialOgTwitterDescription.substring(
                   0,
                   twitterSmallPreviewDescriptionLength
@@ -311,26 +311,26 @@ const TwitterSettings = ({
                 {twitterInfo.SocialOgTwitterDescription.length >
                   twitterSmallPreviewDescriptionLength && <span>...</span>}
               </Typography>
-              <Typography className='labelbox' variant='p4regular'>
+              <Typography className="labelbox" variant="p4regular">
                 {twitterInfo.SocialOgTwitterURL}
               </Typography>
             </Box>
           </Box>
         )}
-        <Box className='rowBox'>
-          <Typography className='labelbox' variant='p4regular'>
+        <Box className="rowBox">
+          <Typography className="labelbox" variant="p4regular">
             {t('page_twitter_size')}
           </Typography>
           <FormControl>
             <RadioGroup
               row
-              aria-labelledby='demo-row-radio-buttons-group-label'
-              name='row-radio-buttons-group'
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
               value={twitterInfo.SocialTwitterCardSize}
               onChange={(e) => handleDataChange(e, 'SocialTwitterCardSize')}
             >
               <FormControlLabel
-                value='summary'
+                value="summary"
                 control={<Radio />}
                 label={t('small')}
                 sx={{
@@ -344,7 +344,7 @@ const TwitterSettings = ({
                 }}
               />
               <FormControlLabel
-                value='summary_large_image'
+                value="summary_large_image"
                 control={<Radio />}
                 label={t('large')}
                 sx={{
@@ -360,51 +360,51 @@ const TwitterSettings = ({
             </RadioGroup>
           </FormControl>
         </Box>
-        <Box className='rowBox'>
-          <Typography className='labelbox' variant='p4regular'>
+        <Box className="rowBox">
+          <Typography className="labelbox" variant="p4regular">
             {t('page_twitter_ogtitle')}
           </Typography>
           <TextField
             multiline
             value={twitterInfo.SocialOgTwitterTitle}
             onChange={(e) => handleDataChange(e, 'SocialOgTwitterTitle')}
-            variant='outlined'
-            size='small'
+            variant="outlined"
+            size="small"
             placeholder={t('page_search_title_placeholder')}
             inputProps={{ maxLength: twitterNameLength }}
           />
         </Box>
-        <Box className='rowBox'>
-          <Typography className='labelbox' variant='p4regular'>
+        <Box className="rowBox">
+          <Typography className="labelbox" variant="p4regular">
             {t('page_twitter_ogdescription')}
           </Typography>
           <TextField
             multiline
             value={twitterInfo.SocialOgTwitterDescription}
             onChange={(e) => handleDataChange(e, 'SocialOgTwitterDescription')}
-            variant='outlined'
-            size='small'
+            variant="outlined"
+            size="small"
             placeholder={t('page_info_about_placeholder')}
             inputProps={{ maxLength: twitterDescriptionLength }}
           />
         </Box>
-        <Box className='rowBox'>
-          <Typography className='labelbox' variant='p4regular'>
+        <Box className="rowBox">
+          <Typography className="labelbox" variant="p4regular">
             {t('page_twitter_url')}
           </Typography>
           <TextField
             multiline
             value={twitterInfo.SocialOgTwitterImage}
             onChange={(e) => handleDataChange(e, 'SocialOgTwitterImage')}
-            variant='outlined'
-            size='small'
+            variant="outlined"
+            size="small"
             placeholder={t('page_seo_url_placeholder')}
             inputProps={{ readOnly: true }}
           />
         </Box>
-        <Box className='rowBox'>
+        <Box className="rowBox">
           <Button
-            variant='contained'
+            variant="contained"
             disabled={initialTwitter.current === twitterInfo}
             sx={{ width: '100%' }}
             onClick={saveTwitterInfo}

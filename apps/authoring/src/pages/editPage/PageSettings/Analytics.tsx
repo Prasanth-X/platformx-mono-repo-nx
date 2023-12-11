@@ -5,7 +5,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { updateContentForCard, updatePageModel } from '../../../store/Actions';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../Switch';
 import { AnalyticsInfo } from '../utils/editTypes';
 const Analytics = () => {
@@ -18,18 +18,19 @@ const Analytics = () => {
     PageAnalytics: AnalyticsEnable === undefined ? false : AnalyticsEnable,
     EventBasedAnalytics:
       EventBasedAnalytics === undefined ? false : EventBasedAnalytics,
-  })
-  const [analyticsInfo, setAnalyticsInfo] = useState<AnalyticsInfo>(initialAnalytics.current);
+  });
+  const [analyticsInfo, setAnalyticsInfo] = useState<AnalyticsInfo>(
+    initialAnalytics.current
+  );
 
   useEffect(() => {
     initialAnalytics.current = {
       PageAnalytics: AnalyticsEnable === undefined ? false : AnalyticsEnable,
       EventBasedAnalytics:
         EventBasedAnalytics === undefined ? false : EventBasedAnalytics,
-    }
-    setAnalyticsInfo(initialAnalytics.current)
-
-  }, [state.page.pageModel])
+    };
+    setAnalyticsInfo(initialAnalytics.current);
+  }, [state.page.pageModel]);
 
   // Function to handle switch changes
   const handleControlsChange = (event, fieldType) => {
@@ -71,12 +72,12 @@ const Analytics = () => {
         mt={2}
       >
         <Typography
-          variant='subtitle1'
+          variant="subtitle1"
           sx={{
             display: 'flex',
             alignItems: 'center',
           }}
-          className='drawer-label'
+          className="drawer-label"
         >
           {t('page_view_analytics')}
           <Tooltip
@@ -90,7 +91,7 @@ const Analytics = () => {
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -111,7 +112,7 @@ const Analytics = () => {
         />
       </Box>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -130,7 +131,7 @@ const Analytics = () => {
       </Typography>
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={initialAnalytics.current === analyticsInfo}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

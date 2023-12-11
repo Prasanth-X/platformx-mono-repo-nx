@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import PopupImage from '../../assets/images/createPagePopupImage.png';
 import LanguageDropDownCheckBox from '../../Common/LanguageDropDownCheckBox';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { formatPageUrl } from '../../utils/helper';
 import '../articles/DuplicateContentPopup.css';
 import { nameLength } from '../editPage/utils/constants';
@@ -35,7 +35,6 @@ export const CreatePage = ({
   const [showPageUrlError, setShowPageUrlError] = useState(false);
   const { state } = useContext(Store);
   const { page } = state;
-  
 
   const handleConfirm = () => {
     const pgName = pageName.trim();
@@ -77,12 +76,12 @@ export const CreatePage = ({
   };
   const classes = useStyles();
   useEffect(() => {
-    const keyDownHandler = event => {
+    const keyDownHandler = (event) => {
       if (event.key === 'Enter') {
         event.preventDefault();
         handleConfirm();
       }
-    }
+    };
     document.addEventListener('keydown', keyDownHandler);
     return () => {
       document.removeEventListener('keydown', keyDownHandler);
@@ -93,8 +92,8 @@ export const CreatePage = ({
       fullWidth
       open={isDialogOpen}
       onClose={handleClose}
-      aria-labelledby='alert-dialog-title'
-      aria-describedby='alert-dialog-description'
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
       sx={{
         '.Platform-x-Dialog-paper': {
           padding: 0,
@@ -112,29 +111,29 @@ export const CreatePage = ({
               <Box className={classes.createPagePopuprowBox}>
                 {title && (
                   <Typography
-                    id='alert-dialog-title'
-                    component='h2'
-                    variant='h3semibold'
+                    id="alert-dialog-title"
+                    component="h2"
+                    variant="h3semibold"
                   >
                     {title}
                   </Typography>
                 )}
               </Box>
               <Box className={classes.createPagePopuprowBox}>
-                <Typography variant='h5regular'>
+                <Typography variant="h5regular">
                   {t('page_title_label')}
                 </Typography>
                 <TextField
                   autoFocus
                   value={pageName}
                   placeholder={t('page_title_placeholer')}
-                  margin='dense'
-                  id='name'
-                  type='text'
+                  margin="dense"
+                  id="name"
+                  type="text"
                   onChange={(e) => handlePgNameChange(e)}
                   fullWidth
-                  variant='outlined'
-                  autoComplete='off'
+                  variant="outlined"
+                  autoComplete="off"
                   inputProps={{ maxLength: nameLength }}
                   sx={{
                     '.Platform-x-Input-root:after': {
@@ -143,25 +142,25 @@ export const CreatePage = ({
                   }}
                 />
                 {showPageNameError && (
-                  <Typography variant='h7regular' style={{ color: 'red' }}>
+                  <Typography variant="h7regular" style={{ color: 'red' }}>
                     Page name cant be blank!
                   </Typography>
                 )}
               </Box>
               <Box className={classes.createPagePopuprowBox}>
-                <Typography variant='h5regular'>
+                <Typography variant="h5regular">
                   {t('page_url_label')}
                 </Typography>
                 <TextField
-                  margin='dense'
-                  id='name'
-                  type='text'
+                  margin="dense"
+                  id="name"
+                  type="text"
                   placeholder={t('page_url_placeholder')}
                   onChange={(e) => handleUrlChange(e)}
                   value={pageUrl}
                   fullWidth
-                  variant='outlined'
-                  autoComplete='off'
+                  variant="outlined"
+                  autoComplete="off"
                   sx={{
                     '.Platform-x-Input-root:after': {
                       borderBottom: `1px solid ${ThemeConstants.BLACK_COLOR}`,
@@ -169,14 +168,14 @@ export const CreatePage = ({
                   }}
                 />
                 {showPageUrlError && (
-                  <Typography variant='h7regular' style={{ color: 'red' }}>
+                  <Typography variant="h7regular" style={{ color: 'red' }}>
                     Page URL cant be blank!
                   </Typography>
                 )}
               </Box>
               {isDuplicate && (
                 <Box className={classes.createPagePopuprowBox}>
-                  <Typography variant='h5regular'>
+                  <Typography variant="h5regular">
                     {t('page_language_label')}
                   </Typography>
                   <LanguageDropDownCheckBox
@@ -189,13 +188,13 @@ export const CreatePage = ({
             <Box className={classes.createPagePopupButtonWp}>
               <Button
                 disableElevation
-                variant='outlined'
+                variant="outlined"
                 onClick={() => closeButtonHandle()}
               >
                 {t('close')}
               </Button>
               <Button
-                variant='contained'
+                variant="contained"
                 disabled={
                   isDuplicate &&
                   (pageName.trim().length == 0 ||
@@ -215,7 +214,7 @@ export const CreatePage = ({
         </Grid>
         <Grid xs={12} md={6} className={classes.createPagePopupRight}>
           <Box className={classes.popupRightImage}>
-            <img src={PopupImage} alt='create Page Popup Image' />
+            <img src={PopupImage} alt="create Page Popup Image" />
           </Box>
         </Grid>
       </Grid>

@@ -11,7 +11,7 @@ import LanguageDropDown from '../../Common/LanguageDropDown';
 import Logo from '../../assets/images/platform-x-logo.png';
 import MenuTwoDash from '../../assets/svg/MenuTwoDash.svg';
 import { MiniHeader } from '../../components/Header/MiniHeader';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 type SiteCreationHeaderProp = {
   handleResetInputFilter?: () => void;
@@ -71,14 +71,14 @@ const SiteCreationHeader = ({
               marginLeft: { xs: '15px' },
             }}
           >
-            <img src={Logo} height='30' />
+            <img src={Logo} height="30" />
           </Box>
           <TextField
-            variant='standard'
+            variant="standard"
             placeholder={window.innerWidth <= 390 ? '' : t('search_for_sites')}
             InputProps={{
               startAdornment: (
-                <InputAdornment position='start'>
+                <InputAdornment position="start">
                   {!searchTerm && (
                     <SearchIcon
                       sx={{

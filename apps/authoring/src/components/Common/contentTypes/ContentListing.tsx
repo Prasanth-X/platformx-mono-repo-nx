@@ -27,7 +27,7 @@ import {
   publishContentType,
 } from '../../../services/contentTypes/contentTypes.api';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../utils/authConstants';
 import { LanguageList } from '../../../utils/constants';
 import {
@@ -101,7 +101,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
     context: {
       headers: {
         language: localStorage.getItem('lang'),
-        sitename: getSelectedSite()
+        sitename: getSelectedSite(),
       },
     },
   });
@@ -116,7 +116,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
   const [existLangContent, setLangContent] = useState('');
   const gcpUrl = process.env.REACT_APP_GCP_URL;
   const BucketName = process.env.REACT_APP_BUCKET_NAME;
-  const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE
+  const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
 
   useEffect(() => {
     localStorage.setItem('lang', getCurrentLang());
@@ -162,12 +162,12 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
             ? selectedContent?.settingsProperties?.socialog_image
             : defaultSocialImage
           : selectedContent?.tag_name === 'Poll'
+          ? selectedContent?.settingsProperties?.socialog_image
             ? selectedContent?.settingsProperties?.socialog_image
-              ? selectedContent?.settingsProperties?.socialog_image
-              : defaultSocialImage
-            : selectedContent?.thumbnail_image
-              ? selectedContent?.thumbnail_image
-              : '',
+            : defaultSocialImage
+          : selectedContent?.thumbnail_image
+          ? selectedContent?.thumbnail_image
+          : '',
       SocialOgDescription: selectedContent?.description,
     },
     Caption: '',
@@ -183,12 +183,12 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
           ? selectedContent?.settingsProperties?.socialog_image
           : defaultSocialImage
         : selectedContent?.tag_name === 'Poll'
+        ? selectedContent?.settingsProperties?.socialog_image
           ? selectedContent?.settingsProperties?.socialog_image
-            ? selectedContent?.settingsProperties?.socialog_image
-            : defaultSocialImage
-          : selectedContent?.thumbnail_image
-            ? selectedContent?.thumbnail_image
-            : defaultSocialImage,
+          : defaultSocialImage
+        : selectedContent?.thumbnail_image
+        ? selectedContent?.thumbnail_image
+        : defaultSocialImage,
     CurrentPageURL: selectedContent?.current_page_url,
   };
   const getDuplicateTitle = () => {
@@ -254,15 +254,15 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
     const tempObjField =
       contentType === 'Quiz'
         ? {
-          ...commonfields,
-          questions: selectedContent?.questions,
-          result_range_1: selectedContent?.result_range_1,
-          result_range_2: selectedContent?.result_range_2,
-          result_range_3: selectedContent?.result_range_3,
-          result_range_4: selectedContent?.result_range_4,
-        }
+            ...commonfields,
+            questions: selectedContent?.questions,
+            result_range_1: selectedContent?.result_range_1,
+            result_range_2: selectedContent?.result_range_2,
+            result_range_3: selectedContent?.result_range_3,
+            result_range_4: selectedContent?.result_range_4,
+          }
         : contentType === 'Event'
-          ? {
+        ? {
             // ...commonfields,
             banner_image: selectedContent?.banner_image,
             thumbnail_image: selectedContent?.thumbnail_image,
@@ -272,27 +272,27 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
             virtual_address: selectedContent?.virtual_address,
             google_api_address: selectedContent?.google_api_address,
           }
-          : contentType === 'Article'
-            ? {
-              banner: selectedContent?.banner,
-              sub_title: selectedContent?.sub_title,
-              published_images: selectedContent?.published_images,
-              original_image: selectedContent?.original_image,
-            }
-            : {
-              ...commonfields,
-              question_background_content:
-                selectedContent?.question_background_content,
-              // background_color: selectedContent?.background_color,
-              poll_description: selectedContent?.poll_description,
-              poll_question: selectedContent?.poll_question,
-              poll_result: selectedContent?.poll_result,
-              poll_title: selectedContent?.poll_title,
-              // poll_answer_image: selectedContent?.poll_answer_image,
-              options_compound_fields: selectedContent?.options_compound_fields,
-              start_date: selectedContent?.creationDate,
-              end_date: selectedContent?.end_date,
-            };
+        : contentType === 'Article'
+        ? {
+            banner: selectedContent?.banner,
+            sub_title: selectedContent?.sub_title,
+            published_images: selectedContent?.published_images,
+            original_image: selectedContent?.original_image,
+          }
+        : {
+            ...commonfields,
+            question_background_content:
+              selectedContent?.question_background_content,
+            // background_color: selectedContent?.background_color,
+            poll_description: selectedContent?.poll_description,
+            poll_question: selectedContent?.poll_question,
+            poll_result: selectedContent?.poll_result,
+            poll_title: selectedContent?.poll_title,
+            // poll_answer_image: selectedContent?.poll_answer_image,
+            options_compound_fields: selectedContent?.options_compound_fields,
+            start_date: selectedContent?.creationDate,
+            end_date: selectedContent?.end_date,
+          };
     const contentToSend = {
       CommonFields: {
         analytics: '',
@@ -338,7 +338,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
               context: {
                 headers: {
                   language: localStorage.getItem('lang'),
-                  sitename: getSelectedSite()
+                  sitename: getSelectedSite(),
                 },
               },
             })
@@ -354,7 +354,8 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                     resp?.data?.authoring_createContent?.path.split('/');
                   const path = pathArr[pathArr.length - 1];
                   showToastSuccess(
-                    `${contentType} ${t('duplicated_toast')} ${t('for')} ${l.value
+                    `${contentType} ${t('duplicated_toast')} ${t('for')} ${
+                      l.value
                     }`
                   );
                   getContent(0, 20);
@@ -381,7 +382,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
           context: {
             headers: {
               language: localStorage.getItem('lang'),
-              sitename: getSelectedSite()
+              sitename: getSelectedSite(),
             },
           },
         })
@@ -394,7 +395,8 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 resp?.data?.authoring_createContent?.path.split('/');
               const path = pathArr[pathArr.length - 1];
               showToastSuccess(
-                `${contentType} ${t('duplicated_toast')} ${t('for')} ${val.value
+                `${contentType} ${t('duplicated_toast')} ${t('for')} ${
+                  val.value
                 }`
               );
               getContent(0, 20);
@@ -497,7 +499,8 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
   const handlePublishedPageView = (contentPayload, fromView: boolean) => {
     if (contentPayload?.page_state === 'published' || fromView) {
       window.open(
-        `${authInfo.publishUri + i18n.language}/${contentType?.toLowerCase()}${contentPayload?.current_page_url
+        `${authInfo.publishUri + i18n.language}/${contentType?.toLowerCase()}${
+          contentPayload?.current_page_url
         }`
       );
     } else if (
@@ -544,8 +547,9 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
     }
   };
   const handleCopy = (pageUrl) => {
-    const text = `${process.env.REACT_APP_PUBLISH_URI + i18n.language
-      }/${contentType.toLowerCase()}${pageUrl}`;
+    const text = `${
+      process.env.REACT_APP_PUBLISH_URI + i18n.language
+    }/${contentType.toLowerCase()}${pageUrl}`;
     if (pageUrl) {
       navigator.clipboard.writeText(text);
       showToastSuccess(t('url_copy_toast'));
@@ -746,12 +750,12 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
             ? selectedContent?.settingsProperties?.socialog_image
             : defaultEmbedImage
           : selectedContent?.tag_name === 'Poll'
+          ? selectedContent?.settingsProperties?.socialog_image
             ? selectedContent?.settingsProperties?.socialog_image
-              ? selectedContent?.settingsProperties?.socialog_image
-              : defaultEmbedImage
-            : selectedContent?.thumbnail_image
-              ? selectedContent?.thumbnail_image
-              : defaultEmbedImage,
+            : defaultEmbedImage
+          : selectedContent?.thumbnail_image
+          ? selectedContent?.thumbnail_image
+          : defaultEmbedImage,
       Author: selectedContent?.createdBy,
       lastModifiedDate: selectedContent?.creationDate,
       Page: selectedContent?.page,
@@ -771,7 +775,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
       >
         <Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant='h3bold' sx={{ textTransform: 'capitalize' }}>
+            <Typography variant="h3bold" sx={{ textTransform: 'capitalize' }}>
               {contentType === 'Event'
                 ? `${t(contentType.toLowerCase())}s`
                 : t(contentType.toLowerCase())}
@@ -963,8 +967,8 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 <Button
                   onClick={createContentNew}
                   disabled={!canCreate}
-                  className='addnewpage'
-                  variant='contained'
+                  className="addnewpage"
+                  variant="contained"
                   sx={{
                     padding: '10px',
                     maxHeight: '40px',
@@ -988,7 +992,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
           overflowX: 'hidden',
           paddingBottom: { xs: '150px', sm: '0' },
         }}
-        id='scrollableDiv'
+        id="scrollableDiv"
       >
         {openSocialShareModal ? (
           <PlateformXSocialDialog
@@ -1045,7 +1049,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
             closeButtonHandle={pageExistNoButtonHandle}
             confirmButtonHandle={pageExistYesButtonHandle}
             crossButtonHandle={pageExistCrossButtonHandle}
-            modalType=''
+            modalType=""
           />
         ) : null}
         {isUnpublish ? (
@@ -1094,7 +1098,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
               >
                 <Grid item xs={2.2} sx={{ marginRight: '25px' }}>
                   <Typography
-                    variant='h6regular'
+                    variant="h6regular"
                     sx={{
                       color: '#89909a',
                       fontWeight: '600',
@@ -1106,7 +1110,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 </Grid>
                 <Grid item xs={2.3} sx={{ marginRight: '2.8%' }}>
                   <Typography
-                    variant='h6regular'
+                    variant="h6regular"
                     sx={{
                       color: '#89909a',
                       fontWeight: '600',
@@ -1118,7 +1122,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 </Grid>
                 <Grid item xs={1} sx={{ marginRight: '3.2%' }}>
                   <Typography
-                    variant='h6regular'
+                    variant="h6regular"
                     sx={{
                       color: '#89909a',
                       fontWeight: '600',
@@ -1130,7 +1134,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 </Grid>
                 <Grid item xs={2.6} sx={{ marginRight: '3%' }}>
                   <Typography
-                    variant='h6regular'
+                    variant="h6regular"
                     sx={{
                       color: '#89909a',
                       fontWeight: '600',
@@ -1142,7 +1146,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 </Grid>
                 <Grid item xs={1.4} sx={{ marginRight: '3.1%' }}>
                   <Typography
-                    variant='h6regular'
+                    variant="h6regular"
                     sx={{
                       color: '#89909a',
                       fontWeight: '600',
@@ -1154,7 +1158,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 </Grid>
                 <Grid item xs={0.5}>
                   <Typography
-                    variant='h6regular'
+                    variant="h6regular"
                     sx={{
                       color: '#89909a',
                       fontWeight: '600',
@@ -1180,7 +1184,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                   next={fetchMoreData}
                   hasMore={isLazyLoad}
                   loader={gridListViewLoaderDesktop(listView)}
-                  scrollableTarget='scrollableDiv'
+                  scrollableTarget="scrollableDiv"
                   style={{ overflowX: 'hidden' }}
                 >
                   <Box>
@@ -1270,7 +1274,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                     }}
                     hasMore={isLazyLoad}
                     loader={gridListViewLoaderMobile(listView)}
-                    scrollableTarget='scrollableDiv'
+                    scrollableTarget="scrollableDiv"
                     style={{ overflowX: 'hidden' }}
                   >
                     <Box>
@@ -1350,7 +1354,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
             >
               <img src={NoResults} />
               <Typography
-                variant='h5'
+                variant="h5"
                 sx={{
                   color: '#c3c3c3',
                 }}
@@ -1358,8 +1362,8 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
                 {fromSearch.length > 0
                   ? t('no_match_results')
                   : `${t('find_any')} ${t(contentType.toLowerCase())} ${t(
-                    'to_show'
-                  )}`}
+                      'to_show'
+                    )}`}
               </Typography>
             </Box>
           ) : null}

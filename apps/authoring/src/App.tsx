@@ -19,8 +19,6 @@ import { CommentProvider } from './context/CommentsContext/CommentsContext';
 import { ActionProvider } from './context/actionContext/ActionProvider';
 import RootRouter from './router/rootRouter';
 import { StoreProvider } from './store/ContextStore';
-// import LightTheme from './theme/lightTheme';
-import { AuthoringTheme } from '@platformx/utilities';
 import { authUrl } from './utils/authConstants';
 import { DefaultLocale } from './utils/constants';
 import {
@@ -28,6 +26,7 @@ import {
   getSelectedRoute,
   getSelectedSite,
 } from './utils/helperFunctions';
+import LightTheme from 'libs/utilities/src/lib/themes/authoring/lightTheme';
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace('Mui', 'Platform-x-')
 );
@@ -95,7 +94,7 @@ function App() {
         <I18nextProvider i18n={i18n}>
           <ApolloProvider client={client}>
             <AnalyticsProvider instance={instances}>
-              <ThemeProvider theme={AuthoringTheme}>
+              <ThemeProvider theme={LightTheme}>
                 <CssBaseline />
                 <StoreProvider>
                   <BrowserRouter

@@ -3,7 +3,7 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { showToastSuccess } from '../../../../components/toastNotification/toastNotificationReactTostify';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PrelemVideoProps } from '../../utils/editTypes';
 import BackButton from '../BackButton/BackButton';
 import '../PageSettings/PageSettings.css';
@@ -83,9 +83,9 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
   const classes = useStyles()();
 
   return (
-    <Box className='pageSettingmainWp' key={`${index}_video`}>
-      <BackButton setPageId={setPageId} Title='Videos' backTo='prelemSetting' />
-      <Box className='rowBox'>
+    <Box className="pageSettingmainWp" key={`${index}_video`}>
+      <BackButton setPageId={setPageId} Title="Videos" backTo="prelemSetting" />
+      <Box className="rowBox">
         {playerFlow == 'dspace' ? (
           content.Url ? (
             <Box className={classes.imageBox}>
@@ -143,7 +143,7 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
               className={classes.uploadImageBox}
               onClick={() => onUploadClick(index, 'choose')}
             >
-              <Typography className='switchbox' variant='p4regular'>
+              <Typography className="switchbox" variant="p4regular">
                 <Box className={classes.blackRoundIcon}>
                   <ArrowUpward />
                 </Box>
@@ -153,49 +153,49 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
           )
         ) : null}
         {playerFlow == 'youtube' ? (
-          <Box className='rowBox'>
-            <Typography className='labelbox' variant='p4regular'>
+          <Box className="rowBox">
+            <Typography className="labelbox" variant="p4regular">
               Video URL*
             </Typography>
             <TextField
               multiline
               value={content.Url}
               onChange={(e) => handleDataChange(e, 'Url')}
-              variant='outlined'
-              size='small'
-              placeholder='write a Url here'
+              variant="outlined"
+              size="small"
+              placeholder="write a Url here"
             />
           </Box>
         ) : null}
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           What is the title of the Video?*
         </Typography>
         <TextField
           multiline
           value={content.Title}
           onChange={(e) => handleDataChange(e, 'Title')}
-          variant='outlined'
-          size='small'
-          placeholder='write a title here'
+          variant="outlined"
+          size="small"
+          placeholder="write a title here"
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           What is this Video about?
         </Typography>
         <TextField
           multiline
           value={content.Description}
           onChange={(e) => handleDataChange(e, 'Description')}
-          variant='outlined'
-          size='small'
-          placeholder='write a description here'
+          variant="outlined"
+          size="small"
+          placeholder="write a description here"
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           Attribution
           <BasicSwitch
             color={ThemeConstants.BLACK_COLOR}
@@ -204,8 +204,8 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           CC
           <BasicSwitch
             color={ThemeConstants.BLACK_COLOR}
@@ -214,8 +214,8 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           Transcript
           <BasicSwitch
             color={ThemeConstants.BLACK_COLOR}
@@ -227,16 +227,16 @@ const PrelemVideos: React.FC<PrelemVideoProps> = ({
       {(content.Title == '' ||
         content.Title.trim().length == 0 ||
         content.Url == '') && (
-        <Box className='rowBox'>
-          <Typography className='labelbox' variant='p4regular'>
+        <Box className="rowBox">
+          <Typography className="labelbox" variant="p4regular">
             *Please fill the mandatory fields
           </Typography>
         </Box>
       )}
-      <Box className='rowBox'>
+      <Box className="rowBox">
         <Button
           disabled={getDisabledState()}
-          variant='contained'
+          variant="contained"
           sx={{ width: '100%' }}
           onClick={UpdatePrelemInfo}
         >

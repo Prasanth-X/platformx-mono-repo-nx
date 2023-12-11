@@ -1,6 +1,6 @@
 import { Card } from '@mui/material';
 import { styled } from '@material-ui/core';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 export const BaseCard = styled(Card)({
   boxShadow: '0 0 2px 0 rgba(115, 114, 114, 0.14)',

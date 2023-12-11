@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { dateFormat, handleHtmlTags } from '../../utils/helperFunctions';
 
 const MenuPageList = ({
@@ -100,10 +100,10 @@ const MenuPageList = ({
             }}
           >
             {/* <DescriptionOutlinedIcon sx={{ color: '#6a6d7d', ml: '6px' }} /> */}
-            <img src={PagesListIcon} alt='Page Icon' />
+            <img src={PagesListIcon} alt="Page Icon" />
           </Box>
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             sx={{
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -118,7 +118,7 @@ const MenuPageList = ({
         </Grid>
         <Grid item xs={2.8} sx={{ marginRight: '2.8%' }}>
           <Typography
-            variant='h6regular'
+            variant="h6regular"
             sx={{
               color: '#b3b3b3',
               overflow: 'hidden',
@@ -142,13 +142,13 @@ const MenuPageList = ({
               WebkitBoxOrient: 'vertical',
               textTransform: 'capitalize',
             }}
-            variant='h6regular'
+            variant="h6regular"
           >
             {article.LastModifiedBy}
           </Typography>
         </Grid>
         <Grid item xs={2.6} sx={{ marginRight: '3%' }}>
-          <Typography variant='h6regular'>
+          <Typography variant="h6regular">
             {dateFormat(article.LastModificationDate)}
           </Typography>
         </Grid>
@@ -157,8 +157,8 @@ const MenuPageList = ({
            variant='contained'sx={{ textTransform: 'capitalize',margin: '1px 0 1px 0px',
           width: '124.8px', height: '40px' }}>{btnText}</Button>: */}
           <Button
-             variant="secondaryButton"
-             className="sm"
+            variant="secondaryButton"
+            className="sm"
             sx={{
               backgroundColor: isSelected()
                 ? ThemeConstants.BLACK_COLOR

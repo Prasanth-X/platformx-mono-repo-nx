@@ -16,7 +16,7 @@ import {
   updatePageSettings,
 } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import siteLevelSchema from '../../../../utils/siteLevelSettings.json';
 import {
   descriptionLength,
@@ -128,57 +128,57 @@ const SEOBasics = ({ setPageId }) => {
     return [];
   };
   return (
-    <Box className='pageSettingmainWp'>
-      <BackButton setPageId={setPageId} Title='Basics SEO' />
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+    <Box className="pageSettingmainWp">
+      <BackButton setPageId={setPageId} Title="Basics SEO" />
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_search_preview')}
         </Typography>
-        <Box className='seobasicBox'>
-          <Typography variant='p4regular'>{seoInfo.SeoURL}</Typography>
-          <Typography variant='p4regular' mb='5px' color='#4B9EF9'>
+        <Box className="seobasicBox">
+          <Typography variant="p4regular">{seoInfo.SeoURL}</Typography>
+          <Typography variant="p4regular" mb="5px" color="#4B9EF9">
             {seoInfo.SeoTitle.substring(0, seoPreviewNameLength)}
             {seoInfo.SeoTitle.length > seoPreviewNameLength && <span>...</span>}
           </Typography>
-          <Typography variant='h7regular'>{seoInfo.SeoDescription}</Typography>
-          <Typography variant='h7regular'>{seoInfo.SeoKeywords}</Typography>
+          <Typography variant="h7regular">{seoInfo.SeoDescription}</Typography>
+          <Typography variant="h7regular">{seoInfo.SeoKeywords}</Typography>
         </Box>
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_search_title')}
         </Typography>
         <TextField
-          size='small'
+          size="small"
           multiline
           value={seoInfo.SeoTitle}
           onChange={(e) => handleDataChange(e, 'SeoTitle')}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('page_search_title_placeholder')}
           inputProps={{ maxLength: seoNameLength }}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_search_description')}
         </Typography>
         <TextField
-          size='small'
+          size="small"
           multiline
           value={seoInfo.SeoDescription}
           onChange={(e) => handleDataChange(e, 'SeoDescription')}
-          variant='outlined'
+          variant="outlined"
           placeholder={t('page_search_description_placeholder')}
           inputProps={{ maxLength: seoDescriptionLength }}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='labelbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="labelbox" variant="p4regular">
           {t('page_search_keywords')}
         </Typography>
         <Autocomplete
           multiple
-          id='tags-filled'
+          id="tags-filled"
           value={[...getValue()]}
           options={[]}
           onChange={(event: object, value) => {
@@ -198,7 +198,7 @@ const SEOBasics = ({ setPageId }) => {
                 option && (
                   <Box key={index} mt={1}>
                     <Chip
-                      variant='outlined'
+                      variant="outlined"
                       label={option}
                       deleteIcon={<DeleteIcon sx={{ color: '#2d2d39' }} />}
                       sx={{
@@ -214,9 +214,9 @@ const SEOBasics = ({ setPageId }) => {
           }
           renderInput={(params) => (
             <TextField
-              size='small'
+              size="small"
               {...params}
-              variant='outlined'
+              variant="outlined"
               placeholder={t('page_info_tags_placeholder')}
             />
           )}
@@ -235,8 +235,8 @@ const SEOBasics = ({ setPageId }) => {
           }}
         />
       </Box>
-      <Box className='rowBox'>
-        <Typography className='switchbox' variant='p4regular'>
+      <Box className="rowBox">
+        <Typography className="switchbox" variant="p4regular">
           {t('page_search_seokey')}
           <BasicSwitch
             color={ThemeConstants.BLACK_COLOR}
@@ -245,9 +245,9 @@ const SEOBasics = ({ setPageId }) => {
           />
         </Typography>
       </Box>
-      <Box className='rowBox'>
+      <Box className="rowBox">
         <Button
-          variant='contained'
+          variant="contained"
           disabled={initialSeoInfo.current === seoInfo}
           onClick={saveSeoBasics}
           sx={{ width: '100%' }}

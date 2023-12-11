@@ -17,7 +17,7 @@ import {
   publish_article,
   update_article,
 } from '../../../services/article/article.api';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from '../../editPage/Switch';
 import { Props, SeoInfo } from '../utils/types';
 
@@ -157,7 +157,7 @@ const ArticleSEO: React.FC<Props> = ({
   return (
     <AccordionDetails>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -174,7 +174,7 @@ const ArticleSEO: React.FC<Props> = ({
         />
       </Typography>
       <Typography
-        variant='subtitle1'
+        variant="subtitle1"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -207,8 +207,8 @@ const ArticleSEO: React.FC<Props> = ({
             alignItems: 'center',
             textTransform: 'capitalize',
           }}
-          className='drawer-label'
-          variant='subtitle1'
+          className="drawer-label"
+          variant="subtitle1"
         >
           {t('page_structure_data')}
           <Tooltip
@@ -222,7 +222,7 @@ const ArticleSEO: React.FC<Props> = ({
                 </Typography>
               </Box>
             }
-            placement='right'
+            placement="right"
           >
             <Box>
               <InfoOutlinedIcon
@@ -236,7 +236,7 @@ const ArticleSEO: React.FC<Props> = ({
             </Box>
           </Tooltip>
         </Typography>
-        {seoInfo.showContent == false ?
+        {seoInfo.showContent == false ? (
           <span
             style={{
               display: 'flex',
@@ -248,7 +248,7 @@ const ArticleSEO: React.FC<Props> = ({
           >
             <EditIcon sx={{ marginRight: '2px' }} /> {t('edit')}
           </span>
-         :
+        ) : (
           <>
             <Typography
               sx={{
@@ -279,7 +279,7 @@ const ArticleSEO: React.FC<Props> = ({
               />{' '}
               {t('edit')}
             </Typography>
-            {isOpen &&
+            {isOpen && (
               <Box
                 sx={{
                   display: { xs: 'flex', sm: 'flex', md: 'none', lg: 'none' },
@@ -298,10 +298,12 @@ const ArticleSEO: React.FC<Props> = ({
                   }}
                 />
                 {t('done')}
-              </Box>}
-          </>}
+              </Box>
+            )}
+          </>
+        )}
       </Box>
-      {isOpen &&
+      {isOpen && (
         <Box>
           <Box
             sx={{
@@ -338,7 +340,7 @@ const ArticleSEO: React.FC<Props> = ({
               }}
               onClick={copyStructureData}
             >
-              <ContentCopyIcon fontSize='small' sx={{ marginRight: '2px' }} />
+              <ContentCopyIcon fontSize="small" sx={{ marginRight: '2px' }} />
               {copyStatus ? t('copied') : t('copy')}
             </Typography>
           </Box>
@@ -353,7 +355,7 @@ const ArticleSEO: React.FC<Props> = ({
               }}
             >
               <Button
-                variant='contained'
+                variant="contained"
                 sx={{
                   backgroundColor: ThemeConstants.WHITE_COLOR,
                   color: ThemeConstants.BLACK_COLOR,
@@ -391,14 +393,14 @@ const ArticleSEO: React.FC<Props> = ({
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: '#000000',
@@ -418,14 +420,14 @@ const ArticleSEO: React.FC<Props> = ({
               }}
             >
               <JSONInput
-                id='json-editor'
+                id="json-editor"
                 confirmGood={false}
                 placeholder={seoInfo.structureData}
                 onChange={(e) => handleStructureData(e, 'structureData')}
-                theme='light_mitsuketa_tribute'
+                theme="light_mitsuketa_tribute"
                 locale={locale}
-                height='100%'
-                width='100%'
+                height="100%"
+                width="100%"
                 colors={{
                   string: '#1984bc',
                   keys: '#000000',
@@ -438,10 +440,11 @@ const ArticleSEO: React.FC<Props> = ({
               />
             </Box>
           </Box>
-        </Box>}
+        </Box>
+      )}
       <Box sx={{ textAlign: 'right' }} mb={2} mt={2}>
         <Button
-          variant='contained'
+          variant="contained"
           disabled={disabledState}
           sx={{
             backgroundColor: ThemeConstants.BLACK_COLOR,

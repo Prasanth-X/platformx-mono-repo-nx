@@ -12,7 +12,7 @@ import {
 } from '../../services/prelems/prelems.api';
 import { addPrelem } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { SearchCardObjecType } from './utils/prelemTypes';
 const PrelemInfo = () => {
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const PrelemInfo = () => {
       >
         <Box>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               borderColor: ThemeConstants.PRIMARY_MAIN_COLOR,
               color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -51,7 +51,7 @@ const PrelemInfo = () => {
               },
               display: { xs: 'none', md: 'flex', lg: 'flex' },
             }}
-            data-testid='prelem-back-button'
+            data-testid="prelem-back-button"
             onClick={() => {
               history.go(-1);
             }}
@@ -59,7 +59,7 @@ const PrelemInfo = () => {
             <ChevronLeftIcon />{' '}
             <Typography
               pl={1}
-              variant='body1'
+              variant="body1"
               sx={{ textTransform: 'capitalize' }}
             >
               {t('back')}
@@ -71,7 +71,7 @@ const PrelemInfo = () => {
               fontSize: ThemeConstants.FONTSIZE_XL,
               display: { xs: 'flex', md: 'none', lg: 'none' },
             }}
-            data-testid='prelem-back-mobile-button'
+            data-testid="prelem-back-mobile-button"
             onClick={() => {
               history.go(-1);
             }}
@@ -79,7 +79,7 @@ const PrelemInfo = () => {
         </Box>
         <Box>
           <Typography
-            variant='h4'
+            variant="h4"
             sx={{
               position: 'absolute',
               left: '50%',
@@ -95,7 +95,7 @@ const PrelemInfo = () => {
               },
               textTransform: 'capitalize',
             }}
-            data-testid='page-title'
+            data-testid="page-title"
           >
             {t('about_prelem')}
           </Typography>
@@ -103,12 +103,12 @@ const PrelemInfo = () => {
         <Box>
           <Box sx={{ display: 'flex', justifyContent: 'end' }}>
             <Button
-              variant='outlined'
+              variant="outlined"
               sx={{
                 marginRight: '20px',
                 display: { xs: 'none', md: 'flex', lg: 'flex' },
               }}
-              data-testid='prelem-preview-button'
+              data-testid="prelem-preview-button"
               onClick={() => {
                 navigate('/prelem-search/preview', {
                   state: prelemMetaInfo,
@@ -118,18 +118,18 @@ const PrelemInfo = () => {
               <PreviewIcon />
               <Typography
                 pl={1}
-                variant='body1'
+                variant="body1"
                 sx={{ textTransform: 'capitalize' }}
               >
                 {t('preview')}
               </Typography>
             </Button>
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 display: { xs: 'none', md: 'flex', lg: 'flex' },
               }}
-              data-testid='add-prelem-button'
+              data-testid="add-prelem-button"
               onClick={() => {
                 addPrelem(
                   dispatch,
@@ -144,7 +144,7 @@ const PrelemInfo = () => {
               <AddIcon />{' '}
               <Typography
                 pl={1}
-                variant='body1'
+                variant="body1"
                 sx={{ textTransform: 'capitalize' }}
               >
                 {t('add_prelem')}
@@ -156,7 +156,7 @@ const PrelemInfo = () => {
                 fontSize: ThemeConstants.FONTSIZE_XL,
                 display: { xs: 'flex', md: 'none', lg: 'none' },
               }}
-              data-testid='prelem-preview-mobile-button'
+              data-testid="prelem-preview-mobile-button"
               onClick={() => {
                 navigate('/prelem-search/preview', {
                   state: prelemMetaInfo,
@@ -191,8 +191,8 @@ const PrelemInfo = () => {
           }}
         >
           <Typography
-            variant='h3'
-            data-testid='prelem-title'
+            variant="h3"
+            data-testid="prelem-title"
             sx={{
               fontSize: {
                 xs: ThemeConstants.FONTSIZE_MD,
@@ -212,7 +212,7 @@ const PrelemInfo = () => {
             }}
           >
             <Typography
-              variant='body1'
+              variant="body1"
               mt={1}
               mb={2}
               sx={{
@@ -222,13 +222,13 @@ const PrelemInfo = () => {
                   lg: ThemeConstants.FONTSIZE_SECONDARY_DEFAULT,
                 },
               }}
-              data-testid='prelem-description'
+              data-testid="prelem-description"
             >
               {showMore == true
                 ? prelemMetaInfo.Description
                 : prelemMetaInfo.Description.slice(0, descriptionLimit)}
               {prelemMetaInfo.Description.length > descriptionLimit &&
-                (showMore == false ?
+                (showMore == false ? (
                   <span
                     style={{
                       color: '#0074b2',
@@ -236,14 +236,14 @@ const PrelemInfo = () => {
                       cursor: 'pointer',
                       marginLeft: '10px',
                     }}
-                    data-testid='read-more'
+                    data-testid="read-more"
                     onClick={() => {
                       setShowMore(true);
                     }}
                   >
                     {t('read_more')}
                   </span>
-                 :
+                ) : (
                   <span
                     style={{
                       color: '#0074b2',
@@ -254,11 +254,11 @@ const PrelemInfo = () => {
                     onClick={() => {
                       setShowMore(false);
                     }}
-                    data-testid='read-less'
+                    data-testid="read-less"
                   >
                     {t('read_less')}
                   </span>
-                )}
+                ))}
             </Typography>
             <Box
               sx={{
@@ -293,7 +293,7 @@ const PrelemInfo = () => {
           </Box>
 
           <Typography
-            variant='body1'
+            variant="body1"
             sx={{
               fontSize: {
                 xs: ThemeConstants.FONTSIZE_SM,
@@ -301,7 +301,7 @@ const PrelemInfo = () => {
               },
               textTransform: 'capitalize',
             }}
-            data-testid='prelem-otherinfo'
+            data-testid="prelem-otherinfo"
           >
             {t('tags')}:
             {prelemMetaInfo.Tags.map((item, index) => {

@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Profile from '../../assets/images/avatar.png';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { logoutUrl } from '../../utils/authConstants';
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -161,11 +161,11 @@ export const MiniHeader = ({ showUserDetails = true }: Users) => {
           <Avatar src={Profile} onClick={handleOpen} />
           {showUserDetails && (
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography component='div' variant='h6medium' ml={2}>
+              <Typography component="div" variant="h6medium" ml={2}>
                 {capitalizeFirstLetter(userSession?.userInfo?.name)}
               </Typography>
 
-              <Typography component='div' variant='h7medium' ml={2}>
+              <Typography component="div" variant="h7medium" ml={2}>
                 {t(role)}
               </Typography>
             </Box>
@@ -225,7 +225,7 @@ export const MiniHeader = ({ showUserDetails = true }: Users) => {
           confirmButtonHandle={onCloseSaveWarningHandler}
           closeButtonHandle={() => callFnsCase(triggerCase)}
           crossButtonHandle={unsavedCrossButtonHandle}
-          modalType='unsavedChanges'
+          modalType="unsavedChanges"
         />
       ) : null}
       {/* <ToastContainer

@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { Box, Typography, Grid } from '@mui/material';
 import NoResultsFound from '../../Common/NoResultsFound';
 import { nullToArray } from '../../utils/helperFunctions';
@@ -8,16 +8,11 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import ContentTypeCard from 'platform-x-prelems/prelems/ContentTypeCard';
 import { authInfo } from '../../utils/authConstants';
 
-const EcommerceCard = ({
-  cardObj,
-  fetchMoreData,
-  isLazyLoad,
-  isLoading
-}) => {
+const EcommerceCard = ({ cardObj, fetchMoreData, isLazyLoad, isLoading }) => {
   const isError = false;
   const secondaryArgs = {
     gcpUrl: authInfo.gcpUri,
-    bucketName: authInfo.gcpBucketName
+    bucketName: authInfo.gcpBucketName,
   };
   const getContentType = (item, index) => {
     return (
@@ -37,13 +32,15 @@ const EcommerceCard = ({
           height: 'auto',
           aspectRatio: '1/1',
         }}
-        onClick={
-          () => { }
-        }
+        onClick={() => {}}
         key={index}
         p={1}
       >
-        <ContentTypeCard content={item} isLoading={isLoading} secondaryArgs={secondaryArgs} />
+        <ContentTypeCard
+          content={item}
+          isLoading={isLoading}
+          secondaryArgs={secondaryArgs}
+        />
         <Box
           sx={{
             position: 'absolute',
@@ -64,7 +61,7 @@ const EcommerceCard = ({
 
   return (
     <>
-      {isError ?
+      {isError ? (
         <Box
           sx={{
             marginTop: '200px',
@@ -74,25 +71,25 @@ const EcommerceCard = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
           </Typography>
         </Box>
-        :
+      ) : (
         <>
-
           <Box
             sx={{
               height: 'calc(100vh - 160px)',
               overflowY: 'scroll',
             }}
-            id='scrollablegallerydiv'
+            id="scrollablegallerydiv"
           >
-            {(!isLoading && nullToArray(cardObj)?.length === 0) ?
+            {!isLoading && nullToArray(cardObj)?.length === 0 ? (
               <NoResultsFound />
-              : <Grid
+            ) : (
+              <Grid
                 container
                 sx={{
                   backgroundColor: '#ffffff',
@@ -107,19 +104,23 @@ const EcommerceCard = ({
                   next={fetchMoreData}
                   hasMore={isLazyLoad}
                   dataLength={cardObj.length}
-                  scrollableTarget='scrollablegallerydiv'
+                  scrollableTarget="scrollablegallerydiv"
                 >
                   {/* {console.log("shadow", cardObj, isLoading)} */}
-                  {isLoading ? Array.from(Array(8)).map((element, index) => getContentType(element, index))
+                  {isLoading
+                    ? Array.from(Array(8)).map((element, index) =>
+                        getContentType(element, index)
+                      )
                     : cardObj?.map((item, index) => {
-                      return getContentType(item, index);
-                    })}
+                        return getContentType(item, index);
+                      })}
                 </InfiniteScroll>
-              </Grid>}
+              </Grid>
+            )}
           </Box>
-        </>}
+        </>
+      )}
     </>
-
   );
 };
 

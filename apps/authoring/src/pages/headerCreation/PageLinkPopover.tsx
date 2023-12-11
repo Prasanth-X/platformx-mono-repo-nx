@@ -12,7 +12,7 @@ import {
 } from '../../services/page/page.api';
 import { setPublishedpages } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { MenuItemProp } from './types';
 const style = {
   position: 'absolute',
@@ -102,8 +102,8 @@ export const PageLinkPopover = ({
       <Modal
         open={openPageModal}
         onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
         <Box
           sx={{
@@ -115,18 +115,18 @@ export const PageLinkPopover = ({
         >
           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
             <TextField
-              variant='standard'
-              placeholder='Search'
+              variant="standard"
+              placeholder="Search"
               InputProps={{
-                startAdornment:
-  <InputAdornment position='start'>
-    <SearchIcon />
-  </InputAdornment>
-                ,
-                endAdornment:
-  <InputAdornment position='start'>
-    {searchTerm &&
-    <CloseRoundedIcon
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="start">
+                    {searchTerm && (
+                      <CloseRoundedIcon
                         sx={{
                           cursor: 'pointer',
                           position: 'absolute',
@@ -137,9 +137,10 @@ export const PageLinkPopover = ({
                           setPublishedpgs(page?.publishedPages);
                           setSearchTerm('');
                         }}
-                      />}
-  </InputAdornment>
-                ,
+                      />
+                    )}
+                  </InputAdornment>
+                ),
               }}
               value={searchTerm}
               onChange={handleChange}
@@ -162,7 +163,7 @@ export const PageLinkPopover = ({
               }}
             />
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 marginTop: '-10px',
                 alignSelf: 'flex-end',
@@ -190,8 +191,8 @@ export const PageLinkPopover = ({
             }}
           >
             {publishedpgs.length > 0
-              ? publishedpgs?.map((publishedPg: MenuItemProp, index) =>
-                <Box
+              ? publishedpgs?.map((publishedPg: MenuItemProp, index) => (
+                  <Box
                     sx={{
                       maxHeight: '5rem',
                       width: '10rem',
@@ -216,7 +217,7 @@ export const PageLinkPopover = ({
                       {publishedPg.Page}
                     </Typography>
                   </Box>
-                )
+                ))
               : null}
           </Box>
           <Box
@@ -239,7 +240,7 @@ export const PageLinkPopover = ({
               value={menuItemName}
               error={menuItemName?.length === 0}
               onChange={(e: any) => setMenuItemName(e.target.value)}
-              variant='standard'
+              variant="standard"
               placeholder={t('menu_item_name')}
               inputProps={{ maxLength: 15 }}
               sx={{
@@ -253,7 +254,7 @@ export const PageLinkPopover = ({
               }}
             />
             <Button
-              variant='contained'
+              variant="contained"
               sx={{
                 marginRight: '10px',
                 marginTop: '-10px',

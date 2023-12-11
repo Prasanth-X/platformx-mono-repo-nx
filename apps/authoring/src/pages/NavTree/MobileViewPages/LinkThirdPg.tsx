@@ -18,7 +18,7 @@ import {
 import useUserSession from '../../../hooks/useUserSession/useUserSession';
 import { save_menu, update_menu } from '../../../services/navTree/navTree.api';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { dateFormat } from '../../../utils/helperFunctions';
 import { createMenu } from '../Actions';
 
@@ -199,7 +199,7 @@ function LinkThirdPg({
     const isItemExist = tempArr.find((val) => {
       return val
         ? val.Label.toLowerCase() === menuItemName.toLowerCase() &&
-        val.Menu_Id !== editData.Menu_Id
+            val.Menu_Id !== editData.Menu_Id
         : '';
     });
     if (isItemExist) {
@@ -326,7 +326,7 @@ function LinkThirdPg({
           />
 
           <Typography
-            variant='h4medium'
+            variant="h4medium"
             sx={{
               width: '393px',
               height: '35px',
@@ -374,7 +374,7 @@ function LinkThirdPg({
           </Stepper>
         </Box>
         <Typography
-          variant='h3regular'
+          variant="h3regular"
           sx={{
             margin: '15px 0px 0px 20px',
           }}
@@ -399,7 +399,7 @@ function LinkThirdPg({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '18px' }}
               >
-                <Typography variant='h6medium'>{t('insert_url')}</Typography>
+                <Typography variant="h6medium">{t('insert_url')}</Typography>
               </Box>
               <Box
                 sx={{
@@ -437,7 +437,7 @@ function LinkThirdPg({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {' '}
                   {t('menu_item_name')}
                 </Typography>
@@ -485,7 +485,7 @@ function LinkThirdPg({
                 <Box
                   sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
                 >
-                  <Typography variant='h6medium'>
+                  <Typography variant="h6medium">
                     {' '}
                     {t('menu_description')}
                   </Typography>
@@ -533,7 +533,7 @@ function LinkThirdPg({
                 mt: '25px',
               }}
             >
-              <Typography variant='h6medium'>{t('menu_added_icon')}</Typography>
+              <Typography variant="h6medium">{t('menu_added_icon')}</Typography>
               <Box sx={{ marginTop: 1, mr: 2 }}>
                 <img
                   src={selectedIcon}
@@ -560,7 +560,7 @@ function LinkThirdPg({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'> Type of menu item</Typography>
+                <Typography variant="h6medium"> Type of menu item</Typography>
               </Box>
               <Box
                 sx={{
@@ -596,7 +596,7 @@ function LinkThirdPg({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'>
+                <Typography variant="h6medium">
                   {' '}
                   Selected main menu item
                 </Typography>
@@ -635,7 +635,7 @@ function LinkThirdPg({
               <Box
                 sx={{ display: 'flex', flexDirection: 'column', mt: '25px' }}
               >
-                <Typography variant='h6medium'>{t('selected_tab')}</Typography>
+                <Typography variant="h6medium">{t('selected_tab')}</Typography>
               </Box>
               <Box
                 sx={{
@@ -671,7 +671,7 @@ function LinkThirdPg({
                   mt: '25px',
                 }}
               >
-                <Typography variant='h6medium'> Added content type</Typography>
+                <Typography variant="h6medium"> Added content type</Typography>
                 <Box
                   sx={{
                     mt: 1,
@@ -684,8 +684,8 @@ function LinkThirdPg({
                 >
                   <img
                     src={selectedItem.Image}
-                    width='100%'
-                    height='100%'
+                    width="100%"
+                    height="100%"
                     style={{ borderRadius: '5px' }}
                   />
                   <div
@@ -709,23 +709,23 @@ function LinkThirdPg({
                     }}
                   >
                     <Typography
-                      variant='h5medium'
-                      component='div'
+                      variant="h5medium"
+                      component="div"
                       sx={{ color: '#fff', marginBottom: '5px' }}
-                      className='singlebr'
+                      className="singlebr"
                     >
                       {selectedItem.Title}
                     </Typography>
                     <Typography
-                      variant='h7medium'
-                      component='div'
+                      variant="h7medium"
+                      component="div"
                       sx={{ color: '#ced3d9' }}
                     >
                       {selectedItem.Author}
                     </Typography>
                     <Typography
-                      variant='h7medium'
-                      component='div'
+                      variant="h7medium"
+                      component="div"
                       sx={{ color: '#ced3d9' }}
                     >
                       {' '}
@@ -741,7 +741,7 @@ function LinkThirdPg({
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: '18px' }}>
           <Button
-            variant='contained'
+            variant="contained"
             disableElevation
             onClick={onBack}
             sx={{
@@ -758,15 +758,15 @@ function LinkThirdPg({
                 color: ThemeConstants.BLACK_COLOR,
               },
             }}
-          // onClick = {generateArticle}
-          //  onClick={() => onDuplicatePage(false, undefined)}
+            // onClick = {generateArticle}
+            //  onClick={() => onDuplicatePage(false, undefined)}
           >
             <ChevronLeftIcon sx={{ mr: '5px' }} />
 
             {t('back')}
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             disableElevation
             sx={{
               width: '163px',
@@ -784,7 +784,7 @@ function LinkThirdPg({
               },
             }}
             onClick={onConfirm}
-          //  onClick={() => onDuplicatePage(false, undefined)}
+            //  onClick={() => onDuplicatePage(false, undefined)}
           >
             <DoneOutlinedIcon sx={{ marginRight: '10px' }} />
             {t('confirm')}

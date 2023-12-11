@@ -1,7 +1,7 @@
 import React from 'react';
 import { Backdrop, Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import ThemeConstants from './../theme/variable';
+import ThemeConstants from '../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const Loader = () => {
   return (

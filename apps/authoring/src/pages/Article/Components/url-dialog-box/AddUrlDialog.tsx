@@ -4,7 +4,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
-import ThemeConstants from '../../../../theme/variable';
+import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 interface DialogList {
   titledata: string;
@@ -26,10 +26,10 @@ export default function AddUrlDialog({
       <Dialog
         fullWidth
         open={isDialogOpen}
-        maxWidth='sm'
+        maxWidth="sm"
         onClose={closeButtonHandle}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
         sx={{
           '.Platform-x-Dialog-paper': {
             margin: { xs: '20px', xl: '30px' },
@@ -38,7 +38,7 @@ export default function AddUrlDialog({
         }}
       >
         <DialogTitle
-          id='alert-dialog-title'
+          id="alert-dialog-title"
           sx={{
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             textAlign: 'center',
@@ -54,12 +54,12 @@ export default function AddUrlDialog({
               autoFocus
               value={title}
               onChange={(e: any) => setTitle(e.target.value)}
-              placeholder='Paste your url'
-              margin='dense'
-              id='name'
-              type='text'
-              variant='outlined'
-              autoComplete='off'
+              placeholder="Paste your url"
+              margin="dense"
+              id="name"
+              type="text"
+              variant="outlined"
+              autoComplete="off"
               sx={{
                 '.Platform-x-Input-root:after': {
                   borderBottom: '10px solid #000000',
@@ -80,7 +80,7 @@ export default function AddUrlDialog({
           }}
         >
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               marginRight: '20px',
             }}
@@ -89,7 +89,7 @@ export default function AddUrlDialog({
             Cancel
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={() => doneButtonHandle(title)}
             autoFocus
           >

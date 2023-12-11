@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeConstants from '../../theme/variable';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import BasicSwitch from './Switch';
 import { PrelemImagesProps } from './utils/editTypes';
 import CommonImageRender from '../Gallery/CommonImageRender';
@@ -31,7 +31,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
   const getBitstreamIdFromUrl = (url: string) => {
     return url ? url.split('/')[7] : '';
   };
-  const [imageContent,setImageContent] = useState<any>({
+  const [imageContent, setImageContent] = useState<any>({
     Thumbnail: content.Url,
     bitStreamId: getBitstreamIdFromUrl(content?.Url),
     auto: true,
@@ -47,11 +47,11 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
     const originalImg = {
       Images: { ...imageInstance },
       published_images: originalPublishImages.current,
-    }
+    };
     const currentImg = {
       Images: { ...imageContent },
       published_images: publishedImages,
-    }
+    };
     if (JSON.stringify(originalImg) != JSON.stringify(currentImg)) {
       if (content?.Title != '' && content?.Url != '') {
         handleSave(
@@ -235,9 +235,9 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
             </Box>
           )}
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{ display: 'flex', alignimageInstances: 'center' }}
-            className='drawer-label'
+            className="drawer-label"
             mb={1}
           >
             {t('prelem_image_title')}
@@ -252,7 +252,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
                   </Typography>
                 </Box>
               }
-              placement='right'
+              placement="right"
             >
               <Box>
                 <InfoOutlinedIcon
@@ -270,15 +270,15 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
             multiline
             value={content?.Title}
             onChange={(e) => handleDataChange(e, 'Title')}
-            variant='outlined'
+            variant="outlined"
             placeholder={t('page_search_title_placeholder')}
           />
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{ display: 'flex', alignimageInstances: 'center' }}
             mt={2}
             mb={1}
-            className='drawer-label'
+            className="drawer-label"
           >
             {t('prelem_image_about')}
             <Tooltip
@@ -292,7 +292,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
                   </Typography>
                 </Box>
               }
-              placement='right'
+              placement="right"
             >
               <Box>
                 <InfoOutlinedIcon
@@ -310,11 +310,11 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
             multiline
             value={content?.Description}
             onChange={(e) => handleDataChange(e, 'Description')}
-            variant='outlined'
+            variant="outlined"
             placeholder={t('page_info_about_placeholder')}
           />
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{
               display: 'flex',
               alignimageInstances: 'center',
@@ -336,7 +336,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
           content?.Title?.trim()?.length == 0 ||
           content?.Url == '') && (
           <Typography
-            variant='subtitle2'
+            variant="subtitle2"
             p={1}
             sx={{
               color: ThemeConstants.NOTIFICATION_ERROR,
@@ -349,7 +349,7 @@ const PrelemImages: React.FC<PrelemImagesProps> = ({
         <Box key={`${index}_save`} sx={{ textAlign: 'right' }} mb={2}>
           <Button
             disabled={getDisabledState()}
-            variant='contained'
+            variant="contained"
             sx={{
               backgroundColor: ThemeConstants.BLACK_COLOR,
               '&:hover': {

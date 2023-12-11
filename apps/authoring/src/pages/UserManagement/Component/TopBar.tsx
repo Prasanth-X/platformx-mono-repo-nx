@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ThemeConstants from '../../../theme/variable';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import Logo from '../../../assets/images/platform-x-logo.png';
@@ -19,23 +19,23 @@ const TopBar = ({
   console.log('check', createUserDisable, isEmailExists);
   return (
     <>
-      <Box className='createusertophead'>
-        <Box className='d-flex'>
-          <Box className='backarrow' onClick={returnBack}>
+      <Box className="createusertophead">
+        <Box className="d-flex">
+          <Box className="backarrow" onClick={returnBack}>
             <ArrowBackIcon />
           </Box>
-          <Box className='d-flex' onClick={() => navigate('/dashboard')}>
-            <img src={Logo} height='30' />
+          <Box className="d-flex" onClick={() => navigate('/dashboard')}>
+            <img src={Logo} height="30" />
           </Box>
         </Box>
-        <Box className='d-flex align-items-center justify-content-space-between'>
+        <Box className="d-flex align-items-center justify-content-space-between">
           <Tooltip
             title={
               createUserDisable
                 ? 'Please fill all the mandatory(*) details'
                 : ''
             }
-            placement='left'
+            placement="left"
             enterTouchDelay={0}
           >
             <span style={{ cursor: 'pointer' }}>
@@ -43,7 +43,7 @@ const TopBar = ({
                 disabled={createUserDisable || isEmailExists}
                 variant="primaryButton"
                 className="sm"
-                type='submit'
+                type="submit"
               >
                 {createText}
               </Button>
@@ -51,14 +51,14 @@ const TopBar = ({
           </Tooltip>
         </Box>
       </Box>
-      <Box className='createuserbottomhead'>
-        <Box className='d-flex align-items-center justify-content-space-between'>
-          <Box className='backarrow' onClick={returnBack}>
+      <Box className="createuserbottomhead">
+        <Box className="d-flex align-items-center justify-content-space-between">
+          <Box className="backarrow" onClick={returnBack}>
             <ArrowBackIcon />
           </Box>
-          <Typography variant='h3medium'>{createText}</Typography>
+          <Typography variant="h3medium">{createText}</Typography>
         </Box>
-        <Box className='d-flex align-items-center justify-content-space-between'>
+        <Box className="d-flex align-items-center justify-content-space-between">
           <Button
             sx={{
               paddingLeft: 0,
@@ -67,11 +67,11 @@ const TopBar = ({
             }}
             disableRipple
             disableFocusRipple
-            variant='text'
+            variant="text"
           >
             <Typography
-              className='d-flex align-items-center'
-              variant='h7medium'
+              className="d-flex align-items-center"
+              variant="h7medium"
               sx={{
                 textTransform: 'capitalize',
               }}
@@ -108,11 +108,11 @@ const TopBar = ({
             }}
             disableRipple
             disableFocusRipple
-            variant='text'
+            variant="text"
           >
             <Typography
-              className='d-flex align-items-center'
-              variant='h7medium'
+              className="d-flex align-items-center"
+              variant="h7medium"
               sx={{
                 textTransform: 'capitalize',
               }}
@@ -151,8 +151,8 @@ const TopBar = ({
             }}
           >
             <Typography
-              className='d-flex align-items-center'
-              variant='h7medium'
+              className="d-flex align-items-center"
+              variant="h7medium"
               sx={{
                 textTransform: 'capitalize',
               }}
