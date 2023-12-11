@@ -1,0 +1,7 @@
+.radio-group-list-item .item {
+  padding: 10px 0px;
+  margin-right: 0px;
+}
+.radio-group-list-item .item:last-child {
+  border: none;
+}

@@ -8,7 +8,11 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
+<<<<<<< HEAD:libs/utilities/.eslintrc.json
       "rules": { "@typescript-eslint/no-empty-function": "off",}
+=======
+      "rules": {"no-undefined": "off","noImplicitAny": "off",   "@typescript-eslint/no-non-null-assertion": "off"}
+>>>>>>> a795752a4d02dbcb7079cf867867fa1496744958:platformx/libs/utilities/.eslintrc.json
     },
     {
       "files": ["*.js", "*.jsx"],

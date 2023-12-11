@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
-const InterRegular = require("../fonts/Inter/Inter-Regular.woff2") as string;
-
+import HCLRobort from "../../assets/fonts/HCLRobort/HCLRobort-Regular.ttf";
+import InterRegular from "../../assets/fonts/Inter/Inter-Regular.ttf";
 
 const ThemeConstants = {
   // Color Variables

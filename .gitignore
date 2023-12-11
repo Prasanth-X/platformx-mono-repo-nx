@@ -1,44 +1,74 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Ignore node_modules directory
+node_modules/
 
-# compiled output
-dist
-tmp
-/out-tsc
+# Ignore dist directories
+/dist/
+/dist-out/
 
-# dependencies
-node_modules
+# Ignore .nx directory
+.nx/
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
+# Ignore workspace files
+nx-deps.json
+nx.json
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore environment files
+.env
+.env.local
+
+# Ignore temporary files
+*.swp
+
+# Ignore build artifacts and cache
+.npm/
+.npmrc
+.npmignore
+package-lock.json
+yarn.lock
+.pnpm/
+
+# Ignore coverage directory
+coverage/
+
+# Ignore compiled TypeScript files
+*.js
+*.js.map
+
+# Ignore generated documentation
+docs/
+
+# Ignore IDE and editor files
+.idea/
+*.iml
+*.ipr
+*.iws
+*.bak
+*.DS_Store
+*.log
+*.orig
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# Ignore compiled binary files
+*.exe
+*.log
+*.dll
+*.so
+*.dylib
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+# Ignore environment-specific files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# System Files
-.DS_Store
+# Ignore miscellaneous files
 Thumbs.db
-
-.nx/cache
-
-# Next.js
-.next
+.DS_Store
+Desktop.ini
