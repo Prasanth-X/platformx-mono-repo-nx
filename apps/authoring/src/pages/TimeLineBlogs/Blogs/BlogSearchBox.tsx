@@ -1,13 +1,13 @@
+import { makeStyles } from '@material-ui/core/styles';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import '../../../components/Common/Search.css';
-import { makeStyles } from '@material-ui/core/styles';
-import { debounce } from '../../../utils/helperFunctions';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { commonPostApiCall } from '../../../services/config/request';
 import SearchIcon from '../../../assets/SearchIcon.svg';
-import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
+import '../../../components/Common/Search.css';
 import { showToastError } from '../../../components/toastNotification/toastNotificationReactTostify';
+import { commonPostApiCall } from '../../../services/config/request';
+import { debounce } from '../../../utils/helperFunctions';
 
 interface Content {
   description: any;
@@ -190,6 +190,7 @@ export default function BlogSearchBox({ onSearch, style }) {
               startAdornment: (
                 <img src={SearchIcon} style={{ marginRight: '10px' }} />
               ),
+              // <SearchIcon style={{ marginRight: '10px' }} />,
               endAdornment: (
                 // <React.Fragment>
                 //     {loading ? <CircularProgress color="inherit" size={15} /> : null}

@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-import * as React from 'react';
+import { Box, RadioProps, styled, ThemeProvider } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { Box, RadioProps, styled, ThemeProvider } from '@mui/material';
 import LightTheme from '../../theme/lightTheme';
 import ThemeConstants from '../../theme/variable';
 const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;

@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
 import { ReviewComment } from '../../components/ContentRewiew/ContentReview.types';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
+type ContainerProps = {
+  children: React.ReactNode; //👈 children prop typr
+};
+
 type CommentContextData = {
   comments: ReviewComment[];
   addComment: (content: string, sectionId: string) => void;
@@ -46,8 +50,9 @@ const CommentContext = createContext<CommentContextData>({
 });
 
 export const useCommentContext = () => useContext(CommentContext);
+// export const CommentProvider: React.FC = ({children} ) => {
 
-export const CommentProvider: React.FC = ({ children }) => {
+export const CommentProvider = (props: ContainerProps) => {
   const [comments, setComments] = useState<ReviewComment[]>([]);
   const [isCommentsPanelOpen, setIsCommentPanelOpen] = useState(false);
   const [isReviewEnabled, setIsReviewEnabled] = useState(false);
@@ -222,7 +227,8 @@ export const CommentProvider: React.FC = ({ children }) => {
         contentTitle,
       }}
     >
-      {children}
+      {props.children}
+      {/* {children} */}
     </CommentContext.Provider>
   );
 };

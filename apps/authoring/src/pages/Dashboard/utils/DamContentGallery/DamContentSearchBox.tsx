@@ -1,13 +1,16 @@
-import * as React from 'react';
 import { makeStyles } from '@material-ui/core';
+import * as React from 'react';
 
-import '../../../../components/Common/Search.css';
 import { useLazyQuery } from '@apollo/client';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useTranslation } from 'react-i18next';
+import '../../../../components/Common/Search.css';
 import ThemeConstants from '../../../../theme/variable';
 import { debounce } from '../../../../utils/helperFunctions';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { SearchBlackSvg, SearchGraySvg } from '../../../../assets/svg';
+// import { SearchBlackSvg, SearchGraySvg } from '../../../../assets/svg';
+const SearchBlackSvg = require('../../../../assets/svg') as string;
+const SearchGraySvg = require('../../../../assets/svg') as string;
+
 import { Autocomplete, Box, InputAdornment, TextField } from '@mui/material';
 import { showToastError } from '../../../../components/toastNotification/toastNotificationReactTostify';
 import { fetchAllEcomProductContentList } from '../../../../services/contentGallery/contentGallery.api';
@@ -134,13 +137,18 @@ export default function DamContentSearchBox({
           marginRight: '13px',
         }}
       >
-        <SearchBlackSvg
+        <img
+          src={SearchBlackSvg}
           style={{ verticalAlign: 'middle', cursor: 'pointer' }}
           onClick={() => setShowSearch(true)}
         />
+        {/* <SearchBlackSvg
+          style={{ verticalAlign: 'middle', cursor: 'pointer' }}
+          onClick={() => setShowSearch(true)}
+        /> */}
       </Box>
       <Autocomplete
-        id='asynchronousSearch'
+        id="asynchronousSearch"
         freeSolo
         forcePopupIcon={false}
         sx={{ display: { xs: showSearch ? 'block' : 'none', md: 'block' } }}
@@ -190,13 +198,16 @@ export default function DamContentSearchBox({
             }}
             InputProps={{
               ...params.InputProps,
-              startAdornment: <SearchGraySvg style={{ marginRight: '10px' }} />,
+              startAdornment: (
+                <img src={SearchGraySvg} style={{ marginRight: '10px' }} />
+              ),
+              //  <SearchGraySvg style={{ marginRight: '10px' }} />,
               endAdornment: (
                 // <React.Fragment>
                 //     {loading ? <CircularProgress color="inherit" size={15} /> : null}
                 //     {params.InputProps.endAdornment}
                 // </React.Fragment>
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   {inputValue && (
                     <Box
                       sx={{

@@ -1,7 +1,6 @@
-
-
-const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
-const InterRegular = require("../fonts/Inter/Inter-Regular.woff2") as string;
+const HCLRobort =
+  require('../fonts/HCLTechRoobert/HCLTechRoobert-Regular.ttf') as string;
+const InterRegular = require('../fonts/Inter/Inter-Regular.ttf') as string;
 
 const ThemeConstants = {
   // Color Variables

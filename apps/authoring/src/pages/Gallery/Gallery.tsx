@@ -604,12 +604,12 @@ const Gallery = ({
           sx={{ margin: 'auto 0', display: 'flex' }}
         >
           <Button
-            variant='text'
+            variant="text"
             startIcon={<ArrowBackIosNewIcon sx={{ padding: '0px' }} />}
             sx={{ padding: 0, minWidth: '0px', display: { sm: 'none' } }}
             onClick={() => toggleGallery(false, 'cancel', keyName)}
           ></Button>
-          <Typography variant='h4bold'>
+          <Typography variant="h4bold">
             {galleryMode == 'Images'
               ? t('page_choose_image')
               : t('video_subtitle')}
@@ -618,16 +618,16 @@ const Gallery = ({
         <Grid item xs={12} md={4} lg={5} sx={{ margin: 'auto 0' }}>
           <Box sx={{ display: 'none' }} mt={1}>
             <TextField
-              variant='outlined'
-              placeholder='Search'
+              variant="outlined"
+              placeholder="Search"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position='start'>
+                  <InputAdornment position="start">
                     <SearchIcon />
                   </InputAdornment>
                 ),
                 endAdornment: searchValue && (
-                  <InputAdornment position='start'>
+                  <InputAdornment position="start">
                     <CloseRoundedIcon
                       sx={{
                         cursor: 'pointer',
@@ -675,8 +675,8 @@ const Gallery = ({
                   borderLeft: '0px solid #fff',
                 }}
               >
-                <MenuItem value='All'>All</MenuItem>
-                <MenuItem value='title'>Title</MenuItem>
+                <MenuItem value="All">All</MenuItem>
+                <MenuItem value="title">Title</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -689,7 +689,7 @@ const Gallery = ({
           sx={{ textAlign: 'right', display: { xs: 'none', sm: 'block' } }}
         >
           <Button
-            variant='secondaryButton'
+            variant="secondaryButton"
             onClick={() => toggleGallery(false, 'cancel', keyName)}
           >
             {t('cancel')}
@@ -697,7 +697,7 @@ const Gallery = ({
           <LoadingButton
             onClick={handleDone}
             loading={doneLoader}
-            loadingPosition='start'
+            loadingPosition="start"
             sx={{
               marginLeft: '12px',
               '&:disabled': {
@@ -713,7 +713,7 @@ const Gallery = ({
             disabled={
               selectedImage.Thumbnail == '' && selectedVideo.Thumbnail == ''
             }
-            variant='primaryButton'
+            variant="primaryButton"
           >
             {t('save')}
           </LoadingButton>
@@ -747,7 +747,7 @@ const Gallery = ({
         >
           <img src={NoResults} />
           <Typography
-            variant='h3'
+            variant="h3"
             sx={{ color: ThemeConstants.LIGHT_GREY_COLOR }}
           >
             Failed to fetch results
@@ -762,7 +762,7 @@ const Gallery = ({
             padding: { xs: '11px', sm: '0px' },
             position: 'relative',
           }}
-          id='scrollableDiv'
+          id="scrollableDiv"
         >
           {isLoading && (
             <Box
@@ -814,14 +814,14 @@ const Gallery = ({
               </Box>
             }
             style={{ overflow: 'hidden' }}
-            scrollableTarget='scrollableDiv'
+            scrollableTarget="scrollableDiv"
           >
             {galleryMode == 'Images' && (
               <Masonry
                 columns={{ xs: 2, sm: 2, md: 3, lg: 4 }}
                 spacing={{ xs: 1, sm: 2 }}
               >
-                {images.map((item, i) => (
+                {images.map((item: any, i) => (
                   <Box
                     sx={{
                       cursor: 'pointer',
@@ -847,7 +847,7 @@ const Gallery = ({
                     onClick={() => handleSelectedImage(item)}
                     key={i}
                   >
-                    <img src={`${item.Thumbnail}`} width='100%' height='100%' />
+                    <img src={`${item.Thumbnail}`} width="100%" height="100%" />
                     <Box
                       sx={{
                         backgroundColor:
@@ -888,11 +888,11 @@ const Gallery = ({
                         display: 'none',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -906,7 +906,7 @@ const Gallery = ({
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
@@ -922,7 +922,7 @@ const Gallery = ({
                 columns={{ xs: 2, sm: 3, md: 4 }}
                 spacing={{ xs: 1, sm: 2 }}
               >
-                {images.map((item, i) => (
+                {images.map((item: any, i) => (
                   <Box
                     sx={{
                       cursor: 'pointer',
@@ -944,7 +944,7 @@ const Gallery = ({
                     {/* <video controls width="100%" height="100%" >
                       <source src={item.Thumbnail} />
                     </video> */}
-                    <img src={`${item.Thumbnail}`} width='100%' height='100%' />
+                    <img src={`${item.Thumbnail}`} width="100%" height="100%" />
                     <Box
                       sx={{
                         backgroundColor:
@@ -985,11 +985,11 @@ const Gallery = ({
                         display: 'none',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -1003,7 +1003,7 @@ const Gallery = ({
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
@@ -1033,7 +1033,7 @@ const Gallery = ({
         <LoadingButton
           onClick={handleDone}
           loading={doneLoader}
-          loadingPosition='start'
+          loadingPosition="start"
           sx={{
             width: '100%',
             marginLeft: '0px',
@@ -1041,7 +1041,7 @@ const Gallery = ({
           disabled={
             selectedImage.Thumbnail == '' && selectedVideo.Thumbnail == ''
           }
-          variant='primaryButton'
+          variant="primaryButton"
         >
           {t('save')}
         </LoadingButton>

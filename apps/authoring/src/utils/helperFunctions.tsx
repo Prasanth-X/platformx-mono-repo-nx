@@ -35,7 +35,7 @@ export const formatAddPrelem = (item: {
     StructuredData: '',
   };
 };
-export const getFirstTwoletters = (title: string | null) => {
+export const getFirstTwoletters = (title) => {
   if (!title) return '';
   const words = title.trim().split(' ');
   if (words.length === 1) return words[0].substring(0, 2);
@@ -540,7 +540,7 @@ export const getUniqueTimeZone = () => {
 };
 
 //export const formCroppedUrl = (gcpUrl = "", bucketName = "", url = "", ext = "") => `${gcpUrl}/${bucketName}/${url}.${ext}`;
-export const formCroppedUrl = (url = '', ext = '') => {
+export const formCroppedUrl = (url: any = '', ext = '') => {
   return `${authInfo.gcpUri}/${authInfo.gcpBucketName}/${url.replaceAll(
     ' ',
     '%20'

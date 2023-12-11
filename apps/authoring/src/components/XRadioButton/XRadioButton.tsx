@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-import * as React from 'react';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import { Radio, RadioProps, styled, ThemeProvider } from '@mui/material';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import LightTheme from '../../theme/lightTheme';
 import ThemeConstants from '../../theme/variable';
 const InterRegular = require('../../fonts/Inter/Inter-Regular.ttf') as string;

@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core';
-import { Typography } from '@mui/material'; import { styled } from '@material-ui/core';
+import { makeStyles, styled } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 export const useAddSiteStyle = makeStyles((theme) => ({
   addSitePage: {
@@ -8,15 +8,14 @@ export const useAddSiteStyle = makeStyles((theme) => ({
     padding: '0 15px',
   },
   typoBoxStyle: {
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
   },
-
 }));
 
 export const ControlTitle = styled(Typography)((theme) => ({
   fontFamily: 'Inter',
   fontStyle: 'normal',
-  fontWeight: '500',
+  fontWeight: 500,
   fontSize: '14px',
   lineHeight: '17px',
   color: ' #14142B',
@@ -55,6 +54,4 @@ export const textBoxStyle = {
   fontWeight: '400',
 };
 
-export const typoBoxStyle = {
-
-}
+export const typoBoxStyle = {};

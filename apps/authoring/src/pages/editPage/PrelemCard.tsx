@@ -1,6 +1,6 @@
+import { makeStyles } from '@material-ui/core';
 import { Box, Button } from '@mui/material/';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { makeStyles } from '@material-ui/core';
 
 import React, {
   Suspense,
@@ -10,15 +10,15 @@ import React, {
   useState,
 } from 'react';
 // import Mapping from '../../utils/mapping.json';
-import { ThemeProvider } from '@mui/material/styles';
-import Mapping from 'platform-x-prelems/prelems/mapping';
-import EditTray from '../../components/EditTray';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
+import { ThemeProvider } from '@mui/material/styles';
+import Mapping from 'platform-x-prelems/prelems/mapping';
 import { useTranslation } from 'react-i18next';
+import EditTray from '../../components/EditTray';
 import ButtonEditLink from '../../components/buttonEditLink';
 import ButtonEditWindow from '../../components/buttonEditWindow';
 import {
@@ -28,9 +28,9 @@ import {
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
 import LightTheme from '../../theme/lightTheme';
+import PrelemTheme from '../../theme/prelemTheme';
 import ThemeConstants from '../../theme/variable';
 import { convertToLowerCase, getSubDomain } from '../../utils/helperFunctions';
-import PrelemTheme from '../../theme/prelemTheme';
 // Custom css classes to add centered "add icon" on each prelem card on top ad bottom
 const useStyles = makeStyles(() => ({
   addiconTop: {

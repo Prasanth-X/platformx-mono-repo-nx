@@ -72,7 +72,7 @@ export const HeaderCreation: React.FC = () => {
   const openCreate = Boolean(anchorElCreate);
   const deleteMenuItem = () => {
     const menuListUpdated = navItems.filter(
-      (item) => item.name != currentMenuItem?.name
+      (item: any) => item.name != currentMenuItem?.name
     );
     setNavItems(menuListUpdated);
   };
@@ -115,7 +115,7 @@ export const HeaderCreation: React.FC = () => {
       }}
     >
       <Button
-        variant='contained'
+        variant="contained"
         sx={{
           alignSelf: 'flex-end',
           backgroundColor: ThemeConstants.BLACK_COLOR,
@@ -141,8 +141,8 @@ export const HeaderCreation: React.FC = () => {
           }}
         >
           {navItems?.length > 0
-            ? navItems.map((navItemInstance, index) =>
-              <Box
+            ? navItems.map((navItemInstance, index) => (
+                <Box
                   key={`key${index}`}
                   sx={{
                     height: '3rem',
@@ -159,17 +159,17 @@ export const HeaderCreation: React.FC = () => {
                   </Box>
                   <Box sx={{ alignSelf: 'flex-end', width: '18%' }}>
                     {typeof home !== 'undefined' &&
-                    home == navItemInstance?.Heading ? 
+                    home == navItemInstance?.Heading ? (
                       <HomeIcon
                         sx={{ padding: '3px 0px 0px', float: 'left' }}
                       />
-                     : null}
+                    ) : null}
                     <IconButton
-                      aria-label='settings'
-                      id='long-button'
+                      aria-label="settings"
+                      id="long-button"
                       aria-controls={open ? 'long-menu' : undefined}
                       aria-expanded={open ? 'true' : undefined}
-                      aria-haspopup='true'
+                      aria-haspopup="true"
                       onClick={(e) => handleClick(e, navItemInstance)}
                       sx={{ padding: '3px 0px 0px', float: 'right' }}
                     >
@@ -177,11 +177,11 @@ export const HeaderCreation: React.FC = () => {
                     </IconButton>
                   </Box>
                 </Box>
-              )
+              ))
             : null}
         </Box>
 
-        {navItems?.length > 0 ?
+        {navItems?.length > 0 ? (
           // <ThemeProvider
           //   theme={theme[`${process.env?.REACT_APP_COMPONENT_THEME}`]}
           // >
@@ -196,8 +196,8 @@ export const HeaderCreation: React.FC = () => {
             }}
           >
             {navItems?.length > 0
-              ? navItems.map((navItemInstance, index) =>
-                (<Box
+              ? navItems.map((navItemInstance, index) => (
+                  <Box
                     key={`key${index}`}
                     sx={{
                       height: '3rem',
@@ -212,17 +212,17 @@ export const HeaderCreation: React.FC = () => {
                         color: 'black',
                         fontWeight: 'bold',
                       }}
-                      target='_blank'
-                      rel='noreferrer'
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       {' '}
                       {navItemInstance.Heading}
                     </a>
-                  </Box>)
-                )
+                  </Box>
+                ))
               : null}
           </Box>
-         : // </ThemeProvider>
+        ) : // </ThemeProvider>
         null}
       </Box>
 
@@ -325,20 +325,20 @@ export const HeaderCreation: React.FC = () => {
           Link
         </MenuItem>
       </Menu>
-      {showLinkPage ?
+      {showLinkPage ? (
         <PageLinkPopover
           handleClose={handleCloseLinkPage}
           openPageModal
           updateMenuItems={updateMenuItems}
         />
-       : null}
-      {showLinkExternal ?
+      ) : null}
+      {showLinkExternal ? (
         <ExternalLinkModal
           handleClose={handleCloseLinkExternal}
           openPageModal
           updateMenuItems={updateMenuItems}
         />
-       : null}
+      ) : null}
     </Box>
   );
 };

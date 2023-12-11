@@ -1,6 +1,7 @@
+const HCLRobort =
+  require('../fonts/HCLTechRoobert/HCLTechRoobert-Regular.ttf') as string;
+const InterRegular = require('../fonts/Inter/Inter-Regular.ttf') as string;
 
-const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
-const InterRegular = require("../fonts/Inter/Inter-Regular.woff2") as string;
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#2d2d39',
@@ -58,8 +59,8 @@ const ThemeConstants = {
   FONTSIZE_XXS: '10px',
 
   //New font sizes
-  WebL_H1: "135px",
-  TabL_H1: "75px",
+  WebL_H1: '135px',
+  TabL_H1: '75px',
   FONTSIZE_H1: '28px', // Headings
   FONTSIZE_H2: '24px', // Headings
   FONTSIZE_H3: '20px', // Headings
@@ -123,21 +124,21 @@ const ThemeConstants = {
   LG: 1280,
   XL: 1440,
   // CAT Height
-  CTA_MEDIUM_HEIGHT: "47px",
-  CTA_SMALL_HEIGHT: "38px",
-  CTA_LARGE_HEIGHT: "63px",
-  CTA_XLARGE_HEIGHT: "66px",
+  CTA_MEDIUM_HEIGHT: '47px',
+  CTA_SMALL_HEIGHT: '38px',
+  CTA_LARGE_HEIGHT: '63px',
+  CTA_XLARGE_HEIGHT: '66px',
   // CAT Padding
-  CTA_MEDIUM_PADDING: "5px 24px",
-  CTA_SMALL_PADDING: "5px 16px",
+  CTA_MEDIUM_PADDING: '5px 24px',
+  CTA_SMALL_PADDING: '5px 16px',
   // Text Transform
-  TEXTTRANSFORMUPPERCASE: "uppercase",
-  TEXTTRANSFORMCAPITALIZECASE: "capitalize",
-  TEXTTRANSFORMLOWERCASE: "lowercase",
+  TEXTTRANSFORMUPPERCASE: 'uppercase',
+  TEXTTRANSFORMCAPITALIZECASE: 'capitalize',
+  TEXTTRANSFORMLOWERCASE: 'lowercase',
   // Border Radius
-  DEFAULT_BORDER_RADIUS: "3px",
-  ROUND_BORDER_RADIUS: "35px",
-  DEFAULT_BORDER_RADIUS_CTA: "5px",
+  DEFAULT_BORDER_RADIUS: '3px',
+  ROUND_BORDER_RADIUS: '35px',
+  DEFAULT_BORDER_RADIUS_CTA: '5px',
   // Font Family
   PRIMARY_FONT_FAMILY: 'Inter',
   SECONDARY_FONT_FAMILY: 'HCLTechRoobert',
@@ -206,7 +207,7 @@ const ThemeConstants = {
 
   ELEMENT: {
     TEXTBOX: {
-      BORDER_RADIUS: "5px",
+      BORDER_RADIUS: '5px',
       PADDING: {
         sm: '25px 0px 8px 12px',
         md: '25px 0px 8px 12px',
@@ -217,11 +218,11 @@ const ThemeConstants = {
       },
     },
     BUTTON: {
-      BORDER_RADIUS: "5px",
-      MEDIUM_HEIGHT: "47px",
-      SMALL_HEIGHT: "38px",
-      LARGE_HEIGHT: "63px",
-      XLARGE_HEIGHT: "66px",
+      BORDER_RADIUS: '5px',
+      MEDIUM_HEIGHT: '47px',
+      SMALL_HEIGHT: '38px',
+      LARGE_HEIGHT: '63px',
+      XLARGE_HEIGHT: '66px',
       MIN_WIDTH: '120px',
       MIN_WIDTH_SMALL: '90px',
       PADDING: {
@@ -235,19 +236,19 @@ const ThemeConstants = {
         RIGHT: '12px',
         BOTTOM: '12px',
         LEFT: '0px',
-        SMMARGIN: "10px 10px 10px 0px",
-        MDMARGIN: "10px 10px 10px 0px"
-      }
+        SMMARGIN: '10px 10px 10px 0px',
+        MDMARGIN: '10px 10px 10px 0px',
+      },
     },
     SELECT: {
-      BORDER_RADIUS: "5px"
+      BORDER_RADIUS: '5px',
     },
     ACCORDIAN: {
-      BORDER_RADIUS: "5px",
-      BORDER: "2px",
-      PADDING1: "6px 24px 6px 24px",
-      PADDING2: "16px 24px 16px 24px",
-      MARGINBOTTOM: "32px",
+      BORDER_RADIUS: '5px',
+      BORDER: '2px',
+      PADDING1: '6px 24px 6px 24px',
+      PADDING2: '16px 24px 16px 24px',
+      MARGINBOTTOM: '32px',
     },
     LABEL: {
       PADDING: {
@@ -255,11 +256,11 @@ const ThemeConstants = {
         SMBOTTOM: '10px',
         LGTOP: '12px',
         LGBOTTOM: '12px',
-      }
-    }
+      },
+    },
   },
   OVERYLAY: {
-    EDITOVERLAY: '50, 130, 250, 0.9'
+    EDITOVERLAY: '50, 130, 250, 0.9',
   },
   RADIUS: {
     VALUE1: '5px',

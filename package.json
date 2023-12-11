@@ -48,6 +48,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/react-swipeable-views": "^0.13.1",
     "@types/react-swipeable-views-utils": "^0.13.3",
+    "@types/styled-components": "^5.1.32",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "analytics": "^0.8.1",

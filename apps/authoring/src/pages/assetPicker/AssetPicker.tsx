@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Typography, Box, Button, Grid, Divider } from '@mui/material';
-import ThemeConstants from '../../theme/variable';
-import { authInfo } from '../../utils/authConstants';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Masonry from '@mui/lab/Masonry';
-import { useNavigate } from 'react-router';
-import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import { Box, Button, Divider, Grid, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import Tab from '@mui/material/Tab';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import Pdf from '../../assets/images/pdf.png';
+import ThemeConstants from '../../theme/variable';
+import { authInfo } from '../../utils/authConstants';
 
 interface Collection {
   Uuid: string;
@@ -81,9 +81,7 @@ const AssetPicker = () => {
   const getItemsFromCollection = (collectionItem) => {
     setLoading(true);
     fetch(
-      `${authInfo.dspaceUri
-        }server/api/discover/browses/dateissued/items?scope=${
-        collectionItem.Uuid}`
+      `${authInfo.dspaceUri}server/api/discover/browses/dateissued/items?scope=${collectionItem.Uuid}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -113,7 +111,7 @@ const AssetPicker = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${authInfo.dspaceUri  }server/api/core/collections`)
+    fetch(`${authInfo.dspaceUri}server/api/core/collections`)
       .then((res) => res.json())
       .then((json) => {
         const collectionItemRoot: Collection = {
@@ -181,9 +179,7 @@ const AssetPicker = () => {
     collectionsList.map((collectionItem, collectionIndex) => {
       if (collectionItem.Uuid != 'Root') {
         fetch(
-          `${authInfo.dspaceUri
-            }server/api/discover/browses/dateissued/items?scope=${
-            collectionItem.Uuid}`
+          `${authInfo.dspaceUri}server/api/discover/browses/dateissued/items?scope=${collectionItem.Uuid}`
         )
           .then((res) => res.json())
           .then((json) => {
@@ -262,17 +258,17 @@ const AssetPicker = () => {
       <Grid container pt={1} pb={1} pl={4} pr={4}>
         <Grid item xs={12} md={3} lg={6} sx={{ margin: 'auto 0' }}>
           <Typography
-            variant='h5'
+            variant="h5"
             sx={{ fontSize: ThemeConstants.FONTSIZE_MD }}
           >
             Choose your Asset
           </Typography>
         </Grid>
         <Grid item xs={12} md={5} lg={6} mt={2} sx={{ textAlign: 'right' }}>
-          <Button variant='outlined'>Cancel</Button>
+          <Button variant="outlined">Cancel</Button>
           <Button
             sx={{ marginLeft: '20px' }}
-            variant='contained'
+            variant="contained"
             disabled={selectedImages.length == 0}
             onClick={handleDone}
           >
@@ -290,7 +286,7 @@ const AssetPicker = () => {
           sx={{ margin: 'auto 0', borderRight: '1px solid #80808054' }}
         >
           <Typography
-            variant='h4'
+            variant="h4"
             sx={{ fontSize: ThemeConstants.FONTSIZE_MD }}
             mb={2}
           >
@@ -307,7 +303,7 @@ const AssetPicker = () => {
             {collectionsList.map((item, key) => {
               return (
                 <Typography
-                  variant='body1'
+                  variant="body1"
                   mt={2}
                   mb={2}
                   sx={{
@@ -330,21 +326,21 @@ const AssetPicker = () => {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList
                 onChange={handleChange}
-                aria-label='lab API tabs example'
+                aria-label="lab API tabs example"
               >
-                <Tab label='All' value='All' />
-                <Tab label='Image' value='Image' />
-                <Tab label='Videos' value='Video' />
-                <Tab label='Pdfs' value='Pdfs' />
+                <Tab label="All" value="All" />
+                <Tab label="Image" value="Image" />
+                <Tab label="Videos" value="Video" />
+                <Tab label="Pdfs" value="Pdfs" />
               </TabList>
             </Box>
             <TabPanel
-              value='All'
+              value="All"
               sx={{ height: 'calc(100vh - 152px)', overflowY: 'scroll' }}
             >
               <Masonry columns={4} spacing={2}>
-                {allItems.map((item, i) =>
-                  (<Box
+                {allItems.map((item: any, i) => (
+                  <Box
                     sx={{
                       cursor: 'pointer',
                       position: 'relative',
@@ -364,19 +360,19 @@ const AssetPicker = () => {
                     {item.ItemType == 'Image' ? (
                       <img
                         src={`${item.Thumbnail}`}
-                        width='100%'
-                        height='100%'
+                        width="100%"
+                        height="100%"
                       />
                     ) : item.ItemType == 'Video' ? (
-                      <video controls width='100%' height='100%'>
+                      <video controls width="100%" height="100%">
                         <source src={item.Thumbnail} />
                       </video>
                     ) : (
                       <img
                         src={Pdf}
                         alt={item.Thumbnail}
-                        width='100%'
-                        height='100%'
+                        width="100%"
+                        height="100%"
                       />
                     )}
                     <Box
@@ -418,11 +414,11 @@ const AssetPicker = () => {
                         display: 'flex',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -436,21 +432,22 @@ const AssetPicker = () => {
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
                         </Typography>
                       </Box>
                     </Box>
-                  </Box>)
-                )}
-                {allItems.length == 0 && !loading &&
+                  </Box>
+                ))}
+                {allItems.length == 0 && !loading && (
                   <Box>
-                    <Typography variant='body1'>No All Results</Typography>
-                  </Box>}
+                    <Typography variant="body1">No All Results</Typography>
+                  </Box>
+                )}
               </Masonry>
-              {loading &&
+              {loading && (
                 <Box
                   sx={{
                     marginTop: '100px',
@@ -465,15 +462,16 @@ const AssetPicker = () => {
                       color: ThemeConstants.PRIMARY_MAIN_COLOR,
                     }}
                   />
-                </Box>}
+                </Box>
+              )}
             </TabPanel>
             <TabPanel
-              value='Image'
+              value="Image"
               sx={{ height: 'calc(100vh - 152px)', overflowY: 'scroll' }}
             >
               <Masonry columns={4} spacing={2}>
-                {images.map((item, i) =>
-                  (<Box
+                {images.map((item: any, i) => (
+                  <Box
                     sx={{
                       cursor: 'pointer',
                       position: 'relative',
@@ -490,7 +488,7 @@ const AssetPicker = () => {
                     onClick={() => handleSelectedImage(item)}
                     key={i}
                   >
-                    <img src={`${item.Thumbnail}`} width='100%' height='100%' />
+                    <img src={`${item.Thumbnail}`} width="100%" height="100%" />
                     <Box
                       sx={{
                         backgroundColor: selectedImages.includes(item)
@@ -530,11 +528,11 @@ const AssetPicker = () => {
                         display: 'flex',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -548,21 +546,22 @@ const AssetPicker = () => {
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
                         </Typography>
                       </Box>
                     </Box>
-                  </Box>)
-                )}
-                {images.length == 0 && !loading &&
+                  </Box>
+                ))}
+                {images.length == 0 && !loading && (
                   <Box>
-                    <Typography variant='body1'>No Image Results</Typography>
-                  </Box>}
+                    <Typography variant="body1">No Image Results</Typography>
+                  </Box>
+                )}
               </Masonry>
-              {loading &&
+              {loading && (
                 <Box
                   sx={{
                     marginTop: '100px',
@@ -577,15 +576,16 @@ const AssetPicker = () => {
                       color: ThemeConstants.PRIMARY_MAIN_COLOR,
                     }}
                   />
-                </Box>}
+                </Box>
+              )}
             </TabPanel>
             <TabPanel
-              value='Video'
+              value="Video"
               sx={{ height: 'calc(100vh - 152px)', overflowY: 'scroll' }}
             >
               <Masonry columns={4} spacing={2}>
-                {videos.map((item, i) =>
-                  (<Box
+                {videos.map((item: any, i) => (
+                  <Box
                     sx={{
                       cursor: 'pointer',
                       position: 'relative',
@@ -602,7 +602,7 @@ const AssetPicker = () => {
                     onClick={() => handleSelectedImage(item)}
                     key={i}
                   >
-                    <video controls width='100%' height='100%'>
+                    <video controls width="100%" height="100%">
                       <source src={item.Thumbnail} />
                     </video>
                     <Box
@@ -644,11 +644,11 @@ const AssetPicker = () => {
                         display: 'flex',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -662,21 +662,22 @@ const AssetPicker = () => {
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
                         </Typography>
                       </Box>
                     </Box>
-                  </Box>)
-                )}
-                {videos.length == 0 && !loading &&
+                  </Box>
+                ))}
+                {videos.length == 0 && !loading && (
                   <Box>
-                    <Typography variant='body1'>No Video Results</Typography>
-                  </Box>}
+                    <Typography variant="body1">No Video Results</Typography>
+                  </Box>
+                )}
               </Masonry>
-              {loading &&
+              {loading && (
                 <Box
                   sx={{
                     marginTop: '100px',
@@ -691,15 +692,16 @@ const AssetPicker = () => {
                       color: ThemeConstants.PRIMARY_MAIN_COLOR,
                     }}
                   />
-                </Box>}
+                </Box>
+              )}
             </TabPanel>
             <TabPanel
-              value='Pdfs'
+              value="Pdfs"
               sx={{ height: 'calc(100vh - 152px)', overflowY: 'scroll' }}
             >
               <Masonry columns={4} spacing={2}>
-                {pdfs.map((item, i) =>
-                  (<Box
+                {pdfs.map((item: any, i) => (
+                  <Box
                     sx={{
                       cursor: 'pointer',
                       position: 'relative',
@@ -719,8 +721,8 @@ const AssetPicker = () => {
                     <img
                       src={Pdf}
                       alt={item.Thumbnail}
-                      width='100%'
-                      height='100%'
+                      width="100%"
+                      height="100%"
                     />
                     <Box
                       sx={{
@@ -761,11 +763,11 @@ const AssetPicker = () => {
                         display: 'flex',
                       }}
                       p={1}
-                      className='image-hover-text'
+                      className="image-hover-text"
                     >
                       <Box>
                         <Typography
-                          variant='body1'
+                          variant="body1"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Title.replaceAll('%20', ' ')}
@@ -779,21 +781,22 @@ const AssetPicker = () => {
                           }}
                         ></Box>
                         <Typography
-                          variant='body2'
+                          variant="body2"
                           sx={{ color: ThemeConstants.WHITE_COLOR }}
                         >
                           {item.Description}
                         </Typography>
                       </Box>
                     </Box>
-                  </Box>)
-                )}
-                {pdfs.length == 0 && !loading &&
+                  </Box>
+                ))}
+                {pdfs.length == 0 && !loading && (
                   <Box>
-                    <Typography variant='body1'>No Pdfs Results</Typography>
-                  </Box>}
+                    <Typography variant="body1">No Pdfs Results</Typography>
+                  </Box>
+                )}
               </Masonry>
-              {loading &&
+              {loading && (
                 <Box
                   sx={{
                     marginTop: '100px',
@@ -808,7 +811,8 @@ const AssetPicker = () => {
                       color: ThemeConstants.PRIMARY_MAIN_COLOR,
                     }}
                   />
-                </Box>}
+                </Box>
+              )}
             </TabPanel>
           </TabContext>
         </Grid>
