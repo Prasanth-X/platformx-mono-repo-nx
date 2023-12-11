@@ -1,0 +1,11 @@
+.dropdown-wrapper.input-control-selectbox {
+  margin: 0px;
+}
+
+.dropdown-wrapper .select-small-label {
+  margin: 16px 10px;
+}
+
+.dropdown-wrapper .form-dropdown-error {
+  margin-top: -10px !important;
+}

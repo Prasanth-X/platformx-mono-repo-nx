@@ -1,0 +1,126 @@
+{
+  "name": "about-us-mfe",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/about-us-mfe/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/about-us-mfe",
+        "index": "apps/about-us-mfe/src/index.html",
+        "baseHref": "/",
+        "main": "apps/about-us-mfe/src/main.tsx",
+        "tsConfig": "apps/about-us-mfe/tsconfig.app.json",
+        "assets": [
+          "apps/about-us-mfe/src/favicon.ico",
+          "apps/about-us-mfe/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/about-us-mfe/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/about-us-mfe/src/environments/environment.ts",
+              "with": "apps/about-us-mfe/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "about-us-mfe:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "about-us-mfe:build:development"
+        },
+        "production": {
+          "buildTarget": "about-us-mfe:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/about-us-mfe/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/about-us-mfe/jest.config.ts"
+      }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/about-us-mfe/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/about-us-mfe",
+        "configDir": "apps/about-us-mfe/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/about-us-mfe/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "about-us-mfe:build-storybook",
+        "staticFilePath": "dist/storybook/about-us-mfe"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "about-us-mfe:build-storybook:ci"
+        }
+      }
+    }
+  },
+  "tags": []
+}
