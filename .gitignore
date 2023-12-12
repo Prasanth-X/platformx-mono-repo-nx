@@ -63,12 +63,12 @@ docs/
 *.dylib
 
 # Ignore environment-specific files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# .env.local
+# .env.development.local
+# .env.test.local
+# .env.production.local
 
 # Ignore miscellaneous files
 Thumbs.db
 .DS_Store
-Desktop.ini
+Desktop.ini 
