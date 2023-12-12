@@ -20,8 +20,8 @@ nx.json
 logs/
 
 # Ignore environment files
-.env
-.env.local
+# .env
+# .env.local
 
 # Ignore temporary files
 *.swp
