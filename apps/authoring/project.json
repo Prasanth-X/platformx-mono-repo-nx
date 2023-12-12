@@ -51,7 +51,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "authoring:build",
-        "hmr": true
+        "hmr": true,
+        "port": 3000
       },
       "configurations": {
         "development": {
