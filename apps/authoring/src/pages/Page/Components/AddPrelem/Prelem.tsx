@@ -1,5 +1,6 @@
 import { Box, Button, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +11,6 @@ import ButtonEditWindow from '../../../../components/buttonEditWindow';
 import { useComment } from '../../../../hooks/useComment/useComment';
 import { updateContentForCard } from '../../../../store/Actions';
 import { Store } from '../../../../store/ContextStore';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import { authInfo } from '../../../../utils/authConstants';
 import {
   convertToLowerCase,
@@ -275,12 +275,12 @@ const Prelem = ({
 
   // Assigning prelem prop data
   const prelemBaseEndpoint = {
-    APIEndPoint: process.env.REACT_APP_API_URI,
+    APIEndPoint: process.env.NX_API_URI,
     PublishEndPoint: `${getSubDomain()}/`,
     device: 'window',
     buttonBaseUrl: `${getSubDomain()}/`,
-    deliveryEndPoint: process.env.REACT_APP_DELIVERY_URI,
-    usersEndPoint: process.env.REACT_APP_USERS_URI,
+    deliveryEndPoint: process.env.NX_DELIVERY_URI,
+    usersEndPoint: process.env.NX_USERS_URI,
     language: i18n.language,
   };
   const secondaryArgs = {
@@ -288,8 +288,8 @@ const Prelem = ({
     editState: prelemEditState,
     currentPageURL: page?.pageModel?.Page,
     multiSlot: { onToggleContentGallery, eComContentGalleryHandle },
-    // gcpUrl: process.env.REACT_APP_GCP_URL,
-    // bucketName: process.env.REACT_APP_BUCKET_NAME
+    // gcpUrl: process.env.NX_GCP_URL,
+    // bucketName: process.env.NX_BUCKET_NAME
     bucketName: authInfo.gcpBucketName,
     gcpUrl: authInfo.gcpUri,
     sitename: getSelectedSite(),

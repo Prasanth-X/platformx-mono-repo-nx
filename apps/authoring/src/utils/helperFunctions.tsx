@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { format } from 'date-fns';
+import { SetStateAction } from 'react';
 import { showToastError } from '../components/toastNotification/toastNotificationReactTostify';
 import { authInfo } from './authConstants';
 import { DefaultLocale, LanguageList } from './constants';
 import siteLevelSchema from './siteLevelSettings.json';
-import { SetStateAction } from 'react';
 
 export const isTabView = () =>
   typeof window !== 'undefined' && window.innerWidth <= 1024;
@@ -547,15 +547,15 @@ export const formCroppedUrl = (url: any = '', ext = '') => {
   )}.${ext}`;
 };
 
-// const gcpUrl = process.env.REACT_APP_GCP_URL;
-//   const bucketName = process.env.REACT_APP_BUCKET_NAME;
+// const gcpUrl = process.env.NX_GCP_URL;
+//   const bucketName = process.env.NX_BUCKET_NAME;
 
 //   const webpImageUrl = `${gcpUrl}/${bucketName}/${imageUrl}.webp`;
 //   const fallbackImageUrl = `${gcpUrl}/${bucketName}/${imageUrl}.${imageExt}`;
 
 export const createImageURL = (imageUrl, imageExt = 'png') => {
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const bucketName = process.env.REACT_APP_BUCKET_NAME;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const bucketName = process.env.NX_BUCKET_NAME;
   return `${gcpUrl}/${bucketName}/${imageUrl}.${imageExt}`;
 };
 

@@ -5,7 +5,7 @@ import LightTheme from '../../../../../../../libs/utilities/src/lib/themes/autho
 import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 
 const themeConstant =
-  process.env?.REACT_APP_COMPONENT_THEME == 'LightTheme'
+  process.env?.NX_COMPONENT_THEME == 'LightTheme'
     ? ThemeConstants
     : ThemeConstants;
 export const demoUsers = {

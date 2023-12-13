@@ -1,6 +1,15 @@
-import EditIcon from '@mui/icons-material/Edit';
-import { Box, Divider, Typography } from '@mui/material';
+import { useLazyQuery } from '@apollo/client';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ComputerRoundedIcon from '@mui/icons-material/ComputerRounded';
+import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
+import TabletAndroidRoundedIcon from '@mui/icons-material/TabletAndroidRounded';
+import { Box, Divider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import Mapping from 'platform-x-prelems/prelems/mapping';
+import DemositeHeader from 'platform-x-utils/dist/DemositeHeader';
+import XeroxLandingHeader from 'platform-x-utils/dist/Xheader';
+import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import React, {
   createRef,
   useContext,
@@ -8,34 +17,18 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {
-  createSearchParams,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
-import Icons from '../../components/Icons';
-import { Store } from '../../store/ContextStore';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useLazyQuery } from '@apollo/client';
-import { ThemeProvider } from '@mui/material/styles';
-import DemositeHeader from 'platform-x-utils/dist/DemositeHeader';
-import XeroxLandingHeader from 'platform-x-utils/dist/Xheader';
-import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import Frame from 'react-frame-component';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { FETCH_PAGE_MODEL_DRAFT } from '../../graphql/fetchQueries';
 import { FETCH_PRELEM_VALIDATION } from '../../graphql/prelemQueries';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { fetchPageModel } from '../../store/Actions';
-import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
-import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
-import { PrelemInstance } from '../prelem-search/utils/prelemTypes';
-import ComputerRoundedIcon from '@mui/icons-material/ComputerRounded';
-import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
-import TabletAndroidRoundedIcon from '@mui/icons-material/TabletAndroidRounded';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
+import { Store } from '../../store/ContextStore';
 import { getSubDomain } from '../../utils/helperFunctions';
+import { PrelemInstance } from '../prelem-search/utils/prelemTypes';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
   mappingDynamicInstance[item] = React.lazy(
@@ -76,11 +69,11 @@ export const PreviewPage = () => {
   const [runFetchValidationQuery] = useLazyQuery(FETCH_PRELEM_VALIDATION);
 
   const Header = React.lazy(
-    () => import(`platform-x-utils/dist/${process.env?.REACT_APP_HEADER}`)
+    () => import(`platform-x-utils/dist/${process.env?.NX_HEADER}`)
   );
 
   const Footer = React.lazy(
-    () => import(`platform-x-utils/dist/${process.env?.REACT_APP_FOOTER}`)
+    () => import(`platform-x-utils/dist/${process.env?.NX_FOOTER}`)
   );
 
   const theme = {
@@ -105,7 +98,7 @@ export const PreviewPage = () => {
     }
   };
   const themeConstant =
-    process.env?.REACT_APP_COMPONENT_THEME == 'LightTheme'
+    process.env?.NX_COMPONENT_THEME == 'LightTheme'
       ? ThemeConstants
       : ThemeConstants;
 
@@ -144,15 +137,13 @@ body {
       const arr = pathName && pathName.split('/');
       if (arr && typeof arr === 'object' && arr.includes('landingpage')) {
         return (
-          <ThemeProvider
-            theme={theme[`${process.env?.REACT_APP_HEADER_THEME}`]}
-          >
+          <ThemeProvider theme={theme[`${process.env?.NX_HEADER_THEME}`]}>
             <XeroxLandingHeader isAuthoring currentTab />
           </ThemeProvider>
         );
       }
       return (
-        <ThemeProvider theme={theme[`${process.env?.REACT_APP_HEADER_THEME}`]}>
+        <ThemeProvider theme={theme[`${process.env?.NX_HEADER_THEME}`]}>
           <Header isAuthoring />
         </ThemeProvider>
       );
@@ -315,17 +306,17 @@ body {
                           isModalShow: true,
                         };
                         const prelemBaseEndpoint = {
-                          APIEndPoint: process.env.REACT_APP_API_URI,
+                          APIEndPoint: process.env.NX_API_URI,
                           PublishEndPoint: `${getSubDomain()}/`,
                           buttonBaseUrl: `${getSubDomain()}/`,
                           device: deviceType,
-                          deliveryEndPoint: process.env.REACT_APP_DELIVERY_URI,
+                          deliveryEndPoint: process.env.NX_DELIVERY_URI,
                           language: i18n.language,
                         };
                         const secondaryArgs = {
                           prelemBaseEndpoint,
-                          gcpUrl: process.env.REACT_APP_GCP_URL,
-                          bucketName: process.env.REACT_APP_BUCKET_NAME,
+                          gcpUrl: process.env.NX_GCP_URL,
+                          bucketName: process.env.NX_BUCKET_NAME,
                         };
                         return (
                           <Box
@@ -350,7 +341,7 @@ body {
                   )}
                 </Box>
                 {/* <ThemeProvider
-                  theme={theme[`${process.env?.REACT_APP_FOOTER_THEME}`]}
+                  theme={theme[`${process.env?.NX_FOOTER_THEME}`]}
                 >
                   <Footer />
                 </ThemeProvider> */}

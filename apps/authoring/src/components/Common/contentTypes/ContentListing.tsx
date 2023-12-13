@@ -11,6 +11,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useNavigate } from 'react-router-dom';
+import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import QuizIcon from '../../../assets/QuizIcon.svg';
 import NoResults from '../../../assets/images/no-results.png';
 import EmbedDialog from '../../../components/Embed/embedPostModal';
@@ -27,9 +28,9 @@ import {
   publishContentType,
 } from '../../../services/contentTypes/contentTypes.api';
 import { Store } from '../../../store/ContextStore';
-import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { authInfo } from '../../../utils/authConstants';
 import { LanguageList } from '../../../utils/constants';
+import { defaultFalBackImage } from '../../../utils/helper';
 import {
   convertToLowerCase,
   formatUrl,
@@ -56,7 +57,6 @@ import {
   updateContentList,
   updateInitialState,
 } from './store/ContentAction';
-import { defaultFalBackImage } from '../../../utils/helper';
 export const ContentListing = ({ contentType, fromSearch = '' }) => {
   const { t, i18n } = useTranslation();
   const { canCreate } = usePermissions();
@@ -114,9 +114,9 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
   const [openEmbedModal, setOpenEmbedModal] = useState(false);
   const [language, setLanguage] = useState<string[]>([]);
   const [existLangContent, setLangContent] = useState('');
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const BucketName = process.env.REACT_APP_BUCKET_NAME;
-  const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const BucketName = process.env.NX_BUCKET_NAME;
+  const defaultImage = process.env.NX_DEFAULT_IMAGE;
 
   useEffect(() => {
     localStorage.setItem('lang', getCurrentLang());
@@ -548,7 +548,7 @@ export const ContentListing = ({ contentType, fromSearch = '' }) => {
   };
   const handleCopy = (pageUrl) => {
     const text = `${
-      process.env.REACT_APP_PUBLISH_URI + i18n.language
+      process.env.NX_PUBLISH_URI + i18n.language
     }/${contentType.toLowerCase()}${pageUrl}`;
     if (pageUrl) {
       navigator.clipboard.writeText(text);

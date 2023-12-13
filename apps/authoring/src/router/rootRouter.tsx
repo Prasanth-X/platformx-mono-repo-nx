@@ -11,20 +11,16 @@ import PlatformXLoader from '../components/Loader/loader';
 import PrelemSearchLoader from '../components/Skeleton-loader/prelem-search-loader';
 import { authInfo, authUrl } from '../utils/authConstants';
 
-import axios from 'axios';
 import PlatXLogoImage from '../assets/svg/PlatXWhite-logo.svg';
 import useUserSession from '../hooks/useUserSession/useUserSession';
 import ChangePassword from '../pages/changePassword';
+import { multisiteApi } from '../services/MultisiteACL/multisite.api';
+import { getGlobalDataWithHeader } from '../services/SiteSetting/SiteSetting.api';
 import authAPI from '../services/auth/Auth.api';
 import { Store } from '../store/ContextStore';
 import { createSession } from '../utils/helper';
-import routes from '../utils/routes';
 import { getSelectedSite } from '../utils/helperFunctions';
-import { multisiteApi } from '../services/MultisiteACL/multisite.api';
-import {
-  fetchGlobalSettingData,
-  getGlobalDataWithHeader,
-} from '../services/SiteSetting/SiteSetting.api';
+import routes from '../utils/routes';
 const PlatXLogo = (
   <img src={PlatXLogoImage} style={{ width: '24px', cursor: 'pointer' }} />
 );
@@ -111,25 +107,25 @@ function RootRouter() {
       await getGlobalDataWithHeader(selected_site);
       setLoader(false);
       // navigate('/dashboard');
-      console.log('REACT_APP_BASE_URL:', process.env.REACT_APP_BASE_URL);
-      console.log('REACT_APP_API_URI:', process.env.REACT_APP_API_URI);
-      console.log('REACT_APP_ENVIRONMENT:', process.env.REACT_APP_ENVIRONMENT);
-      console.log('REACT_APP_GCP_URL:', process.env.REACT_APP_GCP_URL);
+      console.log('NX_BASE_URL:', process.env.NX_BASE_URL);
+      console.log('NX_API_URI:', process.env.NX_API_URI);
+      console.log('NX_ENVIRONMENT:', process.env.NX_ENVIRONMENT);
+      console.log('NX_GCP_URL:', process.env.NX_GCP_URL);
       localStorage.setItem('selectedSite', response.data.selected_site);
 
       const defaultLang =
         response.data.preferred_sites_languages?.[selected_site] || 'en';
       if (selected_site?.toLowerCase() === 'system') {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${defaultLang}/sites/site-listing`
+          `${process.env.NX_BASE_URL}/${selected_site}/${defaultLang}/sites/site-listing`
         );
       } else {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${defaultLang}/dashboard`
+          `${process.env.NX_BASE_URL}/${selected_site}/${defaultLang}/dashboard`
         );
       }
     } else {
-      navigate('/');
+      // navigate('/');
     }
     setLoader(false);
   };
@@ -159,11 +155,11 @@ function RootRouter() {
       //navigate('/dashboard');
       if (selected_site?.toLowerCase() === 'system') {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${lang}/sites/site-listing`
+          `${process.env.NX_BASE_URL}/${selected_site}/${lang}/sites/site-listing`
         );
       } else {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${lang}/dashboard`
+          `${process.env.NX_BASE_URL}/${selected_site}/${lang}/dashboard`
         );
       }
     }
@@ -191,7 +187,7 @@ function RootRouter() {
   ) : (
     <>
       <Routes>
-        <Route path='/change-password' element={<ChangePassword />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         {routes.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
         ))}

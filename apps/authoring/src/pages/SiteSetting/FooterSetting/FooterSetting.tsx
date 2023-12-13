@@ -93,43 +93,43 @@ const FooterSetting = () => {
 
   const iconList = [
     {
-      iconComponent: <img src={PictureIcon} alt='Site Logo' />,
+      iconComponent: <img src={PictureIcon} alt="Site Logo" />,
       title: t('site_logo'),
       section: 'sitelogo',
       sectionRef: fsietLogoRef,
     },
     {
-      iconComponent: <img src={AboutusIconn} alt='About Us Icon' />,
+      iconComponent: <img src={AboutusIconn} alt="About Us Icon" />,
       title: t('about_us'),
       section: 'aboutus',
       sectionRef: aboutUsRef,
     },
     {
-      iconComponent: <img src={ContactusIconn} alt='Contact Us Icon' />,
+      iconComponent: <img src={ContactusIconn} alt="Contact Us Icon" />,
       title: t('contact_us'),
       section: 'contactus',
       sectionRef: contactUsRef,
     },
     {
-      iconComponent: <img src={LinkIcon} alt='Link Icon' />,
+      iconComponent: <img src={LinkIcon} alt="Link Icon" />,
       title: t('link'),
       section: 'link',
       sectionRef: linkRef,
     },
     {
-      iconComponent: <img src={CopyrightIconn} alt='Copyright Icon' />,
+      iconComponent: <img src={CopyrightIconn} alt="Copyright Icon" />,
       title: t('sitesetting_copyright'),
       section: 'copyright',
       sectionRef: copyrightTextRef,
     },
     {
-      iconComponent: <img src={DocumentIcon} alt='Document Icon' />,
+      iconComponent: <img src={DocumentIcon} alt="Document Icon" />,
       title: t('sitesetting_news_title'),
       section: 'newsletter',
       sectionRef: newLetterRef,
     },
     {
-      iconComponent: <img src={MediahandleIconnn} alt='Media Handle Icon' />,
+      iconComponent: <img src={MediahandleIconnn} alt="Media Handle Icon" />,
       title: t('media_handle'),
       section: 'media',
       sectionRef: mediaHandleRef,
@@ -380,7 +380,7 @@ const FooterSetting = () => {
           <Box ref={fsietLogoRef}>
             {isLoading && <Loader />}
             <SiteSettingPanel
-              number='01'
+              number="01"
               title={t('site_logo')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -398,21 +398,21 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={`${t('event_image_tilte')}*`}
                       subTitle={t('choose_the_image')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box sx={{ marginTop: '15px' }}>
                     <SiteSettingAddImage
                       url={
-                        process.env.REACT_APP_GCP_URL +
+                        process.env.NX_GCP_URL +
                         '/' +
-                        process.env.REACT_APP_BUCKET_NAME +
+                        process.env.NX_BUCKET_NAME +
                         '/' +
                         form.site_logo
                       }
                       updateField={updateField}
-                      type='Images'
+                      type="Images"
                       operationType={operationType}
                       onUploadClick={onUploadClick}
                     />
@@ -432,7 +432,7 @@ const FooterSetting = () => {
 
           <Box ref={aboutUsRef}>
             <SiteSettingPanel
-              number='02'
+              number="02"
               title={t('about_us')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -450,12 +450,12 @@ const FooterSetting = () => {
                   <TitleSubTitle
                     title={t('about_us_text')}
                     subTitle={t('this_will_be_the_about_us_text')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                   <Box marginTop={2}>
                     <CookieTextBox
-                      name='about_us_text'
+                      name="about_us_text"
                       handleChange={(event) =>
                         handleTextChange(event, 'about_us_text')
                       }
@@ -486,7 +486,7 @@ const FooterSetting = () => {
 
           <Box ref={contactUsRef}>
             <SiteSettingPanel
-              number='03'
+              number="03"
               title={t('contact_us')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -505,11 +505,11 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('Title_text')}
                       subTitle={t('this_will_be_the_title_text')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                     <CookieTextBox
-                      name='title_text'
+                      name="title_text"
                       state={form.title_text}
                       handleChange={(event) =>
                         handleTextChange(event, 'title_text')
@@ -523,18 +523,18 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('sitesetting_bg_title')}
                       subTitle={t('sitesetting_sub_title')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
 
                   <Box className={classes.pictureiconinner} marginTop={2}>
                     <Box className={classes.pictureIconContainer}>
-                      <img src={PictureIcon} alt='PictureIcon' />
+                      <img src={PictureIcon} alt="PictureIcon" />
                     </Box>
                     <Box className={classes.aboutUsTextBox}>
                       <CookieTextBox
-                        name='address'
+                        name="address"
                         placeHolder={t('sitesetting_add')}
                         state={form.address}
                         handleChange={(event) => {
@@ -550,18 +550,18 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('email_address')}
                       subTitle={t('this_will_be_the_email_address_text')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
 
                   <Box className={classes.pictureiconinner} marginTop={2}>
                     <Box className={classes.pictureIconContainer}>
-                      <img src={PictureIcon} alt='PictureIcon' />
+                      <img src={PictureIcon} alt="PictureIcon" />
                     </Box>
                     <Box className={classes.aboutUsTextBox}>
                       <CookieTextBox
-                        name='email_address'
+                        name="email_address"
                         placeHolder={t('enter_your_email_address_here')}
                         state={form.email_address}
                         handleChange={(event) => {
@@ -577,17 +577,17 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('contact_number')}
                       subTitle={t('this_will_be_the_contact_number_text')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box className={classes.pictureiconinner} marginTop={2}>
                     <Box className={classes.pictureIconContainer}>
-                      <img src={PictureIcon} alt='PictureIcon' />
+                      <img src={PictureIcon} alt="PictureIcon" />
                     </Box>
                     <Box className={classes.aboutUsTextBox}>
                       <CookieTextBox
-                        name='contact_number'
+                        name="contact_number"
                         placeHolder={t('enter_your_contact_number')}
                         state={form.contact_number}
                         maxCharLength={15}
@@ -619,7 +619,7 @@ const FooterSetting = () => {
 
           <Box ref={linkRef}>
             <SiteSettingPanel
-              number='04'
+              number="04"
               title={t('add_link')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -638,8 +638,8 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('add_link_and_URL')}
                       subTitle={t('enter_link')}
-                      titleVarient='h3medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h3medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
 
@@ -670,7 +670,7 @@ const FooterSetting = () => {
                           }}
                           className={classes.dragIconContainer}
                         >
-                          <img src={VectorIconSvg} alt='VectorIconSvg' />
+                          <img src={VectorIconSvg} alt="VectorIconSvg" />
                         </Grid>
                         <Grid
                           item
@@ -681,7 +681,7 @@ const FooterSetting = () => {
                           sx={{ marginTop: index > 0 ? '20px' : '0' }}
                         >
                           <CookieTextBox
-                            name='enter_link_url'
+                            name="enter_link_url"
                             placeHolder={t('enter_link_url')}
                             state={link.link_url}
                             error={link.link_url === '' ? 'red' : ''}
@@ -727,7 +727,7 @@ const FooterSetting = () => {
                           sx={{ marginTop: '20px' }}
                         >
                           <CookieTextBox
-                            name='linkname1'
+                            name="linkname1"
                             placeHolder={t('linkname')}
                             state={link.link_name}
                             error={link.link_name === '' ? 'red' : ''}
@@ -763,7 +763,7 @@ const FooterSetting = () => {
                             ],
                           });
                         }}
-                        component='span'
+                        component="span"
                         sx={{ cursor: 'pointer' }}
                       >
                         <AddIcon className={classes.addicon} />
@@ -791,7 +791,7 @@ const FooterSetting = () => {
 
           <Box ref={copyrightTextRef}>
             <SiteSettingPanel
-              number='05'
+              number="05"
               title={t('sitesetting_copyright')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -810,13 +810,13 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('sitesetting_copyright')}
                       subTitle={t('sitesetting_copyright_sub')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box marginTop={2}>
                     <CookieTextBox
-                      name='copyright_text'
+                      name="copyright_text"
                       state={form.copyright_text}
                       handleChange={(event) => {
                         handleTextChange(event, 'copyright_text');
@@ -845,7 +845,7 @@ const FooterSetting = () => {
 
           <Box ref={newLetterRef}>
             <SiteSettingPanel
-              number='06'
+              number="06"
               title={t('sitesetting_news_title')}
               subTitle={t('sitesetting_copy_subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -864,13 +864,13 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('Title_text')}
                       subTitle={t('this_will_be_the_title_text')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box marginTop={2}>
                     <CookieTextBox
-                      name='news_letter_title'
+                      name="news_letter_title"
                       placeHolder={t('write_your_text_here')}
                       state={form.news_letter_title}
                       handleChange={(event) => {
@@ -884,13 +884,13 @@ const FooterSetting = () => {
                     <TitleSubTitle
                       title={t('news_Letter_description')}
                       subTitle={t('this_will_be_the_description')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box marginTop={2}>
                     <CookieTextBox
-                      name='news_letter_description'
+                      name="news_letter_description"
                       placeHolder={t('vod_desciption_placeholder')}
                       state={form.news_letter_description}
                       handleChange={(event) => {
@@ -920,7 +920,7 @@ const FooterSetting = () => {
 
           <Box ref={mediaHandleRef}>
             <SiteSettingPanel
-              number='07'
+              number="07"
               title={t('media_handle')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -990,7 +990,7 @@ const FooterSetting = () => {
           subTitle={`${t('footer_settings_success')}`}
           confirmButtonText={t('go_to_dashboard')}
           confirmButtonHandle={() => navigate('/dashboard')}
-          modalType='publish'
+          modalType="publish"
           crossButtonHandle={crossButtonHandle}
           closeButtonHandle={crossButtonHandle}
           closeIcon={<CreateRoundedIcon />}

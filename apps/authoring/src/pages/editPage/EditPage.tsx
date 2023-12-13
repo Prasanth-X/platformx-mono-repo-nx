@@ -13,6 +13,8 @@ import {
   useNavigate,
   useSearchParams,
 } from 'react-router-dom';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import Loader from '../../Common/Loader';
 import { ErrorTooltip } from '../../components/Common/ErrorTooltip';
 import Icons from '../../components/Icons';
@@ -59,8 +61,6 @@ import {
   updateSaveWarning,
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
-import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { CATEGORY_PAGE } from '../../utils/constants';
 import { uriToJSON } from '../../utils/helper';
 import { consolidatePageModel } from '../../utils/helperFunctions';
@@ -116,10 +116,10 @@ export const EditPage: React.FC = () => {
   const [fetchDefaultData] = useLazyQuery(fetchResetData);
   const [fetchPrelemDefaultInfo] = useLazyQuery(fetchPrelemDefaultMeta);
   const Header = React.lazy(
-    () => import(`platform-x-utils/dist/${process.env?.REACT_APP_HEADER}`)
+    () => import(`platform-x-utils/dist/${process.env?.NX_HEADER}`)
   );
   const Footer = React.lazy(
-    () => import(`platform-x-utils/dist/${process.env?.REACT_APP_FOOTER}`)
+    () => import(`platform-x-utils/dist/${process.env?.NX_FOOTER}`)
   );
   const theme = {
     LightTheme,
@@ -1169,7 +1169,7 @@ export const EditPage: React.FC = () => {
         <DemositeHeader headerSitename={demoUsers[userInfo.username]} />
       </ThemeProvider>
     ) : (
-      <ThemeProvider theme={theme[`${process.env?.REACT_APP_HEADER_THEME}`]}>
+      <ThemeProvider theme={theme[`${process.env?.NX_HEADER_THEME}`]}>
         <Header isAuthoring />
       </ThemeProvider>
     );
@@ -1805,9 +1805,7 @@ export const EditPage: React.FC = () => {
             }}
           >
             <Box sx={{ display: 'none' }}>{renderHeader()}</Box>
-            <ThemeProvider
-              theme={theme[`${process.env?.REACT_APP_COMPONENT_THEME}`]}
-            >
+            <ThemeProvider theme={theme[`${process.env?.NX_COMPONENT_THEME}`]}>
               <Box
                 sx={{
                   margin: (themeOptions) => themeOptions.prelemMargin.value,
@@ -1878,9 +1876,7 @@ export const EditPage: React.FC = () => {
               </Box>
             </ThemeProvider>
             <Box sx={{ display: 'none' }}>
-              <ThemeProvider
-                theme={theme[`${process.env?.REACT_APP_FOOTER_THEME}`]}
-              >
+              <ThemeProvider theme={theme[`${process.env?.NX_FOOTER_THEME}`]}>
                 <Footer />
               </ThemeProvider>
             </Box>

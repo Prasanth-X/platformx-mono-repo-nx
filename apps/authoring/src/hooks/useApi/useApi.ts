@@ -13,7 +13,7 @@ function useApi<T>(path: string, options?: AxiosRequestConfig): ApiResponse<T> {
     const fetchData = async () => {
       try {
         const response: AxiosResponse<T> = await axios(
-          `${process.env.REACT_APP_API_URI }${path}`,
+          `${process.env.NX_API_URI}${path}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -36,4 +36,4 @@ function useApi<T>(path: string, options?: AxiosRequestConfig): ApiResponse<T> {
   return { data, error, loading };
 }
 
-export default useApi
+export default useApi;

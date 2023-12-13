@@ -5,7 +5,7 @@ import { handleHtmlTags } from '../../utils/helperFunctions';
 import './Description.css';
 function DescriptionContentCard({ content }) {
   const { i18n } = useTranslation();
-  console.log("content::",content);
+  console.log('content::', content);
   return (
     <Box>
       <div>
@@ -19,12 +19,12 @@ function DescriptionContentCard({ content }) {
               width: '100%',
             }}
           >
-            {content.Thumbnail.Url != '' ?
+            {content.Thumbnail.Url != '' ? (
               <img
                 src={content.Thumbnail.Url}
                 style={{ width: '100%', objectFit: 'cover', height: '100%' }}
               />
-             :
+            ) : (
               <div
                 style={{
                   backgroundColor: content?.background_content?.Color,
@@ -32,7 +32,8 @@ function DescriptionContentCard({ content }) {
                   objectFit: 'cover',
                   height: '100%',
                 }}
-              ></div>}
+              ></div>
+            )}
           </div>
           <div
             style={{
@@ -82,20 +83,18 @@ function DescriptionContentCard({ content }) {
                 {handleHtmlTags(content.Thumbnail.Description)}
               </h1>
               <a
-                href={
-                  `${process.env.REACT_APP_PUBLISH_URI +
-                  i18n.language
-                  }/${
-                  content.ContentType.toLowerCase()
-                  }/${
-                  content.CurrentPageURL}`
-                }
+                href={`${
+                  process.env.NX_PUBLISH_URI + i18n.language
+                }/${content.ContentType.toLowerCase()}/${
+                  content.CurrentPageURL
+                }`}
                 target="_blank"
                 style={{
                   textDecoration: 'none',
                   width: '140px',
                   height: '40px',
-                }} rel="noreferrer"
+                }}
+                rel="noreferrer"
               >
                 <button
                   style={{

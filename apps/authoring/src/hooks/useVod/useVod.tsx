@@ -144,8 +144,7 @@ const useVod = (filter = 'ALL') => {
   const onCopy = (pageUrl) => {
     if (pageUrl) {
       navigator.clipboard.writeText(
-        `${process.env.REACT_APP_PUBLISH_URI + i18n.language}/` +
-          `video${pageUrl}`
+        `${process.env.NX_PUBLISH_URI + i18n.language}/` + `video${pageUrl}`
       );
       showToastSuccess(t('url_copy_toast'));
     } else {

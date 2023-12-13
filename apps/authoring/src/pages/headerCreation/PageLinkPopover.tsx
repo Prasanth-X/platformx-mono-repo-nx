@@ -5,6 +5,7 @@ import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import React, { KeyboardEvent, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { showToastError } from '../../components/toastNotification/toastNotificationReactTostify';
 import {
   fetchAllPageList,
@@ -12,7 +13,6 @@ import {
 } from '../../services/page/page.api';
 import { setPublishedpages } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { MenuItemProp } from './types';
 const style = {
   position: 'absolute',
@@ -45,9 +45,7 @@ export const PageLinkPopover = ({
     if (menuItemName.trim().length != 0 && selectedPage != null) {
       const seletedPgDetails = {
         ...selectedPage,
-        CurrentPageUrl: `${
-          process.env.REACT_APP_PUBLISH_URI + selectedPage.Page
-        }`,
+        CurrentPageUrl: `${process.env.NX_PUBLISH_URI + selectedPage.Page}`,
       };
       updateMenuItems(menuItemName, seletedPgDetails, false);
       handleClose();

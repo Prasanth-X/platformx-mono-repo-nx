@@ -13,6 +13,7 @@ import IconTwitterLogoIconSvg from '../../assets/svg/twitterLogoIcon.svg';
 
 import PlateformXDialog from '../../components/Modal';
 import PlateformXSocialDialog from '../../components/SocialShareModal/socialShareModal';
+import { defaultFalBackImage } from '../../utils/helper';
 import {
   capitalizeFirstLetter,
   convertToLowerCase,
@@ -24,26 +25,25 @@ import {
   scheduleDateTimeIsExpired,
   shareTimeHandle,
 } from './helperSocialShare';
-import { defaultFalBackImage } from '../../utils/helper';
 
 const arrayData = [
   {
     name: 'Reschedule',
     id: 1,
-    icon: <img src={IconRescheduleSvg} alt='Cancel Icon' />,
+    icon: <img src={IconRescheduleSvg} alt="Cancel Icon" />,
   },
   {
     name: 'Cancel',
     id: 2,
-    icon: <img src={IconCancelSvg} alt='Cancel Icon' />,
+    icon: <img src={IconCancelSvg} alt="Cancel Icon" />,
   },
 ];
 
 const DesktopListingBody = (props: any = {}) => {
   const { index = 0, listItem = {} } = nullToObject(props);
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const BucketName = process.env.REACT_APP_BUCKET_NAME;
-  const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const BucketName = process.env.NX_BUCKET_NAME;
+  const defaultImage = process.env.NX_DEFAULT_IMAGE;
   const [listMenu, setListMenu] = useState<null | HTMLElement>(null);
   const [openListMenu, setOpenMenu] = useState(false);
   const [openSocialShareModal, setSocialShareModal] = useState(false);
@@ -84,13 +84,13 @@ const DesktopListingBody = (props: any = {}) => {
   const platformIcon = (platformInput = '') => {
     switch (convertToLowerCase(platformInput)) {
       case 'facebook':
-        return <img src={IconFaceBookLogoIconSvg} alt='Facebook Logo Icon' />;
+        return <img src={IconFaceBookLogoIconSvg} alt="Facebook Logo Icon" />;
       case 'linkedin':
-        return <img src={IconLinkedinIconSvg} alt='LinkedIn Icon' />;
+        return <img src={IconLinkedinIconSvg} alt="LinkedIn Icon" />;
       case 'twitter':
-        return <img src={IconTwitterLogoIconSvg} alt='Twitter Logo Icon' />;
+        return <img src={IconTwitterLogoIconSvg} alt="Twitter Logo Icon" />;
       default:
-        return <img src={IconTwitterLogoIconSvg} alt='Twitter Logo Icon' />;
+        return <img src={IconTwitterLogoIconSvg} alt="Twitter Logo Icon" />;
     }
   };
 
@@ -193,7 +193,7 @@ const DesktopListingBody = (props: any = {}) => {
       >
         <Grid item xs={2.4} sx={{ marginRight: '5%' }}>
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             sx={{
               ...overFlowHandle,
             }}
@@ -204,7 +204,7 @@ const DesktopListingBody = (props: any = {}) => {
 
         <Grid item xs={1} sx={{ marginRight: '3.5%' }}>
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             sx={{
               color: '#89909a',
               ...overFlowHandle,
@@ -220,7 +220,7 @@ const DesktopListingBody = (props: any = {}) => {
               color: '#89909a',
               ...overFlowHandle,
             }}
-            variant='h6medium'
+            variant="h6medium"
           >
             {listItem?.shared_by}
           </Typography>
@@ -250,7 +250,7 @@ const DesktopListingBody = (props: any = {}) => {
           }}
         >
           <Typography
-            variant='h6medium'
+            variant="h6medium"
             sx={{
               opacity: opacityColorDisable,
               color: '#2d2d39',
@@ -273,8 +273,8 @@ const DesktopListingBody = (props: any = {}) => {
             sx={{
               paddingLeft: '1.375rem',
             }}
-            display='flex'
-            justifyContent='flex-start'
+            display="flex"
+            justifyContent="flex-start"
           >
             {React.cloneElement(platformIcon(listItem?.social_share_platform))}
           </Box>
@@ -306,9 +306,9 @@ const DesktopListingBody = (props: any = {}) => {
             }}
           >
             <IconButton
-              aria-label='settings'
-              id='long-button'
-              aria-haspopup='true'
+              aria-label="settings"
+              id="long-button"
+              aria-haspopup="true"
               sx={{
                 cursor: cursorPoint,
               }}
@@ -343,7 +343,7 @@ const DesktopListingBody = (props: any = {}) => {
               ? socialShareArticleData
               : socialShareData
           }
-          contentType='video'
+          contentType="video"
         />
       ) : null}
       {isCancel ? (

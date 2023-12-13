@@ -54,9 +54,9 @@ const SiteListing = () => {
       ? `https://${site.site_address}.${domainName}`
       : `https://${domainName}`;
   };
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const BucketName = process.env.REACT_APP_BUCKET_NAME;
-  const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const BucketName = process.env.NX_BUCKET_NAME;
+  const defaultImage = process.env.NX_DEFAULT_IMAGE;
   const defaultSocialImage = `${gcpUrl}/${BucketName}/${defaultImage}`;
   const fetchMultiSiteListing = async (start = 0) => {
     try {
@@ -96,7 +96,7 @@ const SiteListing = () => {
   };
 
   const getUrl = (site) => {
-    return `${process.env.REACT_APP_BASE_URL}/${
+    return `${process.env.NX_BASE_URL}/${
       site.site_title_url
     }/${getCurrentLang()}`;
   };
@@ -133,23 +133,23 @@ const SiteListing = () => {
           </Box>
           <Box>
             <AddNewButton onClick={() => navigate('/sites/site-creation')}>
-              <Box component='span' className={classes.createNewTypo}>
+              <Box component="span" className={classes.createNewTypo}>
                 {t('create_new')}
               </Box>
-              <Box component='span' className={classes.plusIcon}>
+              <Box component="span" className={classes.plusIcon}>
                 <img src={Plus} height={25} width={25} />
               </Box>
             </AddNewButton>
           </Box>
         </Box>
         {(datalist.length !== 0 || isFetchMore) && (
-          <Box id='scrollableDiv' className={classes.scrollBox}>
+          <Box id="scrollableDiv" className={classes.scrollBox}>
             <InfiniteScroll
               dataLength={datalist.length}
               next={fetchMore}
               hasMore={isFetchMore}
               loader={<SiteListingLoader />}
-              scrollableTarget='scrollableDiv'
+              scrollableTarget="scrollableDiv"
               style={{ overflowX: 'hidden' }}
             >
               {datalist.length > 0 &&
@@ -175,7 +175,7 @@ const SiteListing = () => {
                                 className={classes.siteImg}
                                 src={
                                   site.header_logo
-                                    ? `${process.env.REACT_APP_GCP_URL}/${process.env.REACT_APP_BUCKET_NAME}/${site.header_logo}`
+                                    ? `${process.env.NX_GCP_URL}/${process.env.NX_BUCKET_NAME}/${site.header_logo}`
                                     : SitePlaceholder
                                 }
                                 // src={SitePlaceholder}
@@ -201,7 +201,7 @@ const SiteListing = () => {
                                 <SiteLink
                                   className={classes.siteLinkType}
                                   href={generateDomain(site)}
-                                  target='_blank'
+                                  target="_blank"
                                 >
                                   {`${generateDomain(site)?.replace(
                                     'https://',
@@ -212,7 +212,7 @@ const SiteListing = () => {
                                   onClick={() =>
                                     copyDomainName(generateDomain(site))
                                   }
-                                  aria-label='copy domain name'
+                                  aria-label="copy domain name"
                                 >
                                   <img src={CopyIcon} width={18} height={18} />
                                 </IconButton>
@@ -220,14 +220,14 @@ const SiteListing = () => {
                             </Box>
                             <SiteDesTypo>
                               <Box
-                                component='span'
+                                component="span"
                                 className={classes.siteDesSmUp}
                               >
                                 {site.about_site}
                               </Box>
                               {viewMoreList[index] && (
                                 <Box
-                                  component='span'
+                                  component="span"
                                   className={classes.siteDesSx}
                                 >
                                   <>
@@ -239,7 +239,7 @@ const SiteListing = () => {
                                     {site.about_site.length > 50 && (
                                       <Box
                                         onClick={() => viewMoreChange(index)}
-                                        component='span'
+                                        component="span"
                                         sx={{ color: '#4B9EF9' }}
                                       >
                                         {viewMoreList[index].isViewMore
@@ -261,7 +261,7 @@ const SiteListing = () => {
                             className={classes.settingIconBox}
                           >
                             <Stack
-                              direction='row'
+                              direction="row"
                               spacing={2}
                               sx={{
                                 justifyContent: {
@@ -272,7 +272,7 @@ const SiteListing = () => {
                             >
                               <Tooltip
                                 title={t('Update')}
-                                placement='top'
+                                placement="top"
                                 enterTouchDelay={0}
                               >
                                 <IconButton
@@ -288,7 +288,7 @@ const SiteListing = () => {
 
                               <Tooltip
                                 title={t('User Management')}
-                                placement='top'
+                                placement="top"
                                 enterTouchDelay={0}
                               >
                                 <IconButton
@@ -310,7 +310,7 @@ const SiteListing = () => {
                               </Tooltip>
                               <Tooltip
                                 title={t('Settings')}
-                                placement='top'
+                                placement="top"
                                 enterTouchDelay={0}
                               >
                                 <IconButton

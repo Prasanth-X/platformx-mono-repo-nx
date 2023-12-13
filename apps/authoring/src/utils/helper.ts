@@ -28,10 +28,10 @@ export const getStyleString = (styles) =>
     .join('; ');
 
 /**
-* string to parse convert
-* @param urijson
-* @returns object
-*/
+ * string to parse convert
+ * @param urijson
+ * @returns object
+ */
 export const uriToJSON = (urijson) => {
   if (urijson) {
     return JSON.parse(urijson);
@@ -43,8 +43,8 @@ export const uriToJSON = (urijson) => {
  * fallBack image
  */
 export const defaultFalBackImage = () => {
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const BucketName = process.env.REACT_APP_BUCKET_NAME;
-  const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const BucketName = process.env.NX_BUCKET_NAME;
+  const defaultImage = process.env.NX_DEFAULT_IMAGE;
   return `${gcpUrl}/${BucketName}/${defaultImage}`;
 };

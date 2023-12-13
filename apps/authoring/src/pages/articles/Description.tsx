@@ -1,10 +1,10 @@
 import { Box, ButtonGroup, Dialog, IconButton } from '@mui/material';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 //import { TextArea } from '@mui/base';
+import { makeStyles } from '@material-ui/core';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
-import { makeStyles } from '@material-ui/core';
 
 import { Store } from '../../store/ContextStore';
 import Gallery from '../Gallery/Gallery';
@@ -340,7 +340,7 @@ function Description({ title, updateField, handleEnableArticlePreview }) {
         content: "";
     }
       `;
-  const chatUrl = `${process.env.REACT_APP_CHATGPT_API_URI}${i18n.language}/chatgpt`;
+  const chatUrl = `${process.env.NX_CHATGPT_API_URI}${i18n.language}/chatgpt`;
 
   const chatGPT = () => {
     axios
@@ -403,7 +403,7 @@ function Description({ title, updateField, handleEnableArticlePreview }) {
           {showMediaOption ? <MediaTray showGallery={showGallery} /> : null}
         </Box>
         <Box
-          id='desc'
+          id="desc"
           sx={{
             width: { xs: '100%', md: '95%' },
             marginLeft: { xs: 0, md: '3%' },
@@ -423,7 +423,7 @@ function Description({ title, updateField, handleEnableArticlePreview }) {
               { ADD_ATTR: ['target'] } || ''
             ),
           }}
-          className='placeholdertext'
+          className="placeholdertext"
         ></Box>
         {/* <ul className="tools" id='toolbar' style={{ display: showToolbar ? 'inline-flex' : 'none', left, top, position:'absolute' }}>
             <button key='B' onClick={onBoldClick}>B</button>
@@ -431,8 +431,8 @@ function Description({ title, updateField, handleEnableArticlePreview }) {
             <button key='U' onClick={onUnderlineClick}>U</button>
       </ul> */}
         <ButtonGroup
-          className='tools'
-          id='toolbar'
+          className="tools"
+          id="toolbar"
           style={{
             display: showToolbar ? 'inline-flex' : 'none',
             backgroundColor: 'black',
@@ -476,7 +476,7 @@ function Description({ title, updateField, handleEnableArticlePreview }) {
       </Box>
       {isUrlDialog ? (
         <AddUrlDialog
-          titledata=''
+          titledata=""
           isDialogOpen={isUrlDialog}
           closeButtonHandle={onClickClose}
           doneButtonHandle={onClickDone}

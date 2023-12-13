@@ -11,7 +11,7 @@ const handleLogout = () => {
 const authAPI = {
   verifySession: async (url) => {
     try {
-      const res = await axios.get(process.env.REACT_APP_API_URI + url, {
+      const res = await axios.get(process.env.NX_API_URI + url, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -29,18 +29,14 @@ const authAPI = {
   },
   signIn: async (url, payload = {}) => {
     try {
-      const res = await axios.post(
-        process.env.REACT_APP_API_URI + url,
-        payload,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Cache-Control': 'no-cache',
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(process.env.NX_API_URI + url, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'no-cache',
+        },
+        withCredentials: true,
+      });
       return res.data.result ? res.data.result : res.data;
     } catch (err: any) {
       if (err?.response?.data?.code === 401) {

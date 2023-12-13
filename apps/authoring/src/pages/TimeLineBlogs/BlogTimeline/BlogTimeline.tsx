@@ -1,54 +1,54 @@
-import React, { useState, useEffect } from "react";
-import "./BlogTimeline.css";
-import { format } from "date-fns";
-import Box from "@mui/material/Box";
-import { Link } from "@mui/material";
-import Menu from "@mui/material/Menu";
-import Timeline from "@mui/lab/Timeline";
-import { timeSince } from "../helperBlogs";
-import DOMPurify from "isomorphic-dompurify";
-import MenuItem from "@mui/material/MenuItem";
-import { useTranslation } from "react-i18next";
-import TimelineDot from "@mui/lab/TimelineDot";
-import EditIcon from "@mui/icons-material/Edit";
-import TimelineItem from "@mui/lab/TimelineItem";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import BlogSearchBox from "../Blogs/BlogSearchBox";
-import DeleteIcon from "@mui/icons-material/Delete";
-import TimelineContent from "@mui/lab/TimelineContent";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import RotateLeftIcon from "@mui/icons-material/RotateLeft";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { nullToArray } from "../../../utils/helperFunctions";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import Timeline from '@mui/lab/Timeline';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import { Link } from '@mui/material';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
+import { format } from 'date-fns';
+import DOMPurify from 'isomorphic-dompurify';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import {
+  showToastError,
+  showToastSuccess,
+} from '../../../components/toastNotification/toastNotificationReactTostify';
 import DeletePopup from '../../../pages/articles/deletePopup';
 import {
   commonPostApiCall,
   commonPutApiCall,
-} from "../../../services/config/request";
-import {
-  showToastError,
-  showToastSuccess
-} from "../../../components/toastNotification/toastNotificationReactTostify";
+} from '../../../services/config/request';
+import { nullToArray } from '../../../utils/helperFunctions';
+import BlogSearchBox from '../Blogs/BlogSearchBox';
+import { timeSince } from '../helperBlogs';
+import './BlogTimeline.css';
 
 const BlogTimeline = (_props: any) => {
   const {
-    eventPath = "",
+    eventPath = '',
     apiCountCall = 0,
     isBlogLoad = false,
-    embeddURLValue = "",
-    handleEdit = () => { },
+    embeddURLValue = '',
+    handleEdit = () => {},
   } = _props;
 
   const { t } = useTranslation();
   const rows = 20;
 
-  const apiUrl = `${process.env.REACT_APP_BLOG_API_URI}blogging/fetch`;
-  const updateApiUrl = `${process.env.REACT_APP_BLOG_API_URI}blogging/update`;
+  const apiUrl = `${process.env.NX_BLOG_API_URI}blogging/fetch`;
+  const updateApiUrl = `${process.env.NX_BLOG_API_URI}blogging/update`;
 
-  const [presentId, setPresentId] = useState("");
+  const [presentId, setPresentId] = useState('');
   const [isDelete, setIsDelete] = useState(false);
   const [searchTerm, setNewSearchTerm] = useState('');
   const [selectedItem, setSelectedItem] = useState<any>([]);
@@ -89,7 +89,10 @@ const BlogTimeline = (_props: any) => {
         ...(selectedItem || []),
         ...(response?.data?.data || []),
       ]);
-      if (nullToArray(response?.data?.data).length === 0 || nullToArray(response?.data?.data).length < rows) {
+      if (
+        nullToArray(response?.data?.data).length === 0 ||
+        nullToArray(response?.data?.data).length < rows
+      ) {
         setIsLazyLoad(false);
       }
     } else {
@@ -99,7 +102,7 @@ const BlogTimeline = (_props: any) => {
 
   const deleteCloseButtonHandle = () => {
     setIsDelete(true);
-  }
+  };
 
   const handleDelete = () => {
     setIsDelete(true);
@@ -123,14 +126,15 @@ const BlogTimeline = (_props: any) => {
       if (response?.data?.data && response?.data?.data != 'No data found!') {
         setSelectedItem(response?.data?.data);
 
-        if (nullToArray(response?.data?.data).length === 0 || nullToArray(response?.data?.data).length < rows) {
+        if (
+          nullToArray(response?.data?.data).length === 0 ||
+          nullToArray(response?.data?.data).length < rows
+        ) {
           setIsLazyLoad(false);
         }
-
       } else {
         setSelectedItem([]);
       }
-
     } catch (error) {
       showToastError(t('api_error_toast'));
     }
@@ -143,7 +147,10 @@ const BlogTimeline = (_props: any) => {
         event_path: eventPath,
         is_soft_delete: true,
       };
-      const response = await commonPutApiCall(`${updateApiUrl}/${presentId}`, data);
+      const response = await commonPutApiCall(
+        `${updateApiUrl}/${presentId}`,
+        data
+      );
       const { data: { success = false } = {} } = response;
       if (success) {
         showToastSuccess('Blog deleted successfully.');
@@ -155,7 +162,6 @@ const BlogTimeline = (_props: any) => {
       showToastError(t('api_error_toast'));
     }
   };
-
 
   // Search Blog function
   const onSearch = (value) => {
@@ -175,71 +181,80 @@ const BlogTimeline = (_props: any) => {
 
   return (
     <>
-      <Box sx={{ padding: { xs: "16px 16px 16px 16px", sm:"16px 16px 16px 26px" }}}>
+      <Box
+        sx={{
+          padding: { xs: '16px 16px 16px 16px', sm: '16px 16px 16px 26px' },
+        }}
+      >
         <Typography
           variant="h5semibold"
           component="h5"
-          sx={{ color: "ThemeConstants.LIGHT_GREY3_COLOR", mb: 2, display: { xs: "none", lg: "block" } }}
+          sx={{
+            color: 'ThemeConstants.LIGHT_GREY3_COLOR',
+            mb: 2,
+            display: { xs: 'none', lg: 'block' },
+          }}
         >
           Blogs Timeline
         </Typography>
         <BlogSearchBox
           onSearch={onSearch}
           style={{
-            height: "40px",
-            minHeight: "40px",
-            width: "100%",
-            marginBottom: "35px",
+            height: '40px',
+            minHeight: '40px',
+            width: '100%',
+            marginBottom: '35px',
           }}
         />
 
         <Box
           sx={{
-            overflowY: { xs: "unset", lg: "auto" },
-            overflowX: "hidden",
-            height: { lg: "calc(100vh - 275px)" },
+            overflowY: { xs: 'unset', lg: 'auto' },
+            overflowX: 'hidden',
+            height: { lg: 'calc(100vh - 275px)' },
           }}
-          id="scrollableDiv">
+          id="scrollableDiv"
+        >
           <Timeline>
-            {selectedItem?.length === 0 && searchTerm?.length > 0 ?
+            {selectedItem?.length === 0 && searchTerm?.length > 0 ? (
               <Typography
                 variant="h4regular"
                 sx={{
-                  color: "Themeconstants.LIGHT_GREY3_COLOR",
+                  color: 'Themeconstants.LIGHT_GREY3_COLOR',
                 }}
               >
-                {t("no_match_results")}{" "}
+                {t('no_match_results')}{' '}
               </Typography>
-              : null}
+            ) : null}
 
-            {selectedItem?.length === 0 && searchTerm?.length === 0 ?
+            {selectedItem?.length === 0 && searchTerm?.length === 0 ? (
               <Typography
                 variant="h4regular"
                 sx={{
-                  color: "Themeconstants.LIGHT_GREY3_COLOR",
+                  color: 'Themeconstants.LIGHT_GREY3_COLOR',
                 }}
               >
-                We didn't find any Blog to show here.{" "}
+                We didn't find any Blog to show here.{' '}
               </Typography>
-              : null}
-            {selectedItem?.length > 0 && isBlogLoad ?
+            ) : null}
+            {selectedItem?.length > 0 && isBlogLoad ? (
               <TimelineItem>
                 <TimelineSeparator>
                   <TimelineDot variant="outlined">
                     <RotateLeftIcon />
                   </TimelineDot>
                 </TimelineSeparator>
-                <TimelineContent sx={{ py: "12px", px: 2 }}>
+                <TimelineContent sx={{ py: '12px', px: 2 }}>
                   <Box sx={{ ml: 1 }}>
                     <Typography
                       variant="h6medium"
                       component="h6"
-                      sx={{ color: "#89909a" }}
+                      sx={{ color: '#89909a' }}
                     >
                       Uploading...
                     </Typography>
                     <Typography
-                      sx={{ color: "#5c6574", pb: 3 }}
+                      sx={{ color: '#5c6574', pb: 3 }}
                       variant="h6medium"
                       component="p"
                     >
@@ -248,8 +263,7 @@ const BlogTimeline = (_props: any) => {
                   </Box>
                 </TimelineContent>
               </TimelineItem>
-              :
-              null}
+            ) : null}
 
             <InfiniteScroll
               dataLength={nullToArray(selectedItem)?.length}
@@ -260,11 +274,11 @@ const BlogTimeline = (_props: any) => {
             >
               {selectedItem &&
                 selectedItem?.map((itemData: any, index) => {
-                  let allDescData = "";
-                  let allKeyHighligherData = "";
+                  let allDescData = '';
+                  let allKeyHighligherData = '';
                   let allTextStatus = false;
 
-                  let iframeVal = "";
+                  let iframeVal = '';
                   let showIframeBox = false;
                   if (itemData?.embeded[0]?.code) {
                     iframeVal = itemData?.embeded[0]?.code;
@@ -276,185 +290,208 @@ const BlogTimeline = (_props: any) => {
                       allKeyHighligherData = `${itemData?.key_highlighter[0]?.highlighter}`;
                     }
                     allTextStatus = true;
-                    allDescData = `<span class="descBox">${DOMPurify.sanitize(itemData.description)}</span>`;
+                    allDescData = `<span class="descBox">${DOMPurify.sanitize(
+                      itemData.description
+                    )}</span>`;
                   }
 
                   return (
                     <TimelineItem key={index} className="timelineItems">
-                      {itemData?.modified_date ?
+                      {itemData?.modified_date ? (
                         <TimelineSeparator>
                           <TimelineDot variant="outlined">
                             <Typography
                               variant="h7regular"
-                              sx={{ color: "#5c6574" }}
+                              sx={{ color: '#5c6574' }}
                             >
                               {timeSince(itemData?.created_date)}
                             </Typography>
                           </TimelineDot>
-                          {selectedItem.length - 1 == index ? null : <TimelineConnector />}
+                          {selectedItem.length - 1 == index ? null : (
+                            <TimelineConnector />
+                          )}
                         </TimelineSeparator>
-                        :
-                        null
-                      }
+                      ) : null}
                       <TimelineContent
-                        sx={{ py: "12px", px: 2, display: "flex" }}
+                        sx={{ py: '12px', px: 2, display: 'flex' }}
                       >
-                        <Box sx={{ flexGrow: 1, width: { xs: '150px'} }}>
-                          {itemData?.title || itemData?.description ?
-                            <Box sx={{ display: "flex", alignItems: "center", justifyContent: 'space-between' }}>
+                        <Box sx={{ flexGrow: 1, width: { xs: '150px' } }}>
+                          {itemData?.title || itemData?.description ? (
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                              }}
+                            >
                               {!itemData?.key_highlighter[0]?.highlighter &&
-                                itemData?.key_highlighter[0]
-                                  ?.time ? null : allTextStatus &&
-                                    itemData?.authors?.length > 0 ?
+                              itemData?.key_highlighter[0]
+                                ?.time ? null : allTextStatus &&
+                                itemData?.authors?.length > 0 ? (
                                 <Typography
-                                  variant='h7medium'
+                                  variant="h7medium"
                                   dangerouslySetInnerHTML={{
                                     __html: allKeyHighligherData,
                                   }}
                                   sx={{
                                     fontStyle: allTextStatus
-                                      ? "italic"
-                                      : "normal",
+                                      ? 'italic'
+                                      : 'normal',
                                   }}
                                   className="highlighterArea"
                                 />
-                                :
+                              ) : (
                                 <Typography
                                   variant="h7medium"
                                   className="highlighterArea"
-                                  sx={{ color: "#5c6574", pr: "10px" }}
+                                  sx={{ color: '#5c6574', pr: '10px' }}
                                 >
                                   {itemData?.key_highlighter[0]?.highlighter}
-                                </Typography>}
+                                </Typography>
+                              )}
 
                               {itemData?.key_highlighter[0]?.highlighter &&
-                                itemData?.key_highlighter[0]?.time ?
+                              itemData?.key_highlighter[0]?.time ? (
                                 <span className="dotSeprator"></span>
-                                : null}
+                              ) : null}
 
                               <Typography
                                 variant="h7semibold"
                                 component="h6"
                                 sx={{
-                                  color: "#5c6574",
+                                  color: '#5c6574',
                                   pl:
-                                    !itemData?.key_highlighter[0]?.highlighter &&
-                                      itemData?.key_highlighter[0]?.time
-                                      ? "0px"
-                                      : "10px",
+                                    !itemData?.key_highlighter[0]
+                                      ?.highlighter &&
+                                    itemData?.key_highlighter[0]?.time
+                                      ? '0px'
+                                      : '10px',
                                 }}
                               >
                                 {itemData?.key_highlighter[0]?.time &&
                                   format(
-                                    new Date(itemData?.key_highlighter[0]?.time),
-                                    "MMMMMM d, y | H:mm"
+                                    new Date(
+                                      itemData?.key_highlighter[0]?.time
+                                    ),
+                                    'MMMMMM d, y | H:mm'
                                   )}
                               </Typography>
                             </Box>
-                            : null}
+                          ) : null}
 
                           <Typography
                             variant="h7regular"
                             sx={{
-                              color: "#2d2d39",
-                              overflow: "hidden",
-                              whiteSpace: "nowrap",
-                              textOverflow: "ellipsis",
-                              width: "270px !important",
+                              color: '#2d2d39',
+                              overflow: 'hidden',
+                              whiteSpace: 'nowrap',
+                              textOverflow: 'ellipsis',
+                              width: '270px !important',
                             }}
                           >
                             {itemData?.title}
                           </Typography>
 
-
-                          {allTextStatus && itemData?.authors ?
+                          {allTextStatus && itemData?.authors ? (
                             <Box
                               sx={{
-                                color: "#5c6574",
-                                display: "block",
-                                overflow: "hidden",
+                                color: '#5c6574',
+                                display: 'block',
+                                overflow: 'hidden',
                                 fontSize: '12px',
-                                fontStyle: allTextStatus ? "italic" : "normal",
+                                fontStyle: allTextStatus ? 'italic' : 'normal',
                               }}
                               dangerouslySetInnerHTML={{
-                                __html: `${allTextStatus && itemData?.authors?.length > 0
-                                  ? allDescData
-                                  : null
-                                  }`,
+                                __html: `${
+                                  allTextStatus && itemData?.authors?.length > 0
+                                    ? allDescData
+                                    : null
+                                }`,
                               }}
                             ></Box>
-                            :
+                          ) : (
                             <Box
                               sx={{
-                                display: "-webkit-box",
-                                WebkitBoxOrient: "vertical",
+                                display: '-webkit-box',
+                                WebkitBoxOrient: 'vertical',
                                 WebkitLineClamp: 3,
-                                overflow: "hidden",
-                                margin: 0
+                                overflow: 'hidden',
+                                margin: 0,
                               }}
                               dangerouslySetInnerHTML={{
-                                __html: DOMPurify.sanitize(itemData?.description),
+                                __html: DOMPurify.sanitize(
+                                  itemData?.description
+                                ),
                               }}
                             ></Box>
-                          }
+                          )}
 
                           {/* in case of author */}
                           <Typography
-                            variant='h7regular'
+                            variant="h7regular"
                             sx={{
-                              color: "#5c6574",
-                              display: "-webkit-box",
+                              color: '#5c6574',
+                              display: '-webkit-box',
                               WebkitLineClamp: 3,
-                              WebkitBoxOrient: "vertical",
-                              overflow: "hidden",
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
                               textAlign:
                                 allTextStatus && itemData?.authors?.length > 0
-                                  ? "end"
-                                  : "start",
+                                  ? 'end'
+                                  : 'start',
                               mr:
-                                allTextStatus && itemData?.authors?.length > 0 ? "18px" : "0",
+                                allTextStatus && itemData?.authors?.length > 0
+                                  ? '18px'
+                                  : '0',
                             }}
                           >
-                            {allTextStatus && itemData?.authors?.length > 0 ?
+                            {allTextStatus && itemData?.authors?.length > 0 ? (
                               <Typography
-                                variant='h7regular'
+                                variant="h7regular"
                                 dangerouslySetInnerHTML={{
                                   __html: `-${itemData?.authors}`,
                                 }}
                                 sx={{
-                                  fontStyle: allTextStatus ? "italic" : "normal",
+                                  fontStyle: allTextStatus
+                                    ? 'italic'
+                                    : 'normal',
                                 }}
                               ></Typography>
-                              :
+                            ) : (
                               <Typography
-                                variant='h7regular'
+                                variant="h7regular"
                                 dangerouslySetInnerHTML={{
                                   __html: itemData?.authors,
                                 }}
                                 sx={{
-                                  fontStyle: allTextStatus ? "normal" : "italic",
+                                  fontStyle: allTextStatus
+                                    ? 'normal'
+                                    : 'italic',
                                 }}
-                              ></Typography>}
+                              ></Typography>
+                            )}
                           </Typography>
 
-                          {showIframeBox ?
+                          {showIframeBox ? (
                             <Box className="iframeBoxContainer">
                               <Link href={embeddURLValue}>
                                 <Box
-                                  dangerouslySetInnerHTML={{ __html: iframeVal }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: iframeVal,
+                                  }}
                                 ></Box>
                               </Link>
                             </Box>
-                            : null}
+                          ) : null}
                           <Typography sx={{ pt: 3 }}> </Typography>
                         </Box>
                         <Box>
                           <IconButton
-                            aria-label='more'
-                            id='long-button'
+                            aria-label="more"
+                            id="long-button"
                             aria-controls={open ? 'long-menu' : undefined}
                             aria-expanded={open ? 'true' : undefined}
-                            aria-haspopup='true'
+                            aria-haspopup="true"
                             onClick={(event) =>
                               handleListClick(event, itemData?._id)
                             }
@@ -463,37 +500,37 @@ const BlogTimeline = (_props: any) => {
                           </IconButton>
                           <Menu
                             anchorOrigin={{
-                              vertical: "bottom",
-                              horizontal: "right",
+                              vertical: 'bottom',
+                              horizontal: 'right',
                             }}
                             transformOrigin={{
-                              vertical: "top",
-                              horizontal: "right",
+                              vertical: 'top',
+                              horizontal: 'right',
                             }}
                             anchorEl={listMenu}
                             open={openListMenu}
                             onClose={handleListClose}
                             sx={{
-                              ".Platform-x-Menu-paper": {
-                                boxShadow: "0 3px 6px 0 rgba(0, 0, 0, 0.1)",
-                                borderRadius: "7px",
-                                marginTop: "5px",
+                              '.Platform-x-Menu-paper': {
+                                boxShadow: '0 3px 6px 0 rgba(0, 0, 0, 0.1)',
+                                borderRadius: '7px',
+                                marginTop: '5px',
                               },
-                              ".Platform-x-Menu-list": {
-                                borderRadius: "4px",
-                                boxShadow: "0 0 2px 0 rgba(115, 114, 114, 0.1)",
-                                border: "solid 1px rgba(112, 112, 112, 0.1)",
+                              '.Platform-x-Menu-list': {
+                                borderRadius: '4px',
+                                boxShadow: '0 0 2px 0 rgba(115, 114, 114, 0.1)',
+                                border: 'solid 1px rgba(112, 112, 112, 0.1)',
                               },
-                              ".Platform-x-MenuItem-root": {
-                                ".Platform-x-SvgIcon-root": {
+                              '.Platform-x-MenuItem-root': {
+                                '.Platform-x-SvgIcon-root': {
                                   fontSize: 20,
-                                  marginRight: "10px",
+                                  marginRight: '10px',
                                 },
-                                paddingLeft: "18px",
-                                fontSize: "16px",
+                                paddingLeft: '18px',
+                                fontSize: '16px',
                                 zIndex: 999,
                               },
-                              textTransform: "capitalize",
+                              textTransform: 'capitalize',
                             }}
                           >
                             <MenuItem
@@ -524,7 +561,7 @@ const BlogTimeline = (_props: any) => {
         </Box>
       </Box>
 
-      {isDelete ?
+      {isDelete ? (
         <DeletePopup
           isDialogOpen={isDelete}
           title={t('delete_title')}
@@ -536,7 +573,7 @@ const BlogTimeline = (_props: any) => {
           closeButtonHandle={deleteCloseButtonHandle}
           confirmButtonHandle={deleteConfirmButtonHandle}
         />
-        : null}
+      ) : null}
     </>
   );
 };

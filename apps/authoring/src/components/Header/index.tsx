@@ -5,10 +5,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import Profile from '../../assets/images/avatar.png';
 import Logo from '../../assets/images/platform-x-logo.png';
 import { Store } from '../../store/ContextStore';
-import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { logoutUrl } from '../../utils/authConstants';
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -17,12 +17,8 @@ import { useTranslation } from 'react-i18next';
 import LanguageDropDown from '../../Common/LanguageDropDown';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { callSaveandResetWarning } from '../../store/Actions';
+import { getSelectedRoute, getSelectedSite } from '../../utils/helperFunctions';
 import PlateformXDialog from '../Modal';
-import {
-  getCurrentLang,
-  getSelectedRoute,
-  getSelectedSite,
-} from '../../utils/helperFunctions';
 
 const saveWarningMessage = {
   saveWarnTitle: 'Unsaved Changes',
@@ -122,9 +118,7 @@ export const Header = (props) => {
       getSelectedRoute()
         ? navigate('/dashboard')
         : window.location.replace(
-            `${
-              process.env.REACT_APP_BASE_URL
-            }/${getSelectedSite()}/en/dashboard`
+            `${process.env.NX_BASE_URL}/${getSelectedSite()}/en/dashboard`
           );
     } else {
       setTriggerCase('PAGE_LIST');

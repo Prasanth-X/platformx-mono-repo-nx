@@ -1,11 +1,11 @@
-import { createTheme } from "@mui/material/styles";
-import React from "react";
-import { default as light } from "./prelemVariableLight";
+import { createTheme } from '@mui/material/styles';
+import React from 'react';
 import { default as dark } from './prelemVariableDark';
-// import ThemeConstants from `./${process.env.REACT_APP_PRELEM_THEME}`;
-const ThemeConstants = process.env.REACT_APP_PRELEM_THEME === 'dark' ? dark : light;
+import { default as light } from './prelemVariableLight';
+// import ThemeConstants from `./${process.env.NX_PRELEM_THEME}`;
+const ThemeConstants = process.env.NX_PRELEM_THEME === 'dark' ? dark : light;
 
-declare module "@mui/material/Typography" {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     weblarge: true;
     h1large: true;
@@ -68,7 +68,7 @@ declare module "@mui/material/Typography" {
   //   errorColor: true;
   // }
 }
-declare module "@mui/material/Button" {
+declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     tertiary: true;
     transparent: true;
@@ -119,7 +119,7 @@ declare module "@mui/material/Button" {
   //   errorColor: true;
   // }
 }
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Theme {
     prelemMargin: {
       value: string;
@@ -141,17 +141,17 @@ declare module "@mui/material/styles" {
   }
   interface ThemeOptions {
     prelemMargin?: {
-      value: React.CSSProperties["margin"];
+      value: React.CSSProperties['margin'];
     };
     prelemPaddingBottom?: {
-      value: React.CSSProperties["paddingBottom"];
+      value: React.CSSProperties['paddingBottom'];
     };
     prelemPaddingTop?: {
-      value: React.CSSProperties["paddingTop"];
+      value: React.CSSProperties['paddingTop'];
     };
     borderRadius?: {
-      value: React.CSSProperties["borderRadius"];
-      value1: React.CSSProperties["borderRadius"];
+      value: React.CSSProperties['borderRadius'];
+      value1: React.CSSProperties['borderRadius'];
     };
     fontFamily?: {
       primary: string;
@@ -213,7 +213,7 @@ declare module "@mui/material/styles" {
     tertiaryAnchorLink?: string;
   }
 }
-declare module "@mui/system" {
+declare module '@mui/system' {
   interface BreakpointOverrides {
     xs: true;
     sm: true;
@@ -225,13 +225,13 @@ declare module "@mui/system" {
 }
 const PrelemTheme = createTheme({
   prelemMargin: {
-    value: "0px",
+    value: '0px',
   },
   prelemPaddingBottom: {
-    value: "12px",
+    value: '12px',
   },
   prelemPaddingTop: {
-    value: "12px",
+    value: '12px',
   },
   borderRadius: {
     value: ThemeConstants.RADIUS.VALUE1,
@@ -307,24 +307,28 @@ const PrelemTheme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { variant: "primaryButton1" },
+          props: { variant: 'primaryButton1' },
           style: {
-            backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR_HOVER,
+            '&:hover': {
+              backgroundColor:
+                ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1
+                  .BACKGROUND_COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.COLOR,
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
+              backgroundColor:
+                ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
               opacity: 0.6,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
@@ -333,35 +337,35 @@ const PrelemTheme = createTheme({
               fontSize: ThemeConstants.FONTSIZE_16,
               margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.SMMARGIN}`,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -369,33 +373,36 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "primaryButton2" },
+          props: { variant: 'primaryButton2' },
           style: {
-            backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.COLOR,
             border: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.BORDER,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
+            '&:hover': {
               //border: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.BORDER_HOVER,
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR_HOVER,
+              backgroundColor:
+                ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2
+                  .BACKGROUND_COLOR_HOVER,
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.COLOR_HOVER,
-              "& svg": {
+              '& svg': {
                 fill: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.COLOR_HOVER,
               },
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.COLOR,
               border: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.BORDER,
               opacity: 0.6,
             },
-            "& svg": {
+            '& svg': {
               fill: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT2.COLOR,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
@@ -403,35 +410,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -439,24 +446,27 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "primaryButton3" },
+          props: { variant: 'primaryButton3' },
           style: {
-            backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             border: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.BORDER,
             color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR_HOVER,
+            '&:hover': {
+              backgroundColor:
+                ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3
+                  .BACKGROUND_COLOR_HOVER,
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.COLOR,
               border: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT3.BORDER,
               opacity: 0.6,
@@ -466,35 +476,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -502,53 +512,57 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "primaryButton4" },
+          props: { variant: 'primaryButton4' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
-            lineHeight: "20px",
-            height: "20px",
-            textAlign: "left",
+            lineHeight: '20px',
+            height: '20px',
+            textAlign: 'left',
             color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT4.COLOR,
-            maxWidth: "100%",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            maxWidth: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
-            textTransform: "capitalize",
-            justifyContent: "start",
-            padding: "0px",
-            margin: "0px",
-            borderRadius: "0px !important",
-            "&:hover": {
+            textTransform: 'capitalize',
+            justifyContent: 'start',
+            padding: '0px',
+            margin: '0px',
+            borderRadius: '0px !important',
+            '&:hover': {
               // Opacity: 0.7,
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT4.COLOR_HOVER,
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
             },
           },
         },
         /*secondaryButton  four types*/
         {
-          props: { variant: "secondaryButton1" },
+          props: { variant: 'secondaryButton1' },
           style: {
-            backgroundColor: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
+            '&:hover': {
               backgroundColor:
-                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR_HOVER,
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1
+                  .BACKGROUND_COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.COLOR,
-              backgroundColor: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
+              backgroundColor:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1
+                  .BACKGROUND_COLOR,
               opacity: 0.6,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
@@ -557,35 +571,35 @@ const PrelemTheme = createTheme({
               fontSize: ThemeConstants.FONTSIZE_16,
               margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.SMMARGIN}`,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -593,28 +607,34 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "secondaryButton2" },
+          props: { variant: 'secondaryButton2' },
           style: {
-            backgroundColor: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.COLOR,
             border: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BORDER,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
-              border: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BORDER_HOVER,
+            '&:hover': {
+              border:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BORDER_HOVER,
               backgroundColor:
-                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR_HOVER,
-              color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.COLOR_HOVER,
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2
+                  .BACKGROUND_COLOR_HOVER,
+              color:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.COLOR,
-              backgroundColor: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
+              backgroundColor:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT2
+                  .BACKGROUND_COLOR,
               opacity: 0.6,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
@@ -623,35 +643,35 @@ const PrelemTheme = createTheme({
               fontSize: ThemeConstants.FONTSIZE_16,
               margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.SMMARGIN}`,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -659,28 +679,34 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "secondaryButton3" },
+          props: { variant: 'secondaryButton3' },
           style: {
-            backgroundColor: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.COLOR,
             border: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BORDER,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
-              border: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BORDER_HOVER,
-              color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.COLOR_HOVER,
+            '&:hover': {
+              border:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BORDER_HOVER,
+              color:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.COLOR_HOVER,
               backgroundColor:
-                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR_HOVER,
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3
+                  .BACKGROUND_COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.COLOR,
-              backgroundColor: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
+              backgroundColor:
+                ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT3
+                  .BACKGROUND_COLOR,
               opacity: 0.6,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
@@ -689,35 +715,35 @@ const PrelemTheme = createTheme({
               fontSize: ThemeConstants.FONTSIZE_16,
               margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.SMMARGIN}`,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -725,52 +751,54 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "secondaryButton4" },
+          props: { variant: 'secondaryButton4' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
-            lineHeight: "20px",
-            height: "20px",
-            textAlign: "left",
+            lineHeight: '20px',
+            height: '20px',
+            textAlign: 'left',
             color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT4.COLOR,
-            maxWidth: "100%",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            maxWidth: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
-            textTransform: "capitalize",
-            justifyContent: "start",
-            padding: "0px",
-            margin: "0px",
-            borderRadius: "0px !important",
-            "&:hover": {
+            textTransform: 'capitalize',
+            justifyContent: 'start',
+            padding: '0px',
+            margin: '0px',
+            borderRadius: '0px !important',
+            '&:hover': {
               Opacity: 0.7,
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
             },
           },
         },
         /*tertiaryButton  four types*/
         {
-          props: { variant: "tertiaryButton1" },
+          props: { variant: 'tertiaryButton1' },
           style: {
-            backgroundColor: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             border: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.BORDER,
             color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
+            '&:hover': {
               backgroundColor:
-                ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR_HOVER,
+                ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1
+                  .BACKGROUND_COLOR_HOVER,
               color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.COLOR,
               border: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT1.BORDER,
               opacity: 0.6,
@@ -780,35 +808,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -816,25 +844,27 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "tertiaryButton2" },
+          props: { variant: 'tertiaryButton2' },
           style: {
-            backgroundColor: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             border: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.BORDER,
             color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
+            '&:hover': {
               backgroundColor:
-                ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.BACKGROUND_COLOR_HOVER,
+                ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2
+                  .BACKGROUND_COLOR_HOVER,
               color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.COLOR,
               border: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT2.BORDER,
               opacity: 0.6,
@@ -844,35 +874,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -880,25 +910,27 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "tertiaryButton3" },
+          props: { variant: 'tertiaryButton3' },
           style: {
-            backgroundColor: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
+            backgroundColor:
+              ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             border: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.BORDER,
             color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "&:hover": {
+            '&:hover': {
               backgroundColor:
-                ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.BACKGROUND_COLOR_HOVER,
+                ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3
+                  .BACKGROUND_COLOR_HOVER,
               color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.COLOR_HOVER,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.COLOR,
               border: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT3.BORDER,
               opacity: 0.6,
@@ -908,35 +940,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -944,57 +976,57 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "tertiaryButton4" },
+          props: { variant: 'tertiaryButton4' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
-            lineHeight: "20px",
-            height: "20px",
-            textAlign: "left",
+            lineHeight: '20px',
+            height: '20px',
+            textAlign: 'left',
             color: ThemeConstants.TERTIARY_PRELEM.BUTTON.VARIANT4.COLOR,
-            maxWidth: "100%",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            maxWidth: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
-            textTransform: "capitalize",
-            justifyContent: "start",
-            padding: "0px",
-            margin: "0px",
-            borderRadius: "0px !important",
-            "&:hover": {
+            textTransform: 'capitalize',
+            justifyContent: 'start',
+            padding: '0px',
+            margin: '0px',
+            borderRadius: '0px !important',
+            '&:hover': {
               opacity: 0.2,
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
             },
           },
         },
         /* defaultButton1,defaultButton2 :  ALL prelem can use that having Background as an IMAGE always and text should always be white then only */
         {
-          props: { variant: "defaultButton1" },
+          props: { variant: 'defaultButton1' },
           style: {
             backgroundColor: ThemeConstants.WHITE_COLOR,
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             // border: `1px solid ${ThemeConstants.WHITE_COLOR}`,
             color: ThemeConstants.BLACK_COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "& svg": {
+            '& svg': {
               fill: ThemeConstants.BLACK_COLOR,
             },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.WHITE_COLOR,
               color: ThemeConstants.BLACK_COLOR,
-              "& svg": {
+              '& svg': {
                 fill: ThemeConstants.BLACK_COLOR,
               },
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.BLACK_COLOR,
               border: `1px solid ${ThemeConstants.WHITE_COLOR}`,
               opacity: 0.6,
@@ -1004,35 +1036,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -1040,30 +1072,30 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "defaultButton2" },
+          props: { variant: 'defaultButton2' },
           style: {
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             borderRadius: ThemeConstants.ELEMENT.BUTTON.BORDER_RADIUS,
             border: `1px solid ${ThemeConstants.WHITE_COLOR}`,
             color: ThemeConstants.WHITE_COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_SEMIBOLD,
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
-            "& svg": {
+            '& svg': {
               fill: ThemeConstants.WHITE_COLOR,
             },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.WHITE_COLOR,
               color: ThemeConstants.BLACK_COLOR,
-              "& svg": {
+              '& svg': {
                 fill: ThemeConstants.BLACK_COLOR,
               },
             },
-            "&:disabled": {
+            '&:disabled': {
               backgroundColor: ThemeConstants.WHITE_COLOR,
               color: ThemeConstants.BLACK_COLOR,
               opacity: 0.6,
@@ -1073,35 +1105,35 @@ const PrelemTheme = createTheme({
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_16,
             },
-            "&.sm, &.md, &.lg, &.xl ": {
+            '&.sm, &.md, &.lg, &.xl ': {
               [`@media (max-width:${ThemeConstants.MD}px)`]: {
                 height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
                 padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
                 fontSize: ThemeConstants.FONTSIZE_16,
-                "&.sm, &.md, &.lg, &.xl ": {
+                '&.sm, &.md, &.lg, &.xl ': {
                   height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
                   padding: ThemeConstants.CTA_MEDIUM_PADDING,
                   fontSize: ThemeConstants.FONTSIZE_16,
                 },
               },
             },
-            "&.sm": {
+            '&.sm': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.sm,
               fontSize: ThemeConstants.FONTSIZE_14,
               height: ThemeConstants.ELEMENT.BUTTON.SMALL_HEIGHT,
-              minWidth: "auto",
+              minWidth: 'auto',
             },
-            "&.md": {
+            '&.md': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.md,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             },
-            "&.lg": {
+            '&.lg': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.lg,
               fontSize: ThemeConstants.FONTSIZE_16,
               height: ThemeConstants.ELEMENT.BUTTON.LARGE_HEIGHT,
             },
-            "&.xl": {
+            '&.xl': {
               padding: ThemeConstants.ELEMENT.BUTTON.PADDING.xl,
               fontSize: ThemeConstants.FONTSIZE_18,
               height: ThemeConstants.ELEMENT.BUTTON.XLARGE_HEIGHT,
@@ -1109,70 +1141,70 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "defaultButton3" },
+          props: { variant: 'defaultButton3' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
-            lineHeight: "20px",
-            height: "20px",
-            textAlign: "left",
+            lineHeight: '20px',
+            height: '20px',
+            textAlign: 'left',
             color: ThemeConstants.WHITE_COLOR,
-            maxWidth: "100%",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            maxWidth: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
-            textTransform: "capitalize",
-            justifyContent: "start",
-            padding: "0px",
-            margin: "0px",
-            borderRadius: "0px !important",
-            "&:hover": {
+            textTransform: 'capitalize',
+            justifyContent: 'start',
+            padding: '0px',
+            margin: '0px',
+            borderRadius: '0px !important',
+            '&:hover': {
               opacity: 0.9,
-              backgroundColor: "transparent",
-              "& svg": {
+              backgroundColor: 'transparent',
+              '& svg': {
                 fill: ThemeConstants.WHITE_COLOR,
               },
             },
-            "& svg": {
+            '& svg': {
               fill: ThemeConstants.WHITE_COLOR,
             },
           },
         },
         {
-          props: { variant: "ecommerceLinkButton1" },
+          props: { variant: 'ecommerceLinkButton1' },
           style: {
-            lineHeight: "20px",
-            height: "20px",
-            textAlign: "left",
+            lineHeight: '20px',
+            height: '20px',
+            textAlign: 'left',
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
-            maxWidth: "100%",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            maxWidth: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
-            textDecoration: "underline",
-            textTransform: "capitalize",
-            justifyContent: "start",
-            padding: "0px",
-            margin: "0px",
-            borderRadius: "0px !important",
-            "&:hover": {
+            textDecoration: 'underline',
+            textTransform: 'capitalize',
+            justifyContent: 'start',
+            padding: '0px',
+            margin: '0px',
+            borderRadius: '0px !important',
+            '&:hover': {
               Opacity: 0.7,
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
             },
-            "& svg": {
+            '& svg': {
               fill: ThemeConstants.PRIMARY_PRELEM.TITLE,
             },
           },
         },
         {
-          props: { variant: "ecommerceLinkButton2" },
+          props: { variant: 'ecommerceLinkButton2' },
           style: {
-            "& svg": {
+            '& svg': {
               fill: ThemeConstants.PRIMARY_PRELEM.TITLE,
             },
           },
@@ -1757,47 +1789,47 @@ const PrelemTheme = createTheme({
         // },
         /*old variant */
         {
-          props: { variant: "contained" },
+          props: { variant: 'contained' },
           style: {
-            textTransform: "none",
+            textTransform: 'none',
             fontWeight: ThemeConstants.FONTWEIGHT_LIGHT,
             backgroundColor: ThemeConstants.BUTTON_MAIN_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS_CTA,
             fontSize: ThemeConstants.FONTSIZE_16,
             color: ThemeConstants.WHITE_COLOR,
-            padding: "15px 20px",
-            minWidth: "250px",
+            padding: '15px 20px',
+            minWidth: '250px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 20px",
-              minWidth: "200px",
+              padding: '10px 20px',
+              minWidth: '200px',
             },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.BUTTON_MAIN_COLOR,
               color: ThemeConstants.WHITE_COLOR,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.WHITE_COLOR,
             },
           },
         },
         {
-          props: { variant: "outlined" },
+          props: { variant: 'outlined' },
           style: {
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontWeight: ThemeConstants.FONTWEIGHT_LIGHT,
             backgroundColor: ThemeConstants.WHITE_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS_CTA,
             fontSize: ThemeConstants.FONTSIZE_16,
             color: ThemeConstants.BLACK_COLOR,
-            border: "solid 0.5px " + ThemeConstants.BLACK_COLOR,
+            border: 'solid 0.5px ' + ThemeConstants.BLACK_COLOR,
             // padding: '8.5px 10px 10.5px 10px',
-            width: "100%",
-            height: "40px",
-            padding: "15px 20px",
-            minWidth: "250px",
+            width: '100%',
+            height: '40px',
+            padding: '15px 20px',
+            minWidth: '250px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 20px",
-              minWidth: "200px",
+              padding: '10px 20px',
+              minWidth: '200px',
             }, // [`@media (max-width:${ThemeConstants.XL}px)`]: {
             //   fontSize: ThemeConstants.FONTSIZE_14,
             // },
@@ -1813,125 +1845,125 @@ const PrelemTheme = createTheme({
             //   fontSize: ThemeConstants.FONTSIZE_12,
             //   padding: '2px',
             // },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.BUTTON_MAIN_COLOR,
               color: ThemeConstants.WHITE_COLOR,
-              border: "solid 0.5px " + ThemeConstants.BUTTON_MAIN_COLOR,
+              border: 'solid 0.5px ' + ThemeConstants.BUTTON_MAIN_COLOR,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.WHITE_COLOR,
             },
           },
         },
         {
-          props: { variant: "tertiary" },
+          props: { variant: 'tertiary' },
           style: {
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontWeight: ThemeConstants.FONTWEIGHT_LIGHT,
             backgroundColor: ThemeConstants.WHITE_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS_CTA,
             fontSize: ThemeConstants.FONTSIZE_16,
             color: ThemeConstants.BLACK_COLOR,
-            padding: "15px 20px",
-            minWidth: "250px",
+            padding: '15px 20px',
+            minWidth: '250px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 20px",
-              minWidth: "200px",
+              padding: '10px 20px',
+              minWidth: '200px',
             },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.OFF_WHITE_COLOR,
               color: ThemeConstants.BLACK_COLOR,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.WHITE_COLOR,
             },
           },
         },
         {
-          props: { variant: "linkButton" },
+          props: { variant: 'linkButton' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
-            lineHeight: "20px",
-            height: "20px",
-            textAlign: "left",
+            lineHeight: '20px',
+            height: '20px',
+            textAlign: 'left',
             // color: ThemeConstants.PRIMARY_COLOR[950],
-            maxWidth: "100%",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            maxWidth: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
-            textDecoration: "underline",
-            textTransform: "capitalize",
-            justifyContent: "start",
-            padding: "0px",
-            margin: "0px",
-            borderRadius: "0px !important",
-            "&:hover": {
+            textDecoration: 'underline',
+            textTransform: 'capitalize',
+            justifyContent: 'start',
+            padding: '0px',
+            margin: '0px',
+            borderRadius: '0px !important',
+            '&:hover': {
               Opacity: 0.7,
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
             },
           },
         },
         {
-          props: { variant: "transparent" },
+          props: { variant: 'transparent' },
           style: {
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontWeight: ThemeConstants.FONTWEIGHT_LIGHT,
-            backgroundColor: "transparent",
-            border: "1px solid",
+            backgroundColor: 'transparent',
+            border: '1px solid',
             borderColor: ThemeConstants.WHITE_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS,
             fontSize: ThemeConstants.FONTSIZE_16,
             color: ThemeConstants.WHITE_COLOR,
-            padding: "15px 20px",
-            minWidth: "250px",
+            padding: '15px 20px',
+            minWidth: '250px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 20px",
-              minWidth: "200px",
+              padding: '10px 20px',
+              minWidth: '200px',
             },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.BUTTON_MAIN_COLOR,
               color: ThemeConstants.WHITE_COLOR,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.WHITE_COLOR,
             },
           },
         },
         {
-          props: { variant: "text" },
+          props: { variant: 'text' },
           style: {
-            textTransform: "capitalize",
-            backgroundColor: "transparent",
+            textTransform: 'capitalize',
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_16,
             color: ThemeConstants.WHITE_COLOR,
-            padding: "15px 20px",
-            minWidth: "250px",
+            padding: '15px 20px',
+            minWidth: '250px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 20px",
-              minWidth: "200px",
+              padding: '10px 20px',
+              minWidth: '200px',
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.WHITE_COLOR,
             },
           },
         },
         {
-          props: { variant: "blackbutton" },
+          props: { variant: 'blackbutton' },
           style: {
             backgroundColor: ThemeConstants.BLACK_COLOR_V1,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS_CTA,
             fontSize: ThemeConstants.FONTSIZE_16,
             color: ThemeConstants.WHITE_COLOR,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             height: ThemeConstants.ELEMENT.BUTTON.MEDIUM_HEIGHT,
             padding: ThemeConstants.CTA_MEDIUM_PADDING,
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.BLACK_COLOR_V2,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.GRAY_COLOR_v1,
               backgroundColor: ThemeConstants.GRAY_COLOR_v2,
             },
@@ -1942,139 +1974,139 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "whitebutton" },
+          props: { variant: 'whitebutton' },
           style: {
             backgroundColor: ThemeConstants.WHITE_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS,
             fontSize: ThemeConstants.FONTSIZE_14,
             color: ThemeConstants.BLACK_COLOR_VARIANT1,
-            height: "40px",
-            textTransform: "capitalize",
-            padding: "15px 18px",
-            minWidth: "100px",
+            height: '40px',
+            textTransform: 'capitalize',
+            padding: '15px 18px',
+            minWidth: '100px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 18px",
-              minWidth: "100px",
+              padding: '10px 18px',
+              minWidth: '100px',
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
-              padding: "10px 18px",
-              minWidth: "100px",
+              padding: '10px 18px',
+              minWidth: '100px',
             },
             [`@media (max-width:${ThemeConstants.SM}px)`]: {
-              padding: "10px 18px",
-              minWidth: "100px",
-              height: "40px",
+              padding: '10px 18px',
+              minWidth: '100px',
+              height: '40px',
             },
-            "&:hover": {
+            '&:hover': {
               backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
               color: ThemeConstants.WHITE_COLOR,
             },
-            "&:disabled": {
-              background: "#ced3d9",
-              color: "#89909a",
+            '&:disabled': {
+              background: '#ced3d9',
+              color: '#89909a',
             },
           },
         },
         {
-          props: { variant: "redbutton" },
+          props: { variant: 'redbutton' },
           style: {
             backgroundColor: ThemeConstants.WHITE_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS,
             fontSize: ThemeConstants.FONTSIZE_14,
-            border: "1px solid",
+            border: '1px solid',
             color: ThemeConstants.RED_COLOR,
             borderColor: ThemeConstants.RED_COLOR,
-            height: "50px",
-            textTransform: "capitalize",
-            padding: "15px 18px",
-            minWidth: "100px",
+            height: '50px',
+            textTransform: 'capitalize',
+            padding: '15px 18px',
+            minWidth: '100px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 18px",
-              minWidth: "100px",
+              padding: '10px 18px',
+              minWidth: '100px',
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
-              padding: "10px 18px",
-              minWidth: "100px",
+              padding: '10px 18px',
+              minWidth: '100px',
             },
             [`@media (max-width:${ThemeConstants.SM}px)`]: {
-              padding: "10px 18px",
-              minWidth: "100px",
-              height: "40px",
+              padding: '10px 18px',
+              minWidth: '100px',
+              height: '40px',
             },
-            "&:hover": {
+            '&:hover': {
               Opacity: 0.7,
             },
-            "&:disabled": {
-              backgroundColor: "#ced3d9",
-              color: "#89909a",
+            '&:disabled': {
+              backgroundColor: '#ced3d9',
+              color: '#89909a',
             },
           },
         },
         {
-          props: { variant: "graybuttonsmall" },
+          props: { variant: 'graybuttonsmall' },
           style: {
             backgroundColor: ThemeConstants.LIGHT_GREY_COLOR_VARIANT7,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS,
             fontSize: ThemeConstants.FONTSIZE_14,
-            border: "1px solid",
+            border: '1px solid',
             color: ThemeConstants.BLACK_COLOR_VARIANT1,
             borderColor: ThemeConstants.LIGHT_GREY_COLOR_VARIANT7,
-            height: "35px",
-            textTransform: "capitalize",
-            padding: "5px",
-            minWidth: "35px",
-            "&:hover": {
+            height: '35px',
+            textTransform: 'capitalize',
+            padding: '5px',
+            minWidth: '35px',
+            '&:hover': {
               Opacity: 0.7,
             },
-            "&:disabled": {
+            '&:disabled': {
               backgroundColor: ThemeConstants.LIGHT_GREY_COLOR_VARIANT5,
               color: ThemeConstants.LIGHT_GREY_COLOR_VARIANT1,
             },
           },
         },
         {
-          props: { variant: "ecommerceButton" },
+          props: { variant: 'ecommerceButton' },
           style: {
-            lineHeight: "40px",
-            height: "45px",
-            textAlign: "left",
-            background: "#000",
+            lineHeight: '40px',
+            height: '45px',
+            textAlign: 'left',
+            background: '#000',
             color: ThemeConstants.WHITE_COLOR,
-            transition: "all 0.2s ease",
-            maxWidth: "100%",
-            margin: "2px 0 3px 0",
-            position: "relative",
-            overflow: "hidden",
-            width: "auto",
+            transition: 'all 0.2s ease',
+            maxWidth: '100%',
+            margin: '2px 0 3px 0',
+            position: 'relative',
+            overflow: 'hidden',
+            width: 'auto',
             fontWeight: ThemeConstants.FONTWEIGHT_MEDIUM,
-            backgroundColor: "transparent",
+            backgroundColor: 'transparent',
             fontSize: ThemeConstants.FONTSIZE_CTA,
-            textTransform: "none",
-            justifyContent: "start",
-            borderBottom: "1px solid #fff !important",
-            borderRadius: "0px !important",
-            padding: "10px 18px 0px 0px",
+            textTransform: 'none',
+            justifyContent: 'start',
+            borderBottom: '1px solid #fff !important',
+            borderRadius: '0px !important',
+            padding: '10px 18px 0px 0px',
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
-              padding: "10px 18px 0px 0px",
-              minWidth: "100px",
+              padding: '10px 18px 0px 0px',
+              minWidth: '100px',
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
-              padding: "10px 18px 0px 0px",
-              minWidth: "100px",
+              padding: '10px 18px 0px 0px',
+              minWidth: '100px',
             },
             [`@media (max-width:${ThemeConstants.SM}px)`]: {
-              padding: "10px 18px 0px 0px",
-              minWidth: "100px",
+              padding: '10px 18px 0px 0px',
+              minWidth: '100px',
             },
-            "&:hover": {
+            '&:hover': {
               Opacity: 0.7,
             },
-            "&:hover svg": {
-              left: "calc(50% + 3px)",
+            '&:hover svg': {
+              left: 'calc(50% + 3px)',
             },
-            "&:disabled": {
-              backgroundColor: "#ced3d9",
-              color: "#89909a",
+            '&:disabled': {
+              backgroundColor: '#ced3d9',
+              color: '#89909a',
             },
           },
         },
@@ -2086,69 +2118,70 @@ const PrelemTheme = createTheme({
           [`@media(min-width:${ThemeConstants.XS}px)`]: {
             paddingLeft: 0,
             paddingRight: 0,
-            maxWidth: "none",
+            maxWidth: 'none',
           },
-          "&.grid_full_width": {
-            width: "100%",
-            padding: "0 20px",
+          '&.grid_full_width': {
+            width: '100%',
+            padding: '0 20px',
           },
-          "&.grid_container": {
-            margin: "0 auto",
-            padding: "0 8px",
+          '&.grid_container': {
+            margin: '0 auto',
+            padding: '0 8px',
             [`@media(min-width:${ThemeConstants.XS}px)`]: {
-              width: "calc(100% - 30px)",
+              width: 'calc(100% - 30px)',
             },
             [`@media(min-width:${ThemeConstants.SM}px)`]: {
-              width: "568px",
+              width: '568px',
             },
             [`@media(min-width:${ThemeConstants.MD}px)`]: {
-              width: "732px",
+              width: '732px',
             },
             [`@media(min-width:${ThemeConstants.EM}px)`]: {
-              width: "992px",
+              width: '992px',
             },
             [`@media(min-width:${ThemeConstants.LG}px)`]: {
-              width: "1240px",
+              width: '1240px',
             },
             [`@media(min-width:${ThemeConstants.XL}px)`]: {
-              width: "1340px",
+              width: '1340px',
             },
           },
-          "&.right_grid_container": {
-            margin: "0 0 0 auto",
+          '&.right_grid_container': {
+            margin: '0 0 0 auto',
             [`@media(min-width:${ThemeConstants.XS}px)`]: {
-              width: "calc(calc(100% - 30px) + ((100% - calc(100% - 30px)) / 2))",
+              width:
+                'calc(calc(100% - 30px) + ((100% - calc(100% - 30px)) / 2))',
             },
             [`@media(min-width:${ThemeConstants.SM}px)`]: {
-              width: "calc(568px + ((100% - 568px) / 2))",
+              width: 'calc(568px + ((100% - 568px) / 2))',
             },
             [`@media(min-width:${ThemeConstants.MD}px)`]: {
-              width: "calc(732px + ((100% - 732px) / 2))",
+              width: 'calc(732px + ((100% - 732px) / 2))',
             },
             [`@media(min-width:${ThemeConstants.EM}px)`]: {
-              width: "calc(992px + ((100% - 992px) / 2))",
+              width: 'calc(992px + ((100% - 992px) / 2))',
             },
             [`@media(min-width:${ThemeConstants.LG}px)`]: {
-              width: "calc(1240px + ((100% - 1240px) / 2))",
+              width: 'calc(1240px + ((100% - 1240px) / 2))',
             },
             [`@media(min-width:${ThemeConstants.XL}px)`]: {
-              width: "calc(1340px + ((100% - 1340px) / 2))",
+              width: 'calc(1340px + ((100% - 1340px) / 2))',
             },
           },
-          "&.grid_container_nopadding": {
+          '&.grid_container_nopadding': {
             paddingLeft: 0,
             paddingRight: 0,
           },
-          "&.prelem-py": {
-            paddingTop: "35px !important",
-            paddingBottom: "35px !important",
+          '&.prelem-py': {
+            paddingTop: '35px !important',
+            paddingBottom: '35px !important',
             [`@media (min-width: 1024px) and (max-width: 1280px)`]: {
-              paddingTop: "30px !important",
-              paddingBottom: "30px !important",
+              paddingTop: '30px !important',
+              paddingBottom: '30px !important',
             },
             [`@media (max-width: 1023px)`]: {
-              paddingTop: "25px !important",
-              paddingBottom: "25px !important",
+              paddingTop: '25px !important',
+              paddingBottom: '25px !important',
             },
           },
         },
@@ -2157,70 +2190,70 @@ const PrelemTheme = createTheme({
     MuiTypography: {
       defaultProps: {
         variantMapping: {
-          weblarge: "h1",
-          h1large: "h1",
-          h1largebold: "h1",
-          h1largesemibold: "h1",
-          h1largeregular: "h1",
-          h1largemedium: "h1",
-          h1bold: "h1",
-          h1semibold: "h1",
-          h1regular: "h1",
-          h1medium: "h1",
-          h2bold: "h2",
-          h2semibold: "h2",
-          h2regular: "h2",
-          h2medium: "h2",
-          h3bold: "h3",
-          h3semibold: "h3",
-          h3regular: "h3",
-          h3medium: "h3",
-          h4bold: "h4",
-          h4semibold: "h4",
-          h4regular: "h4",
-          h4medium: "h4",
-          h5bold: "h5",
-          h5semibold: "h5",
-          h5regular: "h5",
-          h5medium: "h5",
-          h6bold: "h6",
-          h6semibold: "h6",
-          h6regular: "h6",
-          h6medium: "h6",
-          h7bold: "p",
-          h7semibold: "p",
-          h7regular: "p",
-          h7medium: "p",
-          p1bold: "p",
-          p1semibold: "p",
-          p1medium: "p",
-          p1regular: "p",
-          p2bold: "p",
-          p2semibold: "p",
-          p2medium: "p",
-          p2regular: "p",
-          p3bold: "p",
-          p3semibold: "p",
-          p3medium: "p",
-          p3regular: "p",
-          p4bold: "p",
-          p4semibold: "p",
-          p4medium: "p",
-          p4regular: "p",
-          labelregular: "label",
-          labelbold: "label",
+          weblarge: 'h1',
+          h1large: 'h1',
+          h1largebold: 'h1',
+          h1largesemibold: 'h1',
+          h1largeregular: 'h1',
+          h1largemedium: 'h1',
+          h1bold: 'h1',
+          h1semibold: 'h1',
+          h1regular: 'h1',
+          h1medium: 'h1',
+          h2bold: 'h2',
+          h2semibold: 'h2',
+          h2regular: 'h2',
+          h2medium: 'h2',
+          h3bold: 'h3',
+          h3semibold: 'h3',
+          h3regular: 'h3',
+          h3medium: 'h3',
+          h4bold: 'h4',
+          h4semibold: 'h4',
+          h4regular: 'h4',
+          h4medium: 'h4',
+          h5bold: 'h5',
+          h5semibold: 'h5',
+          h5regular: 'h5',
+          h5medium: 'h5',
+          h6bold: 'h6',
+          h6semibold: 'h6',
+          h6regular: 'h6',
+          h6medium: 'h6',
+          h7bold: 'p',
+          h7semibold: 'p',
+          h7regular: 'p',
+          h7medium: 'p',
+          p1bold: 'p',
+          p1semibold: 'p',
+          p1medium: 'p',
+          p1regular: 'p',
+          p2bold: 'p',
+          p2semibold: 'p',
+          p2medium: 'p',
+          p2regular: 'p',
+          p3bold: 'p',
+          p3semibold: 'p',
+          p3medium: 'p',
+          p3regular: 'p',
+          p4bold: 'p',
+          p4semibold: 'p',
+          p4medium: 'p',
+          p4regular: 'p',
+          labelregular: 'label',
+          labelbold: 'label',
         },
       },
       variants: [
         {
-          props: { variant: "weblarge" },
+          props: { variant: 'weblarge' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
             fontSize: ThemeConstants.WebL_H1,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px`]: {
               fontSize: ThemeConstants.FONTSIZE_48,
             },
@@ -2230,7 +2263,7 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "h1large" },
+          props: { variant: 'h1large' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2238,19 +2271,21 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_48,
             lineHeight: ThemeConstants.LINEHEIGHT_58,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_34,
               lineHeight: ThemeConstants.LINEHEIGHT_38,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1largebold" },
+          props: { variant: 'h1largebold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2258,19 +2293,21 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_48,
             lineHeight: ThemeConstants.LINEHEIGHT_58,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_34,
               lineHeight: ThemeConstants.LINEHEIGHT_38,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1largesemibold" },
+          props: { variant: 'h1largesemibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2278,19 +2315,21 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_48,
             lineHeight: ThemeConstants.LINEHEIGHT_58,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_34,
               lineHeight: ThemeConstants.LINEHEIGHT_38,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1largemedium" },
+          props: { variant: 'h1largemedium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2298,19 +2337,21 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_48,
             lineHeight: ThemeConstants.LINEHEIGHT_58,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_34,
               lineHeight: ThemeConstants.LINEHEIGHT_38,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1largeregular" },
+          props: { variant: 'h1largeregular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2318,20 +2359,22 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_48,
             lineHeight: ThemeConstants.LINEHEIGHT_58,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.LGBOTTOM,
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_34,
               lineHeight: ThemeConstants.LINEHEIGHT_38,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1LARGE.MARGIN.SMBOTTOM,
             },
           },
         },
 
         {
-          props: { variant: "h1bold" },
+          props: { variant: 'h1bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2340,18 +2383,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_46,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_28,
               lineHeight: ThemeConstants.LINEHEIGHT_30,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1semibold" },
+          props: { variant: 'h1semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2360,18 +2404,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_46,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_28,
               lineHeight: ThemeConstants.LINEHEIGHT_30,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1medium" },
+          props: { variant: 'h1medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2380,18 +2425,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_46,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_28,
               lineHeight: ThemeConstants.LINEHEIGHT_30,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h1regular" },
+          props: { variant: 'h1regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2400,18 +2446,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_46,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_28,
               lineHeight: ThemeConstants.LINEHEIGHT_30,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h2bold" },
+          props: { variant: 'h2bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2420,18 +2467,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_38,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_24,
               lineHeight: ThemeConstants.LINEHEIGHT_28,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h2semibold" },
+          props: { variant: 'h2semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2440,18 +2488,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_38,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_24,
               lineHeight: ThemeConstants.LINEHEIGHT_28,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h2medium" },
+          props: { variant: 'h2medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2460,18 +2509,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_38,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_24,
               lineHeight: ThemeConstants.LINEHEIGHT_28,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h2regular" },
+          props: { variant: 'h2regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2480,18 +2530,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_38,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_24,
               lineHeight: ThemeConstants.LINEHEIGHT_28,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h3bold" },
+          props: { variant: 'h3bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2500,18 +2551,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_34,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_20,
               lineHeight: ThemeConstants.LINEHEIGHT_24,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h3semibold" },
+          props: { variant: 'h3semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2520,18 +2572,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_34,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_20,
               lineHeight: ThemeConstants.LINEHEIGHT_24,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h3medium" },
+          props: { variant: 'h3medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2540,18 +2593,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_34,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_20,
               lineHeight: ThemeConstants.LINEHEIGHT_24,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h3regular" },
+          props: { variant: 'h3regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2560,18 +2614,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_34,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_20,
               lineHeight: ThemeConstants.LINEHEIGHT_24,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h4bold" },
+          props: { variant: 'h4bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2580,18 +2635,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_30,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_16,
               lineHeight: ThemeConstants.LINEHEIGHT_22,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h4semibold" },
+          props: { variant: 'h4semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2600,18 +2656,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_30,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_16,
               lineHeight: ThemeConstants.LINEHEIGHT_22,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h4medium" },
+          props: { variant: 'h4medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2620,18 +2677,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_30,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_16,
               lineHeight: ThemeConstants.LINEHEIGHT_22,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h4regular" },
+          props: { variant: 'h4regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2640,18 +2698,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_30,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_16,
               lineHeight: ThemeConstants.LINEHEIGHT_22,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h5bold" },
+          props: { variant: 'h5bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2660,18 +2719,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h5semibold" },
+          props: { variant: 'h5semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2680,18 +2740,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h5medium" },
+          props: { variant: 'h5medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2700,18 +2761,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h5regular" },
+          props: { variant: 'h5regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2720,18 +2782,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H5.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h6bold" },
+          props: { variant: 'h6bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2740,18 +2803,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h6semibold" },
+          props: { variant: 'h6semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2760,18 +2824,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h6medium" },
+          props: { variant: 'h6medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2780,18 +2845,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h6regular" },
+          props: { variant: 'h6regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2800,18 +2866,19 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H6.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h7bold" },
+          props: { variant: 'h7bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2820,16 +2887,17 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h7semibold" },
+          props: { variant: 'h7semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2838,16 +2906,17 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h7medium" },
+          props: { variant: 'h7medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2856,16 +2925,17 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "h7regular" },
+          props: { variant: 'h7regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.TITLE,
@@ -2874,17 +2944,18 @@ const PrelemTheme = createTheme({
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGTOP,
             marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.LGBOTTOM,
-            display: "inline-block",
-            width: "100%",
+            display: 'inline-block',
+            width: '100%',
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.HEADING.H7.MARGIN.SMBOTTOM,
             },
           },
         },
         // Start New body variant
         {
-          props: { variant: "p1bold" },
+          props: { variant: 'p1bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2892,15 +2963,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_20,
             lineHeight: ThemeConstants.LINEHEIGHT_28,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p1semibold" },
+          props: { variant: 'p1semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2908,15 +2981,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_20,
             lineHeight: ThemeConstants.LINEHEIGHT_28,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p1medium" },
+          props: { variant: 'p1medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2924,15 +2999,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_20,
             lineHeight: ThemeConstants.LINEHEIGHT_28,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p1regular" },
+          props: { variant: 'p1regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2940,15 +3017,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_20,
             lineHeight: ThemeConstants.LINEHEIGHT_28,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P1.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p2bold" },
+          props: { variant: 'p2bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2956,15 +3035,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_18,
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p2semibold" },
+          props: { variant: 'p2semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2972,15 +3053,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_18,
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p2medium" },
+          props: { variant: 'p2medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -2988,15 +3071,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_18,
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p2regular" },
+          props: { variant: 'p2regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3004,15 +3089,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_18,
             lineHeight: ThemeConstants.LINEHEIGHT_26,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P2.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p3bold" },
+          props: { variant: 'p3bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3020,15 +3107,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_16,
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p3semibold" },
+          props: { variant: 'p3semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3036,15 +3125,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_16,
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p3medium" },
+          props: { variant: 'p3medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3052,15 +3143,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_16,
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p3regular" },
+          props: { variant: 'p3regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3068,15 +3161,17 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_16,
             lineHeight: ThemeConstants.LINEHEIGHT_24,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P3.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p4bold" },
+          props: { variant: 'p4bold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3084,17 +3179,19 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_14,
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p4semibold" },
+          props: { variant: 'p4semibold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3102,17 +3199,19 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_14,
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p4medium" },
+          props: { variant: 'p4medium' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3120,17 +3219,19 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_14,
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "p4regular" },
+          props: { variant: 'p4regular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             color: ThemeConstants.PRIMARY_PRELEM.PARAGRAPH,
@@ -3138,17 +3239,19 @@ const PrelemTheme = createTheme({
             fontSize: ThemeConstants.FONTSIZE_14,
             lineHeight: ThemeConstants.LINEHEIGHT_22,
             marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGTOP,
-            marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
+            marginBottom:
+              ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_12,
               lineHeight: ThemeConstants.LINEHEIGHT_20,
               marginTop: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMTOP,
-              marginBottom: ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
+              marginBottom:
+                ThemeConstants.TYPOGRAPHY.PARAGRAPH.P4.MARGIN.SMBOTTOM,
             },
           },
         },
         {
-          props: { variant: "labelregular" },
+          props: { variant: 'labelregular' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             // color: ThemeConstants.LABEL_COLOR,
@@ -3156,8 +3259,8 @@ const PrelemTheme = createTheme({
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
             fontSize: ThemeConstants.FONTSIZE_12,
             lineHeight: ThemeConstants.LINEHEIGHT_20,
-            textTransform: "uppercase",
-            display: "inline-block",
+            textTransform: 'uppercase',
+            display: 'inline-block',
             paddingBottom: ThemeConstants.ELEMENT.LABEL.PADDING.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               paddingBottom: ThemeConstants.ELEMENT.LABEL.PADDING.SMBOTTOM,
@@ -3165,7 +3268,7 @@ const PrelemTheme = createTheme({
           },
         },
         {
-          props: { variant: "labelbold" },
+          props: { variant: 'labelbold' },
           style: {
             fontFamily: ThemeConstants.FONTNAMESECONDARY,
             // color: ThemeConstants.LABEL_COLOR,
@@ -3173,8 +3276,8 @@ const PrelemTheme = createTheme({
             fontWeight: ThemeConstants.FONTWEIGHT_BOLD,
             fontSize: ThemeConstants.FONTSIZE_12,
             lineHeight: ThemeConstants.LINEHEIGHT_20,
-            textTransform: "uppercase",
-            display: "inline-block",
+            textTransform: 'uppercase',
+            display: 'inline-block',
             paddingBottom: ThemeConstants.ELEMENT.LABEL.PADDING.LGBOTTOM,
             [`@media(max-width:${ThemeConstants.SM}px)`]: {
               paddingBottom: ThemeConstants.ELEMENT.LABEL.PADDING.SMBOTTOM,
@@ -3185,27 +3288,27 @@ const PrelemTheme = createTheme({
       styleOverrides: {
         root: {
           // this is styles for the new variants
-          "&.secondary-typography": {
+          '&.secondary-typography': {
             color: ThemeConstants.WHITE_COLOR,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.secondary-desvription": {
+          '&.secondary-desvription': {
             fontSize: ThemeConstants.FONTSIZE_16,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             [`@media (max-width:${ThemeConstants.SM}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
             },
           },
-          "&.article-title-typography": {
+          '&.article-title-typography': {
             color: ThemeConstants.BLACK_COLOR,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.article-subtitle-typography": {
+          '&.article-subtitle-typography': {
             color: ThemeConstants.LIGHT_GREY_COLOR,
             fontSize: ThemeConstants.FONTSIZE_24,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.subtitle-typography": {
+          '&.subtitle-typography': {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             fontSize: ThemeConstants.FONTSIZE_34,
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
@@ -3215,7 +3318,7 @@ const PrelemTheme = createTheme({
               fontSize: ThemeConstants.FONTSIZE_14,
             },
           },
-          "&.service-card4-subtitle": {
+          '&.service-card4-subtitle': {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
             fontSize: ThemeConstants.FONTSIZE_34,
             [`@media (max-width:${ThemeConstants.XL}px)`]: {
@@ -3225,86 +3328,86 @@ const PrelemTheme = createTheme({
               fontSize: ThemeConstants.FONTSIZE_14,
             },
           },
-          "&#WelcomeText": {
+          '&#WelcomeText': {
             color: ThemeConstants.PRIMARY_PRELEM.NOTIFICATION.INFO.BACKGROUND,
           },
-          "&.animationText": {
-            whiteSpace: "nowrap",
-            display: "block",
+          '&.animationText': {
+            whiteSpace: 'nowrap',
+            display: 'block',
             color: ThemeConstants.WHITE_COLOR,
             caretColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             textShadow:
-              "-2px -2px 0 " +
+              '-2px -2px 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", 0   -2px 0 " +
+              ', 0   -2px 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", 2px -2px 0 " +
+              ', 2px -2px 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", 2px  0   0 " +
+              ', 2px  0   0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", 2px  2px 0 " +
+              ', 2px  2px 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", 0 2px 0 " +
+              ', 0 2px 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", -2px 2px 0 " +
+              ', -2px 2px 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR +
-              ", -2px 0 0 " +
+              ', -2px 0 0 ' +
               ThemeConstants.BUTTON_MAIN_COLOR,
             [`@media (max-width:${ThemeConstants.LG}px)`]: {
               textShadow:
-                "-2px -2px 0 " +
+                '-2px -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 0   -2px 0 " +
+                ', 0   -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px -2px 0 " +
+                ', 2px -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px  0   0 " +
+                ', 2px  0   0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px  2px 0 " +
+                ', 2px  2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 0 2px 0 " +
+                ', 0 2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", -2px 2px 0 " +
+                ', -2px 2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", -2px 0 0 " +
+                ', -2px 0 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
               textShadow:
-                "-2px -2px 0 " +
+                '-2px -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 0   -2px 0 " +
+                ', 0   -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px -2px 0 " +
+                ', 2px -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px  0   0 " +
+                ', 2px  0   0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px  2px 0 " +
+                ', 2px  2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 0 2px 0 " +
+                ', 0 2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", -2px 2px 0 " +
+                ', -2px 2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", -2px 0 0 " +
+                ', -2px 0 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR,
             },
             [`@media (max-width:${ThemeConstants.SM}px)`]: {
               textShadow:
-                "-2px -2px 0 " +
+                '-2px -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 0   -2px 0 " +
+                ', 0   -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px -2px 0 " +
+                ', 2px -2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px  0   0 " +
+                ', 2px  0   0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 2px  2px 0 " +
+                ', 2px  2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", 0 2px 0 " +
+                ', 0 2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", -2px 2px 0 " +
+                ', -2px 2px 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR +
-                ", -2px 0 0 " +
+                ', -2px 0 0 ' +
                 ThemeConstants.BUTTON_MAIN_COLOR,
             },
           },
@@ -3314,37 +3417,37 @@ const PrelemTheme = createTheme({
     MuiTab: {
       styleOverrides: {
         root: {
-          ".Platform-x-Tabs-flexContainer": {
-            justifyContent: "center",
-            marginBottom: "20px",
+          '.Platform-x-Tabs-flexContainer': {
+            justifyContent: 'center',
+            marginBottom: '20px',
           },
-          ".MuiTabs-flexContainer": {
-            justifyContent: "center",
-            marginBottom: "20px",
+          '.MuiTabs-flexContainer': {
+            justifyContent: 'center',
+            marginBottom: '20px',
           },
-          "&.Platform-x-Tab-root": {
-            border: "1px solid #d5d5d5",
-            padding: "10px 25px",
-            minWidth: "150px",
+          '&.Platform-x-Tab-root': {
+            border: '1px solid #d5d5d5',
+            padding: '10px 25px',
+            minWidth: '150px',
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
-            textTransform: "capitalize",
+            textTransform: 'capitalize',
             fontSize: ThemeConstants.FONTSIZE_16,
             fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
             [`@media (max-width:${ThemeConstants.LG}px)`]: {
-              padding: "20px 10px",
-              minWidth: "180px",
-              minHeight: "0",
-              fontSize: "16px",
+              padding: '20px 10px',
+              minWidth: '180px',
+              minHeight: '0',
+              fontSize: '16px',
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
-              padding: "13px 10px",
-              minWidth: "150px",
+              padding: '13px 10px',
+              minWidth: '150px',
             },
           },
-          "&.Platform-x-Tab-root.Mui-selected": {
-            borderColor: "#333",
+          '&.Platform-x-Tab-root.Mui-selected': {
+            borderColor: '#333',
           },
-          ".Platform-x-Typography-root": {
+          '.Platform-x-Typography-root': {
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
             },
@@ -3356,36 +3459,36 @@ const PrelemTheme = createTheme({
       styleOverrides: {
         root: {
           // this is styles for the new variants
-          "&.menu-drawer": {
-            display: "block",
-            padding: "1rem 0",
+          '&.menu-drawer': {
+            display: 'block',
+            padding: '1rem 0',
             color: ThemeConstants.WHITE_COLOR,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.app-menu": {
-            padding: "0 1rem",
+          '&.app-menu': {
+            padding: '0 1rem',
             color: ThemeConstants.WHITE_COLOR,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.xerox-app-menu": {
-            padding: "0",
+          '&.xerox-app-menu': {
+            padding: '0',
             color: ThemeConstants.PRIMARY_MAIN_COLOR,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
-            cursor: "pointer",
+            cursor: 'pointer',
             [`@media (max-width:1440px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
             },
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
               fontSize: ThemeConstants.FONTSIZE_14,
-              padding: "0 15px",
+              padding: '0 15px',
             },
           },
-          "&.footer-link": {
+          '&.footer-link': {
             color: ThemeConstants.LIGHT_GREY_COLOR,
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.button-link": {
-            textTransform: "capitalize",
+          '&.button-link': {
+            textTransform: 'capitalize',
             backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             borderRadius: ThemeConstants.DEFAULT_BORDER_RADIUS_CTA,
             color: ThemeConstants.WHITE_COLOR,
@@ -3393,15 +3496,15 @@ const PrelemTheme = createTheme({
             [`@media (max-width:${ThemeConstants.MD}px)`]: {
               backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             },
-            padding: "11px 35px",
-            "&:hover": {
+            padding: '11px 35px',
+            '&:hover': {
               backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             },
-            "&:disabled": {
+            '&:disabled': {
               color: ThemeConstants.WHITE_COLOR,
             },
           },
-          "&.link": {
+          '&.link': {
             color: ThemeConstants.PRIMARY_PRELEM.LINK,
           },
         },
@@ -3411,20 +3514,20 @@ const PrelemTheme = createTheme({
       styleOverrides: {
         root: {
           // this is styles for the new variants
-          "&.footer-link-grid": {
+          '&.footer-link-grid': {
             fontSize: ThemeConstants.FONTSIZE_12,
           },
-          "&.xerox-footer-wrapper": {
+          '&.xerox-footer-wrapper': {
             backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.WHITE_COLOR,
-            borderRadius: "0",
-            justifyContent: "space-between",
-            alignItems: "center",
+            borderRadius: '0',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             [`@media (max-width:${ThemeConstants.LG}px)`]: {
-              justifyContent: "center",
+              justifyContent: 'center',
             },
             a: {
-              margin: " 0 20px",
+              margin: ' 0 20px',
             },
           },
         },
@@ -3433,17 +3536,17 @@ const PrelemTheme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          "&.expertise-show-case": {
+          '&.expertise-show-case': {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
           },
-          "&.expertise-show-case-wrapper": {
+          '&.expertise-show-case-wrapper': {
             fontFamily: ThemeConstants.FONTNAMEPRIMARY,
-            ".overlay-wrapper": {
-              "&:hover": {
-                ".image-button-text": {
-                  bottom: "0",
+            '.overlay-wrapper': {
+              '&:hover': {
+                '.image-button-text': {
+                  bottom: '0',
                   backgroundColor: ThemeConstants.BUTTON_MAIN_COLOR,
-                  transition: "all 0.7s",
+                  transition: 'all 0.7s',
                 },
               },
             },
@@ -3454,37 +3557,40 @@ const PrelemTheme = createTheme({
     MuiSelect: {
       variants: [
         {
-          props: { variant: "filled" },
+          props: { variant: 'filled' },
           style: {
-            "&.Platform-x-InputBase-root, &.custom-dropdown": {
+            '&.Platform-x-InputBase-root, &.custom-dropdown': {
               backgroundColor: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
               borderRadius: ThemeConstants.ELEMENT.SELECT.BORDER_RADIUS,
               border: ThemeConstants.PRIMARY_PRELEM.SELECT.BORDER,
-              "& .Platform-x-FilledInput-input, & #select-small": {
+              '& .Platform-x-FilledInput-input, & #select-small': {
                 padding: ThemeConstants.ELEMENT.SELECT.PADDING.md,
               },
-              "& svg": {
+              '& svg': {
                 color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
               },
-              "&.Mui-focused": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
+              '&.Mui-focused': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
                 border: ThemeConstants.PRIMARY_PRELEM.SELECT.BORDER_ACTIVE,
               },
-              "&.Mui-disabled": {
-                "& .Mui-disabled": {
-                  "-webkit-text-fill-color": ThemeConstants.PRIMARY_PRELEM.SELECT.LABEL,
+              '&.Mui-disabled': {
+                '& .Mui-disabled': {
+                  '-webkit-text-fill-color':
+                    ThemeConstants.PRIMARY_PRELEM.SELECT.LABEL,
                 },
               },
-              "& .Platform-x-InputBase-input:focus": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
-                border: "none",
+              '& .Platform-x-InputBase-input:focus': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
+                border: 'none',
               },
-              "&:before": { display: "none" },
-              "&:after": { display: "none" },
+              '&:before': { display: 'none' },
+              '&:after': { display: 'none' },
             },
-            "&.Platform-x-FormLabel-root": {
-              "&.Mui-focused": {
-                color: "transparent",
+            '&.Platform-x-FormLabel-root': {
+              '&.Mui-focused': {
+                color: 'transparent',
               },
             },
           },
@@ -3494,161 +3600,172 @@ const PrelemTheme = createTheme({
     MuiTextField: {
       variants: [
         {
-          props: { variant: "filled" },
+          props: { variant: 'filled' },
           style: {
-            textTransform: "none",
-            "& input:focus": {
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_FOCUSED,
+            textTransform: 'none',
+            '& input:focus': {
+              backgroundColor:
+                ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_FOCUSED,
             },
-            "& input, & textarea": {
+            '& input, & textarea': {
               padding: ThemeConstants.ELEMENT.TEXTBOX.PADDING.md,
               borderRadius: ThemeConstants.ELEMENT.TEXTBOX.BORDER_RADIUS,
-              "&.Mui-disabled": {
+              '&.Mui-disabled': {
                 WebkitTextFillColor: ThemeConstants.PRIMARY_PRELEM.INPUT.TEXT,
                 opacity: 0.5,
               },
             },
-            "& textarea": {
+            '& textarea': {
               paddingLeft: 0,
             },
-            "& .Platform-x-FilledInput-root, &.Platform-x-OutlinedInput-root": {
+            '& .Platform-x-FilledInput-root, &.Platform-x-OutlinedInput-root': {
               backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.PLACEHOLDER,
               border: ThemeConstants.PRIMARY_PRELEM.INPUT.BORDER,
               borderRadius: ThemeConstants.ELEMENT.TEXTBOX.BORDER_RADIUS,
               color: ThemeConstants.PRIMARY_PRELEM.INPUT.TEXT,
-              paddingTop: "0px !important",
-              "&::after, &::before": { display: "none" },
-              "&:hover": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.PLACEHOLDER,
+              paddingTop: '0px !important',
+              '&::after, &::before': { display: 'none' },
+              '&:hover': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.PLACEHOLDER,
               },
-              "& svg": {
+              '& svg': {
                 fill: ThemeConstants.PRIMARY_PRELEM.INPUT.TEXT,
               },
             },
-            "& .Platform-x-FilledInput-root.Mui-focused": {
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_FOCUSED,
+            '& .Platform-x-FilledInput-root.Mui-focused': {
+              backgroundColor:
+                ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_FOCUSED,
               border: ThemeConstants.PRIMARY_PRELEM.INPUT.BORDER_ACTIVE,
               borderRadius: ThemeConstants.ELEMENT.TEXTBOX.BORDER_RADIUS,
-              "& svg": {
+              '& svg': {
                 fill: ThemeConstants.PRIMARY_PRELEM.INPUT.TEXT,
               },
             },
-            "& fieldset": { border: "none" },
-            "& label": {
+            '& fieldset': { border: 'none' },
+            '& label': {
               color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.LABEL} !important`,
               fontSize: ThemeConstants.FONTSIZE_16,
               fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-              "&.Mui-disabled": {
+              '&.Mui-disabled': {
                 opacity: 0.5,
               },
             },
-            "& .Platform-x-FilledInput-root.Mui-disabled": {
+            '& .Platform-x-FilledInput-root.Mui-disabled': {
               backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
             },
-            ".textfield-close-icon": {
+            '.textfield-close-icon': {
               opacity: 0,
             },
-            ".Mui-focused": {
-              ".textfield-close-icon": {
+            '.Mui-focused': {
+              '.textfield-close-icon': {
                 opacity: 1,
               },
             },
-            ".Mui-disabled": {
-              "&.Platform-x-FormHelperText-root": {
+            '.Mui-disabled': {
+              '&.Platform-x-FormHelperText-root': {
                 color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
               },
-              "& svg": {
+              '& svg': {
                 opacity: 0.2,
               },
             },
-            "&.success": {
-              "& input:focus, input": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS,
+            '&.success': {
+              '& input:focus, input': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS,
               },
-              "& .Platform-x-FilledInput-root": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS,
+              '& .Platform-x-FilledInput-root': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS,
               },
-              "& .Platform-x-FilledInput-root.Mui-focused": {
+              '& .Platform-x-FilledInput-root.Mui-focused': {
                 border: ThemeConstants.PRIMARY_PRELEM.INPUT.BORDER_SUCCESS,
               },
-              "& label": {
+              '& label': {
                 color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS_TEXT} !important`,
                 fontSize: ThemeConstants.FONTSIZE_14,
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-                "&.Mui-disabled": {
+                '&.Mui-disabled': {
                   color: ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED,
                 },
               },
-              "& .Platform-x-InputBase-root + p": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS_TEXT,
+              '& .Platform-x-InputBase-root + p': {
+                color:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS_TEXT,
                 fontSize: ThemeConstants.FONTSIZE_14,
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
               },
-              "& .textfield-close-icon": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS_TEXT,
+              '& .textfield-close-icon': {
+                color:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_SUCCESS_TEXT,
               },
-              "& .Platform-x-FilledInput-root.Mui-disabled": {
+              '& .Platform-x-FilledInput-root.Mui-disabled': {
                 backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
-                "& input": {
+                '& input': {
                   backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
                 },
               },
-              ".Mui-disabled": {
-                "&.Platform-x-FormHelperText-root": {
+              '.Mui-disabled': {
+                '&.Platform-x-FormHelperText-root': {
                   color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
                 },
-                "& svg": {
+                '& svg': {
                   opacity: 0.2,
                 },
               },
             },
-            "&.error": {
-              "& input:focus, input": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
+            '&.error': {
+              '& input:focus, input': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
               },
-              "& .Platform-x-FilledInput-root": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
+              '& .Platform-x-FilledInput-root': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
               },
-              "& .Platform-x-FilledInput-root.Mui-focused": {
+              '& .Platform-x-FilledInput-root.Mui-focused': {
                 border: ThemeConstants.PRIMARY_PRELEM.INPUT.BORDER_ERROR,
               },
-              "& label": {
+              '& label': {
                 color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT} !important`,
                 fontSize: ThemeConstants.FONTSIZE_14,
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-                "&.Mui-disabled": {
+                '&.Mui-disabled': {
                   color: ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED,
                 },
               },
-              "& .Platform-x-InputBase-root + p": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
+              '& .Platform-x-InputBase-root + p': {
+                color:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
                 fontSize: ThemeConstants.FONTSIZE_14,
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
               },
-              "& .textfield-close-icon": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
+              '& .textfield-close-icon': {
+                color:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
               },
-              "& .Platform-x-FilledInput-root.Mui-disabled": {
+              '& .Platform-x-FilledInput-root.Mui-disabled': {
                 backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
-                "& input": {
+                '& input': {
                   backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
                 },
               },
-              ".Mui-disabled": {
-                "&.Platform-x-FormHelperText-root, .textfield-close-icon": {
+              '.Mui-disabled': {
+                '&.Platform-x-FormHelperText-root, .textfield-close-icon': {
                   color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
                 },
-                "& svg": {
+                '& svg': {
                   opacity: 0.2,
                 },
               },
             },
-            "&.iconLeft": {
-              "& label": {
-                marginLeft: "42px",
+            '&.iconLeft': {
+              '& label': {
+                marginLeft: '42px',
               },
-              "& input": {
-                paddingLeft: "50px",
+              '& input': {
+                paddingLeft: '50px',
               },
             },
           },
@@ -3829,14 +3946,14 @@ const PrelemTheme = createTheme({
       styleOverrides: {
         root: {
           // this is styles for the new variants
-          "&.search-box": {
-            borderRadius: "3px",
-            marginLeft: "100px",
-            marginRight: "40px",
+          '&.search-box': {
+            borderRadius: '3px',
+            marginLeft: '100px',
+            marginRight: '40px',
             backgroundColor: ThemeConstants.WHITE_COLOR,
           },
-          "&.search-box-mobile": {
-            borderRadius: "3px",
+          '&.search-box-mobile': {
+            borderRadius: '3px',
             backgroundColor: ThemeConstants.WHITE_COLOR,
           },
         },
@@ -3845,96 +3962,102 @@ const PrelemTheme = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         root: {
-          "&.Platform-x-Autocomplete-root": {
-            "&.auto-complete-textbox": {
+          '&.Platform-x-Autocomplete-root': {
+            '&.auto-complete-textbox': {
               "& input[role='combobox']": {
                 padding: ThemeConstants.ELEMENT.SELECT.PADDING.md,
                 opacity: 1,
-                ":focus": {
+                ':focus': {
                   background: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
                 },
               },
             },
-            "& .Platform-x-Autocomplete-endAdornment": {
-              right: "8px",
-              "& svg": {
+            '& .Platform-x-Autocomplete-endAdornment': {
+              right: '8px',
+              '& svg': {
                 fill: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
               },
-              "& .Platform-x-Autocomplete-clearIndicator": {
-                display: "none",
+              '& .Platform-x-Autocomplete-clearIndicator': {
+                display: 'none',
               },
             },
-            "& .Platform-x-FilledInput-root.Mui-focused": {
+            '& .Platform-x-FilledInput-root.Mui-focused': {
               background: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
             },
-            "&.Mui-disabled": {},
-            "&.error": {
-              "& input:focus, input": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
+            '&.Mui-disabled': {},
+            '&.error': {
+              '& input:focus, input': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
               },
-              "& .Platform-x-FilledInput-root": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
+              '& .Platform-x-FilledInput-root': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
               },
-              "& .Platform-x-FilledInput-root.Mui-focused": {
+              '& .Platform-x-FilledInput-root.Mui-focused': {
                 border: ThemeConstants.PRIMARY_PRELEM.INPUT.BORDER_ERROR,
               },
-              "& label": {
+              '& label': {
                 color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT} !important`,
                 fontSize: ThemeConstants.FONTSIZE_14,
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-                "&.Mui-disabled": {
+                '&.Mui-disabled': {
                   color: ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED,
                 },
               },
-              "& .Platform-x-InputBase-root + p": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
+              '& .Platform-x-InputBase-root + p': {
+                color:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
                 fontSize: ThemeConstants.FONTSIZE_14,
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
               },
-              "& .textfield-close-icon": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
+              '& .textfield-close-icon': {
+                color:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
               },
-              "& .Platform-x-FilledInput-root.Mui-disabled": {
+              '& .Platform-x-FilledInput-root.Mui-disabled': {
                 backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
-                "& input": {
+                '& input': {
                   backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
                 },
               },
-              ".Mui-disabled": {
-                "&.Platform-x-FormHelperText-root, .textfield-close-icon": {
+              '.Mui-disabled': {
+                '&.Platform-x-FormHelperText-root, .textfield-close-icon': {
                   color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
                 },
-                "& svg": {
+                '& svg': {
                   opacity: 0.2,
                 },
               },
             },
           },
-          "&.Platform-x-Autocomplete-root + .Platform-x-Autocomplete-popper": {
-            "& .Platform-x-Paper-root": {
+          '&.Platform-x-Autocomplete-root + .Platform-x-Autocomplete-popper': {
+            '& .Platform-x-Paper-root': {
               boxShadow:
-                "0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)",
-              paddingTop: "10px",
-              paddingBottom: "10px",
+                '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
+              paddingTop: '10px',
+              paddingBottom: '10px',
               background: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
-              "& .Platform-x-Autocomplete-listbox": {
+              '& .Platform-x-Autocomplete-listbox': {
                 background: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
                 color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
-                "& li": {
+                '& li': {
                   color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
-                  padding: "8px",
-                  cursor: "pointer",
-                  display: "flex",
-                  whiteSpace: "nowrap",
+                  padding: '8px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  whiteSpace: 'nowrap',
                   margin: 0,
-                  "& .Platform-x-Box-root": {
-                    display: "flex",
-                    alignItems: "center",
-                    width: "25px",
-                    marginRight: "10px",
+                  '& .Platform-x-Box-root': {
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '25px',
+                    marginRight: '10px',
                   },
-                  "&:hover": {
-                    backgroundColor: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT_BACKGROUND_HOVER,
+                  '&:hover': {
+                    backgroundColor:
+                      ThemeConstants.PRIMARY_PRELEM.SELECT
+                        .TEXT_BACKGROUND_HOVER,
                     color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT_HOVER,
                   },
                 },
@@ -3947,65 +4070,71 @@ const PrelemTheme = createTheme({
     MuiInputBase: {
       styleOverrides: {
         root: {
-          "&.Platform-x-InputBase-root.Platform-x-OutlinedInput-root, &.MuiInputBase-root.MuiOutlinedInput-root":
-          {
-            background: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
-            border: ThemeConstants.PRIMARY_PRELEM.SELECT.BORDER,
-            padding: 0,
-            "& input": {
-              padding: ThemeConstants.ELEMENT.SELECT.PADDING.md,
-              color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT_SELECTED,
-              WebkitTextFillColor: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT_SELECTED,
-              textAlign: "right",
-              "&.Platform-x-Autocomplete-input": {
-                textAlign: "left",
-                "&.Mui-disabled": {
-                  opacity: 0.5,
+          '&.Platform-x-InputBase-root.Platform-x-OutlinedInput-root, &.MuiInputBase-root.MuiOutlinedInput-root':
+            {
+              background: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
+              border: ThemeConstants.PRIMARY_PRELEM.SELECT.BORDER,
+              padding: 0,
+              '& input': {
+                padding: ThemeConstants.ELEMENT.SELECT.PADDING.md,
+                color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT_SELECTED,
+                WebkitTextFillColor:
+                  ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT_SELECTED,
+                textAlign: 'right',
+                '&.Platform-x-Autocomplete-input': {
+                  textAlign: 'left',
+                  '&.Mui-disabled': {
+                    opacity: 0.5,
+                  },
+                },
+              },
+              '&.Mui-focused': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
+                border: ThemeConstants.PRIMARY_PRELEM.SELECT.BORDER_ACTIVE,
+              },
+              '& fieldset': {
+                border: 'none',
+              },
+              '& .Platform-x-InputAdornment-positionEnd, & .MuiInputAdornment-positionEnd':
+                {
+                  paddingRight: '8px',
+                  '& svg': {
+                    color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
+                  },
+                },
+              '&.error': {
+                backgroundColor:
+                  ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
+                '& input:focus, input': {
+                  backgroundColor:
+                    ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
+                },
+                '& .Platform-x-InputBase-root + p': {
+                  color:
+                    ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
+                  fontSize: ThemeConstants.FONTSIZE_14,
+                  fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
+                },
+                '.Mui-disabled': {
+                  '&.Platform-x-FormHelperText-root, .textfield-close-icon': {
+                    color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
+                  },
+                  '& svg': {
+                    opacity: 0.2,
+                  },
                 },
               },
             },
-            "&.Mui-focused": {
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.SELECT.PLACEHOLDER,
-              border: ThemeConstants.PRIMARY_PRELEM.SELECT.BORDER_ACTIVE,
-            },
-            "& fieldset": {
-              border: "none",
-            },
-            "& .Platform-x-InputAdornment-positionEnd, & .MuiInputAdornment-positionEnd": {
-              paddingRight: "8px",
-              "& svg": {
-                color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
-              },
-            },
-            "&.error": {
-              backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
-              "& input:focus, input": {
-                backgroundColor: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR,
-              },
-              "& .Platform-x-InputBase-root + p": {
-                color: ThemeConstants.PRIMARY_PRELEM.INPUT.BACKGROUND_ERROR_TEXT,
-                fontSize: ThemeConstants.FONTSIZE_14,
-                fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-              },
-              ".Mui-disabled": {
-                "&.Platform-x-FormHelperText-root, .textfield-close-icon": {
-                  color: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
-                },
-                "& svg": {
-                  opacity: 0.2,
-                },
-              },
-            },
-          },
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             opacity: 0.5,
             color: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
             backgroundColor: `${ThemeConstants.PRIMARY_PRELEM.INPUT.DISABLED} !important`,
-            "& svg": {
+            '& svg': {
               opacity: 0.5,
             },
           },
-          "& input.Mui-disabled": {
+          '& input.Mui-disabled': {
             WebkitTextFillColor: ThemeConstants.PRIMARY_PRELEM.SELECT.TEXT,
           },
         },
@@ -4014,7 +4143,7 @@ const PrelemTheme = createTheme({
     MuiDivider: {
       variants: [
         {
-          props: { variant: "fullWidth" },
+          props: { variant: 'fullWidth' },
           style: {
             borderColor: ThemeConstants.PRIMARY_PRELEM.LINE,
           },
@@ -4028,36 +4157,37 @@ const PrelemTheme = createTheme({
           borderRadius: ThemeConstants.ELEMENT.ACCORDIAN.BORDER_RADIUS,
           background: ThemeConstants.PRIMARY_PRELEM.ACCORDIAN.BACKGROUND,
           color: ThemeConstants.PRIMARY_PRELEM.ACCORDIAN.COLOR,
-          "&.accordianHeading, &.Platform-x-Accordion-root": {
+          '&.accordianHeading, &.Platform-x-Accordion-root': {
             marginBottom: ThemeConstants.ELEMENT.ACCORDIAN.MARGINBOTTOM,
             padding: ThemeConstants.ELEMENT.ACCORDIAN.PADDING1,
             svg: { color: ThemeConstants.PRIMARY_PRELEM.TITLE },
           },
-          "&.accordianHeading": {
-            "&.lg": { padding: ThemeConstants.ELEMENT.ACCORDIAN.PADDING2 },
+          '&.accordianHeading': {
+            '&.lg': { padding: ThemeConstants.ELEMENT.ACCORDIAN.PADDING2 },
             svg: { color: ThemeConstants.PRIMARY_PRELEM.TITLE },
-            "&:last-child": {
+            '&:last-child': {
               marginBottom: 0,
             },
-            "&::before": {
-              display: "none",
+            '&::before': {
+              display: 'none',
             },
           },
-          "& .accordiansummary, &.Platform-x-AccordionSummary-content": {
+          '& .accordiansummary, &.Platform-x-AccordionSummary-content': {
             margin: 0,
             padding: 0,
-            textAlign: "left",
-            "& .Platform-x-Typography-root": {
+            textAlign: 'left',
+            '& .Platform-x-Typography-root': {
               margin: 0,
               padding: 0,
-              marginRight: "20px",
+              marginRight: '20px',
             },
           },
-          "& .accordianDetail": { padding: 0 },
-          "& .accordianDetail .Platform-x-Typography-root, &.Platform-x-Typography-root": {
-            padding: 0,
-            margin: "4px 20px 16px 0",
-          },
+          '& .accordianDetail': { padding: 0 },
+          '& .accordianDetail .Platform-x-Typography-root, &.Platform-x-Typography-root':
+            {
+              padding: 0,
+              margin: '4px 20px 16px 0',
+            },
         },
       },
     },
@@ -4065,100 +4195,100 @@ const PrelemTheme = createTheme({
       styleOverrides: {
         root: {
           // this is styles for the new variants
-          "&.header-appbar": {
+          '&.header-appbar': {
             backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.WHITE_COLOR,
-            padding: "10px 0",
-            position: "relative",
+            padding: '10px 0',
+            position: 'relative',
             [`@media (min-width:${ThemeConstants.MD}px)`]: {
-              padding: "15px 0",
+              padding: '15px 0',
             },
             // [`@media (min-width:${ThemeConstants.SM}px)`]: {
             //   minHeight: '64px',
             // },
-            ".logo": {
-              width: "36px",
+            '.logo': {
+              width: '36px',
               [`@media (min-width:${ThemeConstants.MD}px)`]: {
-                width: "42px",
+                width: '42px',
               },
               img: {
-                maxWidth: "100%",
-                display: "block",
+                maxWidth: '100%',
+                display: 'block',
               },
             },
-            "& .Platform-x-OutlinedInput-root": {
-              "& fieldset": {
-                border: "none",
+            '& .Platform-x-OutlinedInput-root': {
+              '& fieldset': {
+                border: 'none',
               },
             },
           },
-          "&.xerox-header-appbar": {
+          '&.xerox-header-appbar': {
             // backgroundColor: ThemeConstants.WHITE_COLOR,
             // color: ThemeConstants.PRIMARY_MAIN_COLOR,
-            padding: "55px 0 0",
-            position: "relative",
-            boxShadow: "none",
+            padding: '55px 0 0',
+            position: 'relative',
+            boxShadow: 'none',
             [`@media (min-width:${ThemeConstants.SM}px)`]: {
-              padding: "15px 0 0",
+              padding: '15px 0 0',
             },
             [`@media (min-width:${ThemeConstants.LG}px)`]: {
-              padding: "0 0",
-              borderBottom: "1px solid #c4c4c4",
+              padding: '0 0',
+              borderBottom: '1px solid #c4c4c4',
             },
-            ".logo": {
-              width: "36px",
+            '.logo': {
+              width: '36px',
               [`@media (min-width:${ThemeConstants.MD}px)`]: {
-                width: "42px",
+                width: '42px',
               },
               img: {
-                maxWidth: "100%",
-                display: "block",
+                maxWidth: '100%',
+                display: 'block',
               },
             },
-            ".xerox-logo": {
-              width: "225px",
-              display: "flex",
-              flexWrap: "wrap",
-              minWidth: "225px",
+            '.xerox-logo': {
+              width: '225px',
+              display: 'flex',
+              flexWrap: 'wrap',
+              minWidth: '225px',
               img: {
-                maxWidth: "100%",
-                display: "block",
+                maxWidth: '100%',
+                display: 'block',
               },
             },
-            ".powered-by-x": {
-              padding: "8px 13px",
-              borderLeft: "1px solid #d8d8d8",
-              borderRight: "1px solid #d8d8d8",
-              marginLeft: "20px",
+            '.powered-by-x': {
+              padding: '8px 13px',
+              borderLeft: '1px solid #d8d8d8',
+              borderRight: '1px solid #d8d8d8',
+              marginLeft: '20px',
               // maxWidth: '140px',
               [`@media (max-width:${ThemeConstants.LG}px)`]: {
-                position: "absolute",
-                right: "24px",
-                top: "0",
-                whiteSpace: "initial",
-                padding: "5px 13px",
+                position: 'absolute',
+                right: '24px',
+                top: '0',
+                whiteSpace: 'initial',
+                padding: '5px 13px',
               },
               [`@media (max-width:${ThemeConstants.SM}px)`]: {
-                right: "auto",
-                top: "0",
-                left: "0",
-                width: "100%",
-                maxWidth: "none",
-                border: "0",
-                borderTop: "1px solid #d8d8d8",
-                borderBottom: "1px solid #d8d8d8",
-                whiteSpace: "initial",
-                padding: "5px 0",
-                display: "flex",
-                margin: "0",
-                alignItems: "center",
-                justifyContent: "center",
+                right: 'auto',
+                top: '0',
+                left: '0',
+                width: '100%',
+                maxWidth: 'none',
+                border: '0',
+                borderTop: '1px solid #d8d8d8',
+                borderBottom: '1px solid #d8d8d8',
+                whiteSpace: 'initial',
+                padding: '5px 0',
+                display: 'flex',
+                margin: '0',
+                alignItems: 'center',
+                justifyContent: 'center',
               },
               p: {
                 fontSize: ThemeConstants.FONTSIZE_14,
               },
               img: {
-                marginRight: "5px",
+                marginRight: '5px',
               },
               span: {
                 color: ThemeConstants.PRIMARY_MAIN_COLOR,
@@ -4166,7 +4296,7 @@ const PrelemTheme = createTheme({
                 fontSize: ThemeConstants.FONTSIZE_12,
               },
             },
-            ".xerox-profile-name": {
+            '.xerox-profile-name': {
               p: {
                 fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
                 [`@media (max-width:${ThemeConstants.XL}px)`]: {
@@ -4174,10 +4304,10 @@ const PrelemTheme = createTheme({
                 },
               },
             },
-            "div::-webkit-scrollbar": {
-              background: "transparent",
-              width: "0px",
-              height: "0px",
+            'div::-webkit-scrollbar': {
+              background: 'transparent',
+              width: '0px',
+              height: '0px',
             },
           },
         },
@@ -4187,10 +4317,10 @@ const PrelemTheme = createTheme({
       styleOverrides: {
         root: {
           color: ThemeConstants.PRIMARY_PRELEM.TITLE,
-          "&.footer-wrapper": {
+          '&.footer-wrapper': {
             backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.WHITE_COLOR,
-            minHeight: "7rem",
+            minHeight: '7rem',
           },
         },
       },

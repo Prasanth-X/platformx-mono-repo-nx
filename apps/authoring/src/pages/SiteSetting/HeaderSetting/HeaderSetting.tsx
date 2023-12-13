@@ -10,6 +10,7 @@ import { Box } from '@mui/system';
 import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../../Common/Loader';
 import CtaIcon from '../../../assets/svg/ctaicon.svg';
 import HeaderIconn from '../../../assets/svg/headericonn.svg';
 import HeadersearchIcon from '../../../assets/svg/headersearchicon.svg';
@@ -27,7 +28,6 @@ import {
 } from '../../../services/SiteSetting/SiteSetting.api';
 import { postRequest } from '../../../services/config/request';
 import Gallery from '../../Gallery/Gallery';
-import Loader from '../../../Common/Loader';
 import {
   HeaderCtaSkeleton,
   HeaderFaviconSkeleton,
@@ -91,31 +91,31 @@ const HeaderSetting = () => {
   const username = `${userInfo.first_name} ${userInfo.last_name}`;
   const iconList = [
     {
-      iconComponent: <img src={HeaderIconn} alt='Header Icon' />,
+      iconComponent: <img src={HeaderIconn} alt="Header Icon" />,
       title: t('header_logo'),
       section: 'headerlogo',
       sectionRef: fsietLogoRef,
     },
     {
-      iconComponent: <img src={Starupdatedicon} alt='Star Updated Icon' />,
+      iconComponent: <img src={Starupdatedicon} alt="Star Updated Icon" />,
       title: t('header_favicon'),
       section: 'headerfavicon',
       sectionRef: headerfaviconRef,
     },
     {
-      iconComponent: <img src={HeadersearchIcon} alt='Header Search Icon' />,
+      iconComponent: <img src={HeadersearchIcon} alt="Header Search Icon" />,
       title: t('search'),
       section: 'search',
       sectionRef: searchRef,
     },
     {
-      iconComponent: <img src={LanguageIcon} alt='Language Icon' />,
+      iconComponent: <img src={LanguageIcon} alt="Language Icon" />,
       title: t('language'),
       section: 'language',
       sectionRef: languageRef,
     },
     {
-      iconComponent: <img src={CtaIcon} alt='Cta Icon' />,
+      iconComponent: <img src={CtaIcon} alt="Cta Icon" />,
       title: t('cta_link'),
       section: 'cta_link',
       sectionRef: ctatitleRef,
@@ -341,7 +341,7 @@ const HeaderSetting = () => {
           <Box ref={fsietLogoRef}>
             {isLoading && <Loader />}
             <SiteSettingPanel
-              number='01'
+              number="01"
               title={t('header_logo')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -358,20 +358,20 @@ const HeaderSetting = () => {
                   <Box>
                     <TitleSubTitle
                       title={`${t('event_image_tilte')}*`}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box sx={{ marginTop: '15px' }}>
                     <SiteSettingAddImage
                       url={
-                        process.env.REACT_APP_GCP_URL +
+                        process.env.NX_GCP_URL +
                         '/' +
-                        process.env.REACT_APP_BUCKET_NAME +
+                        process.env.NX_BUCKET_NAME +
                         '/' +
                         form.header_logo
                       }
-                      type='header_logo'
+                      type="header_logo"
                       operationType={operationType}
                       onUploadClick={onUploadClick}
                     />
@@ -390,7 +390,7 @@ const HeaderSetting = () => {
           </Box>
           <Box ref={headerfaviconRef}>
             <SiteSettingPanel
-              number='02'
+              number="02"
               title={t('header_favicon')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -408,22 +408,22 @@ const HeaderSetting = () => {
                   <Box>
                     <TitleSubTitle
                       title={`${t('event_image_tilte')}*`}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                   </Box>
                   <Box sx={{ marginTop: '15px' }}>
                     <Box sx={{ width: '40%' }}>
                       <SiteSettingAddImage
                         url={
-                          process.env.REACT_APP_GCP_URL +
+                          process.env.NX_GCP_URL +
                           '/' +
-                          process.env.REACT_APP_BUCKET_NAME +
+                          process.env.NX_BUCKET_NAME +
                           '/' +
                           form.header_favicon
                         }
                         // updateField={updateField}
-                        type='header_favicon'
+                        type="header_favicon"
                         operationType={operationType}
                         onUploadClick={onUploadClick}
                       />
@@ -447,7 +447,7 @@ const HeaderSetting = () => {
           </Box>
           <Box ref={searchRef}>
             <SiteSettingPanel
-              number='03'
+              number="03"
               title={t('search')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -466,8 +466,8 @@ const HeaderSetting = () => {
                     <TitleSubTitle
                       title={t('search_bar')}
                       subTitle={t('header_subtitle_search')}
-                      titleVarient='h6medium'
-                      subTitleVarient='h7regular'
+                      titleVarient="h6medium"
+                      subTitleVarient="h7regular"
                     />
                     <FormControl>
                       <RadioGroup
@@ -477,12 +477,12 @@ const HeaderSetting = () => {
                         }
                       >
                         <FormControlLabel
-                          value='true'
+                          value="true"
                           control={<Radio />}
                           label={t('yes_i_required_this')}
                         />
                         <FormControlLabel
-                          value='false'
+                          value="false"
                           control={<Radio />}
                           label={t('i_dont_need_this')}
                         />
@@ -508,7 +508,7 @@ const HeaderSetting = () => {
           </Box>
           <Box ref={languageRef}>
             <SiteSettingPanel
-              number='04'
+              number="04"
               title={t('language')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -556,7 +556,7 @@ const HeaderSetting = () => {
           </Box>
           <Box ref={ctatitleRef}>
             <SiteSettingPanel
-              number='05'
+              number="05"
               title={t('cta_url')}
               subTitle={t('subhead')}
               contentContainerSx={{ padding: '20px' }}
@@ -575,8 +575,8 @@ const HeaderSetting = () => {
                     <TitleSubTitle
                       title={t('cta_title')}
                       subTitle={t('this_will_be_the_title')}
-                      titleVarient='h5medium'
-                      subTitleVarient='h6regular'
+                      titleVarient="h5medium"
+                      subTitleVarient="h6regular"
                     />
                   </Box>
                   <Grid
@@ -589,7 +589,7 @@ const HeaderSetting = () => {
                   >
                     <Box marginTop={2}>
                       <CookieTextBox
-                        name='cta_title'
+                        name="cta_title"
                         state={form.cta_title}
                         placeHolder={t('write_your_text_here')}
                         handleChange={(event) => {
@@ -604,8 +604,8 @@ const HeaderSetting = () => {
                     <TitleSubTitle
                       title={t('add_url')}
                       subTitle={t('this_will_be_the_url')}
-                      titleVarient='h5medium'
-                      subTitleVarient='h6regular'
+                      titleVarient="h5medium"
+                      subTitleVarient="h6regular"
                     />
                   </Box>
                   <Grid
@@ -626,7 +626,7 @@ const HeaderSetting = () => {
                   >
                     <Box marginTop={2}>
                       <CookieTextBox
-                        name='cta_url'
+                        name="cta_url"
                         state={form.cta_url}
                         placeHolder={t('paste_your_destination_link_here')}
                         handleChange={(event) => {
@@ -679,7 +679,7 @@ const HeaderSetting = () => {
           subTitle={`${t('header')}${'  '}${t('update_settings_success')}`}
           confirmButtonText={t('go_to_dashboard')}
           confirmButtonHandle={() => navigate('/dashboard')}
-          modalType='publish'
+          modalType="publish"
           crossButtonHandle={crossButtonHandle}
           closeButtonHandle={crossButtonHandle}
           closeIcon={<CreateRoundedIcon />}
