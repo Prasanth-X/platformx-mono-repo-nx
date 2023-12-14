@@ -437,8 +437,8 @@ const XArticleEditorBackup = ({ title, state, setState, setCheckDesc }) => {
 
   const chatGPT = (index) => {
     setIsChatGptLoading(true);
-    const chatGptPrompt = process.env.REACT_APP_CHAT_GPT_PROMPT
-      ? process.env.REACT_APP_CHAT_GPT_PROMPT
+    const chatGptPrompt = process.env.NX_CHAT_GPT_PROMPT
+      ? process.env.NX_CHAT_GPT_PROMPT
       : 'Please write 3 paragraph article about';
     chatGptResponse(
       `${chatGptPrompt} ${title} in ${LanguageNameMapping[i18next.language]}`,

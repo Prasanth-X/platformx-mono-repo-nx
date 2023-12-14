@@ -1,10 +1,11 @@
 import { ApolloProvider } from '@apollo/client';
 import { init as initApm } from '@elastic/apm-rum';
+import { makeStyles } from '@material-ui/core';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { unstable_ClassNameGenerator } from '@mui/material/utils';
-import { makeStyles } from '@material-ui/core';
 
+import LightTheme from 'libs/utilities/src/lib/themes/authoring/lightTheme';
 import { Suspense, useEffect, useState } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
@@ -26,24 +27,23 @@ import {
   getSelectedRoute,
   getSelectedSite,
 } from './utils/helperFunctions';
-import LightTheme from 'libs/utilities/src/lib/themes/authoring/lightTheme';
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace('Mui', 'Platform-x-')
 );
 
 initApm({
   // This will disable APM
-  active: process.env?.REACT_APP_APM_TRACING === 'true' || false,
+  active: process.env?.NX_APM_TRACING === 'true' || false,
   // Set required service name
   serviceName: 'platormx-authoring-ui-service',
   // Set custom APM Server URL
-  serverUrl: process.env.REACT_APP_APM_SERVER_URL,
+  serverUrl: process.env.NX_APM_SERVER_URL,
   //The environment where the service being monitored is deployed (e.g. "production", "development")
-  environment: process.env.REACT_APP_APM_ENVIRONMENT,
+  environment: process.env.NX_APM_ENVIRONMENT,
   distributedTracing: true,
-  distributedTracingOrigins: (
-    process.env?.REACT_APP_APM_TRACING_ORIGINS || ''
-  ).split(','),
+  distributedTracingOrigins: (process.env?.NX_APM_TRACING_ORIGINS || '').split(
+    ','
+  ),
   logLevel: 'debug',
 });
 
@@ -76,7 +76,7 @@ function App() {
     ) {
       /*` Home page will removed. Going forward Keycloak Login Page act as a landing page for X*/
       window.location.replace(authUrl);
-      // window.location.replace(`${process.env.REACT_APP_REDIRECT_URI}`);
+      // window.location.replace(`${process.env.NX_REDIRECT_URI}`);
     }
     (async () => {
       const res = await analyticsInstance(Analytics);

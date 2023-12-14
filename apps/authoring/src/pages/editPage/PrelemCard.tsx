@@ -16,8 +16,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import { useTranslation } from 'react-i18next';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import EditTray from '../../components/EditTray';
 import ButtonEditLink from '../../components/buttonEditLink';
 import ButtonEditWindow from '../../components/buttonEditWindow';
@@ -27,9 +30,6 @@ import {
   updateContentForCard,
 } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
-import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { convertToLowerCase, getSubDomain } from '../../utils/helperFunctions';
 // Custom css classes to add centered "add icon" on each prelem card on top ad bottom
 const useStyles = makeStyles(() => ({
@@ -135,13 +135,13 @@ const PrelemCard: React.FC<Props> = ({
   let prelemAnalyticsProp = {};
   let prelemAuthoringHelperProp = {};
   const prelemBaseEndpoint = {
-    APIEndPoint: process.env.REACT_APP_API_URI,
+    APIEndPoint: process.env.NX_API_URI,
     PublishEndPoint: `${getSubDomain()}/`,
     device: 'window',
     buttonBaseUrl: `${getSubDomain()}/`,
-    deliveryEndPoint: process.env.REACT_APP_DELIVERY_URI,
+    deliveryEndPoint: process.env.NX_DELIVERY_URI,
     language: i18n.language,
-    gatewayURL: process.env.REACT_APP_GRAPHQL_URI,
+    gatewayURL: process.env.NX_GRAPHQL_URI,
   };
   const windowTarget = '';
   const externalWindowLink = '';
@@ -176,8 +176,8 @@ const PrelemCard: React.FC<Props> = ({
     editState: prelemEditState,
     currentPageURL: page?.pageModel?.Page,
     multiSlot: { onToggleContentGallery, eComContentGalleryHandle },
-    gcpUrl: process.env.REACT_APP_GCP_URL,
-    bucketName: process.env.REACT_APP_BUCKET_NAME,
+    gcpUrl: process.env.NX_GCP_URL,
+    bucketName: process.env.NX_BUCKET_NAME,
   };
 
   const [editLinkWindowPostion, setEditLinkWindowPostion] = useState({

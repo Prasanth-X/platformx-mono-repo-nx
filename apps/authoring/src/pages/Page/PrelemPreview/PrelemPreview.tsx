@@ -1,20 +1,20 @@
+import { useLazyQuery } from '@apollo/client';
 import { TabContext, TabPanel } from '@mui/lab';
 import { Box, Grid, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 import LightTheme from '../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
+import Loader from '../../../Common/Loader';
+import { fetchPrelemContent } from '../../../services/prelems/prelems.api';
+import { getSubDomain } from '../../../utils/helperFunctions';
 import PrelemPreviewFrame from '../Components/PrelemPreviewFrame/PrelemPreviewFrame';
 import Header from '../Components/PrelemPreviewHeader/Header';
 import { SearchCardObjecType } from '../utils/editTypes';
 import { useStyles } from './PrelemPreview.styles';
-import { useLazyQuery } from '@apollo/client';
-import { fetchPrelemContent } from '../../../services/prelems/prelems.api';
-import Loader from '../../../Common/Loader';
-import { getSubDomain } from '../../../utils/helperFunctions';
 
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
@@ -97,15 +97,15 @@ const PrelemPreview = () => {
                               <PrelemComponent
                                 content={prelemContent}
                                 secondaryArgs={{
-                                  gcpUrl: process.env.REACT_APP_GCP_URL,
-                                  bucketName: process.env.REACT_APP_BUCKET_NAME,
+                                  gcpUrl: process.env.NX_GCP_URL,
+                                  bucketName: process.env.NX_BUCKET_NAME,
                                   prelemBaseEndpoint: {
                                     device: device,
-                                    APIEndPoint: process.env.REACT_APP_API_URI,
+                                    APIEndPoint: process.env.NX_API_URI,
                                     PublishEndPoint: `${getSubDomain()}/`,
                                     buttonBaseUrl: `${getSubDomain()}/`,
                                     deliveryEndPoint:
-                                      process.env.REACT_APP_DELIVERY_URI,
+                                      process.env.NX_DELIVERY_URI,
                                     language: i18n.language,
                                   },
                                 }}

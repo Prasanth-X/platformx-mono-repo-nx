@@ -2,8 +2,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { t } from 'i18next';
-import Loader from '../../../Common/Loader';
 import { Fragment, useEffect, useRef, useState } from 'react';
+import Loader from '../../../Common/Loader';
 import BasicSwitch from '../../editPage/Switch';
 
 import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
@@ -16,6 +16,7 @@ import {
   showToastError,
   showToastSuccess,
 } from '../../../components/toastNotification/toastNotificationReactTostify';
+import useUserSession from '../../../hooks/useUserSession/useUserSession';
 import {
   fetchMediaHandle,
   publishMediaHanle,
@@ -26,7 +27,6 @@ import Gallery from '../../Gallery/Gallery';
 import CookieTextBox from '../CookieSetting/CookieTextBox';
 import SiteTopBar from '../SiteTopBar/SiteTopBar';
 import { userMediaHanleStyle } from './MediaHandle.style';
-import useUserSession from '../../../hooks/useUserSession/useUserSession';
 
 const MediaHandle = () => {
   // const [isNotificationToast, setIsNotificationToast] =
@@ -198,8 +198,8 @@ const MediaHandle = () => {
               >
                 <Box className={classes.switchBox}>
                   <BasicSwitch
-                    color='black'
-                    bgcolor='#A0A3BD'
+                    color="black"
+                    bgcolor="#A0A3BD"
                     onChange={() => switchChange(control.name)}
                     checked={control.value}
                   />
@@ -234,13 +234,13 @@ const MediaHandle = () => {
                   {control.icon_image ? (
                     <img
                       src={
-                        process.env.REACT_APP_GCP_URL +
+                        process.env.NX_GCP_URL +
                         '/' +
-                        process.env.REACT_APP_BUCKET_NAME +
+                        process.env.NX_BUCKET_NAME +
                         '/' +
                         control.icon_image
                       }
-                      alt='icon'
+                      alt="icon"
                       width={'100%'}
                       height={'100%'}
                     />
@@ -250,7 +250,7 @@ const MediaHandle = () => {
                 </Box>
                 <Box className={classes.textBox}>
                   <CookieTextBox
-                    name='title'
+                    name="title"
                     state={control.media_url}
                     handleChange={(event) =>
                       handleTextChange(event, control.name)
@@ -267,7 +267,7 @@ const MediaHandle = () => {
               subTitle={`${t('media_settings_success')}`}
               confirmButtonText={t('go_to_dashboard')}
               confirmButtonHandle={() => navigate('/dashboard')}
-              modalType='publish'
+              modalType="publish"
               crossButtonHandle={crossButtonHandle}
               closeButtonHandle={crossButtonHandle}
               closeIcon={<CreateRoundedIcon />}

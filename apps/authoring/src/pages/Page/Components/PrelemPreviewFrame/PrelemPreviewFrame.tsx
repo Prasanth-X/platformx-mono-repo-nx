@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import React, { useState } from 'react';
 import Frame from 'react-frame-component';
 import LightTheme from '../../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
 import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import { PrelemPreviewFrameType } from '../../utils/editTypes';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
@@ -41,7 +41,7 @@ const PrelemPreviewFrame = ({
   };
 
   const themeConstant =
-    process.env?.REACT_APP_COMPONENT_THEME == 'XeroxTheme'
+    process.env?.NX_COMPONENT_THEME == 'XeroxTheme'
       ? ThemeConstants
       : ThemeConstants;
 

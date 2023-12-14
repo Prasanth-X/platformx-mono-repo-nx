@@ -1,10 +1,10 @@
+import { makeStyles } from '@material-ui/core';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import LinkIcon from '@mui/icons-material/Link';
 import { Box, ButtonGroup, Dialog, IconButton, Tooltip } from '@mui/material';
-import { makeStyles } from '@material-ui/core';
 
 import DOMPurify from 'isomorphic-dompurify';
 import React, { useEffect, useRef, useState } from 'react';
@@ -429,7 +429,7 @@ function Description({
     fr: 'French',
     de: 'German',
   };
-  //const chatUrl = `${process.env.REACT_APP_CHATGPT_API_URI}${i18n.language}/chatgpt`;
+  //const chatUrl = `${process.env.NX_CHATGPT_API_URI}${i18n.language}/chatgpt`;
   const chatGptResponse = async (prompt) => {
     const requestParam = {
       input: {
@@ -477,8 +477,8 @@ function Description({
   const chatGPT = () => {
     setIsLoading(true);
 
-    const chatGptPrompt = process.env.REACT_APP_CHAT_GPT_PROMPT
-      ? process.env.REACT_APP_CHAT_GPT_PROMPT
+    const chatGptPrompt = process.env.NX_CHAT_GPT_PROMPT
+      ? process.env.NX_CHAT_GPT_PROMPT
       : 'Please write 3 paragraph article about';
 
     chatGptResponse(
@@ -617,7 +617,7 @@ function Description({
         </Box>
         {/* </Box> */}
         <Box
-          id='desc'
+          id="desc"
           sx={{
             width: { xs: '100%', md: '95%' },
           }}
@@ -634,12 +634,12 @@ function Description({
               { ADD_ATTR: ['target'] } || ''
             ),
           }}
-          className='placeholdertext'
+          className="placeholdertext"
         ></Box>
 
         <ButtonGroup
-          className='tools'
-          id='toolbar'
+          className="tools"
+          id="toolbar"
           style={{
             display: showToolbar ? 'inline-flex' : 'none',
             backgroundColor: 'black',
@@ -678,8 +678,8 @@ function Description({
           onClick={() => title?.length > 0 && chatGPT()}
         >
           <Tooltip
-            className='divTooltip'
-            placement='left'
+            className="divTooltip"
+            placement="left"
             componentsProps={{
               tooltip: {
                 sx: {
@@ -694,16 +694,16 @@ function Description({
                 },
               },
             }}
-            title='Generate AI Content'
+            title="Generate AI Content"
           >
             {title?.length > 0 ? (
-              <img src={AiSvg} className='DivEnable' height='30px' width='30' />
+              <img src={AiSvg} className="DivEnable" height="30px" width="30" />
             ) : (
               <img
                 src={AiSvgDisabled}
-                className='DivDisable'
-                height='30px'
-                width='30'
+                className="DivDisable"
+                height="30px"
+                width="30"
               />
             )}
           </Tooltip>
@@ -711,7 +711,7 @@ function Description({
       </Box>
       {isUrlDialog ? (
         <AddUrlDialog
-          titledata=''
+          titledata=""
           isDialogOpen={isUrlDialog}
           closeButtonHandle={onClickClose}
           doneButtonHandle={onClickDone}

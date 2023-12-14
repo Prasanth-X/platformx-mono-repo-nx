@@ -1,18 +1,18 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, Divider, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import DemositeHeader from 'platform-x-utils/dist/DemositeHeader';
 import React, { useContext, useEffect, useState } from 'react';
 import Frame from 'react-frame-component';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import useUserSession from '../../../hooks/useUserSession/useUserSession';
-import { Store } from '../../../store/ContextStore';
 import LightTheme from '../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
 import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import useUserSession from '../../../hooks/useUserSession/useUserSession';
+import { Store } from '../../../store/ContextStore';
 import { tabs, theme } from './utils/constants';
 import { useStyles } from './vodPreview.styles';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 
 const prelemAuthoringHelper = {
   isAuthoring: true,
@@ -35,14 +35,14 @@ const VodPreview = () => {
     }
   };
   const Header = React.lazy(
-    () => import(`platform-x-utils/dist/${process.env?.REACT_APP_HEADER}`)
+    () => import(`platform-x-utils/dist/${process.env?.NX_HEADER}`)
   );
 
   const Footer = React.lazy(
-    () => import(`platform-x-utils/dist/${process.env?.REACT_APP_FOOTER}`)
+    () => import(`platform-x-utils/dist/${process.env?.NX_FOOTER}`)
   );
   const themeConstant =
-    process.env?.REACT_APP_COMPONENT_THEME == 'LightTheme'
+    process.env?.NX_COMPONENT_THEME == 'LightTheme'
       ? ThemeConstants
       : ThemeConstants;
 
@@ -79,7 +79,7 @@ const VodPreview = () => {
       );
     } else {
       return (
-        <ThemeProvider theme={theme[`${process.env?.REACT_APP_HEADER_THEME}`]}>
+        <ThemeProvider theme={theme[`${process.env?.NX_HEADER_THEME}`]}>
           <Header isAuthoring />
         </ThemeProvider>
       );

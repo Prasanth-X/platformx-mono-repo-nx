@@ -8,10 +8,13 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import TabletAndroidIcon from '@mui/icons-material/TabletAndroid';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import Mapping from 'platform-x-prelems/prelems/mapping';
 import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
+import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
+import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
 import PlatformXLoader from '../../components/Loader/loader';
 import {
   fetchPrelemContent,
@@ -19,12 +22,9 @@ import {
 } from '../../services/prelems/prelems.api';
 import { addPrelem } from '../../store/Actions';
 import { Store } from '../../store/ContextStore';
-import LightTheme from '../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
-import ThemeConstants from '../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import { getSubDomain } from '../../utils/helperFunctions';
 import PrelemPreviewFrame from './PrelemPreviewFrame';
 import { SearchCardObjecType } from './utils/prelemTypes';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
-import { getSubDomain } from '../../utils/helperFunctions';
 const mappingDynamicInstance = {};
 Object.keys(Mapping).forEach((item) => {
   mappingDynamicInstance[item] = React.lazy(
@@ -278,11 +278,10 @@ const PrelemPreview = () => {
                         secondaryArgs={{
                           prelemBaseEndpoint: {
                             device: 'window',
-                            APIEndPoint: process.env.REACT_APP_API_URI,
+                            APIEndPoint: process.env.NX_API_URI,
                             PublishEndPoint: `${getSubDomain()}/`,
                             buttonBaseUrl: `${getSubDomain()}/`,
-                            deliveryEndPoint:
-                              process.env.REACT_APP_DELIVERY_URI,
+                            deliveryEndPoint: process.env.NX_DELIVERY_URI,
                             language: i18n.language,
                           },
                         }}
@@ -334,11 +333,10 @@ const PrelemPreview = () => {
                         secondaryArgs={{
                           prelemBaseEndpoint: {
                             device: 'tablet',
-                            APIEndPoint: process.env.REACT_APP_API_URI,
+                            APIEndPoint: process.env.NX_API_URI,
                             PublishEndPoint: `${getSubDomain()}/`,
                             buttonBaseUrl: `${getSubDomain()}/`,
-                            deliveryEndPoint:
-                              process.env.REACT_APP_DELIVERY_URI,
+                            deliveryEndPoint: process.env.NX_DELIVERY_URI,
                             language: i18n.language,
                           },
                         }}
@@ -388,11 +386,10 @@ const PrelemPreview = () => {
                         secondaryArgs={{
                           prelemBaseEndpoint: {
                             device: 'mobile',
-                            APIEndPoint: process.env.REACT_APP_API_URI,
+                            APIEndPoint: process.env.NX_API_URI,
                             PublishEndPoint: `${getSubDomain()}/`,
                             buttonBaseUrl: `${getSubDomain()}/`,
-                            deliveryEndPoint:
-                              process.env.REACT_APP_DELIVERY_URI,
+                            deliveryEndPoint: process.env.NX_DELIVERY_URI,
                             language: i18n.language,
                           },
                         }}

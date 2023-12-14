@@ -4,13 +4,13 @@ import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
 import TabletAndroidRoundedIcon from '@mui/icons-material/TabletAndroidRounded';
 import { Box, Divider, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import React, { useContext, useEffect, useState } from 'react';
 import Frame from 'react-frame-component';
 import { useLocation } from 'react-router';
-import { Store } from '../../../store/ContextStore';
 import LightTheme from '../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
 import ThemeConstants from '../../../../../../libs/utilities/src/lib/themes/authoring/variable';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
+import { Store } from '../../../store/ContextStore';
 
 const theme = {
   LightTheme,
@@ -33,15 +33,15 @@ const ArticlePreview = () => {
     }
   };
   // const regularFont =
-  //   process.env?.REACT_APP_COMPONENT_THEME == "XeroxTheme"
+  //   process.env?.NX_COMPONENT_THEME == "XeroxTheme"
   //     ? "RobotoCondensed-Regular"
   //     : "Montserrat-regular";
   // const lightFont =
-  //   process.env?.REACT_APP_COMPONENT_THEME == "XeroxTheme"
+  //   process.env?.NX_COMPONENT_THEME == "XeroxTheme"
   //     ? "RobotoCondensed-Light"
   //     : "Montserrat-Light";
   const themeConstant =
-    process.env?.REACT_APP_COMPONENT_THEME == 'LightTheme'
+    process.env?.NX_COMPONENT_THEME == 'LightTheme'
       ? ThemeConstants
       : ThemeConstants;
 

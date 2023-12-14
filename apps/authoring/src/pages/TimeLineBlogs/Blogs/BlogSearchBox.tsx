@@ -30,7 +30,7 @@ export default function BlogSearchBox({ onSearch, style }) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const eventPath = urlParams.get('path');
-  const apiUrl = `${process.env.REACT_APP_BLOG_API_URI}blogging/fetch`;
+  const apiUrl = `${process.env.NX_BLOG_API_URI}blogging/fetch`;
 
   React.useEffect(() => {
     let active = true;

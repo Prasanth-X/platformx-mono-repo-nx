@@ -53,7 +53,7 @@ const ModalContent = ({ selectedItem }) => {
     setICopyStatus(false);
   };
   const pageURL =
-    `${process.env.REACT_APP_PUBLISH_URI + i18n.language}/` +
+    `${process.env.NX_PUBLISH_URI + i18n.language}/` +
     `embed/video/${selectedItem?.Page}`;
 
   const content = {

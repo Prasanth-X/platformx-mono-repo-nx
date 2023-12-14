@@ -10,7 +10,7 @@ const handleLogout = () => {
 
 export const getRequest = async (url) => {
   try {
-    const res = await axios.get(process.env.REACT_APP_API_URI + url, {
+    const res = await axios.get(process.env.NX_API_URI + url, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -28,7 +28,7 @@ export const getRequest = async (url) => {
 };
 export const getRequestFromDelivery = async (url) => {
   try {
-    const res = await axios.get(process.env.REACT_APP_DELIVERY_URI + url, {
+    const res = await axios.get(process.env.NX_DELIVERY_URI + url, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -48,7 +48,7 @@ export const getRequestFromDelivery = async (url) => {
 
 export const putRequest = async (url, payload) => {
   try {
-    const res = await axios.put(process.env.REACT_APP_API_URI + url, payload, {
+    const res = await axios.put(process.env.NX_API_URI + url, payload, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -67,7 +67,7 @@ export const putRequest = async (url, payload) => {
 
 export const postRequest = async (url, payload = {}) => {
   try {
-    const res = await axios.post(process.env.REACT_APP_API_URI + url, payload, {
+    const res = await axios.post(process.env.NX_API_URI + url, payload, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

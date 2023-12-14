@@ -5,15 +5,15 @@ import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
 import TabletAndroidRoundedIcon from '@mui/icons-material/TabletAndroidRounded';
 import { Box, Divider, Typography } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 import React, { useContext, useEffect, useState } from 'react';
 import Frame from 'react-frame-component';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
-import { Store } from '../../../../store/ContextStore';
 import LightTheme from '../../../../../../../libs/utilities/src/lib/themes/authoring/lightTheme';
 import ThemeConstants from '../../../../../../../libs/utilities/src/lib/themes/authoring/variable';
+import { Store } from '../../../../store/ContextStore';
 import { authInfo } from '../../../../utils/authConstants';
-import PrelemTheme from 'libs/utilities/src/lib/themes/prelems/prelemTheme';
 
 const theme = {
   LightTheme,
@@ -42,7 +42,7 @@ const ArticlePreview = () => {
   const { state, dispatch } = useContext(Store);
   const { article } = state;
   const themeConstant =
-    process.env?.REACT_APP_COMPONENT_THEME == 'LightTheme'
+    process.env?.NX_COMPONENT_THEME == 'LightTheme'
       ? ThemeConstants
       : ThemeConstants;
   const [previewObject, setPreviewObject] = useState({

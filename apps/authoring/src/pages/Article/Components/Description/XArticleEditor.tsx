@@ -1,3 +1,4 @@
+import { makeStyles } from '@material-ui/core';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
@@ -11,7 +12,6 @@ import {
   IconButton,
   Tooltip,
 } from '@mui/material';
-import { makeStyles } from '@material-ui/core';
 
 import i18next from 'i18next';
 import DOMPurify from 'isomorphic-dompurify';
@@ -445,8 +445,8 @@ const XArticleEditor = ({ title, state, setState, setCheckDesc }) => {
 
   const chatGPT = (index) => {
     setIsChatGptLoading(true);
-    const chatGptPrompt = process.env.REACT_APP_CHAT_GPT_PROMPT
-      ? process.env.REACT_APP_CHAT_GPT_PROMPT
+    const chatGptPrompt = process.env.NX_CHAT_GPT_PROMPT
+      ? process.env.NX_CHAT_GPT_PROMPT
       : 'Please write 3 paragraph article about';
     chatGptResponse(
       `${chatGptPrompt} ${title} in ${LanguageNameMapping[i18next.language]}`,

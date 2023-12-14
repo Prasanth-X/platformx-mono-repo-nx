@@ -1,8 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { getCurrentLang, getSelectedSite } from '../utils/helperFunctions';
-import { getLocale } from '../utils/helperFunctions';
 import i18next from 'i18next';
+import { getLocale, getSelectedSite } from '../utils/helperFunctions';
 
 const defaultOptions: any = {
   watchQuery: {
@@ -16,10 +15,10 @@ const defaultOptions: any = {
 };
 
 const link = createHttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_URI,
+  uri: process.env.NX_GRAPHQL_URI,
   headers: {
     language: 'en',
-    sitename: getSelectedSite()
+    sitename: getSelectedSite(),
   },
   credentials: 'include',
 });
