@@ -3,7 +3,7 @@ import LightTheme from "./lib/themes/authoring/lightTheme"
 import PrelemTheme from "./lib/themes/prelems/prelemTheme"
 import ThemeConstants from "./lib/themes/authoring/variable";
 import PrelemsThemeConstants from "./lib/themes/prelems/prelemVariableDark";
-const InterRegular = require('./lib/fonts/Inter/Inter-Regular.ttf') as string;
+const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
 
 // import { prelemTypes } from "./lib/themes/prelems/globalStyle"
 // import { ThemeProvider } from "@material-ui/core/styles";
