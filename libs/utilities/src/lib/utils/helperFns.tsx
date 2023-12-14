@@ -2,7 +2,7 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import FallBackImage from '../assets/fallBackImage.png';
 import { countries } from './helperConstants';
-import ToastService from 'lib/components/ToastContainer/ToastService';
+import ToastService from '../components/ToastContainer/ToastService';
 import { CONTENT_TYPE_WITH_ABSOLUTEURL } from './constants';
 
 const errorRequest =

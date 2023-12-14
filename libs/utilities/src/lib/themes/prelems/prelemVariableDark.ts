@@ -2,8 +2,8 @@
 // import HCLRobort from "../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2";
 // import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
 //  import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
-const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
-const InterRegular = require("../fonts/Inter/Inter-Regular.woff2");
+const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
+const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2");
 
 
 const ThemeConstants = {
