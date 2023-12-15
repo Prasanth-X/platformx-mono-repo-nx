@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import React, { ReactNode } from 'react';
-import { CATSvg } from '../../assets/images';
+import CATSvg from '../../assets/images/cat.png';
 import './ErrorBoundary.css';
 // import { CATSvg } from '../../assets/images';
 
