@@ -5,23 +5,17 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "lib": ["ES2021", "dom"],
-    
-    "target": "es5",  
-    "skipLibCheck": true,   
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true, 
-    
+    "noEmit": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "paths": {
-      "react": [ "./node_modules/@types/react" ]
-    }
+    "target": "ES2021",
   },
   "files": [],
   "include": [],

@@ -65,27 +65,14 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
-    "preview": {
-      "executor": "@nx/webpack:dev-server",
-      "options": {
-        "buildTarget": "authoring:build"
-      }
-    },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{options.reportsDirectory}"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/authoring/jest.config.js"
-      }
-    },
-
-    "serve-static": {
-      "executor": "@nrwl/web:file-server",
-      "options": {
-        "root": "dist/apps/authoring"
+        "jestConfig": "apps/authoring/jest.config.ts"
       }
     }
   },
