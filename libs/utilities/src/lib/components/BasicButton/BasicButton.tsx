@@ -11,7 +11,7 @@ import {
   conCatUrlPath,
   eComTypeUriToJSON,
 } from '../../utils/helperFns';
-import usePlatformAnalytics from 'lib/hooks/usePlatformAnalytics';
+import usePlatformAnalytics from 'lib/hooks/usePlatformAnalytics/usePlatformAnalytics';
 import { IMPRESSIONS } from '../../hooks/usePrelemImpression/constants';
 import ToastService from '../ToastContainer/ToastService';
 import { errorRequest } from 'lib/utils/constants';

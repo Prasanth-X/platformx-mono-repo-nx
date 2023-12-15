@@ -5,11 +5,9 @@
     "composite": true,
     "types": [
       "node",
-
       "@nx/react/typings/cssmodule.d.ts",
       "@nx/react/typings/image.d.ts"
     ],
-    
   },
   "exclude": [
     "jest.config.ts",
@@ -22,6 +20,15 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
-   
+  "files": [
+    "src/index.ts",
+    "src/lib/hooks"
+  ],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "hooks/index.ts"
+  ],
 }
