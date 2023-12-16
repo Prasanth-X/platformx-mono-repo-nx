@@ -1,4 +1,4 @@
-import { IMPRESSIONS } from 'lib/hooks/usePrelemImpression/constants';
+import { IMPRESSIONS } from '../usePrelemImpression/constants';
 import {
   Analytics,
   ButtonObjInfo,
@@ -11,7 +11,7 @@ import {
   eComTypeUriToJSON,
   nullToObject,
   uriToJSON,
-} from 'lib/utils/helperFns';
+} from '../../utils/helperFns';
 
 export const createPrelemImpression = (analytics: Analytics) => {
   return {
@@ -58,7 +58,7 @@ export const createClickImpression = (
     IMPRESSIONS.NA;
   const age = IMPRESSIONS.NA;
   const gender =
-    JSON.parse(localStorage.getItem('userLoginDetails'))?.data?.gender ||
+    JSON.parse(localStorage.getItem('userLoginDetails') || '')?.data?.gender ||
     IMPRESSIONS.NA;
 
   if (type === IMPRESSIONS.Button) {

@@ -1,7 +1,6 @@
 import CourseListIcon from '../../../assets/images/icons/course-icon.svg';
 import DraftIcon from '../../../assets/images/icons/draftIcon.svg';
 import EventsListIcon from '../../../assets/images/icons/event-fill.svg';
-
 import PollListIcon from '../../../assets/images/icons/polls-fill.svg';
 import PublishedIcon from '../../../assets/images/icons/PublishedIcon.svg';
 import SchedulePublishIcon from '../../../assets/images/icons/schedulePublishIcon.svg';
@@ -29,7 +28,7 @@ export const statusColors = {
   published: '#0fa069',
   unpublished: '#777777',
 };
-export const statusIcons = {
+export const statusIcons: any = {
   draft: DraftIcon,
   published: PublishedIcon,
   unpublished: UnpublishedIcon,
@@ -38,14 +37,14 @@ export const statusIcons = {
   public: SpacePublicIcon,
   private: SpacePrivateIcon,
 };
-export const stateIcons = {
+export const stateIcons: any = {
   draft: DraftStatusIcon,
   published: PublishedStatusIcon,
   unpublished: UnpublishedStatusIcon,
   schedulePublish: SchedulePublishStatusIcon,
   scheduleUnpublish: ScheduleUnpublishStatusIcon,
 };
-export const iconsList = {
+export const iconsList: any = {
   sitepage: PagesListIcon,
   article: ArticleListIcon,
   quiz: QuizListIcon,

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@platformx/authoring-apis": ["libs/authoring-apis/src/index.ts"],
       "@platformx/authoring-state": ["libs/authoring-state/src/index.ts"],
       "@platformx/content": ["libs/content/src/index.ts"],
       "@platformx/context-library": ["libs/context-library/src/index.ts"],

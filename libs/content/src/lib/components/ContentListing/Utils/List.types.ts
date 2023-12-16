@@ -50,62 +50,62 @@ export type ContentListingProps = {
   dataList?: any;
   loading?: boolean;
   fetchMore: () => void;
-  deleteContent?: (content) => void;
+  deleteContent?: (content: any) => void;
   duplicate?: (
-    content,
+    content: any,
     isDuplicate: boolean,
     title: string,
     language: string
   ) => void;
-  preview?: (content) => void;
-  unPublish?: (content) => void;
-  view?: (content) => void;
-  edit?: (content) => void;
-  fetchContentDetails?: (content) => void;
-  editPage?;
-  viewPage?;
-  previewPage?;
-  handleDuplicatePopup?;
-  duplicatePage?;
-  unPublishPage?;
-  handleReschedulePopup?;
-  reschedulePublishPage?;
-  rescheduleUnPublishPage?;
-  handleCancelTriggerPopup?;
-  cancelPublishUnpublishTrigger?;
-  handleDeleteData?;
-  handlePageDelete?;
-  duplicateToSite?;
+  preview?: (content: any) => void;
+  unPublish?: (content: any) => void;
+  view?: (content: any) => void;
+  edit?: (content: any) => void;
+  fetchContentDetails?: (content: any) => void;
+  editPage?: any;
+  viewPage?: any;
+  previewPage?: any;
+  handleDuplicatePopup?: any;
+  duplicatePage?: any;
+  unPublishPage?: any;
+  handleReschedulePopup?: any;
+  reschedulePublishPage?: any;
+  rescheduleUnPublishPage?: any;
+  handleCancelTriggerPopup?: any;
+  cancelPublishUnpublishTrigger?: any;
+  handleDeleteData?: any;
+  handlePageDelete?: any;
+  duplicateToSite?: any;
 };
 
 export type CardProps = {
   contentType?: string;
   dataList: any;
-  deleteContent: (content) => void;
+  deleteContent?: (content: any) => void;
   duplicate?: (
-    content,
+    content: any,
     isDuplicate: boolean,
     title: string,
     language: string
   ) => void;
-  preview?: (content) => void;
-  unPublish?: (content) => void;
-  view?: (content) => void;
-  edit?: (content) => void;
-  fetchContentDetails?: (content) => void;
-  editPage?;
-  viewPage?;
-  previewPage?;
-  handleDuplicatePopup?;
-  duplicatePage?;
-  unPublishPage?;
-  handleReschedulePopup?;
-  reschedulePublishPage?;
-  rescheduleUnPublishPage?;
-  handleCancelTriggerPopup?;
-  cancelPublishUnpublishTrigger?;
-  handleDeleteData?;
-  handlePageDelete?;
+  preview?: (content: any) => void;
+  unPublish?: (content: any) => void;
+  view?: (content: any) => void;
+  edit?: (content: any) => void;
+  fetchContentDetails?: (content: any) => void;
+  editPage?: any;
+  viewPage?: any;
+  previewPage?: any;
+  handleDuplicatePopup?: any;
+  duplicatePage?: any;
+  unPublishPage?: any;
+  handleReschedulePopup?: any;
+  reschedulePublishPage?: any;
+  rescheduleUnPublishPage?: any;
+  handleCancelTriggerPopup?: any;
+  cancelPublishUnpublishTrigger?: any;
+  handleDeleteData?: any;
+  handlePageDelete?: any;
   sitelist: any;
-  duplicateToSite?;
+  duplicateToSite?: any;
 };

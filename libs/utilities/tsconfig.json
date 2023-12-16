@@ -3,32 +3,40 @@
     "jsx": "react-jsx",
     "allowJs": false,
     "strict": true,
-    "ignoreDeprecations": "5.0",
-    "outDir": "prelemsTest",
-    "module": "commonjs",
-    "target": "es6",
-    "lib": ["es6", "dom", "es5"],
-    "declaration": true,
-    "moduleResolution": "node",
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "esModuleInterop": true,
-    "noImplicitReturns": false,
-    "noImplicitThis": true,
     "noImplicitAny": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "strictNullChecks": false,
-    
-    // "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "baseUrl": "./src",  // Updated the baseUrl
-    "paths": {
-      "lib/*": ["./lib/*"] , // Updated the paths configuration
-      "assets/*": ["./assets/*"]  // Updated the paths configuration
-    }
+    // "ignoreDeprecations": "5.0",
+    // "outDir": "prelemsTest",
+    // "module": "commonjs",
+    // "target": "es6",
+    // "lib": ["es6", "dom", "es5"],
+    // "declaration": true,
+    // "moduleResolution": "node",
+    // "noUnusedLocals": false,
+    // "noUnusedParameters": false,
+    // "esModuleInterop": true,
+    // "noImplicitReturns": false,
+    // "noImplicitThis": true,
+    // "strictNullChecks": false,
+    // // "suppressImplicitAnyIndexErrors": true,
+    // "allowSyntheticDefaultImports": true,
+    // "resolveJsonModule": true,
+    // "baseUrl": "./src",  // Updated the baseUrl
+    // "paths": {
+    //   "lib/*": ["./lib/*"] , // Updated the paths configuration
+    //   "assets/*": ["./assets/*"]  // Updated the paths configuration
+    // }
   },
   "files": [],
-  "include": ["src", "additional.d.ts", "moduleType.d.ts", "fonts.d.ts"],
+  "include": [
+    "src",
+    "additional.d.ts",
+    "moduleType.d.ts",
+    "fonts.d.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.lib.json"

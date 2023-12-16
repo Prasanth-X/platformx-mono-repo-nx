@@ -1,5 +1,5 @@
 import Tooltip from '@mui/material/Tooltip';
-import ThemeConstants from 'lib/themes/authoring/variable';
+import ThemeConstants from '../../themes/authoring/variable';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 interface PropType {

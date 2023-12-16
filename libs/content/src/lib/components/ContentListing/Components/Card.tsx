@@ -4,28 +4,30 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import RedBlinkingDot from '../../../assets/RedBlinkingDot.gif';
-import useAccess from '../../../hooks/usePermissions/useAccess';
-import { Dashboard_Keys } from '../../../pages/Dashboard/utils/constant';
-import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
-import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
-import { QuizPollEventMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/QuizPollEventsMenu';
-import {
-  default as PlateformXDialog,
-  default as PlateformXDialogDelete,
-} from '../../../pages/articles/deletePopup';
-import { authInfo } from '../../../utils/authConstants';
 import {
   CATEGORY_CONTENT,
   CATEGORY_PAGE,
-  CONTENT_TYPES,
-} from '../../../utils/constants';
-import { convertToLowerCase } from '../../../utils/helperFunctions';
+  DASHBOARD_KEYS,
+  useAccess,
+} from '@platformx/utilities';
+// import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
+// import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
+// import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
+// import { QuizPollEventMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/QuizPollEventsMenu';
+// import {
+//   default as PlateformXDialog,
+//   default as PlateformXDialogDelete,
+// } from '../../../pages/articles/deletePopup';
+// import { authInfo } from '@platformx/utilities';
+
+import { convertToLowerCase } from '@platformx/utilities';
 import { iconsList, statusIcons } from '../Utils/Constants';
 import { CardProps } from '../Utils/List.types';
 import CardOption from './CardOption';
 import CommunityOption from './CommunityOption';
 import './List.css';
 import { PublishInformation } from './PublishInformation';
+import { PlateformXDialog } from '@platformx/utilities';
 
 export const Card = ({
   dataList,
@@ -73,7 +75,9 @@ export const Card = ({
       tagName === 'vod' ||
       tagName == 'article'
     ) {
-      await deleteContent(dataList);
+      if (deleteContent) {
+        await deleteContent(dataList);
+      }
     }
     setDelete(false);
   };
@@ -100,7 +104,7 @@ export const Card = ({
       case 'event':
       case 'article':
         return (
-          <PlateformXDialogDelete
+          <PlateformXDialog
             isDialogOpen
             title={t('delete_title')}
             subTitle={subTitle}
@@ -117,27 +121,13 @@ export const Card = ({
     }
   };
 
-  const handlePageView = async () => {
-    const { page_state, current_page_url } = dataList;
-    if (page_state === 'published') {
-      window.open(
-        `${authInfo.publishUri + i18n.language}/` + `video${current_page_url}`
-      );
-    } else if (page_state === 'unpublished') {
-      // const vodData = await fetchContentDetails(listItemDetails);
-      // dispatch(previewVod(vodData));
-      navigate('/vod-preview');
-    } else if (page_state === 'draft') {
-      // handleOpenVod(listItemDetails);
-    }
-  };
   const handleCardClick = () => {
-    const sitePage = {
+    const sitePage: any = {
       draft: editPage,
       published: viewPage,
       unpublished: previewPage,
     };
-    const ContentAction = {
+    const ContentAction: any = {
       draft: edit,
       published: view,
       unpublished: preview,
@@ -173,7 +163,9 @@ export const Card = ({
       case 'poll':
       case 'event':
       case 'article':
-        edit(dataList);
+        if (!edit) {
+          edit(dataList);
+        }
         break;
     }
   };
@@ -203,13 +195,13 @@ export const Card = ({
   };
 
   const getContentCategory = () => {
-    return tagName.toLowerCase() === Dashboard_Keys.SITE_PAGE.toLowerCase()
+    return tagName.toLowerCase() === DASHBOARD_KEYS.SITE_PAGE.toLowerCase()
       ? CATEGORY_PAGE
       : CATEGORY_CONTENT;
   };
 
   const getContentSubCategory = () => {
-    return tagName.toLowerCase() === Dashboard_Keys.SITE_PAGE.toLowerCase()
+    return tagName.toLowerCase() === DASHBOARD_KEYS.SITE_PAGE.toLowerCase()
       ? ''
       : tagName;
   };
@@ -217,17 +209,17 @@ export const Card = ({
   return (
     <>
       {isDelete && renderConfirmation()}
-      <Box className='listbox'>
-        <Grid container className='d-flex align-items-center'>
-          <Grid item xs={11} md={11} em={5} lg={7} xl={8} pr='20px'>
+      <Box className="listbox">
+        <Grid container className="d-flex align-items-center">
+          <Grid item xs={11} md={11} em={5} lg={7} xl={8} pr="20px">
             <Box
               //  sx={{ display: 'flex', justifyContent: 'space-between' }}
-              className='d-flex align-items-center'
+              className="d-flex align-items-center"
               onClick={handleCardClick}
             >
               {/* content type icon */}
-              <Box className='img'>
-                <img src={iconsList[dataList.tagName]} />
+              <Box className="img">
+                <img src={iconsList[dataList.tagName]} alt="" />
               </Box>
 
               <Box className="rightspace">
@@ -240,9 +232,9 @@ export const Card = ({
                       height: '24px',
                     }}
                   >
-                    <Tooltip title={dataList.title} placement='right-end'>
+                    <Tooltip title={dataList.title} placement="right-end">
                       <Typography
-                        variant='h5bold'
+                        variant="h5bold"
                         sx={{
                           overflow: 'hidden',
                           textOverflow: 'ellipsis',
@@ -260,24 +252,28 @@ export const Card = ({
                       date > dataList.eventStartDate &&
                       date < dataList.eventEndDate && (
                         <img
+                          alt=""
                           style={{ height: '43px', width: '43px' }}
                           src={RedBlinkingDot}
                         />
                       )}
-                    <Box component='div' className='mobstatusIcon'>
+                    <Box component="div" className="mobstatusIcon">
                       <Typography sx={{ marginLeft: '10px' }}>
-                        <img src={statusIcons[dataList.status]} />
+                        <img alt="" src={statusIcons[dataList.status]} />
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledPublishTriggerDateTime &&
-                          tagName == 'sitepage' && (
-                            <img src={statusIcons['schedulePublish']} />
+                          tagName === 'sitepage' && (
+                            <img alt="" src={statusIcons['schedulePublish']} />
                           )}
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledUnPublishTriggerDateTime &&
-                          tagName == 'sitepage' && (
-                            <img src={statusIcons['scheduleUnpublish']} />
+                          tagName === 'sitepage' && (
+                            <img
+                              alt=""
+                              src={statusIcons['scheduleUnpublish']}
+                            />
                           )}
                       </Typography>
                     </Box>
@@ -290,7 +286,7 @@ export const Card = ({
                   }}
                 >
                   <Typography
-                    variant='h7regular'
+                    variant="h7regular"
                     sx={{
                       color: '#89909a',
                       overflow: 'hidden',
@@ -305,11 +301,11 @@ export const Card = ({
                     {dataList.description}
                   </Typography>
                 </Box>
-                <Box className='datetimemob'>
-                  <Typography variant='h7regular' component='div'>
+                <Box className="datetimemob">
+                  <Typography variant="h7regular" component="div">
                     {dataList.lastModifiedBy}
                   </Typography>
-                  <Typography variant='h7regular' component='div'>
+                  <Typography variant="h7regular" component="div">
                     {dataList.lastModifiedDate &&
                       format(
                         new Date(dataList.lastModifiedDate),
@@ -321,32 +317,28 @@ export const Card = ({
             </Box>
           </Grid>
           <Grid item xs={1} md={1} em={7} lg={5} xl={4}>
-            <Box className='d-flex align-items-center justify-content-end'>
+            <Box className="d-flex align-items-center justify-content-end">
               {/* publish icon */}
               <PublishInformation
                 tagName={tagName}
                 dataList={dataList}
-                contentType={contentType}
+                contentType={contentType || ''}
                 handleCardClick={handleCardClick}
               />
 
               {convertToLowerCase(contentType) === 'community' ? (
-                <>
-                  <CommunityOption dataList={dataList} />
-                </>
+                <CommunityOption dataList={dataList} />
               ) : (
-                <>
-                  <CardOption
-                    tagName={tagName}
-                    dataList={dataList}
-                    handleEdit={handleEdit}
-                    handleClick={handleClick}
-                    canAccessAction={canAccessAction}
-                    handleDeleteButton={handleDeleteButton}
-                    getContentCategory={getContentCategory}
-                    getContentSubCategory={getContentSubCategory}
-                  />
-                </>
+                <CardOption
+                  tagName={tagName}
+                  dataList={dataList}
+                  handleEdit={handleEdit}
+                  handleClick={handleClick}
+                  canAccessAction={canAccessAction}
+                  handleDeleteButton={handleDeleteButton}
+                  getContentCategory={getContentCategory}
+                  getContentSubCategory={getContentSubCategory}
+                />
               )}
               {/* card option */}
 
@@ -359,7 +351,7 @@ export const Card = ({
                     setAnchorEl(null);
                   }}
                   category={CATEGORY_PAGE}
-                  subCategory=''
+                  subCategory=""
                   editPage={editPage}
                   viewPage={viewPage}
                   previewPage={previewPage}

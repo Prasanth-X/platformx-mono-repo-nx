@@ -13,6 +13,9 @@ import { Card } from './Card';
 import { useSelector } from 'react-redux';
 import { ContentState } from '@platformx/authoring-state';
 import { useAccess } from '@platformx/utilities';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import useUserSession from 'libs/utilities/src/lib/hooks/useUserSession/useUserSession';
+import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 // import { fetchUserSitePermissionList } from '../../../services/SiteSetting/SiteSetting.api';
 // import useUserSession from '../../../hooks/useUserSession/useUserSession';
 const ContentListing = ({
@@ -58,7 +61,8 @@ const ContentListing = ({
       });
 
       if (response?.authoring_getUserSitePermissionList) {
-        setSiteList([...response.authoring_getUserSitePermissionList]);
+        const siteList = response.authoring_getUserSitePermissionList || [];
+        setSiteList(siteList);
       }
     } catch (error) {
       console.log(error);
@@ -70,7 +74,7 @@ const ContentListing = ({
   const contentType: string = capitalizeFirstLetter(
     searchPageUrl?.pathname?.split('/')?.[4]
   );
-  const makeContentData = (item) => {
+  const makeContentData = (item: any) => {
     const listItemDetails: ListItem = {
       tagName: convertToLowerCase(item.tag_name),
       pageName: item.page,
@@ -110,7 +114,7 @@ const ContentListing = ({
     };
     return listItemDetails;
   };
-  const makeCourseContentData = (item) => {
+  const makeCourseContentData = (item: any) => {
     const listItemDetails: any = {
       tagName: convertToLowerCase(item.tags),
       // pageName: item.id,

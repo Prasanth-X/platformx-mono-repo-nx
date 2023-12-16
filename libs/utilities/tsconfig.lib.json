@@ -22,13 +22,11 @@
   ],
   "files": [
     "src/index.ts",
-    "src/lib/hooks"
   ],
   "include": [
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "hooks/index.ts"
   ],
 }

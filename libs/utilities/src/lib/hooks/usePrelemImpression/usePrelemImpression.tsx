@@ -1,4 +1,4 @@
-import { IMPRESSIONS } from 'lib/hooks/usePrelemImpression/constants';
+import { IMPRESSIONS } from '../usePrelemImpression/constants';
 
 import { useState, useEffect } from 'react';
 import usePlatformAnalytics from '../usePlatformAnalytics/usePlatformAnalytics';
