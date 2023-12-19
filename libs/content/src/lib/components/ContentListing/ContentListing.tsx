@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 import { ContentState } from '@platformx/authoring-state';
 import { useAccess } from '@platformx/utilities';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import useUserSession from 'libs/utilities/src/lib/hooks/useUserSession/useUserSession';
+import { useUserSession } from '@platformx/utilities';
 import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 // import { fetchUserSitePermissionList } from '../../../services/SiteSetting/SiteSetting.api';
 // import useUserSession from '../../../hooks/useUserSession/useUserSession';

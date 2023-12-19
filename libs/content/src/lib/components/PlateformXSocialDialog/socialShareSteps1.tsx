@@ -2,10 +2,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import fbGray from '../../assets/images/fb-gray.png';
-import fbGreen from '../../assets/images/fb-green.png';
-import inGray from '../../assets/images/in-gray.png';
-import inGreen from '../../assets/images/in-green.png';
+import fbGray from '../../../assets/images/fb-gray.png';
+import fbGreen from '../../../assets/images/fb-green.png';
+import inGray from '../../../assets/images/in-gray.png';
+import inGreen from '../../../assets/images/in-green.png';
 
 const SocialShareStep1 = ({ selectedSocial, setSelectedSocial }) => {
   const { t } = useTranslation();
@@ -32,7 +32,7 @@ const SocialShareStep1 = ({ selectedSocial, setSelectedSocial }) => {
             }}
           >
             <Box sx={{ width: { md: '250px' } }}>
-              <Typography variant='h3medium'>{t('network')}</Typography>
+              <Typography variant="h3medium">{t('network')}</Typography>
             </Box>
             <Box
               sx={{

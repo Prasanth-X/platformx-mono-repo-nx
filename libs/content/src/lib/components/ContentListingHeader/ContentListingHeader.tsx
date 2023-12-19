@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { t } from 'i18next';
 import { useState } from 'react';
-import FilterIcon from '../../../assets/svg/FilterIcon.svg';
+import FilterIcon from './../../../assets/svg/FilterIcon.svg';
 import { useAccess } from '@platformx/utilities';
 import { ErrorTooltip } from '@platformx/utilities';
 import {

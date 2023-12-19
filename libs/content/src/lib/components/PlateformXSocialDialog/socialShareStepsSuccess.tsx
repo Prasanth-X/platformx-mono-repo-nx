@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import successGif from '../../assets/images/success.gif';
+import successGif from '../../../assets/images/success.gif';
 
 const SocialShareStepSuccess = ({ selectedTitle }) => {
   const [activeStep, setActiveStep] = React.useState(0);

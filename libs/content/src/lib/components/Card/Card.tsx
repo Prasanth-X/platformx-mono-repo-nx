@@ -31,6 +31,7 @@ import { PublishInformation } from '../PublishInformation/PublishInformation';
 import { PlateformXDialog } from '@platformx/utilities';
 import { CourseMenu } from '../CourseMenu/CourseMenu';
 import CardMenu from '../CardMenu/CardMenu';
+import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
 
 export const Card = ({
   dataList,
@@ -166,7 +167,7 @@ export const Card = ({
       case 'poll':
       case 'event':
       case 'article':
-        if (!edit) {
+        if (edit) {
           edit(dataList);
         }
         break;

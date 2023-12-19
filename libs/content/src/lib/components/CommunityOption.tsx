@@ -1,7 +1,7 @@
 import { Box, IconButton } from '@mui/material';
-import Eye from '../../../assets/svg/Eye.svg';
+import Eye from '../../assets/svg/Eye.svg';
 import { useTranslation } from 'react-i18next';
-import CopyIcon from '../../../assets/svg/CopyIcon.svg';
+import CopyIcon from '../../assets/svg/CopyIcon.svg';
 import { ShowToastError, ShowToastSuccess } from '@platformx/utilities';
 
 type CommunityOptionProps = {

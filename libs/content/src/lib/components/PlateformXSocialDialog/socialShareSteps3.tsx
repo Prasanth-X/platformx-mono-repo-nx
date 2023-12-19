@@ -8,7 +8,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import { Box, Grid, TextField } from '@mui/material';
-import avtarImg from '../../assets/images/avatar.png';
+import avtarImg from '../../../assets/images/avatar.png';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { getSHareDetailsBasedOnContentType } from './utils/socialShareTypes';

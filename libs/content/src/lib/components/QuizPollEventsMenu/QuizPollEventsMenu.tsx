@@ -12,17 +12,16 @@ import { useAccess } from '@platformx/utilities';
 import { convertToLowerCase, getSubDomain } from '@platformx/utilities';
 import DuplicateContentPopup from '../DuplicateContentPopup/DuplicateContentPopup';
 // import ShareContentWithSiteDialog from '../../../../components/ShareContentWithSites/shareContentWithSites';
-import {
-  CardOptionApprovalStatusIcon,
-  CardOptionCopyUrlIcon,
-  CardOptionDeleteIcon,
-  CardOptionDuplicateIcon,
-  CardOptionEditIcon,
-  CardOptionImbedIcon,
-  CardOptionShareIcon,
-  CardOptionUnPublishIcon,
-  CardOptionViewIcon,
-} from '../../../assets/svg';
+
+import CardOptionApprovalStatusIcon from '../../../assets/svg/ApprovalStatusIcon.svg';
+import CardOptionCopyUrlIcon from '../../../assets/svg/CopyUrlIconOptionMenu.svg';
+import CardOptionDeleteIcon from '../../../assets/svg/DeleteIconOptionMenu.svg';
+import CardOptionDuplicateIcon from '../../../assets/svg/DuplicateIconOptionMenu.svg';
+import CardOptionEditIcon from '../../../assets/svg/EditIconOptionMenu.svg';
+import CardOptionImbedIcon from '../../../assets/svg/ImbedIconOptionMenu.svg';
+import CardOptionShareIcon from '../../../assets/svg/ShareIconOptionMenu.svg';
+import CardOptionUnPublishIcon from '../../../assets/svg/UnPublishIconOptionMenu.svg';
+import CardOptionViewIcon from '../../../assets/svg/ViewIconOptionMenu.svg';
 
 import { useMediaQuery, useTheme } from '@mui/material';
 import EmbedDialog from '../EmbedDialog/EmbedDialog';
@@ -304,8 +303,9 @@ export const QuizPollEventMenu = ({
                 handleStartBlog(listItemDetails?.page);
               }}
             >
-              <CardOptionEditIcon className={classes.icon} />
-              {t('write_a_blog')}
+              <div className={classes.icon}>
+                <CardOptionEditIcon /> {t('write_a_blog')}
+              </div>
             </MenuItem>
           )}
         {(listItemDetails.page_state === 'published' ||
@@ -318,7 +318,9 @@ export const QuizPollEventMenu = ({
               view(listItemDetails);
             }}
           >
-            <CardOptionViewIcon className={classes.icon} />
+            <div className={classes.icon}>
+              <CardOptionViewIcon />
+            </div>
             {t('view')}
           </MenuItem>
         )}
@@ -332,7 +334,9 @@ export const QuizPollEventMenu = ({
                 preview(listItemDetails);
               }}
             >
-              <CardOptionViewIcon className={classes.icon} /> {t('preview')}
+              <div className={classes.icon}>
+                <CardOptionViewIcon /> {t('preview')}
+              </div>
             </MenuItem>
           )}
         {tabView && (
@@ -343,7 +347,10 @@ export const QuizPollEventMenu = ({
                 disabled={!canAccessAction(category, subCategory, 'Update')}
                 onClick={() => onHandleMenuActions('edit')}
               >
-                <CardOptionEditIcon className={classes.icon} /> {t('edit')}
+                <div className={classes.icon}>
+                  <CardOptionEditIcon />
+                  {t('edit')}
+                </div>
               </MenuItem>
             }
             doAccess={!canAccessAction(category, subCategory, 'Update')}
@@ -360,8 +367,10 @@ export const QuizPollEventMenu = ({
                   onHandleMenuActions('duplicate');
                 }}
               >
-                <CardOptionDuplicateIcon className={classes.icon} />{' '}
-                {t('duplicate')}
+                <div className={classes.icon}>
+                  <CardOptionDuplicateIcon />
+                  {t('duplicate')}
+                </div>
               </MenuItem>
             }
             doAccess={!canAccessAction(category, subCategory, 'duplicate')}
@@ -378,8 +387,10 @@ export const QuizPollEventMenu = ({
               onHandleMenuActions('copy_url');
             }}
           >
-            <CardOptionCopyUrlIcon className={classes.icon} />
-            {t('copy_url')}
+            <div className={classes.icon}>
+              <CardOptionCopyUrlIcon />
+              {t('copy_url')}
+            </div>
           </MenuItem>
         )}
 
@@ -403,8 +414,10 @@ export const QuizPollEventMenu = ({
                   onHandleMenuActions('unpublish');
                 }}
               >
-                <CardOptionUnPublishIcon className={classes.icon} />{' '}
-                {t('unpublish')}
+                <div className={classes.icon}>
+                  <CardOptionUnPublishIcon />
+                  {t('unpublish')}
+                </div>
               </MenuItem>
             }
             doAccess={!canAccessAction(category, subCategory, 'unpublish')}
@@ -422,7 +435,10 @@ export const QuizPollEventMenu = ({
                   onHandleMenuActions('delete');
                 }}
               >
-                <CardOptionDeleteIcon className={classes.icon} /> {t('delete')}
+                <div className={classes.icon}>
+                  <CardOptionDeleteIcon />
+                  {t('delete')}
+                </div>
               </MenuItem>
             }
             doAccess={!canAccessAction(category, subCategory, 'delete')}
@@ -439,7 +455,9 @@ export const QuizPollEventMenu = ({
               onHandleMenuActions('social_share');
             }}
           >
-            <CardOptionShareIcon className={classes.icon} /> {t('social_share')}
+            <div className={classes.icon}>
+              <CardOptionShareIcon /> {t('social_share')}
+            </div>
           </MenuItem>
         )}
         {duplicateToSite &&
@@ -460,8 +478,9 @@ export const QuizPollEventMenu = ({
                     onHandleMenuActions('share_with_sites');
                   }}
                 >
-                  <CardOptionShareIcon className={classes.icon} />{' '}
-                  {t('share_with_sites')}
+                  <div className={classes.icon}>
+                    <CardOptionShareIcon /> {t('share_with_sites')}
+                  </div>
                 </MenuItem>
               }
               doAccess={!canAccessAction(category, subCategory, 'sharetosite')}
@@ -480,7 +499,9 @@ export const QuizPollEventMenu = ({
                   onHandleMenuActions('embed');
                 }}
               >
-                <CardOptionImbedIcon className={classes.icon} /> {t('embed')}
+                <div className={classes.icon}>
+                  <CardOptionImbedIcon /> {t('embed')}
+                </div>
               </MenuItem>
             )}
             {/* {(listItemDetails.page_state === 'published' ||
@@ -516,8 +537,10 @@ export const QuizPollEventMenu = ({
                 onHandleMenuActions('approval_status');
               }}
             >
-              <CardOptionApprovalStatusIcon className={classes.icon} />
-              {t('approval_status')}
+              <div className={classes.icon}>
+                <CardOptionApprovalStatusIcon />
+                {t('approval_status')}
+              </div>
             </MenuItem>
           </>
         )}

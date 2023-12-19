@@ -20,12 +20,12 @@ import { useStyles } from './CardMenu.styles';
 import { CARD_MENUS } from '../../utils/Constants';
 import { PageData } from '@platformx/authoring-state';
 import { useSelector } from 'react-redux';
-import CardOptionApprovalStatusIcon from '../../../../assets/svg/ApprovalStatusIconOptionMenu.svg';
-import CardOptionDeleteIcon from '../../../../assets/svg/DefaultStateCommentIcon.svg';
-import CardOptionDuplicateIcon from '../../../../assets/svg/DuplicateIconOptionMenu.svg';
-import CardOptionEditIcon from '../../../../assets/svg/EditIconOptionMenu.svg';
-import CardOptionUnPublishIcon from '../../../../assets/svg/UnPublishIconOptionMenu.svg';
-import CardOptionViewIcon from '../../../../assets/svg/ViewIconOptionMenu.svg';
+import CardOptionApprovalStatusIcon from '../../../assets/svg/ApprovalStatusIconOptionMenu.svg';
+import CardOptionDeleteIcon from '../../../assets/svg/DefaultStateCommentIcon.svg';
+import CardOptionDuplicateIcon from '../../../assets/svg/DuplicateIconOptionMenu.svg';
+import CardOptionEditIcon from '../../../assets/svg/EditIconOptionMenu.svg';
+import CardOptionUnPublishIcon from '../../../assets/svg/UnPublishIconOptionMenu.svg';
+import CardOptionViewIcon from '../../../assets/svg/ViewIconOptionMenu.svg';
 import { MenuActions } from './CardMenu.types';
 const CardMenu = (props: any) => {
   const classes = useStyles();
