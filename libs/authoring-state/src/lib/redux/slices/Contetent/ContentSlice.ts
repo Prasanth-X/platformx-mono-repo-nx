@@ -15,13 +15,17 @@ export const contentSlice = createSlice({
         apiState: false,
     } as ContentState,
     reducers: {
-        updateInitialState: (state, action: PayloadAction<any>) => {
+        updateContentInitialState: (state, action: PayloadAction<any>) => {
             state.contentArray = action.payload;
         },
         updateContentList: (state, action: PayloadAction<any>) => {
             state.contentArray = [...state.contentArray, ...action.payload];
         },
         previewContent: (state, action: PayloadAction<any>) => {
+            state.contentArray = [...state.contentArray];
+            state.currentContent = action.payload;
+        },
+        previewArticle: (state, action: PayloadAction<any>) => {
             state.contentArray = [...state.contentArray];
             state.currentContent = action.payload;
         },
@@ -35,7 +39,7 @@ export const contentSlice = createSlice({
 });
 
 export const {
-    updateInitialState,
+    updateContentInitialState,
     updateContentList,
     previewContent,
     contentProp,

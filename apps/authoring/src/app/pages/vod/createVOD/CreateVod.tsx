@@ -33,7 +33,7 @@ import useUserSession from '../../../hooks/useUserSession/useUserSession';
 import { fetchTagList } from '../../../services/common/tags.aps';
 import {
   create_vod,
-  fetchVodById,
+  FETCH_VOD_BY_ID,
   publish_vod,
   update_vod,
 } from '../../../services/vod/vod.api';
@@ -103,7 +103,7 @@ export const CreateVod = () => {
   const { state, dispatch } = useContext(Store);
   const { vod } = state;
   const [getSession] = useUserSession();
-  const { userInfo,role } = getSession();
+  const { userInfo, role } = getSession();
   const login_user_id = userInfo?.user_id;
   const username = `${userInfo.first_name} ${userInfo.last_name}`;
   const vodPageUrl = new URL(window.location.href);
@@ -112,7 +112,7 @@ export const CreateVod = () => {
   const [isVodCreated, setVodCreated] = useState<boolean>(
     vodPageUrl.searchParams.get('path') ? true : false
   );
-  const [runFetchVodById] = useLazyQuery(fetchVodById);
+  const [runFetchVodById] = useLazyQuery(FETCH_VOD_BY_ID);
   const [parentToolTip, setParentToolTip] = useState('');
   const [scrollToView, setScrollToView] = useState('');
   const [runFetchTagList] = useLazyQuery(fetchTagList);
@@ -216,7 +216,7 @@ export const CreateVod = () => {
     navigate('/content/vod');
   };
 
-  const createVod = (pageState, pageExist,isWorkflow = true) => {
+  const createVod = (pageState, pageExist, isWorkflow = true) => {
     const structureData = updateStructureData(vodRef);
     const vodToSend = {
       ...JSON.parse(JSON.stringify(vodInstance)),
@@ -236,19 +236,19 @@ export const CreateVod = () => {
         } else {
           const { Page_CreatedBy, Title, Description } = vodToSend;
           // const { Title, Description} = updateTempObj.current;
-         const workflowObj = {
-          createdBy:Page_CreatedBy,
-              title:Title,
-              description:Description,
-           path: resp?.data?.authoring_createVod?.path,
-           workflow_status: workflowKeys.draft,
-           tag_name: capitalizeFirstLetter(ContentType.Vod),
-           last_modifiedBy: Page_CreatedBy,
-         };
-         setWorkflow({ ...workflow, ...workflowObj });
-         if (isWorkflow) {
-           workflowSubmitRequest(workflowObj, workflowKeys.approve);
-         }
+          const workflowObj = {
+            createdBy: Page_CreatedBy,
+            title: Title,
+            description: Description,
+            path: resp?.data?.authoring_createVod?.path,
+            workflow_status: workflowKeys.draft,
+            tag_name: capitalizeFirstLetter(ContentType.Vod),
+            last_modifiedBy: Page_CreatedBy,
+          };
+          setWorkflow({ ...workflow, ...workflowObj });
+          if (isWorkflow) {
+            workflowSubmitRequest(workflowObj, workflowKeys.approve);
+          }
           unsavedChanges.current = false;
           dispatch(checkIfUnsavedChanges(unsavedChanges.current));
           setOpenPageExistModal(false);
@@ -761,10 +761,8 @@ export const CreateVod = () => {
               sm={12}
               sx={{ display: 'flex', alignItems: 'center' }}
             >
-            
-
               <Button
-                variant='text'
+                variant="text"
                 startIcon={<ArrowBack />}
                 sx={{
                   minWidth: '0px',
@@ -774,7 +772,7 @@ export const CreateVod = () => {
                 onClick={backToVodList}
               >
                 {!noWeb && (
-                  <Typography variant='h4bold'>
+                  <Typography variant="h4bold">
                     {currentVodData.current
                       ? `${t('edit')} ${t('vod')}`
                       : t('create_vod')}
@@ -788,12 +786,12 @@ export const CreateVod = () => {
               md={7}
               em={8}
               sm={12}
-              display='flex'
-              justifyContent='flex-end'
-              alignItems='flex-end'
+              display="flex"
+              justifyContent="flex-end"
+              alignItems="flex-end"
             >
               <HeadButton
-                variant='secondaryButton'
+                variant="secondaryButton"
                 icon={VisibilityRoundedIcon}
                 onclickHandler={handelPreview}
                 canAccess={true}
@@ -803,7 +801,7 @@ export const CreateVod = () => {
               />
               <Box sx={{ margin: { xs: '0 5px', md: '0 10px' } }}>
                 <HeadButton
-                  variant='secondaryButton'
+                  variant="secondaryButton"
                   icon={SaveAsRoundedIcon}
                   onclickHandler={saveVod}
                   canAccess={canAccessAction(
@@ -830,14 +828,14 @@ export const CreateVod = () => {
                 text={t('publish')}
                 iconType={'publish'}
               /> */}
-          <Submit
-          category={CATEGORY_CONTENT}
-          subCategory={ContentType.Vod}
-            workflow={workflow}
-            handlePublish={publishButtonHandel}
-            handleSave={saveVod}
-            createComment={()=>{}}
-          />
+              <Submit
+                category={CATEGORY_CONTENT}
+                subCategory={ContentType.Vod}
+                workflow={workflow}
+                handlePublish={publishButtonHandel}
+                handleSave={saveVod}
+                createComment={() => {}}
+              />
             </Grid>
           </Grid>
           {/* Top Section End */}
@@ -869,12 +867,12 @@ export const CreateVod = () => {
             />
           </Box>
           {/* Video Start */}
-          <Box id='VideoAndThumbnail' className={classes.mainStyleWrapper}>
+          <Box id="VideoAndThumbnail" className={classes.mainStyleWrapper}>
             <CommonBoxWithNumber
-              number='01'
+              number="01"
               title={t('video_subtitle')}
-              titleVarient='p3semibold'
-              subTitleVarient='p4regular'
+              titleVarient="p3semibold"
+              subTitleVarient="p4regular"
               subTitle={t('subhead')}
             >
               <Grid container>
@@ -884,13 +882,13 @@ export const CreateVod = () => {
                   sm={5}
                   md={5}
                   lg={5}
-                  className='leftFiledLast'
+                  className="leftFiledLast"
                 >
                   <TitleSubTitle
                     title={t('video_title')}
                     subTitle={t('video_subtitle')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
                 <Grid
@@ -899,7 +897,7 @@ export const CreateVod = () => {
                   sm={7}
                   md={7}
                   lg={7}
-                  className='textFiledLast'
+                  className="textFiledLast"
                 >
                   <ChooseVideoTray
                     ifVideoUrl={vodRef.current?.DsapceVideoUrl}
@@ -911,12 +909,12 @@ export const CreateVod = () => {
           </Box>
           {/* Video End */}
           {/* Thumbnail start */}
-          <Box id='ImageAndThumbnail' className={classes.mainStyleWrapper}>
+          <Box id="ImageAndThumbnail" className={classes.mainStyleWrapper}>
             <CommonBoxWithNumber
-              number='02'
+              number="02"
               title={t('choose_the_image')}
-              titleVarient='p3semibold'
-              subTitleVarient='p4regular'
+              titleVarient="p3semibold"
+              subTitleVarient="p4regular"
               subTitle={t('subhead')}
             >
               <Grid container>
@@ -926,13 +924,13 @@ export const CreateVod = () => {
                   sm={5}
                   md={5}
                   lg={5}
-                  className='leftFiledLast'
+                  className="leftFiledLast"
                 >
                   <TitleSubTitle
                     title={t('vod_thumbnail_title')}
                     subTitle={t('vod_thumbnail_subtitle')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
                 <Grid
@@ -941,12 +939,12 @@ export const CreateVod = () => {
                   sm={7}
                   md={7}
                   lg={7}
-                  className='textFiledLast'
+                  className="textFiledLast"
                 >
                   <AddImage
                     url={vodRef.current?.Thumbnail}
                     onUploadClick={onUploadClick}
-                    type='Images'
+                    type="Images"
                   />
                 </Grid>
               </Grid>
@@ -954,26 +952,26 @@ export const CreateVod = () => {
           </Box>
           {/* Thumbnail End */}
           {/* Title Desc start */}
-          <Box id='titleDescription' className={classes.mainStyleWrapper}>
+          <Box id="titleDescription" className={classes.mainStyleWrapper}>
             <CommonBoxWithNumber
-              number='03'
+              number="03"
               title={t('title_head')}
-              titleVarient='p3semibold'
-              subTitleVarient='p4regular'
+              titleVarient="p3semibold"
+              subTitleVarient="p4regular"
               subTitle={t('subhead')}
             >
               <Grid container>
-                <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
+                <Grid item xs={12} sm={5} md={5} lg={5} className="leftFiled">
                   <TitleSubTitle
                     title={t('vod_title')}
                     subTitle={t('vod_subtitle')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
-                <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
+                <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
                   <TextBox
-                    name='Title'
+                    name="Title"
                     placeHolder={t('vod_title_placeholder')}
                     handleChange={handleChange}
                     maxCharLength={120}
@@ -986,13 +984,13 @@ export const CreateVod = () => {
                   sm={5}
                   md={5}
                   lg={5}
-                  className='leftFiledLast'
+                  className="leftFiledLast"
                 >
                   <TitleSubTitle
                     title={t('vod_desciption')}
                     subTitle={t('vod_subdes')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
                 <Grid
@@ -1001,7 +999,7 @@ export const CreateVod = () => {
                   sm={7}
                   md={7}
                   lg={7}
-                  className='textFiledLast'
+                  className="textFiledLast"
                 >
                   <AutoTextArea
                     name={t('description')}
@@ -1016,12 +1014,12 @@ export const CreateVod = () => {
           </Box>
           {/* Title Desc End */}
           {/* Tag Start */}
-          <Box id='tags' className={classes.mainStyleWrapper}>
+          <Box id="tags" className={classes.mainStyleWrapper}>
             <CommonBoxWithNumber
-              number='04'
+              number="04"
               title={t('choose_tags')}
-              titleVarient='p3semibold'
-              subTitleVarient='p4regular'
+              titleVarient="p3semibold"
+              subTitleVarient="p4regular"
               subTitle={t('subhead')}
             >
               <Grid container>
@@ -1031,13 +1029,13 @@ export const CreateVod = () => {
                   sm={5}
                   md={5}
                   lg={5}
-                  className='leftFiledLast'
+                  className="leftFiledLast"
                 >
                   <TitleSubTitle
                     title={t('tags')}
                     subTitle={t('choose_your_tags')}
-                    titleVarient='h6medium'
-                    subTitleVarient='h7regular'
+                    titleVarient="h6medium"
+                    subTitleVarient="h7regular"
                   />
                 </Grid>
                 <Grid
@@ -1046,7 +1044,7 @@ export const CreateVod = () => {
                   sm={7}
                   md={7}
                   lg={7}
-                  className='textFiledLast'
+                  className="textFiledLast"
                 >
                   {tagListComponent}
                 </Grid>
@@ -1071,7 +1069,7 @@ export const CreateVod = () => {
           subTitle={t('publish_process_vod')}
           confirmButtonText={t('go_to_listing')}
           confirmButtonHandle={() => navigate('/content/vod')}
-          modalType='publish'
+          modalType="publish"
         />
       )}
       {showExitWarning && (
@@ -1087,7 +1085,7 @@ export const CreateVod = () => {
           crossButtonHandle={() => {
             setShowExitWarning(false);
           }}
-          modalType='unsavedChanges'
+          modalType="unsavedChanges"
         />
       )}
       {openPageExistModal && (
@@ -1100,7 +1098,7 @@ export const CreateVod = () => {
           closeButtonHandle={pageExistNoButtonHandle}
           confirmButtonHandle={pageExistYesButtonHandle}
           crossButtonHandle={pageExistCrossButtonHandle}
-          modalType=''
+          modalType=""
         />
       )}
       {openSaveModal && (
@@ -1113,7 +1111,7 @@ export const CreateVod = () => {
           closeButtonHandle={saveAsDraftViewButtonHandle}
           confirmButtonHandle={() => navigate('/content/vod')}
           crossButtonHandle={saveAsDraftCrossButtonHandle}
-          modalType='draft'
+          modalType="draft"
           closeIcon={<CreateRoundedIcon />}
         />
       )}

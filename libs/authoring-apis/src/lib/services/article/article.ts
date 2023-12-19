@@ -3,7 +3,6 @@ import graphqlInstance from '../../config/graphqlConfig';
 import { ArticleQueries } from '../../graphQL/queries/articleQueries';
 import { FETCH_TAG_LIST } from '../../graphQL/queries/tagQueries';
 import { ApiResponse } from '../../utils/types';
-
 const articleApi = {
   getList: async <T>(input: any): Promise<ApiResponse<T>> => {
     try {

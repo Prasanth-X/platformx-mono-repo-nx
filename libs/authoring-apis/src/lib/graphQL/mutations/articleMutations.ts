@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-export const ArticleQueries = {
+export const ArticleMutations = {
   FETCH_CONTENT_LIST_ALL: gql`
     query FETCH_CONTENT_LIST_ALL(
       $contentType: authoring_ContentTypes!

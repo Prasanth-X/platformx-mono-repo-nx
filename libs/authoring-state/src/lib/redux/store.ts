@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { contentSlice } from './slices/Contetent/ContentSlice'
+import { articleSlice } from './slices/Article/ArticleSlice'
 
 export const store = configureStore({
     reducer: {
         content: contentSlice.reducer,
+        article: articleSlice.reducer,
     },
 })
 

@@ -10,7 +10,8 @@ export const ContentTypes = [
   { id: 'Quiz', value: 'Quiz' },
   { id: 'Poll', value: 'Poll' },
 ];
-
+export const ROW_SIZE = 20;
+export const SORT_ORDER = 'DESC';
 export const ContentGalleryTypes = [
   'ALL',
   'ServiceCard',

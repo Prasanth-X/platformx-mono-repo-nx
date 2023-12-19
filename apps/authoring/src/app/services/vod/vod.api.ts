@@ -14,7 +14,7 @@ import {
 import { ApiResponse } from '../utils/common.types';
 
 //FetchQueries
-export const fetchVodById = FETCH_VOD_BY_ID;
+export const FETCH_VOD_BY_ID = FETCH_VOD_BY_ID;
 export const fetchVodByList = FETCH_VOD_LIST_ALL;
 
 //MutateQueries

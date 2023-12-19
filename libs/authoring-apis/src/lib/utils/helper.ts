@@ -24,3 +24,16 @@ export const getSelectedSite = () => {
         return site;
     }
 };
+
+export const sortedData = (data: any[]) => {
+    return data?.sort(
+        (a, b) => b?.last_modification_date - a.last_modification_date
+    );
+};
+
+export const formatUrl = (enteredVal: string) => {
+    let tmp = enteredVal.toLowerCase();
+    tmp = tmp.replace(/\s/g, "-");
+    tmp = tmp.replace(/[^a-z0-9\- ]/gi, "");
+    return tmp;
+};

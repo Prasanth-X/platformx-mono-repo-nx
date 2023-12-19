@@ -26,6 +26,7 @@ const initialState: PageData = {
         SocialOgTwitterImage: '',
         SocialOgTwitterURL: '',
         SocialTwitterCardSize: 'summary_large_image',
+        content: '',
     }
 }
 export const pageSlice = createSlice({

@@ -1,4 +1,5 @@
 export type PageInfo = {
+    content: any
     prelemMetaArray: any[];
     pageSettings?: any;
     pageModel?: any;

@@ -3,7 +3,10 @@ import { format } from 'date-fns';
 import FallBackImage from '../assets/fallBackImage.png';
 import { LanguageList, countries } from './helperConstants';
 import ToastService from '../components/ToastContainer/ToastService';
-import { CONTENT_TYPE_WITH_ABSOLUTEURL, DefaultLocale } from './constants';
+import {
+  CONTENT_TYPE_WITH_ABSOLUTEURL,
+  DefaultLocale,
+} from '../constants/CommonConstants';
 import { Props } from './types';
 
 const errorRequest =
@@ -258,13 +261,23 @@ export const formCroppedUrl = (
   // else return `${gcpUrl}/${bucketName}/${url}.${ext}`;
 };
 
-export const relativeImageURL = (
-  gcpUrl: string,
-  bucketName: string,
-  url: string,
-  ext: string
-) => {
-  return url && ext ? `${gcpUrl}/${bucketName}/${url}.${ext}` : FallBackImage;
+// export const relativeImageURL = (
+//   gcpUrl: string,
+//   bucketName: string,
+//   url: string,
+//   ext: string
+// ) => {
+//   return url && ext ? `${gcpUrl}/${bucketName}/${url}.${ext}` : FallBackImage;
+// };
+
+export const relativeImageURL = (url: string) => {
+  const gcpUrl = process.env.REACT_APP_GCP_URL;
+  const bucketName = process.env.REACT_APP_BUCKET_NAME;
+  if (url?.includes('dam')) {
+    // this if condition will be removed after relative img for all content type
+    return url;
+  }
+  return url ? `${gcpUrl}/${bucketName}/${url}` : '';
 };
 
 export const getLandingPageURL = (
@@ -722,4 +735,13 @@ export const getCurrentPathName = () => {
     pathname = location.pathname;
   }
   return pathname;
+};
+
+export const trimString = (string: string, length: number) => {
+  if (string) {
+    const trimmedString =
+      string.length > length ? `${string.substring(0, length - 3)}...` : string;
+    return trimmedString;
+  }
+  return '';
 };

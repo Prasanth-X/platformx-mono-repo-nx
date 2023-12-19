@@ -21,7 +21,7 @@ import {
   showToastSuccess,
 } from '../../components/toastNotification/toastNotificationReactTostify';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
-import { fetchArticleModel } from '../../services/article/article.api';
+import { FETCH_ARTICLE_MODEL } from '../../services/article/article.api';
 import { fetchContentByPath } from '../../services/contentTypes/contentTypes.api';
 import {
   fetchSocialShareProfile,
@@ -81,7 +81,7 @@ function BadgedlibStepIcon(props: any) {
             disableTouchListener
             title={t(steps[icon - 1].description)}
           >
-            <IconButton onClick={handleTooltipOpen} size='small'>
+            <IconButton onClick={handleTooltipOpen} size="small">
               <Box
                 sx={{
                   backgroundColor: '#fff',
@@ -90,13 +90,13 @@ function BadgedlibStepIcon(props: any) {
                   height: '24px',
                 }}
               >
-                <InfoOutlinedIcon color='disabled' />
+                <InfoOutlinedIcon color="disabled" />
               </Box>
             </IconButton>
           </Tooltip>
         </ClickAwayListener>
       }
-      overlap='circular'
+      overlap="circular"
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'right',
@@ -141,7 +141,7 @@ const SocialShareSteps = ({
   const [runFetchSocialShare] = useLazyQuery(fetchSocialShareProfile);
   const [loading, setLoading] = React.useState(false);
   const [runFetchContentByPath] = useLazyQuery(fetchContentByPath);
-  const [runFetchArticleModel] = useLazyQuery(fetchArticleModel);
+  const [runFetchArticleModel] = useLazyQuery(FETCH_ARTICLE_MODEL);
   const [runFetchVodById] = useLazyQuery(fetchVodById);
   const [getSession] = useUserSession();
   const { userInfo } = getSession();
@@ -607,7 +607,7 @@ const SocialShareSteps = ({
                   right: { xs: '20px', md: '25px' },
                   marginTop: '5px',
                 }}
-                className='next-prev'
+                className="next-prev"
               >
                 {activeStep === 2 || activeStep === 3 ? (
                   <Button
@@ -635,11 +635,7 @@ const SocialShareSteps = ({
                   </Button>
                 ) : null}
                 {activeStep === 3 ? (
-                  <Button
-                    variant="primaryButton"
-                    disabled
-                    onClick={handleNext}
-                  >
+                  <Button variant="primaryButton" disabled onClick={handleNext}>
                     {activeStep === 3 ? t('done') : t('next')}
                   </Button>
                 ) : null}
@@ -653,7 +649,7 @@ const SocialShareSteps = ({
                   //marginBottom: "35px",
                   display: { xs: 'block', md: 'none' },
                 }}
-                className='socialsharestepsbtn'
+                className="socialsharestepsbtn"
               >
                 {activeStep === 2 || activeStep === 3 ? (
                   <Button
@@ -687,7 +683,7 @@ const SocialShareSteps = ({
                     variant="primaryButton"
                     disabled={activeStep === 3 ? true : false}
                     onClick={handleNext}
-                    className='socialsharedone'
+                    className="socialsharedone"
                   >
                     {activeStep === 2
                       ? t('done')

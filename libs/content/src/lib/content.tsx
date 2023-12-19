@@ -1,19 +1,17 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Fab } from '@mui/material';
-import { useContext } from 'react';
+import { CATEGORY_CONTENT, CONTENT_TYPES } from '@platformx/authoring-apis';
+import { previewArticle } from '@platformx/authoring-state';
+import { capitalizeFirstLetter, useAccess } from '@platformx/utilities';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { previewArticle } from '../../articles/Actions';
-import { useAccess } from '@platformx/utilities';
-import { Store } from '../../store/ContextStore';
-import { CATEGORY_CONTENT, CONTENT_TYPES } from '../../utils/constants';
-import { capitalizeFirstLetter } from '../../utils/helperFunctions';
-import QuizPollEventsList from './Listing/QuizPollEventsList';
+import ContListingContainer from './components/ContentListingContainer/ContentListingContainer';
 
 export default function Content() {
-  const { dispatch } = useContext(Store);
+  const dispatch = useDispatch();
+
   const { canAccessAction } = useAccess();
   const searchPageUrl = new URL(window.location.href);
-  const searchTerm = '';
   const contentType: string = capitalizeFirstLetter(
     searchPageUrl?.pathname?.split('/')?.[4]
   );
@@ -27,7 +25,7 @@ export default function Content() {
   return (
     <>
       <Box>
-        <QuizPollEventsList contentType={contentType} />
+        <ContListingContainer contentType={contentType} />
       </Box>
       <Box
         sx={{
@@ -38,7 +36,7 @@ export default function Content() {
         }}
       >
         <Box
-          className={
+          classes={
             !canAccessAction(CATEGORY_CONTENT, CONTENT_TYPES, 'Create') &&
             'disable'
           }

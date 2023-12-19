@@ -14,6 +14,7 @@ import { articleQueries } from '../../graphql/articleQueries';
 import { FETCH_TAG_LIST } from '../../graphql/common/tagsFetchQueries';
 import { ApiResponse } from '../utils/common.types';
 
+
 //FetchQueries
 export const fetchArticleModel = FETCH_ARTICLE_MODEL;
 export const fetchArticleList = FETCH_ARTICLE_LIST_ALL;
