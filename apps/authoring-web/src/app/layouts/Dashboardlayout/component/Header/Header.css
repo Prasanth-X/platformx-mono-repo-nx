@@ -1,0 +1,84 @@
+.topHeader {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #d9dbe9;
+  min-height: 62px;
+  justify-content: center;
+  padding: 0 15px;
+}
+.topHeader .menuIcon,
+.mobileHeader .menuIcon {
+  width: 24px;
+  cursor: pointer;
+  margin: 0px 15px 0 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+.topHeader .menuIcon img,
+.mobileHeader .menuIcon img {
+  width: 100%;
+}
+
+.mobileHeader .notificationIcon {
+  position: relative;
+  color: #14142b;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.notificationIcon .valuebox,
+.notificationIcon .valuebox {
+  width: 20px;
+  height: 20px;
+  background: #4b9ef9;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 12px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+}
+.topHeader .headerAvatarIcon {
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.d-flex {
+  display: flex;
+}
+.alignitemscenter {
+  align-items: center;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.topHeader .headerAvatarIcon img {
+  width: 100%;
+  object-fit: cover;
+}
+.mobileHeader {
+  background-color: #fff;
+  border-bottom: 1px solid #d9dbe9;
+  min-height: 56px;
+  justify-content: center;
+  padding: 0 15px;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}

@@ -1,0 +1,90 @@
+
+  {
+    "formSections": [
+      {
+        "sectionTitle": "Personal Details",
+        "fields": [
+          {
+            "fieldType": "text",
+            "fieldName": "firstName",
+            "label": "First Name",
+            "placeholder": "Enter your first name",
+            "validations": [
+              {
+                "type": "required",
+                "message": "First Name is required"
+              },
+              {
+                "type": "maxLength",
+                "value": 50,
+                "message": "First Name cannot exceed 50 characters"
+              }
+            ],
+            "variant": "string"
+          },
+          {
+            "fieldType": "text",
+            "fieldName": "lastName",
+            "label": "Last Name",
+            "placeholder": "Enter your last name",
+            "validations": [
+              {
+                "type": "required",
+                "message": "Last Name is required"
+              },
+              {
+                "type": "maxLength",
+                "value": 50,
+                "message": "Last Name cannot exceed 50 characters"
+              }
+            ],
+            "variant": "string"
+          },
+          {
+            "fieldType": "text",
+            "fieldName": "age",
+            "label": "Age",
+            "placeholder": "Enter your age",
+            "validations": [
+              {
+                "type": "required",
+                "message": "Age is required"
+              },
+              {
+                "type": "number",
+                "message": "Age must be a number"
+              }
+            ],
+            "variant": "number"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Contact Info",
+        "fields": [
+          {
+            "fieldType": "text",
+            "fieldName": "phoneNumber",
+            "label": "Phone Number",
+            "placeholder": "Enter your phone number",
+            "validations": [
+              {
+                "type": "maxLength",
+                "value": 15,
+                "message": "Phone Number cannot exceed 15 characters"
+              }
+            ],
+            "variant": "string"
+          },
+          {
+            "fieldType": "textarea",
+            "fieldName": "notes",
+            "label": "Notes",
+            "placeholder": "Enter any additional notes",
+            "validations": [],
+            "variant": "textarea"
+          }
+        ]
+      }
+    ]
+  }

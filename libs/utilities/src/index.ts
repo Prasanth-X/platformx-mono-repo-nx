@@ -23,6 +23,8 @@ import {
     NEW_LOGOUT_URL,
 } from "./lib/constants/AuthConstant"
 import AutoTextArea from "./lib/components/AutoTextArea/AutoTextArea";
+import LanguageDropDown from "./lib/components/LanguageDropDown/LanguageDropDown";
+import { MiniHeader } from "./lib/components/Header/MiniHeader";
 
 export { LightTheme }
 export { InterRegular }
@@ -32,6 +34,7 @@ export { PrelemTheme }
 export { ErrorTooltip }
 export { ContentListLoader }
 export { AutoCompleteMultiSelect }
+
 export * from './lib/themes/prelems/prelemTheme';
 export * from './lib/themes/authoring/lightTheme';
 export * from './lib/constants/CommonConstants';
@@ -48,10 +51,12 @@ export { usePlatformAnalytics }
 export { usePrelemImpression }
 export { useUserSession }
 export { useAccess }
+export { MiniHeader }
 export * from "./lib/hooks/useAccess/useMapPermissions"
 export * from "./lib/components/ToastNotification/ToastNotification"
 export { XLoader }
 export { TaskNotFound }
+export { LanguageDropDown }
 export { AUTH_INFO, AUTH_URL, LOGOUT_URL, REDIRECT_AUTH_URL, NEW_LOGOUT_URL }
 
 export * from "./lib/mappers/articleMapper"
