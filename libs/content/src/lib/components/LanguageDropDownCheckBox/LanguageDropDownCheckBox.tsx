@@ -7,7 +7,6 @@ import { Box, ListItemIcon, Select, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { LanguageList } from '@platformx/utilities';
 import { getCurrentLang } from '@platformx/utilities';
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -89,14 +88,15 @@ export default function LanguageDropDownCheckBox({ language, setLanguage }) {
                   marginRight: '10px',
                 }}
               >
-                <img
-                  src={require(`../assets/${l.id}_flag.png`)}
+                {/* <img // To DO Need to check
+                  alt=""
+                  src={require(`../../../assets/${l.id}_flag.png`)}
                   style={{
                     objectFit: 'cover',
                     width: '24px',
                     height: '24px',
                   }}
-                />
+                /> */}
               </Box>
               <Typography variant="h6regular">{l.value}</Typography>
             </Box>
