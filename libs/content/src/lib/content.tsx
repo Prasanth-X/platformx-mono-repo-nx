@@ -6,7 +6,6 @@ import { capitalizeFirstLetter, useAccess } from '@platformx/utilities';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ContListingContainer from './components/ContentListingContainer/ContentListingContainer';
-
 export default function Content() {
   const dispatch = useDispatch();
 

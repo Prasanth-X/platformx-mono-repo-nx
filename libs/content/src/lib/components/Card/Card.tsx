@@ -1,9 +1,4 @@
 import { Box, Grid, Tooltip, Typography } from '@mui/material';
-import { format } from 'date-fns';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import RedBlinkingDot from '../../../assets/RedBlinkingDot.gif';
 import {
   CATEGORY_CONTENT,
   CATEGORY_PAGE,
@@ -11,6 +6,11 @@ import {
   DASHBOARD_KEYS,
   useAccess,
 } from '@platformx/utilities';
+import { format } from 'date-fns';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import RedBlinkingDot from '../../../assets/RedBlinkingDot.gif';
 // import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
 // import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
 // import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
@@ -21,17 +21,16 @@ import {
 // } from '../../../pages/articles/deletePopup';
 // import { authInfo } from '@platformx/utilities';
 
-import { convertToLowerCase } from '@platformx/utilities';
+import { PlateformXDialog, convertToLowerCase } from '@platformx/utilities';
 import { iconsList, statusIcons } from '../../utils/Constants';
 import { CardProps } from '../../utils/List.types';
+import CardMenu from '../CardMenu/CardMenu';
 import CardOption from '../CardOption/CardOption';
 import CommunityOption from '../CommunityOption';
-import './List.css';
-import { PublishInformation } from '../PublishInformation/PublishInformation';
-import { PlateformXDialog } from '@platformx/utilities';
 import { CourseMenu } from '../CourseMenu/CourseMenu';
-import CardMenu from '../CardMenu/CardMenu';
+import { PublishInformation } from '../PublishInformation/PublishInformation';
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
+import './List.css';
 
 export const Card = ({
   dataList,
