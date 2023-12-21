@@ -3,9 +3,8 @@ import { Box, Grid } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {LanguageDropDown} from '@platformx/utilities';
-import PlatXLogo from '../../../../assets/svg/PlatX-logo.svg';
-import MenuIcon from '../../../../assets/svg/menu.svg';
+import {LanguageDropDown} from '@platformx/utilities'; 
+import {PlatXLogo, MenuIcon } from "@platformx/utilities"
 import '../SearchBox/SearchBox.css';
 import SearchModel from '../SearchBox/SearchModel';
 import './Header.css';
@@ -26,14 +25,14 @@ const MobileHeader = ({ handleSearchKeyword }) => {
         <Grid container>
           <Grid item xs={9} md={8} className='d-flex alignitemscenter'>
             <Box className='menuIcon'>
-              <img src={MenuIcon} alt='Menu Icon' />
+             <MenuIcon/>
             </Box>
             <Box
               className='logo'
               onClick={() => navigate('/dashboard')}
               sx={{ cursor: 'pointer', display: 'flex' }}
             >
-              <img src={PlatXLogo} alt='X Logo' />
+              <PlatXLogo/>
             </Box>
           </Grid>
           <Grid

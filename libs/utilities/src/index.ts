@@ -15,6 +15,8 @@ import XLoader from "./lib/components/XLoader/XLoader";
 import useAccess from "./lib/hooks/useAccess/useAccess";
 import NoSearchResult from "./lib/components/NoSearchResult/NoSearchResult";
 import AutoCompleteMultiSelect from "./lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect";
+import TextBox from "./lib/components/TextBox/TextBox";
+import DatePicker from "./lib/components/DatePicker/DatePicker";
 import {
     AUTH_INFO,
     LOGOUT_URL,
@@ -34,15 +36,20 @@ export { PrelemTheme }
 export { ErrorTooltip }
 export { ContentListLoader }
 export { AutoCompleteMultiSelect }
+export {TextBox}
+export {DatePicker}
 
+export * from "./lib/components"
 export * from './lib/themes/prelems/prelemTheme';
 export * from './lib/themes/authoring/lightTheme';
 export * from './lib/constants/CommonConstants';
 export * from './lib/utils/helperFns';
+export * from './lib/utils/helper';
 export * from './lib/components/Cards/CardSkeleton'
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from "./lib/utils/helperConstants"
 export * from "./lib/constants/CommonConstants"
+export * from "./lib/assets/svg"
 
 export { AutoTextArea }
 export { NoSearchResult }

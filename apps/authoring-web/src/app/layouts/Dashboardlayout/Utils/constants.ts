@@ -1,20 +1,23 @@
-import ApprovalStatus from "../../../assets/svg/ApprovalStatusIcon.svg";
-import EventsIcon from "../../../assets/svg/Event.svg";
-import HamburgerMenuIcon from "../../../assets/svg/HamburgerMenuIcon.svg";
-import PollIcon from "../../../assets/svg/PollIcon.svg";
-import PostIconMenu from "../../../assets/svg/PostsIconmenu.svg";
-import QuizIcon from "../../../assets/svg/QuizIcon.svg";
-import CourseIcon from "../../../assets/svg/ReadBook.svg";
-import SitesIcon from "../../../assets/svg/SitesIcon.svg";
-import UsersIcon from "../../../assets/svg/UsersIcons.svg";
-import VideoIcon from "../../../assets/svg/VODIcon.svg";
-import ArticleIcon from "../../../assets/svg/articleIcon.svg";
-import CookieIcon from "../../../assets/svg/cookieIcon.svg";
-import FooterMenuUpdated from "../../../assets/svg/footermenuupdated.svg";
-import HeaderMenuUpdated from "../../../assets/svg/headermenuupdated.svg";
-import MediaIcon from "../../../assets/svg/mediaIcon.svg";
-import MyDashboardIcon from "../../../assets/svg/myDashboardIcon.svg";
-import PagesIcon from "../../../assets/svg/pagesIcon.svg";
+import {
+  ApprovalStatus,
+  EventsIcon,
+  HamburgerMenuIcon,
+  PollIcon,
+  PostIconMenu,
+  QuizIcon,
+  CourseIcon,
+  SitesIcon,
+  UsersIcon,
+  VideoIcon,
+  ArticleIcon,
+  CookieIcon,
+  FooterMenuUpdated,
+  HeaderMenuUpdated,
+  MediaIcon,
+  MyDashboardIcon,
+  PagesIcon,
+} from '@platformx/utilities';
+
 
 export const MenuData = [
   {
@@ -32,27 +35,7 @@ export const MenuData = [
         subCategory: "",
       },
     ],
-  },
-  // not moving this changes to staging
-
-  // {
-  //   url: '/task-listing',
-  //   Title: 'tasklisting',
-  //   id: 'tasklisting',
-  //   // roles: ['author'],
-  //   category: 'tasklisting',
-  //   subCategory: '',
-  //   Menu: [
-  //     {
-  //       MenuName: 'Task Listing',
-  //       Icon: task,
-  //       url: '/task-listing',
-  //       id: 'Task Listing',
-  //       category: 'tasklisting',
-  //       subCategory: '',
-  //     },
-  //   ],
-  // },
+  }, 
   {
     Title: "pages",
     id: "page",

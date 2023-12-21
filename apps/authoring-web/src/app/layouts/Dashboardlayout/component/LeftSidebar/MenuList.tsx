@@ -2,8 +2,8 @@ import { Box } from '@mui/material';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
-import ArticleIcon from '../../../../assets/svg/articleIcon.svg';
-import { MenuData } from '../../Utils/constants';
+import {ArticleIcon} from '@platformx/utilities';
+import { MenuData } from '../../utils/constants';
 import MenuItems from './MenuItems';
 import { ShowToastError, useUserSession } from '@platformx/utilities';
 import { contentTypeSchemaApi } from '@platformx/authoring-apis';

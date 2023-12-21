@@ -4,11 +4,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { SORT_ORDER } from '../../../../../Common/Listing/Utils/Constants';
-import { getContentListItems } from '../../../../../Common/Listing/Utils/Helper';
-import { debounce } from '../../../../../utils/helperFunctions';
-import { iconMap } from '../../../Utils/constant';
+import { useTranslation } from 'react-i18next';   
+import { iconMap } from '../../../utils/constant';  
+import { SORT_ORDER, debounce } from '@platformx/utilities';
+import { contentTypeAPIs } from '@platformx/authoring-apis';
 
 const TextFieldBox = styled('div')({
   position: 'relative',
@@ -31,7 +30,7 @@ export default function AutoCompleteSearch({
   filters
 }) {
   const { t } = useTranslation();
-  const [autoCompleteData, setAutoCompleteData] = useState([]);
+  const [autoCompleteData, setAutoCompleteData] = useState<any>([]);
   const [keyword, setKeyword] = useState('');
   const renderGroup = (params: any) => {
     const { key, children, group } = params;
@@ -48,7 +47,7 @@ export default function AutoCompleteSearch({
   };
 
   const getSuggestions = async (keyword) => {
-    const response = await getContentListItems({
+    const response:any = await contentTypeAPIs.fetchContentAll({
       contentType: selectedCategory.category,
       pageFilter: 'ALL',
       sort: SORT_ORDER,
@@ -90,7 +89,7 @@ export default function AutoCompleteSearch({
         },
       }}
       options={autoCompleteData || []}
-      groupBy={(option) => option.ContentType || ''}
+      groupBy={(option:any) => option.ContentType || ''}
       getOptionLabel={(option) => option?.Title || ''}
       isOptionEqualToValue={(option, value) => option?.Title == value?.Title}
       onInputChange={async (event, newInputValue) => {
@@ -131,12 +130,13 @@ export default function AutoCompleteSearch({
         </TextFieldBox>
       )}
       renderGroup={renderGroup}
-      renderOption={(props, option) => {
+      renderOption={(props, option:any) => {
         return (
           <div>
             <li {...props}>
               <ListContainer>
-                <img src={iconMap[option.ContentType]} />
+                {/* <img src={iconMap[option.ContentType]} alt='' /> */}
+                {iconMap[option.ContentType]}
                 <Typography variant='h5regular' sx={{ marginLeft: '8px' }}>
                   {option.Title}
                 </Typography>

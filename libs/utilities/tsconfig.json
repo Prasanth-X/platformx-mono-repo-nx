@@ -8,6 +8,7 @@
     "skipDefaultLibCheck": true,
     "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
+    
     // "ignoreDeprecations": "5.0",
     // "outDir": "prelemsTest",
     // "module": "commonjs",
@@ -32,7 +33,7 @@
   },
   "files": [],
   "include": [
-    "src",
+    "src",  
     "additional.d.ts",
     "moduleType.d.ts",
     "fonts.d.ts"

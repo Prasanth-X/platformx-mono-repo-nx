@@ -8,6 +8,8 @@ import { ArticleMutations } from "./lib/graphQL/mutations/articleMutations";
 import fetchVodByIdAPI from "./lib/services/vod/vod.api"
 import contentTypeSchemaApi from "./lib/services/contentTypeSchema/contentTypeSchema.api";
 import { FETCH_VOD_BY_ID, FETCH_VOD_LIST_ALL } from "./lib/graphQL/queries/vodQueries";
+import graphqlInstance from "./lib/config/graphqlConfig"
+
 import { cancelSocialSharePost, fetchSocialShareList, fetchSocialShareProfile, rescheduleSocialShare, scheduleSocialShare } from "./lib/services/socialShare/socialShare.api";
 import authAPI from "./lib/services/auth/auth.api";
 import { multiSiteApi } from "./lib/services/multisite/multisite.api";
@@ -28,3 +30,4 @@ export { multiSiteApi }
 export { usePage }
 export { ArticleQueries }
 export { ArticleMutations }
+export {graphqlInstance} 

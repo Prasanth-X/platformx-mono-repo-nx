@@ -5,8 +5,8 @@ import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
-import { useTranslation } from 'react-i18next';
-import { categoryData } from '../../../Utils/constant';
+import { useTranslation } from 'react-i18next'; 
+import { categoryData } from '../../../utils/constant';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -43,7 +43,7 @@ export default function AllCatCta({ setCategory }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [selectedCategory, setSelectedCategory] = React.useState({
-    icon: categoryData[0].icon,
+    Icon: categoryData[0].icon,
     title: categoryData[0].title,
     category: categoryData[0].category,
     id: categoryData[0].id,
@@ -71,14 +71,16 @@ export default function AllCatCta({ setCategory }) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
+
         <Box className='allcatctabox'>
           <Box className='icon'>
-            <img src={selectedCategory.icon && selectedCategory.icon} />
+            {selectedCategory.Icon && <selectedCategory.Icon />}
           </Box>
           <Typography variant='h6regular'>
-            {selectedCategory.icon && t(selectedCategory.id)}
+            {typeof selectedCategory.Icon === 'function' && t(selectedCategory.id)}
           </Typography>
         </Box>
+
       </Button>
       <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {categoryData.map((val, index) => {
@@ -91,8 +93,8 @@ export default function AllCatCta({ setCategory }) {
               key={index}
             >
               <Box className='allcatctabox'>
-                <Box className='icon'>
-                  <img src={val.icon} />
+                <Box className='icon'> 
+                  <val.icon />
                 </Box>
                 <Typography variant='h6regular'>{t(val.id)}</Typography>
               </Box>

@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 // import PrelemSearchLoader from '../components/Skeleton-loader/prelem-search-loader';
 import { AUTH_INFO, AUTH_URL, useUserSession } from '@platformx/utilities';
-import PlatXLogoImage from '../assets/svg/PlatXWhite-logo.svg';
+// import {PlatXLogoImage} from '@platformx/utilities';
  
 // import ChangePassword from '../pages/changePassword';
 import { authAPI, getGlobalDataWithHeader, multiSiteApi } from '@platformx/authoring-apis';
@@ -21,9 +21,9 @@ import { createSession } from '../utils/helper';
 import { routes } from './routes';
 // import { multisiteApi } from '../services/MultisiteACL/multisite.api';
 // import { fetchGlobalSettingData, getGlobalDataWithHeader } from '../services/SiteSetting/SiteSetting.api';
-const PlatXLogo = (
-  <img src={PlatXLogoImage} alt = "" style={{ width: '24px', cursor: 'pointer' }} />
-);
+// const PlatXLogo = (
+//   <img src={PlatXLogoImage} alt = "" style={{ width: '24px', cursor: 'pointer' }} />
+// );
 const noLoaderArr = ['/prelem-search', '/content'];
 const skeltonLoaderArr = [
   '/prelem-search/',

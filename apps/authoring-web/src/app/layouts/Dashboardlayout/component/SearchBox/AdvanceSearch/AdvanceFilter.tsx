@@ -6,10 +6,10 @@ import FormGroup from '@mui/material/FormGroup';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
-import { useTranslation } from 'react-i18next';
-import DatePicker from '../../../../../components/Common/DatePicker';
-import TextBox from '../../../../../components/Common/TextBox';
-import { FiltersObj } from '../../../Utils/search.types';
+import { useTranslation } from 'react-i18next'; 
+import {TextBox} from '@platformx/utilities';
+import {DatePicker} from "@platformx/utilities"
+import { FiltersObj } from '../../../utils/search.types';
 import Tags from './Tags';
 
 const FilterContent = styled((props: MenuProps) => (
@@ -141,7 +141,7 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
                       fromDate: newValue?.toISOString(),
                     });
                   }}
-                  handleDateChangeRaw=''
+                  handleDateChangeRaw={()=>{ console.info("selected vaalue")}}
                   isDisabled={!toggleState}
                   disablePast={disablePast}
                 />
@@ -158,7 +158,7 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
                       toDate: newValue?.toISOString(),
                     });
                   }}
-                  handleDateChangeRaw=''
+                  handleDateChangeRaw={()=>{ console.info("selected vaalue")}}
                   isDisabled={!toggleState}
                   disablePast={disablePast}
                 />

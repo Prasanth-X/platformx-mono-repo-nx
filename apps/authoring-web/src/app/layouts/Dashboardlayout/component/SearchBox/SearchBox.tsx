@@ -3,10 +3,10 @@ import { Box, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router';
-import { removeSearchLocalStorage } from '../../Utils/Helper';
+import { useLocation, useNavigate } from 'react-router'; 
 import './SearchBox.css';
-import SearchModel from './SearchModel';
+import SearchModel from './SearchModel'; 
+import { removeSearchLocalStorage } from '../../utils/helper';
 
 export default function SearchBox(props) {
   const { t } = useTranslation();

@@ -11,6 +11,7 @@
     },
     "build": {
       "executor": "@nx/vite:build",
+      "cache": true,
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {

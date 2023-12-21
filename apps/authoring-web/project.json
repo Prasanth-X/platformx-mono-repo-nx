@@ -6,6 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
+      "cache": true,
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
@@ -17,7 +18,13 @@
         "tsConfig": "apps/authoring-web/tsconfig.app.json",
         "assets": [
           "apps/authoring-web/src/favicon.ico",
-          "apps/authoring-web/src/assets"
+          "apps/authoring-web/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/utilities/src/lib/assets",
+            "output": "/assets/shared"
+          }
+        
         ],
         "styles": [],
         "scripts": [],
@@ -51,7 +58,9 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "authoring-web:build",
-        "hmr": true
+        "hmr": true,
+        "port": 3000
+        
       },
       "configurations": {
         "development": {

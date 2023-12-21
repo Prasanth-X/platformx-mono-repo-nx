@@ -1,13 +1,15 @@
-import AllIcon from '../../../assets/svg/allIcon.svg';
-import ArticleIcon from '../../../assets/svg/articleIcon.svg';
-import EventsIcon from '../../../assets/svg/EventsIcon.svg';
-import MyDashboardIcon from '../../../assets/svg/myDashboardIcon.svg';
-import PagesIcon from '../../../assets/svg/pagesIcon.svg';
-import PollIcon from '../../../assets/svg/PollIcon.svg';
-import PostsIcon from '../../../assets/svg/PostsIcon.svg';
-import QuizIcon from '../../../assets/svg/QuizIcon.svg';
-import UsersIcon from '../../../assets/svg/UserIcon.svg';
-import VODIcon from '../../../assets/svg/VODIcon.svg';
+import {
+  AllIcon,
+  ArticleIcon,
+  EventsIcon,
+  MyDashboardIcon,
+  PagesIcon,
+  PollIcon,
+  PostsIcon,
+  QuizIcon,
+  UsersIcon,
+  VODIcon,
+} from '@platformx/utilities';
 
 export const contentPaths = [
   {

@@ -10,6 +10,9 @@ import {
 import React from 'react';
 import { useLanguageDropDownStyle } from './LanguageDropDown.style';
 import { useNavigate } from 'react-router-dom';
+import English from "../../assets/images/en_flag.png"
+import German from "../../assets/images/de_flag.png"
+import French from "../../assets/images/fr_flag.png"
 import {
   getCurrentLang,
   getCurrentPathName,
@@ -21,6 +24,7 @@ const LanguageDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const classes = useLanguageDropDownStyle();
+  const language =getCurrentLang()
   const navigate = useNavigate();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -30,16 +34,16 @@ const LanguageDropDown = () => {
     setAnchorEl(null);
   };
 
-  const handleLanguageChange = (val) => {
+  const handleLanguageChange = (val:any) => {
     handleClose();
     const selectedSite = getSelectedSite();
     if (val !== getCurrentLang()) {
-      const newPath = `${
-        location.origin
-      }/${selectedSite}/${val}${getCurrentPathName()}`;
-      location.replace(
-        `${location.origin}/${selectedSite}/${val}${getCurrentPathName()}`
-      );
+      // const newPath = `${
+      //   location.origin
+      // }/${selectedSite}/${val}${getCurrentPathName()}`;
+      // location.replace(
+      //   `${location.origin}/${selectedSite}/${val}${getCurrentPathName()}`
+      // );
     }
   };
 
@@ -47,7 +51,15 @@ const LanguageDropDown = () => {
     <>
       <Box className={classes.languageDropdownmenuWrapper}>
         <img
-          src={require(`../assets/${getCurrentLang()}_flag.png`)}
+       src={
+        language === 'en'
+          ? English
+          : language === 'de'
+          ? German
+          : language === 'fr'
+          ? French
+          : English  
+      }
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           className={classes.languageDropdownmenuImg}
@@ -74,8 +86,17 @@ const LanguageDropDown = () => {
                   <Box className={classes.dropdownmenuItemImgWrap1}>
                     <img
                       className={classes.dropdownmenuItemImg}
-                      src={require(`../assets/${l.id}_flag.png`)}
+                      src={
+                        language === 'en'
+                          ? English
+                          : language === 'de'
+                          ? German
+                          : language === 'fr'
+                          ? French
+                          : English  
+                      }
                     />
+                    
                   </Box>
                   <Typography variant="h6regular">{l.value}</Typography>
                 </Box>

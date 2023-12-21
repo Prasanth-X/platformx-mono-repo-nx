@@ -1,12 +1,11 @@
 import { Box } from '@mui/material';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { categoryData, contentPaths } from '../../../Utils/constant';
-import { FiltersObj } from '../../../Utils/search.types';
+import { categoryData, contentPaths } from '../../../utils/constant';
+import { FiltersObj } from '../../../utils/search.types';
 import AdvanceFilter from './AdvanceFilter';
 import AllCatCta from './AllCatCta';
-import AutoCompleteSearch from './AutoCompleteSearch';
-import { Store } from '../../../../../store/ContextStore';
+import AutoCompleteSearch from './AutoCompleteSearch'; 
 
 export default function AdvanceSearchBar({handleClose}) {
   const [selectedCategory, setSelectedCategory] = useState({
@@ -18,7 +17,7 @@ export default function AdvanceSearchBar({handleClose}) {
   const [filtersObj, setFiltersObj] = useState<FiltersObj>({});
   const [searchKeyword, setSearchKeyword] = useState('');
   const navigate = useNavigate();
-  const { dispatch } = useContext(Store);
+  // const { dispatch } = useContext(Store); TO DO 
   const setCategory = (category) => {
     setSelectedCategory(category);
   };
@@ -52,25 +51,34 @@ export default function AdvanceSearchBar({handleClose}) {
     }-${newDate.getDate() < 10 ? `0${newDate.getDate()}` : newDate.getDate()}`;
   };
   const handleSearch = (filters) => {
-    dispatch({ type: 'CLEAR_CONTENT' });
+    // dispatch({ type: 'CLEAR_CONTENT' }); // TODO
+  
     const path = contentPaths.find(
       (o) => o.ContentType === selectedCategory.category
     );
-    localStorage.setItem('contentType', selectedCategory.title);
-    localStorage.setItem('searchKeyword', searchKeyword);
-    localStorage.setItem('searchTags', filters.tags);
-    localStorage.setItem('author', filters.author);
-    navigate(path.Url, {
-      state: {
-        searchTerm: searchKeyword,
-        tags: filters.tags,
-        author: filters.author,
-        fromDate: filters.fromDate && getDateFormat(filters.fromDate),
-        toDate: filters.toDate && getDateFormat(filters.toDate),
-      },
-    });
+  
+    if (path) {
+      localStorage.setItem('contentType', selectedCategory.title);
+      localStorage.setItem('searchKeyword', searchKeyword);
+      localStorage.setItem('searchTags', filters.tags);
+      localStorage.setItem('author', filters.author);
+      navigate(path.Url, {
+        state: {
+          searchTerm: searchKeyword,
+          tags: filters.tags,
+          author: filters.author,
+          fromDate: filters.fromDate && getDateFormat(filters.fromDate),
+          toDate: filters.toDate && getDateFormat(filters.toDate),
+        },
+      });
+    } else {
+      // Handle the case where 'path' is undefined
+      console.error("Path is undefined");
+    }
+  
     handleClose();
   };
+  
 
   return (
     <Box className='advSearch' component='form'>

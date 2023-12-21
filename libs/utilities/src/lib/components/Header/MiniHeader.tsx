@@ -9,7 +9,7 @@ import Profile from '../../assets/images/avatar.png';
 // import { logoutUrl } from '../../utils/authConstants';
 // import { ToastContainer } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
-import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
+import usePlatformAnalytics from '../../hooks/usePlatformAnalytics/usePlatformAnalytics';
 import { useTranslation } from 'react-i18next';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 // import { callSaveandResetWarning } from '../../store/Actions';
@@ -96,7 +96,7 @@ export const MiniHeader = ({ showUserDetails = true }: Users) => {
     }
   };
   const [handleImpression] = usePlatformAnalytics();
-  const callFnsCase = (triggerCaseSent) => {
+  const callFnsCase = (triggerCaseSent:any) => {
     setHasSaveWarning(false);
     switch (triggerCaseSent) {
       case 'CHANGE_PWD':

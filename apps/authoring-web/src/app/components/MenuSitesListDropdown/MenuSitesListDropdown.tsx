@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import useSitesMenuStyle from './SitesMenu.style';
+import React, { useState } from 'react'; 
+
 import { Box } from '@mui/system';
-import { Avatar, Typography } from '@mui/material';
-import SiteDialog from './SitesPopup';
-import { getFirstTwoletters } from '../../utils/helperFunctions';
+import { Avatar, Typography } from '@mui/material'; 
+import { getFirstTwoletters } from '@platformx/utilities';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import SitesPopup from '../SitesPopup/SitesPopup';
+import useSitesMenuStyle from './SitesMenu.style';
 
 const MenuSitesListDropdown = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +25,7 @@ const MenuSitesListDropdown = () => {
         <Box className={classes.dropNewTypo}>
           <Avatar className={classes.UserAvatar}>
             <Typography variant="h7regular">
-              {getFirstTwoletters(selectedSite)}
+              {getFirstTwoletters(selectedSite||"")}
             </Typography>
           </Avatar>
           <Typography
@@ -37,7 +38,7 @@ const MenuSitesListDropdown = () => {
         <KeyboardArrowRightIcon sx={{ color: '#6E7191' }} />
       </Box>
       {isVisible && (
-        <SiteDialog isVisible={isVisible} setIsVisible={setIsVisible} />
+        <SitesPopup isVisible={isVisible} setIsVisible={setIsVisible} />
       )}
     </Box>
   );

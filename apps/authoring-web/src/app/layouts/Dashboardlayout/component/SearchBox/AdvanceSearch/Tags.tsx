@@ -17,7 +17,7 @@ export default function Tags({ handleTags }) {
     }
   };
   return (
-    <>
+    
       <Autocomplete
         sx={{
           '& .Platform-x-Chip-root': {
@@ -58,7 +58,7 @@ export default function Tags({ handleTags }) {
         freeSolo
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
-            <Chip key={index} label={option} {...getTagProps({ index })} />
+            <Chip   label={option} {...getTagProps({ index })} />
           ))
         }
         renderInput={(params) => (
@@ -69,6 +69,6 @@ export default function Tags({ handleTags }) {
           />
         )}
       />
-    </>
+     
   );
 }

@@ -3,10 +3,8 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
-import { LanguageDropDown, getSelectedSite } from '@platformx/utilities';
-import BackButton from '../../../../assets/svg/backbutton.svg';
-import MenuIcon from '../../../../assets/svg/menu.svg';
-import { DrawerWidth } from '../../Utils/constant';
+import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon} from '@platformx/utilities';  
+import { DrawerWidth } from '../../utils/constant';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
 import { MiniHeader } from '@platformx/utilities';
@@ -88,14 +86,14 @@ const Header = ({
         <Grid item xs={10} className={classes.searchContainer}>
           {!hasSearch && !(pageUrl.pathname.split('/')[3] === 'navtree') && (
             <Box className="menuIcon" onClick={handleDrawerOpen}>
-              <img src={MenuIcon} alt="Menu Icon" />
+              <MenuIcon />
             </Box>
           )}
 
           {hasSearch && (
             <>
               <Box className="menuIcon" onClick={handleDrawerOpen}>
-                <img src={MenuIcon} alt="Menu Icon" />
+                <MenuIcon />
               </Box>
               {!isSiteSystem && (
                 <SearchBox ifTab={ifTab} menuItemSelected={menuItemSelected} />
@@ -113,7 +111,7 @@ const Header = ({
                   cursor: 'pointer',
                 }}
               >
-                <img src={BackButton} alt="Menu Icon" />{' '}
+                <BackButton/>{' '}
               </Box>
               <Box
                 sx={{ display: 'flex', alignItems: 'center', padding: '10px' }}

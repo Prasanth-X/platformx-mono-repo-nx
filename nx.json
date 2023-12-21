@@ -93,8 +93,15 @@
   "tasksRunnerOptions": {
     "default": {
       "options": {
-        "cacheableOperations": ["build-storybook"]
+        "cacheableOperations": ["build-storybook"],
+        "parallel": 8
       }
     }
+  },
+  "cache": {
+    "enabled": true,
+    "maxMemory": 8192,
+    "maxAge": 3600000
   }
+
 }

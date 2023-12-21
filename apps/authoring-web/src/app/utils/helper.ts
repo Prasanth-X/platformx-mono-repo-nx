@@ -48,3 +48,6 @@ export const defaultFalBackImage = () => {
   const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
   return `${gcpUrl}/${BucketName}/${defaultImage}`;
 };
+
+
+ 

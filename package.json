@@ -7,6 +7,7 @@
   "dependencies": {
     "@analytics/google-analytics": "^0.5.3",
     "@analytics/google-tag-manager": "^0.5.2",
+    "@analytics/snowplow": "^0.3.3",
     "@apollo/client": "3.5.10",
     "@draft-js-plugins/anchor": "^4.2.0",
     "@draft-js-plugins/buttons": "^4.3.2",
@@ -98,6 +99,7 @@
     "react-router-dom": "6.11.2",
     "react-simple-keyboard": "^3.4.242",
     "react-slick": "^0.29.0",
+    "react-svg": "^16.1.32",
     "react-swipeable-views": "^0.14.0",
     "react-swipeable-views-utils": "^0.14.0",
     "react-toastify": "^8.2.0",
