@@ -7,9 +7,9 @@ import { makeStyles } from '@mui/styles';
 
 import { Suspense, useEffect, useState } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';  
+import 'react-toastify/dist/ReactToastify.css';
 // import './App.css';
 // import { client } from './apolloClient/client';
 // import { CommentProvider } from './context/CommentsContext/CommentsContext';
@@ -25,14 +25,17 @@ import {
   getCurrentLang,
   getSelectedRoute,
   getSelectedSite,
+  useUserSession,
 } from '@platformx/utilities';
 import { AnalyticsProvider } from 'use-analytics';
 import Analytics from './utils/analytics/analyticsData';
-import {graphqlInstance} from "@platformx/authoring-apis"
+import { graphqlInstance } from "@platformx/authoring-apis"
 import { Provider } from 'react-redux'
-import {store} from "@platformx/authoring-state"
+import { store } from "@platformx/authoring-state"
 import { analyticsInstance } from './utils/analytics/dynamicAnalytics';
-import RootRouter from './router/AppRouter'; 
+import RootRouter from './router/AppRouter';
+import ReactRouterConfig from './router/XRouter';
+import { ProtectedRoute } from './router/ProtectedRoute';
 
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace('Mui', 'Platform-x-')
@@ -40,16 +43,16 @@ unstable_ClassNameGenerator.configure((componentName) =>
 
 initApm({
   // This will disable APM
-  active: process.env?.REACT_APP_APM_TRACING === 'true' || false,
+  active: process.env?.NX_APM_TRACING === 'true' || false,
   // Set required service name
   serviceName: 'platormx-authoring-ui-service',
   // Set custom APM Server URL
-  serverUrl: process.env.REACT_APP_APM_SERVER_URL,
+  serverUrl: process.env.NX_APM_SERVER_URL,
   //The environment where the service being monitored is deployed (e.g. "production", "development")
-  environment: process.env.REACT_APP_APM_ENVIRONMENT,
+  environment: process.env.NX_APM_ENVIRONMENT,
   distributedTracing: true,
   distributedTracingOrigins: (
-    process.env?.REACT_APP_APM_TRACING_ORIGINS || ''
+    process.env?.NX_APM_TRACING_ORIGINS || ''
   ).split(','),
   logLevel: 'debug',
 });
@@ -71,7 +74,14 @@ function App() {
   const [language, setLanguage] = useState(DefaultLocale);
 
   const classes = useStyles();
-
+  const [getSession, updateSession] = useUserSession();
+  const emptyUserSession: any = {
+    userInfo: null,
+    role: '',
+    permissions: [],
+    isActive: false,
+  };
+  updateSession(emptyUserSession)
   const [instances, setInstances] = useState<any>({});
   const selectedSite = getSelectedSite();
   const routing = getSelectedRoute();
@@ -84,7 +94,7 @@ function App() {
     ) {
       /*` Home page will removed. Going forward Keycloak Login Page act as a landing page for X*/
       window.location.replace(authUrl);
-      // window.location.replace(`${process.env.REACT_APP_REDIRECT_URI}`);
+      // window.location.replace(`${process.env.NX_REDIRECT_URI}`);
     }
     (async () => {
       const res = await analyticsInstance(Analytics);
@@ -104,18 +114,8 @@ function App() {
             <AnalyticsProvider instance={instances}>
               <ThemeProvider theme={LightTheme}>
                 <CssBaseline />
-                <Provider store={store}>
-                  <BrowserRouter
-                    basename={
-                      routing ? `/${routing}/${language}` : `/${language}`
-                    }
-                  >
-                    {/* <ActionProvider> */}
-                      {/* <CommentProvider> */}
-                        <RootRouter />
-                      {/* </CommentProvider> */}
-                    {/* </ActionProvider> */}
-                  </BrowserRouter>
+                <Provider store={store}> 
+                  <RootRouter /> 
                 </Provider>
               </ThemeProvider>
             </AnalyticsProvider>

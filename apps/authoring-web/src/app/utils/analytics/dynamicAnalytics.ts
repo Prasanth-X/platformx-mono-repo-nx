@@ -72,10 +72,10 @@ export const analyticsInstance = async (data: IAnalytics) => {
     debug: true,
     plugins: [
       googleAnalytics({
-        measurementIds: [process.env?.REACT_APP_GA_ID],
+        measurementIds: [process.env?.NX_GA_ID],
       }),
       googleTagManager({
-        containerId: process.env?.REACT_APP_GTM_ID,
+        containerId: process.env?.NX_GTM_ID,
       }),
       // Minimal recommended configuration
       snowplowPlugin({

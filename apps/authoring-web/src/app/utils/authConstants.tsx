@@ -1,17 +1,17 @@
 export const authInfo = {
-  clientId: process.env.REACT_APP_CLIENT_ID,
-  realm: process.env.REACT_APP_REALM,
-  grantType: process.env.REACT_APP_GRANT_TYPE,
-  redirectUri: process.env.REACT_APP_REDIRECT_URI,
-  publishUri: process.env.REACT_APP_PUBLISH_URI,
-  dspaceUri: process.env.REACT_APP_DSPACE_URI,
-  dspaceImagesUuid: localStorage.getItem('imageUuid') || process.env.REACT_APP_DSPACE_IMAGES_UUID,
-  dspaceVideosUuid: localStorage.getItem('videoUuid') || process.env.REACT_APP_DSPACE_VIDEOS_UUID,
-  gcpUri: process.env.REACT_APP_GCP_URL,
-  gcpBucketName: process.env.REACT_APP_BUCKET_NAME,
+  clientId: process.env.NX_CLIENT_ID,
+  realm: process.env.NX_REALM,
+  grantType: process.env.NX_GRANT_TYPE,
+  redirectUri: process.env.NX_REDIRECT_URI,
+  publishUri: process.env.NX_PUBLISH_URI,
+  dspaceUri: process.env.NX_DSPACE_URI,
+  dspaceImagesUuid: localStorage.getItem('imageUuid') || process.env.NX_DSPACE_IMAGES_UUID,
+  dspaceVideosUuid: localStorage.getItem('videoUuid') || process.env.NX_DSPACE_VIDEOS_UUID,
+  gcpUri: process.env.NX_GCP_URL,
+  gcpBucketName: process.env.NX_BUCKET_NAME,
 };
 
-export const logoutUrl = `${process.env.REACT_APP_API_URI}auth/logout?redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&client_id=${process.env.REACT_APP_CLIENT_ID}&tenant_id=${process.env.REACT_APP_REALM}`;
-export const authUrl = `${process.env.REACT_APP_KEYCLOAK_URI}/auth/realms/${process.env.REACT_APP_REALM}/protocol/openid-connect/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
-export const REDIRECT_AUTH_URL = `${process.env.REACT_APP_KEYCLOAK_URI}/auth/realms/${process.env.REACT_APP_REALM}/protocol/openid-connect/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&prompt=login&response_type=code&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
-export const NEW_LOGOUT_URL = `${process.env.REACT_APP_KEYCLOAK_URI}/auth/realms/${process.env.REACT_APP_REALM}/protocol/openid-connect/logout?redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
+export const logoutUrl = `${process.env.NX_API_URI}auth/logout?redirect_uri=${process.env.NX_REDIRECT_URI}&client_id=${process.env.NX_CLIENT_ID}&tenant_id=${process.env.NX_REALM}`;
+export const authUrl = `${process.env.NX_KEYCLOAK_URI}/auth/realms/${process.env.NX_REALM}/protocol/openid-connect/auth?client_id=${process.env.NX_CLIENT_ID}&response_type=code&redirect_uri=${process.env.NX_REDIRECT_URI}`;
+export const REDIRECT_AUTH_URL = `${process.env.NX_KEYCLOAK_URI}/auth/realms/${process.env.NX_REALM}/protocol/openid-connect/auth?client_id=${process.env.NX_CLIENT_ID}&prompt=login&response_type=code&redirect_uri=${process.env.NX_REDIRECT_URI}`;
+export const NEW_LOGOUT_URL = `${process.env.NX_KEYCLOAK_URI}/auth/realms/${process.env.NX_REALM}/protocol/openid-connect/logout?redirect_uri=${process.env.NX_REDIRECT_URI}`;

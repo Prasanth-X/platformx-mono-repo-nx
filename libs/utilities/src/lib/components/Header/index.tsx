@@ -126,7 +126,7 @@ export const Header = (props) => {
         ? navigate('/dashboard')
         : window.location.replace(
             `${
-              process.env.REACT_APP_BASE_URL
+              process.env.NX_BASE_URL
             }/${getSelectedSite()}/en/dashboard`
           );
     } else {

@@ -4,7 +4,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 
 export const routes: RouteConfig[] = [
     {
-        path: "/dashboard",
+        path: "/",
         element:  <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" >   Dashboard </ProtectedRoute>,
         
       },

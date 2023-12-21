@@ -11,7 +11,7 @@ const handleLogout = () => {
 const authAPI = {
   verifySession: async (url: string) => {
     try {
-      const res = await axios.get(process.env.REACT_APP_API_URI + url, {
+      const res = await axios.get(process.env.NX_API_URI + url, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -30,7 +30,7 @@ const authAPI = {
   signIn: async (url: string, payload = {}) => {
     try {
       const res = await axios.post(
-        process.env.REACT_APP_API_URI + url,
+        process.env.NX_API_URI + url,
         payload,
         {
           headers: {

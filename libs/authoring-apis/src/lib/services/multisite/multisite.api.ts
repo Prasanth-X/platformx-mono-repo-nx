@@ -10,7 +10,7 @@ export const multiSiteApi = {
     sitename: string
   ): Promise<AxiosResponse<any>> => {
     try {
-      const res = await axios.get(process.env.REACT_APP_API_URI + `auth/get-site-permissions/${sitename}`, {
+      const res = await axios.get(process.env.NX_API_URI + `auth/get-site-permissions/${sitename}`, {
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',

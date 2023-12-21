@@ -110,11 +110,11 @@ function RootRouter() {
         response.data.preferred_sites_languages?.[selected_site] || 'en';
       if (selected_site?.toLowerCase() === 'system') {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${defaultLang}/sites/site-listing`
+          `${process.env.NX_BASE_URL}/${selected_site}/${defaultLang}/sites/site-listing`
         );
       } else {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${defaultLang}/dashboard`
+          `${process.env.NX_BASE_URL}/${selected_site}/${defaultLang}/dashboard`
         );
       }
     } else {
@@ -148,11 +148,11 @@ function RootRouter() {
       //navigate('/dashboard');
       if (selected_site?.toLowerCase() === 'system') {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${lang}/sites/site-listing`
+          `${process.env.NX_BASE_URL}/${selected_site}/${lang}/sites/site-listing`
         );
       } else {
         window.location.replace(
-          `${process.env.REACT_APP_BASE_URL}/${selected_site}/${lang}/dashboard`
+          `${process.env.NX_BASE_URL}/${selected_site}/${lang}/dashboard`
         );
       }
     }

@@ -154,9 +154,9 @@ export const CARD_MENUS = {
   },
 };
 
-const gcpUrl = process.env.REACT_APP_GCP_URL;
-const BucketName = process.env.REACT_APP_BUCKET_NAME;
-const defaultImage = process.env.REACT_APP_DEFAULT_IMAGE;
+const gcpUrl = process.env.NX_GCP_URL;
+const BucketName = process.env.NX_BUCKET_NAME;
+const defaultImage = process.env.NX_DEFAULT_IMAGE;
 
 export const DEFAULT_EMBED_IMAGE = `${gcpUrl}/${BucketName}/${defaultImage}`;
 export const DEFAULT_SOCIAL_IMAGE = `${gcpUrl}/${BucketName}/${defaultImage}`;
