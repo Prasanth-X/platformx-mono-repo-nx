@@ -23,6 +23,7 @@
       "@platformx/prelems-library": ["libs/prelems-library/src/index.ts"],
       "@platformx/site-page": ["libs/site-page/src/index.ts"],
       "@platformx/theme-library": ["libs/theme-library/src/index.ts"],
+      "@platformx/user-management": ["libs/user-management/src/index.ts"],
       "@platformx/utilities": ["libs/utilities/src/index.ts"]
     }
   },
