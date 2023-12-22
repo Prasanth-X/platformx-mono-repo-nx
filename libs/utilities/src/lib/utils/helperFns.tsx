@@ -117,7 +117,7 @@ export const putRestApiCall = (
 
 // export const getRequest = async (url: any) => {
 //   try {
-//     const res = await axios.get(process.env.REACT_APP_API_URI + url, {
+//     const res = await axios.get(process.env.NX_API_URI + url, {
 //       headers: {
 //         "Content-Type": "application/json",
 //         "Access-Control-Allow-Origin": "*",
@@ -271,8 +271,8 @@ export const formCroppedUrl = (
 // };
 
 export const relativeImageURL = (url: string) => {
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const bucketName = process.env.REACT_APP_BUCKET_NAME;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const bucketName = process.env.NX_BUCKET_NAME;
   if (url?.includes('dam')) {
     // this if condition will be removed after relative img for all content type
     return url;

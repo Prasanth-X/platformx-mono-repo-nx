@@ -1,46 +1,41 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { getCurrentLang, getSelectedSite } from '../utils/helper';
+import { getCurrentLang, getLocale, getSelectedSite } from '../utils/helper'; 
+import {i18next} from '@platformx/utilities';
 
-const getUri = () => {
-  const link = createHttpLink({
-    uri: process.env.REACT_APP_GRAPHQL_URI,
-    headers: {
-      language: 'en',
-      sitename: getSelectedSite()
-    },
-    credentials: 'include',
-  });
-  const languageHeader = setContext((_, { headers }) => {
-    return {
-      headers: {
-        ...headers,
-        language: getCurrentLang(),
-      },
-    };
-  });
-  return languageHeader.concat(link);
-};
-
-const graphqlConfig: any = {
-  uri: getUri(),
-  cache: new InMemoryCache(),
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'ignore',
-    },
-    query: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'all',
-    },
-    mutate: {
-      errorPolicy: 'all',
-    },
+const defaultOptions: any = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all',
   },
 };
-const graphqlInstance = new ApolloClient({
-  link: getUri(),
-  cache: new InMemoryCache(),
+const link = createHttpLink({
+  uri: process.env.NX_GRAPHQL_URI,
+  headers: {
+    language: 'en',
+    sitename: getSelectedSite()
+  },
+  credentials: 'include',
 });
-export default graphqlInstance;
+const updateLanguageheader = setContext((_, { headers }) => {
+  const language =
+    headers && headers.language ? headers.language : i18next.language;
+  return {
+    headers: {
+      ...headers,
+      language,
+      Locale: getLocale(language, language),
+    },
+  };
+});
+
+const graphqlInstance = new ApolloClient({
+  link: updateLanguageheader.concat(link),
+  cache: new InMemoryCache(),
+  defaultOptions: defaultOptions,
+});
+export default graphqlInstance; 

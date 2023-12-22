@@ -25,6 +25,13 @@ export const getSelectedSite = () => {
     }
 };
 
+
+export const getLocale = (language: string, location: string) => {
+    if (language === "en") return `${language}`;
+    return `${language}_${location}`;
+  };
+
+  
 export const sortedData = (data: any[]) => {
     return data?.sort(
         (a, b) => b?.last_modification_date - a.last_modification_date

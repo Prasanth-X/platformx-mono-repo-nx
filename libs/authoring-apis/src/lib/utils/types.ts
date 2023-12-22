@@ -4,7 +4,7 @@ export type ApiResponse<T> = {
     loading: boolean;
 };
 
-export type ApiError = { type: string; message: string; code: number };
+export type ApiError = { message: string; status: number };
 
 export type ApiConfig = {
     baseURL: string;

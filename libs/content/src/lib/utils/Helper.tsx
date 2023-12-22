@@ -1,8 +1,8 @@
 import { ContentType } from '../enums/ContentType';
 import { DEFAULT_EMBED_IMAGE, DEFAULT_SOCIAL_IMAGE } from './Constants';
 export const relativeImageURL = (url) => {
-  const gcpUrl = process.env.REACT_APP_GCP_URL;
-  const bucketName = process.env.REACT_APP_BUCKET_NAME;
+  const gcpUrl = process.env.NX_GCP_URL;
+  const bucketName = process.env.NX_BUCKET_NAME;
   if (url?.includes('dam')) {
     // this if condition will be removed after relative img for all content type
     return url;
