@@ -17,13 +17,7 @@
         "main": "apps/authoring-web/src/main.tsx",
         "tsConfig": "apps/authoring-web/tsconfig.app.json",
         "assets": [
-          "apps/authoring-web/src/favicon.ico",
-          "apps/authoring-web/src/assets",
-          {
-            "glob": "**/*",
-            "input": "libs/utilities/src/lib/assets",
-            "output": "/assets/shared"
-          }
+          "apps/authoring-web/src/favicon.ico"           
         
         ],
         "styles": [],

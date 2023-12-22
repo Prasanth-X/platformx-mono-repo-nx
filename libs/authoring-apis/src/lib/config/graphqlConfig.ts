@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { getCurrentLang, getLocale, getSelectedSite } from '../utils/helper'; 
-import i18next from 'libs/utilities/src/lib/utils/i18n';
+import {i18next} from '@platformx/utilities';
 
 const defaultOptions: any = {
   watchQuery: {
