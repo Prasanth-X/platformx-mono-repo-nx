@@ -113,7 +113,7 @@ export const putRestApiCall = (
 
 // export const getRequest = async (url: any) => {
 //   try {
-//     const res = await axios.get(process.env.REACT_APP_API_URI + url, {
+//     const res = await axios.get(process.env.NX_API_URI + url, {
 //       headers: {
 //         "Content-Type": "application/json",
 //         "Access-Control-Allow-Origin": "*",

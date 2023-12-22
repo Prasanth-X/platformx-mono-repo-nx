@@ -1,7 +1,7 @@
-import { IMPRESSIONS } from 'lib/hooks/usePrelemImpression/constants';
+import { IMPRESSIONS } from '../usePrelemImpression/constants';
 
 import { useState, useEffect } from 'react';
-import usePlatformAnalytics from '../usePlatformAnalytics';
+import usePlatformAnalytics from '../usePlatformAnalytics/usePlatformAnalytics';
 import { Analytics, secondaryArgsObj } from './usePrelemImpression.types';
 import { createPrelemImpression, snowplowPrelemImpression } from './helper';
 

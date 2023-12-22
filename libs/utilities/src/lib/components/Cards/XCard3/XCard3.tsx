@@ -2,7 +2,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import FallbackImage from '../../../assets/fallBackImage.png';
-import { dateFormat, handleHtmlTags } from 'lib/utils/helperFns';
+import { dateFormat, handleHtmlTags } from '../../../utils/helperFns';
 import CardSkeleton from '../CardSkeleton';
 import { useCustomStyle } from './XCard3.style';
 

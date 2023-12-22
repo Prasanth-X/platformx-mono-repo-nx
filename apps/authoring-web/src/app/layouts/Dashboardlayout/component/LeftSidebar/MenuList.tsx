@@ -1,0 +1,94 @@
+import { Box } from '@mui/material';
+import { t } from 'i18next';
+import { useEffect, useState } from 'react';
+
+import {ArticleIcon} from '@platformx/utilities';
+import { MenuData } from '../../utils/constants';
+import MenuItems from './MenuItems';
+import { ShowToastError, useUserSession } from '@platformx/utilities';
+import { contentTypeSchemaApi } from '@platformx/authoring-apis';
+import MenuSitesListDropdown from '../../../../components/MenuSitesListDropdown/MenuSitesListDropdown';
+
+export default function Menu(props) {
+  const [getSession] = useUserSession();
+  const [dynamicMenu, setDynamicMenu] = useState<any>();
+  const { permissions } = getSession();
+  const filtered = permissions
+    ?.map((val) => val?.category?.toLowerCase())
+    ?.filter((val, index, arr) => arr.indexOf(val) === index);
+  const fetchSchema = async () => {
+    return contentTypeSchemaApi.getSchema();
+  };
+  const getSchema = async () => {
+    try {
+      const detailsRes: any = await fetchSchema();
+      const menu: any = [];
+      detailsRes?.authoring_getDocument?.map((val, i) => {
+        return menu.push({
+          MenuName: val?.title,
+          Icon: ArticleIcon,
+          url: `/content/${val?.name}`,
+          id: val?.title,
+          category: 'content',
+          subCategory: '',
+        });
+      });
+
+      const menuArr = [
+        { url: '', Title: 'content', id: 'content', Menu: menu },
+      ];
+      const temp: any = MenuData.filter((val) => {
+        return val.id === 'content' ? val['Menu'].push(...menu) : val;
+      });
+
+      setDynamicMenu(temp);
+    } catch (err: any) {
+      ShowToastError(t('api_error_toast'));
+    }
+  };
+  useEffect(() => {
+    getSchema();
+  }, []);
+
+  return (
+    <Box className="menulist">
+      <MenuSitesListDropdown />
+      {/* {MenuData.map((val, index) => {
+        const isShow = filtered?.includes(val.id);
+        return (
+          isShow && (
+            <MenuItems
+              key={index}
+              Title={val.Title}
+              MenuName={val.Menu}
+              open={props.open}
+              roles={val.roles}
+              props={val}
+              url={val.url}
+              handleMenuclose={props.handleMenuclose}
+              handleMenuAction={props.handleMenuAction}
+            />
+          )
+        );
+      })} */}
+      {dynamicMenu?.map((val, index) => {
+        const isShow = filtered?.includes(val.id);
+        return (
+          isShow && (
+            <MenuItems
+              key={index}
+              Title={val.Title}
+              MenuName={val.Menu}
+              open={props.open}
+              roles={val.roles}
+              props={val}
+              url={val.url}
+              handleMenuclose={props.handleMenuclose}
+              handleMenuAction={props.handleMenuAction}
+            />
+          )
+        );
+      })}
+    </Box>
+  );
+}

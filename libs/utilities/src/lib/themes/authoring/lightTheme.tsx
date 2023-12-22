@@ -293,7 +293,7 @@ const LightTheme = createTheme({
       xs: ThemeConstants.XS,
       sm: ThemeConstants.SM,
       md: ThemeConstants.MD,
-      em: ThemeConstants.EM,
+      // em: ThemeConstants.EM,
       lg: ThemeConstants.LG,
       xl: ThemeConstants.XL,
     },

@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { format } from 'date-fns';
 import FallBackImage from '../assets/fallBackImage.png';
-import { countries } from './helperConstants';
+import { LanguageList, countries } from './helperConstants';
 import ToastService from '../components/ToastContainer/ToastService';
-import { CONTENT_TYPE_WITH_ABSOLUTEURL } from './constants';
+import {
+  CONTENT_TYPE_WITH_ABSOLUTEURL,
+  DefaultLocale,
+} from '../constants/CommonConstants';
+import { Props } from './types';
 
 const errorRequest =
   'We have not been able to complete the requested action. Please try again later';
@@ -113,7 +117,7 @@ export const putRestApiCall = (
 
 // export const getRequest = async (url: any) => {
 //   try {
-//     const res = await axios.get(process.env.REACT_APP_API_URI + url, {
+//     const res = await axios.get(process.env.NX_API_URI + url, {
 //       headers: {
 //         "Content-Type": "application/json",
 //         "Access-Control-Allow-Origin": "*",
@@ -182,7 +186,7 @@ export const convertToLowerCase = (stringData: any = '') => {
 export const nullToArray = (arr: any = []) => {
   return arr ? arr : [];
 };
-export const capitalizeFirstLetter = (str: string) => {
+export const capitalizeFirstLetter = (str = '') => {
   if (str) {
     try {
       return str.charAt(0).toUpperCase() + str.slice(1);
@@ -193,33 +197,6 @@ export const capitalizeFirstLetter = (str: string) => {
   return '';
 };
 
-interface Props {
-  e: any;
-  analytics: {
-    pageId?: number;
-    prelemId?: number;
-    pageTitle?: string;
-    prelemTitle?: string;
-    pageDesc?: string;
-    pageTags?: string;
-    prelemTags?: string;
-    prelemPosition?: number;
-    isAnalyticsEnabled: boolean;
-    isAuthoring: boolean;
-    isSeoEnabled: boolean;
-  };
-  defaultObj?: {
-    pageId?: number;
-    pageTitle?: string;
-    pageDesc?: string;
-    pageTags?: string;
-    prelemID?: number;
-    prelemTitle?: string;
-    prelemTags?: string;
-    prelemPosition?: number;
-  };
-  handleTrack?: (arg: string, e: object) => void;
-}
 export const triggerAnalytics = ({
   e,
   analytics,
@@ -284,13 +261,23 @@ export const formCroppedUrl = (
   // else return `${gcpUrl}/${bucketName}/${url}.${ext}`;
 };
 
-export const relativeImageURL = (
-  gcpUrl: string,
-  bucketName: string,
-  url: string,
-  ext: string
-) => {
-  return url && ext ? `${gcpUrl}/${bucketName}/${url}.${ext}` : FallBackImage;
+// export const relativeImageURL = (
+//   gcpUrl: string,
+//   bucketName: string,
+//   url: string,
+//   ext: string
+// ) => {
+//   return url && ext ? `${gcpUrl}/${bucketName}/${url}.${ext}` : FallBackImage;
+// };
+
+export const relativeImageURL = (url: string) => {
+  const gcpUrl = process.env.NX_GCP_URL;
+  const bucketName = process.env.NX_BUCKET_NAME;
+  if (url?.includes('dam')) {
+    // this if condition will be removed after relative img for all content type
+    return url;
+  }
+  return url ? `${gcpUrl}/${bucketName}/${url}` : '';
 };
 
 export const getLandingPageURL = (
@@ -355,7 +342,7 @@ export const fetchCroppedUrl = (
   // mediaQuery: any,
   Url: string,
   publishedImages: [],
-  imgOrder = {},
+  imgOrder: any = {},
   breakpoints: any = {}
 ) => {
   let returnUrl = '';
@@ -368,12 +355,6 @@ export const fetchCroppedUrl = (
     less_than_1440,
   } = breakpoints || {};
   if (publishedImages && publishedImages.length > 0) {
-    // const less_than_320 = mediaQuery(theme.breakpoints.only("xs"));
-    // const less_than_600 = mediaQuery(theme.breakpoints.only("sm"));
-    // const less_than_768 = mediaQuery(theme.breakpoints.only("md"));
-    // const less_than_1024 = mediaQuery(theme.breakpoints.only("em"));
-    // const less_than_1280 = mediaQuery(theme.breakpoints.only("lg"));
-    // const less_than_1440 = mediaQuery(theme.breakpoints.only("xl"));
     if (less_than_320) {
       returnUrl = getDefaultCroppedImage(
         publishedImages,
@@ -626,7 +607,7 @@ export const inputNonEmptyFieldValidate = (errors = {}) => {
 export const formateNumber = (value: number, toFixedVal?: number) => {
   if (!isNaN(value)) {
     return (Math.round(value * 100) / 100).toFixed(
-      !isNaN(toFixedVal) ? toFixedVal : 2
+      !isNaN(toFixedVal as number) ? (toFixedVal as number) : 2
     );
   }
   return value;
@@ -692,4 +673,75 @@ export const eComTypeUriToJSON = (jsonObj = {}) => {
     return {};
   }
   return {};
+};
+
+export const getCurrentLang = () => {
+  let lang = '';
+  const split = location.pathname.split('/');
+
+  if (LanguageList().find((x) => x.id === split[2])) {
+    lang = split[2];
+  } else {
+    lang = DefaultLocale;
+  }
+  return lang;
+};
+
+export const getSelectedSite = () => {
+  let site = '';
+  const split = location.pathname.split('/');
+  site = split[1];
+  if (site === 'en' || site === 'fr' || site === 'de') {
+    return localStorage.getItem('selectedSite');
+  } else {
+    return site;
+  }
+};
+
+export const getSelectedRoute = () => {
+  let site = '';
+  const split = location.pathname.split('/');
+  site = split[1];
+  if (site === 'en' || site === 'fr' || site === 'de') {
+    return '';
+  } else {
+    return site;
+  }
+};
+
+export const getSubDomain = () => {
+  const sessions = localStorage.getItem('userSession') || '';
+  const storedSession = JSON.parse(sessions);
+  const site_url = storedSession?.userInfo?.preferred_sites_urls;
+  const selectedSite: string = getSelectedSite() || '';
+  const domain = site_url[selectedSite]?.replace('.com.', '.com');
+  if (domain) {
+    if (domain.startsWith('http://')) {
+      return domain.replace('http://', 'https://');
+    } else if (!domain.startsWith('https://')) {
+      return `https://${domain}`;
+    }
+    return domain;
+  }
+  return null; // Return null if `domain` is null or undefined
+};
+
+export const getCurrentPathName = () => {
+  let pathname = '';
+  const split = location.pathname.split('/');
+  if (LanguageList().find((x) => x.id === split[2])) {
+    pathname = `/${split.slice(3).join('/')}`;
+  } else {
+    pathname = location.pathname;
+  }
+  return pathname;
+};
+
+export const trimString = (string: string, length: number) => {
+  if (string) {
+    const trimmedString =
+      string.length > length ? `${string.substring(0, length - 3)}...` : string;
+    return trimmedString;
+  }
+  return '';
 };

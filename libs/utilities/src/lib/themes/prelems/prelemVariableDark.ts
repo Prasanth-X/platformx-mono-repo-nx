@@ -2,9 +2,11 @@
 // import HCLRobort from "../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2";
 // import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
 //  import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
-const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
-const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2");
+// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
+// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2");
 
+// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2") as string;
+// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
 
 const ThemeConstants = {
   // Color Variables
@@ -915,8 +917,8 @@ const ThemeConstants = {
     },
   },
 
-  FONTFAMILYPRIMARY: HCLRobort,
-  FONTFAMILYSECONDARY: InterRegular,
+  FONTFAMILYPRIMARY: "HCLRobort",
+  FONTFAMILYSECONDARY: "InterRegular",
   FONTNAMEPRIMARY: "HCLTechRoobert",
   FONTNAMESECONDARY: "Inter",
 };

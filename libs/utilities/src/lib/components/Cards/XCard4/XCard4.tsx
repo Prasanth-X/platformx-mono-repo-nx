@@ -10,7 +10,7 @@ import {
 } from '../../Utils/helperFns';
 // import { t } from "i18next";
 // import "../../../service/i18n";
-import { dateTimeFormat } from 'lib/utils/helperFns';
+import { dateTimeFormat } from '../../../utils/helperFns';
 import fallBackImage from '../../../assets/fallBackImage.png';
 
 const XCard4 = ({

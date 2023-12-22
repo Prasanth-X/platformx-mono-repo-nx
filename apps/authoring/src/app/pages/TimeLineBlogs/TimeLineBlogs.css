@@ -1,9 +1,0 @@
-.platx-tab-timeline-section,
-.platx-tab-event-section,
-.platx-tab-blog-section {
-    padding:0px !important;
-    margin: 8px;
-}
-.platx-blog-timeline + .Platform-x-Box-root {
-    padding: 16px;
-}

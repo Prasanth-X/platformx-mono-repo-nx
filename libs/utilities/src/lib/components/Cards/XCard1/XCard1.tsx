@@ -4,7 +4,7 @@ import React from 'react';
 import FallbackImage from '../../../assets/fallBackImage.png';
 import CardSkeleton from '../CardSkeleton';
 import { useCustomStyle } from './XCard1.style';
-import { dateFormat, handleHtmlTags } from 'lib/utils/helperFns';
+import { dateFormat, handleHtmlTags } from '../../../utils/helperFns';
 
 const XCard1 = ({ content, Icon, onCardClick }: XCard1Props) => {
   const classes = useCustomStyle();

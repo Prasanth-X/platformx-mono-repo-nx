@@ -7,7 +7,7 @@ import {
   allowOnlyNumberInputData,
   allowOnlyShippingLetterInputData,
   allowOnlyLetterInputData,
-} from 'lib/utils/helperFns';
+} from '../../../utils/helperFns';
 
 const allowInputParams = (e: any, key: string) => {
   switch (key) {
