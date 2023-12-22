@@ -54,19 +54,15 @@ const plugin = async (provider: string, data: IAnalytics, i: number) => {
 export const analyticsInstance = async (data: IAnalytics) => {
   let analytics: Object = {};
   let res: Array<any> = [];
+
   if (data?.provider instanceof Array) {
-    data?.provider.map(async (item, i) => {
-      res = await plugin(item, data, i);
-    });
+    res = await Promise.all(data.provider.map(async (item, i) => {
+      return await plugin(item, data, i);
+    }));
   } else {
     res = await plugin(data?.provider, data, 0);
   }
 
-  // analytics = Analytics({
-  //   app: "publish-app",
-  //   debug: true,
-  //   plugins: res,
-  // });
   analytics = Analytics({
     app: SNOWPLOW.APP_NAME,
     debug: true,
@@ -77,7 +73,6 @@ export const analyticsInstance = async (data: IAnalytics) => {
       googleTagManager({
         containerId: process.env?.NX_GTM_ID,
       }),
-      // Minimal recommended configuration
       snowplowPlugin({
         name: SNOWPLOW.SNOWPLOW,
         collectorUrl: SNOWPLOW.COLLECTOR_URL,
@@ -85,6 +80,7 @@ export const analyticsInstance = async (data: IAnalytics) => {
           appId: SNOWPLOW.APP_ID,
         },
       }),
+      // Add other plugins from the res array here if needed
     ],
   });
 

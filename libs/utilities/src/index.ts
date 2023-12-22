@@ -17,6 +17,7 @@ import NoSearchResult from "./lib/components/NoSearchResult/NoSearchResult";
 import AutoCompleteMultiSelect from "./lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect";
 import TextBox from "./lib/components/TextBox/TextBox";
 import DatePicker from "./lib/components/DatePicker/DatePicker";
+import Error from "./lib/components/Error/Error";
 import {
     AUTH_INFO,
     LOGOUT_URL,
@@ -36,9 +37,10 @@ export { PrelemTheme }
 export { ErrorTooltip }
 export { ContentListLoader }
 export { AutoCompleteMultiSelect }
-export {TextBox}
-export {DatePicker}
-export{i18next}
+export { TextBox }
+export { DatePicker }
+export { Error }
+export { i18next }
 
 export * from "./lib/components"
 export * from './lib/themes/prelems/prelemTheme';

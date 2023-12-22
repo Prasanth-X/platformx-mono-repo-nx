@@ -1,8 +1,17 @@
- 
+import { createTheme } from "@mui/material/styles";
 import React from "react";
-import ThemeConstants from "./prelemVariableLight"; 
-import { Theme, Breakpoints } from "@material-ui/core/styles";
+import ThemeConstants from "./prelemVariableLight";
 
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    xs: true;  
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    em: true;   
+  }
+}
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     weblarge: true;
@@ -182,7 +191,6 @@ declare module "@mui/material/styles" {
     tertiaryAnchorLink?: string;
   }
 }
-
 declare module "@mui/system" {
   interface BreakpointOverrides {
     xs: true;
@@ -193,20 +201,7 @@ declare module "@mui/system" {
     xl: true;
   }
 }
-interface CustomBreakpoints extends Breakpoints {
-  values: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-    em: number; // Add this line
-  };
-}
-interface CustomTheme extends Theme {
-  breakpoints: CustomBreakpoints;
-}
-const PrelemTheme = createTheme<CustomTheme>({
+const PrelemTheme = createTheme({
   prelemMargin: {
     value: "0px",
   },
