@@ -58,12 +58,12 @@ export default function SitesPopup(props) {
         res.data?.data?.preferred_sites_languages?.[e.target.textContent] ||
         'en';
       if (isSiteSystem) {
-        location.replace(
-          `${location.origin}/system/${lang}/sites/site-listing`
+        window.location.replace(
+          `${window.location.origin}/system/${lang}/sites/site-listing`
         );
       } else {
-        location.replace(
-          `${location.origin}/${e.target.textContent}/${lang}/dashboard`
+        window.location.replace(
+          `${window.location.origin}/${e.target.textContent}/${lang}/dashboard`
         );
       }
     } catch (error) {

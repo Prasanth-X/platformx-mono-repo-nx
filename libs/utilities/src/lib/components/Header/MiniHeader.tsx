@@ -115,7 +115,7 @@ export const MiniHeader = ({ showUserDetails = true }: Users) => {
         localStorage.removeItem('videoUuid');
         localStorage.removeItem('path');
 
-        updateSession(null);
+        // updateSession(null); // TODO:  Check if this is required
         window.location.replace(keycloakURL);
         break;
       }

@@ -1,6 +1,6 @@
-import { Dashboard } from "@mui/icons-material"; 
-import { RouteConfig } from "./routes.type";
+import { Error } from "@platformx/utilities";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { RouteConfig } from "./routes.type";
 
 export const routes: RouteConfig[] = [
     {
@@ -8,4 +8,8 @@ export const routes: RouteConfig[] = [
         element:  <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" >   Dashboard </ProtectedRoute>,
         
       },
+      {
+        path: "/error",
+        element:<Error errorCode={404} errorMessage="Page not found" />,
+      }
 ]
