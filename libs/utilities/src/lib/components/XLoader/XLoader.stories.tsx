@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { XLoader } from './XLoader';
+import XLoader  from './XLoader';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
