@@ -29,6 +29,7 @@ const useUserSession = (): [
     let storedSession: UserSession | null;
   
     try {
+      
       storedSession = JSON.parse(sessions);
     } catch (error) {
       console.error('Error parsing JSON:', error);
