@@ -1,10 +1,11 @@
+/* eslint-disable no-debugger */
 // useAuthentication.js
 import { authAPI, getGlobalDataWithHeader, multiSiteApi } from '@platformx/authoring-apis';
 import { AUTH_INFO, AUTH_URL, getSelectedSite, usePlatformAnalytics, useUserSession } from '@platformx/utilities';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { createSession } from '../utils/helper';
- 
+
 export const useAuthentication = () => {
   const [handleImpression] = usePlatformAnalytics();
   const [getSession, updateSession] = useUserSession();
@@ -24,6 +25,7 @@ export const useAuthentication = () => {
       redirect_uri: AUTH_INFO.redirectUri,
       tenant_id: AUTH_INFO.realm,
     };
+    console.log('payload', payload);
 
     try {
       const response = await authAPI.signIn('auth/session', payload);
@@ -59,9 +61,9 @@ export const useAuthentication = () => {
         );
       } else {
         console.error('Error signing in:', response);
-        navigate('/error', {state: { errorCode: 500, errorMessage: 'Internal Server Error' }});
+        navigate('/error', { state: { errorCode: 500, errorMessage: 'Internal Server Error' } });
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     } finally {
       setLoader(false);
@@ -69,6 +71,7 @@ export const useAuthentication = () => {
   };
 
   const handleLogin = () => {
+
     const loginURL = AUTH_URL;
     navigate(loginURL);
   };
@@ -76,13 +79,13 @@ export const useAuthentication = () => {
   const verifySession = async () => {
     try {
       const response = await authAPI.verifySession('auth/verify-session');
-  
+
       if (response?.data) {
         const { active } = response.data || { userDetails: {} };
-  
+
         const currentSelectedSite = getSelectedSite();
         const storedSelectedSite = localStorage.getItem('selectedSite');
-  
+
         if (currentSelectedSite === storedSelectedSite) {
           updateSession({
             ...getSession(),
@@ -90,7 +93,7 @@ export const useAuthentication = () => {
           });
         } else {
           const res = await multiSiteApi.getPermissions(currentSelectedSite);
-  
+
           localStorage.setItem('selectedSite', currentSelectedSite);
           updateSession({
             ...getSession(),
@@ -103,12 +106,12 @@ export const useAuthentication = () => {
                 res.data?.data?.selected_site?.toLowerCase()
             )?.name,
           });
-  
+
           const isSystemSite = currentSelectedSite.toLowerCase() === 'system';
           const hasUuidValues =
             !localStorage.getItem('imageUuid') ||
             !localStorage.getItem('videoUuid');
-  
+
           if (hasUuidValues && !isSystemSite) {
             await getGlobalDataWithHeader(currentSelectedSite);
           }
@@ -124,7 +127,7 @@ export const useAuthentication = () => {
       setLoader(false);
     }
   };
-  
+
   useEffect(() => {
     if (!getSession()?.userInfo && !code) {
       localStorage.removeItem('selectedSite');
