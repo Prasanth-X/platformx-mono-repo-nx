@@ -10,13 +10,13 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as SearchIcon } from '../../../assets/SearchIcon.svg';
-import '../../../components/Common/Search.css';
+import './Search.css';
 
-export default function SearchBox({ handleSearch }) {
+export default function SearchBox({ handleSearch }: any) {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleOnChange = (event) => {
+  const handleOnChange = (event: any) => {
     setSearchQuery(event.target.value);
   };
   const resetSearch = () => {
@@ -34,11 +34,11 @@ export default function SearchBox({ handleSearch }) {
 
   return (
     <>
-      <FormControl className='userSearchBox'>
+      <FormControl className="userSearchBox">
         <InputBase
-          id='search-users'
-          type='text'
-          size='small'
+          id="search-users"
+          type="text"
+          size="small"
           value={searchQuery}
           onChange={handleOnChange}
           sx={{
@@ -47,14 +47,18 @@ export default function SearchBox({ handleSearch }) {
             height: '46px',
           }}
           startAdornment={
-            <InputAdornment position='start'>
-              <IconButton aria-label='search users' edge='start' sx={{ padding: 0, margin: 0 }}>
+            <InputAdornment position="start">
+              <IconButton
+                aria-label="search users"
+                edge="start"
+                sx={{ padding: 0, margin: 0 }}
+              >
                 <SearchIcon />
               </IconButton>
             </InputAdornment>
           }
           endAdornment={
-            <InputAdornment position='end'>
+            <InputAdornment position="end">
               {searchQuery && (
                 <Box
                   sx={{
@@ -63,14 +67,19 @@ export default function SearchBox({ handleSearch }) {
                   }}
                 >
                   <CloseRoundedIcon
-                    sx={{ width: '.75em', height: '.75em', cursor: 'pointer', marginRight: '5px' }}
+                    sx={{
+                      width: '.75em',
+                      height: '.75em',
+                      cursor: 'pointer',
+                      marginRight: '5px',
+                    }}
                     onClick={resetSearch}
                   />
                 </Box>
               )}
             </InputAdornment>
           }
-          placeholder='Search...'
+          placeholder="Search..."
         />
       </FormControl>
     </>

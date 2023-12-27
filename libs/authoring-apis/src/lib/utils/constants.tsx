@@ -611,3 +611,13 @@ export const countries = [
   { code: 'ZM', label: '(ZM)  +260', phone: '260' },
   { code: 'ZW', label: '(ZW)  +263', phone: '263' },
 ];
+export const SNOWPLOW = {
+  NA: 'NA',
+  SNOWPLOW: 'snowplow',
+  TRACKID: 'selfDescribingEvent',
+  IMPRESSIONTYPE: 'user register Impression',
+  REGISTERFROM: 'Rendering',
+  COLLECTOR_URL: 'collector.hcl-x.com',
+  APP_ID: 'x',
+  APP_NAME: 'plateform-x-authoring-app',
+};

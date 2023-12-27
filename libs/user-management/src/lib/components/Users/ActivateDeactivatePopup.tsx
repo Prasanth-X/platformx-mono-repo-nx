@@ -5,7 +5,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import * as React from 'react';
 
 export default function ActivateDeactivatePopup({
   handleDeleteMenu,
@@ -19,7 +18,7 @@ export default function ActivateDeactivatePopup({
   textRightButton,
   firstName,
   lastName,
-}) {
+}: any) {
   const onHandleClose = () => {
     setisdeleteDialog(false);
   };
@@ -35,8 +34,8 @@ export default function ActivateDeactivatePopup({
         fullWidth
         open={isDeleteDialog}
         onClose={onHandleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
         sx={{
           '.Platform-x-Dialog-paper': {
             maxWidth: { xs: '800px', xl: '800px' },
@@ -51,8 +50,8 @@ export default function ActivateDeactivatePopup({
         </Box>
         {title ? (
           <DialogTitle
-            id='alert-dialog-title'
-            variant='h2medium'
+            id="alert-dialog-title"
+            variant="h2medium"
             sx={{
               textAlign: 'center',
               padding: '0px 0px 23px 0px',
@@ -72,7 +71,7 @@ export default function ActivateDeactivatePopup({
               margin: 'auto',
             }}
           >
-            <Typography variant='h5regular'>
+            <Typography variant="h5regular">
               {`${subTitlePre}"${firstName} ${lastName}"${subTitlePost}`}
             </Typography>
           </DialogContent>
@@ -86,7 +85,7 @@ export default function ActivateDeactivatePopup({
           }}
         >
           <Button
-            variant='contained'
+            variant="contained"
             style={styles.btn_new_size}
             sx={{
               marginRight: '12px',
@@ -98,7 +97,7 @@ export default function ActivateDeactivatePopup({
           </Button>
 
           <Button
-            variant='redbutton'
+            variant="redbutton"
             style={styles.btn_new_size}
             startIcon={<DoneIcon />}
             onClick={() => {

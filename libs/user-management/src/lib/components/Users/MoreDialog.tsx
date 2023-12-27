@@ -4,11 +4,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Box, MenuItem, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
+import { BasicSwitch, ThemeConstants } from '@platformx/utilities';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import ThemeConstants from '../../../theme/variable';
-import BasicSwitch from '../../editPage/Switch';
 
 const Transition = React.forwardRef(function Transition(
   props: {
@@ -16,7 +15,7 @@ const Transition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function MoreDialog({
@@ -30,8 +29,8 @@ export default function MoreDialog({
   action_pending,
   handleReSendMail,
   disabled = false,
-}) {
-  const { t } = useTranslation(); 
+}: any) {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const styles = `
@@ -82,7 +81,7 @@ export default function MoreDialog({
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby='alert-dialog-slide-description'
+        aria-describedby="alert-dialog-slide-description"
       >
         <Box
           // className={!canDelete && 'disable'}
@@ -93,10 +92,10 @@ export default function MoreDialog({
           }}
         >
           <Box sx={{ margin: '12px' }}>
-            <Typography variant='h4medium' color='BLACK_COLOR_VARIANT1'>
+            <Typography variant="h4medium" color="BLACK_COLOR_VARIANT1">
               {first_name}
             </Typography>
-            <Typography variant='h4medium' color='BLACK_COLOR_VARIANT1'>
+            <Typography variant="h4medium" color="BLACK_COLOR_VARIANT1">
               {' '}
               {last_name}
             </Typography>
@@ -105,7 +104,7 @@ export default function MoreDialog({
             sx={{ display: 'flex', alignItems: 'stretch', margin: '12px' }}
             onClick={(e) => handleEditUser(e, user_id)}
           >
-            <Box className='edit-Box'>
+            <Box className="edit-Box">
               <EditIcon />
             </Box>
             <Box sx={{ fontSize: '16px', textTransform: 'capitalize' }}>
@@ -116,7 +115,7 @@ export default function MoreDialog({
           {action_pending ? (
             <Box>
               <MenuItem
-                className='icons'
+                className="icons"
                 sx={{ paddingLeft: { xs: '12px' } }}
                 onClick={() => handleReSendMail()}
               >
@@ -138,7 +137,7 @@ export default function MoreDialog({
             </Box>
           ) : (
             <Box
-              className='boxbasicswitch'
+              className="boxbasicswitch"
               sx={{ display: 'flex', alignItems: 'center', margin: '12px' }}
               onClick={() => onChange(checked)}
             >

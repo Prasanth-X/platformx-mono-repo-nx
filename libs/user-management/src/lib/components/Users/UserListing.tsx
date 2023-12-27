@@ -1,18 +1,17 @@
 import { Box } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
-import userManagementAPI from '../../../services/userManagement/UserManagement.api';
-
+import { userManagementAPI } from '@platformx/authoring-apis';
+import { capitalizeWords } from '@platformx/content';
 import {
   ArticleListDesktopLoader,
   ContentGridLoader,
 } from '@platformx/utilities';
+import { useCallback, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { capitalizeWords } from '../../../Common/Listing/Utils/Helper';
 import '../UserManagement.css';
-import { USERTYPES } from '../Utils/constant';
 import ListView from './ListView';
 import TopHeader from './TopHeader';
 import './User.css';
+import { USERTYPES } from './Utils/constant';
 const UserListing = () => {
   const [users, setUsers] = useState([]);
   const [baseUsers, setBaseUsers] = useState([]);

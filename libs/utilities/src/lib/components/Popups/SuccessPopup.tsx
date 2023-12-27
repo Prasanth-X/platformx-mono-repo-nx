@@ -1,21 +1,23 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
+/* eslint-disable */
+import AddIcon from '@mui/icons-material/Add';
+import ListIcon from '@mui/icons-material/List';
+import { Box, Button, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg';
-import DeleteIcon from '../../assets/svg/errorPopupIcon.svg';
+import { useNavigate } from 'react-router-dom';
+import DeleteIcon from '../../assets/images/icons/righttick.svg';
 
-export default function DeletePopup({
+export default function PlateformXDialogSuccess({
   isDialogOpen,
   title,
   subTitle,
   closeButtonText,
   confirmButtonText,
-  selectedItem = {},
+  closeButtonHandle,
   confirmButtonHandle,
-  closeButtonHandle = () => {},
-}: any) {
+}) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="deletePopupContaniner">
@@ -31,9 +33,6 @@ export default function DeletePopup({
             },
             '.Platform-x-Box-root': {
               margin: '5px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
             },
             '.Platform-x-DialogContent-root': {
               overflowY: 'hidden !important',
@@ -42,48 +41,52 @@ export default function DeletePopup({
               margin: '20px 0 0 0 !important',
             },
             '.Platform-x-Dialog-paper': {
-              maxWidth: { xs: '100%', sm: '600px', lg: '650px' },
-              width: { xs: '100%', sm: '600px', lg: '650px' },
+              maxWidth: { xs: '100%', sm: '700px', lg: '800px' },
+              width: { xs: '100%', sm: '700px', lg: '800px' },
               margin: { xs: '0px' },
-              position: { xs: 'absolute', md: 'relative' },
+              position: { xs: 'absolute', md: 'inherit' },
               bottom: { xs: 0 },
               borderBottomLeftRadius: { xs: 0, md: 4 },
               borderBottomRightRadius: { xs: 0, md: 4 },
-              '& .popupCloseIcon': {
-                position: 'absolute',
-                right: '20px',
-                top: '10px',
-              },
             },
             textAlign: 'center',
           }}
         >
-          <IconButton
-            className="popupCloseIcon"
-            edge="end"
-            color="inherit"
-            onClick={closeButtonHandle}
-            aria-label="close"
-          >
-            <img src={DialogCloseIcon} />
-          </IconButton>
+          {/* <Box
+                    sx={{ textAlign: 'right', cursor: 'pointer' }}
+                    mt={1}
+                    mr={3}
+                    onClick={
+
+                        closeButtonHandle
+                    }
+                >
+                    <CloseIcon />
+                </Box> */}
           <Box
             sx={{
               textAlign: 'center',
               color: '#fd0c0d',
               margin: { xs: 0, md: '71px 0 4px' },
-              height: '120px',
             }}
           >
-            <img src={DeleteIcon} />
+            <Box
+              sx={{
+                width: { xs: '90px', md: '100px' },
+                height: { xs: '90px', md: '100px' },
+                margin: 'auto !important',
+              }}
+            >
+              <img src={DeleteIcon} style={{ width: '100%' }} />
+            </Box>
           </Box>
           {title ? (
             <DialogTitle
               id="alert-dialog-title"
-              variant="h4bold"
+              variant="h2medium"
               sx={{
                 textAlign: 'center',
-                padding: '19px 0 24px 0px',
+                padding: { xs: '0', md: '23px 0px' },
               }}
             >
               {title}
@@ -92,16 +95,16 @@ export default function DeletePopup({
             ''
           )}
           {subTitle ? (
-            <DialogContent
+            <Box
               sx={{
                 textAlign: 'center',
-                padding: '0px 20px 0px 20px',
-                maxWidth: 420,
+                padding: { xs: '10px 0', md: '10px 20px' },
+                maxWidth: 700,
                 margin: 'auto',
               }}
             >
               <Typography variant="h5regular">{subTitle}</Typography>
-            </DialogContent>
+            </Box>
           ) : (
             ''
           )}
@@ -113,37 +116,37 @@ export default function DeletePopup({
               margin: { xs: '10px 0', md: '61px 0 74px' },
             }}
           >
-            {confirmButtonText ? (
+            {closeButtonText ? (
               <Button
-                variant="redbutton"
+                variant="outlined"
                 sx={{
                   marginRight: '12px',
-                  minWidth: { xs: '120px', md: '120px' },
-                  minHeight: { xs: '40px', md: '47px' },
+                  minWidth: { xs: '158px', md: '190px' },
+                  minHeight: { xs: '40px', md: '50px' },
                 }}
-                onClick={() => {
-                  closeButtonHandle();
-                  confirmButtonHandle(selectedItem);
-                }}
-                autoFocus
+                startIcon={<ListIcon />}
+                onClick={closeButtonHandle}
               >
-                {confirmButtonText}
+                {closeButtonText}
               </Button>
             ) : (
               ''
             )}
-            {closeButtonText ? (
+            {confirmButtonText ? (
               <Button
                 variant="contained"
                 sx={{
-                  minWidth: { xs: '120px', md: '120px' },
-                  minHeight: { xs: '40px', md: '47px' },
+                  minWidth: { xs: '158px', md: '190px' },
+                  minHeight: { xs: '40px', md: '50px' },
                 }}
+                startIcon={<AddIcon />}
                 onClick={() => {
                   closeButtonHandle();
+                  confirmButtonHandle();
                 }}
+                autoFocus
               >
-                {closeButtonText}
+                {confirmButtonText}
               </Button>
             ) : (
               ''
