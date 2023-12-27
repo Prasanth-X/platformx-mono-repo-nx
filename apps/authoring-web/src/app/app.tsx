@@ -17,8 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import { ActionProvider } from './context/actionContext/ActionProvider';
 // import RootRouter from './router/rootRouter';
 // import { StoreProvider } from './store/ContextStore';
-// import LightTheme from './theme/lightTheme';
-import { authUrl } from './utils/authConstants';
+// import LightTheme from './theme/lightTheme'; 
 // import { DefaultLocale } from './utils/constants';
 import { graphqlInstance } from "@platformx/authoring-apis";
 import { store } from "@platformx/authoring-state";
@@ -32,6 +31,7 @@ import { AnalyticsProvider } from 'use-analytics';
 import RootRouter from './router/AppRouter';
 import Analytics from './utils/analytics/analyticsData';
 import { analyticsInstance } from './utils/analytics/dynamicAnalytics';
+import { AUTH_URL } from './utils/authConstants';
 
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace('Mui', 'Platform-x-')
@@ -66,35 +66,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-  const { i18n } = useTranslation(); 
+  const { i18n } = useTranslation();
 
-  const classes = useStyles(); 
-  const [instances, setInstances] = useState<any>({}); 
+  const classes = useStyles();
+  const [instances, setInstances] = useState<any>({});
   const routing = getSelectedRoute();
   const navigate = useNavigate();
   const location = useLocation()
- const {pathname}=location
- useEffect(() => {
-  if (
-    pathname === '/en' ||
-    pathname === '/' ||
-    pathname === `/${routing}/en`
-  ) {
-    navigate(authUrl, { replace: true });
-  }
+  const { pathname } = location
+  useEffect(() => {
+    if (
+      pathname === '/en' ||
+      pathname === '/' ||
+      pathname === `/${routing}/en`
+    ) {
+      navigate(AUTH_URL, { replace: true });
+    }
 
-  (async () => {
-    const res = await analyticsInstance(Analytics);
-    debugger;
-    console.log('res', res);
-    setInstances(res);
-  })();
+    (async () => {
+      const res = await analyticsInstance(Analytics);
+      console.log('res', res);
+      setInstances(res);
+    })();
 
-  const lang = getCurrentLang();
-  if (lang) { 
-    i18n.changeLanguage(lang);
-  }
-}, [i18n]);
+    const lang = getCurrentLang();
+    if (lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [i18n]);
 
   return (
     <Suspense fallback={<div>...Loading</div>}>
@@ -104,8 +103,8 @@ function App() {
             <AnalyticsProvider instance={instances}>
               <ThemeProvider theme={LightTheme}>
                 <CssBaseline />
-                <Provider store={store}> 
-                  <RootRouter /> 
+                <Provider store={store}>
+                  <RootRouter />
                 </Provider>
               </ThemeProvider>
             </AnalyticsProvider>
