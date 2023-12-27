@@ -3,7 +3,6 @@ import ContentGridLoader from './lib/components/ContentGridLoader';
 import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect';
 import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
 import DatePicker from './lib/components/DatePicker/DatePicker';
-import Error from './lib/components/Error/Error';
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
 import { MiniHeader } from './lib/components/Header/MiniHeader';
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown';
@@ -30,21 +29,6 @@ import ThemeConstants from './lib/themes/authoring/variable';
 import PrelemTheme from './lib/themes/prelems/prelemTheme';
 import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark';
 import i18next from './lib/utils/i18n';
-const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
-export {
-  AutoCompleteMultiSelect,
-  ContentListLoader,
-  DatePicker,
-  Error,
-  ErrorTooltip,
-  InterRegular,
-  LightTheme,
-  PrelemTheme,
-  PrelemsThemeConstants,
-  TextBox,
-  ThemeConstants,
-  i18next,
-};
 
 export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';
