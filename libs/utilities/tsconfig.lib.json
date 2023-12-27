@@ -24,6 +24,14 @@
     "**/*.stories.jsx",
     "**/*.stories.tsx"
   ],
-  "files": ["src/index.ts"],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "files": [
+    "src/index.ts"
+  ],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json"
+  ]
 }

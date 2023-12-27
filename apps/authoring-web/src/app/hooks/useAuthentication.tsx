@@ -46,18 +46,22 @@ export const useAuthentication = () => {
 
         localStorage.setItem('selectedSite', response.data.selected_site);
 
-        const defaultLang =
-          response.data.preferred_sites_languages?.[selected_site] || 'en';
+        // const defaultLang =
+        //   response.data.preferred_sites_languages?.[selected_site] || 'en';
 
-        const redirectPath =
-          selected_site?.toLowerCase() === 'system'
-            ? `/sites/site-listing`
-            : `/dashboard`;
+        // const redirectPath =
+        //   selected_site?.toLowerCase() === 'system'
+        // ?`/sites/site-listing`
+        // : `/dashboard`;
 
+        // navigate(
+        //   `/${selected_site}/${defaultLang}${redirectPath}`, 
+        //   { replace: true }
+        // );
+        debugger
         navigate(
-          `/${selected_site}/${defaultLang}${redirectPath}`,
-          // Use replace: true to replace the current entry in the history stack
-          { replace: true }
+          "/dashboard",
+
         );
       } else {
         console.error('Error signing in:', response);
@@ -71,7 +75,7 @@ export const useAuthentication = () => {
   };
 
   const handleLogin = () => {
-
+    debugger
     const loginURL = AUTH_URL;
     navigate(loginURL);
   };
