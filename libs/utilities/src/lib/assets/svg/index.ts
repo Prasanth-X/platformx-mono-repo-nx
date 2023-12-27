@@ -1,4 +1,4 @@
-export { ReactComponent as IconCancelSvg } from "./cancel.svg";
+//export { ReactComponent as IconCancelSvg } from "./cancel.svg";
 export { ReactComponent as IconTimerSvg } from "./timerIcon.svg";
 export { ReactComponent as IconRescheduleSvg } from "./reschedule.svg";
 export { ReactComponent as IconListViewSvg } from "./sideMenuListView.svg";
@@ -56,3 +56,5 @@ export { ReactComponent as FooterMenuUpdated } from "./footermenuupdated.svg"
 export { ReactComponent as HeaderMenuUpdated } from "./headermenuupdated.svg"
 export { ReactComponent as MediaIcon } from "./mediaIcon.svg"
 export { ReactComponent as PlatXLogoWhite } from "./PlatXWhite-logo.svg"
+
+export { ReactComponent as TaskNotFoundIcon } from "./taskNotFoundIcon.svg"

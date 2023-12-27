@@ -1,0 +1,17 @@
+.header {
+  border-bottom: 1px solid #ced3d9;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .link {
+  text-decoration: none;
+  white-space: nowrap;
+  margin-left: 10px;
+  color: #5c6574;
+  font-size: 12px;
+}
+.header .link:hover {
+  text-decoration: underline;
+}

@@ -1,5 +1,7 @@
 import articleApi from "./lib/services/article/article"
 import usePage from "./lib/hooks/usePage/usePage"
+import useUserSession from "./lib/hooks/useUserSession/useUserSession";
+import useDashboardData from "./lib/hooks/useDashboardData/useDashboardData";
 import useContentListing from "./lib/hooks/useContentListing/useContentListing";
 import contentTypeAPIs from "./lib/services/contentTypes/contentTypes.api"
 import userManagementAPI from "./lib/services/userManagement/UserManagement.api";
@@ -13,6 +15,7 @@ import graphqlInstance from "./lib/config/graphqlConfig"
 import { cancelSocialSharePost, fetchSocialShareList, fetchSocialShareProfile, rescheduleSocialShare, scheduleSocialShare } from "./lib/services/socialShare/socialShare.api";
 import authAPI from "./lib/services/auth/auth.api";
 import { multiSiteApi } from "./lib/services/multisite/multisite.api";
+import { createPgModel } from './lib/services/page/page.api';
 export * from './lib/services/siteSetting/SiteSetting';
 export * from "./lib/graphQL/queries/pageQueries"
 export * from "./lib/graphQL/queries/prelemQueries"
@@ -28,6 +31,9 @@ export { userManagementAPI }
 export { articleApi }
 export { multiSiteApi }
 export { usePage }
+export { useUserSession }
+export { useDashboardData }
 export { ArticleQueries }
 export { ArticleMutations }
 export {graphqlInstance} 
+export { createPgModel}

@@ -746,3 +746,37 @@ export const trimString = (string: string, length: number) => {
   }
   return '';
 };
+
+//Set page settings wit default values on page creation
+export function setDefaultPageSettings(
+  name: string,
+  description?: string,
+  tags?: string[],
+  url?: string,
+) {
+  return {
+    PageName: name,
+    PageDescription: description != undefined ? description : "",
+    PageTags: tags != undefined ? [...tags] : [],
+    PageURL: url != undefined ? url : "",
+    PageViewer: "",
+    PageCaching: false,
+    PageMobileFriendly: false,
+    SeoTitle: `${name} | ${siteLevelSchema.siteName}`,
+    SeoDescription: description != undefined ? description : "",
+    SeoKeywords: tags != undefined ? [...tags] : [],
+    SeoBlockIndexing: false,
+    SocialOgTitle: `${name} | ${siteLevelSchema.siteName}`,
+    SocialOgDescription: description != undefined ? description : "",
+    SocialOgSiteName: `${name} | ${siteLevelSchema.siteName}`,
+    SocialOgType: "Website",
+    SocialOgURL: url != undefined ? url : "",
+    SocialOgLocale: "en_US",
+    SocialOgImage: "",
+    SocialOgTwitterTitle: `${name} | ${siteLevelSchema.siteName}`,
+    SocialOgTwitterDescription: description != undefined ? description : "",
+    SocialOgTwitterImage: "",
+    SocialOgTwitterURL: url != undefined ? url : "",
+    SocialTwitterCardSize: "summary_large_image",
+  };
+}

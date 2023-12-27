@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { contentSlice } from './slices/Contetent/ContentSlice'
+import { contentSlice } from './slices/Content/ContentSlice'
 import { articleSlice } from './slices/Article/ArticleSlice'
 
 export const store = configureStore({

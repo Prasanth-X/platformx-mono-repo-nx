@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true
   },
   "files": [],
-  "include": ["src", "additional.d.ts", "moduleType.d.ts", "fonts.d.ts"],
+  "include": ["src", "additional.d.ts", "moduleType.d.ts", "fonts.d.ts", "../authoring-apis/src/lib/hooks/useDashboardData"],
   "references": [
     {
       "path": "./tsconfig.lib.json"
