@@ -1,5 +1,6 @@
 import { dateFormat, getSubDomain, handleHtmlTags, trimString } from "../utils/helperFns";
-import i18n from "../utils/i18n";
+import i18n from "../utils/i18next";
+
 
 export const ArticleMapper = {
     updateStructureData: (content: any, banner: any, keywords: any, pageUrl: string) => {
