@@ -1,7 +1,16 @@
 import { createTheme } from "@mui/material/styles";
 import React from "react";
 import ThemeConstants from './variable';
-
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    xs: true;  
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    em: true;   
+  }
+}
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     weblarge: true;
@@ -293,7 +302,7 @@ const LightTheme = createTheme({
       xs: ThemeConstants.XS,
       sm: ThemeConstants.SM,
       md: ThemeConstants.MD,
-      // em: ThemeConstants.EM,
+      em: ThemeConstants.EM,
       lg: ThemeConstants.LG,
       xl: ThemeConstants.XL,
     },

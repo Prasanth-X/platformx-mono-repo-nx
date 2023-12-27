@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import './Button.css';
-import Delete from 'assets/svgIcon/Delete.svg';
+import Delete from '../../assets/svg/Delete.svg';
 import { useCustomStyle } from './Button.style';
 
 const DeleteButton = () => {

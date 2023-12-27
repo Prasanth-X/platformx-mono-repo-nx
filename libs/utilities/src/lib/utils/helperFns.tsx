@@ -688,15 +688,16 @@ export const getCurrentLang = () => {
 };
 
 export const getSelectedSite = () => {
-  let site = '';
-  const split = location.pathname.split('/');
-  site = split[1];
-  if (site === 'en' || site === 'fr' || site === 'de') {
-    return localStorage.getItem('selectedSite');
-  } else {
-    return site;
+  const splitPath = location.pathname.split("/");
+  const site = splitPath[1];
+
+  if (["en", "fr", "de"].includes(site)) {
+    return localStorage.getItem("selectedSite")||"";
   }
+
+  return site || "";
 };
+
 
 export const getSelectedRoute = () => {
   let site = '';

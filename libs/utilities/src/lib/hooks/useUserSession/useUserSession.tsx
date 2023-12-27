@@ -4,7 +4,7 @@ const useUserSession = (): [
   () => UserSession,
   (session: UserSession | null) => void
 ] => {
-  const updateSession = (updatedSession: any | null) => {
+  const updateSession = (updatedSession: any) => {
     localStorage.setItem('userSession', '');
 
     if (updatedSession) {
@@ -25,11 +25,25 @@ const useUserSession = (): [
   };
 
   const getSession = (): UserSession => {
-    const sessions: string = localStorage.getItem('userSession') || '';
-    const storedSession = JSON.parse(sessions);
-    const userSession: UserSession = storedSession
-      ? storedSession
-      : { isActive: false, permissions: [], role: '', userInfo: {} };
+    const sessions: any = localStorage.getItem('userSession');
+    let storedSession: UserSession | null = null;
+
+    try {
+      if (typeof sessions === 'string') {
+        storedSession = JSON.parse(sessions);
+      }
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      storedSession = null;
+    }
+
+    // If storedSession is null, provide default values for UserSession
+    const userSession: UserSession = storedSession || {
+      isActive: false,
+      permissions: [],
+      role: '',
+      userInfo: {},
+    };
     return userSession;
   };
   return [getSession, updateSession];

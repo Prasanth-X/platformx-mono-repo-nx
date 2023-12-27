@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { ApolloProvider } from '@apollo/client';
 import { init as initApm } from '@elastic/apm-rum';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -7,7 +8,7 @@ import { makeStyles } from '@mui/styles';
 
 import { Suspense, useEffect, useState } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import './App.css';
@@ -16,26 +17,21 @@ import 'react-toastify/dist/ReactToastify.css';
 // import { ActionProvider } from './context/actionContext/ActionProvider';
 // import RootRouter from './router/rootRouter';
 // import { StoreProvider } from './store/ContextStore';
-// import LightTheme from './theme/lightTheme';
-import { authUrl } from './utils/authConstants';
+// import LightTheme from './theme/lightTheme'; 
 // import { DefaultLocale } from './utils/constants';
+import { graphqlInstance } from "@platformx/authoring-apis";
+import { store } from "@platformx/authoring-state";
 import {
-  DefaultLocale,
   LightTheme,
   getCurrentLang,
-  getSelectedRoute,
-  getSelectedSite,
-  useUserSession,
+  getSelectedRoute
 } from '@platformx/utilities';
+import { Provider } from 'react-redux';
 import { AnalyticsProvider } from 'use-analytics';
-import Analytics from './utils/analytics/analyticsData';
-import { graphqlInstance } from "@platformx/authoring-apis"
-import { Provider } from 'react-redux'
-import { store } from "@platformx/authoring-state"
-import { analyticsInstance } from './utils/analytics/dynamicAnalytics';
 import RootRouter from './router/AppRouter';
-import ReactRouterConfig from './router/XRouter';
-import { ProtectedRoute } from './router/ProtectedRoute';
+import Analytics from './utils/analytics/analyticsData';
+import { analyticsInstance } from './utils/analytics/dynamicAnalytics';
+import { AUTH_URL } from './utils/authConstants';
 
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace('Mui', 'Platform-x-')
@@ -71,41 +67,34 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const { i18n } = useTranslation();
-  const [language, setLanguage] = useState(DefaultLocale);
 
   const classes = useStyles();
-  const [getSession, updateSession] = useUserSession();
-  const emptyUserSession: any = {
-    userInfo: null,
-    role: '',
-    permissions: [],
-    isActive: false,
-  };
-  updateSession(emptyUserSession)
   const [instances, setInstances] = useState<any>({});
-  const selectedSite = getSelectedSite();
   const routing = getSelectedRoute();
-
+  const navigate = useNavigate();
+  const location = useLocation()
+  const { pathname } = location
   useEffect(() => {
     if (
-      location.pathname === '/en' ||
-      location.pathname === '/' ||
-      location.pathname === `/${routing}/en`
+      pathname === '/en' ||
+      pathname === '/' ||
+      pathname === `/${routing}/en`
     ) {
-      /*` Home page will removed. Going forward Keycloak Login Page act as a landing page for X*/
-      window.location.replace(authUrl);
-      // window.location.replace(`${process.env.NX_REDIRECT_URI}`);
+      navigate(AUTH_URL, { replace: true });
     }
+
     (async () => {
       const res = await analyticsInstance(Analytics);
+      console.log('res', res);
       setInstances(res);
     })();
+
     const lang = getCurrentLang();
     if (lang) {
-      setLanguage(lang);
       i18n.changeLanguage(lang);
     }
-  }, []);
+  }, [i18n]);
+
   return (
     <Suspense fallback={<div>...Loading</div>}>
       <div className='App'>
@@ -114,8 +103,8 @@ function App() {
             <AnalyticsProvider instance={instances}>
               <ThemeProvider theme={LightTheme}>
                 <CssBaseline />
-                <Provider store={store}> 
-                  <RootRouter /> 
+                <Provider store={store}>
+                  <RootRouter />
                 </Provider>
               </ThemeProvider>
             </AnalyticsProvider>

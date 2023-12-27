@@ -1,4 +1,4 @@
- 
+
 export const SNOWPLOW = {
   NA: "NA",
   SNOWPLOW: "snowplow",
