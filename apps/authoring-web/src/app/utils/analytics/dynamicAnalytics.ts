@@ -52,18 +52,14 @@ const plugin = async (provider: string, data: IAnalytics, i: number) => {
 };
 
 export const analyticsInstance = async (data: IAnalytics) => {
-  let analytics: Object = {};
-  let res: Array<any> = [];
+  debugger
+  const analyticsProviders = data?.provider instanceof Array ? data.provider : [data.provider];
 
-  if (data?.provider instanceof Array) {
-    res = await Promise.all(data.provider.map(async (item, i) => {
-      return await plugin(item, data, i);
-    }));
-  } else {
-    res = await plugin(data?.provider, data, 0);
-  }
-
-  analytics = Analytics({
+  // const res = await Promise.all(analyticsProviders.map(async (item, i) => {
+  //   return await plugin(item, data, i);
+  // }));
+  console.log("process.env?.NX_GA_ID", process.env?.NX_GTM_ID, process.env?.NX_GA_ID)
+  const analytics = Analytics({
     app: SNOWPLOW.APP_NAME,
     debug: true,
     plugins: [
@@ -80,7 +76,7 @@ export const analyticsInstance = async (data: IAnalytics) => {
           appId: SNOWPLOW.APP_ID,
         },
       }),
-      // Add other plugins from the res array here if needed
+
     ],
   });
 

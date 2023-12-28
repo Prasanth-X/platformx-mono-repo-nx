@@ -7,10 +7,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "strictNullChecks": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
   },
   "files": [],
-  "include": ["src", "additional.d.ts", "moduleType.d.ts", "fonts.d.ts", "../authoring-apis/src/lib/hooks/useDashboardData"],
+  "include": [
+    "src",
+    "additional.d.ts",
+    "moduleType.d.ts",
+    "fonts.d.ts",
+  ],
   "references": [
     {
       "path": "./tsconfig.lib.json"

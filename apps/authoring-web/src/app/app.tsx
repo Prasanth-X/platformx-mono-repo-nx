@@ -8,7 +8,7 @@ import { makeStyles } from '@mui/styles';
 
 import { Suspense, useEffect, useState } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import './App.css';
@@ -17,12 +17,12 @@ import 'react-toastify/dist/ReactToastify.css';
 // import { ActionProvider } from './context/actionContext/ActionProvider';
 // import RootRouter from './router/rootRouter';
 // import { StoreProvider } from './store/ContextStore';
-// import LightTheme from './theme/lightTheme';
-import { authUrl } from './utils/authConstants';
+// import LightTheme from './theme/lightTheme'; 
 // import { DefaultLocale } from './utils/constants';
 import { graphqlInstance } from "@platformx/authoring-apis";
 import { store } from "@platformx/authoring-state";
 import {
+  DefaultLocale,
   LightTheme,
   getCurrentLang,
   getSelectedRoute
@@ -32,6 +32,8 @@ import { AnalyticsProvider } from 'use-analytics';
 import RootRouter from './router/AppRouter';
 import Analytics from './utils/analytics/analyticsData';
 import { analyticsInstance } from './utils/analytics/dynamicAnalytics';
+import { AUTH_URL } from './utils/authConstants';
+import { BrowserRouter } from 'react-router-dom';
 
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace('Mui', 'Platform-x-')
@@ -66,35 +68,43 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-  const { i18n } = useTranslation(); 
-
-  const classes = useStyles(); 
-  const [instances, setInstances] = useState<any>({}); 
+  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState(DefaultLocale);
+  const classes = useStyles();
+  const [instances, setInstances] = useState<any>({});
   const routing = getSelectedRoute();
-  const navigate = useNavigate();
-  const location = useLocation()
- const {pathname}=location
- useEffect(() => {
-  if (
-    pathname === '/en' ||
-    pathname === '/' ||
-    pathname === `/${routing}/en`
-  ) {
-    navigate(authUrl, { replace: true });
-  }
+  const { pathname } = window.location
 
-  (async () => {
-    const res = await analyticsInstance(Analytics);
-    debugger;
-    console.log('res', res);
-    setInstances(res);
-  })();
 
-  const lang = getCurrentLang();
-  if (lang) { 
-    i18n.changeLanguage(lang);
-  }
-}, [i18n]);
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        debugger
+        if (pathname === '/en' || pathname === '/' || pathname === `/${routing}/en`) {
+          window.location.replace(AUTH_URL);
+        }
+
+        const analytics = await analyticsInstance(Analytics);
+        console.log('Analytics instance:', analytics);
+        setInstances(analytics);
+
+        const lang = getCurrentLang();
+        if (lang) {
+          setLanguage(lang);
+          i18n.changeLanguage(lang);
+        }
+      } catch (error: any) {
+        console.error('Error during initialization:', error);
+        console.error('Error details:', error?.stack || error?.message || error);
+
+      }
+    };
+    initializeApp();
+
+    return () => {
+      // Clean-up logic
+    };
+  }, [pathname, i18n]);
 
   return (
     <Suspense fallback={<div>...Loading</div>}>
@@ -104,9 +114,15 @@ function App() {
             <AnalyticsProvider instance={instances}>
               <ThemeProvider theme={LightTheme}>
                 <CssBaseline />
-                <Provider store={store}> 
-                  <RootRouter /> 
-                </Provider>
+                <BrowserRouter
+                  basename={
+                    routing ? `/${routing}/${language}` : `/${language}`
+                  }
+                >
+                  <Provider store={store}>
+                    <RootRouter />
+                  </Provider>
+                </BrowserRouter>
               </ThemeProvider>
             </AnalyticsProvider>
             <ToastContainer

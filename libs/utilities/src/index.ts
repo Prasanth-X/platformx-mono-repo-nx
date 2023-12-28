@@ -28,7 +28,7 @@ import {
 import AutoTextArea from "./lib/components/AutoTextArea/AutoTextArea";
 import LanguageDropDown from "./lib/components/LanguageDropDown/LanguageDropDown";
 import { MiniHeader } from "./lib/components/Header/MiniHeader";
-import i18next from "./lib/utils/i18n";
+import i18next from "./lib/utils/i18next";
 export { LightTheme }
 //export { InterRegular }
 export { ThemeConstants }

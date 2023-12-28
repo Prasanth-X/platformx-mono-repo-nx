@@ -8,23 +8,45 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "resolveJsonModule": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@platformx/authoring-apis": ["libs/authoring-apis/src/index.ts"],
-      "@platformx/authoring-state": ["libs/authoring-state/src/index.ts"],
-      "@platformx/content": ["libs/content/src/index.ts"],
-      "@platformx/context-library": ["libs/context-library/src/index.ts"],
-      "@platformx/dashboard": ["libs/dashboard/src/index.ts"],
-      "@platformx/micro-frontends": ["libs/micro-frontends/src/index.ts"],
-      "@platformx/prelems-library": ["libs/prelems-library/src/index.ts"],
-      "@platformx/theme-library": ["libs/theme-library/src/index.ts"],
-      "@platformx/utilities": ["libs/utilities/src/index.ts"]
+      "@platformx/authoring-apis": [
+        "libs/authoring-apis/src/index.ts"
+      ],
+      "@platformx/authoring-state": [
+        "libs/authoring-state/src/index.ts"
+      ],
+      "@platformx/content": [
+        "libs/content/src/index.ts"
+      ],
+      "@platformx/context-library": [
+        "libs/context-library/src/index.ts"
+      ],
+      "@platformx/micro-frontends": [
+        "libs/micro-frontends/src/index.ts"
+      ],
+      "@platformx/prelems-library": [
+        "libs/prelems-library/src/index.ts"
+      ],
+      "@platformx/theme-library": [
+        "libs/theme-library/src/index.ts"
+      ],
+      "@platformx/utilities": [
+        "libs/utilities/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
