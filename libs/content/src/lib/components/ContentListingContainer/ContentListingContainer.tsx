@@ -20,13 +20,17 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
   const startIndex = 0;
   const dispatch = useDispatch();
   const location = useLocation();
-
+  const [isSpinning, setIsSpinning] = useState(false);
 
   const [filterValue, setFilterValue] = useState('ALL');
 
-  const [refreshState, setRefreshState] = useState(false);
-  const { loading, error, contentList, fetchMore } = useContentSearch(contentType, location, filterValue, startIndex, true);
-
+  const { loading, error, refetch, contentList, fetchMore } = useContentSearch({
+    contentType,
+    locationState: location,
+    filter: filterValue,
+    startIndex,
+    reloadContent: false,
+  });
   const {
     deleteContent,
     duplicate,
@@ -38,57 +42,27 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
     duplicateToSite,
   } = useContentListing('ALL');
 
-  const { apiState } = useSelector(
-    (state: ContentState) => state
-  );
   const createContentNew = () => {
     dispatch(previewArticle({}));
     navigate(`/content/create-${contentType?.toLowerCase()}`);
   };
 
-  const handleFilter = async (filter: any) => {
+  const handleFilter = async (filter: string) => {
     setFilterValue(filter);
-    // fetchContentSync();
-    // if (contentType === 'Course') {
-    //   dispatch(
-    //     await fetchCourseContent(contentType, location, filter, state, true)
-    //   );
-    // } else {
-    //   dispatch(await fetchContent(contentType, location, filter, state, true));
-    // }
   };
   const handleRefresh = async () => {
-    setRefreshState(true);
-    dispatch({ type: 'UPDATE_API_STATE' }); // To update the api state to false
-    // if (contentType === 'Course') {
-    //   dispatch(
-    //     await fetchCourseContent(
-    //       contentType,
-    //       location,
-    //       filterValue,
-    //       state,
-    //       true
-    //     )
-    //   );
-    // } else {
-    //   dispatch(
-    //     await fetchContent(contentType, location, filterValue, state, true)
-    //   );
-    // }
-    // fetchContentSync();
+    debugger
+    setIsSpinning(true);
+    refetch();
+
   };
+
 
   const handleFetchMore = async () => {
-    // if (contentType === 'Course') {
-    //   dispatch(
-    //     await fetchCourseContent(contentType, location, filterValue, state)
-    //   );
-    // } else {
-    //   dispatch(await fetchContent(contentType, location, filterValue, state));
-    // }
-    // fetchContentSync();
+    await fetchMore();
   };
-
+  console.log('contentList', contentList?.length);
+  debugger
   return (
     <>
       <ContentListingHeader
@@ -98,14 +72,15 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
         subCategory={CONTENT_TYPES}
         handleAddNew={createContentNew}
         handleRefresh={handleRefresh}
-        animationState={refreshState && !apiState}
+        animationState={isSpinning}
       />
-      {(!loading && contentList && contentList?.length > 0) ? (
+
+      {(!loading && contentList && contentList?.length > 0) && (
         <ContentListing
           contentList={contentList}
           deleteContent={deleteContent}
           dataList={contentList}
-          fetchMore={fetchMore}
+          fetchMore={handleFetchMore}
           preview={preview}
           unPublish={unPublish}
           view={view}
@@ -115,9 +90,10 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
           fetchContentDetails={fetchContentDetails}
           duplicateToSite={duplicateToSite}
         />
-      ) : (
-        contentList?.length === 0 && <NoSearchResult />
       )}
+      {
+        !loading && contentList?.length === 0 && <NoSearchResult />
+      }
     </>
   );
 };

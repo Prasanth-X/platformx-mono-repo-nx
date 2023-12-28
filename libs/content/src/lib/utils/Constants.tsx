@@ -5,28 +5,31 @@ import ScheduleSendRoundedIcon from '@mui/icons-material/ScheduleSendRounded';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
 
-import CourseListIcon from '../../assets/images/icons/course-icon.svg';
-import DraftIcon from '../../assets/images/icons/draftIcon.svg';
-import EventsListIcon from '../../assets/images/icons/event-fill.svg';
-import PollListIcon from '../../assets/images/icons/polls-fill.svg';
-import PublishedIcon from '../../assets/images/icons/PublishedIcon.svg';
-import SchedulePublishIcon from '../../assets/images/icons/schedulePublishIcon.svg';
-import ScheduledUnpublishIcon from '../../assets/images/icons/scheduleUnpublishIcon.svg';
-import ArticleListIcon from '../../assets/svg/articleListIcon.svg';
-import DraftStatusIcon from '../../assets/svg/draftStatusIcon.svg';
-import PagesListIcon from '../../assets/svg/pagesListIcon.svg';
-import PublishedStatusIcon from '../../assets/svg/publishStatusIcon.svg';
-import QuizListIcon from '../../assets/svg/quizListIcon.svg';
-import SchedulePublishStatusIcon from '../../assets/svg/schedulePublishStatusIcon.svg';
-import ScheduleUnpublishStatusIcon from '../../assets/svg/scheduleUnpublishStatusIcon.svg';
-import UnpublishedStatusIcon from '../../assets/svg/unpublishStatusIcon.svg';
-import VodListIcon from '../../assets/svg/vodListIcon.svg';
-import SpaceListIcon from '../../assets/svg/Space.svg';
-import SpacePublicIcon from '../../assets/svg/public.svg';
-import SpacePrivateIcon from '../../assets/svg/Private.svg';
-import Challenge_community from '../../assets/svg/Challenge_community.svg';
-import General_community from '../../assets/svg/General_community.svg';
-import News_community from '../../assets/svg/News_community.svg';
+
+import {
+  CourseListIcon,
+  DraftIcon,
+  EventsListIcon,
+  PollListIcon,
+  PublishedIcon,
+  SchedulePublishIcon,
+  ScheduledUnpublishIcon,
+  ArticleListIcon,
+  DraftStatusIcon,
+  PagesListIcon,
+  SpacePublicIcon,
+  Challenge_community,
+  General_community,
+  News_community,
+  PublishedStatusIcon,
+  QuizListIcon,
+  SchedulePublishStatusIcon,
+  ScheduleUnpublishStatusIcon,
+  SpaceListIcon,
+  SpacePrivateIcon,
+  UnpublishedStatusIcon,
+  VODListIcon,
+} from '@platformx/utilities';
 
 export const SORT_ORDER = 'DESC';
 export const statusColors = {
@@ -54,7 +57,7 @@ export const iconsList: any = {
   sitepage: PagesListIcon,
   article: ArticleListIcon,
   quiz: QuizListIcon,
-  vod: VodListIcon,
+  vod: VODListIcon,
   poll: PollListIcon,
   event: EventsListIcon,
   courses: CourseListIcon,

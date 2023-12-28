@@ -20,12 +20,14 @@ import { useStyles } from './CardMenu.styles';
 import { CARD_MENUS } from '../../utils/Constants';
 import { PageData } from '@platformx/authoring-state';
 import { useSelector } from 'react-redux';
-import CardOptionApprovalStatusIcon from '../../../assets/svg/ApprovalStatusIconOptionMenu.svg';
-import CardOptionDeleteIcon from '../../../assets/svg/DefaultStateCommentIcon.svg';
-import CardOptionDuplicateIcon from '../../../assets/svg/DuplicateIconOptionMenu.svg';
-import CardOptionEditIcon from '../../../assets/svg/EditIconOptionMenu.svg';
-import CardOptionUnPublishIcon from '../../../assets/svg/UnPublishIconOptionMenu.svg';
-import CardOptionViewIcon from '../../../assets/svg/ViewIconOptionMenu.svg';
+import {
+  CardOptionApprovalStatusIcon,
+  CardOptionDeleteIcon,
+  CardOptionDuplicateIcon,
+  CardOptionEditIcon,
+  CardOptionUnPublishIcon,
+  CardOptionViewIcon,
+} from "@platformx/utilities"
 import { MenuActions } from './CardMenu.types';
 const CardMenu = (props: any) => {
   const classes = useStyles();
@@ -342,18 +344,14 @@ const CardMenu = (props: any) => {
         >
           {status === 'published' ? (
             <>
-              <img
-                src={CardOptionViewIcon}
-                alt="Card Option View Icon"
+              <CardOptionViewIcon
                 className={classes.icon}
               />
               {t('view')}
             </>
           ) : (
             <>
-              <img
-                src={CardOptionViewIcon}
-                alt="Card Option View Icon"
+              <CardOptionViewIcon
                 className={classes.icon}
               />
               {t('preview')}
@@ -367,9 +365,7 @@ const CardMenu = (props: any) => {
               onHandleMenuActions('view');
             }}
           >
-            <img
-              src={CardOptionViewIcon}
-              alt="Card Option View Icon"
+            <CardOptionViewIcon
               className={classes.icon}
             />
             {t('view')}
@@ -377,29 +373,27 @@ const CardMenu = (props: any) => {
         ) : null}
         {(scheduledPublishTriggerDateTime === null ||
           scheduledPublishTriggerDateTime === undefined) &&
-        (scheduledUnPublishTriggerDateTime === null ||
-          scheduledUnPublishTriggerDateTime === undefined)
+          (scheduledUnPublishTriggerDateTime === null ||
+            scheduledUnPublishTriggerDateTime === undefined)
           ? tabView && (
-              <ErrorTooltip
-                component={
-                  <MenuItem
-                    disableRipple
-                    disabled={!canAccessAction(category, subCategory, 'Update')}
-                    onClick={() => {
-                      onHandleMenuActions('edit');
-                    }}
-                  >
-                    <img
-                      src={CardOptionEditIcon}
-                      alt="Card Option Edit Icon"
-                      className={classes.icon}
-                    />
-                    {t(CARD_MENUS.EDIT.displayName)}
-                  </MenuItem>
-                }
-                doAccess={!canAccessAction(category, subCategory, 'Update')}
-              />
-            )
+            <ErrorTooltip
+              component={
+                <MenuItem
+                  disableRipple
+                  disabled={!canAccessAction(category, subCategory, 'Update')}
+                  onClick={() => {
+                    onHandleMenuActions('edit');
+                  }}
+                >
+                  <CardOptionEditIcon
+                    className={classes.icon}
+                  />
+                  {t(CARD_MENUS.EDIT.displayName)}
+                </MenuItem>
+              }
+              doAccess={!canAccessAction(category, subCategory, 'Update')}
+            />
+          )
           : null}
         <ErrorTooltip
           component={
@@ -410,9 +404,7 @@ const CardMenu = (props: any) => {
                 onHandleMenuActions('duplicate');
               }}
             >
-              <img
-                src={CardOptionDuplicateIcon}
-                alt="Card Option Duplicate Icon"
+              <CardOptionDuplicateIcon
                 className={classes.icon}
               />
               {t(CARD_MENUS.DUPLICATE.displayName)}
@@ -430,9 +422,7 @@ const CardMenu = (props: any) => {
                   onHandleMenuActions('delete');
                 }}
               >
-                <img
-                  src={CardOptionDeleteIcon}
-                  alt="Card Option Delete Icon"
+                <CardOptionDeleteIcon
                   className={classes.icon}
                 />
                 {t(CARD_MENUS.DELETE.displayName)}
@@ -442,7 +432,7 @@ const CardMenu = (props: any) => {
           />
         )}
         {status === 'published' &&
-        scheduledUnPublishTriggerDateTime === null ? (
+          scheduledUnPublishTriggerDateTime === null ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -452,9 +442,7 @@ const CardMenu = (props: any) => {
                   onHandleMenuActions('unpublish');
                 }}
               >
-                <img
-                  src={CardOptionUnPublishIcon}
-                  alt="Card Option Unpublish Icon"
+                <CardOptionUnPublishIcon
                   className={classes.icon}
                 />
                 {t(CARD_MENUS.UNPUBLISH.displayName)}
@@ -464,7 +452,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledPublishTriggerDateTime != null ||
-        scheduledPublishTriggerDateTime != undefined ? (
+          scheduledPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -486,7 +474,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledPublishTriggerDateTime != null ||
-        scheduledPublishTriggerDateTime != undefined ? (
+          scheduledPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -506,7 +494,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledUnPublishTriggerDateTime != null ||
-        scheduledUnPublishTriggerDateTime != undefined ? (
+          scheduledUnPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -532,7 +520,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledUnPublishTriggerDateTime != null ||
-        scheduledUnPublishTriggerDateTime != undefined ? (
+          scheduledUnPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -560,9 +548,7 @@ const CardMenu = (props: any) => {
             onHandleMenuActions('approval_status');
           }}
         >
-          <img
-            src={CardOptionApprovalStatusIcon}
-            alt="Card Option Approval Status Icon"
+          <CardOptionApprovalStatusIcon
             className={classes.icon}
           />
           {t('approval_status')}
