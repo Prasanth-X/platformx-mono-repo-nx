@@ -1,13 +1,13 @@
 import { format } from 'date-fns';
+import { ShowToastError } from '../components/ToastNotification/ToastNotification';
 import { DefaultLocale } from '../constants/CommonConstants';
-import { default as feyenoord } from '../theme/feyenoordVariable';
-import { default as fifa } from '../theme/fifaVariable';
-import { default as hockeyAustralia } from '../theme/hockeyAustraliaVariable';
+import { default as feyenoord } from '../themes/authoring/feyenoordVariable';
+import { default as fifa } from '../themes/authoring/fifaVariable';
+import { default as hockeyAustralia } from '../themes/authoring/hockeyAustraliaVariable';
 import { default as light } from '../themes/authoring/prelemVariableLight';
 import { authInfo } from './authConstants';
 import { CONTENT_ICON, LanguageList } from './helperConstants';
 import siteLevelSchema from './siteLevelSettings.json';
-
 export const isTabView = () => {
   if (typeof window !== 'undefined') {
     if (window.innerWidth <= 1024) return true;
@@ -420,7 +420,7 @@ export const inputErrorToast = (errors: any = {}) => {
       newArray = [...newArray, errors[key].msg];
     }
   }
-  showToastError(nullToString(newArray[0]));
+  ShowToastError(nullToString(newArray[0]));
 };
 export const debounce = (fn: any, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
@@ -434,7 +434,7 @@ export const getCurrentLang = () => {
   let lang = '';
   const split = location.pathname.split('/');
 
-  if (LanguageList.find((x) => x.id === split[2])) {
+  if (LanguageList().find((x) => x.id === split[2])) {
     lang = split[2];
   } else {
     lang = DefaultLocale;
@@ -483,7 +483,7 @@ export const getSubDomain = () => {
 export const getCurrentPathName = () => {
   let pathname = '';
   const split = location.pathname.split('/');
-  if (LanguageList.find((x) => x.id === split[2])) {
+  if (LanguageList().find((x) => x.id === split[2])) {
     pathname = `/${split.slice(3).join('/')}`;
   } else {
     pathname = location.pathname;
@@ -528,7 +528,7 @@ export const getUniqueTimeZone = () => {
 };
 
 //export const formCroppedUrl = (gcpUrl = "", bucketName = "", url = "", ext = "") => `${gcpUrl}/${bucketName}/${url}.${ext}`;
-export const formCroppedUrl = (url = '', ext = '') => {
+export const formCroppedUrl = (url: any = '', ext = '') => {
   if (url.indexOf('http://') === 0 || url.indexOf('https://') === 0) {
     return url;
   }
@@ -582,7 +582,7 @@ export const getLocale = (language: string, location: string) => {
 };
 
 export const ThemeConstantForPrelemThemeBasedOnSite = () => {
-  let ThemeConstant = light;
+  let ThemeConstant: any = light;
   const siteName = process.env.REACT_APP_SITE_BASED_THEME;
   const site_array = siteName.split(',');
   const currentSiteName = getSelectedSite();

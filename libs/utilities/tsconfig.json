@@ -7,7 +7,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "strictNullChecks": false,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "composite": true
   },
   "files": [],
   "include": ["src", "additional.d.ts", "moduleType.d.ts", "fonts.d.ts"],
