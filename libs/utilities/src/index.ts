@@ -1,6 +1,5 @@
 import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect';
 import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
-import BasicSwitch from './lib/components/BasicSwitch/BasicSwitch';
 import DatePicker from './lib/components/DatePicker/DatePicker';
 import Error from './lib/components/Error/Error';
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
@@ -12,7 +11,6 @@ import PlateformXDialog from './lib/components/Popups/DeletePopup';
 import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound';
 import TextBox from './lib/components/TextBox/TextBox';
 import XLoader from './lib/components/XLoader/XLoader';
-
 import {
   AUTH_INFO,
   AUTH_URL,
@@ -30,15 +28,16 @@ import LightTheme from './lib/themes/authoring/lightTheme';
 import ThemeConstants from './lib/themes/authoring/variable';
 import PrelemTheme from './lib/themes/prelems/prelemTheme';
 import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark';
-import i18next from './lib/utils/i18n';
-// const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
+import i18next from './lib/utils/i18next';
+const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
+
 export {
   AutoCompleteMultiSelect,
   ContentListLoader,
   DatePicker,
   Error,
   ErrorTooltip,
-  // InterRegular,
+  InterRegular,
   LightTheme,
   PrelemTheme,
   PrelemsThemeConstants,
@@ -47,7 +46,7 @@ export {
   i18next,
 };
 
-// export * from './lib/assets/svg';
+export * from './lib/assets/svg';
 export * from './lib/components';
 export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';
@@ -65,7 +64,6 @@ export {
   AUTH_URL,
   ActionProvider,
   AutoTextArea,
-  BasicSwitch,
   LOGOUT_URL,
   LanguageDropDown,
   MiniHeader,
