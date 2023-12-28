@@ -4,6 +4,7 @@ import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/Au
 import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
 import DatePicker from './lib/components/DatePicker/DatePicker';
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
+import CommonImageRender from './lib/components/Gallery/CommonImageRender';
 import { MiniHeader } from './lib/components/Header/MiniHeader';
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown';
 import ContentListLoader from './lib/components/Loader/ContentListLoader';
@@ -28,8 +29,7 @@ import LightTheme from './lib/themes/authoring/lightTheme';
 import ThemeConstants from './lib/themes/authoring/variable';
 import PrelemTheme from './lib/themes/prelems/prelemTheme';
 import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark';
-import i18next from './lib/utils/i18n';
-
+import i18next from './lib/utils/i18next';
 export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
@@ -74,6 +74,7 @@ export * from './lib/constants/CommonConstants';
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from './lib/themes/authoring/lightTheme';
 export * from './lib/themes/prelems/prelemTheme';
+export * from './lib/utils/authConstants';
 export * from './lib/utils/helper';
 export * from './lib/utils/helperConstants';
 export * from './lib/utils/helperFns';
@@ -93,6 +94,7 @@ export {
   AutoTextArea,
   BasicSwitch,
   CommonBoxWithNumber,
+  CommonImageRender,
   DeletePopup,
   LOGOUT_URL,
   Loader,

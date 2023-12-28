@@ -3,8 +3,8 @@ import { Box, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ArrowUpwardIcon from '../../assets/svg/UploadThumbnail.svg';
-import CommonImageRender from '../../pages/Gallery/CommonImageRender';
 import ThemeConstants from '../../themes/authoring/variable';
+import CommonImageRender from '../Gallery/CommonImageRender';
 
 interface ImageProps {
   url?: any;
