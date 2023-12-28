@@ -25,7 +25,7 @@ import CardOptionViewIcon from '../../../assets/svg/ViewIconOptionMenu.svg';
 
 import { useMediaQuery, useTheme } from '@mui/material';
 import EmbedDialog from '../EmbedDialog/EmbedDialog';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 import { MenuActions } from '../CardMenu/CardMenu.types';
 import PlateformXSocialDialog from '../PlateformXSocialDialog/PlateformXSocialDialog';
 import { getEmbedTempData, getSocialShareData } from '../../utils/Helper';

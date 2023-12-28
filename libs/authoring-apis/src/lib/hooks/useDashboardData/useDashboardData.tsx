@@ -29,7 +29,7 @@ import {
   pageObjectMapper,
 } from '../useQuizPollEvents/mapper';
 import useUserSession from '../useUserSession/useUserSession';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 
 const {
   LANG,
@@ -44,7 +44,7 @@ const {
 } = CONTENT_CONSTANTS;
 const useDashboardData = (contentType = 'ALL') => {
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
+ // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [getSession] = useUserSession();
   const { userInfo } = getSession();
@@ -244,13 +244,13 @@ const useDashboardData = (contentType = 'ALL') => {
               questions: qusArry,
               contentType,
             };
-            dispatch(previewContent(tempObj));
+           // dispatch(previewContent(tempObj));
             navigate(PREVIEW_PATH);
           } else if (contentType === POLL) {
-            dispatch(previewContent({ ...selectedItem, contentType }));
+          //  dispatch(previewContent({ ...selectedItem, contentType }));
             navigate(PREVIEW_PATH);
           } else if (contentType === 'Article') {
-            dispatch(previewArticle(selectedItem));
+          //  dispatch(previewArticle(selectedItem));
             navigate('/article-preview');
           } else if (contentType === EVENT) {
             const eventToPreview = {
@@ -261,7 +261,7 @@ const useDashboardData = (contentType = 'ALL') => {
               last_modification_date: selectedItem?.modificationDate,
               AnalyticsEnable: selectedItem?.analytics_enable,
             };
-            dispatch(previewContent({ ...eventToPreview, contentType }));
+           // dispatch(previewContent({ ...eventToPreview, contentType }));
             navigate(PREVIEW_PATH);
           } else {
             ShowToastError(t(PREVIEW_PATH));

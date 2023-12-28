@@ -3,7 +3,9 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import Title from "../components/common/Title";
 import { useStyles } from "./dashboard.styles";
-import { useUserSession } from "@platformx/authoring-apis";
+import { useUserSession, useDashboardData } from "@platformx/authoring-apis";
+import { store } from "@platformx/authoring-state";
+import { Provider } from "react-redux";
 // import CardSlider from "../components/CardSlider/CardSlider";
 // import RecentCard from "../components/RecentCard/RecentCard";
 // import FifaDashboard from "../components/Fifa-Dashboard/index";
@@ -24,18 +26,18 @@ export function Dashboard(props: DashboardProps) {
    const classes = useStyles();
    const { t } = useTranslation();
    const [ getSession ] = useUserSession();
- // const { userInfo, role } = getSession();
-  // const {
-  //   dashBoard,
-  //   deleteContent,
-  //   duplicate,
-  //   edit,
-  //   preview,
-  //   unPublish,
-  //   view,
-  //   fetchDashBoardData,
-  //   fetchContentDetails,
-  // } = useDashboardData();
+   const { userInfo, role } = getSession();
+  const {
+    dashBoard,
+    deleteContent,
+    duplicate,
+    edit,
+    preview,
+    unPublish,
+    view,
+    fetchDashBoardData,
+    fetchContentDetails,
+  } = useDashboardData();
   // const Charts = React.lazy(() =>
   //   import("./Charts/Charts").then((module) => ({
   //     default: module.default,
@@ -67,9 +69,11 @@ export function Dashboard(props: DashboardProps) {
     //     <InstructorDashBoard />
     //   ) : (
     //     <Box className={classes.container}>
+            <Provider store={store}>
             <Box>
               <Title titleVarient='h1bold' titleColor='#4B9EF9' padding='0' title={t("greets_x")} />
             </Box>
+            </Provider>
             // <Box>
             //   <Title titleVarient='h1bold' padding='0' title={userInfo?.name} />
             // </Box>

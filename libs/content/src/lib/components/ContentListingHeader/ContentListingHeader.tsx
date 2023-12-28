@@ -1,4 +1,4 @@
-import { createStyles, makeStyles } from '@material-ui/core';
+import { createStyles, makeStyles } from '@mui/styles';
 import AddIcon from '@mui/icons-material/Add';
 import SyncIcon from '@mui/icons-material/Sync';
 import {

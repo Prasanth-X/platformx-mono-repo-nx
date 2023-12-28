@@ -9,6 +9,15 @@ import {
 } from '../constants/CommonConstants';
 import { Props } from './types';
 
+const siteLevelSchema = {
+  "siteName":"X",
+  "siteURL":"https://platform-x.com",
+  "siteDescription":"Lorem Ipsum is simply dummy text of the printing",
+  "siteImage":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fuicookies.com%2Ffree-html-contact-forms%2F&psig=AOvVaw2eVA8o8PsBkQZBaD49Qxf7&ust=1646374746446000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC60qamqfYCFQAAAAAdAAAAABAO",
+  "facebookAppId":"Platform-X",
+  "twitterAppId":"Platform-X"
+};
+
 const errorRequest =
   'We have not been able to complete the requested action. Please try again later';
 const headerData = {

@@ -1,5 +1,3 @@
-import { SORT_ORDER } from '../../Common/Listing/Utils/Constants';
-
 export const mapFetchPages = (
   startIndex: number,
   state: any,
@@ -15,7 +13,7 @@ export const mapFetchPages = (
     created_by: state?.author,
     contentType: 'Sitepage',
     pageFilter: filter,
-    sort: SORT_ORDER,
+    sort: 'DESC',
     pagination: { start: startIndex, rows: 20 },
     isSuggestive: false,
   };
