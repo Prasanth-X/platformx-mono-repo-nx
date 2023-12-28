@@ -44,7 +44,7 @@ const useAccess = (): Access => {
     subcategory: string | string[],
     allowedAction: string
   ): boolean => {
-    if (permissions[0].actions[0]?.toLowerCase() === 'all') {
+    if (permissions[0]?.actions[0]?.toLowerCase() === 'all') {
       return true;
     }
     const subCategories = Array.isArray(subcategory)

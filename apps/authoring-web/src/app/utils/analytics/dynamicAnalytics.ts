@@ -52,7 +52,7 @@ const plugin = async (provider: string, data: IAnalytics, i: number) => {
 };
 
 export const analyticsInstance = async (data: IAnalytics) => {
-  debugger
+
   const analyticsProviders = data?.provider instanceof Array ? data.provider : [data.provider];
 
   // const res = await Promise.all(analyticsProviders.map(async (item, i) => {

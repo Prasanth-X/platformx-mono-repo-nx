@@ -1,26 +1,31 @@
+/* eslint-disable no-debugger */
 import {
   CATEGORY_CONTENT,
   CONTENT_TYPES,
-  contentTypeAPIs,
   useContentListing,
+  useContentSearch
 } from '@platformx/authoring-apis';
 import {
   ContentState,
-  previewArticle,
-  updateContentList,
+  previewArticle
 } from '@platformx/authoring-state';
 import { NoSearchResult } from '@platformx/utilities';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ContentListing from '../ContentListing/ContentListing';
 import ContentListingHeader from '../ContentListingHeader/ContentListingHeader';
-const ContListingContainer = ({ contentType }: any) => {
+const ContListingContainer = ({ contentType }: { contentType: string }) => {
   const navigate = useNavigate();
+  const startIndex = 0;
   const dispatch = useDispatch();
   const location = useLocation();
+
+
   const [filterValue, setFilterValue] = useState('ALL');
+
   const [refreshState, setRefreshState] = useState(false);
+  const { loading, error, contentList, fetchMore } = useContentSearch(contentType, location, filterValue, startIndex, true);
 
   const {
     deleteContent,
@@ -32,7 +37,8 @@ const ContListingContainer = ({ contentType }: any) => {
     fetchContentDetails,
     duplicateToSite,
   } = useContentListing('ALL');
-  const { contentList, startIndex, apiState, loading } = useSelector(
+
+  const { apiState } = useSelector(
     (state: ContentState) => state
   );
   const createContentNew = () => {
@@ -40,47 +46,9 @@ const ContListingContainer = ({ contentType }: any) => {
     navigate(`/content/create-${contentType?.toLowerCase()}`);
   };
 
-  useEffect(() => {
-    localStorage.removeItem('articleTimerState');
-    localStorage.removeItem('contentTypeTimerState');
-
-    // Clears content when navigation changed to diff content
-    if (contentList.length == 0) {
-      fetchContentSync();
-    }
-  }, [contentType]);
-
-  useEffect(() => {
-    fetchContentSync();
-  }, [location]);
-
-  const fetchContentSync = async () => {
-    if (contentType === 'Course') {
-      const response = await contentTypeAPIs.fetchCourseContent(
-        contentType,
-        location,
-        filterValue,
-        startIndex,
-        contentList,
-        true
-      );
-      updateContentList(response);
-    } else {
-      const response = await contentTypeAPIs.fetchSearchContent(
-        contentType,
-        location,
-        filterValue,
-        startIndex,
-        contentList,
-        true
-      );
-      updateContentList(response);
-    }
-  };
-
   const handleFilter = async (filter: any) => {
     setFilterValue(filter);
-    fetchContentSync();
+    // fetchContentSync();
     // if (contentType === 'Course') {
     //   dispatch(
     //     await fetchCourseContent(contentType, location, filter, state, true)
@@ -89,7 +57,6 @@ const ContListingContainer = ({ contentType }: any) => {
     //   dispatch(await fetchContent(contentType, location, filter, state, true));
     // }
   };
-
   const handleRefresh = async () => {
     setRefreshState(true);
     dispatch({ type: 'UPDATE_API_STATE' }); // To update the api state to false
@@ -108,7 +75,7 @@ const ContListingContainer = ({ contentType }: any) => {
     //     await fetchContent(contentType, location, filterValue, state, true)
     //   );
     // }
-    fetchContentSync();
+    // fetchContentSync();
   };
 
   const handleFetchMore = async () => {
@@ -119,7 +86,7 @@ const ContListingContainer = ({ contentType }: any) => {
     // } else {
     //   dispatch(await fetchContent(contentType, location, filterValue, state));
     // }
-    fetchContentSync();
+    // fetchContentSync();
   };
 
   return (
@@ -133,21 +100,23 @@ const ContListingContainer = ({ contentType }: any) => {
         handleRefresh={handleRefresh}
         animationState={refreshState && !apiState}
       />
-      {loading || (contentList && contentList.length > 0) ? (
+      {(!loading && contentList && contentList?.length > 0) ? (
         <ContentListing
+          contentList={contentList}
           deleteContent={deleteContent}
           dataList={contentList}
-          fetchMore={handleFetchMore}
+          fetchMore={fetchMore}
           preview={preview}
           unPublish={unPublish}
           view={view}
           edit={edit}
+          loading={loading}
           duplicate={duplicate}
           fetchContentDetails={fetchContentDetails}
           duplicateToSite={duplicateToSite}
         />
       ) : (
-        contentList?.length == 0 && <NoSearchResult />
+        contentList?.length === 0 && <NoSearchResult />
       )}
     </>
   );
