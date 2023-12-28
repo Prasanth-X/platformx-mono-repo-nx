@@ -9,7 +9,7 @@ import * as React from 'react';
 import { useTranslation } from 'react-i18next'; 
 import {TextBox} from '@platformx/utilities';
 import {DatePicker} from "@platformx/utilities"
-import { FiltersObj } from '../../../utils/search.types';
+import { FiltersObj } from '../../../Utils/search.types';
 import Tags from './Tags';
 
 const FilterContent = styled((props: MenuProps) => (

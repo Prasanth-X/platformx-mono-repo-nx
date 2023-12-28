@@ -12,7 +12,11 @@ const dashboardApi = {
       });
       return data;
     } catch (err: any) {
-      return null;
+      return {
+        data: null,
+        error: err,
+        loading: false
+      };
     }
   },
   fetchDashboardGraphs: async <T>(input: any): Promise<ApiResponse<T>> => {
@@ -24,7 +28,11 @@ const dashboardApi = {
       });
       return data;
     } catch (err: any) {
-      return null;
+      return {
+        data: null,
+        error: err,
+        loading: false
+      };
     }
   },
 };

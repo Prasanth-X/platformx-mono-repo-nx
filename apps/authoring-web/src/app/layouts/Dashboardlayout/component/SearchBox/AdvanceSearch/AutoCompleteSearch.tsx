@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';   
-import { iconMap } from '../../../utils/constant';  
+import { iconMap } from '../../../Utils/constant';  
 import { SORT_ORDER, debounce } from '@platformx/utilities';
 import { contentTypeAPIs } from '@platformx/authoring-apis';
 

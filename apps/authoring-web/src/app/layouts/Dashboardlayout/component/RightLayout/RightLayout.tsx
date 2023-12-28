@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { DrawerWidth } from '../../utils/constant';
+import { DrawerWidth } from '../../Utils/constant';
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
   isSideBar?: boolean;
@@ -11,16 +11,16 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   ...(!open && {
     ...(isSideBar
       ? {
-          [theme.breakpoints.up('sm')]: {
-            marginLeft: '65px',
-            width: 'calc(100% - 65px)',
-          },
+          // [theme.breakpoints.up('sm')]: {
+          //   marginLeft: '65px',
+          //   width: 'calc(100% - 65px)',
+          // },
         }
       : {
-          [theme.breakpoints.up('sm')]: {
-            marginLeft: '0',
-            width: '100%',
-          },
+          // [theme.breakpoints.up('sm')]: {
+          //   marginLeft: '0',
+          //   width: '100%',
+          // },
         }),
   }),
   ...(open && {
@@ -30,10 +30,10 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      marginLeft: '0px',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: '100%',
+    //   marginLeft: '0px',
+    // },
   }),
 }));
 

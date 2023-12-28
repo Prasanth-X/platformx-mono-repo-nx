@@ -4,16 +4,16 @@ import MuiDrawer from '@mui/material/Drawer';
 import { CSSObject, styled, Theme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { MiniHeader, PlatXLogo } from '@platformx/utilities';
-import { DrawerWidth } from '../../utils/constant';
+import { DrawerWidth } from '../../Utils/constant';
 import './LeftSideBar.css';
 import { useStyles } from './LeftSidebar.styles';
 import MenuList from './MenuList';
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: DrawerWidth,
-  [theme.breakpoints.down('sm')]: {
-    width: '0px',
-  },
+  // [theme.breakpoints.down('sm')]: {
+  //   width: '0px',
+  // },
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,

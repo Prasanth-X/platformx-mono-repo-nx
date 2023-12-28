@@ -4,7 +4,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
 import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon} from '@platformx/utilities';  
-import { DrawerWidth } from '../../utils/constant';
+import { DrawerWidth } from '../../Utils/constant';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
 import { MiniHeader } from '@platformx/utilities';
@@ -32,9 +32,9 @@ const AppBar = styled(MuiAppBar, {
             marginLeft: '65px',
             width: 'calc(100% - 65px)',
           },
-          [theme.breakpoints.down('sm')]: {
-            display: 'none',
-          },
+          // [theme.breakpoints.down('sm')]: {
+          //   display: 'none',
+          // },
         }
       : {
           [theme.breakpoints.up('sm')]: {
@@ -50,10 +50,10 @@ const AppBar = styled(MuiAppBar, {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      marginLeft: '0px',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: '100%',
+    //   marginLeft: '0px',
+    // },
   }),
 }));
 

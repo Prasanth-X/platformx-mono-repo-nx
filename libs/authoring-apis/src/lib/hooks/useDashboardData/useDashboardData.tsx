@@ -92,10 +92,10 @@ const useDashboardData = (contentType = 'ALL') => {
           userCourseList = [],
           coursesList = [],
         } = response || {};
-        setDashBoardData({
+        const dt: any = {
           ...dashBoardData,
           recentPages: recentPages
-            ?.filter((page) => page?.page_state !== 'unpublished')
+            ?.filter((page: any) => page?.page_state !== 'unpublished')
             ?.slice(0, 10),
           boostContent: boostContent[0]?.compoundData?.slice(0, 15),
           scheduled: [...publish, ...unPublish]?.slice(0, 9),
@@ -104,13 +104,14 @@ const useDashboardData = (contentType = 'ALL') => {
           taskPages: taskPages,
           userCourseList: userCourseList,
           coursesList: coursesList,
-        });
+        };
+        setDashBoardData(dt);
       } else {
         console.log('error in dashboard api');
 
         //ShowToastError(t('api_error_toast'));
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err);
       ShowToastError(err);
     } finally {
@@ -294,7 +295,7 @@ const useDashboardData = (contentType = 'ALL') => {
         const selectedLanguage = LanguageList.filter((langObj) =>
           language.includes(langObj.value)
         );
-        const response = [];
+        const response: any = [];
         for (const lang of selectedLanguage) {
           const result = await createMutate({
             variables: {

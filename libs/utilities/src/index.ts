@@ -52,7 +52,7 @@ export * from './lib/components/Cards/CardSkeleton'
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from "./lib/utils/helperConstants"
 export * from "./lib/constants/CommonConstants"
-//export * from "./lib/assets/svg"
+export * from "./lib/assets/svg"
 
 export { AutoTextArea }
 export { NoSearchResult }

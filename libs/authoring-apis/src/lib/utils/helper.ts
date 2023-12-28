@@ -50,7 +50,7 @@ export const getSubDomain = () => {
     const sessions = localStorage.getItem("userSession") || '';
     const storedSession = JSON.parse(sessions);
     const site_url = storedSession?.userInfo?.preferred_sites_urls;
-    const domain = site_url[getSelectedSite()]?.replace(".com.", ".com");
+    const domain = site_url[getSelectedSite() || 0]?.replace(".com.", ".com");
     if (domain) {
       if (domain.startsWith("http://")) {
         return domain.replace("http://", "https://");
@@ -62,7 +62,7 @@ export const getSubDomain = () => {
     return null; // Return null if `domain` is null or undefined
   };
 
-export const updateStructureData = (content, banner, keywords, pageUrl) => {
+export const updateStructureData = (content: any, banner: any, keywords: any, pageUrl: any) => {
     let articleStructureData = {};
     articleStructureData = {
       '@context': 'https://schema.org',

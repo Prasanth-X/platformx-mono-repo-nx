@@ -4,12 +4,12 @@ const useSitesMenuStyle = makeStyles((theme) => ({
   box: {
     display: 'flex',
     marginTop: '10px',
-    [theme.breakpoints.down('xs')]: {
-      justifyContent: 'center',
-    },
-    [theme.breakpoints.up('xs')]: {
-      flexDirection: 'row-reverse',
-    },
+    // [theme.breakpoints.down('xs')]: {
+    //   justifyContent: 'center',
+    // },
+    // [theme.breakpoints.up('xs')]: {
+    //   flexDirection: 'row-reverse',
+    // },
   },
 
   dropdowncontain: {

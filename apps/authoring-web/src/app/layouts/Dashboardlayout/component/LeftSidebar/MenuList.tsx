@@ -3,7 +3,7 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
 import {ArticleIcon} from '@platformx/utilities';
-import { MenuData } from '../../utils/constants';
+import { MenuData } from '../../Utils/constants';
 import MenuItems from './MenuItems';
 import { ShowToastError, useUserSession } from '@platformx/utilities';
 import { contentTypeSchemaApi } from '@platformx/authoring-apis';

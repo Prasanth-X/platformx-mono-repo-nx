@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router'; 
 import './SearchBox.css';
 import SearchModel from './SearchModel'; 
-import { removeSearchLocalStorage } from '../../utils/helper';
+import { removeSearchLocalStorage } from '../../Utils/helper';
 
 export default function SearchBox(props) {
   const { t } = useTranslation();

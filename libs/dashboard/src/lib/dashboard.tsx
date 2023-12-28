@@ -3,15 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Title from "../components/common/Title";
 import { useStyles } from "./dashboard.styles";
 import { useUserSession, useDashboardData } from "@platformx/authoring-apis";
-import { store } from "@platformx/authoring-state";
-import { Provider } from "react-redux";
-import { I18nextProvider, useTranslation } from 'react-i18next';
-import { ThemeProvider } from '@mui/material/styles';
-import {
-  LightTheme,
-} from '@platformx/utilities';
-import CssBaseline from '@mui/material/CssBaseline';
-import { BrowserRouter } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // import CardSlider from "../components/CardSlider/CardSlider";
 // import RecentCard from "../components/RecentCard/RecentCard";
 // import FifaDashboard from "../components/Fifa-Dashboard/index";
@@ -69,18 +61,9 @@ export function Dashboard(props: DashboardProps) {
   // };
 
   return (
-    <I18nextProvider i18n={i18n}>
-        <ThemeProvider theme={LightTheme}>
-          <CssBaseline />
-          <BrowserRouter>
-                  <Provider store={store}>
                     <Box>
                       <Title titleVarient='h1bold' titleColor='#4B9EF9' padding='0' title={t("greets_x")} />
                     </Box>
-                  </Provider>
-            </BrowserRouter>
-        </ThemeProvider>
-      </I18nextProvider>
   );
 }
 

@@ -12,8 +12,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAccess } from '@platformx/utilities';
 // import { Store } from '../../../../store/ContextStore'; 
-import { headerMenus } from '../../utils/constants';
-import { removeSearchLocalStorage } from '../../utils/helper';
+import { headerMenus } from '../../Utils/constants';
+import { removeSearchLocalStorage } from '../../Utils/helper';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion
