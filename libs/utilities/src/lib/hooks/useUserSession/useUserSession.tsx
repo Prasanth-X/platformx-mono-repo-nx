@@ -1,3 +1,4 @@
+import { data } from './sessionData';
 import { UserSession } from './useUserSession.types';
 
 const useUserSession = (): [
@@ -14,8 +15,8 @@ const useUserSession = (): [
         role: updatedSession.role,
         userInfo: updatedSession.userInfo,
       };
-
-      localStorage.setItem('userSession', JSON.stringify(session));
+      localStorage.setItem('userSession', JSON.stringify(data));
+     // localStorage.setItem('userSession', JSON.stringify(session));
     } else {
       localStorage.removeItem('userSession');
       localStorage.removeItem('selectedSite');

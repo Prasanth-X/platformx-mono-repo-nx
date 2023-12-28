@@ -29,7 +29,7 @@ import {
   pageObjectMapper,
 } from '../useQuizPollEvents/mapper';
 import useUserSession from '../useUserSession/useUserSession';
-//import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const {
   LANG,
@@ -44,7 +44,7 @@ const {
 } = CONTENT_CONSTANTS;
 const useDashboardData = (contentType = 'ALL') => {
   const { t, i18n } = useTranslation();
- // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [getSession] = useUserSession();
   const { userInfo } = getSession();
@@ -122,7 +122,7 @@ const useDashboardData = (contentType = 'ALL') => {
     fetchDashBoardData();
   }, []);
 
-  const fetchContentDetails = async (listItemDetails) => {
+  const fetchContentDetails = async (listItemDetails: any) => {
     try {
       const response: any = await fetchContentByPathAPI.fetchContent({
         contentType: capitalizeFirstLetter(listItemDetails?.ContentType),
@@ -136,7 +136,7 @@ const useDashboardData = (contentType = 'ALL') => {
       ShowToastError(t('api_error_toast'));
     }
   };
-  const deleteContent = async (listItemDetails) => {
+  const deleteContent = async (listItemDetails: any) => {
     const selectedItem = await fetchContentDetails(listItemDetails);
     const { ContentType } = listItemDetails;
 
@@ -164,7 +164,7 @@ const useDashboardData = (contentType = 'ALL') => {
     }
   };
 
-  const unPublish = async (listItemDetails) => {
+  const unPublish = async (listItemDetails: any) => {
     const selectedItem = await fetchContentDetails(listItemDetails);
     if (selectedItem && Object.keys(selectedItem).length > 0) {
       try {
@@ -191,7 +191,7 @@ const useDashboardData = (contentType = 'ALL') => {
     }
   };
 
-  const view = (listItemDetails) => {
+  const view = (listItemDetails: any) => {
     window.open(
       `${getSubDomain()}/${
         i18n.language
@@ -201,7 +201,7 @@ const useDashboardData = (contentType = 'ALL') => {
     );
   };
   const { editPage } = usePage();
-  const edit = (listItemDetails, obj = {}) => {
+  const edit = (listItemDetails: any, obj = {}) => {
     if (listItemDetails?.ContentType?.toLowerCase() === 'sitepage') {
       editPage(pageObjectMapper(obj));
     } else {
@@ -213,7 +213,7 @@ const useDashboardData = (contentType = 'ALL') => {
     }
   };
 
-  const preview = async (listItemDetails) => {
+  const preview = async (listItemDetails: any) => {
     const selectedItem = await fetchContentDetails(listItemDetails);
     const { contentType } = listItemDetails;
     if (selectedItem && Object.keys(selectedItem).length > 0) {
@@ -222,9 +222,9 @@ const useDashboardData = (contentType = 'ALL') => {
           selectedItem?.page_state === DRAFT ||
           selectedItem?.page_state == UNPUBLISHED
         ) {
-          const qusArry = [];
+          const qusArry: any = [];
           if (selectedItem?.questions?.length && contentType === QUIZ) {
-            selectedItem?.questions?.map((qus) => {
+            selectedItem?.questions?.map((qus: any) => {
               runFetchContentByPath({
                 variables: { contentType: QUESTION, path: qus },
               })
@@ -244,13 +244,13 @@ const useDashboardData = (contentType = 'ALL') => {
               questions: qusArry,
               contentType,
             };
-           // dispatch(previewContent(tempObj));
+            dispatch(previewContent(tempObj));
             navigate(PREVIEW_PATH);
           } else if (contentType === POLL) {
-          //  dispatch(previewContent({ ...selectedItem, contentType }));
+            dispatch(previewContent({ ...selectedItem, contentType }));
             navigate(PREVIEW_PATH);
           } else if (contentType === 'Article') {
-          //  dispatch(previewArticle(selectedItem));
+            dispatch(previewArticle(selectedItem));
             navigate('/article-preview');
           } else if (contentType === EVENT) {
             const eventToPreview = {
@@ -261,7 +261,7 @@ const useDashboardData = (contentType = 'ALL') => {
               last_modification_date: selectedItem?.modificationDate,
               AnalyticsEnable: selectedItem?.analytics_enable,
             };
-           // dispatch(previewContent({ ...eventToPreview, contentType }));
+            dispatch(previewContent({ ...eventToPreview, contentType }));
             navigate(PREVIEW_PATH);
           } else {
             ShowToastError(t(PREVIEW_PATH));
@@ -276,8 +276,8 @@ const useDashboardData = (contentType = 'ALL') => {
   };
   const duplicate = async (
     IsDuplicate = false,
-    title,
-    language,
+    title = '',
+    language = '',
     listItemDetails: any
   ) => {
     const selectedItem = await fetchContentDetails(listItemDetails);

@@ -1,1 +1,3 @@
-export * from './lib/dashboard';
+import Dashboard from './lib/dashboard';
+
+export { Dashboard }

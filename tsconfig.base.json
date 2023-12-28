@@ -42,6 +42,9 @@
       ],
       "@platformx/utilities": [
         "libs/utilities/src/index.ts"
+      ],
+      "@platformx/dashboard": [
+        "libs/dashboard/src/index.ts"
       ]
     }
   },

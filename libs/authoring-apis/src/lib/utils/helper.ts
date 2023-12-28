@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { LanguageList, dateFormat, getSubDomain, handleHtmlTags, trimString } from "@platformx/utilities";
+import { LanguageList, dateFormat, handleHtmlTags, trimString } from "@platformx/utilities";
 import { DefaultLocale } from "./constants";
 import i18n from './i18n';
 
@@ -47,7 +47,7 @@ export const formatUrl = (enteredVal: string) => {
 };
 
 export const getSubDomain = () => {
-    const sessions = localStorage.getItem("userSession");
+    const sessions = localStorage.getItem("userSession") || '';
     const storedSession = JSON.parse(sessions);
     const site_url = storedSession?.userInfo?.preferred_sites_urls;
     const domain = site_url[getSelectedSite()]?.replace(".com.", ".com");
