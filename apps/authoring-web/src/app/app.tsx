@@ -1,4 +1,4 @@
-/* eslint-disable no-debugger */
+
 import { ApolloProvider } from '@apollo/client';
 import { init as initApm } from '@elastic/apm-rum';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,8 +11,7 @@ import { I18nextProvider, useTranslation } from 'react-i18next';
 // import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import './App.css';
-// import { client } from './apolloClient/client';
+// import './App.css'; 
 // import { CommentProvider } from './context/CommentsContext/CommentsContext';
 // import { ActionProvider } from './context/actionContext/ActionProvider';
 // import RootRouter from './router/rootRouter';
@@ -29,7 +28,7 @@ import {
 } from '@platformx/utilities';
 import { Provider } from 'react-redux';
 import { AnalyticsProvider } from 'use-analytics';
-import RootRouter from './router/AppRouter';
+import AppRouter from './router/AppRouter';
 import Analytics from './utils/analytics/analyticsData';
 import { analyticsInstance } from './utils/analytics/dynamicAnalytics';
 import { AUTH_URL } from './utils/authConstants';
@@ -79,7 +78,7 @@ function App() {
   useEffect(() => {
     const initializeApp = async () => {
       try {
-        debugger
+
         if (pathname === '/en' || pathname === '/' || pathname === `/${routing}/en`) {
           window.location.replace(AUTH_URL);
         }
@@ -101,9 +100,6 @@ function App() {
     };
     initializeApp();
 
-    return () => {
-      // Clean-up logic
-    };
   }, [pathname, i18n]);
 
   return (
@@ -120,7 +116,7 @@ function App() {
                   }
                 >
                   <Provider store={store}>
-                    <RootRouter />
+                    <AppRouter />
                   </Provider>
                 </BrowserRouter>
               </ThemeProvider>
