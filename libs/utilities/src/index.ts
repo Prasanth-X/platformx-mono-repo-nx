@@ -3,6 +3,7 @@ import ContentGridLoader from './lib/components/ContentGridLoader';
 import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect';
 import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
 import DatePicker from './lib/components/DatePicker/DatePicker';
+import Error from './lib/components/Error/Error';
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
 import CommonImageRender from './lib/components/Gallery/CommonImageRender';
 import { MiniHeader } from './lib/components/Header/MiniHeader';
@@ -64,17 +65,17 @@ import {
   ShowToastSuccess,
 } from './lib/components/ToastNotification/ToastNotification';
 import { USERNAME_EMAIL_EXIST } from './lib/constants/CommonConstants';
-import { getUniqueTimeZone } from './lib/utils/helperFunctions';
+import { getUniqueTimeZone } from './lib/utils/helperFns';
 const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
 
 export * from './lib/assets/svg';
 export * from './lib/components';
 export * from './lib/components/Cards/CardSkeleton';
+export * from './lib/constants/AuthConstant';
 export * from './lib/constants/CommonConstants';
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from './lib/themes/authoring/lightTheme';
 export * from './lib/themes/prelems/prelemTheme';
-export * from './lib/utils/authConstants';
 export * from './lib/utils/helper';
 export * from './lib/utils/helperConstants';
 export * from './lib/utils/helperFns';
@@ -96,6 +97,7 @@ export {
   CommonBoxWithNumber,
   CommonImageRender,
   DeletePopup,
+  Error,
   LOGOUT_URL,
   Loader,
   NEW_LOGOUT_URL,

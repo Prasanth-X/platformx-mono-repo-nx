@@ -6,7 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from 'react-router-dom';
-import DeleteIcon from '../../assets/images/icons/righttick.svg';
+import DeleteIcon from '../../assets/icons/righttick.svg';
 
 export default function PlateformXDialogSuccess({
   isDialogOpen,

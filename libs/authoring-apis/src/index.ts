@@ -13,7 +13,6 @@ import { useDialog } from './lib/hooks/useDialog/useDialog';
 import usePage from './lib/hooks/usePage/usePage';
 import articleApi from './lib/services/article/article';
 import authAPI from './lib/services/auth/auth.api';
-import { postRequest } from './lib/services/config/request';
 import contentTypeSchemaApi from './lib/services/contentTypeSchema/contentTypeSchema.api';
 import contentTypeAPIs from './lib/services/contentTypes/contentTypes.api';
 import { multiSiteApi } from './lib/services/multisite/multisite.api';
@@ -47,7 +46,6 @@ export {
   fetchVodByIdAPI,
   graphqlInstance,
   multiSiteApi,
-  postRequest,
   rescheduleSocialShare,
   scheduleSocialShare,
   snowplowTrackingHook,

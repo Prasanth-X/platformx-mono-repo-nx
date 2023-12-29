@@ -1,7 +1,7 @@
 import { CardMedia } from '@mui/material';
 import React from 'react';
-import { breakpoints, ratios } from '../../../src/utils/constants';
-import { formCroppedUrl } from '../../utils/helperFunctions';
+import { formCroppedUrl } from '../../utils/helperFns';
+import { breakpoints, ratios } from './utils/constants';
 
 const CommonPictureComponent = (props: any = {}) => {
   const {
@@ -14,12 +14,12 @@ const CommonPictureComponent = (props: any = {}) => {
       600: 'card1',
       320: 'portrait',
     },
-    extension
+    extension,
   } = props;
 
   return (
     <CardMedia
-      component='picture'
+      component="picture"
       sx={{
         aspectRatio: {
           xs: ratios[imgOrder['320']],
@@ -37,9 +37,7 @@ const CommonPictureComponent = (props: any = {}) => {
         const img = croppedImages.find(
           (x) => x.aspect_ratio === (imgOrder[breakpoint] || ratio)
         );
-        const {
-          folder_path
-        } = img || {};
+        const { folder_path } = img || {};
         return (
           <>
             <source
@@ -54,9 +52,9 @@ const CommonPictureComponent = (props: any = {}) => {
         );
       })}
       <img
-        alt='cropped-img'
+        alt="cropped-img"
         // src={defaultImage}
-        src='https://platx-dspace-dev.fanuep.com/server/api/core/bitstreams/f425d35c-9825-4ba2-9a2c-0be82dd2efbe/content' //x-site-image as default
+        src="https://platx-dspace-dev.fanuep.com/server/api/core/bitstreams/f425d35c-9825-4ba2-9a2c-0be82dd2efbe/content" //x-site-image as default
         style={{
           width: '100%',
           height: '100%',

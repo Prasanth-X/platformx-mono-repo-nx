@@ -8,12 +8,18 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import Loader from '../../Common/Loader';
-import { ratios } from '../../utils/constants';
-import { formCroppedUrl, nullToObject } from '../../utils/helperFunctions';
+import { formCroppedUrl, nullToObject } from '../../utils/helperFns';
+import { Loader } from '../Loader';
+import { ratios } from './utils/constants';
 
 const ShowCaseCrops = (props: any = {}) => {
-  const { open, Images = [], backTo, handleEdit, extension } = nullToObject(props);
+  const {
+    open,
+    Images = [],
+    backTo,
+    handleEdit,
+    extension,
+  } = nullToObject(props);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -24,39 +30,33 @@ const ShowCaseCrops = (props: any = {}) => {
     <Dialog
       open={open}
       onClose={backTo}
-      aria-labelledby='alert-dialog-title'
-      aria-describedby='alert-dialog-description'
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
       PaperProps={{
         sx: {
-          width: "100%",
-          maxWidth: "100%",
-          height: "calc(100% - 40px)",
-          maxHeight: "calc(100% - 40px)",
-          margin: "20px",
+          width: '100%',
+          maxWidth: '100%',
+          height: 'calc(100% - 40px)',
+          maxHeight: 'calc(100% - 40px)',
+          margin: '20px',
         },
       }}
     >
       <DialogContent sx={{ padding: '5px' }}>
-        <Box className='casecropsbox'>
+        <Box className="casecropsbox">
           {loading && <Loader />}
           <Grid container sx={{ paddingRight: '50px' }}>
             {Images.map(
               (
-                {
-                  visibility = '',
-                  folder_path = '',
-                  aspect_ratio = '',
-                },
+                { visibility = '', folder_path = '', aspect_ratio = '' },
                 key
               ) => {
                 return (
                   <>
-                    <Box className='boxwp'>
-                      <Box className='imgbox'>
-                        <img
-                          src={formCroppedUrl(folder_path, extension)}
-                        />
-                        <Typography variant='h6regular' component='h6'>
+                    <Box className="boxwp">
+                      <Box className="imgbox">
+                        <img src={formCroppedUrl(folder_path, extension)} />
+                        <Typography variant="h6regular" component="h6">
                           {ratios[aspect_ratio]}
                         </Typography>
                       </Box>
@@ -66,7 +66,7 @@ const ShowCaseCrops = (props: any = {}) => {
               }
             )}
             <Button
-              className='editIconfixed'
+              className="editIconfixed"
               onClick={() => handleEdit()}
               startIcon={<EditIcon />}
             ></Button>

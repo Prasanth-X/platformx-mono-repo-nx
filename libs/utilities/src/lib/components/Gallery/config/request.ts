@@ -1,5 +1,6 @@
-import { getSelectedSite, getSubDomain, logoutUrl } from '@platformx/utilities';
 import axios from 'axios';
+import { LOGOUT_URL as logoutUrl } from '../../../constants/AuthConstant';
+import { getSelectedSite, getSubDomain } from '../../../utils/helperFns';
 const handleLogout = () => {
   const keycloakURL = logoutUrl;
   localStorage.removeItem('path');

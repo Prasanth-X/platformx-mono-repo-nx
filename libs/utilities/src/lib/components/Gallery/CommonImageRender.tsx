@@ -1,10 +1,9 @@
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import { CircularProgress, Paper } from '@mui/material';
 import { styled } from '@mui/system';
-import { postRequest } from '@platformx/authoring-apis';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { nullToObject } from '../../utils/helperFunctions';
+import { nullToObject } from '../../utils/helperFns';
 import { ratios } from '../ConstantData';
 import { Loader } from '../Loader';
 import {
@@ -14,6 +13,7 @@ import {
 import CommonImageCrop from './CommonImageCrop';
 import CommonPictureComponent from './CommonPictureComponent';
 import ShowCaseCrops from './ShowCaseCrops';
+import { postRequest } from './config/request';
 
 const CommonImageRender = (props: any = {}) => {
   const {
@@ -120,9 +120,9 @@ const CommonImageRender = (props: any = {}) => {
 
   const doneCropCompleted = (
     cropImages = [],
-    ext,
-    original_image_relative_path,
-    visibility
+    ext: any,
+    original_image_relative_path: any,
+    visibility: any
   ) => {
     if (cropImages.length > 0) {
       setAutoCropDone(false);

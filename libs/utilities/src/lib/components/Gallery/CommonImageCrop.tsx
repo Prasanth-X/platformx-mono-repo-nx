@@ -1,5 +1,3 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import DoneIcon from '@mui/icons-material/Done';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   Box,
@@ -12,14 +10,14 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import React, { useState } from 'react';
+import { nullToObject } from '../../utils/helperFns';
 import {
-  showToastError,
-  showToastSuccess,
-} from '../../components/toastNotification/toastNotificationReactTostify';
-import { postRequest } from '../../services/config/request';
-import { breakpoints } from '../../utils/constants';
-import { nullToObject } from '../../utils/helperFunctions';
+  ShowToastError,
+  ShowToastSuccess,
+} from '../ToastNotification/ToastNotification';
 import SelectedImageCrop from './SelectedImageCrop';
+import { postRequest } from './config/request';
+import { breakpoints } from './utils/constants';
 
 const CommonImageCrop = (props: any = {}) => {
   const {
@@ -105,13 +103,18 @@ const CommonImageCrop = (props: any = {}) => {
       'api/v1/assets/image/manual-crop',
       payload
     );
-    const { images = '', ext, original_image_relative_path = '', visibility = '' } = nullToObject(response);
+    const {
+      images = '',
+      ext,
+      original_image_relative_path = '',
+      visibility = '',
+    } = nullToObject(response);
     if (images?.length > 0) {
-      showToastSuccess('Image Cropped Successfully');
+      ShowToastSuccess('Image Cropped Successfully');
       setDoneLoader(false);
       doneCropCompleted(images, ext, original_image_relative_path, visibility);
     } else {
-      showToastError('Cropping Failed');
+      ShowToastError('Cropping Failed');
       setDoneLoader(false);
       doneCropCompleted('');
     }
@@ -126,7 +129,7 @@ const CommonImageCrop = (props: any = {}) => {
     overflow: 'hidden',
   });
 
-  const onCropChangeFunc = (data, index) => {
+  const onCropChangeFunc = (data: any, index: any) => {
     if (index === 'crop1') {
       setCrop1(data);
     } else if (index === 'crop2') {
@@ -147,8 +150,8 @@ const CommonImageCrop = (props: any = {}) => {
       fullScreen
       open={open}
       onClose={backTo}
-      aria-labelledby='modal-modal-title'
-      aria-describedby='modal-modal-description'
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
     >
       <Grid
         container
@@ -161,7 +164,7 @@ const CommonImageCrop = (props: any = {}) => {
         }}
       >
         <Grid xs={12} md={8}>
-          <Typography variant='h4bold'>Crop your Image</Typography>
+          <Typography variant="h4bold">Crop your Image</Typography>
         </Grid>
         <Grid
           xs={12}
@@ -181,7 +184,7 @@ const CommonImageCrop = (props: any = {}) => {
           <LoadingButton
             onClick={() => handleDone()}
             loading={doneLoader}
-            loadingPosition='start'
+            loadingPosition="start"
             variant="primaryButton"
             disabled={isLoading}
           >
@@ -191,7 +194,7 @@ const CommonImageCrop = (props: any = {}) => {
       </Grid>
       <DialogContent>
         <Box
-          className='wholecontainer'
+          className="wholecontainer"
           sx={{
             background: { xs: '#f7f7f7', sm: '#fff' },
             padding: { xs: '11px', sm: '0px' },
