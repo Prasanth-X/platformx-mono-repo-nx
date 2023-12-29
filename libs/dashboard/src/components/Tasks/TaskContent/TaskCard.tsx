@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { memo } from 'react';
 // import Header from '../Header/Header';
-import Header from '../../Components/Header/Header'
+import Header from '../../../components/Header/Header';
 // import { useStyles } from './RecentCard.styles';
 import { useStyles } from './TaskCard.style';
 // import { RecentCardProps } from './RecentCard.types';

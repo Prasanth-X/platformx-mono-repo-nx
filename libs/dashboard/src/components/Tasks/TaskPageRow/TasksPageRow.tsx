@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { iconsList } from '../../../../Common/Listing/Utils/Constants';
 import warningIcon from '../../../../assets/svg/warningIcon.svg';
 import {
-  showToastError,
-  showToastSuccess,
-} from '../../../../components/toastNotification/toastNotificationReactTostify';
+  ShowToastError,
+  ShowToastSuccess,
+} from '@platformx/utilities';
 import { DialogBoxContentProps } from '../../../../context/actionContext/ActionContext.types';
 import { WorkflowQueries } from '../../../../graphql/workflow/workflowQueries';
 import { useDialog } from '../../../../hooks/useDialog/useDialog';
@@ -68,9 +68,9 @@ const Tasks = ({
       });
       setIsLoading(false);
 
-      showToastSuccess(responseAccept.data.authoring_updateTask.message);
+      ShowToastSuccess(responseAccept.data.authoring_updateTask.message);
     } catch (err: any) {
-      showToastError(
+      ShowToastError(
         err.graphQLErrors.length > 0
           ? err.graphQLErrors[0].message
           : t('api_error_toast')
@@ -96,9 +96,9 @@ const Tasks = ({
         },
       });
       setIsLoading(false);
-      showToastSuccess(responseAccept.data.authoring_updateTask.message);
+      ShowToastSuccess(responseAccept.data.authoring_updateTask.message);
     } catch (err: any) {
-      showToastError(
+      ShowToastError(
         err.graphQLErrors.length > 0
           ? err.graphQLErrors[0].message
           : t('api_error_toast')
@@ -129,7 +129,7 @@ const Tasks = ({
           },
           objData
         )
-      : showToastError('Accept the task before redirect');
+      : ShowToastError('Accept the task before redirect');
   };
 
   return (

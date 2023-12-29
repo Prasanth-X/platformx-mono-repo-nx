@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import {
   capitalizeWords,
   formatContentTitle,
-} from '../../../../Common/Listing/Utils/Helper';
-import { getSubDomain } from '../../../../utils/helperFunctions';
+} from '@platformx/content';
+import { getSubDomain } from '@platformx/utilities';
 import MenuList from '../MenuList/MenuList';
 import { useStyles } from './ContentRow.styles';
 import { ContentRowProps } from './ContentRow.types';
