@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { Box } from '@mui/material';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
@@ -21,6 +22,7 @@ export default function Menu(props) {
   };
   const getSchema = async () => {
     try {
+      debugger
       const detailsRes: any = await fetchSchema();
       const menu: any = [];
       detailsRes?.authoring_getDocument?.map((val, i) => {

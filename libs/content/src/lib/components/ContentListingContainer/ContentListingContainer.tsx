@@ -1,27 +1,36 @@
+/* eslint-disable no-debugger */
 import {
   CATEGORY_CONTENT,
   CONTENT_TYPES,
-  contentTypeAPIs,
   useContentListing,
+  useContentSearch
 } from '@platformx/authoring-apis';
 import {
   ContentState,
-  previewArticle,
-  updateContentList,
+  previewArticle
 } from '@platformx/authoring-state';
 import { NoSearchResult } from '@platformx/utilities';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ContentListing from '../ContentListing/ContentListing';
 import ContentListingHeader from '../ContentListingHeader/ContentListingHeader';
-const ContListingContainer = ({ contentType }: any) => {
+const ContListingContainer = ({ contentType }: { contentType: string }) => {
   const navigate = useNavigate();
+  const startIndex = 0;
   const dispatch = useDispatch();
   const location = useLocation();
-  const [filterValue, setFilterValue] = useState('ALL');
-  const [refreshState, setRefreshState] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
 
+  const [filterValue, setFilterValue] = useState('ALL');
+
+  const { loading, error, refetch, contentList, fetchMore } = useContentSearch({
+    contentType,
+    locationState: location,
+    filter: filterValue,
+    startIndex,
+    reloadContent: false,
+  });
   const {
     deleteContent,
     duplicate,
@@ -32,96 +41,28 @@ const ContListingContainer = ({ contentType }: any) => {
     fetchContentDetails,
     duplicateToSite,
   } = useContentListing('ALL');
-  const { contentList, startIndex, apiState, loading } = useSelector(
-    (state: ContentState) => state
-  );
+
   const createContentNew = () => {
     dispatch(previewArticle({}));
     navigate(`/content/create-${contentType?.toLowerCase()}`);
   };
 
-  useEffect(() => {
-    localStorage.removeItem('articleTimerState');
-    localStorage.removeItem('contentTypeTimerState');
-
-    // Clears content when navigation changed to diff content
-    if (contentList.length == 0) {
-      fetchContentSync();
-    }
-  }, [contentType]);
-
-  useEffect(() => {
-    fetchContentSync();
-  }, [location]);
-
-  const fetchContentSync = async () => {
-    if (contentType === 'Course') {
-      const response = await contentTypeAPIs.fetchCourseContent(
-        contentType,
-        location,
-        filterValue,
-        startIndex,
-        contentList,
-        true
-      );
-      updateContentList(response);
-    } else {
-      const response = await contentTypeAPIs.fetchSearchContent(
-        contentType,
-        location,
-        filterValue,
-        startIndex,
-        contentList,
-        true
-      );
-      updateContentList(response);
-    }
-  };
-
-  const handleFilter = async (filter: any) => {
+  const handleFilter = async (filter: string) => {
     setFilterValue(filter);
-    fetchContentSync();
-    // if (contentType === 'Course') {
-    //   dispatch(
-    //     await fetchCourseContent(contentType, location, filter, state, true)
-    //   );
-    // } else {
-    //   dispatch(await fetchContent(contentType, location, filter, state, true));
-    // }
+  };
+  const handleRefresh = async () => {
+    debugger
+    setIsSpinning(true);
+    refetch();
+
   };
 
-  const handleRefresh = async () => {
-    setRefreshState(true);
-    dispatch({ type: 'UPDATE_API_STATE' }); // To update the api state to false
-    // if (contentType === 'Course') {
-    //   dispatch(
-    //     await fetchCourseContent(
-    //       contentType,
-    //       location,
-    //       filterValue,
-    //       state,
-    //       true
-    //     )
-    //   );
-    // } else {
-    //   dispatch(
-    //     await fetchContent(contentType, location, filterValue, state, true)
-    //   );
-    // }
-    fetchContentSync();
-  };
 
   const handleFetchMore = async () => {
-    // if (contentType === 'Course') {
-    //   dispatch(
-    //     await fetchCourseContent(contentType, location, filterValue, state)
-    //   );
-    // } else {
-    //   dispatch(await fetchContent(contentType, location, filterValue, state));
-    // }
-    fetchContentSync();
+    await fetchMore();
   };
-
+  console.log('contentList', contentList?.length);
+  debugger
   return (
     <>
       <ContentListingHeader
@@ -131,10 +72,12 @@ const ContListingContainer = ({ contentType }: any) => {
         subCategory={CONTENT_TYPES}
         handleAddNew={createContentNew}
         handleRefresh={handleRefresh}
-        animationState={refreshState && !apiState}
+        animationState={isSpinning}
       />
-      {loading || (contentList && contentList.length > 0) ? (
+
+      {(!loading && contentList && contentList?.length > 0) && (
         <ContentListing
+          contentList={contentList}
           deleteContent={deleteContent}
           dataList={contentList}
           fetchMore={handleFetchMore}
@@ -142,13 +85,15 @@ const ContListingContainer = ({ contentType }: any) => {
           unPublish={unPublish}
           view={view}
           edit={edit}
+          loading={loading}
           duplicate={duplicate}
           fetchContentDetails={fetchContentDetails}
           duplicateToSite={duplicateToSite}
         />
-      ) : (
-        contentList?.length == 0 && <NoSearchResult />
       )}
+      {
+        !loading && contentList?.length === 0 && <NoSearchResult />
+      }
     </>
   );
 };

@@ -1,24 +1,18 @@
 import { Box } from '@mui/material';
-import { Key, memo, useContext, useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { ContentListLoader } from '@platformx/utilities';
 import {
-  capitalizeFirstLetter,
+  ContentListLoader, capitalizeFirstLetter,
   convertToLowerCase,
-  handleHtmlTags,
+  handleHtmlTags
 } from '@platformx/utilities';
+import { Key, memo, useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { capitalizeWords, formatContentTitle } from '../../utils/Helper';
 import { ContentListingProps, ListItem } from '../../utils/List.types';
-import { Card } from '../Card/Card';
-import { useSelector } from 'react-redux';
-import { ContentState } from '@platformx/authoring-state';
-import { useAccess } from '@platformx/utilities';
-// eslint-disable-next-line @nx/enforce-module-boundaries
+import { Card } from '../Card/Card'; import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 import { useUserSession } from '@platformx/utilities';
-import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
-// import { fetchUserSitePermissionList } from '../../../services/SiteSetting/SiteSetting.api';
-// import useUserSession from '../../../hooks/useUserSession/useUserSession';
 const ContentListing = ({
+  contentList,
+  loading,
   fetchMore,
   deleteContent,
   duplicate,
@@ -41,8 +35,8 @@ const ContentListing = ({
   handlePageDelete,
   fetchContentDetails,
   duplicateToSite,
+
 }: ContentListingProps) => {
-  const { loading, contentList } = useSelector((state: ContentState) => state);
 
   const [sitelist, setSiteList] = useState([]);
   const [getSession] = useUserSession();
@@ -166,14 +160,14 @@ const ContentListing = ({
       sx={{ height: 'calc(100vh - 140px)', overflowY: 'auto' }}
     >
       <InfiniteScroll
-        dataLength={contentList.length}
+        dataLength={contentList?.length || 0}
         next={fetchMore}
-        hasMore={loading}
+        hasMore={!loading}
         loader={<ContentListLoader />}
         scrollableTarget="scrollableDiv"
         style={{ overflowX: 'hidden' }}
       >
-        {/* {contentTypeList && contentTypeList?.length > 0 ? ( */}
+
         <Box sx={{ padding: '0 10px 0 15px' }}>
           <Box>
             {contentList?.map((item: any, index: Key | null | undefined) => {
@@ -216,21 +210,7 @@ const ContentListing = ({
             })}
           </Box>
         </Box>
-        {/* ) : (
-            contentTypeList.length == 0 && (
-              <Box className={classes.noResultsContainer}>
-                <img src={NoResults} />
-                <Typography
-                  variant='h5'
-                  sx={{
-                    color: '#c3c3c3',
-                  }}
-                >
-                  {t('no_results_toast')}
-                </Typography>
-              </Box>
-            )
-          )} */}
+
       </InfiniteScroll>
     </Box>
   );

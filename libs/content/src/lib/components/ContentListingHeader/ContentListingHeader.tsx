@@ -1,21 +1,19 @@
 import { createStyles, makeStyles } from '@mui/styles';
 import AddIcon from '@mui/icons-material/Add';
+/* eslint-disable no-debugger */
 import SyncIcon from '@mui/icons-material/Sync';
 import {
   Box,
   Button,
   FormControl,
-  FormControlLabel,
   Menu,
   Radio,
   RadioGroup,
-  Typography,
+  Typography
 } from '@mui/material';
+import { ErrorTooltip, FilterIcon, useAccess } from '@platformx/utilities';
 import { t } from 'i18next';
 import { useState } from 'react';
-import FilterIcon from './../../../assets/svg/FilterIcon.svg';
-import { useAccess } from '@platformx/utilities';
-import { ErrorTooltip } from '@platformx/utilities';
 import {
   ContentListingHeaderContainer,
   FormControlCustom,
@@ -37,7 +35,7 @@ const ContentListingHeader = ({
   category: string;
   subCategory: string | string[];
   handleRefresh: () => void;
-  animationState?: boolean;
+  animationState: boolean;
 }) => {
   const { canAccessAction } = useAccess();
   const searchPageUrl = new URL(window.location.href);
@@ -66,7 +64,7 @@ const ContentListingHeader = ({
   };
 
   const hideFilter = contentTypeBasedHideFilter(title); //hide filter
-
+  debugger
   return (
     <ContentListingHeaderContainer>
       <Box>
@@ -123,7 +121,7 @@ const ContentListingHeader = ({
             }}
             className={openFilterMenu ? 'openClass' : undefined}
           >
-            <img src={FilterIcon} alt="Filter Icon" width="17" height="24" />
+            <FilterIcon width="17" height="24" />
           </Box>
         )}
 

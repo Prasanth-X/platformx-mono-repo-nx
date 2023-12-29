@@ -87,7 +87,7 @@ export default function MenuItems({
       {getBreakPoint() && headerMenus.includes(Title?.toLowerCase()) && (
         <Box
           className="menuItemLink"
-          // disabled={!roles.includes(localStorage.getItem('role'))}
+        // disabled={!roles.includes(localStorage.getItem('role'))}
         >
           <Typography
             variant="h7regular"
@@ -139,7 +139,7 @@ export default function MenuItems({
                   }
                 >
                   <Box className="menuIcon">
-                    <img src={val.Icon} alt="" />
+                    <val.Icon alt={val.subCategory} />
                   </Box>
                   <Tooltip placement="top-start" title={t(val.id)}>
                     <Typography variant="h6regular" className="textellipsis">
@@ -176,7 +176,7 @@ export default function MenuItems({
                 className={
                   window.location.pathname.includes(val.url) ? 'active' : ''
                 }
-                // disabled={!roles.includes(localStorage.getItem('role'))}
+              // disabled={!roles.includes(localStorage.getItem('role'))}
               >
                 <Box className="menuIcon padding">
                   <img src={val.Icon} alt="" />
