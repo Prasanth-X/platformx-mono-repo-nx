@@ -1,41 +1,81 @@
-/* eslint-disable no-debugger */
+import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { SearchContentListQueries } from '../../graphQL/queries/searchQueries';
 import { mapFetchALL } from '../useContentListing/mapper';
 import { sortedData } from '../../utils/helper';
 
-
 const ROW_SIZE = 20;
 
-const useContentSearch = (contentType: string, locationState: any, filter: string, startIndex: number, reloadContent: any) => {
-    const newPagination = {
-        start: reloadContent ? 0 : startIndex,
+interface UseContentSearchProps {
+    contentType: string;
+    locationState: any;
+    filter: string;
+    startIndex: number;
+    reloadContent: any;
+}
+
+interface UseContentSearchResult {
+    loading: boolean;
+    error: any;
+    contentList: any[];
+    fetchMore: () => void;
+    refetch: () => void;
+}
+
+const useContentSearch = ({
+    contentType,
+    locationState,
+    filter,
+    startIndex,
+    reloadContent,
+}: UseContentSearchProps): UseContentSearchResult => {
+    const [contents, setContents] = useState<any>([]);
+
+    const variables: any = mapFetchALL(locationState, filter, contentType, {
+        start: startIndex,
         rows: ROW_SIZE,
-    };
+    });
 
-    const variables: any = mapFetchALL(locationState, filter, contentType, newPagination);
+    const fetchQuery =
+        contentType?.toLocaleLowerCase() === 'Course'
+            ? SearchContentListQueries.FETCH_COURSE_LIST
+            : SearchContentListQueries.FETCH_CONTENT_TYPE_LIST;
 
-    const { loading, error, data, fetchMore } = useQuery(
-        SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
-        {
-            variables,
-            fetchPolicy: 'no-cache',
-        }
-    );
+    const { loading, error, data, fetchMore, refetch } = useQuery(fetchQuery, {
+        variables,
+        fetchPolicy: 'no-cache',
+    });
 
-    const sortedContent = sortedData(data?.authoring_getContentTypeItems || []);
+    useEffect(() => {
+        setContents(sortedData(data?.authoring_getContentTypeItems || []));
+    }, [data]);
 
     const fetchMoreContent = async () => {
-        debugger
-        await fetchMore({
-            variables: {
-                ...variables,
-                start: variables?.pagination.start + variables?.pagination.rows,
-            },
-        });
-    };
+        try {
+            const result = await fetchMore({
+                variables: {
+                    ...variables,
+                    pagination: {
+                        start: contents.length,
+                        rows: ROW_SIZE,
+                    },
+                },
+            });
 
-    return { loading, error, contentList: sortedContent, fetchMore: fetchMoreContent };
+            const fetchMoreData = result.data?.authoring_getContentTypeItems || [];
+            const combinedData: any = [...contents, ...fetchMoreData];
+
+            setContents(combinedData);
+
+            console.log(result);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    const refresh = async () => {
+        await refetch(variables);
+    };
+    return { loading, error, contentList: contents, fetchMore: fetchMoreContent, refetch: refresh };
 };
 
 export default useContentSearch;

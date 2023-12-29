@@ -7,7 +7,7 @@ import { useAuthentication } from '../hooks/useAuthentication';
 import { AUTH_URL } from '../utils/authConstants';
 import { routes } from './routes';
 import { useDynamicRoutes } from '../hooks/useDynamicRoutes/useDynamicRoutes';
-import { ContentRoutes } from '../hooks/useDynamicRoutes/contentRoutes';
+import { MenuData } from '../hooks/useDynamicRoutes/menuData';
 
 function AppRouter() {
   const location = useLocation();
@@ -15,7 +15,7 @@ function AppRouter() {
   const navigate = useNavigate();
   const { handleSignIn, verifySession, loader } = useAuthentication();
 
-  const generatedRoutes = useDynamicRoutes(ContentRoutes, routes);
+  const generatedRoutes = useDynamicRoutes(MenuData, routes);
   useEffect(() => {
 
     // Check if there is no active session and redirect to the login page
