@@ -10,7 +10,7 @@ import { format } from 'date-fns';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import RedBlinkingDot from '../../../assets/RedBlinkingDot.gif';
+import RedBlinkingDot from "../../../assets/RedBlinkingDot.gif";
 // import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
 // import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
 // import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
@@ -30,8 +30,8 @@ import CommunityOption from '../CommunityOption';
 import { CourseMenu } from '../CourseMenu/CourseMenu';
 import { PublishInformation } from '../PublishInformation/PublishInformation';
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
+import React from 'react';
 import './List.css';
-
 export const Card = ({
   dataList,
   deleteContent,
@@ -220,9 +220,11 @@ export const Card = ({
               className="d-flex align-items-center"
               onClick={handleCardClick}
             >
+
               {/* content type icon */}
               <Box className="img">
-                <img src={iconsList[dataList.tagName]} alt="" />
+                {/* <img src={iconsList[dataList.tagName]} alt="" /> */}
+                {React.createElement(iconsList[dataList.tagName])}
               </Box>
 
               <Box className="rightspace">
@@ -262,21 +264,31 @@ export const Card = ({
                       )}
                     <Box component="div" className="mobstatusIcon">
                       <Typography sx={{ marginLeft: '10px' }}>
-                        <img alt="" src={statusIcons[dataList.status]} />
+                        {/* <img alt="" src={statusIcons[dataList.status]} /> */}
+                        {
+
+                          React.createElement(statusIcons[dataList.status])
+
+                        }
+
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledPublishTriggerDateTime &&
                           tagName === 'sitepage' && (
-                            <img alt="" src={statusIcons['schedulePublish']} />
+                            // <img alt="" src={statusIcons['schedulePublish']} />
+                            React.createElement(statusIcons['scheduleUnpublish'])
+
                           )}
+
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledUnPublishTriggerDateTime &&
                           tagName === 'sitepage' && (
-                            <img
-                              alt=""
-                              src={statusIcons['scheduleUnpublish']}
-                            />
+                            // <img
+                            //   alt=""
+                            //   src={statusIcons['scheduleUnpublish']}
+                            // />
+                            React.createElement(statusIcons['scheduleUnpublish'])
                           )}
                       </Typography>
                     </Box>
@@ -376,27 +388,27 @@ export const Card = ({
                 tagName === 'event' ||
                 tagName === 'vod' ||
                 tagName === 'article') && (
-                <QuizPollEventMenu
-                  deleteContent={deleteContent}
-                  duplicate={duplicate}
-                  preview={preview}
-                  unPublish={unPublish}
-                  view={view}
-                  edit={edit}
-                  anchorEl={anchorEl}
-                  open={open}
-                  handleClose={() => {
-                    setAnchorEl(null);
-                  }}
-                  contentType={tagName}
-                  listItemDetails={dataList}
-                  category={CATEGORY_CONTENT}
-                  subCategory={CONTENT_TYPES}
-                  fetchContentDetails={fetchContentDetails}
-                  sitelist={sitelist}
-                  duplicateToSite={duplicateToSite}
-                />
-              )}
+                  <QuizPollEventMenu
+                    deleteContent={deleteContent}
+                    duplicate={duplicate}
+                    preview={preview}
+                    unPublish={unPublish}
+                    view={view}
+                    edit={edit}
+                    anchorEl={anchorEl}
+                    open={open}
+                    handleClose={() => {
+                      setAnchorEl(null);
+                    }}
+                    contentType={tagName}
+                    listItemDetails={dataList}
+                    category={CATEGORY_CONTENT}
+                    subCategory={CONTENT_TYPES}
+                    fetchContentDetails={fetchContentDetails}
+                    sitelist={sitelist}
+                    duplicateToSite={duplicateToSite}
+                  />
+                )}
               {tagName === 'courses' && (
                 <CourseMenu
                   deleteContent={deleteContent}

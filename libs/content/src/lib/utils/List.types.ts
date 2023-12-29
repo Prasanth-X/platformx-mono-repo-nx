@@ -47,8 +47,9 @@ export type CardClickProps = {
 
 export type ContentListingProps = {
   contentType?: string;
+  contentList?: any;
   dataList?: any;
-  loading?: boolean;
+  loading: boolean;
   fetchMore: () => void;
   deleteContent?: (content: any) => void;
   duplicate?: (

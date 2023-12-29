@@ -1,31 +1,32 @@
+/* eslint-disable no-debugger */
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
 // import { previewContent } from '../../pages/QuizPollEvents/store/ContentAction';
-import contentTypeAPIs, {
-  createContentType,
-  deleteContentType,
-  publishContentType,
-} from '../../services/contentTypes/contentTypes.api';
 import {
   ContentState,
   PageData,
-  updateContentList,
-  previewContent,
   previewArticle,
+  previewContent,
+  updateContentList,
 } from '@platformx/authoring-state';
 import {
-  AUTH_INFO,
   ShowToastError,
   capitalizeFirstLetter,
   convertToLowerCase,
   getCurrentLang,
   getSelectedSite,
   getSubDomain,
-  useUserSession,
+  useUserSession
 } from '@platformx/utilities';
 import { useDispatch, useSelector } from 'react-redux';
+import { FETCH_CONTENT_BY_PATH } from '../../graphQL/queries/contentTypesQueries';
+import contentTypeAPIs, {
+  createContentType,
+  deleteContentType,
+  publishContentType,
+} from '../../services/contentTypes/contentTypes.api';
 import { LanguageList } from '../../utils/constants';
 import { CONTENT_CONSTANTS } from './Uitls/Constants';
 import {
@@ -33,7 +34,6 @@ import {
   mapDuplicateContent,
   mapUnPublishContent,
 } from './mapper';
-import { FETCH_CONTENT_BY_PATH } from '../../graphQL/queries/contentTypesQueries';
 const {
   ALL,
   LANG,
@@ -188,24 +188,20 @@ const useContentListing = (filter = 'ALL') => {
 
     if (listItemDetails.tagName.toUpperCase() === 'VOD') {
       window.open(
-        `${getSubDomain()}/${i18n.language}/video${
-          listItemDetails?.currentPageUrl
+        `${getSubDomain()}/${i18n.language}/video${listItemDetails?.currentPageUrl
         }`
       );
     } else if (listItemDetails.tagName === convertToLowerCase('Courses')) {
       window.open(
-        `${getSubDomain()}/${i18n.language}/course/course-details?courseId=${
-          listItemDetails?.course_id
+        `${getSubDomain()}/${i18n.language}/course/course-details?courseId=${listItemDetails?.course_id
         }`
       );
       // window.open(`${listItemDetails?.currentPageUrl}`);
     } else {
       console.log('text');
       window.open(
-        `${getSubDomain()}/${
-          i18n.language
-        }/${listItemDetails.tagName?.toLowerCase()}${
-          listItemDetails?.currentPageUrl
+        `${getSubDomain()}/${i18n.language
+        }/${listItemDetails.tagName?.toLowerCase()}${listItemDetails?.currentPageUrl
         }`
       );
     }
@@ -215,8 +211,7 @@ const useContentListing = (filter = 'ALL') => {
     dispatch(previewContent({}));
     dispatch(previewArticle({}));
     navigate(
-      `/content/create-${listItemDetails.tagName?.toLowerCase()}?path=${
-        listItemDetails.page
+      `/content/create-${listItemDetails.tagName?.toLowerCase()}?path=${listItemDetails.page
       }`
     );
   };

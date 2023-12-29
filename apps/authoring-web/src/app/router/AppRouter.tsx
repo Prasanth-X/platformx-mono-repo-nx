@@ -1,17 +1,21 @@
+/* eslint-disable no-debugger */
 
 import { XLoader, useUserSession } from '@platformx/utilities';
 import { useEffect } from 'react';
-import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthentication } from '../hooks/useAuthentication';
 import { AUTH_URL } from '../utils/authConstants';
 import { routes } from './routes';
+import { useDynamicRoutes } from '../hooks/useDynamicRoutes/useDynamicRoutes';
+import { MenuData } from '../hooks/useDynamicRoutes/menuData';
 
-function RootRouter() {
+function AppRouter() {
   const location = useLocation();
   const [getSession] = useUserSession();
   const navigate = useNavigate();
-  const { handleSignIn, verifySession, loader } = useAuthentication(); // Use the useAuthentication hook
+  const { handleSignIn, verifySession, loader } = useAuthentication();
 
+  const generatedRoutes = useDynamicRoutes(MenuData, routes);
   useEffect(() => {
 
     // Check if there is no active session and redirect to the login page
@@ -19,15 +23,13 @@ function RootRouter() {
       localStorage.removeItem('selectedSite');
     }
 
-    // Verify session
     verifySession();
   }, [location, getSession, verifySession]);
 
 
 
   useEffect(() => {
-    // eslint-disable-next-line no-debugger
-    debugger
+
     if (location.search.includes('code') && Object.entries(getSession()?.userInfo || {}).length === 0) {
       handleSignIn(location.search.split('code=')[1]);
     } else if (location.search.includes('code') && Object.entries(getSession()?.userInfo || {}).length !== 0) {
@@ -35,26 +37,25 @@ function RootRouter() {
       const lang = getSession()?.userInfo.preferred_sites_languages?.[selected_site] || 'en';
 
       if (selected_site?.toLowerCase() === 'system') {
-        window.location.replace(`${process.env.NX_BASE_URL}/${selected_site}/${lang}/sites/site-listing`);
+        navigate(`/${selected_site}/${lang}/sites/site-listing`);
       } else {
-        // window.location.replace(`${process.env.NX_BASE_URL}/${selected_site}/${lang}/dashboard`);
-        navigate('/dashboard')
+
+        navigate(`/dashboard`);// TODO `/${selected_site}/${lang}/dashboard`);
       }
     } else if (!location.search && location.pathname === '/' || location.pathname === '/error') {
       console.log('AUTH_URL', AUTH_URL);
       window.location.replace(AUTH_URL);
     }
-  }, [location, getSession, handleSignIn]);
-
+  }, [location, getSession, handleSignIn, navigate]);
   return loader ? (
     <XLoader type='linear' />
   ) : (
     <Routes>
-      {routes.map(({ path, element }) => (
+      {generatedRoutes?.map(({ path, element }) => (
         <Route key={path} path={path} element={element} />
       ))}
     </Routes>
   );
 }
 
-export default RootRouter;
+export default AppRouter;

@@ -38,7 +38,7 @@ yarn.lock
 coverage/
 
 # Ignore compiled TypeScript files
-*.js
+# *.js
 *.js.map
 
 # Ignore generated documentation

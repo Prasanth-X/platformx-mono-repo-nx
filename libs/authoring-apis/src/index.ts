@@ -8,6 +8,7 @@ import {
 } from './lib/graphQL/queries/vodQueries';
 import { snowplowTrackingHook } from './lib/hooks/customHook/snowplowTrackingHook';
 import useContentListing from './lib/hooks/useContentListing/useContentListing';
+import useContentSearch from './lib/hooks/useContentSearch/useSearchContent';
 import { useDialog } from './lib/hooks/useDialog/useDialog';
 import usePage from './lib/hooks/usePage/usePage';
 import articleApi from './lib/services/article/article';
@@ -51,6 +52,7 @@ export {
   scheduleSocialShare,
   snowplowTrackingHook,
   useContentListing,
+  useContentSearch,
   useDialog,
   usePage,
   userManagementAPI,
