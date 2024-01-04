@@ -1,14 +1,14 @@
 import { Avatar, Box, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import {SettingNewIcon} from '@platformx/utilities';
+import { SettingNewIcon } from '@platformx/utilities';
 import { useState } from 'react';
-import {useUserSession,getFirstTwoletters,NoSearchResult} from '@platformx/utilities';
+import { useUserSession, getFirstTwoletters, NoSearchResult } from '@platformx/utilities';
 import usePopupStyle from './SitesPopup.style';
 import SitesSearchBox from './SitesSeachBox';
-import CloseIcon from '@mui/icons-material/Close'; 
+import CloseIcon from '@mui/icons-material/Close';
 import { t } from 'i18next';
-import { multiSiteApi, getGlobalDataWithHeader } from '@platformx/authoring-apis'; 
+import { multiSiteApi, getGlobalDataWithHeader } from '@platformx/authoring-apis';
 
 
 export default function SitesPopup(props) {
@@ -17,7 +17,7 @@ export default function SitesPopup(props) {
     setIsVisible(false);
   };
   const classes = usePopupStyle();
-  const sessions = localStorage.getItem('userSession')||"";
+  const sessions = localStorage.getItem('userSession') || "";
   const [getSession, updateSession] = useUserSession();
   const storedSession = JSON.parse(sessions);
   const accessible_sites = storedSession?.userInfo?.accessible_sites;
@@ -129,7 +129,7 @@ export default function SitesPopup(props) {
                 onClick={handleSiteChange}
                 className={classes.typographyadmin}
               >
-               <SettingNewIcon/>
+                <img alt='settings' src={SettingNewIcon} />
                 <Typography variant='h6medium'>
                   Administrator
                 </Typography>
