@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { stateIcons } from '../../utils/Constants';
 import { convertToLowerCase } from '@platformx/utilities';
 import { ShowToastError } from '@platformx/utilities';
+import React from 'react';
 
 type PublishInformationProps = {
   dataList: any;
@@ -17,7 +18,7 @@ export const PublishInformation = (props: PublishInformationProps) => {
     tagName = '',
     dataList = {},
     contentType = '',
-    handleCardClick = () => {},
+    handleCardClick = () => { },
   } = props;
 
   const { t } = useTranslation();
@@ -43,11 +44,12 @@ export const PublishInformation = (props: PublishInformationProps) => {
       <Box className="statusweb" onClick={() => handleCardClicks()}>
         <Tooltip placement="top-start" title={t(`${dataList.status}`)}>
           <Typography sx={{ marginLeft: '10px' }}>
-            {convertToLowerCase(contentType) === 'community' ? (
-              <img src={stateIcons.published} alt="" />
-            ) : (
-              <img src={stateIcons[dataList.status]} alt="" />
-            )}
+            {convertToLowerCase(contentType) === 'community' ?
+              // <img src={stateIcons.published} alt="" /> 
+              <stateIcons.published /> :
+              // <img src={stateIcons[dataList.status]} alt="" />
+              React.createElement(stateIcons[dataList.status])
+            }
           </Typography>
         </Tooltip>
         <Tooltip
@@ -55,12 +57,11 @@ export const PublishInformation = (props: PublishInformationProps) => {
           title={
             `${t('schedulePublish')}` +
             ' ' +
-            `${
-              dataList.scheduledPublishTriggerDateTime &&
-              format(
-                new Date(dataList.scheduledPublishTriggerDateTime),
-                'MMM d, yyyy | hh:mm a'
-              )
+            `${dataList.scheduledPublishTriggerDateTime &&
+            format(
+              new Date(dataList.scheduledPublishTriggerDateTime),
+              'MMM d, yyyy | hh:mm a'
+            )
             }`
           }
         >
@@ -77,12 +78,11 @@ export const PublishInformation = (props: PublishInformationProps) => {
           title={
             `${t('scheduleUnpublish')}` +
             ' ' +
-            `${
-              dataList.scheduledUnPublishTriggerDateTime &&
-              format(
-                new Date(dataList.scheduledUnPublishTriggerDateTime),
-                'MMM d, yyyy | hh:mm a'
-              )
+            `${dataList.scheduledUnPublishTriggerDateTime &&
+            format(
+              new Date(dataList.scheduledUnPublishTriggerDateTime),
+              'MMM d, yyyy | hh:mm a'
+            )
             }`
           }
         >

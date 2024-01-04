@@ -10,6 +10,7 @@ import NoSearchResult from './lib/components/NoSearchResult/NoSearchResult';
 import PlateformXDialog from './lib/components/Popups/DeletePopup';
 import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound';
 import TextBox from './lib/components/TextBox/TextBox';
+import XDialog from './lib/components/XDialog/XDialog';
 import XLoader from './lib/components/XLoader/XLoader';
 import {
   AUTH_INFO,
@@ -72,6 +73,7 @@ export {
   PlateformXDialog,
   REDIRECT_AUTH_URL,
   TaskNotFound,
+  XDialog,
   XLoader,
   useAccess,
   useDialog,

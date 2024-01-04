@@ -1,7 +1,10 @@
 import { Box, IconButton, MenuItem } from '@mui/material';
-import EditIcon from '../../../assets/images/icons/editIcon.svg';
-import DeleteIcon from '../../../assets/images/icons/deleteIcon.svg';
-import MoreHorizIcon from '../../../assets/images/icons/moreHoriz.svg';
+
+import {
+  EditIcon,
+  DeleteIcon,
+  MoreHorizIcon,
+} from '@platformx/utilities';
 import { ErrorTooltip } from '@platformx/utilities';
 
 interface CardOptionProps {
@@ -25,6 +28,8 @@ const CardOption: React.FC<CardOptionProps> = ({
   canAccessAction,
   handleDeleteButton,
 }) => {
+  // eslint-disable-next-line no-debugger
+  debugger
   return (
     <Box
       color="#89909A"
@@ -34,34 +39,34 @@ const CardOption: React.FC<CardOptionProps> = ({
       <Box className="d-flex align-items-center">
         {(dataList?.scheduledPublishTriggerDateTime == null ||
           dataList?.scheduledUnPublishTriggerDateTime == null) && (
-          <ErrorTooltip
-            component={
-              <MenuItem
-                className="icons"
-                disableRipple
-                onClick={handleEdit}
-                disabled={
-                  !canAccessAction(
-                    getContentCategory(),
-                    getContentSubCategory(),
-                    'Update'
-                  ) || tagName === 'courses'
-                }
-              >
-                <IconButton className="hoverIcon">
-                  <img src={EditIcon} style={{ objectFit: 'cover' }} alt="" />
-                </IconButton>
-              </MenuItem>
-            }
-            doAccess={
-              !canAccessAction(
-                getContentCategory(),
-                getContentSubCategory(),
-                'Update'
-              ) || tagName === 'courses'
-            }
-          />
-        )}
+            <ErrorTooltip
+              component={
+                <MenuItem
+                  className="icons"
+                  disableRipple
+                  onClick={handleEdit}
+                  disabled={
+                    !canAccessAction(
+                      getContentCategory(),
+                      getContentSubCategory(),
+                      'Update'
+                    ) || tagName === 'courses'
+                  }
+                >
+                  <IconButton className="hoverIcon">
+                    <EditIcon style={{ objectFit: 'cover' }} />
+                  </IconButton>
+                </MenuItem>
+              }
+              doAccess={
+                !canAccessAction(
+                  getContentCategory(),
+                  getContentSubCategory(),
+                  'Update'
+                ) || tagName === 'courses'
+              }
+            />
+          )}
       </Box>
       <Box className="d-flex align-items-center">
         <ErrorTooltip
@@ -79,7 +84,7 @@ const CardOption: React.FC<CardOptionProps> = ({
               }
             >
               <IconButton className="hoverIcon">
-                <img src={DeleteIcon} style={{ objectFit: 'cover' }} alt="" />
+                <DeleteIcon style={{ objectFit: 'cover' }} />
               </IconButton>
             </MenuItem>
           }
@@ -97,7 +102,7 @@ const CardOption: React.FC<CardOptionProps> = ({
           onClick={handleClick}
           className="viewallctamob"
         >
-          <img src={MoreHorizIcon} style={{ objectFit: 'cover' }} alt="" />
+          <MoreHorizIcon style={{ objectFit: 'cover' }} />
         </IconButton>
       </Box>
     </Box>

@@ -15,6 +15,7 @@ import userManagementAPI from './lib/services/userManagement/UserManagement.api'
 import fetchVodByIdAPI from './lib/services/vod/vod.api';
 import workflowApi from './lib/services/workflow/workflow.api';
 
+import useContentSearch from './lib/hooks/useContentSearch/useSearchContent';
 import authAPI from './lib/services/auth/auth.api';
 import { multiSiteApi } from './lib/services/multisite/multisite.api';
 import {
@@ -47,6 +48,7 @@ export {
   rescheduleSocialShare,
   scheduleSocialShare,
   useContentListing,
+  useContentSearch,
   usePage,
   userManagementAPI,
   workflowApi,

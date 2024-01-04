@@ -1,7 +1,7 @@
 import { Box, IconButton } from '@mui/material';
-import Eye from '../../assets/svg/Eye.svg';
+
 import { useTranslation } from 'react-i18next';
-import CopyIcon from '../../assets/svg/CopyIcon.svg';
+import { CopyIcon, EyeIcon } from '@platformx/utilities';
 import { ShowToastError, ShowToastSuccess } from '@platformx/utilities';
 
 type CommunityOptionProps = {
@@ -49,7 +49,7 @@ const CommunityOption = (_props: CommunityOptionProps) => {
           className="hoverIcon"
           onClick={() => redirectToUrl(dataList?.url)}
         >
-          <img src={Eye} style={{ objectFit: 'cover' }} />
+          <EyeIcon style={{ objectFit: 'cover' }} />
         </IconButton>
       </Box>
 
@@ -58,7 +58,7 @@ const CommunityOption = (_props: CommunityOptionProps) => {
           className="hoverIcon"
           onClick={() => copyUrl(dataList?.url)}
         >
-          <img src={CopyIcon} style={{ objectFit: 'cover' }} alt="" />
+          <CopyIcon style={{ objectFit: 'cover' }} />
         </IconButton>
         <Box
           sx={{
@@ -75,7 +75,7 @@ const CommunityOption = (_props: CommunityOptionProps) => {
             aria-haspopup="true"
             className="viewallctamob hoverIcon"
           >
-            <img src={CopyIcon} style={{ objectFit: 'cover' }} alt="" />
+            <CopyIcon style={{ objectFit: 'cover' }} />
           </IconButton>
         </Box>
       </Box>

@@ -11,12 +11,14 @@ import { useNavigate } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { WorkflowQueries } from '@platformx/authoring-apis';
+import { handleDialog } from '@platformx/authoring-state';
 import {
   BasicSwitch,
   ShowToastSuccess,
   ThemeConstants,
   useDialog,
 } from '@platformx/utilities';
+import { useDispatch } from 'react-redux';
 import { ListViewProps } from '../../Workflow.Types';
 import MoreDialog from './MoreDialog';
 import { useStyles } from './WorkFlowListing.styles';
@@ -39,6 +41,7 @@ const ListView = ({
   const DateTime = format(new Date(creation_date), 'LLL dd, yyyy | H:mm');
   const classes = useStyles();
   const [workflowMutate] = useMutation(WorkflowQueries.UPDATE_WORKFLOW_STATUS);
+  const dispatch = useDispatch();
 
   const handleDialogClose = () => {
     setOpenDialog(false);
@@ -91,7 +94,8 @@ const ListView = ({
       LeftButtonText: t('no'),
       RightButtonText: t('yes'),
     };
-    dialog.show(dialogContent, handleConfirm, handleDialogClose);
+    // dialog.show(dialogContent, handleConfirm, handleDialogClose);
+    dispatch(handleDialog(true));
   };
 
   const navigate = useNavigate();
