@@ -100,3 +100,13 @@ export const FETCH_DASHBOARD_CHARTS = gql`
     authoring_getDashboardDetailById(dashboardId: $dashboardId)
   }
 `;
+
+export const UPDATE_TASK_STATUS = gql`
+mutation ($input: authoring_taskRequest) {
+  authoring_updateTask(input: $input) {
+    message
+    path
+    __typename
+  }
+}
+`;

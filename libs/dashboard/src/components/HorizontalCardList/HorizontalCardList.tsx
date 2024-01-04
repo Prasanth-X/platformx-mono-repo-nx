@@ -5,7 +5,7 @@ import HorizontalCard from '../HorizontalCard/HorizontalCard';
 import { HorizontalCardProps } from './HorizontalCard.types';
 import { boostContentWithIconMapper } from './helper';
 
-const HorizontalCardList = ({ boostContent }: HorizontalCardProps) => {
+const HorizontalCardList = ({ boostContent }: any) => {
   const boostContentWithIcons = boostContentWithIconMapper(boostContent);
   return (
     <Box

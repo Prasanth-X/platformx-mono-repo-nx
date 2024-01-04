@@ -28,8 +28,9 @@ import {
   mapUnPublishContent,
   pageObjectMapper,
 } from '../useQuizPollEvents/mapper';
-import useUserSession from '../useUserSession/useUserSession';
+import { useUserSession } from "@platformx/utilities";
 import { useDispatch } from 'react-redux';
+import { UPDATE_TASK_STATUS } from '../../graphQL/queries/dashboardQueries';
 
 const {
   LANG,
@@ -52,6 +53,8 @@ const useDashboardData = (contentType = 'ALL') => {
   const [deleteMutate] = useMutation(deleteContentType);
   const [unPublishMutate] = useMutation(publishContentType);
   const [runFetchContentByPath] = useLazyQuery(fetchContentByPath);
+  const [taskMutate] = useMutation(UPDATE_TASK_STATUS);
+
   const [createMutate] = useMutation(createContentType, {
     context: {
       headers: {
@@ -112,8 +115,9 @@ const useDashboardData = (contentType = 'ALL') => {
         //ShowToastError(t('api_error_toast'));
       }
     } catch (err: any) {
-      setError(err);
-      ShowToastError(err);
+      // setError(err);
+      // ShowToastError(err);
+      console.log('error in dashboard api');
     } finally {
       setLoading(false);
     }
@@ -333,6 +337,34 @@ const useDashboardData = (contentType = 'ALL') => {
       );
     }
   };
+
+  const changeStatus = async (data: any) => {
+    setLoading(true);
+    try {
+      const responseAccept = await taskMutate({
+        variables: {
+          input: {
+            last_modified_by: data.last_modified_by,
+            task_status: data.status,
+            title: data.title,
+          },
+        },
+        onCompleted: (res) => {
+          fetchDashBoardData();
+        },
+      });
+      setLoading(false);
+      ShowToastSuccess(responseAccept.data.authoring_updateTask.message);
+    } catch (err: any) {
+      ShowToastError(
+        err.graphQLErrors.length > 0
+          ? err.graphQLErrors[0].message
+          : t('api_error_toast')
+      );
+      setLoading(false);
+    }
+  };
+
   return {
     dashBoard: dashBoardData,
     loading,
@@ -345,6 +377,7 @@ const useDashboardData = (contentType = 'ALL') => {
     edit,
     fetchDashBoardData,
     fetchContentDetails,
+    changeStatus
   };
 };
 

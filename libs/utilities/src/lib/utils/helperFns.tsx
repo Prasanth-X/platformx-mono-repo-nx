@@ -515,7 +515,7 @@ export const dateTimeFormat = (dataTime: any = '') => {
   if (dataTime) {
     const assign: any = new Date(dataTime);
     if (assign !== 'Invalid Date' && !isNaN(assign)) {
-      return format(new Date(dataTime), 'LLL dd, yyyy | H:mm');
+      return format(new Date(dataTime), 'LLL dd, yyyy | H:mm a');
     }
     return dataTime;
   }
@@ -789,3 +789,14 @@ export function setDefaultPageSettings(
     SocialTwitterCardSize: "summary_large_image",
   };
 }
+
+export const formatChildren = (children: any, content: any) => {
+  const Children: any = [];
+  for (let i = 0; i < children.length; i++) {
+    const instance = { ...children[i] };
+    delete instance.__typename;
+    instance.content = content[instance.DocumentPath];
+    Children.push(instance);
+  }
+  return Children;
+}; 

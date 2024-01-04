@@ -2,14 +2,14 @@ import { Box, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Title from '../../components/common/Title';
-import useDashboardData from '../../../hooks/useDashboardData/useDashboardData';
-import useUserSession from '../../../hooks/useUserSession/useUserSession';
+import { useDashboardData } from "@platformx/authoring-apis";
+import { useUserSession } from "@platformx/utilities";
 import RecentCard from '../RecentCard/RecentCard';
 import { useStyles } from '../../lib/dashboard.styles';
 import AllStudents from '../Fifa-Dashboard/components/AllStudents';
 import CourseCard from '../Fifa-Dashboard/components/CourseCard';
 import RecentContent from '../RecentContent/RecentContent';
-import { courseListMapper } from '../utils/mapper';
+import { courseListMapper } from '../../utils/mapper';
 
 const InstructorDashBoard = () => {
   const classes = useStyles();
@@ -80,7 +80,7 @@ const InstructorDashBoard = () => {
             sx={{ marginTop: { xs: '20px', lg: '0' } }}
           >
             <RecentCard title={t('recent_content')} titleVariant='h5bold'>
-              {dashBoard?.recentContent?.length > 0 && (
+              {(dashBoard?.recentContent?.length || 0) > 0 && (
                 <RecentContent
                   deleteContent={deleteContent}
                   duplicate={duplicate}
@@ -88,7 +88,7 @@ const InstructorDashBoard = () => {
                   unPublish={unPublish}
                   view={view}
                   preview={preview}
-                  recentContent={dashBoard.recentContent}
+                  recentContent={dashBoard?.recentContent}
                   fetchContentDetails={fetchContentDetails}
                 />
               )}
@@ -119,8 +119,8 @@ const InstructorDashBoard = () => {
             }}
           >
             {courses?.length > 0 &&
-              courses.map((course) => (
-                <CourseCard key={course.id} course={course} />
+              courses.map((course: any) => (
+                <CourseCard key={course?.id} course={course} />
               ))}
           </Box>
         </Grid>
@@ -137,8 +137,8 @@ const InstructorDashBoard = () => {
         <Box className={classes.cardText}>
           <Title titleVarient='h5bold' title='All Users' />
         </Box>
-        {dashBoard?.userCourseList?.length > 0 && (
-          <AllStudents users={dashBoard.userCourseList} />
+        {(dashBoard?.userCourseList?.length || 0) > 0 && (
+          <AllStudents users={dashBoard?.userCourseList} />
         )}
       </Box>
     </Box>

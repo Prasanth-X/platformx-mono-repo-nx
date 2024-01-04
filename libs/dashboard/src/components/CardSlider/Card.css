@@ -41,7 +41,7 @@
   content: '';
   width: 11px;
   height: 16px;
-  background-image: url('../../../../assets/svg/leftarrow.svg');
+  /* background-image: url('../../../../assets/svg/leftarrow.svg'); */
   filter: brightness(0) invert(1);
   opacity: 1;
 }
@@ -50,7 +50,7 @@
   text-indent: 0;
   width: 11px;
   height: 16px;
-  background-image: url('../../../../assets/svg/rightarrow.svg');
+  /* background-image: url('../../../../assets/svg/rightarrow.svg'); */
   filter: brightness(0) invert(1);
   opacity: 1;
 }

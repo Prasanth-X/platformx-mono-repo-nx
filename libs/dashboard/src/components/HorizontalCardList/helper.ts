@@ -1,10 +1,10 @@
 import { BoostContent } from './HorizontalCard.types';
-import CommunityIcon from '../../../assets/svg/DashBoardBoostContent/community.svg';
-import AssetManagerIcon from '../../../assets/svg/DashBoardBoostContent/AssetManager.svg';
-import EcommerceIcon from '../../../assets/svg/DashBoardBoostContent/Ecommerce.svg';
-import LoyalityIcon from '../../../assets/svg/DashBoardBoostContent/Loyality.svg';
-import PersonalisationIcon from '../../../assets/svg/DashBoardBoostContent/Personalisation.svg';
-import ReportsIcon from '../../../assets/svg/DashBoardBoostContent/Reports&Analytics.svg';
+import { CommunityIcon,
+  ReportsIcon,
+  PersonalisationIcon,
+  LoyalityIcon,
+  EcommerceIcon,
+  AssetManagerIcon } from '@platformx/utilities';
 const DashBoardBoostContentIcons = [
   CommunityIcon,
   ReportsIcon,

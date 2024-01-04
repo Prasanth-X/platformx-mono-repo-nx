@@ -1,12 +1,8 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import Progress from '../../../assets/Frame.svg';
-import AccountBalanceWallet from '../../../assets/account_balance_wallet.svg';
-import grade from '../../../assets/grade.svg';
-import Book from '../../../assets/svg/ReadBook.svg';
-import TotalrevIcon from '../../../assets/totalrev.svg';
-import useDashboardData from '@platformx/authoring-apis';
-import { courseListMapper } from '../utils/mapper';
+import { ProgressIcon, AccountBalanceWallet, GradeIcon, BookIcon, TotalrevIcon } from '@platformx/utilities';
+import { useDashboardData } from '@platformx/authoring-apis';
+import { courseListMapper } from '../../utils/mapper';
 import AllStudents from './components/AllStudents';
 import CourseCard from './components/CourseCard';
 import LmsStatBox from './components/LmsStatBox';
@@ -28,7 +24,6 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
   }, [dashBoard]);
 
   return (
-    <>
       <Box>
         <Box mt='15px'>
           <Box sx={{ display: 'flex', overflowX: 'auto', paddingBottom: '10px' }}>
@@ -44,8 +39,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                   heading='Total Visits in last 24 hrs'
                   subtitle='10800'
                   increase='108'
-                  icon1={AccountBalanceWallet}
-                  icon2={Progress}
+                  // icon1={AccountBalanceWallet}
+                  // icon2={ProgressIcon}
                 />
                 <img
                   style={{
@@ -53,7 +48,7 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                     marginTop: '-76px',
                     right: '20px',
                   }}
-                  src={TotalrevIcon}
+                 // src={TotalrevIcon}
                   alt='total'
                 />
               </Box>
@@ -69,8 +64,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                   heading='Total Moderators'
                   subtitle='34'
                   increase='106'
-                  icon1={grade}
-                  icon2={Progress}
+                  // icon1={GradeIcon}
+                  // icon2={ProgressIcon}
                 />
                 <img
                   style={{
@@ -78,7 +73,7 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                     marginTop: '-76px',
                     right: '20px',
                   }}
-                  src={TotalrevIcon}
+                 // src={TotalrevIcon}
                   alt='total'
                 />
               </Box>
@@ -94,8 +89,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                   heading='Total Active Course'
                   subtitle='4335'
                   increase='78'
-                  icon1={Book}
-                  icon2={Book}
+                  // icon1={BookIcon}
+                  // icon2={BookIcon}
                 />
                 <img
                   style={{
@@ -103,7 +98,7 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                     marginTop: '-76px',
                     right: '20px',
                   }}
-                  src={TotalrevIcon}
+                 // src={TotalrevIcon}
                   alt='total'
                 />
               </Box>
@@ -119,8 +114,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                   heading='Total refrees'
                   subtitle='10800'
                   increase='108'
-                  icon1={AccountBalanceWallet}
-                  icon2={Progress}
+                  // icon1={AccountBalanceWallet}
+                  // icon2={ProgressIcon}
                 />
                 <img
                   style={{
@@ -128,7 +123,7 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                     marginTop: '-76px',
                     right: '20px',
                   }}
-                  src={TotalrevIcon}
+                 // src={TotalrevIcon}
                   alt='total'
                 />
               </Box>
@@ -144,8 +139,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                   heading='Total Instructors'
                   subtitle='34'
                   increase='106'
-                  icon1={grade}
-                  icon2={Progress}
+                  // icon1={GradeIcon}
+                  // icon2={ProgressIcon}
                 />
                 <img
                   style={{
@@ -153,7 +148,7 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                     marginTop: '-76px',
                     right: '20px',
                   }}
-                  src={TotalrevIcon}
+                //  src={TotalrevIcon}
                   alt='total'
                 />
               </Box>
@@ -169,8 +164,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                   heading='Total Course Hours'
                   subtitle='1232.50'
                   increase='78'
-                  icon1={Book}
-                  icon2={Book}
+                  // icon1={BookIcon}
+                  // icon2={BookIcon}
                 />
                 <img
                   style={{
@@ -178,7 +173,7 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                     marginTop: '-76px',
                     right: '20px',
                   }}
-                  src={TotalrevIcon}
+                 // src={TotalrevIcon}
                   alt='total'
                 />
               </Box>
@@ -299,8 +294,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
                 }}
               >
                 {courses?.length > 0 &&
-                  courses.map((course) => (
-                    <CourseCard key={course.id} course={course} />
+                  courses.map((course: any) => (
+                    <CourseCard key={course?.id} course={course} />
                   ))}
               </Box>
             </Grid>
@@ -321,8 +316,8 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
               </Grid>
               <Grid item xs={12} md={12} lg={12} sx={{ paddingRight: '24px' }}>
                 <Box sx={{ overflowX: 'auto' }}>
-                  {dashBoard?.userCourseList?.length > 0 && (
-                    <AllStudents users={dashBoard.userCourseList} />
+                  {(dashBoard?.userCourseList?.length || 0) > 0 && (
+                    <AllStudents users={dashBoard?.userCourseList} />
                   )}
                 </Box>
               </Grid>
@@ -330,7 +325,6 @@ const Dashboard: React.FC<EcomDashboardProps> = () => {
           </Box>
         </Box>
       </Box>
-    </>
   );
 };
 

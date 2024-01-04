@@ -1,11 +1,11 @@
 import articleApi from "./lib/services/article/article"
 import usePage from "./lib/hooks/usePage/usePage"
-import useUserSession from "./lib/hooks/useUserSession/useUserSession";
 import useDashboardData from "./lib/hooks/useDashboardData/useDashboardData";
 import useContentListing from "./lib/hooks/useContentListing/useContentListing";
 import contentTypeAPIs from "./lib/services/contentTypes/contentTypes.api"
 import userManagementAPI from "./lib/services/userManagement/UserManagement.api";
 import { ArticleQueries } from "./lib/graphQL/queries/articleQueries";
+import { PageQueries } from "./lib/graphQL/queries/pageQueries";
 import { ArticleMutations } from "./lib/graphQL/mutations/articleMutations";
 import fetchVodByIdAPI from "./lib/services/vod/vod.api"
 import contentTypeSchemaApi from "./lib/services/contentTypeSchema/contentTypeSchema.api";
@@ -16,10 +16,13 @@ import { cancelSocialSharePost, fetchSocialShareList, fetchSocialShareProfile, r
 import authAPI from "./lib/services/auth/auth.api";
 import { multiSiteApi } from "./lib/services/multisite/multisite.api";
 import { createPgModel } from './lib/services/page/page.api';
+import dashboardApi from './lib/services/dashboard/dashBoard.api';
 export * from './lib/services/siteSetting/SiteSetting';
 export * from "./lib/graphQL/queries/pageQueries"
 export * from "./lib/graphQL/queries/prelemQueries"
 export * from "./lib/utils/constants"
+export * from './lib/services/prelems/prelems.api';
+export * from './lib/services/page/page.api';
 export { contentTypeAPIs }
 export { contentTypeSchemaApi }
 export { useContentListing }
@@ -30,11 +33,12 @@ export { cancelSocialSharePost, fetchSocialShareList, fetchSocialShareProfile, r
 export { userManagementAPI }
 export { articleApi }
 export { multiSiteApi }
+export { dashboardApi }
 export { useContentSearch }
 export { usePage }
-export { useUserSession }
 export { useDashboardData }
 export { ArticleQueries }
 export { ArticleMutations }
 export {graphqlInstance} 
 export { createPgModel}
+export { PageQueries }

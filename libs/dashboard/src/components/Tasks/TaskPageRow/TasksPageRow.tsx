@@ -1,18 +1,14 @@
-import { useMutation } from '@apollo/client';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { iconsList } from '../../../../Common/Listing/Utils/Constants';
-import warningIcon from '../../../../assets/svg/warningIcon.svg';
+import { iconsList } from '@platformx/content';
+import warningIcon from '../../../assets/warningIcon.svg';
 import {
   ShowToastError,
-  ShowToastSuccess,
+  dateTimeFormat,
+  XDialog
 } from '@platformx/utilities';
-import { DialogBoxContentProps } from '../../../../context/actionContext/ActionContext.types';
-import { WorkflowQueries } from '../../../../graphql/workflow/workflowQueries';
-import { useDialog } from '../../../../hooks/useDialog/useDialog';
-import { dateFormat } from '../../../../utils/helperFunctions';
 import { TaskPage } from '../TaskPages/TaskPages.type';
 import { useStyles } from './TaskRow.styles';
 
@@ -35,89 +31,36 @@ const Tasks = ({
   workflow_id,
   workflow_name,
   __typename,
-  fetchDashBoardData,
+  changeStatus,
   edit,
   objData,
 }: TaskPage) => {
-  const [taskMutate] = useMutation(WorkflowQueries.UPDATE_TASK_ACCEPT_REJECT);
   const classes = useStyles();
   const { t } = useTranslation();
-  const dialog = useDialog();
-  const [isLoading, setIsLoading] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [accepted, setAccepted] = useState(false);
+  const [dialogFlag, setDialogFlag] = useState(false);
+
+  const handleconfirmReject = () => {
+    changeStatus({
+      last_modified_by,
+      title,
+      status: 'Rejected'
+    });
+  }
+
+  const handleconfirmAccept = () => {
+    changeStatus({
+      last_modified_by,
+      title,
+      status: 'Accepted'
+    });
+  }
+
   const handleDialogClose = () => {
-    setOpenDialog(false);
-  };
-
-  const handleconfirmAccept = async () => {
-    setIsLoading(true);
-
-    try {
-      const responseAccept = await taskMutate({
-        variables: {
-          input: {
-            last_modified_by: last_modified_by,
-            task_status: 'Accepted',
-            title: title,
-          },
-        },
-        onCompleted: (res) => {
-          fetchDashBoardData();
-        },
-      });
-      setIsLoading(false);
-
-      ShowToastSuccess(responseAccept.data.authoring_updateTask.message);
-    } catch (err: any) {
-      ShowToastError(
-        err.graphQLErrors.length > 0
-          ? err.graphQLErrors[0].message
-          : t('api_error_toast')
-      );
-      setIsLoading(false);
-    }
-  };
-
-  const handleconfirmReject = async () => {
-    setIsLoading(true);
-
-    try {
-      const responseAccept = await taskMutate({
-        variables: {
-          input: {
-            last_modified_by: last_modified_by,
-            task_status: 'Rejected',
-            title: title,
-          },
-        },
-        onCompleted: (res) => {
-          fetchDashBoardData();
-        },
-      });
-      setIsLoading(false);
-      ShowToastSuccess(responseAccept.data.authoring_updateTask.message);
-    } catch (err: any) {
-      ShowToastError(
-        err.graphQLErrors.length > 0
-          ? err.graphQLErrors[0].message
-          : t('api_error_toast')
-      );
-      setIsLoading(false);
-    }
+    setDialogFlag(false);
   };
 
   const handleReject = () => {
-    const dialogContent: DialogBoxContentProps = {
-      Image: warningIcon,
-      Title: t('Reject_Task'),
-      Subtitle: `${t('reject_subtitle')}
-   ${'  '}${t('')}`,
-
-      LeftButtonText: t('No'),
-      RightButtonText: t('Yes'),
-    };
-    dialog.show(dialogContent, handleconfirmReject, handleDialogClose);
+    setDialogFlag(true);
   };
 
   const handleEdit = () => {
@@ -133,6 +76,7 @@ const Tasks = ({
   };
 
   return (
+    <>
     <Box className={classes.Tasklistbox}>
       <Grid
         container
@@ -177,10 +121,11 @@ const Tasks = ({
                   display: { xs: 'flex' },
                 }}
               >
-                <img
+                { React.createElement(iconsList[document_type?.toLowerCase()]) }
+                {/* <img
                   src={iconsList[document_type?.toLowerCase()]}
                   style={{ width: '100%', objectFit: 'cover' }}
-                />
+                /> */}
               </Box>
               <Box
                 sx={{
@@ -236,7 +181,7 @@ const Tasks = ({
                   <Typography variant='h7regular'>{created_by}</Typography>
                   <Box className={classes.Blackdot}></Box>
                   <Typography variant='h7regular' sx={{ paddingLeft: '10px' }}>
-                    {dateFormat(creation_date)}
+                    {dateTimeFormat(creation_date)}
                   </Typography>
                 </Box>
               </Box>
@@ -368,7 +313,7 @@ const Tasks = ({
               <Box>
                 {' '}
                 <Typography variant='h7regular' component='div'>
-                  {dateFormat(creation_date)}
+                  {dateTimeFormat(creation_date)}
                 </Typography>
               </Box>
             </Box>
@@ -479,6 +424,17 @@ const Tasks = ({
         </Grid>
       </Grid>
     </Box>
+    { dialogFlag && <XDialog open={dialogFlag}
+      imageIcon ={warningIcon}
+      title={t('Reject_Task')}
+      subTitle={t('reject_subtitle')}
+      leftButtonText={t('No')}
+      rightButtonText={t('Yes')}
+      handleClose={handleDialogClose}
+      handleConfirm={handleconfirmReject}
+      ></XDialog>
+    }
+    </>
   );
 };
 

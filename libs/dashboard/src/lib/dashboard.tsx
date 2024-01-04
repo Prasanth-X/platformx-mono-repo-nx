@@ -2,19 +2,20 @@ import React, { Suspense } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Title from "../components/common/Title";
 import { useStyles } from "./dashboard.styles";
-import { useUserSession, useDashboardData } from "@platformx/authoring-apis";
+import { useDashboardData } from "@platformx/authoring-apis";
+import { useUserSession } from "@platformx/utilities";
 import { useTranslation } from 'react-i18next';
-// import CardSlider from "../components/CardSlider/CardSlider";
-// import FifaDashboard from "../components/Fifa-Dashboard/index";
-// import HorizontalCardList from "../components/HorizontalCardList/HorizontalCardList";
-// import InstructorDashBoard from "../components/InstructorDashBoard/Index";
-// import RecentCard from "../components/RecentCard/RecentCard";
-// import RecentContent from "../components/RecentContent/RecentContent";
-// import RecentPages from "../components/RecentPages/RecentPages";
-// import ScheduleCardList from "../components/ScheduleCardList/ScheduleCardList";
-// import TaskCard from "../components/Tasks/TaskContent/TaskCard";
-// import TaskPages from "../components/Tasks/TaskPages/TasksPages";
-// import TaskNotFound from "../components/TaskNotFound/TaskNotFound";
+import CardSlider from "../components/CardSlider/CardSlider";
+import FifaDashboard from "../components/Fifa-Dashboard/index";
+import HorizontalCardList from "../components/HorizontalCardList/HorizontalCardList";
+import InstructorDashBoard from "../components/InstructorDashBoard/Index";
+import RecentCard from "../components/RecentCard/RecentCard";
+import RecentContent from "../components/RecentContent/RecentContent";
+import RecentPages from "../components/RecentPages/RecentPages";
+import ScheduleCardList from "../components/ScheduleCardList/ScheduleCardList";
+import TaskCard from "../components/Tasks/TaskContent/TaskCard";
+import TaskPages from "../components/Tasks/TaskPages/TasksPages";
+import TaskNotFound from "../components/TaskNotFound/TaskNotFound";
 
 
 /* eslint-disable-next-line */
@@ -35,17 +36,19 @@ export function Dashboard(props: DashboardProps) {
     view,
     fetchDashBoardData,
     fetchContentDetails,
+    changeStatus
   } = useDashboardData();
-  // const Charts = React.lazy(() =>
-  //   import("./Charts/Charts").then((module) => ({
-  //     default: module.default,
-  //   })),
-  // );
-  // const ChartsForDemo = React.lazy(() =>
-  //   import("./Charts/ChartsForDemo").then((module) => ({
-  //     default: module.default,
-  //   })),
-  // );
+  const { boostContent } = dashBoard || {};
+  const Charts = React.lazy(() =>
+    import("../charts/Charts").then((module) => ({
+      default: module.default,
+    })),
+  );
+  const ChartsForDemo = React.lazy(() =>
+    import("../charts/ChartsForDemo").then((module) => ({
+      default: module.default,
+    })),
+  );
 
   const taskLength = dashBoard?.taskPages?.length || 0;
 
@@ -60,13 +63,13 @@ export function Dashboard(props: DashboardProps) {
   };
 
   return (
-    <>
-    {/* {role === "Admin FIFA" ? (
+    <div>
+    {role === "Admin FIFA" ? (
       <FifaDashboard />
     ) : role === "Instructor" ? (
       <InstructorDashBoard />
-    ) : ( */}
-      <Box className={classes.container}>
+    ) : (
+      <Box className={classes.container} key={taskLength}>
         <Box>
           <Title titleVarient='h1bold' titleColor='#4B9EF9' padding='0' title={t("greets_x")} />
         </Box>
@@ -80,15 +83,16 @@ export function Dashboard(props: DashboardProps) {
             `${t("and")} ${overDueTaskLength()} ${t("overdue_task_text")}`}
         </Typography>
         {/* Page And Content section */}
-        {/* <Box className={classes.sectionMargin}>
+        <Box className={classes.sectionMargin}>
           <Grid container>
             <Grid item xs={12} md={12} em={12} lg={12} sx={{ paddingRight: { xs: 0, lg: 0 } }}>
               <TaskCard title={t("tasks")} titleVariant='h5bold' linkText={t("actions")}>
                 <Box>
-                  {((dashBoard?.taskPages?.length) || 0) > 0 ? (
+                  {taskLength > 0 ? (
                     <TaskPages
                       taskPages={dashBoard?.taskPages}
                       fetchDashBoardData={fetchDashBoardData}
+                      changeStatus={changeStatus}
                       edit={edit}
                     />
                   ) : (
@@ -98,8 +102,8 @@ export function Dashboard(props: DashboardProps) {
               </TaskCard>
             </Grid>
           </Grid>
-        </Box> */}
-        {/* <Box className={classes.sectionMargin}>
+        </Box>
+        <Box className={classes.sectionMargin}>
           <Grid container>
             <Grid
               item
@@ -134,28 +138,28 @@ export function Dashboard(props: DashboardProps) {
               </RecentCard>
             </Grid>
           </Grid>
-        </Box> */}
+        </Box>
         {/* Start slider code here */}
-        {/* <Box className={classes.cardMargin}>
+        <Box className={classes.cardMargin}>
           <Box className={classes.cardText} pl='10px'>
             <Title titleVarient='h5bold' title={`${userInfo?.name}, ${t("to_create")}`} />
           </Box>
           <Box className='cardslider ml-m-15 mr-m-15'>
-            {dashBoard?.createContent?.length > 0 && (
+            {(dashBoard?.createContent?.length || 0) > 0 && (
               <CardSlider
-                createContent={dashBoard.createContent}
-                colorList={dashBoard.colorArray}
+                createContent={dashBoard?.createContent}
+                colorList={dashBoard?.colorArray}
               />
             )}
           </Box>
-        </Box> */}
+        </Box>
         {/* Boost your page section  */}
-        {/* <Box className={classes.boostMargin}>
+        <Box className={classes.boostMargin}>
           <Box className={classes.cardText}>
             <Title titleVarient='h5bold' title={t("boost_pages")} />
           </Box>
-          {dashBoard?.boostContent?.length > 0 && (
-            <HorizontalCardList boostContent={dashBoard.boostContent} />
+          {(dashBoard?.boostContent?.length || 0) > 0 && (
+            <HorizontalCardList boostContent={boostContent} />
           )}
         </Box>
         <Suspense fallback={<Typography variant='h3bold'>{t("loading")}</Typography>}>
@@ -163,20 +167,19 @@ export function Dashboard(props: DashboardProps) {
         </Suspense>
         <Suspense fallback={<Typography variant='h3bold'>{t("loading")}</Typography>}>
           {role === "viewer" && <ChartsForDemo />}
-        </Suspense> */}
+        </Suspense>
         {/* Your Scheduled Items */}
-        {/* {dashBoard?.scheduled?.length > 0 && (
+        {(dashBoard?.scheduled?.length || 0) > 0 && (
           <Box className={classes.sectionMargin}>
             <Box className={classes.textMargin}>
               <Title titleVarient='h5bold' title={t("scheduled_items")} />
             </Box>
-
-            <ScheduleCardList scheduledPages={dashBoard.scheduled} />
+            <ScheduleCardList scheduledPages={dashBoard?.scheduled} />
           </Box>
-        )} */}
+        )}
       </Box>
-    {/* )} */}
-  </>
+    )} 
+  </div>
   );
 }
 

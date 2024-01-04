@@ -1,20 +1,18 @@
 import { useLazyQuery } from '@apollo/client';
 import EastIcon from '@mui/icons-material/East';
 import { Box, Grid, Typography } from '@mui/material';
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import {
   capitalizeWords,
   formatContentTitle,
-} from '../../../Common/Listing/Utils/Helper';
-import { FETCH_PAGE_MODEL_DRAFT } from '../../../graphql/fetchQueries';
-import { fetchPrelemValidation } from '../../../services/prelems/prelems.api';
-import { fetchPageModel } from '../../../store/Actions';
-import { Store } from '../../../store/ContextStore';
-import { dateFormat, getSubDomain } from '../../../utils/helperFunctions';
+} from '@platformx/content';
+import { PageQueries, fetchPrelemValidation } from '@platformx/authoring-apis';
+import { fetchPageModel } from '@platformx/authoring-apis';
+import { dateTimeFormat, getSubDomain } from '@platformx/utilities';
 import { RecentPage } from '../RecentPages/RecentPages.types';
 import { useStyles } from './PageRow.styles';
+import { useDispatch } from 'react-redux';
 
 const PageRow = ({
   title,
@@ -27,12 +25,12 @@ const PageRow = ({
   const classes = useStyles();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const { dispatch } = useContext(Store);
-  const [runFetchPageModel] = useLazyQuery(FETCH_PAGE_MODEL_DRAFT);
+  const dispatch = useDispatch();
+  const [runFetchPageModel] = useLazyQuery(PageQueries.FETCH_PAGE_MODEL_DRAFT);
   const [runFetchValidationQuery] = useLazyQuery(fetchPrelemValidation);
 
   // function to view published pages
-  const handleClick = (status) => {
+  const handleClick = (status: string) => {
     if (status == 'published') {
       // window.open(authInfo.publishUri + i18n.language + current_page_url);
       window.open( `${getSubDomain()}/${i18n.language}${current_page_url}`)
@@ -115,7 +113,7 @@ const PageRow = ({
           }}
         >
           <Typography variant='h7regular' sx={{ color: '#5C6574' }}>
-            {dateFormat(last_modification_date)}
+            {dateTimeFormat(last_modification_date)}
           </Typography>
         </Grid>
         <Grid
@@ -134,7 +132,7 @@ const PageRow = ({
               marginLeft: '5px',
             }}
           >
-            {dateFormat(last_modification_date)}
+            {dateTimeFormat(last_modification_date)}
           </Typography>
         </Grid>
       </Grid>

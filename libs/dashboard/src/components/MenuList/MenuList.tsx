@@ -1,8 +1,7 @@
 import { Box, IconButton } from '@mui/material';
-import { memo, useState } from 'react';
-import MoreHorizIcon from '../../assets/moreHoriz.svg';
-import { QuizPollEventMenu } from '../../../QuizPollEvents/Components/QuizPollEventsMenu/QuizPollEventsMenu';
-import { VodMenu } from '../../../vod/VodMenu';
+import React, { memo, useState } from 'react';
+import { MoreHorizIcon } from '@platformx/utilities';
+import { QuizPollEventMenu } from '@platformx/content';
 import { getSelectedObject } from './Utils/Mapper';
 
 const MenuList = ({
@@ -32,14 +31,15 @@ const MenuList = ({
         onClick={handleClickListItem}
       >
         <IconButton>
-          <img
+          {React.createElement(MoreHorizIcon)}
+          {/* <img
             src={MoreHorizIcon}
             style={{
               objectFit: 'cover',
               transform: 'rotate(90deg)',
               padding: '4px 0px',
             }}
-          />
+          /> */}
         </IconButton>
       </Box>
 
@@ -78,7 +78,7 @@ const MenuList = ({
           duplicateToSite={undefined}
         />
       )}
-      {contentType === 'vod' && (
+      {/* {contentType === 'vod' && (
         <VodMenu
           anchorEl={anchorEl}
           open={open}
@@ -88,7 +88,7 @@ const MenuList = ({
           contentType={contentType}
           listItemDetails={item}
         />
-      )}
+      )} */}
     </Box>
   );
 };

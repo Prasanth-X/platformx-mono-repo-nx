@@ -22,7 +22,6 @@ export default function Menu(props) {
   };
   const getSchema = async () => {
     try {
-      debugger
       const detailsRes: any = await fetchSchema();
       const menu: any = [];
       detailsRes?.authoring_getDocument?.map((val, i) => {
@@ -45,6 +44,7 @@ export default function Menu(props) {
 
       setDynamicMenu(temp);
     } catch (err: any) {
+      console.info('error in MenuList', err);
       ShowToastError(t('api_error_toast'));
     }
   };

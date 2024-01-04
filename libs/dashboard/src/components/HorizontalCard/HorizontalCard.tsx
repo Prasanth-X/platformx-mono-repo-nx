@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { memo } from 'react';
+import React, { memo } from 'react';
 import './HorizontalCard.css';
 import { useStyles } from './HorizontalCard.styles';
 
@@ -18,7 +18,8 @@ const HorizontalCard = ({ Title, Description, url, icon }) => {
       ></Box>
       <Box>
         <Box>
-          <img src={icon} alt={Title} />
+          {React.createElement(icon)}
+          {/* <img src={icon} alt={Title} /> */}
         </Box>
         <Typography component='div' variant='h5bold' className='title'>
           {Title}

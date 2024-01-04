@@ -1,6 +1,6 @@
 import { Skeleton } from '@mui/material';
 import ContentRow from '../ContentRow/ContentRow';
-import '../Dashboard.css';
+import '../../lib/Dashboard.css';
 import { RecentContentProps } from './RecentContent.types';
 
 const RecentContent = ({
@@ -12,12 +12,12 @@ const RecentContent = ({
   view,
   edit,
   fetchContentDetails,
-}: RecentContentProps) => {
+}: any) => {
   if (!recentContent || recentContent.length === 0) {
     <Skeleton animation='wave' height={10} width='80%' />;
   }
   return (
-    <>
+    <div>
       {recentContent?.length > 0 &&
         recentContent.map((item) => (
           <ContentRow
@@ -32,7 +32,7 @@ const RecentContent = ({
             fetchContentDetails={fetchContentDetails}
           />
         ))}
-    </>
+    </div>
   );
 };
 

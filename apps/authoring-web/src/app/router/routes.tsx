@@ -7,7 +7,7 @@ import { Content } from "@platformx/content";
 export const routes: RouteConfig[] = [
   {
     path: "/",
-    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" >   Home </ProtectedRoute>,
+    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" > <Dashboard /> </ProtectedRoute>,
 
   },
   {
@@ -17,11 +17,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/dashboard",
-<<<<<<< HEAD
     element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" > <Dashboard /> </ProtectedRoute>,
-=======
-    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" >  Dashboard </ProtectedRoute>,
->>>>>>> 1381be1db99897211aca79e66f6c3825bc9cbf6c
 
   },
   {

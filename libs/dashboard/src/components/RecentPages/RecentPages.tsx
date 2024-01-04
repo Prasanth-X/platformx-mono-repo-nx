@@ -1,5 +1,5 @@
 import { Skeleton } from '@mui/material';
-import '../Dashboard.css';
+import '../../lib/dashboard.styles';
 import PageRow from '../PageRow/PageRow';
 import { RecentPagesProps } from './RecentPages.types';
 

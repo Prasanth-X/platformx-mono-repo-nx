@@ -116,7 +116,7 @@ function App() {
                   }
                 >
                   <Provider store={store}>
-                    <AppRouter />
+                       <AppRouter />
                   </Provider>
                 </BrowserRouter>
               </ThemeProvider>

@@ -18,12 +18,14 @@ export type TaskPage = {
   workflow_name: string;
   __typename: string;
   fetchDashBoardData: () => {};
+  changeStatus: (data: any) => {};
   edit: any;
   objData: any;
 };
 
 export type TaskPagesProps = {
-  taskPages: TaskPage[];
+  taskPages: any;
   fetchDashBoardData: () => {};
+  changeStatus: (data: any) => {};
   edit: any;
 };

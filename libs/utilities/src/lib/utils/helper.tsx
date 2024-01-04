@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 import { getRestApiCall, nullToObject, postRestApiCall } from "./helperFns";
 
+export const getStyleString = (styles: any) =>
+  Object.entries(styles)
+    .map(([prop, value]) => `${prop}: ${value}`)
+    .join('; ');
+
 /**
  * courseId based get course fill details
  * post call

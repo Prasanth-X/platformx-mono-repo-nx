@@ -6,7 +6,7 @@ import {
   TableRow,
 } from '@mui/material';
 import React, { useEffect } from 'react';
-import { userCourseListMapper } from '../../utils/mapper';
+import { userCourseListMapper } from '../../../utils/mapper';
 interface user {
   orderNo: string;
   date: string;

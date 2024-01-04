@@ -2,45 +2,45 @@ import { useMutation } from '@apollo/client';
 import EastIcon from '@mui/icons-material/East';
 import { Box, Button } from '@mui/material';
 import { usePlatformAnalytics } from '@platformx/utilities';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { capitalizeWords } from '@platformx/content';
 import Title from '../common/Title';
 import { useUserSession, getCurrentLang, getSelectedSite, getSubDomain, setDefaultPageSettings } from '@platformx/utilities';
 import { createPgModel } from '@platformx/authoring-apis';
-import {
-  createPageModel,
-  updatePageSettings,
-  updateSaveWarning,
-} from '../../../../store/Actions';
-import { Store } from '../../../../store/ContextStore';
-import { PageProps } from '@platformx/authoring-state';
-import CreatePage from '../../../createPage';
+// import {
+//   createPageModel,
+//   updatePageSettings,
+//   updateSaveWarning,
+// } from '../../../../store/Actions';
+// import { PageProps } from '@platformx/authoring-state';
+// import CreatePage from '../../../createPage';
 import './Card.css';
 import { PAGE_MODEL_INSTANCE } from './Utils/constants';
+import { useDispatch } from 'react-redux';
 
-const Card = ({ ImageUrl, BgColor, CTAText, url }) => {
+const Card = ({ ImageUrl, BgColor, CTAText, url }: any) => {
   const [getSession] = useUserSession();
   const { userInfo } = getSession() || {};
   const username = userInfo?.first_name;
   const userEmailId = userInfo?.username;
-  const { dispatch } = useContext(Store);
+  const dispatch = useDispatch();
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
   const [handleImpression] = usePlatformAnalytics();
 
-  const [items, setItems] = useState<PageProps[]>([]);
+ // const [items, setItems] = useState<PageProps[]>([]);
 
   //function redirect to create page
   const [createPage, setCreatePage] = useState<boolean>(false);
   const handleCardClick = () => {
-    const URL = `${location.origin}/${getSelectedSite()}/${getCurrentLang()}${url}`
-    if (CTAText.toLowerCase().includes('create a page')) {
-      setCreatePage(!createPage);
-    } else {
-      window.open(URL, '_self');
-    }
+    // const URL = `${location.origin}/${getSelectedSite()}/${getCurrentLang()}${url}`
+    // if (CTAText.toLowerCase().includes('create a page')) {
+    //   setCreatePage(!createPage);
+    // } else {
+    //   window.open(URL, '_self');
+    // }
   };
   const [mutate] = useMutation(createPgModel, {
     context: {
@@ -52,34 +52,34 @@ const Card = ({ ImageUrl, BgColor, CTAText, url }) => {
   });
 
   //Function to create page
-  const createPageByName = (pageName, pageUrl) => {
-    const newPageModel = JSON.parse(JSON.stringify(PAGE_MODEL_INSTANCE));
-    newPageModel.Page = pageUrl;
-    newPageModel.Title = pageName;
-    newPageModel.DevelopedBy = username;
-    newPageModel.DevelopedDate = new Date().toISOString();
-    newPageModel.CurrentPageURL = `/${pageUrl}`;
-    newPageModel.PageSettings = { PageName: pageName };
-    newPageModel.SiteName = userEmailId;
-    newPageModel.Page_LastModificationDate = new Date().toISOString();
-    dispatch(
-      createPageModel(newPageModel, mutate, navigate, handleImpression, t)
-    );
-    dispatch(
-      updatePageSettings(
-        setDefaultPageSettings(
-          pageName,
-          undefined,
-          undefined,
-          `${getSubDomain()}/${i18n.language}/${pageUrl}`
-        )
-      )
-    );
-    dispatch(updateSaveWarning(false));
-  };
-  const confirmButtonHandle = (pageName, pageUrl) => {
+  // const createPageByName = (pageName = '', pageUrl = '') => {
+  //   const newPageModel = JSON.parse(JSON.stringify(PAGE_MODEL_INSTANCE));
+  //   newPageModel.Page = pageUrl;
+  //   newPageModel.Title = pageName;
+  //   newPageModel.DevelopedBy = username;
+  //   newPageModel.DevelopedDate = new Date().toISOString();
+  //   newPageModel.CurrentPageURL = `/${pageUrl}`;
+  //   newPageModel.PageSettings = { PageName: pageName };
+  //   newPageModel.SiteName = userEmailId;
+  //   newPageModel.Page_LastModificationDate = new Date().toISOString();
+  //   dispatch(
+  //     createPageModel(newPageModel, mutate, navigate, handleImpression, t)
+  //   );
+  //   dispatch(
+  //     updatePageSettings(
+  //       setDefaultPageSettings(
+  //         pageName,
+  //         undefined,
+  //         undefined,
+  //         `${getSubDomain()}/${i18n.language}/${pageUrl}`
+  //       )
+  //     )
+  //   );
+  //   dispatch(updateSaveWarning(false));
+  // };
+  const confirmButtonHandle = (pageName = '', pageUrl = '') => {
     if (pageName.trim().length > 0) {
-      createPageByName(pageName, pageUrl);
+     // createPageByName(pageName, pageUrl);
     }
   };
 
@@ -98,12 +98,12 @@ const Card = ({ ImageUrl, BgColor, CTAText, url }) => {
           </Box>
         </Button>
       </Box>
-      <CreatePage
+      {/* <CreatePage
         isDialogOpen={createPage}
         isDuplicate={false}
         confirmButtonHandle={confirmButtonHandle}
         closeButtonHandle={() => setCreatePage(!createPage)}
-      />
+      /> */}
     </>
   );
 };

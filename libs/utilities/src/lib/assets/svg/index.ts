@@ -1,4 +1,4 @@
-//export { ReactComponent as IconCancelSvg } from "./cancel.svg";
+export { ReactComponent as IconCancelSvg } from "./cancel.svg";
 export { ReactComponent as IconTimerSvg } from "./timerIcon.svg";
 export { ReactComponent as IconRescheduleSvg } from "./reschedule.svg";
 export { ReactComponent as IconListViewSvg } from "./sideMenuListView.svg";
@@ -91,3 +91,18 @@ export { ReactComponent as MediaIcon } from "./mediaIcon.svg"
 export { ReactComponent as PlatXLogoWhite } from "./PlatXWhite-logo.svg"
 
 export { ReactComponent as TaskNotFoundIcon } from "./taskNotFoundIcon.svg"
+export { ReactComponent as CommunityIcon } from './DashBoardBoostContent/community.svg'
+export { ReactComponent as AssetManagerIcon } from './DashBoardBoostContent/AssetManager.svg'
+export { ReactComponent as EcommerceIcon } from './DashBoardBoostContent/Ecommerce.svg'
+export { ReactComponent as LoyalityIcon } from './DashBoardBoostContent/Loyality.svg'
+export { ReactComponent as PersonalisationIcon } from './DashBoardBoostContent/Personalisation.svg'
+export { ReactComponent as ReportsIcon } from './DashBoardBoostContent/Reports&Analytics.svg';
+
+export { ReactComponent as CalenderIcon } from '../calendericon.svg';
+export { ReactComponent as InsertIcon } from '../inserticon.svg';
+
+export { ReactComponent as ProgressIcon } from '../Frame.svg';
+export { ReactComponent as AccountBalanceWallet } from '../account_balance_wallet.svg';
+export { ReactComponent as GradeIcon } from '../grade.svg';
+export { ReactComponent as BookIcon } from '../ReadBook.svg';
+export { ReactComponent as TotalrevIcon } from '../totalrev.svg';

@@ -1,21 +1,21 @@
 import { Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Title from '../common/Title';
-import { useUserSession } from '@platformx/utilities';
 import { useStyles } from '../../lib/dashboard.styles';
 import TaskCard from '../Tasks/TaskContent/TaskCard';
 import TaskPages from '../Tasks/TaskPages/TasksPages';
 import Dashboard from './Dashboard';
+import { useDashboardData } from "@platformx/authoring-apis";
+import { useUserSession } from "@platformx/utilities";
 
 const Index = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [getSession] = useUserSession();
   const { userInfo } = getSession();
-  const { dashBoard, edit, fetchDashBoardData } = useDashboardData();
+  const { dashBoard, edit, fetchDashBoardData, changeStatus } = useDashboardData();
 
   return (
-    <>
       <Box className={classes.container}>
         <Box>
           <Title
@@ -34,10 +34,11 @@ const Index = () => {
             titleVariant='h5bold'
             linkText={t('actions')}
           >
-            {dashBoard?.taskPages?.length > 0 && (
+            {(dashBoard?.taskPages?.length || 0) > 0 && (
               <TaskPages
                 taskPages={dashBoard?.taskPages}
                 fetchDashBoardData={fetchDashBoardData}
+                changeStatus={changeStatus}
                 edit={edit}
               />
             )}
@@ -45,7 +46,6 @@ const Index = () => {
         </Box>
         <Dashboard />
       </Box>
-    </>
   );
 };
 

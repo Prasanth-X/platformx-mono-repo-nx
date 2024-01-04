@@ -1,7 +1,8 @@
 import { Box, Typography } from '@mui/material';
-import TaskNotFoundIcon from '../../assets/taskNotFoundIcon.svg';
+import { TaskNotFoundIcon } from '@platformx/utilities';
 import { useCustomStyle } from './TaskNotFound.style';
 import { useTranslation } from 'react-i18next';
+import React from 'react';
 
 const TaskNotFound = () => {
   const classes = useCustomStyle();
@@ -10,7 +11,8 @@ const TaskNotFound = () => {
     <Box className={`${classes.taskNotFoundWp} taskNotFoundWp`}>
       <Box className='contentWpBox'>
         <Box className='imgboxWp'>
-          <img src={TaskNotFoundIcon} alt='Task Not Found' />
+          {React.createElement(TaskNotFoundIcon)}
+          {/* <img src={TaskNotFoundIcon} alt='Task Not Found' /> */}
         </Box>
         <Typography variant='p2regular'>{t('task_not_found')}</Typography>
       </Box>

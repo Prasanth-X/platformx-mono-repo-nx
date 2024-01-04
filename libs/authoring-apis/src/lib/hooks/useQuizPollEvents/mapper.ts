@@ -33,7 +33,7 @@ export const mapUnPublishContent = (contentType: string, page: string) => {
   };
 };
 
-export const mapDeleteContent = (contentType: string, selectedContent) => {
+export const mapDeleteContent = (contentType: string, selectedContent: any) => {
   const contentInfo = {
     page: selectedContent?.page,
     current_page_url: selectedContent?.current_page_url,
@@ -44,7 +44,7 @@ export const mapDeleteContent = (contentType: string, selectedContent) => {
     contentType: contentType,
   };
 };
-const getUpdatedStructuredData = (contentType, content, language) => {
+const getUpdatedStructuredData = (contentType: string, content: any, language: string) => {
   if (contentType.toLowerCase() == 'Article'.toLowerCase()) {
     return updateStructureData(
       content,
@@ -66,7 +66,7 @@ const getUpdatedStructuredData = (contentType, content, language) => {
               ?.toLowerCase()}`
           : content.title?.replace(/[^A-Z0-9]+/gi, '-')?.toLowerCase(),
       startTime: new Date().toISOString(),
-      option: content.options_compound_fields?.map((ans) => ans.option_text),
+      option: content.options_compound_fields?.map((ans: any) => ans.option_text),
     };
     return PollStructureData;
   } else {
@@ -75,14 +75,13 @@ const getUpdatedStructuredData = (contentType, content, language) => {
 };
 
 export const mapDuplicateContent = (
-  contentType,
-  title,
-  IsDuplicate,
-  selectedContent,
-  username,
-  language
+  contentType = '',
+  title = '',
+  IsDuplicate = false,
+  selectedContent: any = {},
+  username = '',
+  language = ''
 ) => {
-  let temp = '';
   let url = '';
   if (title) {
     url = formatUrl(title);
@@ -185,7 +184,7 @@ export const mapDuplicateContent = (
   };
 };
 
-export const pageObjectMapper = (props) => {
+export const pageObjectMapper = (props: any) => {
   const {
     document_type,
     document_title,

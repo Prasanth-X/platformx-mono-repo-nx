@@ -29,6 +29,9 @@ import AutoTextArea from "./lib/components/AutoTextArea/AutoTextArea";
 import LanguageDropDown from "./lib/components/LanguageDropDown/LanguageDropDown";
 import { MiniHeader } from "./lib/components/Header/MiniHeader";
 import i18next from "./lib/utils/i18next";
+import SkeltonLoader from './lib/components/Skeleton-loader/skeleton';
+import XDialog from "./lib/components/XDialog/XDialog";
+
 export { LightTheme }
 //export { InterRegular }
 export { ThemeConstants }
@@ -53,7 +56,6 @@ export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from "./lib/utils/helperConstants"
 export * from "./lib/constants/CommonConstants"
 export * from "./lib/assets/svg"
-
 export { AutoTextArea }
 export { NoSearchResult }
 export { PlateformXDialog }
@@ -70,4 +72,5 @@ export { LanguageDropDown }
 export { AUTH_INFO, AUTH_URL, LOGOUT_URL, REDIRECT_AUTH_URL, NEW_LOGOUT_URL }
 
 export * from "./lib/mappers/articleMapper"
-
+export { SkeltonLoader }
+export { XDialog }

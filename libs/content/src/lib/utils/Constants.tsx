@@ -8,7 +8,6 @@ import UnpublishedIcon from '@mui/icons-material/Unpublished';
 
 import {
   CourseListIcon,
-  DraftIcon,
   EventsListIcon,
   PollListIcon,
   PublishedIcon,
@@ -38,7 +37,7 @@ export const statusColors = {
   unpublished: '#777777',
 };
 export const statusIcons: any = {
-  draft: DraftIcon,
+  draft: PublishedIcon,
   published: PublishedIcon,
   unpublished: UnpublishedIcon,
   schedulePublish: SchedulePublishIcon,

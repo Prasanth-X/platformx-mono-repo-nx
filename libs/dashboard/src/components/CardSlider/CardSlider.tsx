@@ -1,14 +1,14 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { capitalizeWords } from '../../../../Common/Listing/Utils/Helper';
+import { capitalizeWords } from '@platformx/content';
 import Card from './Card';
 import { CreateCardProps } from './CardSlider.types';
 import { SETTINGS } from './Utils/constants';
 import { getBgColorArray } from './Utils/helper';
 
-const CardSlider = ({ createContent }: CreateCardProps) => {
-  const colorList = getBgColorArray(createContent.length);
+const CardSlider = ({ createContent }: any) => {
+  const colorList = getBgColorArray(createContent.length) || '';
   return (
     <Slider {...SETTINGS}>
       {createContent.map(

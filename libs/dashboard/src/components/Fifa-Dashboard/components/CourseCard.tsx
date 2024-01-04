@@ -10,8 +10,7 @@ import {
 } from '@mui/material';
 import { format } from 'date-fns';
 import React from 'react';
-import CalenderIcon from '../../../../assets/calendericon.svg';
-import InsertIcon from '../../../../assets/inserticon.svg';
+import { CalenderIcon, InsertIcon } from '@platformx/utilities';
 interface Course {
   id: number;
   title: string;
@@ -62,13 +61,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
         <CardActions style={{ padding: 0 }}>
           <Typography variant='h7bold'>
             <div style={{ display: 'flex' }}>
-              <img src={InsertIcon} />
+              {/* <img src={InsertIcon} alt='insert'/> */}
               <p style={{ marginLeft: '5px' }}>{course.lessons} Lessions</p>
             </div>
           </Typography>
           <Typography variant='h7bold'>
             <div style={{ display: 'flex' }}>
-              <img src={CalenderIcon} />{' '}
+              {/* <img src={CalenderIcon} />{' '} */}
               <p style={{ marginLeft: '7px' }}>{course.weeks} Weeks</p>
             </div>
           </Typography>
