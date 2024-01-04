@@ -1,6 +1,4 @@
-import { makeStyles } from '@material-ui/core';
-
-import useTheme from '@mui/material/styles/useTheme';
+import { makeStyles } from '@mui/styles';
 
 export const useCustomStyle = makeStyles(() => {
   // const theme = useTheme(); // TODO: use theme

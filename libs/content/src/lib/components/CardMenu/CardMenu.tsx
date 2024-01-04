@@ -1,7 +1,16 @@
 import CancelScheduleSendIcon from '@mui/icons-material/CancelScheduleSend';
 import ScheduleSendIcon from '@mui/icons-material/ScheduleSend';
 import { Menu, MenuItem, useMediaQuery, useTheme } from '@mui/material';
-import { ErrorTooltip, PlateformXDialog } from '@platformx/utilities';
+import {
+  CardOptionApprovalStatusIcon,
+  CardOptionDeleteIcon,
+  CardOptionDuplicateIcon,
+  CardOptionEditIcon,
+  CardOptionUnPublishIcon,
+  CardOptionViewIcon,
+  ErrorTooltip,
+  PlateformXDialog,
+} from '@platformx/utilities';
 import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkflowStepper from '../WorkflowStepper/WorkflowStepper';
@@ -17,17 +26,9 @@ import {
 import { usePage } from '@platformx/authoring-apis';
 import { useStyles } from './CardMenu.styles';
 
-import { CARD_MENUS } from '../../utils/Constants';
 import { PageData } from '@platformx/authoring-state';
 import { useSelector } from 'react-redux';
-import {
-  CardOptionApprovalStatusIcon,
-  CardOptionDeleteIcon,
-  CardOptionDuplicateIcon,
-  CardOptionEditIcon,
-  CardOptionUnPublishIcon,
-  CardOptionViewIcon,
-} from "@platformx/utilities"
+import { CARD_MENUS } from '../../utils/Constants';
 import { MenuActions } from './CardMenu.types';
 const CardMenu = (props: any) => {
   const classes = useStyles();
@@ -344,16 +345,28 @@ const CardMenu = (props: any) => {
         >
           {status === 'published' ? (
             <>
-              <CardOptionViewIcon
+              {/* <CardOptionViewIcon
                 className={classes.icon}
+              /> */}
+              <img
+                src={CardOptionViewIcon}
+                alt=""
+                style={{ width: '16px', marginRight: '10px' }}
               />
+
               {t('view')}
             </>
           ) : (
             <>
-              <CardOptionViewIcon
+              {/* <CardOptionViewIcon
                 className={classes.icon}
+              /> */}
+              <img
+                src={CardOptionViewIcon}
+                alt=""
+                style={{ width: '16px', marginRight: '10px' }}
               />
+
               {t('preview')}
             </>
           )}
@@ -365,35 +378,47 @@ const CardMenu = (props: any) => {
               onHandleMenuActions('view');
             }}
           >
-            <CardOptionViewIcon
+            {/* <CardOptionViewIcon
               className={classes.icon}
+            /> */}
+            <img
+              src={CardOptionViewIcon}
+              alt=""
+              style={{ width: '16px', marginRight: '10px' }}
             />
+
             {t('view')}
           </MenuItem>
         ) : null}
         {(scheduledPublishTriggerDateTime === null ||
           scheduledPublishTriggerDateTime === undefined) &&
-          (scheduledUnPublishTriggerDateTime === null ||
-            scheduledUnPublishTriggerDateTime === undefined)
+        (scheduledUnPublishTriggerDateTime === null ||
+          scheduledUnPublishTriggerDateTime === undefined)
           ? tabView && (
-            <ErrorTooltip
-              component={
-                <MenuItem
-                  disableRipple
-                  disabled={!canAccessAction(category, subCategory, 'Update')}
-                  onClick={() => {
-                    onHandleMenuActions('edit');
-                  }}
-                >
-                  <CardOptionEditIcon
+              <ErrorTooltip
+                component={
+                  <MenuItem
+                    disableRipple
+                    disabled={!canAccessAction(category, subCategory, 'Update')}
+                    onClick={() => {
+                      onHandleMenuActions('edit');
+                    }}
+                  >
+                    {/* <CardOptionEditIcon
                     className={classes.icon}
-                  />
-                  {t(CARD_MENUS.EDIT.displayName)}
-                </MenuItem>
-              }
-              doAccess={!canAccessAction(category, subCategory, 'Update')}
-            />
-          )
+                  /> */}
+                    <img
+                      src={CardOptionEditIcon}
+                      alt=""
+                      style={{ width: '16px', marginRight: '10px' }}
+                    />
+
+                    {t(CARD_MENUS.EDIT.displayName)}
+                  </MenuItem>
+                }
+                doAccess={!canAccessAction(category, subCategory, 'Update')}
+              />
+            )
           : null}
         <ErrorTooltip
           component={
@@ -404,8 +429,13 @@ const CardMenu = (props: any) => {
                 onHandleMenuActions('duplicate');
               }}
             >
-              <CardOptionDuplicateIcon
+              {/* <CardOptionDuplicateIcon
                 className={classes.icon}
+              /> */}
+              <img
+                src={CardOptionDuplicateIcon}
+                alt=""
+                style={{ width: '16px', marginRight: '10px' }}
               />
               {t(CARD_MENUS.DUPLICATE.displayName)}
             </MenuItem>
@@ -422,8 +452,13 @@ const CardMenu = (props: any) => {
                   onHandleMenuActions('delete');
                 }}
               >
-                <CardOptionDeleteIcon
+                {/* <CardOptionDeleteIcon
                   className={classes.icon}
+                /> */}
+                <img
+                  src={CardOptionDeleteIcon}
+                  alt=""
+                  style={{ width: '16px', marginRight: '10px' }}
                 />
                 {t(CARD_MENUS.DELETE.displayName)}
               </MenuItem>
@@ -432,7 +467,7 @@ const CardMenu = (props: any) => {
           />
         )}
         {status === 'published' &&
-          scheduledUnPublishTriggerDateTime === null ? (
+        scheduledUnPublishTriggerDateTime === null ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -442,8 +477,13 @@ const CardMenu = (props: any) => {
                   onHandleMenuActions('unpublish');
                 }}
               >
-                <CardOptionUnPublishIcon
+                {/* <CardOptionUnPublishIcon
                   className={classes.icon}
+                /> */}
+                <img
+                  src={CardOptionUnPublishIcon}
+                  alt=""
+                  style={{ width: '16px', marginRight: '10px' }}
                 />
                 {t(CARD_MENUS.UNPUBLISH.displayName)}
               </MenuItem>
@@ -452,7 +492,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledPublishTriggerDateTime != null ||
-          scheduledPublishTriggerDateTime != undefined ? (
+        scheduledPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -474,7 +514,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledPublishTriggerDateTime != null ||
-          scheduledPublishTriggerDateTime != undefined ? (
+        scheduledPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -494,7 +534,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledUnPublishTriggerDateTime != null ||
-          scheduledUnPublishTriggerDateTime != undefined ? (
+        scheduledUnPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -520,7 +560,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledUnPublishTriggerDateTime != null ||
-          scheduledUnPublishTriggerDateTime != undefined ? (
+        scheduledUnPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -548,8 +588,13 @@ const CardMenu = (props: any) => {
             onHandleMenuActions('approval_status');
           }}
         >
-          <CardOptionApprovalStatusIcon
+          {/* <CardOptionApprovalStatusIcon
             className={classes.icon}
+          /> */}
+          <img
+            src={CardOptionApprovalStatusIcon}
+            alt=""
+            style={{ width: '16px', marginRight: '10px' }}
           />
           {t('approval_status')}
         </MenuItem>
