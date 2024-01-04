@@ -1,11 +1,10 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 
 const useTextboxStyle = makeStyles((theme) => ({
-
-   typotool:{
+  typotool: {
     margin: '0px !important',
     backgroundColor: 'white',
-    paddingTop: '4px'
-   }
-}))
-export default useTextboxStyle
+    paddingTop: '4px',
+  },
+}));
+export default useTextboxStyle;
