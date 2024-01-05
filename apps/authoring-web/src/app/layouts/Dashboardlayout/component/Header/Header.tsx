@@ -3,7 +3,7 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
-import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon} from '@platformx/utilities';  
+import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon } from '@platformx/utilities';
 import { DrawerWidth } from '../../utils/constant';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
@@ -28,20 +28,20 @@ const AppBar = styled(MuiAppBar, {
   ...(!open && {
     ...(isSideBar
       ? {
-          [theme.breakpoints.up('sm')]: {
-            marginLeft: '65px',
-            width: 'calc(100% - 65px)',
-          },
-          [theme.breakpoints.down('sm')]: {
-            display: 'none',
-          },
-        }
+        [theme.breakpoints.up('sm')]: {
+          marginLeft: '65px',
+          width: 'calc(100% - 65px)',
+        },
+        [theme.breakpoints.down('sm')]: {
+          display: 'none',
+        },
+      }
       : {
-          [theme.breakpoints.up('sm')]: {
-            marginLeft: '0',
-            width: '100%',
-          },
-        }),
+        [theme.breakpoints.up('sm')]: {
+          marginLeft: '0',
+          width: '100%',
+        },
+      }),
   }),
   ...(open && {
     marginLeft: DrawerWidth,
@@ -86,14 +86,14 @@ const Header = ({
         <Grid item xs={10} className={classes.searchContainer}>
           {!hasSearch && !(pageUrl.pathname.split('/')[3] === 'navtree') && (
             <Box className="menuIcon" onClick={handleDrawerOpen}>
-              <MenuIcon />
+              <img alt='settings' src={MenuIcon} />
             </Box>
           )}
 
           {hasSearch && (
             <>
               <Box className="menuIcon" onClick={handleDrawerOpen}>
-                <MenuIcon />
+                <img alt='settings' src={MenuIcon} />
               </Box>
               {!isSiteSystem && (
                 <SearchBox ifTab={ifTab} menuItemSelected={menuItemSelected} />
@@ -111,7 +111,7 @@ const Header = ({
                   cursor: 'pointer',
                 }}
               >
-                <BackButton/>{' '}
+                <img alt='settings' src={BackButton} />{' '}
               </Box>
               <Box
                 sx={{ display: 'flex', alignItems: 'center', padding: '10px' }}

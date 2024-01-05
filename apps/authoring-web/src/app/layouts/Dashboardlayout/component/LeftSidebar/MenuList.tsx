@@ -28,7 +28,7 @@ export default function Menu(props) {
       detailsRes?.authoring_getDocument?.map((val, i) => {
         return menu.push({
           MenuName: val?.title,
-          Icon: ArticleIcon,
+          Icon: <img alt='settings' src={ArticleIcon} />,
           url: `/content/${val?.name}`,
           id: val?.title,
           category: 'content',

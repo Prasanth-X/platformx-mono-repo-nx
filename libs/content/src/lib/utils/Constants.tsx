@@ -5,28 +5,23 @@ import ScheduleSendRoundedIcon from '@mui/icons-material/ScheduleSendRounded';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
 
-
 import {
-  CourseListIcon,
-  DraftIcon,
-  EventsListIcon,
-  PollListIcon,
-  PublishedIcon,
-  SchedulePublishIcon,
-  ScheduledUnpublishIcon,
   ArticleListIcon,
-  DraftStatusIcon,
-  PagesListIcon,
-  SpacePublicIcon,
   Challenge_community,
+  CourseListIcon,
+  DraftStatusIcon,
+  EventsListIcon,
   General_community,
   News_community,
+  PagesListIcon,
+  PollListIcon,
   PublishedStatusIcon,
   QuizListIcon,
   SchedulePublishStatusIcon,
   ScheduleUnpublishStatusIcon,
   SpaceListIcon,
   SpacePrivateIcon,
+  SpacePublicIcon,
   UnpublishedStatusIcon,
   VODListIcon,
 } from '@platformx/utilities';
@@ -38,11 +33,11 @@ export const statusColors = {
   unpublished: '#777777',
 };
 export const statusIcons: any = {
-  draft: DraftIcon,
-  published: PublishedIcon,
+  draft: UnpublishedIcon,
+  published: UnpublishedIcon,
   unpublished: UnpublishedIcon,
-  schedulePublish: SchedulePublishIcon,
-  scheduleUnpublish: ScheduledUnpublishIcon,
+  schedulePublish: SpacePublicIcon,
+  scheduleUnpublish: SpacePublicIcon,
   public: SpacePublicIcon,
   private: SpacePrivateIcon,
 };
