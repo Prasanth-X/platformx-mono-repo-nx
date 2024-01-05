@@ -12,7 +12,7 @@ const CardSlider = ({ createContent }: any) => {
   return (
     <Slider {...SETTINGS}>
       {createContent.map(
-        (item, index) =>
+        (item: any, index: number) =>
           item.url !== '' && (
             <Card
               key={index}

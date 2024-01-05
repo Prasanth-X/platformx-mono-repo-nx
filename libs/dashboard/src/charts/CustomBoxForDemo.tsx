@@ -3,7 +3,7 @@ import NorthEastIcon from "@mui/icons-material/NorthEast";
 import SouthWestIcon from "@mui/icons-material/SouthWest";
 import "./CustomBoxForDemo.css";
 
-export default function CustomBoxForDemo({ item }) {
+export default function CustomBoxForDemo({ item }: any) {
   const { title = "", value = "", increment = "", decrement = "", change = "", CustomIcon } = item;
   return (
     <>

@@ -7,9 +7,9 @@ import fbGreen from '../../../assets/images/fb-green.png';
 import inGray from '../../../assets/images/in-gray.png';
 import inGreen from '../../../assets/images/in-green.png';
 
-const SocialShareStep1 = ({ selectedSocial, setSelectedSocial }) => {
+const SocialShareStep1 = ({ selectedSocial, setSelectedSocial }: any) => {
   const { t } = useTranslation();
-  const handelNetworkSelect = (network) => {
+  const handelNetworkSelect = (network: any) => {
     setSelectedSocial({
       ...selectedSocial,
       [network]: !selectedSocial[network],

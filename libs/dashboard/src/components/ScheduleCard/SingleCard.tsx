@@ -9,7 +9,7 @@ const SingleCard = ({
   published_by,
   schduled_publish_trigger_datetime: publish,
   schduled_unPublish_trigger_datetime: unPublish,
-}) => {
+}: any) => {
   const { date_time, date, month } = dateFormat(publish ?? unPublish);
   return (
     <Box className='schedulecard'>

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import SingleCard from '../ScheduleCard/SingleCard';
 
-const ScheduleCardList = ({ scheduledPages }) => {
+const ScheduleCardList = ({ scheduledPages }: any) => {
   return (
     <Box
       sx={{
@@ -11,7 +11,7 @@ const ScheduleCardList = ({ scheduledPages }) => {
       }}
     >
       {scheduledPages.length > 0 &&
-        scheduledPages.map((item, index) => (
+        scheduledPages.map((item: any, index: number) => (
           <SingleCard key={index} {...item} />
         ))}
     </Box>

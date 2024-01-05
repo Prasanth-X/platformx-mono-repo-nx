@@ -18,7 +18,7 @@ import { addEllipsis } from "../utils/helper";
 const BarChartHorizontal = ({ itemData }: any) => {
   const { chartData: data, column_names: colnames, title } = itemData;
   const config = graph.bar;
-  const CustomXAxisTick = ({ x, y, payload }) => (
+  const CustomXAxisTick = ({ x, y, payload }: any) => (
     <g transform={`translate(${x},${y})`}>
       <text
         x={-80}

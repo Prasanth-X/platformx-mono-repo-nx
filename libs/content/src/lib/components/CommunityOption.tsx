@@ -21,7 +21,7 @@ const CommunityOption = (_props: CommunityOptionProps) => {
    * open url with new page
    * @param pageUrl string
    */
-  const redirectToUrl = (pageUrl) => {
+  const redirectToUrl = (pageUrl: string) => {
     if (pageUrl) {
       window.open(pageUrl, '_blank', 'noopener,noreferrer');
     } else {
@@ -33,7 +33,7 @@ const CommunityOption = (_props: CommunityOptionProps) => {
    * copy url
    * @param pageUrl string
    */
-  const copyUrl = (pageUrl) => {
+  const copyUrl = (pageUrl: string) => {
     if (pageUrl) {
       navigator.clipboard.writeText(pageUrl);
       ShowToastSuccess(t('url_copy_toast'));

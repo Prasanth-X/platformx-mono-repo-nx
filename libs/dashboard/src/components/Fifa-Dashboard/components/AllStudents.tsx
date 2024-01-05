@@ -17,7 +17,7 @@ interface user {
   status: string;
 }
 
-const AllStudents = ({ users }) => {
+const AllStudents = ({ users }: any) => {
   const [userList, setUserList] = React.useState<user[]>([]);
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import './HorizontalCard.css';
 import { useStyles } from './HorizontalCard.styles';
 
-const HorizontalCard = ({ Title, Description, url, icon }) => {
+const HorizontalCard = ({ Title, Description, url, icon }: any) => {
   const classes = useStyles();
   const handelCardClick = () => {
     window.open(url, '_self');

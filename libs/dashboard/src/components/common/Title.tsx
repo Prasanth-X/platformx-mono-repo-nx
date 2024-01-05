@@ -8,7 +8,7 @@ const Title = ({
   textTransform = '',
   margin = '',
   padding= '',
-}) => {
+}: any) => {
   return (
     <Typography
       variant={titleVarient}

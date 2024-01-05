@@ -19,7 +19,7 @@ const RecentContent = ({
   return (
     <div>
       {recentContent?.length > 0 &&
-        recentContent.map((item) => (
+        recentContent.map((item: any) => (
           <ContentRow
             key={item.Id}
             item={item}

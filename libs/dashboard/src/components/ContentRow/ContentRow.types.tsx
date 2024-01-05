@@ -1,15 +1,15 @@
 export type ContentRowProps = {
   item: any;
-  deleteContent?: (content) => void;
+  deleteContent?: (content: any) => void;
   duplicate?: (
-    content,
+    content: any,
     isDuplicate: boolean,
     title: string,
     language: string
   ) => void;
-  preview?: (content) => void;
-  unPublish?: (content) => void;
-  view?: (content) => void;
-  edit?: (content) => void;
-  fetchContentDetails?: (content) => void;
+  preview?: (content: any) => void;
+  unPublish?: (content: any) => void;
+  view?: (content: any) => void;
+  edit?: (contentm: any) => void;
+  fetchContentDetails?: (content: any) => void;
 };

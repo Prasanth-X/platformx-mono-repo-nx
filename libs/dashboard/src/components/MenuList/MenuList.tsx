@@ -13,7 +13,7 @@ const MenuList = ({
   view,
   edit,
   fetchContentDetails,
-}) => {
+}: any) => {
   const selectedItem = getSelectedObject(item);
   const contentType = selectedItem.contentType;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

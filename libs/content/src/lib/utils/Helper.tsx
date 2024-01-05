@@ -1,6 +1,6 @@
 import { ContentType } from '../enums/ContentType';
 import { DEFAULT_EMBED_IMAGE, DEFAULT_SOCIAL_IMAGE } from './Constants';
-export const relativeImageURL = (url) => {
+export const relativeImageURL = (url: string) => {
   const gcpUrl = process.env.NX_GCP_URL;
   const bucketName = process.env.NX_BUCKET_NAME;
   if (url?.includes('dam')) {
@@ -9,7 +9,7 @@ export const relativeImageURL = (url) => {
   }
   return url ? `${gcpUrl}/${bucketName}/${url}` : '';
 };
-export const getEmbedTempData = (selectedContent) => {
+export const getEmbedTempData = (selectedContent: any) => {
   const { original_image } = selectedContent;
   const relativeUrl = `${original_image?.original_image_relative_path}.${original_image?.ext}`;
   const embedTempData = {
@@ -37,7 +37,7 @@ export const getEmbedTempData = (selectedContent) => {
   return embedTempData;
 };
 
-export const getSocialShareData = (selectedContent) => {
+export const getSocialShareData = (selectedContent: any) => {
   const socialShareData = {
     Title: selectedContent?.title,
     Description: selectedContent?.description,

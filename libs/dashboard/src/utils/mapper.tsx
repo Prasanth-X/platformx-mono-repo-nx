@@ -3,7 +3,7 @@ export const userCourseListMapper = (usersData: any) => {
   const sts = ['Registered', 'Pending', 'Delivered	'];
 
   if (usersData) {
-    const userList = usersData?.map((user: any, index) => {
+    const userList = usersData?.map((user: any, index: number) => {
       const { user_id, firstName, lastName, email } = user;
       return {
         orderNo: user_id,
@@ -21,7 +21,7 @@ export const userCourseListMapper = (usersData: any) => {
 
 export const courseListMapper = (usersData: any) => {
   if (usersData) {
-    const userList = usersData?.map((user: any, index) => {
+    const userList = usersData?.map((user: any, index: number) => {
       const { Title, Author, lastModifiedDate, Description, Thumbnail } = user;
       return {
         id: index + 1,

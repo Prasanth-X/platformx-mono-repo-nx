@@ -8,7 +8,7 @@ const TaskPages = ({ taskPages, fetchDashBoardData, changeStatus, edit }: TaskPa
   return (
     <Box>
       {taskPages?.length > 0 &&
-        taskPages.map((item, index) => (
+        taskPages.map((item: any, index: number) => (
           <TasksPageRow
             fetchDashBoardData={fetchDashBoardData}
             key={index}

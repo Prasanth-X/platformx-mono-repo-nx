@@ -1,4 +1,4 @@
-export const getSelectedObject = (item) => {
+export const getSelectedObject = (item: any) => {
   return {
     ...item,
     page_state: 'published',

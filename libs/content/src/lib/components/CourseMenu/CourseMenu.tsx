@@ -32,7 +32,7 @@ export const CourseMenu = ({
   view,
   edit,
   fetchContentDetails,
-}) => {
+}: any) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { canAccessAction } = useAccess();
@@ -74,7 +74,7 @@ export const CourseMenu = ({
     });
   };
   console.log('details', selectedContent);
-  const onHandleMenuActions = (action) => {
+  const onHandleMenuActions = (action: any) => {
     switch (action) {
       case MenuActions.INVITE_USER:
         setMenuActions({ ...menuActions, inviteuser: true });
@@ -89,7 +89,7 @@ export const CourseMenu = ({
     await setEmbedData(getEmbedTempData(cardDetails));
   };
 
-  const inviteUsers = async (users) => {
+  const inviteUsers = async (users: any) => {
     const {
       description,
       teaser_image,
@@ -98,7 +98,7 @@ export const CourseMenu = ({
       course_id,
       author,
     } = selectedContent;
-    const userData = users.map((val) => {
+    const userData = users.map((val: any) => {
       return {
         user_id: val.user_id,
         email: val.email,
@@ -114,7 +114,7 @@ export const CourseMenu = ({
       input: requestToSend,
     });
   };
-  const handleInviteUser = async (users) => {
+  const handleInviteUser = async (users: any) => {
     try {
       const detailsRes: any = await inviteUsers(users);
       if (
