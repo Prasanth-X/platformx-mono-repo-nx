@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 
 import { ApolloProvider } from '@apollo/client';
 import { init as initApm } from '@elastic/apm-rum';
@@ -74,8 +75,8 @@ function App() {
   const routing = getSelectedRoute();
   const { pathname } = window.location
 
-
   useEffect(() => {
+
     const initializeApp = async () => {
       try {
 
@@ -100,27 +101,27 @@ function App() {
     };
     initializeApp();
 
-  }, [pathname, i18n]);
+  }, []);
 
   return (
     <Suspense fallback={<div>...Loading</div>}>
       <div className='App'>
         <I18nextProvider i18n={i18n}>
           <ApolloProvider client={graphqlInstance}>
-            <AnalyticsProvider instance={instances}>
-              <ThemeProvider theme={LightTheme}>
-                <CssBaseline />
-                <BrowserRouter
-                  basename={
-                    routing ? `/${routing}/${language}` : `/${language}`
-                  }
-                >
-                  <Provider store={store}>
-                    <AppRouter />
-                  </Provider>
-                </BrowserRouter>
-              </ThemeProvider>
-            </AnalyticsProvider>
+            {/* <AnalyticsProvider instance={instances}> */}
+            <ThemeProvider theme={LightTheme}>
+              <CssBaseline />
+              <BrowserRouter
+                basename={
+                  routing ? `/${routing}/${language}` : `/${language}`
+                }
+              >
+                <Provider store={store}>
+                  <AppRouter />
+                </Provider>
+              </BrowserRouter>
+            </ThemeProvider>
+            {/* </AnalyticsProvider> */}
             <ToastContainer
               position='bottom-center'
               autoClose={4000}

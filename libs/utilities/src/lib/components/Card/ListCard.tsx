@@ -21,7 +21,7 @@ import useAccess from "../../hooks/useAccess/useAccess"
 // } from '../../../pages/articles/deletePopup'; 
 
 import { iconsList, statusIcons } from './constants';
-import { CardProps } from '../../utils/List.types';
+import { CardProps } from './List.types';
 // import CardOption from '../CardOption/CardOption';
 // import CommunityOption from '../CommunityOption';
 import './List.css';

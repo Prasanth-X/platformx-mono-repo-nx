@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { Key, memo } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
-import { ContentListingProps, ListItem } from '../../utils/List.types';
+import { ContentListingProps, ListItem } from './ContentListing.types';
 import {
   capitalizeFirstLetter,
   capitalizeWords,
@@ -155,6 +155,7 @@ const ContentListing = ({
               return (
                 <Box key={index}>
                   <Card
+
                     dataList={
                       contentType == 'Course'
                         ? makeCourseContentData(item)

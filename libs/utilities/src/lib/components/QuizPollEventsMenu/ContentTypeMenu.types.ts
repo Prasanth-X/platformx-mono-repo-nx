@@ -7,6 +7,7 @@ export interface ContentTypeMenu {
     category: string; // Adjust the type accordingly
     subCategory: string[]; // Adjust the type accordingly
     deleteContent: (item: any) => void;
+
     duplicate: (isDuplicate: boolean, title: string, language: any, selectedContent: any) => void;
     preview: (item: any) => void;
     unPublish: (item: any) => void;
