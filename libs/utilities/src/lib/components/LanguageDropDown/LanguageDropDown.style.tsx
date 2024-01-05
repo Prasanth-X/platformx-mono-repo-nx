@@ -1,6 +1,7 @@
+import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-export const useLanguageDropDownStyle = makeStyles((theme) => ({
+export const useLanguageDropDownStyle = makeStyles((theme: Theme) => ({
   dropdownmenu1: {
     '& .dropdownmenu ul:nth-child(3)': {
       overflow: 'visible',

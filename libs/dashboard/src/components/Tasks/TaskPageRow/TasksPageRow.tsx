@@ -121,11 +121,10 @@ const Tasks = ({
                   display: { xs: 'flex' },
                 }}
               >
-                { React.createElement(iconsList[document_type?.toLowerCase()]) }
-                {/* <img
+                <img
                   src={iconsList[document_type?.toLowerCase()]}
                   style={{ width: '100%', objectFit: 'cover' }}
-                /> */}
+                />
               </Box>
               <Box
                 sx={{

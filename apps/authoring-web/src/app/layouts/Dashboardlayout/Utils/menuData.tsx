@@ -1,8 +1,23 @@
-import {ApprovalStatus, EventsIcon, HamburgerMenuIcon, PollIcon, PostIconMenu,
-  QuizIcon,CourseIcon,SitesIcon, UsersIcon,VideoIcon, ArticleIcon, CookieIcon, FooterMenuUpdated,
-  HeaderMenuUpdated, MediaIcon, MyDashboardIcon, PagesIcon, 
-  //FeatureStar, AssetvideoIcon, AssetdocIcon
+import {
+  ApprovalStatus,
+  EventsIcon,
+  HamburgerMenuIcon,
+  PollIcon,
+  PostIconMenu,
+  QuizIcon,
+  CourseIcon,
+  SitesIcon,
+  UsersIcon,
+  VideoIcon,
+  ArticleIcon,
+  CookieIcon,
+  FooterMenuUpdated,
+  HeaderMenuUpdated,
+  MediaIcon,
+  MyDashboardIcon,
+  PagesIcon,
 } from '@platformx/utilities';
+
 
 export const MenuData = [
   {
@@ -20,27 +35,7 @@ export const MenuData = [
         subCategory: "",
       },
     ],
-  },
-  // not moving this changes to staging
-
-  // {
-  //   url: '/task-listing',
-  //   Title: 'tasklisting',
-  //   id: 'tasklisting',
-  //   // roles: ['author'],
-  //   category: 'tasklisting',
-  //   subCategory: '',
-  //   Menu: [
-  //     {
-  //       MenuName: 'Task Listing',
-  //       Icon: task,
-  //       url: '/task-listing',
-  //       id: 'Task Listing',
-  //       category: 'tasklisting',
-  //       subCategory: '',
-  //     },
-  //   ],
-  // },
+  }, 
   {
     Title: "pages",
     id: "page",
@@ -263,48 +258,8 @@ export const MenuData = [
         category: "SiteSetting",
         subCategory: "GlobalSetting",
       },
-      // {
-      //   MenuName: 'Feature Flag',
-      //   Icon: FeatureStar,
-      //   url: '/site-setting/feature-flag',
-      //   id: 'feature_flag_setting',
-      //   category: 'SiteSetting',
-      //   subCategory: 'GlobalSetting',
-      // },
     ],
   },
-  // {
-  //   url: '',
-  //   Title: 'assets',
-  //   id: 'assets',
-  //   roles: ['admin'],
-  //   Menu: [
-  //     {
-  //       MenuName: 'Images',
-  //       Icon: MediaIcon,
-  //       url: '/asset/images',
-  //       id: 'Images',
-  //       category: 'Assets',
-  //       subCategory: '',
-  //     },
-  //     {
-  //       MenuName: 'Videos',
-  //       Icon: AssetvideoIcon,
-  //       url: '/asset/videos',
-  //       id: 'Videos',
-  //       category: 'Assets',
-  //       subCategory: '',
-  //     },
-  //     {
-  //       MenuName: 'Document',
-  //       Icon: AssetdocIcon,
-  //       url: '/asset/docs',
-  //       id: 'Document',
-  //       category: 'Assets',
-  //       subCategory: '',
-  //     },
-  //   ],
-  // },
   {
     Title: "Sites",
     id: "site",

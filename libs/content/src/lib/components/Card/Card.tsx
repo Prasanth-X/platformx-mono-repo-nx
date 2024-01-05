@@ -1,9 +1,4 @@
 import { Box, Grid, Tooltip, Typography } from '@mui/material';
-import { format } from 'date-fns';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import RedBlinkingDot from "../../../assets/RedBlinkingDot.gif"
 import {
   CATEGORY_CONTENT,
   CATEGORY_PAGE,
@@ -11,6 +6,11 @@ import {
   DASHBOARD_KEYS,
   useAccess,
 } from '@platformx/utilities';
+import { format } from 'date-fns';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import RedBlinkingDot from '../../../assets/RedBlinkingDot.gif';
 // import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
 // import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
 // import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
@@ -21,18 +21,17 @@ import {
 // } from '../../../pages/articles/deletePopup';
 // import { authInfo } from '@platformx/utilities';
 
-import { convertToLowerCase } from '@platformx/utilities';
+import { PlateformXDialog, convertToLowerCase } from '@platformx/utilities';
+import React from 'react';
 import { iconsList, statusIcons } from '../../utils/Constants';
 import { CardProps } from '../../utils/List.types';
+import CardMenu from '../CardMenu/CardMenu';
 import CardOption from '../CardOption/CardOption';
 import CommunityOption from '../CommunityOption';
-import './List.css';
-import { PublishInformation } from '../PublishInformation/PublishInformation';
-import { PlateformXDialog } from '@platformx/utilities';
 import { CourseMenu } from '../CourseMenu/CourseMenu';
-import CardMenu from '../CardMenu/CardMenu';
+import { PublishInformation } from '../PublishInformation/PublishInformation';
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
-import React from 'react';
+import './List.css';
 
 export const Card = ({
   dataList,
@@ -222,11 +221,10 @@ export const Card = ({
               className="d-flex align-items-center"
               onClick={handleCardClick}
             >
-
               {/* content type icon */}
               <Box className="img">
-                {/* <img src={iconsList[dataList.tagName]} alt="" /> */}
-                {React.createElement(iconsList[dataList.tagName])}
+                <img src={iconsList[dataList.tagName]} alt="" />
+                {/* {React.createElement(iconsList[dataList.tagName])} */}
               </Box>
 
               <Box className="rightspace">
@@ -266,32 +264,20 @@ export const Card = ({
                       )}
                     <Box component="div" className="mobstatusIcon">
                       <Typography sx={{ marginLeft: '10px' }}>
-                        {/* <img alt="" src={statusIcons[dataList.status]} /> */}
-                        {
-
-                          React.createElement(statusIcons[dataList.status])
-
-                        }
-
+                        <img alt="" src={statusIcons[dataList.status]} />
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledPublishTriggerDateTime &&
-                          tagName === 'sitepage' && (
-                            // <img alt="" src={statusIcons['schedulePublish']} />
-                            React.createElement(statusIcons['scheduleUnpublish'])
-
-                          )}
-
+                          tagName === 'sitepage' &&
+                          <img alt="" src={statusIcons['schedulePublish']} /> }
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledUnPublishTriggerDateTime &&
-                          tagName === 'sitepage' && (
-                            // <img
-                            //   alt=""
-                            //   src={statusIcons['scheduleUnpublish']}
-                            // />
-                            React.createElement(statusIcons['scheduleUnpublish'])
-                          )}
+                          tagName === 'sitepage' &&
+                          <img
+                            alt=""
+                            src={statusIcons['scheduleUnpublish']}
+                          /> }
                       </Typography>
                     </Box>
                   </Grid>
@@ -390,27 +376,27 @@ export const Card = ({
                 tagName === 'event' ||
                 tagName === 'vod' ||
                 tagName === 'article') && (
-                  <QuizPollEventMenu
-                    deleteContent={deleteContent}
-                    duplicate={duplicate}
-                    preview={preview}
-                    unPublish={unPublish}
-                    view={view}
-                    edit={edit}
-                    anchorEl={anchorEl}
-                    open={open}
-                    handleClose={() => {
-                      setAnchorEl(null);
-                    }}
-                    contentType={tagName}
-                    listItemDetails={dataList}
-                    category={CATEGORY_CONTENT}
-                    subCategory={CONTENT_TYPES}
-                    fetchContentDetails={fetchContentDetails}
-                    sitelist={sitelist}
-                    duplicateToSite={duplicateToSite}
-                  />
-                )}
+                <QuizPollEventMenu
+                  deleteContent={deleteContent}
+                  duplicate={duplicate}
+                  preview={preview}
+                  unPublish={unPublish}
+                  view={view}
+                  edit={edit}
+                  anchorEl={anchorEl}
+                  open={open}
+                  handleClose={() => {
+                    setAnchorEl(null);
+                  }}
+                  contentType={tagName}
+                  listItemDetails={dataList}
+                  category={CATEGORY_CONTENT}
+                  subCategory={CONTENT_TYPES}
+                  fetchContentDetails={fetchContentDetails}
+                  sitelist={sitelist}
+                  duplicateToSite={duplicateToSite}
+                />
+              )}
               {tagName === 'courses' && (
                 <CourseMenu
                   deleteContent={deleteContent}

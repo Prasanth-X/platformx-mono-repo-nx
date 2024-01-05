@@ -61,26 +61,26 @@ export const tagData = [
 ];
 
 export const categoryData = [
-  { title: 'All', icon: AllIcon, category: 'ALL', id: 'all' },
-  { title: 'Pages', icon: PagesIcon, category: 'Sitepage', id: 'pages' },
-  { title: 'Article', icon: ArticleIcon, category: 'Article', id: 'article' },
+  { title: 'All', icon: <img alt='settings' src={AllIcon} />, category: 'ALL', id: 'all' },
+  { title: 'Pages', icon: <img alt='settings' src={PagesIcon} />, category: 'Sitepage', id: 'pages' },
+  { title: 'Article', icon: <img alt='settings' src={ArticleIcon} />, category: 'Article', id: 'article' },
   // {
   //   title: 'VOD (Video on Demand)',
-  //   icon: VODIcon,
+  //   icon: <img alt='settings' src={ VODIcon,
   //   category: 'Vod',
   //   id: 'vod_demand',
   // }, #TODO For X-live
-  { title: 'Quiz', icon: QuizIcon, category: 'Quiz', id: 'quiz' },
-  { title: 'Poll', icon: PollIcon, category: 'Poll', id: 'poll' },
-  { title: 'Events', icon: EventsIcon, category: 'Event', id: 'event' },
+  { title: 'Quiz', icon: <img alt='settings' src={QuizIcon} />, category: 'Quiz', id: 'quiz' },
+  { title: 'Poll', icon: <img alt='settings' src={PollIcon} />, category: 'Poll', id: 'poll' },
+  { title: 'Events', icon: <img alt='settings' src={EventsIcon} />, category: 'Event', id: 'event' },
 ];
 export const DrawerWidth = 250;
 export const iconMap = {
-  SitePage: PagesIcon,
-  Article: ArticleIcon,
-  Poll: PollIcon,
-  Quiz: QuizIcon,
-  Vod: VODIcon,
+  SitePage: <img alt='settings' src={PagesIcon} />,
+  Article: <img alt='settings' src={ArticleIcon} />,
+  Poll: <img alt='settings' src={PollIcon} />,
+  Quiz: <img alt='settings' src={QuizIcon} />,
+  Vod: <img alt='settings' src={VODIcon} />,
 };
 export const AutoCompleteData = [
   {

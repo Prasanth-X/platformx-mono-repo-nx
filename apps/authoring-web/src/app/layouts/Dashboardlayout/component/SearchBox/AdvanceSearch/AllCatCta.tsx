@@ -74,7 +74,7 @@ export default function AllCatCta({ setCategory }) {
 
         <Box className='allcatctabox'>
           <Box className='icon'>
-            {selectedCategory.Icon && <selectedCategory.Icon />}
+            {selectedCategory.Icon}
           </Box>
           <Typography variant='h6regular'>
             {typeof selectedCategory.Icon === 'function' && t(selectedCategory.id)}
@@ -93,8 +93,8 @@ export default function AllCatCta({ setCategory }) {
               key={index}
             >
               <Box className='allcatctabox'>
-                <Box className='icon'> 
-                  <val.icon />
+                <Box className='icon'>
+                  {val.icon}
                 </Box>
                 <Typography variant='h6regular'>{t(val.id)}</Typography>
               </Box>

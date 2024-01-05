@@ -65,7 +65,7 @@ export default function LeftSideBar({
           <Box>
             <Box className={classes.logoContainer}>
 
-              <PlatXLogo
+              <img src={PlatXLogo} alt="logo"
                 className={classes.logo}
                 onClick={() => navigate('/dashboard')}
               />

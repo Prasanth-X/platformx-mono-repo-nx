@@ -1,6 +1,7 @@
+import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-const useSitesMenuStyle = makeStyles((theme) => ({
+const useSitesMenuStyle = makeStyles((theme: Theme) => ({
   box: {
     display: 'flex',
     marginTop: '10px',

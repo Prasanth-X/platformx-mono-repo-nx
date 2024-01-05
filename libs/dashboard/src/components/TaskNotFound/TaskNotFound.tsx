@@ -11,8 +11,7 @@ const TaskNotFound = () => {
     <Box className={`${classes.taskNotFoundWp} taskNotFoundWp`}>
       <Box className='contentWpBox'>
         <Box className='imgboxWp'>
-          {React.createElement(TaskNotFoundIcon)}
-          {/* <img src={TaskNotFoundIcon} alt='Task Not Found' /> */}
+          <img src={TaskNotFoundIcon} alt='Task Not Found' />
         </Box>
         <Typography variant='p2regular'>{t('task_not_found')}</Typography>
       </Box>

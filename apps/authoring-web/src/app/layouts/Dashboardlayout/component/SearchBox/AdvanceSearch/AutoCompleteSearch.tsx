@@ -47,7 +47,7 @@ export default function AutoCompleteSearch({
   };
 
   const getSuggestions = async (keyword) => {
-    const response:any = await contentTypeAPIs.fetchContentAll({
+    const response: any = await contentTypeAPIs.fetchContentAll({
       contentType: selectedCategory.category,
       pageFilter: 'ALL',
       sort: SORT_ORDER,
@@ -89,7 +89,7 @@ export default function AutoCompleteSearch({
         },
       }}
       options={autoCompleteData || []}
-      groupBy={(option:any) => option.ContentType || ''}
+      groupBy={(option: any) => option.ContentType || ''}
       getOptionLabel={(option) => option?.Title || ''}
       isOptionEqualToValue={(option, value) => option?.Title == value?.Title}
       onInputChange={async (event, newInputValue) => {
@@ -130,12 +130,12 @@ export default function AutoCompleteSearch({
         </TextFieldBox>
       )}
       renderGroup={renderGroup}
-      renderOption={(props, option:any) => {
+      renderOption={(props, option: any) => {
         return (
           <div>
             <li {...props}>
               <ListContainer>
-                {/* <img src={iconMap[option.ContentType]} alt='' /> */}
+
                 {iconMap[option.ContentType]}
                 <Typography variant='h5regular' sx={{ marginLeft: '8px' }}>
                   {option.Title}

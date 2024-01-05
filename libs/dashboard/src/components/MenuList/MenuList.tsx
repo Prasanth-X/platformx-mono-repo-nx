@@ -31,15 +31,14 @@ const MenuList = ({
         onClick={handleClickListItem}
       >
         <IconButton>
-          {React.createElement(MoreHorizIcon)}
-          {/* <img
+          <img
             src={MoreHorizIcon}
             style={{
               objectFit: 'cover',
               transform: 'rotate(90deg)',
               padding: '4px 0px',
             }}
-          /> */}
+          />
         </IconButton>
       </Box>
 

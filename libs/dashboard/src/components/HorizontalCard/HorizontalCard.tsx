@@ -18,8 +18,7 @@ const HorizontalCard = ({ Title, Description, url, icon }) => {
       ></Box>
       <Box>
         <Box>
-          {React.createElement(icon)}
-          {/* <img src={icon} alt={Title} /> */}
+          <img src={icon} alt={Title} />
         </Box>
         <Typography component='div' variant='h5bold' className='title'>
           {Title}
