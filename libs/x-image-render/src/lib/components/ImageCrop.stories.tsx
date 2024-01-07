@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ImageCrop } from './ImageCrop';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import ImageCrop from './ImageCrop';
 
 const meta: Meta<typeof ImageCrop> = {
   component: ImageCrop,

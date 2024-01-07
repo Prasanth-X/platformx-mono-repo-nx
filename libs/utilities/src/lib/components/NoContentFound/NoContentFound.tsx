@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import NoContentFoundSvg from '../../assets/svg/NoContentFound.svg';
 import React from 'react';
 
-const NoContentFound = () => {
+export const NoContentFound = () => {
   const { t } = useTranslation();
 
   return (
@@ -15,6 +15,4 @@ const NoContentFound = () => {
       <Typography variant='h5regular'>{t('no_content_found')}</Typography>
     </Box>
   );
-};
-
-export default NoContentFound;
+}; 
