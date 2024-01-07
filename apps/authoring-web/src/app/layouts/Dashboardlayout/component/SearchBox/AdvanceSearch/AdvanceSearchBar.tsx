@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { categoryData, contentPaths } from '../../../utils/constant';
+import { categoryData, contentPaths } from '../../../Utils/constants/layoutConstant';
 import AdvanceFilter from './AdvanceFilter';
 import AllCatCta from './AllCatCta';
 import AutoCompleteSearch from './AutoCompleteSearch';
@@ -50,11 +50,10 @@ export default function AdvanceSearchBar({ handleClose }) {
 
   const getDateFormat = (date) => {
     const newDate = new Date(date);
-    return `${newDate.getFullYear()}-${
-      newDate.getMonth() + 1 < 10
-        ? `0${newDate.getMonth() + 1}`
-        : newDate.getMonth() + 1
-    }-${newDate.getDate() < 10 ? `0${newDate.getDate()}` : newDate.getDate()}`;
+    return `${newDate.getFullYear()}-${newDate.getMonth() + 1 < 10
+      ? `0${newDate.getMonth() + 1}`
+      : newDate.getMonth() + 1
+      }-${newDate.getDate() < 10 ? `0${newDate.getDate()}` : newDate.getDate()}`;
   };
   const handleSearch = (filters) => {
     // dispatch({ type: 'CLEAR_CONTENT' }); // TODO

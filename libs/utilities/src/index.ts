@@ -7,7 +7,7 @@ import { MiniHeader } from './lib/components/Header/MiniHeader';
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown';
 import ContentListLoader from './lib/components/Loader/ContentListLoader';
 import NoSearchResult from './lib/components/NoSearchResult/NoSearchResult';
-import PlateformXDialog from './lib/components/Popups/DeletePopup';
+import PlateformXDialog from './lib/components/Popups/PlateformXDialog';
 import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound';
 import TextBox from './lib/components/TextBox/TextBox';
 import XLoader from './lib/components/XLoader/XLoader';

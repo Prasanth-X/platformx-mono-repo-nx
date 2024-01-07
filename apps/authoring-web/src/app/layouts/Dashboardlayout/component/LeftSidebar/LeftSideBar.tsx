@@ -4,11 +4,10 @@ import MuiDrawer from '@mui/material/Drawer';
 import { CSSObject, styled, Theme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { MiniHeader, PlatXLogo } from '@platformx/utilities';
-import { DrawerWidth } from '../../utils/constant';
 import './LeftSideBar.css';
 import { useStyles } from './LeftSidebar.styles';
 import MenuList from './MenuList';
-
+const DrawerWidth = 240;
 const openedMixin = (theme: Theme): CSSObject => ({
   width: DrawerWidth,
   [theme.breakpoints.down('sm')]: {
