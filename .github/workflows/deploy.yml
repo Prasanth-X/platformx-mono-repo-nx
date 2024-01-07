@@ -39,11 +39,10 @@ jobs:
         uses: google-github-actions/auth@v1.0.0
         with:
           workload_identity_provider: ${{ secrets[env.WORKLOAD_IDENTITY_PROVIDER] }}
-          service_account: ${{ secrets.SERVICE_ACCOUNT }}
-          credentials_json: ${{ secrets.CREDENTIALS_JSON }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }} 
           token_format: 'access_token'
 
-      # Add steps for deploying Configmaps based on branches
+      # Deploying Configmaps based on branches
 
       - name: Build Docker image
         run: docker build --tag "gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:${{ github.run_number }}" .
@@ -53,7 +52,7 @@ jobs:
           gcloud auth configure-docker --quiet
           docker push "gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:${{ github.run_number }}"
 
-      # Add steps for deploying Configmaps based on branches
+      # Deploying Configmaps based on branches
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -70,13 +69,13 @@ jobs:
       - name: Build affected libraries
         run: nx affected --target=build --base=main --head=$GITHUB_SHA
 
-      # Add steps for deploying Docker image to GKE clusters based on branches
+      # Deploying Docker image to GKE clusters based on branches
 
       - name: Deploy Configmap on stg branch
         if: ${{ github.ref == 'refs/heads/stg' }}
         run: kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-stg.yaml
 
-      # Add steps for deploying Docker image to GKE clusters based on branches
+      # Deploying Docker image to GKE clusters based on branches
 
       - name: Deploy to GKE (dev, qa, stg, etc.)
         if: |
