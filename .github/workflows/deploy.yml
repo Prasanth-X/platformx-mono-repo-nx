@@ -1,19 +1,14 @@
-name: ci-cd
+name: Platform-X Workflow
 
 on:
   push:
     branches:
       - develop
       - qa
-      - master
-      - xerox_stg
-      - xerox_master
       - stg
-      - x_site_live
       - mavericks_dev
       - marvels_dev
       - kiwi_dev
-      - x_site_qa
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -76,56 +71,29 @@ jobs:
 
       # Add steps for deploying Docker image to GKE clusters based on branches
 
-      - name: Deploy Configmap on stage branch
+      - name: Deploy Configmap on stg branch
         if: ${{ github.ref == 'refs/heads/stg' }}
         run: kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-stg.yaml
 
-      - name: Deploy Configmap on x_site_qa branch
-        if: ${{ github.ref == 'refs/heads/x_site_qa' }}
-        run: kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-qa.yaml
-
-      - name: Deploy Configmap on live branch
-        if: ${{ github.ref == 'refs/heads/x_site_live' }}
-        run: |
-          echo ${{ secrets.HEP_AUTHORING_UI_LIVE }} | base64 --decode > hep-authoring-ui-config-live.yaml
-          kubectl apply -f hep-authoring-ui-config-live.yaml
-
       # Add steps for deploying Docker image to GKE clusters based on branches
 
-      - name: Deploy to GKE (dev, qa, master, etc.)
+      - name: Deploy to GKE (dev, qa, stg, etc.)
         if: |
-          contains('refs/heads/kiwi_dev refs/heads/marvels_dev refs/heads/mavericks_dev refs/heads/develop refs/heads/qa refs/heads/master refs/heads/xerox_stg refs/heads/xerox_master', github.ref)
+          contains('refs/heads/mavericks_dev refs/heads/marvels_dev refs/heads/develop refs/heads/qa refs/heads/stg refs/heads/kiwi_dev', github.ref)
         run: |
           # Add deployment steps for the corresponding branches
 
-      - name: Deploy to GKE (stg, x_site_live, x_site_qa)
-        if: |
-          contains('refs/heads/x_site_live refs/heads/x_site_qa refs/heads/stg', github.ref)
-        run: |
-          # Add deployment steps for the corresponding branches
-          - name: Deploy React App on develop and qa branches
+      - name: Deploy React App on develop and qa branches
         if: |
           contains('refs/heads/develop refs/heads/qa', github.ref)
         run: |
           nx run authoring-web:deploy
-
-      - name: Deploy React App on master branch
-        if: |
-          contains('refs/heads/master', github.ref)
-        run: |
-          nx run authoring-web:deploy-prod
 
       - name: Deploy React App on stg branch
         if: |
           contains('refs/heads/stg', github.ref)
         run: |
           nx run authoring-web:deploy-stg
-
-      - name: Deploy React App on x_site_live branch
-        if: |
-          contains('refs/heads/x_site_live', github.ref)
-        run: |
-          nx run authoring-web:deploy-live
 
       - name: Deploy React App on mavericks_dev branch
         if: |
@@ -144,9 +112,3 @@ jobs:
           contains('refs/heads/kiwi_dev', github.ref)
         run: |
           nx run authoring-web:deploy-kiwi
-
-      - name: Deploy React App on x_site_qa branch
-        if: |
-          contains('refs/heads/x_site_qa', github.ref)
-        run: |
-          nx run authoring-web:deploy-qa
