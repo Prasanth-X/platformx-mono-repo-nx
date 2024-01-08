@@ -7,9 +7,9 @@ import {
 } from '@mui/material';
 
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { SearchIcon } from '@platformx/utilities';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as SearchIcon } from '../../../assets/SearchIcon.svg';
 import './Search.css';
 
 export default function SearchBox({ handleSearch }: any) {

@@ -11,6 +11,12 @@ import CardOptionEditIcon from './EditIconOptionMenu.svg';
 import EventsIcon from './EventsIcon.svg';
 import EyeIcon from './Eye.svg';
 import FilterIcon from './FilterIcon.svg';
+import warning from './activeUserIcon.svg';
+import BlueDot from './blue.svg';
+import GreenDot from './green.svg';
+import RedDot from './red.svg';
+import warningIcon from './warningIcon.svg';
+
 import General_community from './General_community.svg';
 import HamburgerMenuIcon from './HamburgerMenuIcon.svg';
 import IconPreview from './IconPreview.svg';
@@ -26,8 +32,7 @@ import SpacePrivateIcon from './Private.svg';
 import QuizIcon from './QuizIcon.svg';
 import CourseIcon from './ReadBook.svg';
 import SaveNewIcon from './SaveNewIcon.svg';
-import SearchBlackSvg from //  SearchIcon,
-  './SearchBlack.svg';
+import SearchBlackSvg from './SearchBlack.svg'; //  SearchIcon,
 import SettingNewIcon from './SettingNewIcon.svg';
 import CardOptionShareIcon from './ShareIconOptionMenu.svg';
 import SitesIcon from './SitesIcon.svg';
@@ -49,10 +54,11 @@ import CloseSearchSvg from './closeSearch.svg';
 import CookieIcon from './cookieIcon.svg';
 import CourseListIcon from './course-icon.svg';
 // import  DraftIcon from './draftIcon.svg';
+import EventsListIcon5 from './Event.svg';
+import DraftIcon from './draftIcon.svg';
 import DraftStatusIcon from './draftStatusIcon.svg';
 import EditIcon from './editIcon.svg';
-import EventsListIcon from //  EventsListIcon5,
-  './event-fill.svg';
+import EventsListIcon from './event-fill.svg'; //  EventsListIcon5,
 import IconFaceBookLogoIconSvg from './facebookLogoIcon.svg';
 import FooterMenuUpdated from './footermenuupdated.svg';
 import HeaderMenuUpdated from './headermenuupdated.svg';
@@ -73,20 +79,19 @@ import QuizListIcon from './quizListIcon.svg';
 import IconRescheduleSvg from './reschedule.svg';
 import SchedulePublishIcon from './schedulePublishIcon.svg';
 import SchedulePublishStatusIcon from './schedulePublishStatusIcon.svg';
-import ScheduleUnpublishStatusIcon from './scheduleUnpublishIcon.svg';
+import {
+  default as ScheduleUnpublishStatusIcon,
+  default as ScheduledUnpublishIcon,
+} from './scheduleUnpublishIcon.svg';
 import SearchGraySvg from './searchGray.svg';
-import ScheduledUnpublishIcon from "./scheduleUnpublishIcon.svg"
+import SearchIcon from './searchiconnn.svg';
 import IconListViewSvg from './sideMenuListView.svg';
 import IconTimerSvg from './timerIcon.svg';
 import IconTwitterLogoIconSvg from './twitterLogoIcon.svg';
 import UnpublishedStatusIcon from './unpublishStatusIcon.svg';
 import VideoIcon from './videoicon.svg';
 import VODListIcon from './vodListIcon.svg';
-import SearchIcon from "./searchiconnn.svg"
-import EventsListIcon5 from "./Event.svg"
-import DraftIcon from "./draftIcon.svg"
 export {
-
   AiSvg,
   AiSvg2,
   AiSvgDisabled,
@@ -95,6 +100,7 @@ export {
   ArticleIcon,
   ArticleListIcon,
   BackButton,
+  BlueDot,
   CardOptionApprovalStatusIcon,
   CardOptionCopyUrlIcon,
   CardOptionDeleteIcon,
@@ -123,6 +129,7 @@ export {
   FilterIcon,
   FooterMenuUpdated,
   General_community,
+  GreenDot,
   HamburgerMenuIcon,
   HeaderMenuUpdated,
   IconCancelSvg,
@@ -153,6 +160,7 @@ export {
   PublishedStatusIcon,
   QuizIcon,
   QuizListIcon,
+  RedDot,
   SaveNewIcon,
   SchedulePublishIcon,
   SchedulePublishStatusIcon,
@@ -171,4 +179,6 @@ export {
   VODIcon,
   VODListIcon,
   VideoIcon,
+  warning,
+  warningIcon,
 };
