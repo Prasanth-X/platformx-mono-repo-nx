@@ -113,7 +113,7 @@ export const getFirstTwoletters = (title: string) => {
   return words[0].charAt(0) + words[words.length - 1].charAt(0);
 };
 
-export const getStyleString = (styles) =>
+export const getStyleString = (styles: object) =>
   Object.entries(styles)
     .map(([prop, value]) => `${prop}: ${value}`)
     .join('; ');

@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/core';
+import { Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
-const usePopupStyle = makeStyles((theme) => ({
+const usePopupStyle = makeStyles((theme: Theme) => ({
   container: {
     height: '68px',
     width: '100%',

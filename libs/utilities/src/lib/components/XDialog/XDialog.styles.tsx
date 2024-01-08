@@ -1,5 +1,5 @@
-import { styled } from '@material-ui/core';
 import { Box, Button, DialogActions, DialogContent } from '@mui/material';
+import { styled } from '@mui/styles';
 
 export const XDialogContent = styled(DialogContent)({
   textAlign: 'center',
@@ -31,9 +31,5 @@ export const XDialogButton = ({
   startIcon = '',
   ...rest
 }: any & DialogButtonPros) => (
-  <Button
-    startIcon={startIcon}
-    variant={variant}
-    {...rest}
-  />
+  <Button startIcon={startIcon} variant={variant} {...rest} />
 );

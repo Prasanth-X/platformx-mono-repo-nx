@@ -12,17 +12,40 @@ export const dialogSlice = createSlice({
       subTitle: '',
       subTitle2: '',
     },
+    handleCallback: () => {},
   } as DialogState,
   reducers: {
     handleDialog: (state, action: PayloadAction<any>) => {
-      state.isOpen = action.payload;
+      const {
+        title,
+        subTitle,
+        isOpen,
+        leftButtonText,
+        rightButtonText,
+        imageIcon,
+        handleCallback,
+      } = action.payload;
+      state.isOpen = isOpen;
+      state.dialogProps.title = title;
+      state.dialogProps.subTitle = subTitle;
+      state.dialogProps.leftButtonText = leftButtonText;
+      state.dialogProps.rightButtonText = rightButtonText;
+      state.dialogProps.imageIcon = imageIcon;
+      state.handleCallback = handleCallback;
       // state.dialogProps = action.payload;
     },
-    handleConfirm: () => {
+    handleConfirm: (state) => {
+      state.handleCallback();
       // conformState?.onConfirm();
       // setIsPopupVisible(false);
     },
-    handleCancel: () => {
+    handleCancel: (state) => {
+      state.isOpen = false;
+      state.dialogProps.title = '';
+      state.dialogProps.subTitle = '';
+      state.dialogProps.leftButtonText = '';
+      state.dialogProps.rightButtonText = '';
+      state.dialogProps.imageIcon = '';
       // cancelState?.onCancel();
       // setContent({ Title: '' });
       // setIsPopupVisible(false);

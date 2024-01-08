@@ -6,9 +6,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 // import Loader from '../../../../Common/Loader';
-// import warningIcon from '../../../../assets/svg/warningIcon.svg';
+// import { FilterIcon } from '@platformx/utilities';
 // import { ReactComponent as WorkflowIcon } from '../../../../assets/svg/workflowIcon.svg';
-
 import { useMutation } from '@apollo/client';
 import { WorkflowQueries } from '@platformx/authoring-apis';
 import { handleDialog } from '@platformx/authoring-state';
@@ -16,7 +15,7 @@ import {
   BasicSwitch,
   ShowToastSuccess,
   ThemeConstants,
-  useDialog,
+  WarningIcon,
 } from '@platformx/utilities';
 import { useDispatch } from 'react-redux';
 import { ListViewProps } from '../../Workflow.Types';
@@ -34,18 +33,12 @@ const ListView = ({
 }: ListViewProps) => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
-  const dialog = useDialog();
   const [checked, setChecked] = useState(status);
   const [contentType, setContentType] = useState('');
   const DateTime = format(new Date(creation_date), 'LLL dd, yyyy | H:mm');
   const classes = useStyles();
   const [workflowMutate] = useMutation(WorkflowQueries.UPDATE_WORKFLOW_STATUS);
   const dispatch = useDispatch();
-
-  const handleDialogClose = () => {
-    setOpenDialog(false);
-  };
 
   const handleConfirm = async () => {
     setIsLoading(true);
@@ -75,7 +68,7 @@ const ListView = ({
 
   useEffect(() => {
     let tempStr = '';
-    content_type.forEach((val) => {
+    content_type.forEach((val: any) => {
       tempStr = `${tempStr}${val}, `;
     });
     let str =
@@ -86,21 +79,22 @@ const ListView = ({
   }, [content_type]);
   const handleChange = (checked: boolean) => {
     const dialogContent = {
-      // Image: warningIcon,
-      Title: checked ? t('disable_workflow_title') : t('enable_workflow_title'),
-      Subtitle: checked
+      imageIcon: WarningIcon,
+      isOpen: true,
+      title: checked ? t('disable_workflow_title') : t('enable_workflow_title'),
+      subTitle: checked
         ? `${t('disable_workflow_subtitle')}`
         : `${t('enable_workflow_subtitle')}`,
-      LeftButtonText: t('no'),
-      RightButtonText: t('yes'),
+      leftButtonText: t('no'),
+      rightButtonText: t('yes'),
+      handleCallback: handleConfirm,
     };
     // dialog.show(dialogContent, handleConfirm, handleDialogClose);
-    dispatch(handleDialog(true));
+    dispatch(handleDialog(dialogContent));
   };
-
   const navigate = useNavigate();
 
-  const handleViewWorkflow = (event, userId) => {
+  const handleViewWorkflow = (userId: string) => {
     console.log('userId', userId);
     navigate(`/workflow/workflow-details?path=${userId}`);
   };
@@ -129,7 +123,7 @@ const ListView = ({
               <Box>
                 <Box
                   className={classes.dFlexAlignItemCenter}
-                  onClick={(e) => handleViewWorkflow(e, id)}
+                  onClick={() => handleViewWorkflow(id)}
                 >
                   <Typography
                     variant="h5semibold"
@@ -171,7 +165,7 @@ const ListView = ({
                       ></Box>
                     </Box> */}
                     {/* <Box> */}
-                    {steps.map((step, index) => {
+                    {steps.map((step: any, index: number) => {
                       return (
                         <Box
                           sx={{
@@ -236,7 +230,7 @@ const ListView = ({
                 <Box className="d-flex align-items-center">
                   <MenuItem
                     className="icons"
-                    onClick={(e) => handleViewWorkflow(e, id)}
+                    onClick={() => handleViewWorkflow(id)}
                   >
                     <RemoveRedEyeOutlinedIcon />
                   </MenuItem>

@@ -7,7 +7,7 @@ import {
   Menu,
   Radio,
   RadioGroup,
-  Typography
+  Typography,
 } from '@mui/material';
 import { ErrorTooltip, FilterIcon, useAccess } from '@platformx/utilities';
 import { t } from 'i18next';
@@ -62,7 +62,7 @@ const ContentListingHeader = ({
   };
 
   const hideFilter = contentTypeBasedHideFilter(title); //hide filter
-  debugger
+  debugger;
   return (
     <ContentListingHeaderContainer>
       <Box>
@@ -119,7 +119,7 @@ const ContentListingHeader = ({
             }}
             className={openFilterMenu ? 'openClass' : undefined}
           >
-            <FilterIcon width="17" height="24" />
+            <img src={FilterIcon} alt="" width="17" height="24" />
           </Box>
         )}
 

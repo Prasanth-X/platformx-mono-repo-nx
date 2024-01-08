@@ -127,7 +127,7 @@ export const WorkflowCard = ({
               <Box>
                 <Box
                   className={classes.dFlexAlignItemCenter}
-                  onClick={(e) => handleViewWorkflow(e, id)}
+                  onClick={() => handleViewWorkflow(id)}
                 >
                   <Typography
                     // variant='h5semibold'

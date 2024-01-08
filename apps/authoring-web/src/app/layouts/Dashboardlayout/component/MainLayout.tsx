@@ -80,17 +80,19 @@ const LayoutWrapper: React.FC<LayoutWrapperProps> = ({
         <RightLayout open={isSideBar ? open : isSideBar} isSideBar={isSideBar}>
           {children}
         </RightLayout>
-        <XDialog
-          handleClose={handleCancel}
-          handleConfirm={handleConfirm}
-          open={isOpen}
-          imageIcon={dialogProps.imageIcon}
-          title={t(dialogProps.title)}
-          leftButtonText={t(dialogProps.leftButtonText)}
-          rightButtonText={t(dialogProps.rightButtonText)}
-          subTitle={t(dialogProps.subTitle)}
-          subTitle2={t(dialogProps.subTitle2)}
-        />
+        {isOpen && (
+          <XDialog
+            handleClose={handleCancel}
+            handleConfirm={handleConfirm}
+            open={isOpen}
+            imageIcon={dialogProps.imageIcon}
+            title={t(dialogProps.title)}
+            leftButtonText={t(dialogProps.leftButtonText)}
+            rightButtonText={t(dialogProps.rightButtonText)}
+            subTitle={t(dialogProps.subTitle)}
+            subTitle2={t(dialogProps.subTitle2)}
+          />
+        )}
       </>
     );
   }

@@ -1,5 +1,6 @@
 import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect';
 import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
+import BasicSwitch from './lib/components/BasicSwitch/BasicSwitch';
 import DatePicker from './lib/components/DatePicker/DatePicker';
 import Error from './lib/components/Error/Error';
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
@@ -12,6 +13,7 @@ import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound';
 import TextBox from './lib/components/TextBox/TextBox';
 import XDialog from './lib/components/XDialog/XDialog';
 import XLoader from './lib/components/XLoader/XLoader';
+
 import {
   AUTH_INFO,
   AUTH_URL,
@@ -19,9 +21,7 @@ import {
   NEW_LOGOUT_URL,
   REDIRECT_AUTH_URL,
 } from './lib/constants/AuthConstant';
-import { ActionProvider } from './lib/context/actionContext/ActionProvider';
 import useAccess from './lib/hooks/useAccess/useAccess';
-import { useDialog } from './lib/hooks/useDialog/useDialog';
 import usePlatformAnalytics from './lib/hooks/usePlatformAnalytics/usePlatformAnalytics';
 import { usePrelemImpression } from './lib/hooks/usePrelemImpression/usePrelemImpression';
 import useUserSession from './lib/hooks/useUserSession/useUserSession';
@@ -31,7 +31,6 @@ import PrelemTheme from './lib/themes/prelems/prelemTheme';
 import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark';
 import i18next from './lib/utils/i18next';
 const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
-
 export {
   AutoCompleteMultiSelect,
   ContentListLoader,
@@ -63,8 +62,8 @@ export * from './lib/hooks/useAccess/useMapPermissions';
 export {
   AUTH_INFO,
   AUTH_URL,
-  ActionProvider,
   AutoTextArea,
+  BasicSwitch,
   LOGOUT_URL,
   LanguageDropDown,
   MiniHeader,
@@ -76,7 +75,6 @@ export {
   XDialog,
   XLoader,
   useAccess,
-  useDialog,
   usePlatformAnalytics,
   usePrelemImpression,
   useUserSession,

@@ -1,91 +1,169 @@
-export { ReactComponent as IconCancelSvg } from "./cancel.svg";
-export { ReactComponent as IconTimerSvg } from "./timerIcon.svg";
-export { ReactComponent as IconRescheduleSvg } from "./reschedule.svg";
-export { ReactComponent as IconListViewSvg } from "./sideMenuListView.svg";
-export { ReactComponent as IconTwitterLogoIconSvg } from "./twitterLogoIcon.svg";
-export { ReactComponent as IconFaceBookLogoIconSvg } from "./facebookLogoIcon.svg";
-export { ReactComponent as ChatGPTSvg } from "./chatgpt.svg";
-//chatgpt
-export { ReactComponent as IconLinkedinIconSvg } from "./linkedinIcon.svg";
-export { ReactComponent as IconPlayCircleSvg } from "./play_circle.svg";
-export { ReactComponent as MobileMenuIconSvg } from "./mobileMenuIconSvg.svg";
-export { ReactComponent as SearchBlackSvg } from "./SearchBlack.svg";
-export { ReactComponent as SearchGraySvg } from "./searchGray.svg";
-export { ReactComponent as CloseSearchSvg } from "./closeSearch.svg";
-export { ReactComponent as AiSvg } from "./ai.svg";
-export { ReactComponent as MenuIcon } from "./menu.svg";
-export { ReactComponent as PlatXLogo } from "./PlatX-logo.svg";
-export { ReactComponent as AiSvg2 } from "./ai2.svg";
-export { ReactComponent as AiSvgDisabled } from "./aiDisabled.svg";
-export { ReactComponent as BackButton } from "./backbutton.svg"
-export { ReactComponent as IconPreview } from "./IconPreview.svg";
-export { ReactComponent as SettingNewIcon } from "./SettingNewIcon.svg";
-export { ReactComponent as SaveNewIcon } from "./SaveNewIcon.svg";
-export { ReactComponent as PreviewNewIcon } from "./PreviewNewIcon.svg";
-export { ReactComponent as CardOptionApprovalStatusIcon } from "./ApprovalStatusIconOptionMenu.svg";
-export { ReactComponent as CardOptionCopyUrlIcon } from "./CopyUrlIconOptionMenu.svg";
-export { ReactComponent as CardOptionDeleteIcon } from "./DeleteIconOptionMenu.svg";
-export { ReactComponent as CardOptionDuplicateIcon } from "./DuplicateIconOptionMenu.svg";
-export { ReactComponent as CardOptionEditIcon } from "./EditIconOptionMenu.svg";
-export { ReactComponent as CardOptionImbedIcon } from "./ImbedIconOptionMenu.svg";
-export { ReactComponent as CardOptionShareIcon } from "./ShareIconOptionMenu.svg";
-export { ReactComponent as CardOptionUnPublishIcon } from "./UnPublishIconOptionMenu.svg";
-export { ReactComponent as CardOptionViewIcon } from "./ViewIconOptionMenu.svg";
-export { ReactComponent as SearchIcon } from "./SearchBlack.svg";
-export { ReactComponent as ArticleIcon } from "./articleIcon.svg"
-export { ReactComponent as ArticleListIcon } from "./articleListIcon.svg"
-export { ReactComponent as DefaultStateCommentIcon } from "./DefaultStateCommentIcon.svg"
-export { ReactComponent as CopyIcon } from "./CopyIcon.svg"
-export { ReactComponent as EyeIcon } from "./Eye.svg"
-export { ReactComponent as FilterIcon } from "./FilterIcon.svg"
-export { ReactComponent as CourseListIcon } from "./course-icon.svg"
-export { ReactComponent as DraftIcon } from "./draftIcon.svg"
-export { ReactComponent as EventsListIcon } from "./event-fill.svg"
-
-export { ReactComponent as PublishedIcon } from "./publishIcon.svg"
-export { ReactComponent as SchedulePublishIcon } from "./schedulePublishIcon.svg"
-export { ReactComponent as ScheduledUnpublishIcon } from "./scheduleUnpublishIcon.svg"
-export { ReactComponent as EventsListIcon5 } from "./event-fill.svg"
-export { ReactComponent as PollListIcon } from "./polls-fill.svg"
-export { ReactComponent as DraftStatusIcon } from "./draftStatusIcon.svg"
-export { ReactComponent as PagesListIcon } from "./pagesListIcon.svg"
-
-export { ReactComponent as QuizListIcon } from "./quizListIcon.svg"
-export { ReactComponent as VODListIcon } from "./vodListIcon.svg"
-export { ReactComponent as SpacePublicIcon } from "./public.svg"
-export { ReactComponent as SpacePrivateIcon } from "./Private.svg"
-
-
-export { ReactComponent as PublishedStatusIcon } from "./publishStatusIcon.svg"
-export { ReactComponent as UnpublishedStatusIcon } from "./unpublishStatusIcon.svg"
-export { ReactComponent as SchedulePublishStatusIcon } from "./schedulePublishStatusIcon.svg"
-export { ReactComponent as ScheduleUnpublishStatusIcon } from "./scheduleUnpublishIcon.svg"
-export { ReactComponent as News_community } from "./News_community.svg"
-export { ReactComponent as General_community } from "./General_community.svg"
-export { ReactComponent as Challenge_community } from "./Challenge_community.svg"
-export { ReactComponent as SpaceListIcon } from "./Space.svg"
-
-
-export { ReactComponent as AllIcon } from "./allIcon.svg"
-export { ReactComponent as EventsIcon } from "./EventsIcon.svg"
-export { ReactComponent as MyDashboardIcon } from "./myDashboardIcon.svg"
-export { ReactComponent as PagesIcon } from "./pagesIcon.svg"
-export { ReactComponent as PollIcon } from "./PollIcon.svg"
-export { ReactComponent as PostsIcon } from "./PostsIcon.svg"
-export { ReactComponent as QuizIcon } from "./QuizIcon.svg"
-export { ReactComponent as UsersIcon } from "./UsersIcon.svg"
-export { ReactComponent as VODIcon } from "./VODIcon.svg"
-export { ReactComponent as EditIcon } from "./editIcon.svg"
-export { ReactComponent as DeleteIcon } from "./Delete.svg"
-export { ReactComponent as MoreHorizIcon } from "./moreHoriz.svg"
-export { ReactComponent as ApprovalStatus } from "./ApprovalStatusIcon.svg"
-export { ReactComponent as HamburgerMenuIcon } from "./HamburgerMenuIcon.svg"
-export { ReactComponent as PostIconMenu } from "./PostsIconmenu.svg"
-export { ReactComponent as CourseIcon } from "./ReadBook.svg"
-export { ReactComponent as SitesIcon } from "./SitesIcon.svg"
-export { ReactComponent as VideoIcon } from "./videoicon.svg"
-export { ReactComponent as CookieIcon } from "./cookieIcon.svg"
-export { ReactComponent as FooterMenuUpdated } from "./footermenuupdated.svg"
-export { ReactComponent as HeaderMenuUpdated } from "./headermenuupdated.svg"
-export { ReactComponent as MediaIcon } from "./mediaIcon.svg"
-export { ReactComponent as PlatXLogoWhite } from "./PlatXWhite-logo.svg"
+import ApprovalStatus from './ApprovalStatusIcon.svg';
+import CardOptionApprovalStatusIcon from './ApprovalStatusIconOptionMenu.svg';
+import Challenge_community from './Challenge_community.svg';
+import CopyIcon from './CopyIcon.svg';
+import CardOptionCopyUrlIcon from './CopyUrlIconOptionMenu.svg';
+import DefaultStateCommentIcon from './DefaultStateCommentIcon.svg';
+import DeleteIcon from './Delete.svg';
+import CardOptionDeleteIcon from './DeleteIconOptionMenu.svg';
+import CardOptionDuplicateIcon from './DuplicateIconOptionMenu.svg';
+import CardOptionEditIcon from './EditIconOptionMenu.svg';
+import EventsIcon from './EventsIcon.svg';
+import EyeIcon from './Eye.svg';
+import FilterIcon from './FilterIcon.svg';
+import General_community from './General_community.svg';
+import HamburgerMenuIcon from './HamburgerMenuIcon.svg';
+import IconPreview from './IconPreview.svg';
+import CardOptionImbedIcon from './ImbedIconOptionMenu.svg';
+import News_community from './News_community.svg';
+import PlatXLogo from './PlatX-logo.svg';
+import PlatXLogoWhite from './PlatXWhite-logo.svg';
+import PollIcon from './PollIcon.svg';
+import PostsIcon from './PostsIcon.svg';
+import PostIconMenu from './PostsIconmenu.svg';
+import PreviewNewIcon from './PreviewNewIcon.svg';
+import SpacePrivateIcon from './Private.svg';
+import QuizIcon from './QuizIcon.svg';
+import CourseIcon from './ReadBook.svg';
+import SaveNewIcon from './SaveNewIcon.svg';
+import SearchBlackSvg from './SearchBlack.svg'; //  SearchIcon,
+import SettingNewIcon from './SettingNewIcon.svg';
+import CardOptionShareIcon from './ShareIconOptionMenu.svg';
+import SitesIcon from './SitesIcon.svg';
+import SpaceListIcon from './Space.svg';
+import CardOptionUnPublishIcon from './UnPublishIconOptionMenu.svg';
+import UsersIcon from './UsersIcon.svg';
+import VODIcon from './VODIcon.svg';
+import CardOptionViewIcon from './ViewIconOptionMenu.svg';
+import AiSvg from './ai.svg';
+import AiSvg2 from './ai2.svg';
+import AiSvgDisabled from './aiDisabled.svg';
+import AllIcon from './allIcon.svg';
+import ArticleIcon from './articleIcon.svg';
+import ArticleListIcon from './articleListIcon.svg';
+import BackButton from './backbutton.svg';
+import IconCancelSvg from './cancel.svg';
+import ChatGPTSvg from './chatgpt.svg';
+import CloseSearchSvg from './closeSearch.svg';
+import CookieIcon from './cookieIcon.svg';
+import CourseListIcon from './course-icon.svg';
+// import  DraftIcon from './draftIcon.svg';
+import DraftStatusIcon from './draftStatusIcon.svg';
+import EditIcon from './editIcon.svg';
+import EventsListIcon from './event-fill.svg'; //  EventsListIcon5,
+import IconFaceBookLogoIconSvg from './facebookLogoIcon.svg';
+import FooterMenuUpdated from './footermenuupdated.svg';
+import HeaderMenuUpdated from './headermenuupdated.svg';
+import IconLinkedinIconSvg from './linkedinIcon.svg';
+import MediaIcon from './mediaIcon.svg';
+import MenuIcon from './menu.svg';
+import MobileMenuIconSvg from './mobileMenuIconSvg.svg';
+import MoreHorizIcon from './moreHoriz.svg';
+import MyDashboardIcon from './myDashboardIcon.svg';
+import PagesIcon from './pagesIcon.svg';
+import PagesListIcon from './pagesListIcon.svg';
+import IconPlayCircleSvg from './play_circle.svg';
+import PollListIcon from './polls-fill.svg';
+import SpacePublicIcon from './public.svg';
+import PublishedIcon from './publishIcon.svg';
+import PublishedStatusIcon from './publishStatusIcon.svg';
+import QuizListIcon from './quizListIcon.svg';
+import IconRescheduleSvg from './reschedule.svg';
+import SchedulePublishIcon from './schedulePublishIcon.svg';
+import SchedulePublishStatusIcon from './schedulePublishStatusIcon.svg';
+import ScheduleUnpublishStatusIcon from './scheduleUnpublishIcon.svg'; //  ScheduledUnpublishIcon
+import SearchGraySvg from './searchGray.svg';
+import IconListViewSvg from './sideMenuListView.svg';
+import IconTimerSvg from './timerIcon.svg';
+import IconTwitterLogoIconSvg from './twitterLogoIcon.svg';
+import UnpublishedStatusIcon from './unpublishStatusIcon.svg';
+import VideoIcon from './videoicon.svg';
+import VODListIcon from './vodListIcon.svg';
+import WarningIcon from './warningIcon.svg';
+export {
+  AiSvg,
+  AiSvg2,
+  AiSvgDisabled,
+  AllIcon,
+  ApprovalStatus,
+  ArticleIcon,
+  ArticleListIcon,
+  BackButton,
+  CardOptionApprovalStatusIcon,
+  CardOptionCopyUrlIcon,
+  CardOptionDeleteIcon,
+  CardOptionDuplicateIcon,
+  CardOptionEditIcon,
+  CardOptionImbedIcon,
+  CardOptionShareIcon,
+  CardOptionUnPublishIcon,
+  CardOptionViewIcon,
+  Challenge_community,
+  ChatGPTSvg,
+  CloseSearchSvg,
+  CookieIcon,
+  CopyIcon,
+  CourseIcon,
+  CourseListIcon,
+  DefaultStateCommentIcon,
+  DeleteIcon,
+  // DraftIcon,
+  DraftStatusIcon,
+  EditIcon,
+  EventsIcon,
+  EventsListIcon,
+  // EventsListIcon5,
+  EyeIcon,
+  FilterIcon,
+  FooterMenuUpdated,
+  General_community,
+  HamburgerMenuIcon,
+  HeaderMenuUpdated,
+  IconCancelSvg,
+  IconFaceBookLogoIconSvg,
+  IconLinkedinIconSvg,
+  IconListViewSvg,
+  IconPlayCircleSvg,
+  IconPreview,
+  IconRescheduleSvg,
+  IconTimerSvg,
+  IconTwitterLogoIconSvg,
+  MediaIcon,
+  MenuIcon,
+  MobileMenuIconSvg,
+  MoreHorizIcon,
+  MyDashboardIcon,
+  News_community,
+  PagesIcon,
+  PagesListIcon,
+  PlatXLogo,
+  PlatXLogoWhite,
+  PollIcon,
+  PollListIcon,
+  PostIconMenu,
+  PostsIcon,
+  PreviewNewIcon,
+  PublishedIcon,
+  PublishedStatusIcon,
+  QuizIcon,
+  QuizListIcon,
+  SaveNewIcon,
+  SchedulePublishIcon,
+  SchedulePublishStatusIcon,
+  ScheduleUnpublishStatusIcon,
+  // ScheduledUnpublishIcon,
+  SearchBlackSvg,
+  SearchGraySvg,
+  // SearchIcon,
+  SettingNewIcon,
+  SitesIcon,
+  SpaceListIcon,
+  SpacePrivateIcon,
+  SpacePublicIcon,
+  UnpublishedStatusIcon,
+  UsersIcon,
+  VODIcon,
+  VODListIcon,
+  VideoIcon,
+  WarningIcon,
+};

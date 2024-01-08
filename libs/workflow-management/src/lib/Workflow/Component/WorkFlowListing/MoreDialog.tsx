@@ -16,8 +16,20 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
-const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
+type MoreDialogProps = {
+  checked: any;
+  onChange: any;
+  name: any;
+  handleViewWorkflow: any;
+  id: any;
+};
+const MoreDialog = ({
+  checked,
+  handleViewWorkflow,
+  onChange,
+  name,
+  id,
+}: MoreDialogProps) => {
   const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -82,7 +94,7 @@ const MoreDialog = ({ checked, onChange, name, handleViewWorkflow, id }) => {
           </Box>
           <Box
             sx={{ display: 'flex', alignItems: 'stretch', margin: '12px' }}
-            onClick={(e) => handleViewWorkflow(e, id)}
+            onClick={() => handleViewWorkflow(id)}
           >
             <Box className="edit-Box">
               <RemoveRedEyeOutlinedIcon />

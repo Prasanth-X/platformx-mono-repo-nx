@@ -9,7 +9,7 @@ import TopHeader from './Component/WorkFlowListing/TopHeader';
 import './WorkflowListing.css';
 
 export const WorkflowListing = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<any>([]);
   const [isLazyLoad, setIsLazyLoad] = useState<boolean>(true);
 
   const getList = async () => {
@@ -56,7 +56,7 @@ export const WorkflowListing = () => {
           {list?.length > 0 && (
             <Box sx={{ padding: { xs: '10px', md: '20px 20px 0 20px' } }}>
               <Box>
-                {list?.map((item) => (
+                {list?.map((item: any) => (
                   <ListView
                     key={item.id}
                     name={item.name}

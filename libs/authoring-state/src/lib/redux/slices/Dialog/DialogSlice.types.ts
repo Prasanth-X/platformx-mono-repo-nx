@@ -9,4 +9,5 @@ type DialogInstance = {
 export type DialogState = {
   isOpen: boolean;
   dialogProps: DialogInstance;
+  handleCallback: () => void;
 };

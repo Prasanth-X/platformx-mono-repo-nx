@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { getStyleString } from '../../utils/helper';
 
-const FormatSubtitle = ({ text }) => {
+const FormatSubtitle = ({ text = '' }) => {
   const startTag = '#';
   const endTag = '#';
   const regex = new RegExp(`\\${startTag}(.*?)\\${endTag}`, 'g');
@@ -17,8 +17,8 @@ const FormatSubtitle = ({ text }) => {
 
   return (
     <Typography
-      variant='h5regular'
-      component='span'
+      variant="h5regular"
+      component="span"
       dangerouslySetInnerHTML={{ __html: formattedText }}
     />
   );

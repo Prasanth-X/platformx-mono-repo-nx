@@ -4,14 +4,17 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import WorkFlow from '../../../../assets/workflow.png';
 import { useStyles } from './Workflow.styles';
-
-const Workflow = ({ returnBack, workflowDetails }) => {
+type WorkflowProps = {
+  returnBack: () => void;
+  workflowDetails: any;
+};
+const Workflow = ({ returnBack, workflowDetails }: WorkflowProps) => {
   const classes = useStyles();
   const [contentType, setContentType] = useState('');
 
   useEffect(() => {
     let tempStr = '';
-    workflowDetails?.content_type.forEach((val) => {
+    workflowDetails?.content_type.forEach((val: any) => {
       tempStr = `${tempStr}${val}, `;
     });
     let str =
@@ -34,11 +37,11 @@ const Workflow = ({ returnBack, workflowDetails }) => {
       }}
     >
       <Box
-        className='createarticlebottomhead'
+        className="createarticlebottomhead"
         sx={{ marginTop: '-15px', display: { xs: 'none', md: 'flex' } }}
       >
-        <Box className='d-flex align-items-center justify-content-space-between'>
-          <Box className='backarrow' onClick={returnBack}>
+        <Box className="d-flex align-items-center justify-content-space-between">
+          <Box className="backarrow" onClick={returnBack}>
             <ArrowBackIcon />
           </Box>
         </Box>
@@ -65,7 +68,7 @@ const Workflow = ({ returnBack, workflowDetails }) => {
           <Box className={classes.contentStyle}>
             <img
               src={WorkFlow}
-              alt='Workflow'
+              alt="Workflow"
               style={{
                 borderRadius: '10px',
                 maxWidth: '100%',
@@ -89,7 +92,7 @@ const Workflow = ({ returnBack, workflowDetails }) => {
               padding: { em: '0px 0px 10px 25px', xs: '0px 0px 10px 10px' },
             }}
           >
-            <Typography variant='h5regular' sx={{ fontFamily: 'Inter' }}>
+            <Typography variant="h5regular" sx={{ fontFamily: 'Inter' }}>
               {workflowDetails?.description}
             </Typography>
           </Box>
@@ -107,19 +110,19 @@ const Workflow = ({ returnBack, workflowDetails }) => {
               }}
             >
               <Typography
-                variant='h7regular'
+                variant="h7regular"
                 sx={{ color: '#6E7191' }}
-                component='div'
+                component="div"
               >
                 {t('using_for')}
               </Typography>
             </Box>
           </Box>
           <Box
-            className='datetimeweb'
+            className="datetimeweb"
             sx={{ padding: { em: '0px 0px 0px 25px', xs: '0px 0px 0px 10px' } }}
           >
-            <Typography variant='h7regular' component='div'>
+            <Typography variant="h7regular" component="div">
               {contentType}
             </Typography>
           </Box>

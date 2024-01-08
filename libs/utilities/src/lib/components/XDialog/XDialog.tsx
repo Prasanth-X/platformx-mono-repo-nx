@@ -2,6 +2,7 @@ import { IconButton, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { memo } from 'react';
+import { useDispatch } from 'react-redux';
 import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg';
 import FormatSubtitle from './FormatSubtitle';
 import {
@@ -24,6 +25,7 @@ const XDialog = ({
   rightButtonText,
 }: XDialogProps) => {
   console.log('subtitle is', subTitle2);
+  const dispatch = useDispatch();
   return (
     <div>
       <Dialog
@@ -71,7 +73,7 @@ const XDialog = ({
           className="popupCloseIcon"
           edge="end"
           color="inherit"
-          onClick={handleClose}
+          onClick={() => dispatch(handleClose && handleClose())}
           aria-label="close"
         >
           <img src={DialogCloseIcon} />
@@ -114,9 +116,7 @@ const XDialog = ({
             sx={{
               marginRight: '12px',
             }}
-            onClick={() => {
-              handleClose();
-            }}
+            onClick={() => dispatch(handleClose && handleClose())}
           >
             {leftButtonText}
           </XDialogButton>
@@ -124,8 +124,8 @@ const XDialog = ({
           <XDialogButton
             variant="contained"
             onClick={() => {
-              handleConfirm();
-              handleClose();
+              dispatch(handleConfirm && handleConfirm());
+              dispatch(handleClose && handleClose());
             }}
             autoFocus
           >

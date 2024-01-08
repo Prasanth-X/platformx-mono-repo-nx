@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import ThemeConstants from '../../../../theme/variable';
+import { ThemeConstants } from '@platformx/utilities';
 
 export const useStyles = makeStyles(() => ({
   logoDispaly: {

@@ -1,17 +1,20 @@
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Stepper from '@material-ui/core/Stepper';
 import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import { articleApi } from '@platformx/authoring-apis';
+import {
+  TaskNotFound,
+  XLoader,
+  capitalizeFirstLetter,
+} from '@platformx/utilities';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { articleApi } from '@platformx/authoring-apis';
-import { XLoader, capitalizeFirstLetter } from '@platformx/utilities';
 import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper';
-import { TaskNotFound } from '@platformx/utilities';
 type WorkflowStepperProps = {
   open: boolean;
   setOpen: (open: boolean) => void;

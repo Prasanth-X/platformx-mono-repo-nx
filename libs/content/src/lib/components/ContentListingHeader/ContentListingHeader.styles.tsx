@@ -1,5 +1,5 @@
 import { Box, FormControlLabel } from '@mui/material';
-import { styled } from '@material-ui/core';
+import { styled } from '@mui/system';
 
 export const ContentListingHeaderContainer = styled(Box)({
   display: 'flex',
