@@ -85,7 +85,7 @@ import VideoIcon from './videoicon.svg';
 import VODListIcon from './vodListIcon.svg';
 import SearchIcon from "./searchiconnn.svg"
 import EventsListIcon5 from "./Event.svg"
-import DraftIcon from "./draftIcon.svg"
+import DraftIcon from "./DraftIcon.svg"
 export {
 
   AiSvg,
