@@ -2,7 +2,6 @@ import { Box, Typography } from '@mui/material';
 import { TaskNotFoundIcon } from '@platformx/utilities';
 import { useCustomStyle } from './TaskNotFound.style';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
 
 const TaskNotFound = () => {
   const classes = useCustomStyle();

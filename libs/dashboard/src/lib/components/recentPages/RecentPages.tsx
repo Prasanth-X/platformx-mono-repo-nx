@@ -1,6 +1,6 @@
 import { Skeleton } from '@mui/material';
-import '../../lib/dashboard.styles';
-import PageRow from '../PageRow/PageRow';
+import '../../Dashboard.styles';
+import PageRow from '../pageRow/PageRow';
 import { RecentPagesProps } from './RecentPages.types';
 
 const RecentPages = ({ recentPages }: RecentPagesProps) => {

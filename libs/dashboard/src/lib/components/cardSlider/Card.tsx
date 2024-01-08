@@ -16,10 +16,17 @@ import { createPgModel } from '@platformx/authoring-apis';
 // import { PageProps } from '@platformx/authoring-state';
 // import CreatePage from '../../../createPage';
 import './Card.css';
-import { PAGE_MODEL_INSTANCE } from './Utils/constants';
+import { PAGE_MODEL_INSTANCE } from './utils/constants';
 import { useDispatch } from 'react-redux';
 
-const Card = ({ ImageUrl, BgColor, CTAText, url }: any) => {
+type CardProps = {
+  ImageUrl: string;
+  BgColor: string;
+  CTAText: string;
+  url: string;
+};
+
+const Card = ({ ImageUrl, BgColor, CTAText, url }: CardProps) => {
   const [getSession] = useUserSession();
   const { userInfo } = getSession() || {};
   const username = userInfo?.first_name;

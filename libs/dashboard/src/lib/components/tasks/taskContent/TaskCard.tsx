@@ -1,22 +1,23 @@
 import { Box } from '@mui/material';
 import { memo } from 'react';
-import Header from '../Header/Header';
-import { useStyles } from './RecentCard.styles';
-import { RecentCardProps } from './RecentCard.types';
+import Header from '../../../components/header/Header';
+import { useStyles } from './TaskCard.style';
+import {TaskCardProps} from './TaskCard.types';
 
-const RecentCard = ({
+const TaskCard = ({
   title,
   titleVariant,
   linkText,
   children,
-}: RecentCardProps) => {
+ 
+}: TaskCardProps) => {
   const classes = useStyles();
   return (
     <Box className={classes.head}>
       <Header title={title} titleVariant={titleVariant} linkText={linkText} />
-      <Box className={classes.body}>{children}</Box>
+      <Box className={classes.body} >{children}</Box>
     </Box>
   );
 };
 
-export default memo(RecentCard);
+export default memo(TaskCard);

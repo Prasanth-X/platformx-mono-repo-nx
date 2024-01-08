@@ -7,7 +7,7 @@ import { formatContentTitle, capitalizeWords } from '@platformx/utilities';
 import { PageQueries, fetchPrelemValidation } from '@platformx/authoring-apis';
 import { fetchPageModel } from '@platformx/authoring-apis';
 import { dateTimeFormat, getSubDomain } from '@platformx/utilities';
-import { RecentPage } from '../RecentPages/RecentPages.types';
+import { RecentPage } from '../recentPages/RecentPages.types';
 import { useStyles } from './PageRow.styles';
 import { useDispatch } from 'react-redux';
 

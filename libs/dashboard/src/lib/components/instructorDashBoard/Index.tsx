@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import Title from '../../components/common/Title';
 import { useDashboardData } from "@platformx/authoring-apis";
 import { useUserSession } from "@platformx/utilities";
-import RecentCard from '../RecentCard/RecentCard';
-import { useStyles } from '../../lib/dashboard.styles';
-import AllStudents from '../Fifa-Dashboard/components/AllStudents';
-import CourseCard from '../Fifa-Dashboard/components/CourseCard';
-import RecentContent from '../RecentContent/RecentContent';
+import RecentCard from '../recentCard/RecentCard';
+import { useStyles } from '../../Dashboard.styles';
+import AllStudents from '../fifaDashboard/components/AllStudents';
+import CourseCard from '../fifaDashboard/components/CourseCard';
+import RecentContent from '../recentContent/RecentContent';
 import { courseListMapper } from '../../utils/mapper';
 
 const InstructorDashBoard = () => {

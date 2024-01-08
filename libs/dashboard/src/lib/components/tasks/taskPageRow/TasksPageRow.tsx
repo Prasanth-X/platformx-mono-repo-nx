@@ -1,6 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, Grid, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { iconsList } from '@platformx/content';
 import {
@@ -9,28 +9,19 @@ import {
   XDialog,
   WarningIcon
 } from '@platformx/utilities';
-import { TaskPage } from '../TaskPages/TaskPages.type';
+import { TaskPage } from '../taskPages/TaskPages.type';
 import { useStyles } from './TaskRow.styles';
 
 const Tasks = ({
-  approval_status,
   created_by,
   creation_date,
   description,
   document_path,
   document_title,
   document_type,
-  due_date,
-  last_modification_date,
   last_modified_by,
-  stage,
   task_status,
   title,
-  user_id,
-  user_name,
-  workflow_id,
-  workflow_name,
-  __typename,
   changeStatus,
   edit,
   objData,

@@ -1,27 +1,24 @@
 import React, { Suspense } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import Title from "../components/common/Title";
-import { useStyles } from "./dashboard.styles";
+import Title from "./components/common/Title";
+import { useStyles } from "./Dashboard.styles";
 import { useDashboardData } from "@platformx/authoring-apis";
 import { useUserSession } from "@platformx/utilities";
 import { useTranslation } from 'react-i18next';
-import CardSlider from "../components/CardSlider/CardSlider";
-import FifaDashboard from "../components/Fifa-Dashboard/index";
-import HorizontalCardList from "../components/HorizontalCardList/HorizontalCardList";
-import InstructorDashBoard from "../components/InstructorDashBoard/Index";
-import RecentCard from "../components/RecentCard/RecentCard";
-import RecentContent from "../components/RecentContent/RecentContent";
-import RecentPages from "../components/RecentPages/RecentPages";
-import ScheduleCardList from "../components/ScheduleCardList/ScheduleCardList";
-import TaskCard from "../components/Tasks/TaskContent/TaskCard";
-import TaskPages from "../components/Tasks/TaskPages/TasksPages";
-import TaskNotFound from "../components/TaskNotFound/TaskNotFound";
+import CardSlider from "./components/cardSlider/CardSlider";
+import FifaDashboard from "./components/fifaDashboard/index";
+import HorizontalCardList from "./components/horizontalCardList/HorizontalCardList";
+import InstructorDashBoard from "./components/instructorDashBoard/Index";
+import RecentCard from "./components/recentCard/RecentCard";
+import RecentContent from "./components/recentContent/RecentContent";
+import RecentPages from "./components/recentPages/RecentPages";
+import ScheduleCardList from "./components/scheduleCardList/ScheduleCardList";
+import TaskCard from "./components/tasks/taskContent/TaskCard";
+import TaskPages from "./components/tasks/taskPages/TasksPages";
+import TaskNotFound from "./components/taskNotFound/TaskNotFound";
 
-
-/* eslint-disable-next-line */
-export interface DashboardProps {}
-
-export function Dashboard(props: DashboardProps) {
+export const Dashboard = () => {
+  console.warn('check 1');
    const classes = useStyles();
    const { t } = useTranslation();
    const [ getSession ] = useUserSession();
@@ -40,18 +37,16 @@ export function Dashboard(props: DashboardProps) {
   } = useDashboardData();
   const { boostContent } = dashBoard || {};
   const Charts = React.lazy(() =>
-    import("../charts/Charts").then((module) => ({
+    import("./components/charts/Charts").then((module) => ({
       default: module.default,
     })),
   );
   const ChartsForDemo = React.lazy(() =>
-    import("../charts/ChartsForDemo").then((module) => ({
+    import("./components/charts/ChartsForDemo").then((module) => ({
       default: module.default,
     })),
   );
-
   const taskLength = dashBoard?.taskPages?.length || 0;
-
   const overDueTaskLength = () => {
     let duetaskCount = 0;
     dashBoard?.taskPages?.forEach((val) => {
@@ -61,15 +56,14 @@ export function Dashboard(props: DashboardProps) {
     });
     return duetaskCount;
   };
-
-  return (
-    <div>
-    {role === "Admin FIFA" ? (
-      <FifaDashboard />
-    ) : role === "Instructor" ? (
-      <InstructorDashBoard />
-    ) : (
-      <Box className={classes.container} key={taskLength}>
+  const renderRoleBasedDashboard = () => {
+    switch (role) {
+      case "Admin FIFA":
+        return <FifaDashboard />;
+      case "Instructor":
+        return <InstructorDashBoard />;
+      default:
+        return <Box className={classes.container} key={taskLength}>
         <Box>
           <Title titleVarient='h1bold' titleColor='#4B9EF9' padding='0' title={t("greets_x")} />
         </Box>
@@ -177,10 +171,13 @@ export function Dashboard(props: DashboardProps) {
             <ScheduleCardList scheduledPages={dashBoard?.scheduled} />
           </Box>
         )}
-      </Box>
-    )} 
+               </Box>;
+    }
+  }
+
+  return (
+    <div>
+    {renderRoleBasedDashboard()} 
   </div>
   );
 }
-
-export default Dashboard;

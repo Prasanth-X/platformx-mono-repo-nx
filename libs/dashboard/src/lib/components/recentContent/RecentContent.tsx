@@ -1,6 +1,6 @@
 import { Skeleton } from '@mui/material';
-import ContentRow from '../ContentRow/ContentRow';
-import '../../lib/Dashboard.css';
+import ContentRow from '../contentRow/ContentRow';
+import '../../Dashboard.css';
 import { RecentContentProps } from './RecentContent.types';
 
 const RecentContent = ({

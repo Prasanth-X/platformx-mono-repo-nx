@@ -4,8 +4,8 @@ import 'slick-carousel/slick/slick.css';
 import { capitalizeWords } from '@platformx/utilities';
 import Card from './Card';
 import { CreateCardProps } from './CardSlider.types';
-import { SETTINGS } from './Utils/constants';
-import { getBgColorArray } from './Utils/helper';
+import { SETTINGS } from './utils/constants';
+import { getBgColorArray } from './utils/helper';
 
 const CardSlider = ({ createContent }: any) => {
   const colorList = getBgColorArray(createContent.length) || '';

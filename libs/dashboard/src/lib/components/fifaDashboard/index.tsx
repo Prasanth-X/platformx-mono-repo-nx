@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Title from '../common/Title';
-import { useStyles } from '../../lib/dashboard.styles';
-import TaskCard from '../Tasks/TaskContent/TaskCard';
-import TaskPages from '../Tasks/TaskPages/TasksPages';
+import { useStyles } from '../../Dashboard.styles';
+import TaskCard from '../tasks/taskContent/TaskCard';
+import TaskPages from '../tasks/taskPages/TasksPages';
 import Dashboard from './Dashboard';
 import { useDashboardData } from "@platformx/authoring-apis";
 import { useUserSession } from "@platformx/utilities";
