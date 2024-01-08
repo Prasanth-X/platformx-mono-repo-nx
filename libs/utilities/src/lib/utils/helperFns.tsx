@@ -761,7 +761,7 @@ export const timeZoneData = () => {
 };
 const aryIannaTimeZones = timeZoneData();
 export const getUniqueTimeZone = () => {
-  const data = [];
+  const data: any = [];
   aryIannaTimeZones.forEach((timeZone, i) => {
     // let strTime = new Date().toLocaleTimeString([], {
     //   timeZone: `${timeZone}`,
@@ -775,8 +775,8 @@ export const getUniqueTimeZone = () => {
     data.push({ label: `${timeZone} ${time}(IST)`, time: `${strTime}` });
   });
   const uniqueItems = data.filter(
-    (item: any, index, self) =>
-      index === self.findIndex((x) => x.time === item.time)
+    (item: any, index: any, self: any) =>
+      index === self.findIndex((x: any) => x.time === item.time)
   );
   return data;
 };

@@ -2,12 +2,17 @@ import { Box, Grid, Typography } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import {
+  BackButton,
+  LanguageDropDown,
+  MenuIcon,
+  MiniHeader,
+  getSelectedSite,
+} from '@platformx/utilities';
 import { useNavigate } from 'react-router-dom';
-import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon} from '@platformx/utilities';  
-import { DrawerWidth } from '../../utils/constant';
+import { DrawerWidth } from '../../../../utils/constant';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
-import { MiniHeader } from '@platformx/utilities';
 
 import { t } from 'i18next';
 import { useStyles } from './Header.styles';
@@ -111,7 +116,7 @@ const Header = ({
                   cursor: 'pointer',
                 }}
               >
-                <BackButton/>{' '}
+                <BackButton />{' '}
               </Box>
               <Box
                 sx={{ display: 'flex', alignItems: 'center', padding: '10px' }}

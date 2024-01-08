@@ -5,11 +5,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
+import { DatePicker, TextBox } from '@platformx/utilities';
 import * as React from 'react';
-import { useTranslation } from 'react-i18next'; 
-import {TextBox} from '@platformx/utilities';
-import {DatePicker} from "@platformx/utilities"
-import { FiltersObj } from '../../../utils/search.types';
+import { useTranslation } from 'react-i18next';
+import { FiltersObj } from '../../../../../utils/search.types';
 import Tags from './Tags';
 
 const FilterContent = styled((props: MenuProps) => (
@@ -80,18 +79,18 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
 
   return (
     <div>
-      <Box className='filterBtn' onClick={handleClick}>
+      <Box className="filterBtn" onClick={handleClick}>
         <FilterListIcon />
       </Box>
       <FilterContent anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <Grid container className='advFilterBox'>
+        <Grid container className="advFilterBox">
           <Grid item xs={12} mb={2}>
-            <Typography variant='h6bold' className='labelText'>
+            <Typography variant="h6bold" className="labelText">
               {t('filters')}
             </Typography>
           </Grid>
           <Grid item xs={12} mb={2}>
-            <Typography variant='h7bold' className='labelText'>
+            <Typography variant="h7bold" className="labelText">
               {t('tags')}
             </Typography>
             <Tags handleTags={handleTags} />
@@ -99,7 +98,7 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12} mb={2}>
-                <Typography variant='h7bold' className='labelText'>
+                <Typography variant="h7bold" className="labelText">
                   {t('author')}
                 </Typography>
                 <TextBox
@@ -129,8 +128,14 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
           </Grid>
           <Grid item xs={12}>
             <Grid container>
-              <Grid item xs={12} md={6} mb={2} sx={{ pr: { xs: 0, md: '12px' } }}>
-                <Typography variant='h7bold' className='labelText'>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                mb={2}
+                sx={{ pr: { xs: 0, md: '12px' } }}
+              >
+                <Typography variant="h7bold" className="labelText">
                   {t('from')}
                 </Typography>
                 <DatePicker
@@ -141,13 +146,21 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
                       fromDate: newValue?.toISOString(),
                     });
                   }}
-                  handleDateChangeRaw={()=>{ console.info("selected vaalue")}}
+                  handleDateChangeRaw={() => {
+                    console.info('selected vaalue');
+                  }}
                   isDisabled={!toggleState}
                   disablePast={disablePast}
                 />
               </Grid>
-              <Grid item xs={12} md={6} mb={2} sx={{ pl: { xs: 0, md: '12px' } }}>
-                <Typography variant='h7bold' className='labelText'>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                mb={2}
+                sx={{ pl: { xs: 0, md: '12px' } }}
+              >
+                <Typography variant="h7bold" className="labelText">
                   {t('to')}
                 </Typography>
                 <DatePicker
@@ -158,15 +171,21 @@ export default function AdvanceFilter({ handleFilters, handleSearchData }) {
                       toDate: newValue?.toISOString(),
                     });
                   }}
-                  handleDateChangeRaw={()=>{ console.info("selected vaalue")}}
+                  handleDateChangeRaw={() => {
+                    console.info('selected vaalue');
+                  }}
                   isDisabled={!toggleState}
                   disablePast={disablePast}
                 />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button variant='contained' onClick={handleSearch}>
+          <Grid
+            item
+            xs={12}
+            sx={{ display: 'flex', justifyContent: 'flex-end' }}
+          >
+            <Button variant="contained" onClick={handleSearch}>
               {t('search')}
             </Button>
           </Grid>

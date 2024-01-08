@@ -4,7 +4,7 @@ export const RadioLabelWithSubheading = ({
   value,
   label = '',
   subTitle = '',
-}) => {
+}: any) => {
   return (
     <>
       <FormControlLabel

@@ -1,8 +1,8 @@
-import { makeStyles } from '@mui/styles';
 import useTheme from '@mui/material/styles/useTheme';
+import { makeStyles } from '@mui/styles';
 
 export const useCustomStyle = makeStyles(() => {
-  const theme = useTheme();
+  const theme: any = useTheme();
   return {
     commonBoxWithNumber: {
       '&.commonBoxWithNumber': {
@@ -11,7 +11,7 @@ export const useCustomStyle = makeStyles(() => {
         border: '1px solid #D9DBE9',
         margin: '30px auto',
         maxWidth: '820px',
-        [theme.breakpoints.down("lg")]: {
+        [theme.breakpoints.down('lg')]: {
           margin: '15px',
         },
         '& .headerWrapper': {

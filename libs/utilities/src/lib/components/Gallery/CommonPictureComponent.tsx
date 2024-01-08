@@ -35,7 +35,7 @@ const CommonPictureComponent = (props: any = {}) => {
     >
       {breakpoints.map(({ breakpoint, ratio }, key) => {
         const img = croppedImages.find(
-          (x) => x.aspect_ratio === (imgOrder[breakpoint] || ratio)
+          (x: any) => x.aspect_ratio === (imgOrder[breakpoint] || ratio)
         );
         const { folder_path } = img || {};
         return (

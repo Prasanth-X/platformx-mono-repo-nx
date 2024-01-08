@@ -10,7 +10,7 @@ const TitleSubTitle = ({
   subTitleColor = '#89909a',
   toolTipIcon = <></>,
   toolTipText = '',
-}) => {
+}: any) => {
   return (
     <Box>
       {title && (
@@ -21,7 +21,7 @@ const TitleSubTitle = ({
           >
             {title}
           </Typography>
-          <Tooltip title={toolTipText} placement='top'>
+          <Tooltip title={toolTipText} placement="top">
             {toolTipIcon}
           </Tooltip>
         </Box>

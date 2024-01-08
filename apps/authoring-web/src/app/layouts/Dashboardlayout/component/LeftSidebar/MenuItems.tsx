@@ -6,14 +6,14 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useAccess } from '@platformx/utilities';
 import * as React from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useAccess } from '@platformx/utilities';
-// import { Store } from '../../../../store/ContextStore'; 
-import { headerMenus } from '../../utils/constants';
-import { removeSearchLocalStorage } from '../../utils/helper';
+// import { Store } from '../../../../store/ContextStore';
+import { headerMenus } from '../../../../utils/constants';
+import { removeSearchLocalStorage } from '../../../../utils/helper';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion
@@ -87,7 +87,7 @@ export default function MenuItems({
       {getBreakPoint() && headerMenus.includes(Title?.toLowerCase()) && (
         <Box
           className="menuItemLink"
-        // disabled={!roles.includes(localStorage.getItem('role'))}
+          // disabled={!roles.includes(localStorage.getItem('role'))}
         >
           <Typography
             variant="h7regular"
@@ -176,7 +176,7 @@ export default function MenuItems({
                 className={
                   window.location.pathname.includes(val.url) ? 'active' : ''
                 }
-              // disabled={!roles.includes(localStorage.getItem('role'))}
+                // disabled={!roles.includes(localStorage.getItem('role'))}
               >
                 <Box className="menuIcon padding">
                   <img src={val.Icon} alt="" />

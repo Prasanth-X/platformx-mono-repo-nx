@@ -13,6 +13,7 @@ import { useDialog } from './lib/hooks/useDialog/useDialog';
 import usePage from './lib/hooks/usePage/usePage';
 import articleApi from './lib/services/article/article';
 import authAPI from './lib/services/auth/auth.api';
+import commentsApi from './lib/services/comments/comments.api';
 import contentTypeSchemaApi from './lib/services/contentTypeSchema/contentTypeSchema.api';
 import contentTypeAPIs from './lib/services/contentTypes/contentTypes.api';
 import { multiSiteApi } from './lib/services/multisite/multisite.api';
@@ -28,6 +29,7 @@ import fetchVodByIdAPI from './lib/services/vod/vod.api';
 export * from './lib/context/actionContext/ActionContext.types';
 export * from './lib/graphQL/queries/pageQueries';
 export * from './lib/graphQL/queries/prelemQueries';
+export * from './lib/hooks/useComment/useComment';
 export * from './lib/services/siteSetting/SiteSetting';
 export * from './lib/utils/constants';
 export {
@@ -39,6 +41,7 @@ export {
   articleApi,
   authAPI,
   cancelSocialSharePost,
+  commentsApi,
   contentTypeAPIs,
   contentTypeSchemaApi,
   fetchSocialShareList,

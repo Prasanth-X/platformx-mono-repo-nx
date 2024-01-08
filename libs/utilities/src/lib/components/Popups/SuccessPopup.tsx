@@ -16,7 +16,7 @@ export default function PlateformXDialogSuccess({
   confirmButtonText,
   closeButtonHandle,
   confirmButtonHandle,
-}) {
+}: any) {
   const navigate = useNavigate();
   return (
     <>

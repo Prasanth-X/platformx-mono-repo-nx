@@ -14,7 +14,7 @@ const SelectedImageCrop = (props: any = {}) => {
     setIsLoading,
   } = props;
 
-  const onChange = (cropper) => {
+  const onChange = (cropper: any) => {
     const {
       height = 0,
       left = 0,
@@ -42,7 +42,7 @@ const SelectedImageCrop = (props: any = {}) => {
     onCropChange(cropVertex, crop);
   };
 
-  const onError = (cropper) => {
+  const onError = (cropper: any) => {
     console.error('Image is not loading', cropper);
     // if(isLoading) setIsLoading(false);
   };
@@ -51,7 +51,7 @@ const SelectedImageCrop = (props: any = {}) => {
     if (isLoading) setIsLoading(false);
   };
 
-  const defaultSize = ({ imageSize, visibleArea }) => {
+  const defaultSize = ({ imageSize, visibleArea }: any) => {
     return {
       width: (visibleArea || imageSize).width,
       height: (visibleArea || imageSize).height,
@@ -60,7 +60,7 @@ const SelectedImageCrop = (props: any = {}) => {
 
   return (
     <>
-      <div className='crop-container'>
+      <div className="crop-container">
         <Cropper
           src={imageSrc}
           stencilProps={{
@@ -73,7 +73,7 @@ const SelectedImageCrop = (props: any = {}) => {
           onError={onError}
         />
         <Typography
-          variant='h4bold'
+          variant="h4bold"
           sx={{ padding: { xs: '5px 0', md: '14px 0' }, textAlign: 'center' }}
         >
           {ratio}

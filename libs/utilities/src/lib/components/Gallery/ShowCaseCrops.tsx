@@ -47,10 +47,7 @@ const ShowCaseCrops = (props: any = {}) => {
           {loading && <Loader />}
           <Grid container sx={{ paddingRight: '50px' }}>
             {Images.map(
-              (
-                { visibility = '', folder_path = '', aspect_ratio = '' },
-                key
-              ) => {
+              ({ visibility = '', folder_path = '', aspect_ratio = '' }) => {
                 return (
                   <>
                     <Box className="boxwp">
