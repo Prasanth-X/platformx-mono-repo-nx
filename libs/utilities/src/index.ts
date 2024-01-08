@@ -45,6 +45,7 @@ export {
 };
 
 export * from './lib/assets/svg';
+export * from './lib/assets/images';
 export * from './lib/components';
 export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';

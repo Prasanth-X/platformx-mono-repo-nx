@@ -26,6 +26,7 @@ import SpacePrivateIcon from './Private.svg';
 import QuizIcon from './QuizIcon.svg';
 import CourseIcon from './ReadBook.svg';
 import SaveNewIcon from './SaveNewIcon.svg';
+import RedBlinkingDot from "./RedBlinkingDot.gif"
 import SearchBlackSvg from //  SearchIcon,
   './SearchBlack.svg';
 import SettingNewIcon from './SettingNewIcon.svg';
@@ -171,4 +172,5 @@ export {
   VODIcon,
   VODListIcon,
   VideoIcon,
+  RedBlinkingDot
 };
