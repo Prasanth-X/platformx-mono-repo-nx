@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { workflowApi } from '@platformx/authoring-apis';
 import { useEffect, useRef, useState } from 'react';
-import Workflow from './Component/WorkFlowDetails/Workflow';
+import Workflow from './Workflow';
 
 const WorkflowDetails = () => {
   const navigate = useNavigate();
