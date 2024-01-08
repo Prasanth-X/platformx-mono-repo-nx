@@ -10,7 +10,6 @@ import {
   getSelectedSite,
 } from '@platformx/utilities';
 import { useNavigate } from 'react-router-dom';
-import { DrawerWidth } from '../../Utils/Constant';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
 
@@ -21,6 +20,7 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
   isSideBar?: boolean;
 }
+const DrawerWidth = 250;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open, isSideBar }) => ({

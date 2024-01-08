@@ -1,6 +1,9 @@
 import { Content } from '@platformx/content';
 import { Error } from '@platformx/utilities';
-import { WorkflowManagement } from '@platformx/workflow-management';
+import {
+  WorkflowDetails,
+  WorkflowManagement,
+} from '@platformx/workflow-management';
 import { ProtectedRoute } from './ProtectedRoute';
 import { RouteConfig } from './routes.type';
 export const routes: RouteConfig[] = [
@@ -56,6 +59,14 @@ export const routes: RouteConfig[] = [
     element: (
       <ProtectedRoute name="article" subCategory="article" category="content">
         <WorkflowManagement />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/workflow/workflow-details',
+    element: (
+      <ProtectedRoute name="article" subCategory="article" category="content">
+        <WorkflowDetails />
       </ProtectedRoute>
     ),
   },

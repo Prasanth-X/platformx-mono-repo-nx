@@ -1,7 +1,10 @@
 import { Box } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { categoryData, contentPaths } from '../../../Utils/Constant';
+import {
+  categoryData,
+  contentPaths,
+} from '../../../Utils/constants/layoutConstant';
 import AdvanceFilter from './AdvanceFilter';
 import AllCatCta from './AllCatCta';
 import AutoCompleteSearch from './AutoCompleteSearch';

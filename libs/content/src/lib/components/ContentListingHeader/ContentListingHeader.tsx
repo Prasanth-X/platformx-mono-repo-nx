@@ -62,7 +62,7 @@ const ContentListingHeader = ({
   };
 
   const hideFilter = contentTypeBasedHideFilter(title); //hide filter
-  debugger;
+  ;
   return (
     <ContentListingHeaderContainer>
       <Box>

@@ -48,6 +48,8 @@ import CloseSearchSvg from './closeSearch.svg';
 import CookieIcon from './cookieIcon.svg';
 import CourseListIcon from './course-icon.svg';
 // import  DraftIcon from './draftIcon.svg';
+import EventsListIcon5 from './Event.svg';
+import DraftIcon from './draftIcon.svg';
 import DraftStatusIcon from './draftStatusIcon.svg';
 import EditIcon from './editIcon.svg';
 import EventsListIcon from './event-fill.svg'; //  EventsListIcon5,
@@ -55,6 +57,7 @@ import IconFaceBookLogoIconSvg from './facebookLogoIcon.svg';
 import FooterMenuUpdated from './footermenuupdated.svg';
 import HeaderMenuUpdated from './headermenuupdated.svg';
 import IconLinkedinIconSvg from './linkedinIcon.svg';
+// import Logo from './logo.svg';
 import MediaIcon from './mediaIcon.svg';
 import MenuIcon from './menu.svg';
 import MobileMenuIconSvg from './mobileMenuIconSvg.svg';
@@ -71,8 +74,12 @@ import QuizListIcon from './quizListIcon.svg';
 import IconRescheduleSvg from './reschedule.svg';
 import SchedulePublishIcon from './schedulePublishIcon.svg';
 import SchedulePublishStatusIcon from './schedulePublishStatusIcon.svg';
-import ScheduleUnpublishStatusIcon from './scheduleUnpublishIcon.svg'; //  ScheduledUnpublishIcon
+import {
+  default as ScheduleUnpublishStatusIcon,
+  default as ScheduledUnpublishIcon,
+} from './scheduleUnpublishIcon.svg'; //  ScheduledUnpublishIcon
 import SearchGraySvg from './searchGray.svg';
+import SearchIcon from './searchiconnn.svg';
 import IconListViewSvg from './sideMenuListView.svg';
 import IconTimerSvg from './timerIcon.svg';
 import IconTwitterLogoIconSvg from './twitterLogoIcon.svg';
@@ -80,6 +87,8 @@ import UnpublishedStatusIcon from './unpublishStatusIcon.svg';
 import VideoIcon from './videoicon.svg';
 import VODListIcon from './vodListIcon.svg';
 import WarningIcon from './warningIcon.svg';
+import WorkflowDetails from './workflow.svg';
+import WorkflowIcon from './workflowIcon.svg';
 export {
   AiSvg,
   AiSvg2,
@@ -107,12 +116,12 @@ export {
   CourseListIcon,
   DefaultStateCommentIcon,
   DeleteIcon,
-  // DraftIcon,
+  DraftIcon,
   DraftStatusIcon,
   EditIcon,
   EventsIcon,
   EventsListIcon,
-  // EventsListIcon5,
+  EventsListIcon5,
   EyeIcon,
   FilterIcon,
   FooterMenuUpdated,
@@ -128,6 +137,7 @@ export {
   IconRescheduleSvg,
   IconTimerSvg,
   IconTwitterLogoIconSvg,
+  // Logo,
   MediaIcon,
   MenuIcon,
   MobileMenuIconSvg,
@@ -151,10 +161,10 @@ export {
   SchedulePublishIcon,
   SchedulePublishStatusIcon,
   ScheduleUnpublishStatusIcon,
-  // ScheduledUnpublishIcon,
+  ScheduledUnpublishIcon,
   SearchBlackSvg,
   SearchGraySvg,
-  // SearchIcon,
+  SearchIcon,
   SettingNewIcon,
   SitesIcon,
   SpaceListIcon,
@@ -166,4 +176,6 @@ export {
   VODListIcon,
   VideoIcon,
   WarningIcon,
+  WorkflowDetails,
+  WorkflowIcon,
 };

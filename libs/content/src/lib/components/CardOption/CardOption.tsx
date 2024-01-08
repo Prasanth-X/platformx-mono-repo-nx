@@ -29,7 +29,7 @@ const CardOption: React.FC<CardOptionProps> = ({
   handleDeleteButton,
 }) => {
   // eslint-disable-next-line no-debugger
-  debugger;
+  ;
   return (
     <Box
       color="#89909A"
@@ -39,35 +39,35 @@ const CardOption: React.FC<CardOptionProps> = ({
       <Box className="d-flex align-items-center">
         {(dataList?.scheduledPublishTriggerDateTime == null ||
           dataList?.scheduledUnPublishTriggerDateTime == null) && (
-          <ErrorTooltip
-            component={
-              <MenuItem
-                className="icons"
-                disableRipple
-                onClick={handleEdit}
-                disabled={
-                  !canAccessAction(
-                    getContentCategory(),
-                    getContentSubCategory(),
-                    'Update'
-                  ) || tagName === 'courses'
-                }
-              >
-                <IconButton className="hoverIcon">
-                  <img src={EditIcon} alt="" style={{ objectFit: 'cover' }} />
-                  {/* <EditIcon style={{ objectFit: 'cover' }} /> */}
-                </IconButton>
-              </MenuItem>
-            }
-            doAccess={
-              !canAccessAction(
-                getContentCategory(),
-                getContentSubCategory(),
-                'Update'
-              ) || tagName === 'courses'
-            }
-          />
-        )}
+            <ErrorTooltip
+              component={
+                <MenuItem
+                  className="icons"
+                  disableRipple
+                  onClick={handleEdit}
+                  disabled={
+                    !canAccessAction(
+                      getContentCategory(),
+                      getContentSubCategory(),
+                      'Update'
+                    ) || tagName === 'courses'
+                  }
+                >
+                  <IconButton className="hoverIcon">
+                    <img src={EditIcon} alt="" style={{ objectFit: 'cover' }} />
+                    {/* <EditIcon style={{ objectFit: 'cover' }} /> */}
+                  </IconButton>
+                </MenuItem>
+              }
+              doAccess={
+                !canAccessAction(
+                  getContentCategory(),
+                  getContentSubCategory(),
+                  'Update'
+                ) || tagName === 'courses'
+              }
+            />
+          )}
       </Box>
       <Box className="d-flex align-items-center">
         <ErrorTooltip

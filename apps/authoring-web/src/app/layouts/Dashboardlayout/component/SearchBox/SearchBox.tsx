@@ -4,7 +4,6 @@ import IconButton from '@mui/material/IconButton';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
-import { removeSearchLocalStorage } from '../../Utils/helperFunction';
 import './SearchBox.css';
 import SearchModel from './SearchModel';
 
@@ -27,7 +26,12 @@ export default function SearchBox(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const removeSearchLocalStorage = () => {
+    localStorage.removeItem('contentType');
+    localStorage.removeItem('searchKeyword');
+    localStorage.removeItem('searchTags');
+    localStorage.removeItem('author');
+  };
   React.useEffect(() => {
     window.onpopstate = () => {
       removeSearchLocalStorage();

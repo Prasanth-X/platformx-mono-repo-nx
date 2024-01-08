@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { DrawerWidth } from '../../Utils/Constant';
+const DrawerWidth = 240;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
   isSideBar?: boolean;

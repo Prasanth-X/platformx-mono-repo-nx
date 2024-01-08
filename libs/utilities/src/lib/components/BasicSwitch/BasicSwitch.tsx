@@ -9,7 +9,7 @@ import {
 interface BasicSwitchProps {
   color: string;
   bgcolor?: string;
-  disabled?: any;
+  disabled?: boolean;
   onChange?: any;
   checked?: any;
 }

@@ -6,10 +6,12 @@ import {
 } from '@platformx/utilities';
 import { Key, memo, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { capitalizeWords, formatContentTitle } from '../../utils/Helper';
+import { capitalizeWords, formatContentTitle } from '@platformx/utilities';
 import { ContentListingProps, ListItem } from '../../utils/List.types';
-import { Card } from '../Card/Card'; import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
+import { Card } from '../Card/Card';
+import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 import { useUserSession } from '@platformx/utilities';
+import React from 'react';
 const ContentListing = ({
   contentList,
   loading,
