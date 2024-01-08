@@ -1,11 +1,10 @@
 import { useMutation } from '@apollo/client';
 import EastIcon from '@mui/icons-material/East';
 import { Box, Button } from '@mui/material';
-import { usePlatformAnalytics } from '@platformx/utilities';
+import { usePlatformAnalytics, capitalizeWords } from '@platformx/utilities';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { capitalizeWords } from '@platformx/content';
 import Title from '../common/Title';
 import { useUserSession, getCurrentLang, getSelectedSite, getSubDomain, setDefaultPageSettings } from '@platformx/utilities';
 import { createPgModel } from '@platformx/authoring-apis';

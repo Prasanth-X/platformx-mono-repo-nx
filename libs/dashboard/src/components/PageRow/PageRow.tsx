@@ -3,10 +3,7 @@ import EastIcon from '@mui/icons-material/East';
 import { Box, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import {
-  capitalizeWords,
-  formatContentTitle,
-} from '@platformx/content';
+import { formatContentTitle, capitalizeWords } from '@platformx/utilities';
 import { PageQueries, fetchPrelemValidation } from '@platformx/authoring-apis';
 import { fetchPageModel } from '@platformx/authoring-apis';
 import { dateTimeFormat, getSubDomain } from '@platformx/utilities';

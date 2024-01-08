@@ -3,11 +3,11 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { iconsList } from '@platformx/content';
-import warningIcon from '../../../assets/warningIcon.svg';
 import {
   ShowToastError,
   dateTimeFormat,
-  XDialog
+  XDialog,
+  WarningIcon
 } from '@platformx/utilities';
 import { TaskPage } from '../TaskPages/TaskPages.type';
 import { useStyles } from './TaskRow.styles';
@@ -424,7 +424,7 @@ const Tasks = ({
       </Grid>
     </Box>
     { dialogFlag && <XDialog open={dialogFlag}
-      imageIcon ={warningIcon}
+      imageIcon ={WarningIcon}
       title={t('Reject_Task')}
       subTitle={t('reject_subtitle')}
       leftButtonText={t('No')}

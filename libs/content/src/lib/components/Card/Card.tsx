@@ -265,11 +265,14 @@ export const Card = ({
                     <Box component="div" className="mobstatusIcon">
                       <Typography sx={{ marginLeft: '10px' }}>
                         <img alt="" src={statusIcons[dataList.status]} />
+                        {/* {React.createElement(statusIcons[dataList.status])} */}
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledPublishTriggerDateTime &&
                           tagName === 'sitepage' &&
-                          <img alt="" src={statusIcons['schedulePublish']} /> }
+                          <img alt="" src={statusIcons['schedulePublish']} />
+                          // React.createElement(statusIcons['scheduleUnpublish'])
+                        }
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledUnPublishTriggerDateTime &&
@@ -277,7 +280,9 @@ export const Card = ({
                           <img
                             alt=""
                             src={statusIcons['scheduleUnpublish']}
-                          /> }
+                          />
+                          // React.createElement(statusIcons['scheduleUnpublish'])
+                        }
                       </Typography>
                     </Box>
                   </Grid>
@@ -376,27 +381,27 @@ export const Card = ({
                 tagName === 'event' ||
                 tagName === 'vod' ||
                 tagName === 'article') && (
-                <QuizPollEventMenu
-                  deleteContent={deleteContent}
-                  duplicate={duplicate}
-                  preview={preview}
-                  unPublish={unPublish}
-                  view={view}
-                  edit={edit}
-                  anchorEl={anchorEl}
-                  open={open}
-                  handleClose={() => {
-                    setAnchorEl(null);
-                  }}
-                  contentType={tagName}
-                  listItemDetails={dataList}
-                  category={CATEGORY_CONTENT}
-                  subCategory={CONTENT_TYPES}
-                  fetchContentDetails={fetchContentDetails}
-                  sitelist={sitelist}
-                  duplicateToSite={duplicateToSite}
-                />
-              )}
+                  <QuizPollEventMenu
+                    deleteContent={deleteContent}
+                    duplicate={duplicate}
+                    preview={preview}
+                    unPublish={unPublish}
+                    view={view}
+                    edit={edit}
+                    anchorEl={anchorEl}
+                    open={open}
+                    handleClose={() => {
+                      setAnchorEl(null);
+                    }}
+                    contentType={tagName}
+                    listItemDetails={dataList}
+                    category={CATEGORY_CONTENT}
+                    subCategory={CONTENT_TYPES}
+                    fetchContentDetails={fetchContentDetails}
+                    sitelist={sitelist}
+                    duplicateToSite={duplicateToSite}
+                  />
+                )}
               {tagName === 'courses' && (
                 <CourseMenu
                   deleteContent={deleteContent}

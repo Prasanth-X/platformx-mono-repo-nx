@@ -3,11 +3,11 @@ import { Box, Grid, Typography } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';   
-import { iconMap } from '../../../Utils/constant';  
-import { SORT_ORDER, debounce } from '@platformx/utilities';
 import { contentTypeAPIs } from '@platformx/authoring-apis';
+import { SORT_ORDER, debounce } from '@platformx/utilities';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { iconMap } from '../../../Utils/constants/layoutConstant';
 
 const TextFieldBox = styled('div')({
   position: 'relative',

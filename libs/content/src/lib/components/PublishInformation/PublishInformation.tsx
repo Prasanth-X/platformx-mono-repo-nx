@@ -46,7 +46,8 @@ export const PublishInformation = (props: PublishInformationProps) => {
           <Typography sx={{ marginLeft: '10px' }}>
             {convertToLowerCase(contentType) === 'community' ?
               <stateIcons.published /> :
-               <img src={stateIcons[dataList.status]} alt="" />
+              <img src={stateIcons[dataList.status]} alt="" />
+              // React.createElement(stateIcons[dataList.status])
             }
           </Typography>
         </Tooltip>

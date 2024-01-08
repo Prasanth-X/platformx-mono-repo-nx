@@ -74,7 +74,6 @@ export const categoryData = [
   { title: 'Poll', icon: <img alt='settings' src={PollIcon} />, category: 'Poll', id: 'poll' },
   { title: 'Events', icon: <img alt='settings' src={EventsIcon} />, category: 'Event', id: 'event' },
 ];
-export const DrawerWidth = 250;
 export const iconMap = {
   SitePage: <img alt='settings' src={PagesIcon} />,
   Article: <img alt='settings' src={ArticleIcon} />,

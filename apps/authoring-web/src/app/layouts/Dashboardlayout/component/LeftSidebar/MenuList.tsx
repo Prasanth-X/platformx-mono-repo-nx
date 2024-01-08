@@ -1,4 +1,4 @@
-/* eslint-disable no-debugger */
+
 import { Box } from '@mui/material';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
@@ -55,24 +55,7 @@ export default function Menu(props) {
   return (
     <Box className="menulist">
       <MenuSitesListDropdown />
-      {/* {MenuData.map((val, index) => {
-        const isShow = filtered?.includes(val.id);
-        return (
-          isShow && (
-            <MenuItems
-              key={index}
-              Title={val.Title}
-              MenuName={val.Menu}
-              open={props.open}
-              roles={val.roles}
-              props={val}
-              url={val.url}
-              handleMenuclose={props.handleMenuclose}
-              handleMenuAction={props.handleMenuAction}
-            />
-          )
-        );
-      })} */}
+
       {dynamicMenu?.map((val, index) => {
         const isShow = filtered?.includes(val.id);
         return (

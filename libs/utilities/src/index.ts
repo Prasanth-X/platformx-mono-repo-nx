@@ -7,7 +7,7 @@ import { MiniHeader } from './lib/components/Header/MiniHeader';
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown';
 import ContentListLoader from './lib/components/Loader/ContentListLoader';
 import NoSearchResult from './lib/components/NoSearchResult/NoSearchResult';
-import PlateformXDialog from './lib/components/Popups/DeletePopup';
+import PlateformXDialog from './lib/components/Popups/PlateformXDialog';
 import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound';
 import TextBox from './lib/components/TextBox/TextBox';
 import XLoader from './lib/components/XLoader/XLoader';
@@ -29,6 +29,7 @@ import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark';
 import i18next from './lib/utils/i18next';
 import XDialog from "./lib/components/XDialog/XDialog";
 import SkeltonLoader from './lib/components/Skeleton-loader/skeleton';
+export { NoContentFound } from "./lib/components/NoContentFound/NoContentFound"
 const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
 export {
   AutoCompleteMultiSelect,
@@ -55,6 +56,7 @@ export * from './lib/themes/prelems/prelemTheme';
 export * from './lib/utils/helper';
 export * from './lib/utils/helperConstants';
 export * from './lib/utils/helperFns';
+export { ArticleMapper } from './lib/mappers/articleMapper';
 
 export * from './lib/components/ToastNotification/ToastNotification';
 export * from './lib/hooks/useAccess/useMapPermissions';

@@ -1,0 +1,114 @@
+name: Platform-X Workflow
+
+on:
+  push:
+    branches:
+      - develop
+      - qa
+      - stg
+      - mavericks_dev
+      - marvels_dev
+      - kiwi_dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set Environment Variables
+        run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          # Add other environment variables as needed
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@v0.4.0
+        with:
+          service_account_key: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+          project_id: ${{ secrets[env.PROJECT_ID] }} 
+        
+      - name: Authenticate with GKE
+        uses: google-github-actions/auth@v1.0.0
+        with:
+          workload_identity_provider: ${{ secrets[env.WORKLOAD_IDENTITY_PROVIDER] }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }} 
+          token_format: 'access_token'
+
+      # Deploying Configmaps based on branches
+
+      - name: Build Docker image
+        run: docker build --tag "gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:${{ github.run_number }}" .
+
+      - name: Push Docker image to GCR
+        run: |
+          gcloud auth configure-docker --quiet
+          docker push "gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:${{ github.run_number }}"
+
+      # Deploying Configmaps based on branches
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.nx-cache
+          key: ${{ runner.os }}-nx-${{ hashFiles('nx.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nx-
+
+      - name: Install Nx CLI
+        run: npm install -g @nrwl/nx
+
+      - name: Build affected libraries
+        run: nx affected --target=build --base=main --head=$GITHUB_SHA
+
+      # Deploying Docker image to GKE clusters based on branches
+
+      - name: Deploy Configmap on stg branch
+        if: ${{ github.ref == 'refs/heads/stg' }}
+        run: kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-stg.yaml
+
+      # Deploying Docker image to GKE clusters based on branches
+
+      - name: Deploy to GKE (dev, qa, stg, etc.)
+        if: |
+          contains('refs/heads/mavericks_dev refs/heads/marvels_dev refs/heads/develop refs/heads/qa refs/heads/stg refs/heads/kiwi_dev', github.ref)
+        run: |
+          # Add deployment steps for the corresponding branches
+
+      - name: Deploy React App on develop and qa branches
+        if: |
+          contains('refs/heads/develop refs/heads/qa', github.ref)
+        run: |
+          nx run authoring-web:deploy
+
+      - name: Deploy React App on stg branch
+        if: |
+          contains('refs/heads/stg', github.ref)
+        run: |
+          nx run authoring-web:deploy-stg
+
+      - name: Deploy React App on mavericks_dev branch
+        if: |
+          contains('refs/heads/mavericks_dev', github.ref)
+        run: |
+          nx run authoring-web:deploy-dev
+
+      - name: Deploy React App on marvels_dev branch
+        if: |
+          contains('refs/heads/marvels_dev', github.ref)
+        run: |
+          nx run authoring-web:deploy-marvels
+
+      - name: Deploy React App on kiwi_dev branch
+        if: |
+          contains('refs/heads/kiwi_dev', github.ref)
+        run: |
+          nx run authoring-web:deploy-kiwi

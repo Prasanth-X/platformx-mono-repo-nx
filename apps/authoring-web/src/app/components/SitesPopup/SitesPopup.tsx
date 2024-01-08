@@ -36,6 +36,8 @@ export default function SitesPopup(props) {
     const isSiteSystem =
       e.target.textContent?.toLowerCase() === 'administrator';
     try {
+      // eslint-disable-next-line no-  
+
       const res = await multiSiteApi.getPermissions(
         isSiteSystem ? 'system' : e.target.textContent
       );

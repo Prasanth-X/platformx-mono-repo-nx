@@ -14,7 +14,7 @@ export default function PlateformXDialog({
   confirmButtonText,
   selectedItem = {},
   confirmButtonHandle,
-  closeButtonHandle = () => {},
+  closeButtonHandle = () => { },
 }: any) {
   return (
     <>

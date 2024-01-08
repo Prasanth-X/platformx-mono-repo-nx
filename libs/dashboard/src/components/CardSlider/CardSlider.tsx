@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { capitalizeWords } from '@platformx/content';
+import { capitalizeWords } from '@platformx/utilities';
 import Card from './Card';
 import { CreateCardProps } from './CardSlider.types';
 import { SETTINGS } from './Utils/constants';

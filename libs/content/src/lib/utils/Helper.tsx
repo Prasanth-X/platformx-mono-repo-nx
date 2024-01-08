@@ -17,19 +17,19 @@ export const getEmbedTempData = (selectedContent: any) => {
     Description: selectedContent?.description,
     Thumbnail:
       selectedContent?.tag_name?.toLowerCase() === ContentType.Quiz ||
-      selectedContent?.tag_name?.toLowerCase() === ContentType.Poll ||
-      selectedContent?.tag_name?.toLowerCase() === ContentType.Article ||
-      selectedContent?.tag_name?.toLowerCase() === ContentType.Event
+        selectedContent?.tag_name?.toLowerCase() === ContentType.Poll ||
+        selectedContent?.tag_name?.toLowerCase() === ContentType.Article ||
+        selectedContent?.tag_name?.toLowerCase() === ContentType.Event
         ? relativeImageURL(relativeUrl)
         : selectedContent?.thumbnail_image
-        ? selectedContent?.thumbnail_image
-        : DEFAULT_EMBED_IMAGE,
+          ? selectedContent?.thumbnail_image
+          : DEFAULT_EMBED_IMAGE,
     Author: selectedContent?.createdBy,
     lastModifiedDate: selectedContent?.creationDate,
     Page: selectedContent?.page,
     colorCode:
       selectedContent?.tag_name?.toLowerCase() === ContentType.Poll &&
-      selectedContent?.background_content?.Color
+        selectedContent?.background_content?.Color
         ? selectedContent?.background_content?.Color
         : '',
   };
@@ -50,12 +50,12 @@ export const getSocialShareData = (selectedContent: any) => {
             ? selectedContent?.settingsProperties?.socialog_image
             : DEFAULT_SOCIAL_IMAGE
           : selectedContent?.tag_name === 'Poll'
-          ? selectedContent?.settingsProperties?.socialog_image
             ? selectedContent?.settingsProperties?.socialog_image
-            : DEFAULT_SOCIAL_IMAGE
-          : selectedContent?.thumbnail_image
-          ? selectedContent?.thumbnail_image
-          : '',
+              ? selectedContent?.settingsProperties?.socialog_image
+              : DEFAULT_SOCIAL_IMAGE
+            : selectedContent?.thumbnail_image
+              ? selectedContent?.thumbnail_image
+              : '',
       SocialOgDescription: selectedContent?.description,
     },
     Caption: '',
@@ -71,27 +71,13 @@ export const getSocialShareData = (selectedContent: any) => {
           ? selectedContent?.settingsProperties?.socialog_image
           : DEFAULT_SOCIAL_IMAGE
         : selectedContent?.tag_name === 'Poll'
-        ? selectedContent?.settingsProperties?.socialog_image
           ? selectedContent?.settingsProperties?.socialog_image
-          : DEFAULT_SOCIAL_IMAGE
-        : selectedContent?.thumbnail_image
-        ? selectedContent?.thumbnail_image
-        : DEFAULT_SOCIAL_IMAGE,
+            ? selectedContent?.settingsProperties?.socialog_image
+            : DEFAULT_SOCIAL_IMAGE
+          : selectedContent?.thumbnail_image
+            ? selectedContent?.thumbnail_image
+            : DEFAULT_SOCIAL_IMAGE,
     CurrentPageURL: selectedContent?.current_page_url,
   };
   return socialShareData;
-};
-
-export const formatContentTitle = (title = '') => {
-  return title
-    ?.replace(/[_-]/g, ' ')
-    ?.replace(/([a-z])([0-9])/gi, '$1 $2')
-    ?.replace(/([0-9])([a-z])/gi, '$1 $2')
-    ?.replace(/([a-z])([A-Z])/g, '$1 $2');
-};
-
-export const capitalizeWords = (title = '') => {
-  return title
-    .toLowerCase()
-    .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
 };

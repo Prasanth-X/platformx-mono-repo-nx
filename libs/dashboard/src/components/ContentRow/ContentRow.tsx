@@ -1,11 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  capitalizeWords,
-  formatContentTitle,
-} from '@platformx/content';
-import { getSubDomain } from '@platformx/utilities';
+import { capitalizeWords, formatContentTitle, getSubDomain } from '@platformx/utilities';
 import MenuList from '../MenuList/MenuList';
 import { useStyles } from './ContentRow.styles';
 import { ContentRowProps } from './ContentRow.types';

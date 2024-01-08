@@ -210,7 +210,7 @@ export const triggerAnalytics = ({
   e,
   analytics,
   defaultObj,
-  handleTrack = () => {},
+  handleTrack = () => { },
 }: Props) => {
   if (!analytics?.isAuthoring && analytics?.isAnalyticsEnabled) {
     const buttonClickObj = {
@@ -697,11 +697,12 @@ export const getCurrentLang = () => {
 };
 
 export const getSelectedSite = () => {
+
   const splitPath = location.pathname.split("/");
   const site = splitPath[1];
 
   if (["en", "fr", "de"].includes(site)) {
-    return localStorage.getItem("selectedSite")||"";
+    return localStorage.getItem("selectedSite") || "";
   }
 
   return site || "";
@@ -800,3 +801,17 @@ export const formatChildren = (children: any, content: any) => {
   }
   return Children;
 }; 
+
+export const formatContentTitle = (title = '') => {
+  return title
+    ?.replace(/[_-]/g, ' ')
+    ?.replace(/([a-z])([0-9])/gi, '$1 $2')
+    ?.replace(/([0-9])([a-z])/gi, '$1 $2')
+    ?.replace(/([a-z])([A-Z])/g, '$1 $2');
+};
+
+export const capitalizeWords = (title = '') => {
+  return title
+    .toLowerCase()
+    .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
+}

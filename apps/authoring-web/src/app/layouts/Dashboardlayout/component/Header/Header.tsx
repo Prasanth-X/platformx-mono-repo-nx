@@ -3,8 +3,7 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate } from 'react-router-dom';
-import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon} from '@platformx/utilities';  
-import { DrawerWidth } from '../../Utils/constant';
+import { LanguageDropDown, getSelectedSite, BackButton, MenuIcon } from '@platformx/utilities';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
 import { MiniHeader } from '@platformx/utilities';
@@ -16,6 +15,7 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
   isSideBar?: boolean;
 }
+const DrawerWidth = 250;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open, isSideBar }) => ({
