@@ -8,7 +8,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import { Box, Grid, TextField } from '@mui/material';
-import avtarImg from '../../../assets/images/avatar.png';
+import { avtarImg } from '@platformx/utilities';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { getSHareDetailsBasedOnContentType } from './utils/socialShareTypes';
@@ -69,11 +69,10 @@ const SocialShareStep3 = ({
   const redirectURL =
     contentType == 'article'
       ? `${getSubDomain()}/${i18n.language}/${convertToLowerCase(
-          contentType
-        )}/${selectedItems?.CurrentPageURL}`
-      : `${getSubDomain()}/${i18n.language}/${convertToLowerCase(contentType)}${
-          selectedItems?.CurrentPageURL
-        }`;
+        contentType
+      )}/${selectedItems?.CurrentPageURL}`
+      : `${getSubDomain()}/${i18n.language}/${convertToLowerCase(contentType)}${selectedItems?.CurrentPageURL
+      }`;
 
   const inlineCss = `
   .Platform-x-CardContent-root:last-child{
@@ -204,8 +203,8 @@ const SocialShareStep3 = ({
                       alt="Platform-X"
                       src={
                         facebookProfileData &&
-                        selectedNetwork?.fb &&
-                        selectFacebook
+                          selectedNetwork?.fb &&
+                          selectFacebook
                           ? facebookProfileData.picture
                           : avtarImg
                       }

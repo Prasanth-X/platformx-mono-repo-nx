@@ -5,22 +5,12 @@ import {
   CONTENT_TYPES,
   DASHBOARD_KEYS,
   useAccess,
+  RedBlinkingDot
 } from '@platformx/utilities';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import RedBlinkingDot from '../../../assets/RedBlinkingDot.gif';
-// import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
-// import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
-// import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
-// import { QuizPollEventMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/QuizPollEventsMenu';
-// import {
-//   default as PlateformXDialog,
-//   default as PlateformXDialogDelete,
-// } from '../../../pages/articles/deletePopup';
-// import { authInfo } from '@platformx/utilities';
-
 import { PlateformXDialog, convertToLowerCase } from '@platformx/utilities';
 import React from 'react';
 import { iconsList, statusIcons } from '../../utils/Constants';
