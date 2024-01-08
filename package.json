@@ -2,7 +2,11 @@
   "name": "@platformx/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "storybook:build:all": "nx run-many --target=build-storybook --all",
+    "storybook:build:utilities": "nx run utilities:build-storybook",
+    "storybook:deploy": "npm run storybook:build:utilities && gh-pages -d dist/storybook"
+  },
   "private": true,
   "dependencies": {
     "@analytics/google-analytics": "^1.0.7",

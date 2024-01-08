@@ -91,6 +91,12 @@
           "buildTarget": "utilities:build-storybook:ci"
         }
       }
+    },
+    "deploy-storybook": {
+      "executor": "npm:exec",
+      "options": {
+        "command": "gh-pages -d dist/storybook/utilities"
+      }
     }
   }
 }
