@@ -21,15 +21,15 @@ export const useLanguageDropDownStyle = makeStyles((theme: Theme) => ({
         borderTop: '0',
       },
     },
-    // [theme.breakpoints.up('xs')]: {
-    //   marginTop: '10px',
-    // },
-    // [theme.breakpoints.up('md')]: {
-    //   marginTop: '20px',
-    // },
-    // [theme.breakpoints.up('lg')]: {
-    //   marginTop: '35px',
-    // },
+    [theme.breakpoints.up('xs')]: {
+      marginTop: '10px',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginTop: '20px',
+    },
+    [theme.breakpoints.up('lg')]: {
+      marginTop: '35px',
+    },
   },
   dropdownmenuItem: {
     minWidth: '230px',

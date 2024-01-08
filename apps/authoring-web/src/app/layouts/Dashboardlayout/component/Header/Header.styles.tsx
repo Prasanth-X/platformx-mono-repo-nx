@@ -5,12 +5,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
   searchContainer: {
     display: 'flex',
     alignItems: 'center',
-    // [theme.breakpoints.up('xs')]: {
-    //   justifyContent: 'space-between',
-    // },
-    // [theme.breakpoints.up('sm')]: {
-    //   justifyContent: 'flex-start',
-    // },
+    [theme.breakpoints.up('xs')]: {
+      justifyContent: 'space-between',
+    },
+    [theme.breakpoints.up('sm')]: {
+      justifyContent: 'flex-start',
+    },
   },
 
   notificationContainer: {
@@ -18,12 +18,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
     color: '#14142b',
     display: 'none',
     alignTtems: 'center',
-    // [theme.breakpoints.up('xs')]: {
-    //   margin: '0 10px',
-    // },
-    // [theme.breakpoints.up('sm')]: {
-    //   margin: '0 30px',
-    // },
+    [theme.breakpoints.up('xs')]: {
+      margin: '0 10px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      margin: '0 30px',
+    },
   },
   logoContainer: {
     display: 'flex',
