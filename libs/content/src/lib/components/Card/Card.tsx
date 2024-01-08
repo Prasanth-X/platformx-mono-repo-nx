@@ -258,19 +258,26 @@ export const Card = ({
                         {/* {React.createElement(statusIcons[dataList.status])} */}
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
-                        {dataList.scheduledPublishTriggerDateTime &&
-                          tagName === 'sitepage' &&
-                          <img alt="" src={statusIcons['schedulePublish']} />
+                        {
+                          dataList.scheduledPublishTriggerDateTime &&
+                            tagName === 'sitepage' && (
+                              <img
+                                alt=""
+                                src={statusIcons['schedulePublish']}
+                              />
+                            )
                           // React.createElement(statusIcons['scheduleUnpublish'])
                         }
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
-                        {dataList.scheduledUnPublishTriggerDateTime &&
-                          tagName === 'sitepage' &&
-                          <img
-                            alt=""
-                            src={statusIcons['scheduleUnpublish']}
-                          />
+                        {
+                          dataList.scheduledUnPublishTriggerDateTime &&
+                            tagName === 'sitepage' && (
+                              <img
+                                alt=""
+                                src={statusIcons['scheduleUnpublish']}
+                              />
+                            )
                           // React.createElement(statusIcons['scheduleUnpublish'])
                         }
                       </Typography>
@@ -371,27 +378,27 @@ export const Card = ({
                 tagName === 'event' ||
                 tagName === 'vod' ||
                 tagName === 'article') && (
-                  <QuizPollEventMenu
-                    deleteContent={deleteContent}
-                    duplicate={duplicate}
-                    preview={preview}
-                    unPublish={unPublish}
-                    view={view}
-                    edit={edit}
-                    anchorEl={anchorEl}
-                    open={open}
-                    handleClose={() => {
-                      setAnchorEl(null);
-                    }}
-                    contentType={tagName}
-                    listItemDetails={dataList}
-                    category={CATEGORY_CONTENT}
-                    subCategory={CONTENT_TYPES}
-                    fetchContentDetails={fetchContentDetails}
-                    sitelist={sitelist}
-                    duplicateToSite={duplicateToSite}
-                  />
-                )}
+                <QuizPollEventMenu
+                  deleteContent={deleteContent}
+                  duplicate={duplicate}
+                  preview={preview}
+                  unPublish={unPublish}
+                  view={view}
+                  edit={edit}
+                  anchorEl={anchorEl}
+                  open={open}
+                  handleClose={() => {
+                    setAnchorEl(null);
+                  }}
+                  contentType={tagName}
+                  listItemDetails={dataList}
+                  category={CATEGORY_CONTENT}
+                  subCategory={CONTENT_TYPES}
+                  fetchContentDetails={fetchContentDetails}
+                  sitelist={sitelist}
+                  duplicateToSite={duplicateToSite}
+                />
+              )}
               {tagName === 'courses' && (
                 <CourseMenu
                   deleteContent={deleteContent}

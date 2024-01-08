@@ -11,17 +11,17 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   ...(!open && {
     ...(isSideBar
       ? {
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: '65px',
-          width: 'calc(100% - 65px)',
-        },
-      }
+          [theme.breakpoints.up('sm')]: {
+            marginLeft: '65px',
+            width: 'calc(100% - 65px)',
+          },
+        }
       : {
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: '0',
-          width: '100%',
-        },
-      }),
+          [theme.breakpoints.up('sm')]: {
+            marginLeft: '0',
+            width: '100%',
+          },
+        }),
   }),
   ...(open && {
     marginLeft: DrawerWidth,

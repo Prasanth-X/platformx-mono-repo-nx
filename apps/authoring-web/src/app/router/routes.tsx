@@ -1,17 +1,45 @@
-import { Error } from "@platformx/utilities";
-import { ProtectedRoute } from "./ProtectedRoute";
-import { RouteConfig } from "./routes.type";
-import { Content } from "@platformx/content";
+import { UserListing } from '@platformx/user-management';
+import { ProtectedRoute } from './ProtectedRoute';
+import { RouteConfig } from './routes.type';
 export const routes: RouteConfig[] = [
   {
-    path: "/",
-    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" >   Home </ProtectedRoute>,
-
+    path: '/',
+    element: (
+      <ProtectedRoute
+        category="dashboard"
+        subCategory="dashboard"
+        name="dashboard"
+      >
+        {' '}
+        Home{' '}
+      </ProtectedRoute>
+    ),
   },
   {
-    path: "/dashboard",
-    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" >   Home </ProtectedRoute>,
-
+    path: '/dashboard',
+    element: (
+      <ProtectedRoute
+        category="dashboard"
+        subCategory="dashboard"
+        name="dashboard"
+      >
+        {' '}
+        Home{' '}
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/user-management/user-list',
+    element: (
+      <ProtectedRoute
+        category="user-list"
+        subCategory="user-list"
+        name="user-list"
+      >
+        {' '}
+        <UserListing></UserListing>
+      </ProtectedRoute>
+    ),
   },
   // {
   //   path: "/content",
@@ -35,4 +63,4 @@ export const routes: RouteConfig[] = [
   //   path: "/error",
   //   element: <Error errorCode={404} errorMessage="Page not found" />,
   // }
-]
+];

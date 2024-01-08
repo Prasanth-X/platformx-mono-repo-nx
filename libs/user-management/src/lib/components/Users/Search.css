@@ -1,0 +1,29 @@
+.Platform-x-Autocomplete-option {
+  padding: 5px 18px;
+}
+
+.Platform-x-Autocomplete-option:hover {
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Platform-x-Autocomplete-popper .Platform-x-Paper-root {
+  border-radius: 8px !important;
+}
+
+.Platform-x-Autocomplete-popper .Platform-x-Autocomplete-listbox {
+  padding: 16px;
+  max-height: 235px;
+}
+
+.Platform-x-Autocomplete-popper .Platform-x-Autocomplete-listbox li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.searchWrapper .Platform-x-FormControl-root .Platform-x-InputBase-root {
+  height: 48px;
+  padding-top: 0px;
+}
+

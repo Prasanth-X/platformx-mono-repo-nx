@@ -2,8 +2,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import { CSSObject, styled, Theme } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
 import { MiniHeader, PlatXLogo } from '@platformx/utilities';
+import { useNavigate } from 'react-router-dom';
 import './LeftSideBar.css';
 import { useStyles } from './LeftSidebar.styles';
 import MenuList from './MenuList';
@@ -63,8 +63,9 @@ export default function LeftSideBar({
         <Box className="mainBox">
           <Box>
             <Box className={classes.logoContainer}>
-
-              <img src={PlatXLogo} alt="logo"
+              <img
+                src={PlatXLogo}
+                alt="logo"
                 className={classes.logo}
                 onClick={() => navigate('/dashboard')}
               />

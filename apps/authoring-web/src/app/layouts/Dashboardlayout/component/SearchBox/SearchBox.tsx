@@ -8,12 +8,15 @@ import './SearchBox.css';
 import SearchModel from './SearchModel';
 
 export default function SearchBox(props) {
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-  const [contentType, setContentType] = React.useState(localStorage.getItem('contentType'));
-  const [keyword, setKeyword] = React.useState(localStorage.getItem('searchKeyword'));
+  const [contentType, setContentType] = React.useState(
+    localStorage.getItem('contentType')
+  );
+  const [keyword, setKeyword] = React.useState(
+    localStorage.getItem('searchKeyword')
+  );
   const location = useLocation();
   const [tags, setTags] = React.useState(localStorage.getItem('searchTags'));
   const [author, setAuthor] = React.useState(localStorage.getItem('author'));
@@ -40,8 +43,14 @@ export default function SearchBox(props) {
   });
 
   React.useEffect(() => {
-    console.log("print", location.state, localStorage.getItem('searchKeyword'), keyword, props.menuItemSelected);
-    console.log("props.menuItemSelected", props.menuItemSelected);
+    console.log(
+      'print',
+      location.state,
+      localStorage.getItem('searchKeyword'),
+      keyword,
+      props.menuItemSelected
+    );
+    console.log('props.menuItemSelected', props.menuItemSelected);
     if (location.state == null) {
       removeSearchLocalStorage();
       setContentType(localStorage.getItem('contentType'));
@@ -58,14 +67,14 @@ export default function SearchBox(props) {
   return (
     <>
       <Box onClick={handleClickOpen}>
-        <IconButton type='button' sx={{ p: '10px' }}>
+        <IconButton type="button" sx={{ p: '10px' }}>
           <SearchIcon />
         </IconButton>
         {props.ifTab && (
           <Typography
-            variant='h6regular'
-            color='#4E4B66'
-            className='searchBoxInput'
+            variant="h6regular"
+            color="#4E4B66"
+            className="searchBoxInput"
           >
             <span>
               {contentType && (
@@ -106,7 +115,11 @@ export default function SearchBox(props) {
           </Typography>
         )}
       </Box>
-      <SearchModel searchOpen={open} handleSearchClose={handleClose} menuSelected={props.menuItemSelected} />
+      <SearchModel
+        searchOpen={open}
+        handleSearchClose={handleClose}
+        menuSelected={props.menuItemSelected}
+      />
     </>
   );
 }

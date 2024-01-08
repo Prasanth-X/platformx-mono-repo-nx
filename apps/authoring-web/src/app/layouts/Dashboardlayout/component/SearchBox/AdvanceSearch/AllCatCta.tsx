@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { categoryData } from '../../../Utils/constants/layoutConstant';
+import { categoryData } from '../../../../../utils/constant';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -66,21 +66,18 @@ export default function AllCatCta({ setCategory }) {
   return (
     <div>
       <Button
-        className='allCatBtn'
+        className="allCatBtn"
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-
-        <Box className='allcatctabox'>
-          <Box className='icon'>
-            {selectedCategory.Icon}
-          </Box>
-          <Typography variant='h6regular'>
-            {typeof selectedCategory.Icon === 'function' && t(selectedCategory.id)}
+        <Box className="allcatctabox">
+          <Box className="icon">{selectedCategory.Icon}</Box>
+          <Typography variant="h6regular">
+            {typeof selectedCategory.Icon === 'function' &&
+              t(selectedCategory.id)}
           </Typography>
         </Box>
-
       </Button>
       <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {categoryData.map((val, index) => {
@@ -92,11 +89,9 @@ export default function AllCatCta({ setCategory }) {
               }}
               key={index}
             >
-              <Box className='allcatctabox'>
-                <Box className='icon'>
-                  {val.icon}
-                </Box>
-                <Typography variant='h6regular'>{t(val.id)}</Typography>
+              <Box className="allcatctabox">
+                <Box className="icon">{val.icon}</Box>
+                <Typography variant="h6regular">{t(val.id)}</Typography>
               </Box>
             </MenuItem>
           );

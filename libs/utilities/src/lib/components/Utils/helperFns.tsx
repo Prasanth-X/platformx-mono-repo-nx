@@ -1,123 +1,131 @@
-import EventIcon from "../../assets/dynamicprelemicons/EventWhiteIcon.png";
-import articleIcon from "../../assets/dynamicprelemicons/article.svg";
-import imgIcon from "../../assets/dynamicprelemicons/imggallery.svg";
-import pollIcon from "../../assets/dynamicprelemicons/poll.svg";
-import quizIcon from "../../assets/dynamicprelemicons/quiz.svg";
-import vodIcon from "../../assets/dynamicprelemicons/vod.svg";
-import Faq from "../../assets/dynamicprelemicons/FAQ.png";
-import Testimonial from "../../assets/dynamicprelemicons/TestimonialWhite.png";
-import Awards from "../../assets/dynamicprelemicons/Awards.png";
-import FeatureCard from "../../assets/dynamicprelemicons/Feature card.png";
-import ServiceCard from "../../assets/dynamicprelemicons/Service card.png";
-import Shopping_bag from "../../assets/dynamicprelemicons/shopping_bag.png";
-import courseIcon from "../../assets/dynamicprelemicons/course.svg";
-import General_community from "../../assets/dynamicprelemicons/General_community.svg";
-import News_community from "../../assets/dynamicprelemicons/News_community.svg";
-import Community from "../../assets/dynamicprelemicons/community.svg";
-import Challenges_community from "../../assets/dynamicprelemicons/Challenges_community.svg";
+import Awards from '../../assets/dynamicprelemicons/Awards.png';
+import Challenges_community from '../../assets/dynamicprelemicons/Challenges_community.svg';
+import EventIcon from '../../assets/dynamicprelemicons/EventWhiteIcon.png';
+import Faq from '../../assets/dynamicprelemicons/FAQ.png';
+import FeatureCard from '../../assets/dynamicprelemicons/Feature card.png';
+import General_community from '../../assets/dynamicprelemicons/General_community.svg';
+import News_community from '../../assets/dynamicprelemicons/News_community.svg';
+import ServiceCard from '../../assets/dynamicprelemicons/Service card.png';
+import Testimonial from '../../assets/dynamicprelemicons/TestimonialWhite.png';
+import articleIcon from '../../assets/dynamicprelemicons/article.svg';
+import Community from '../../assets/dynamicprelemicons/community.svg';
+import courseIcon from '../../assets/dynamicprelemicons/course.svg';
+import imgIcon from '../../assets/dynamicprelemicons/imggallery.svg';
+import pollIcon from '../../assets/dynamicprelemicons/poll.svg';
+import quizIcon from '../../assets/dynamicprelemicons/quiz.svg';
+import Shopping_bag from '../../assets/dynamicprelemicons/shopping_bag.png';
+import vodIcon from '../../assets/dynamicprelemicons/vod.svg';
+import fallBackImage from '../../assets/fallBackImage.png';
 import {
   convertToLowerCase,
   getCourseLandingPageURL,
   getLandingPageURL,
-} from "../../utils/helperFns";
-import fallBackImage from "../../assets/fallBackImage.png";
+} from '../../utils/helperFns';
 
 export const getIcon = (ct: string) => {
   switch (convertToLowerCase(ct)) {
-    case "article":
+    case 'article':
       return articleIcon;
-    case "poll":
+    case 'poll':
       return pollIcon;
-    case "quiz":
+    case 'quiz':
       return quizIcon;
-    case "imagegallery":
+    case 'imagegallery':
       return imgIcon;
-    case "event":
+    case 'event':
       return EventIcon;
-    case "faq":
+    case 'faq':
       return Faq;
-    case "testimonial":
+    case 'testimonial':
       return Testimonial;
-    case "awards":
+    case 'awards':
       return Awards;
-    case "servicecard":
+    case 'servicecard':
       return ServiceCard;
-    case "accolades":
+    case 'accolades':
       return FeatureCard;
-    case "product":
+    case 'product':
       return Shopping_bag;
-    case "course":
+    case 'course':
       return courseIcon;
-    case "news":
+    case 'news':
       return News_community;
-    case "general":
+    case 'general':
       return General_community;
-    case "challenges-announcement":
+    case 'challenges-announcement':
       return Challenges_community;
-    case "community":
+    case 'community':
       return Community;
     default:
       return vodIcon;
   }
 };
 export const formAbsoluteUrl = (
-  gcpUrl = "",
-  bucketName = "",
-  url = "",
-  ext = "",
-  contentType = "",
+  gcpUrl = '',
+  bucketName = '',
+  url = '',
+  ext = '',
+  contentType = ''
 ) => {
-  if (contentType === "Course" || url.includes("https")) {
+  if (contentType === 'Course' || url.includes('https')) {
     return url;
   } else {
     return `${gcpUrl}/${bucketName}/${url}.${ext}`;
   }
 };
 
-export const onClickCardUrlNavigate = (id: string, content: any, secondaryArgs: any) => {
-  if (typeof window !== "undefined") {
+export const onClickCardUrlNavigate = (
+  id: string,
+  content: any,
+  secondaryArgs: any
+) => {
+  if (typeof window !== 'undefined') {
     // let url = "";
-    if (id && id.charAt(0) === "/") {
+    if (id && id.charAt(0) === '/') {
       // eslint-disable-next-line no-param-reassign
       id = id.substring(1);
     }
 
-    if (content.ContentType === "Article") {
+    if (content.ContentType === 'Article') {
       return getLandingPageURL(
         secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
         secondaryArgs?.prelemBaseEndpoint?.language,
-        "article",
-        id,
+        'article',
+        id
       );
-    } else if (content.ContentType === "VOD") {
+    } else if (content.ContentType === 'VOD') {
       return getLandingPageURL(
         secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
         secondaryArgs?.prelemBaseEndpoint?.language,
-        "video",
-        id,
+        'video',
+        id
       );
-    } else if (content.ContentType === "Course") {
+    } else if (content.ContentType === 'Course') {
       return getCourseLandingPageURL(
         secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
         secondaryArgs?.prelemBaseEndpoint?.language,
         content.ContentType,
-        id,
+        id
       );
-    } else if (convertToLowerCase(content.ContentType) === "community") {
+    } else if (convertToLowerCase(content.ContentType) === 'community') {
       return id;
     } else {
       return getLandingPageURL(
         secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
         secondaryArgs?.prelemBaseEndpoint?.language,
         content.ContentType,
-        id,
+        id
       );
     }
   }
-  return "";
+  return '';
 };
 
-export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: any) => {
+export const getFormattedImageUrl = (
+  path: string,
+  ext: string,
+  secondaryArgs: any
+) => {
   if (path && ext) {
     const url = `${secondaryArgs?.gcpUrl}/${secondaryArgs?.bucketName}/${path}.${ext}`;
     if (url.match(/^https?:\/\/.+\/.+$/)) {
@@ -132,13 +140,21 @@ export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: a
  * contentType image url crete common
  */
 export const commonImageUrlConstruct = (content: any, secondaryArgs: any) => {
-  if (content?.ContentType === "Event") {
+  if (content?.ContentType === 'Event') {
     return getFormattedImageUrl(
       content?.background_content.Url,
       content?.background_content.ext,
-      secondaryArgs,
+      secondaryArgs
     );
   } else {
-    return getFormattedImageUrl(content?.Thumbnail?.Url, content?.Thumbnail?.ext, secondaryArgs);
+    return getFormattedImageUrl(
+      content?.Thumbnail?.Url,
+      content?.Thumbnail?.ext,
+      secondaryArgs
+    );
   }
 };
+export const getStyleString = (styles) =>
+  Object.entries(styles)
+    .map(([prop, value]) => `${prop}: ${value}`)
+    .join('; ');

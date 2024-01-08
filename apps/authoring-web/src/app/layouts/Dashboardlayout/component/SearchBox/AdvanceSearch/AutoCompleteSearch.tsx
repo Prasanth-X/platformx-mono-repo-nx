@@ -7,7 +7,7 @@ import { contentTypeAPIs } from '@platformx/authoring-apis';
 import { SORT_ORDER, debounce } from '@platformx/utilities';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { iconMap } from '../../../Utils/constants/layoutConstant';
+import { iconMap } from '../../../../../utils/constant';
 
 const TextFieldBox = styled('div')({
   position: 'relative',
@@ -27,7 +27,7 @@ export default function AutoCompleteSearch({
   selectedCategory,
   handleSearchKeyword,
   handleSearch,
-  filters
+  filters,
 }) {
   const { t } = useTranslation();
   const [autoCompleteData, setAutoCompleteData] = useState<any>([]);
@@ -35,9 +35,9 @@ export default function AutoCompleteSearch({
   const renderGroup = (params: any) => {
     const { key, children, group } = params;
     return (
-      <Grid container alignItems='center' paddingLeft={2}>
+      <Grid container alignItems="center" paddingLeft={2}>
         <Grid item>
-          <Typography variant='subtitle1'>{group}</Typography>
+          <Typography variant="subtitle1">{group}</Typography>
         </Grid>
         <Grid item xs={12}>
           {children}
@@ -97,7 +97,7 @@ export default function AutoCompleteSearch({
       }}
       renderInput={(params) => (
         <TextFieldBox>
-          <Box className='searchIconPos'>
+          <Box className="searchIconPos">
             <SearchIcon />
           </Box>
           <TextField
@@ -135,9 +135,8 @@ export default function AutoCompleteSearch({
           <div>
             <li {...props}>
               <ListContainer>
-
                 {iconMap[option.ContentType]}
-                <Typography variant='h5regular' sx={{ marginLeft: '8px' }}>
+                <Typography variant="h5regular" sx={{ marginLeft: '8px' }}>
                   {option.Title}
                 </Typography>
               </ListContainer>

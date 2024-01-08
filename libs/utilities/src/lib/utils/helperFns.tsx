@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { format } from 'date-fns';
 import FallBackImage from '../assets/fallBackImage.png';
-import { LanguageList, countries } from './helperConstants';
 import ToastService from '../components/ToastContainer/ToastService';
 import {
   CONTENT_TYPE_WITH_ABSOLUTEURL,
   DefaultLocale,
 } from '../constants/CommonConstants';
+import { LanguageList, countries } from './helperConstants';
 import { Props } from './types';
 
 const errorRequest =
@@ -201,7 +201,7 @@ export const triggerAnalytics = ({
   e,
   analytics,
   defaultObj,
-  handleTrack = () => { },
+  handleTrack = () => {},
 }: Props) => {
   if (!analytics?.isAuthoring && analytics?.isAnalyticsEnabled) {
     const buttonClickObj = {
@@ -688,17 +688,15 @@ export const getCurrentLang = () => {
 };
 
 export const getSelectedSite = () => {
-
-  const splitPath = location.pathname.split("/");
+  const splitPath = location.pathname.split('/');
   const site = splitPath[1];
 
-  if (["en", "fr", "de"].includes(site)) {
-    return localStorage.getItem("selectedSite") || "";
+  if (['en', 'fr', 'de'].includes(site)) {
+    return localStorage.getItem('selectedSite') || '';
   }
 
-  return site || "";
+  return site || '';
 };
-
 
 export const getSelectedRoute = () => {
   let site = '';
@@ -747,7 +745,41 @@ export const trimString = (string: string, length: number) => {
   }
   return '';
 };
+declare namespace Intl {
+  type Key =
+    | 'calendar'
+    | 'collation'
+    | 'currency'
+    | 'numberingSystem'
+    | 'timeZone'
+    | 'unit';
 
+  function supportedValuesOf(input: Key): string[];
+}
+export const timeZoneData = () => {
+  return Intl.supportedValuesOf('timeZone');
+};
+const aryIannaTimeZones = timeZoneData();
+export const getUniqueTimeZone = () => {
+  const data: any = [];
+  aryIannaTimeZones.forEach((timeZone, i) => {
+    // let strTime = new Date().toLocaleTimeString([], {
+    //   timeZone: `${timeZone}`,
+    //   hour12: false,
+    // });
+    const strTime = new Date().toLocaleString([], {
+      timeZone: `${timeZone}`,
+      hour12: false,
+    });
+    const time = new Date(strTime).toTimeString().slice(0, -21);
+    data.push({ label: `${timeZone} ${time}(IST)`, time: `${strTime}` });
+  });
+  const uniqueItems = data.filter(
+    (item: any, index: any, self: any) =>
+      index === self.findIndex((x: any) => x.time === item.time)
+  );
+  return data;
+};
 
 export const formatContentTitle = (title = '') => {
   return title
@@ -761,4 +793,4 @@ export const capitalizeWords = (title = '') => {
   return title
     .toLowerCase()
     .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
-}
+};
