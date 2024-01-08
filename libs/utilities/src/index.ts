@@ -75,6 +75,7 @@ export {
 const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
 
 export * from './lib/assets/svg';
+export * from './lib/assets/images';
 export * from './lib/components';
 export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';
