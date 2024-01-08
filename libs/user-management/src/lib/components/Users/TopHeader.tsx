@@ -8,10 +8,11 @@ import {
   RadioGroup,
   Typography,
 } from '@mui/material';
+import { FilterIcon } from '@platformx/utilities';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import FilterIcon from '../../../assets/svg/FilterIcon.svg';
+
 import SearchBox from '../Users/SearchBox';
 import '../Users/User.css';
 import { USERTYPES } from './Utils/constant';

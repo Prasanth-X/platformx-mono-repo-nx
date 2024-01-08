@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import { userManagementAPI } from '@platformx/authoring-apis';
-import { capitalizeWords } from '@platformx/content';
 import {
   ArticleListDesktopLoader,
   ContentGridLoader,
+  capitalizeWords,
 } from '@platformx/utilities';
 import { useCallback, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';

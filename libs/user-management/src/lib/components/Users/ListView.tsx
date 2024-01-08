@@ -3,18 +3,19 @@ import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 import { Box, Grid, IconButton, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
-import { Loader } from '@platformx/utilities';
+import {
+  BlueDot,
+  EditIcon,
+  GreenDot,
+  Loader,
+  RedDot,
+  warning,
+  warningIcon,
+} from '@platformx/utilities';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import EditIcon from '../../../assets/images/icons/editIcon.svg';
-import { ReactComponent as BlueDot } from '../../../assets/svg/blue.svg';
-import { ReactComponent as GreenDot } from '../../../assets/svg/green.svg';
-import { ReactComponent as RedDot } from '../../../assets/svg/red.svg';
-import warning from '../../../assets/svg/warningIcon.svg';
-// import Warning from '../../assets/svg/warning.gif';
-import warningIcon from '../../../assets/svg/activeUserIcon.svg';
 
 import {
   DialogBoxContentProps,
@@ -234,11 +235,11 @@ const ListView = ({
 
                   <Box sx={{ marginLeft: '10px' }}>
                     {action_pending ? (
-                      <BlueDot />
+                      <img src={BlueDot} alt="Blue Icon" />
                     ) : checked ? (
-                      <GreenDot />
+                      <img src={GreenDot} alt="GreenDot Icon" />
                     ) : (
-                      <RedDot />
+                      <img src={RedDot} alt="RedDot Icon" />
                     )}
                   </Box>
                 </Box>
