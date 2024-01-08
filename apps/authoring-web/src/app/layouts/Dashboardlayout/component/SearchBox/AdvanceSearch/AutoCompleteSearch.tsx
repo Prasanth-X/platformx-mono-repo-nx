@@ -135,7 +135,6 @@ export default function AutoCompleteSearch({
           <div>
             <li {...props}>
               <ListContainer>
-                {/* <img src={iconMap[option.ContentType]} alt='' /> */}
                 {iconMap[option.ContentType]}
                 <Typography variant="h5regular" sx={{ marginLeft: '8px' }}>
                   {option.Title}

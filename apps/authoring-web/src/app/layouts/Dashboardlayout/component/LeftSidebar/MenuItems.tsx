@@ -13,7 +13,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 // import { Store } from '../../../../store/ContextStore';
 import { headerMenus } from '../../../../utils/constants';
-import { removeSearchLocalStorage } from '../../../../utils/helper';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion
@@ -63,6 +62,12 @@ export default function MenuItems({
   const { canAccessContent } = useAccess();
   const navigate = useNavigate();
   // const { dispatch } = React.useContext(Store);
+  const removeSearchLocalStorage = () => {
+    localStorage.removeItem('contentType');
+    localStorage.removeItem('searchKeyword');
+    localStorage.removeItem('searchTags');
+    localStorage.removeItem('author');
+  };
 
   const [expanded, setExpanded] = useState<string | true>('1');
 
@@ -139,7 +144,7 @@ export default function MenuItems({
                   }
                 >
                   <Box className="menuIcon">
-                    <val.Icon alt={val.subCategory} />
+                    <img src={val.Icon} alt={val.subCategory} />
                   </Box>
                   <Tooltip placement="top-start" title={t(val.id)}>
                     <Typography variant="h6regular" className="textellipsis">

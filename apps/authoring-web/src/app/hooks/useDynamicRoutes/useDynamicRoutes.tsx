@@ -1,4 +1,4 @@
-/* eslint-disable no-debugger */
+
 import { useEffect, useState } from 'react';
 import { ProtectedRoute } from '../../router/ProtectedRoute';
 

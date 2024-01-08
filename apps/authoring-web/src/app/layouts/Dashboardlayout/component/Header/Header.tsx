@@ -10,7 +10,6 @@ import {
   getSelectedSite,
 } from '@platformx/utilities';
 import { useNavigate } from 'react-router-dom';
-import { DrawerWidth } from '../../../../utils/constant';
 import SearchBox from '../SearchBox/SearchBox';
 import './Header.css';
 
@@ -21,6 +20,7 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
   isSideBar?: boolean;
 }
+const DrawerWidth = 250;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open, isSideBar }) => ({
@@ -91,14 +91,14 @@ const Header = ({
         <Grid item xs={10} className={classes.searchContainer}>
           {!hasSearch && !(pageUrl.pathname.split('/')[3] === 'navtree') && (
             <Box className="menuIcon" onClick={handleDrawerOpen}>
-              <MenuIcon />
+              <img alt="settings" src={MenuIcon} />
             </Box>
           )}
 
           {hasSearch && (
             <>
               <Box className="menuIcon" onClick={handleDrawerOpen}>
-                <MenuIcon />
+                <img alt="settings" src={MenuIcon} />
               </Box>
               {!isSiteSystem && (
                 <SearchBox ifTab={ifTab} menuItemSelected={menuItemSelected} />
@@ -116,7 +116,7 @@ const Header = ({
                   cursor: 'pointer',
                 }}
               >
-                <BackButton />{' '}
+                <img alt="settings" src={BackButton} />{' '}
               </Box>
               <Box
                 sx={{ display: 'flex', alignItems: 'center', padding: '10px' }}

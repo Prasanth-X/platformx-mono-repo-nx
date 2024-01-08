@@ -346,6 +346,8 @@ export const fetchGlobalSettingData = async () => {
 
 export const getGlobalDataWithHeader = async (sitename: any) => {
   try {
+    // eslint-disable-next-line no-debugger
+
     const { authoring_getSitedetails = {} } = await fetchGlobalSettingWithHeader({
       page: 'global-item',
     }, {

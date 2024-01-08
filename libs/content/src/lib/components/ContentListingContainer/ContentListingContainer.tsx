@@ -51,7 +51,7 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
     setFilterValue(filter);
   };
   const handleRefresh = async () => {
-    debugger
+
     setIsSpinning(true);
     refetch();
 
@@ -62,7 +62,7 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
     await fetchMore();
   };
   console.log('contentList', contentList?.length);
-  debugger
+
   return (
     <>
       <ContentListingHeader

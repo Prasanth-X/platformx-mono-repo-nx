@@ -10,6 +10,8 @@ export const multiSiteApi = {
     sitename: string
   ): Promise<AxiosResponse<any>> => {
     try {
+      // eslint-disable-next-line no-debugger
+
       const res = await axios.get(process.env.NX_API_URI + `auth/get-site-permissions/${sitename}`, {
         headers: {
           'Content-Type': 'application/json',

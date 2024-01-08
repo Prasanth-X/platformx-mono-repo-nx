@@ -18,7 +18,7 @@ import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { Users } from './Header.types';
 import ThemeConstants from '../../themes/authoring/variable';
 import { LOGOUT_URL } from '../../constants/AuthConstant';
-import PlateformXDialog from '../Popups/DeletePopup';
+import PlateformXDialog from '../Popups/PlateformXDialog';
 import { capitalizeFirstLetter } from '../../utils/helperFns';
 
 const saveWarningMessage = {
@@ -96,7 +96,7 @@ export const MiniHeader = ({ showUserDetails = true }: Users) => {
     }
   };
   const [handleImpression] = usePlatformAnalytics();
-  const callFnsCase = (triggerCaseSent:any) => {
+  const callFnsCase = (triggerCaseSent: any) => {
     setHasSaveWarning(false);
     switch (triggerCaseSent) {
       case 'CHANGE_PWD':

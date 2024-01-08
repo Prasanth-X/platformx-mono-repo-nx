@@ -8,9 +8,14 @@ import { styled } from '@mui/material/styles';
 import { DatePicker, TextBox } from '@platformx/utilities';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiltersObj } from '../../../../../utils/search.types';
 import Tags from './Tags';
 
+type FiltersObj = {
+  tags?: string[];
+  author?: string;
+  fromDate?: string;
+  toDate?: string;
+};
 const FilterContent = styled((props: MenuProps) => (
   <Menu
     elevation={0}

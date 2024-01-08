@@ -2,10 +2,16 @@ import { Box } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { categoryData, contentPaths } from '../../../../../utils/constant';
-import { FiltersObj } from '../../../../../utils/search.types';
 import AdvanceFilter from './AdvanceFilter';
 import AllCatCta from './AllCatCta';
 import AutoCompleteSearch from './AutoCompleteSearch';
+
+type FiltersObj = {
+  tags?: string[];
+  author?: string;
+  fromDate?: string;
+  toDate?: string;
+};
 
 export default function AdvanceSearchBar({ handleClose }) {
   const [selectedCategory, setSelectedCategory] = useState({

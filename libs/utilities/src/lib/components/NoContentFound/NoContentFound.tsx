@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import NoContentFoundSvg from '../../assets/svg/NoContentFound.svg';
 
-const NoContentFound = () => {
+export const NoContentFound = () => {
   const { t } = useTranslation();
 
   return (
@@ -15,5 +15,3 @@ const NoContentFound = () => {
     </Box>
   );
 };
-
-export default NoContentFound;

@@ -780,3 +780,17 @@ export const getUniqueTimeZone = () => {
   );
   return data;
 };
+
+export const formatContentTitle = (title = '') => {
+  return title
+    ?.replace(/[_-]/g, ' ')
+    ?.replace(/([a-z])([0-9])/gi, '$1 $2')
+    ?.replace(/([0-9])([a-z])/gi, '$1 $2')
+    ?.replace(/([a-z])([A-Z])/g, '$1 $2');
+};
+
+export const capitalizeWords = (title = '') => {
+  return title
+    .toLowerCase()
+    .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
+};

@@ -24,7 +24,7 @@ import {
 } from '../../utils/helperFns';
 import { LOGOUT_URL } from '../../constants/AuthConstant';
 import ThemeConstants from '../../themes/authoring/variable';
-import PlateformXDialog from '../Popups/DeletePopup';
+import PlateformXDialog from '../Popups/PlateformXDialog';
 
 const saveWarningMessage = {
   saveWarnTitle: 'Unsaved Changes',
@@ -125,10 +125,9 @@ export const Header = (props) => {
       getSelectedRoute()
         ? navigate('/dashboard')
         : window.location.replace(
-            `${
-              process.env.NX_BASE_URL
-            }/${getSelectedSite()}/en/dashboard`
-          );
+          `${process.env.NX_BASE_URL
+          }/${getSelectedSite()}/en/dashboard`
+        );
     } else {
       setTriggerCase('PAGE_LIST');
     }
