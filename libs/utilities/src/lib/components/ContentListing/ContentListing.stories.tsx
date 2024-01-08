@@ -6,7 +6,7 @@ import ContentListing from './ContentListing';
 
 const meta: Meta<typeof ContentListing> = {
   component: ContentListing,
-  title: 'ContentListing',
+  title: 'Platfomx-Component-Library/ContentListing',
 };
 export default meta;
 type Story = StoryObj<typeof ContentListing>;

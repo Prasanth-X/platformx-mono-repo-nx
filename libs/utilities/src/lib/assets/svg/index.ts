@@ -57,7 +57,7 @@ import CookieIcon from './cookieIcon.svg'
 import CourseListIcon from './course-icon.svg'
 // import  DraftIcon from './draftIcon.svg';
 import EventsListIcon5 from './Event.svg'
-import DraftIcon from './draftIcon.svg'
+import DraftIcon from './DraftIcon.svg'
 import DraftStatusIcon from './draftStatusIcon.svg'
 import EditIcon from './editIcon.svg'
 import EventsListIcon from './event-fill.svg' //  EventsListIcon5,

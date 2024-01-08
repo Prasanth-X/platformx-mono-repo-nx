@@ -6,7 +6,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import './AutoCompleteMultiSelect.css';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
-type AutoCompleteMultiSelectProps = {
+export type AutoCompleteMultiSelectProps = {
   options: any;
   placeholder: string;
   className?: string;
@@ -21,7 +21,7 @@ export default function AutoCompleteMultiSelect({
   placeholder,
   className = '',
   values = [],
-  onChange = (event: any, newInputValue: any) => {},
+  onChange = (event: any, newInputValue: any) => { },
   getOptionLabel,
   optionFormat = '',
   limitTags = -1,

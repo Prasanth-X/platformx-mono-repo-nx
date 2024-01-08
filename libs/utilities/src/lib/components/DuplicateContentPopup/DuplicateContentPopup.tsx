@@ -26,7 +26,7 @@ export default function DuplicateContentPopup({
   closeButtonHandle,
   doneButtonHandle,
   contentType,
-  language,
+  language = [],
   setLanguage,
 }: DialogList) {
   const { t } = useTranslation();
