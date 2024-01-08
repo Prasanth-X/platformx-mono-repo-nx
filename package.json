@@ -23,6 +23,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@emotion/weak-memoize": "^0.3.0",
+    "@material-ui/core": "^4.12.4",
     "@material-ui/lab": "4.0.0-alpha.61",
     "@material-ui/pickers": "3.3.10",
     "@mui/base": "5.0.0-alpha.91",

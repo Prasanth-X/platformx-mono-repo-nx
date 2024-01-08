@@ -17,28 +17,49 @@ import authAPI from "./lib/services/auth/auth.api";
 import { multiSiteApi } from "./lib/services/multisite/multisite.api";
 import { createPgModel } from './lib/services/page/page.api';
 import dashboardApi from './lib/services/dashboard/dashBoard.api';
+import { UserManagementQueries } from './lib/graphQL/queries/userManagementQueries';
+import { snowplowTrackingHook } from './lib/hooks/customHook/snowplowTrackingHook';
+import { useDialog } from './lib/hooks/useDialog/useDialog';
+import commentsApi from './lib/services/comments/comments.api';
 export * from './lib/services/siteSetting/SiteSetting';
 export * from "./lib/graphQL/queries/pageQueries"
 export * from "./lib/graphQL/queries/prelemQueries"
 export * from "./lib/utils/constants"
 export * from './lib/services/prelems/prelems.api';
 export * from './lib/services/page/page.api';
-export { contentTypeAPIs }
-export { contentTypeSchemaApi }
-export { useContentListing }
-export { authAPI }
-export { fetchVodByIdAPI }
-export { FETCH_VOD_BY_ID, FETCH_VOD_LIST_ALL }
-export { cancelSocialSharePost, fetchSocialShareList, fetchSocialShareProfile, rescheduleSocialShare, scheduleSocialShare }
-export { userManagementAPI }
-export { articleApi }
-export { multiSiteApi }
-export { dashboardApi }
-export { useContentSearch }
-export { usePage }
 export { useDashboardData }
-export { ArticleQueries }
-export { ArticleMutations }
-export {graphqlInstance} 
 export { createPgModel}
 export { PageQueries }
+export * from './lib/context/actionContext/ActionContext.types';
+export * from './lib/graphQL/queries/pageQueries';
+export * from './lib/graphQL/queries/prelemQueries';
+export * from './lib/hooks/useComment/useComment';
+export * from './lib/services/siteSetting/SiteSetting';
+export * from './lib/utils/constants';
+export {
+  ArticleMutations,
+  ArticleQueries,
+  FETCH_VOD_BY_ID,
+  FETCH_VOD_LIST_ALL,
+  UserManagementQueries,
+  articleApi,
+  authAPI,
+  cancelSocialSharePost,
+  commentsApi,
+  contentTypeAPIs,
+  contentTypeSchemaApi,
+  fetchSocialShareList,
+  fetchSocialShareProfile,
+  fetchVodByIdAPI,
+  graphqlInstance,
+  multiSiteApi,
+  rescheduleSocialShare,
+  scheduleSocialShare,
+  snowplowTrackingHook,
+  useContentListing,
+  useContentSearch,
+  useDialog,
+  usePage,
+  userManagementAPI,
+  dashboardApi
+};

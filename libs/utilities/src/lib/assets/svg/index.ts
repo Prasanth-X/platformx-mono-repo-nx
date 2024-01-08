@@ -100,8 +100,14 @@ import SearchIcon from "./searchiconnn.svg";
 import EventsListIcon5 from "./Event.svg";
 import DraftIcon from "./draftIcon.svg";
 import WarningIcon from './warningIcon.svg';
-export {
+import warning from './activeUserIcon.svg'
+import BlueDot from './blue.svg'
+import GreenDot from './green.svg'
+import RedDot from './red.svg'
+import warningIcon from './warningIcon.svg'
+import RedBlinkingDot from './RedBlinkingDot.gif'
 
+export {
   AiSvg,
   AiSvg2,
   AiSvgDisabled,
@@ -110,6 +116,7 @@ export {
   ArticleIcon,
   ArticleListIcon,
   BackButton,
+  BlueDot,
   CardOptionApprovalStatusIcon,
   CardOptionCopyUrlIcon,
   CardOptionDeleteIcon,
@@ -138,6 +145,7 @@ export {
   FilterIcon,
   FooterMenuUpdated,
   General_community,
+  GreenDot,
   HamburgerMenuIcon,
   HeaderMenuUpdated,
   IconCancelSvg,
@@ -168,6 +176,8 @@ export {
   PublishedStatusIcon,
   QuizIcon,
   QuizListIcon,
+  RedBlinkingDot,
+  RedDot,
   SaveNewIcon,
   SchedulePublishIcon,
   SchedulePublishStatusIcon,
@@ -200,5 +210,7 @@ export {
   ProgressIcon,
   InsertIcon,
   CalenderIcon,
-  WarningIcon
+  WarningIcon,
+  warning,
+  warningIcon,
 };

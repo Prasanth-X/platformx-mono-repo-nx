@@ -17,24 +17,28 @@ export const UserManagementQueries = {
     }
   `,
   EMAIL_VALIDATION: gql`
-  query EMAIL_VALIDATION(
-    $userName: String!
-    $isAuthoringUser: Boolean
-    $isRenderingUser: Boolean
-  ) {
-    authoring_validateUser(
-      userName: $userName
-      is_Authoring_User: $isAuthoringUser
-      is_Rendering_User: $isRenderingUser
+    query EMAIL_VALIDATION(
+      $userName: String!
+      $isAuthoringUser: Boolean
+      $isRenderingUser: Boolean
     ) {
-      message
+      authoring_validateUser(
+        userName: $userName
+        is_Authoring_User: $isAuthoringUser
+        is_Rendering_User: $isRenderingUser
+      ) {
+        message
+      }
     }
-  }
-`
-  ,
+  `,
   FETCH_ROLE_LIST: gql`
     query {
       authoring_rolesList(pagePath: "")
+    }
+  `,
+  FETCH_PERMISSION_LIST: gql`
+    query {
+      authoring_permissionList(pagePath: "")
     }
   `,
   FETCH_ROLE: gql`
@@ -92,6 +96,30 @@ export const UserManagementQueries = {
       authoring_inviteUsers(input: $input) {
         message
         __typename
+      }
+    }
+  `,
+  APPROVE_REJECT_USER: gql`
+    mutation authoring_approveRejectEndUser(
+      $input: authoring_approveRejectRequest
+    ) {
+      authoring_approveRejectEndUser(input: $input) {
+        message
+      }
+    }
+  `,
+  RESEND_EMAIL_TO_USERS: gql`
+    mutation authoring_reinviteUser($input: authoring_InviteRequest) {
+      authoring_reinviteUser(input: $input) {
+        message
+        __typename
+      }
+    }
+  `,
+  ACTIVATE_DEACTIVATE_USERS: gql`
+    mutation ($input: authoring_updateRequest) {
+      authoring_updateUser(input: $input) {
+        message
       }
     }
   `,

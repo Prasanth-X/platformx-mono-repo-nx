@@ -1,12 +1,12 @@
+import { Box, Button, IconButton, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DeleteIcon from '../../assets/svg/errorPopupIcon.svg';
+import DialogTitle from '@mui/material/DialogTitle';
 import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg';
-import { Box, Button, Typography, IconButton } from '@mui/material';
+import DeleteIcon from '../../assets/svg/errorPopupIcon.svg';
 
-export default function PlateformXDialog({
+export default function DeletePopup({
   isDialogOpen,
   title,
   subTitle,
@@ -14,7 +14,7 @@ export default function PlateformXDialog({
   confirmButtonText,
   selectedItem = {},
   confirmButtonHandle,
-  closeButtonHandle = () => { },
+  closeButtonHandle = () => {},
 }: any) {
   return (
     <>
