@@ -2,7 +2,7 @@ import { Box, IconButton } from '@mui/material';
 import React, { memo, useState } from 'react';
 import { MoreHorizIcon } from '@platformx/utilities';
 import { QuizPollEventMenu } from '@platformx/content';
-import { getSelectedObject } from './Utils/Mapper';
+import { getSelectedObject } from './utils/Mapper';
 
 const MenuList = ({
   item,

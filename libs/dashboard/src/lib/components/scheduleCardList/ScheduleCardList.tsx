@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import SingleCard from '../ScheduleCard/SingleCard';
+import SingleCard from '../scheduleCard/SingleCard';
 
 const ScheduleCardList = ({ scheduledPages }: any) => {
   return (

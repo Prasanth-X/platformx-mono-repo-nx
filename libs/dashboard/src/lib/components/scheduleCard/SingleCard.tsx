@@ -2,7 +2,7 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import { Box, Typography } from '@mui/material';
 import { memo } from 'react';
 import './SingleCard.css';
-import { dateFormat } from './Utils/helper';
+import { dateFormat } from './utils/helper';
 
 const SingleCard = ({
   title,

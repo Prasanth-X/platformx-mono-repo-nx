@@ -1,5 +1,5 @@
+const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
 import ContentGridLoader from './lib/components/ContentGridLoader';
-
 import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect';
 import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
 import DatePicker from './lib/components/DatePicker/DatePicker';
@@ -32,15 +32,6 @@ import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark';
 import i18next from './lib/utils/i18next';
 import XDialog from "./lib/components/XDialog/XDialog";
 import SkeltonLoader from './lib/components/Skeleton-loader/skeleton';
-export { NoContentFound } from "./lib/components/NoContentFound/NoContentFound"
-const InterRegular = require('./lib/fonts/Inter/Inter-Regular.woff2') as string;
-export * from './lib/components/Cards/CardSkeleton';
-export * from './lib/constants/CommonConstants';
-export * from './lib/layouts/TwoColumns/TwoColumnLayout';
-export * from './lib/themes/authoring/lightTheme';
-export * from './lib/themes/prelems/prelemTheme';
-export * from './lib/utils/helperFns';
-
 import AddImage from './lib/components/AddImage/AddImage';
 import { CommonBoxWithNumber } from './lib/components/CommonBoxWithNumber/CommonBoxWithNumber';
 import { Loader } from './lib/components/Loader';
@@ -56,26 +47,15 @@ import {
 } from './lib/components/ToastNotification/ToastNotification';
 import { USERNAME_EMAIL_EXIST } from './lib/constants/CommonConstants';
 import { getUniqueTimeZone } from './lib/utils/helperFns';
+import { NoContentFound } from "./lib/components/NoContentFound/NoContentFound";
+import { ArticleMapper } from './lib/mappers/articleMapper';
+import DeletePopup from './lib/components/Popups/PlateformXDialog';
 
 export * from './lib/assets/svg';
 export * from './lib/components';
 export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/AuthConstant';
 export * from './lib/constants/CommonConstants';
-export {
-  AutoCompleteMultiSelect,
-  ContentListLoader,
-  DatePicker,
-  ErrorTooltip,
-  InterRegular,
-  LightTheme,
-  PrelemTheme,
-  PrelemsThemeConstants,
-  TextBox,
-  ThemeConstants,
-  i18next,
-};
-
 export * from './lib/assets/svg';
 export * from './lib/assets/images';
 export * from './lib/components';
@@ -87,16 +67,17 @@ export * from './lib/themes/prelems/prelemTheme';
 export * from './lib/utils/helper';
 export * from './lib/utils/helperConstants';
 export * from './lib/utils/helperFns';
-
 export * from './lib/components/ToastNotification/ToastNotification';
 export * from './lib/hooks/useAccess/useMapPermissions';
-export { MiniHeader };
-
-export { ArticleMapper } from './lib/mappers/articleMapper';
-export { LanguageDropDown };
-
+export * from './lib/mappers/articleMapper';
 export * from './lib/components/ToastNotification/ToastNotification';
 export * from './lib/hooks/useAccess/useMapPermissions';
+export * from './lib/components/Cards/CardSkeleton';
+export * from './lib/constants/CommonConstants';
+export * from './lib/layouts/TwoColumns/TwoColumnLayout';
+export * from './lib/themes/authoring/lightTheme';
+export * from './lib/themes/prelems/prelemTheme';
+export * from './lib/utils/helperFns';
 export {
   AUTH_INFO,
   AUTH_URL,
@@ -126,9 +107,24 @@ export {
   usePlatformAnalytics,
   usePrelemImpression,
   useUserSession,
+  ArticleListDesktopLoader, 
+  ContentGridLoader,
+  SkeltonLoader,
+  XDialog,
+  AutoCompleteMultiSelect,
+  ContentListLoader,
+  DatePicker,
+  ErrorTooltip,
+  InterRegular,
+  LightTheme,
+  PrelemTheme,
+  PrelemsThemeConstants,
+  TextBox,
+  ThemeConstants,
+  i18next,
+  MiniHeader,
+  LanguageDropDown,
+  NoContentFound,
+  DeletePopup,
+  ArticleMapper,
 };
-
-export * from './lib/mappers/articleMapper';
-export { XDialog }
-export { SkeltonLoader }
-export { ArticleListDesktopLoader, ContentGridLoader };

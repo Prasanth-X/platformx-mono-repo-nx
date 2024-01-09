@@ -3,17 +3,17 @@ import { Box } from "@mui/system";
 // import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { graph } from "./Constants";
-import BarChartVertical from "./Bar/BarChartVertical";
+import BarChartVertical from "./bar/BarChartVertical";
 // import BarChartHorizontal from "./Bar/BarChartHorizontal";
-import PieGraph from "./Pie/PieGraph";
+import PieGraph from "./pie/PieGraph";
 import "./Charts.css";
 // import LineGraph from "./Line/LineGraph";
-import AreaGraph from "./Area/AreaGraph";
-import PieChartWithNeedle from "./Pie/PieChartWithneedle";
-import BigNumber from "./Area/BigNumber";
+import AreaGraph from "./area/AreaGraph";
+import PieChartWithNeedle from "./pie/PieChartWithneedle";
+import BigNumber from "./area/BigNumber";
 import { SkeltonLoader, ShowToastError } from "@platformx/utilities";
 import { dashboardApi } from "@platformx/authoring-apis";
-import BarChartHorizontal from "./Bar/BarChartHorizontal";
+import BarChartHorizontal from "./bar/BarChartHorizontal";
 
 const Charts = () => {
   const [chartsData, setChartsData] = useState<any>();

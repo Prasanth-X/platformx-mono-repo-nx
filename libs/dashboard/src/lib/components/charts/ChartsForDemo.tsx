@@ -5,12 +5,12 @@ import BrokenImageOutlinedIcon from "@mui/icons-material/BrokenImageOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 import { graph } from "./Constants";
-import AreaGraph from "./Area/AreaGraph";
-import BarChartVertical from "./Bar/BarChartVertical";
-import PieGraph from "./Pie/PieGraph";
-import BarChartHorizontal from "./Bar/BarChartHorizontal";
-import PieChartWithNeedle from "./Pie/PieChartWithneedle";
-import BigNumber from "./Area/BigNumber";
+import AreaGraph from "./area/AreaGraph";
+import BarChartVertical from "./bar/BarChartVertical";
+import PieGraph from "./pie/PieGraph";
+import BarChartHorizontal from "./bar/BarChartHorizontal";
+import PieChartWithNeedle from "./pie/PieChartWithneedle";
+import BigNumber from "./area/BigNumber";
 import "./Charts.css";
 import CustomBoxForDemo from "./CustomBoxForDemo";
 
