@@ -10,9 +10,9 @@ import MenuList from './MenuList';
 const DrawerWidth = 240;
 const openedMixin = (theme: Theme): CSSObject => ({
   width: DrawerWidth,
-  // [theme.breakpoints.down('sm')]: {
-  //   width: '0px',
-  // },
+  [theme.breakpoints.down('sm')]: {
+    width: '0px',
+  },
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,

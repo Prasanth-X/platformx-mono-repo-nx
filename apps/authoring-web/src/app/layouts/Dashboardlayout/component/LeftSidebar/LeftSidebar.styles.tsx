@@ -14,9 +14,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
     color: '#89909A',
     fontSize: '20px',
 
-    // [theme.breakpoints.up('sm')]: {
-    //   display: 'none',
-    // },
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
   },
   logo: {
     cursor: 'pointer',
