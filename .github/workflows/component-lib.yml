@@ -1,0 +1,25 @@
+name: Publish Components Storybook
+
+on:
+  push:
+    branches:
+      - develop 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build and deploy Storybook
+        run: yarn nx run utilities:storybook:build && yarn nx run utilities:storybook:export && yarn deploy-storybook
