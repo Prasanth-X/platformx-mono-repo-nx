@@ -47,7 +47,7 @@ export const QuizPollEventMenu = ({
   edit,
   fetchContentDetails,
   duplicateToSite,
-}: ContentTypeMenu) => {
+}: any) => {
   const classes = useStyles();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();

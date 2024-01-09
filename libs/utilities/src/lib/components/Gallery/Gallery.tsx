@@ -61,10 +61,10 @@ const Gallery = ({
   })
   const categoryRef = useRef<string>('All')
 
-  const getImages = async (thumbnailsArr) => {
+  const getImages = async (thumbnailsArr: any) => {
     const imagesArr: ImageProps[] = []
     await Promise.all(
-      await thumbnailsArr.map(async (obj) => {
+      await thumbnailsArr.map(async (obj: any) => {
         await fetch(obj.Thumbnail)
           .then((res) => res.json())
           .then((json) => {
@@ -114,10 +114,10 @@ const Gallery = ({
     }
   }, [])
 
-  const getVideos = async (bundlesArr) => {
+  const getVideos = async (bundlesArr: any) => {
     const contentArr: ImageProps[] = []
     await bundlesArr
-      .map(async (obj) => {
+      .map(async (obj: any) => {
         await fetch(obj.Thumbnail)
           .then((res) => res.json())
           .then((json) => {
@@ -148,7 +148,7 @@ const Gallery = ({
       })
   }
 
-  const handleSelectedImage = (selectedItem) => {
+  const handleSelectedImage = (selectedItem: any) => {
     if (selectedImage == selectedItem) {
       setSelectedImage({
         Thumbnail: '',
@@ -160,7 +160,7 @@ const Gallery = ({
     }
   }
 
-  const handleSelectedVideo = (selectedItem) => {
+  const handleSelectedVideo = (selectedItem: any) => {
     if (selectedVideo == selectedItem) {
       setSelectedVideo({
         Thumbnail: '',
@@ -180,7 +180,7 @@ const Gallery = ({
         .then((json) => {
           //bitstreams call
           const imgIndex = json._embedded.bundles.findIndex(
-            (x) => x.name == 'ORIGINAL',
+            (x: any) => x.name == 'ORIGINAL',
           )
           const bitstream =
             json._embedded.bundles[imgIndex]._links.bitstreams.href
@@ -219,7 +219,7 @@ const Gallery = ({
     }
   }
 
-  const getData = (nextIndex) => {
+  const getData = (nextIndex: any) => {
     fetch(
       `${authInfo.dspaceUri}server/api/discover/search/objects?sort=${
         galleryMode === 'Images' ? imageListProps.sort : videoListProps.sort
@@ -235,7 +235,7 @@ const Gallery = ({
           if (json._embedded.searchResult._embedded.objects.length != 0) {
             const imageObjects = json._embedded.searchResult._embedded.objects
             const thumbnailsArr: object[] = []
-            imageObjects.map((obj) => {
+            imageObjects.map((obj: any) => {
               thumbnailsArr.push({
                 Bundles: obj._embedded.indexableObject._links.bundles.href,
                 Thumbnail: obj._embedded.indexableObject._links.thumbnail.href,
@@ -279,7 +279,7 @@ const Gallery = ({
       )
   }
 
-  const searchGallery = (index) => {
+  const searchGallery = (index: any) => {
     const imageSearchProps = {
       sort: 'score,DESC',
       page: index,
@@ -307,7 +307,7 @@ const Gallery = ({
           if (json._embedded.searchResult._embedded.objects.length != 0) {
             const imageObjects = json._embedded.searchResult._embedded.objects
             const thumbnailsArr: object[] = []
-            imageObjects.map((obj) => {
+            imageObjects.map((obj: any) => {
               thumbnailsArr.push({
                 Bundles: obj._embedded.indexableObject._links.bundles.href,
                 Thumbnail: obj._embedded.indexableObject._links.thumbnail.href,
@@ -353,7 +353,7 @@ const Gallery = ({
           if (json._embedded.searchResult._embedded.objects.length != 0) {
             const imageObjects = json._embedded.searchResult._embedded.objects
             const thumbnailsArr: object[] = []
-            imageObjects.map((obj) => {
+            imageObjects.map((obj: any) => {
               thumbnailsArr.push({
                 Thumbnail: obj._embedded.indexableObject._links.bundles.href,
                 Title:
@@ -392,7 +392,7 @@ const Gallery = ({
     }
   }
 
-  const searchCategory = (index, searchText) => {
+  const searchCategory = (index: any, searchText: any) => {
     const imageCategoryProps = {
       category: 'title',
       sort: `dc.${
@@ -422,7 +422,7 @@ const Gallery = ({
           if (json._embedded.items.length != 0) {
             const imageObjects = json._embedded.items
             const thumbnailsArr: object[] = []
-            imageObjects.map((obj) => {
+            imageObjects.map((obj: any) => {
               thumbnailsArr.push({
                 Bundles: obj._links.bundles.href,
                 Thumbnail: obj._links.thumbnail.href,
@@ -456,7 +456,7 @@ const Gallery = ({
           if (json._embedded.items.length != 0) {
             const imageObjects = json._embedded.items
             const thumbnailsArr: object[] = []
-            imageObjects.map((obj) => {
+            imageObjects.map((obj: any) => {
               thumbnailsArr.push({
                 Thumbnail: obj._links.bundles.href,
                 Title:
@@ -546,7 +546,7 @@ const Gallery = ({
     setSearchValue(event.target.value)
   }
 
-  const handleCategory = (event) => {
+  const handleCategory = (event: any) => {
     setIsLazyLoad(false)
     categoryRef.current = event.target.value
     startIndex.current = 0
