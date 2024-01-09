@@ -1,6 +1,7 @@
 import ApprovalStatus from './ApprovalStatusIcon.svg'
 import CardOptionApprovalStatusIcon from './ApprovalStatusIconOptionMenu.svg'
 import Challenge_community from './Challenge_community.svg'
+import CommentPlaceHolder from './CommentPlaceHolder.svg'
 import CopyIcon from './CopyIcon.svg'
 import CardOptionCopyUrlIcon from './CopyUrlIconOptionMenu.svg'
 import DefaultStateCommentIcon from './DefaultStateCommentIcon.svg'
@@ -16,6 +17,7 @@ import HamburgerMenuIcon from './HamburgerMenuIcon.svg'
 import IconPreview from './IconPreview.svg'
 import CardOptionImbedIcon from './ImbedIconOptionMenu.svg'
 import News_community from './News_community.svg'
+import NoContentFoundSvg from './NoContentFound.svg'
 import PlatXLogo from './PlatX-logo.svg'
 import PlatXLogoWhite from './PlatXWhite-logo.svg'
 import PollIcon from './PollIcon.svg'
@@ -25,8 +27,11 @@ import PreviewNewIcon from './PreviewNewIcon.svg'
 import SpacePrivateIcon from './Private.svg'
 import QuizIcon from './QuizIcon.svg'
 import CourseIcon from './ReadBook.svg'
+import RedBlinkingDot from './RedBlinkingDot.gif'
+import ReplyIcon from './Reply.svg'
 import SaveNewIcon from './SaveNewIcon.svg'
-import SearchBlackSvg from './SearchBlack.svg'
+import SearchBlackSvg from './SearchBlack.svg' //  SearchIcon,
+import SendIcon from './Send.svg'
 import SettingNewIcon from './SettingNewIcon.svg'
 import CardOptionShareIcon from './ShareIconOptionMenu.svg'
 import SitesIcon from './SitesIcon.svg'
@@ -35,6 +40,7 @@ import CardOptionUnPublishIcon from './UnPublishIconOptionMenu.svg'
 import UsersIcon from './UsersIcon.svg'
 import VODIcon from './VODIcon.svg'
 import CardOptionViewIcon from './ViewIconOptionMenu.svg'
+import warning from './activeUserIcon.svg'
 import AiSvg from './ai.svg'
 import AiSvg2 from './ai2.svg'
 import AiSvgDisabled from './aiDisabled.svg'
@@ -42,27 +48,13 @@ import AllIcon from './allIcon.svg'
 import ArticleIcon from './articleIcon.svg'
 import ArticleListIcon from './articleListIcon.svg'
 import BackButton from './backbutton.svg'
+import BlueDot from './blue.svg'
+import CalenderIcon from './calendericon.svg'
 import IconCancelSvg from './cancel.svg'
 import ChatGPTSvg from './chatgpt.svg'
 import CloseSearchSvg from './closeSearch.svg'
 import CookieIcon from './cookieIcon.svg'
 import CourseListIcon from './course-icon.svg'
-// import  DraftIcon from './draftIcon.svg';
-import AssetManagerIcon from './DashBoardBoostContent/AssetManager.svg'
-import EcommerceIcon from './DashBoardBoostContent/Ecommerce.svg'
-import LoyalityIcon from './DashBoardBoostContent/Loyality.svg'
-import PersonalisationIcon from './DashBoardBoostContent/Personalisation.svg'
-import ReportsIcon from './DashBoardBoostContent/Reports&Analytics.svg'
-import CommunityIcon from './DashBoardBoostContent/community.svg'
-import EventsListIcon5 from './Event.svg'
-import ProgressIcon from './Frame.svg'
-import NoContentFoundSvg from './NoContentFound.svg'
-import BookIcon from './ReadBook.svg'
-import RedBlinkingDot from './RedBlinkingDot.gif'
-import AccountBalanceWalletIcon from './account_balance_wallet.svg'
-import warning from './activeUserIcon.svg'
-import BlueDot from './blue.svg'
-import CalenderIcon from './calendericon.svg'
 import DraftIcon from './draftIcon.svg'
 import DraftStatusIcon from './draftStatusIcon.svg'
 import EditIcon from './editIcon.svg'
@@ -98,13 +90,24 @@ import {
 import SearchGraySvg from './searchGray.svg'
 import SearchIcon from './searchiconnn.svg'
 import IconListViewSvg from './sideMenuListView.svg'
-import TaskNotFoundIcon from './taskNotFoundIcon.svg'
 import IconTimerSvg from './timerIcon.svg'
 import TotalrevIcon from './totalrev.svg'
 import IconTwitterLogoIconSvg from './twitterLogoIcon.svg'
 import UnpublishedStatusIcon from './unpublishStatusIcon.svg'
 import VideoIcon from './videoicon.svg'
 import VODListIcon from './vodListIcon.svg'
+// import  DraftIcon from './draftIcon.svg';
+import AssetManagerIcon from './DashBoardBoostContent/AssetManager.svg'
+import EcommerceIcon from './DashBoardBoostContent/Ecommerce.svg'
+import LoyalityIcon from './DashBoardBoostContent/Loyality.svg'
+import PersonalisationIcon from './DashBoardBoostContent/Personalisation.svg'
+import ReportsIcon from './DashBoardBoostContent/Reports&Analytics.svg'
+import CommunityIcon from './DashBoardBoostContent/community.svg'
+import ProgressIcon from './Frame.svg'
+import BookIcon from './ReadBook.svg'
+import AccountBalanceWalletIcon from './account_balance_wallet.svg'
+import EventsListIcon5 from './eventsListIcon5.svg'
+import TaskNotFoundIcon from './taskNotFoundIcon.svg'
 import WarningIcon from './warningIcon.svg'
 import WorkflowDetails from './workflow.svg'
 import WorkflowIcon from './workflowIcon.svg'
@@ -135,6 +138,7 @@ export {
   Challenge_community,
   ChatGPTSvg,
   CloseSearchSvg,
+  CommentPlaceHolder,
   CommunityIcon,
   CookieIcon,
   CopyIcon,
@@ -168,7 +172,6 @@ export {
   IconTwitterLogoIconSvg,
   InsertIcon,
   LoyalityIcon,
-  // Logo,
   MediaIcon,
   MenuIcon,
   MobileMenuIconSvg,
@@ -193,6 +196,7 @@ export {
   QuizListIcon,
   RedBlinkingDot,
   RedDot,
+  ReplyIcon,
   ReportsIcon,
   SaveNewIcon,
   SchedulePublishIcon,
@@ -202,6 +206,7 @@ export {
   SearchBlackSvg,
   SearchGraySvg,
   SearchIcon,
+  SendIcon,
   SettingNewIcon,
   SitesIcon,
   SpaceListIcon,

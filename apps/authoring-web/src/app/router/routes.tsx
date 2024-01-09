@@ -1,11 +1,12 @@
 import { Dashboard } from '@platformx/dashboard'
-import { UserListing } from '@platformx/user-management'
+import { CreateUser, UserListing } from '@platformx/user-management'
 import {
   WorkflowDetails,
   WorkflowManagement,
 } from '@platformx/workflow-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
+
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -59,6 +60,20 @@ export const routes: RouteConfig[] = [
     element: (
       <ProtectedRoute name="article" subCategory="article" category="content">
         <WorkflowDetails />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: 'user-management/user-create',
+    element: (
+      <ProtectedRoute
+        name="user"
+        category="UserManagement"
+        subCategory=""
+        isHeader={false}
+        isSideBar={false}
+      >
+        <CreateUser />
       </ProtectedRoute>
     ),
   },

@@ -20,7 +20,6 @@ import { useNavigate } from 'react-router-dom'
 import {
   DialogBoxContentProps,
   UserManagementQueries,
-  useDialog,
 } from '@platformx/authoring-apis'
 import {
   BasicSwitch,
@@ -68,7 +67,7 @@ const ListView = ({
   const [isLoading, setIsLoading] = useState(false)
   const [openDialog, setOpenDialog] = useState(false)
   const open = Boolean(anchorEl)
-  const dialog = useDialog()
+  // const dialog = useDialog();
   const [checked, setChecked] = useState(enabled)
   const [isDelete, setIsDelete] = useState(false)
   // const role: string = localStorage.getItem('role');
@@ -161,7 +160,7 @@ const ListView = ({
       SubTitle2: checked ? t('deactivate_subtitle2') : t('activate_subtitle2'),
     }
 
-    dialog.show(dialogContent, handleConfirm, handleDialogClose)
+    // dialog.show(dialogContent, handleConfirm, handleDialogClose);
   }
 
   const handleApproveReject = async (actionType: string) => {
@@ -199,7 +198,7 @@ const ListView = ({
       RightButtonText: t('resend_text_right_button'),
       SubTitle2: `${t('resend_subtitle_post')}`,
     }
-    dialog.show(dialogContent, handleconfirmResend, handleDialogClose)
+    // dialog.show(dialogContent, handleconfirmResend, handleDialogClose);
   }
 
   const navigate = useNavigate()

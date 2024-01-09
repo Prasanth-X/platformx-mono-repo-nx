@@ -1,3 +1,4 @@
+import { withStyles } from '@material-ui/core/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import {
   Autocomplete,
@@ -11,7 +12,6 @@ import {
   Typography,
 } from '@mui/material'
 import Select from '@mui/material/Select'
-import { withStyles } from '@mui/styles'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -449,7 +449,8 @@ const UserDetails = ({
                     startAdornment: (
                       <InputAdornment position="start">
                         <img
-                          src={require(`../../../assets/${flag}_flag.png`)}
+                          // src={require(`../../../assets/${flag}_flag.png`)}
+                          src={require(`../../../../../utilities/src/lib/assets/${flag}_flag.png`)}
                           style={{
                             objectFit: 'cover',
                             width: '24px',

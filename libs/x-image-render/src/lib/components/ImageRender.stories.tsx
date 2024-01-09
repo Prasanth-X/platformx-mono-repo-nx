@@ -1,23 +1,20 @@
-import type { Meta, StoryObj } from '@storybook/react';
+// src/components/ImageRender/ImageRender.stories.tsx
 
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import React from 'react';
 import ImageRender from './ImageRender';
-const meta: Meta<typeof ImageRender> = {
+import { action } from '@storybook/addon-actions';
+
+export default {
+  title: 'ImageRender',
   component: ImageRender,
-  title: 'CommonImageRender',
-};
-export default meta;
-type Story = StoryObj<typeof ImageRender>;
-
-export const Primary = {
-  args: {},
 };
 
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to ImageRender!/gi)).toBeTruthy();
-  },
+const Template = (args) => <ImageRender {...args} />;
+
+export const Default: any = Template.bind({});
+Default.args = {
+  content: { Thumbnail: 'https://example.com/default-thumbnail.jpg', bitStreamId: '12345' },
+  updateField: action('updateField'),
+  originalImage: { original_image_relative_path: '', bitStreamId: '12345', auto: false, ext: 'jpg', visibility: 'public' },
+  publishedImages: [],
 };

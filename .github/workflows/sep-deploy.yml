@@ -1,0 +1,77 @@
+name: ci-cd
+
+on:
+  push:
+    branches:
+      - develop
+      - qa
+      - master
+
+jobs:
+  deploy-authoring-web:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set Environment Variables
+        run: |
+          echo "CLUSTER_NAME=your-gke-cluster-name" >> $GITHUB_ENV
+          echo "NAMESPACE=authoring-web-namespace" >> $GITHUB_ENV
+          # Add other environment variables as needed
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@v0.4.0
+        with:
+          service_account_key: ${{ secrets.GCP_CREDENTIALS_JSON }}
+          project_id: your-gcp-project-id
+
+      - name: Authenticate with GKE
+        uses: google-github-actions/auth@v1.0.0
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          token_format: 'access_token'
+
+      - name: Install Nx CLI
+        run: npm install -g @nrwl/nx
+
+      - name: Build affected libraries and deploy authoring-web
+        run: |
+          nx affected --target=build --base=main --head=$GITHUB_SHA
+          nx run authoring-web:deploy --namespace=$NAMESPACE
+
+  deploy-x-user-experience:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set Environment Variables
+        run: |
+          echo "CLUSTER_NAME=your-gke-cluster-name" >> $GITHUB_ENV
+          echo "NAMESPACE=x-user-experience-namespace" >> $GITHUB_ENV
+          # Add other environment variables as needed
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@v0.4.0
+        with:
+          service_account_key: ${{ secrets.GCP_CREDENTIALS_JSON }}
+          project_id: your-gcp-project-id
+
+      - name: Authenticate with GKE
+        uses: google-github-actions/auth@v1.0.0
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          token_format: 'access_token'
+
+      - name: Install Nx CLI
+        run: npm install -g @nrwl/nx
+
+      - name: Build affected libraries and deploy x-user-experience
+        run: |
+          nx affected --target=build --base=main --head=$GITHUB_SHA
+          nx run x-user-experience:deploy --namespace=$NAMESPACE

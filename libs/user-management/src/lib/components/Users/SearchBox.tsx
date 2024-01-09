@@ -4,33 +4,33 @@ import {
   IconButton,
   InputAdornment,
   InputBase,
-} from '@mui/material';
+} from '@mui/material'
 
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { SearchIcon } from '@platformx/utilities';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import './Search.css';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
+import { SearchIcon } from '@platformx/utilities'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import './Search.css'
 
 export default function SearchBox({ handleSearch }: any) {
-  const { t } = useTranslation();
-  const [searchQuery, setSearchQuery] = useState('');
+  const { t } = useTranslation()
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleOnChange = (event: any) => {
-    setSearchQuery(event.target.value);
-  };
+    setSearchQuery(event.target.value)
+  }
   const resetSearch = () => {
-    handleSearch('');
-    setSearchQuery('');
-  };
+    handleSearch('')
+    setSearchQuery('')
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleSearch(searchQuery.toLowerCase());
-    }, 1000);
+      handleSearch(searchQuery.toLowerCase())
+    }, 1000)
 
-    return () => clearTimeout(timer);
-  }, [handleSearch, searchQuery]);
+    return () => clearTimeout(timer)
+  }, [handleSearch, searchQuery])
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function SearchBox({ handleSearch }: any) {
                 edge="start"
                 sx={{ padding: 0, margin: 0 }}
               >
-                <SearchIcon />
+                <img src={SearchIcon}></img>
               </IconButton>
             </InputAdornment>
           }
@@ -83,5 +83,5 @@ export default function SearchBox({ handleSearch }: any) {
         />
       </FormControl>
     </>
-  );
+  )
 }

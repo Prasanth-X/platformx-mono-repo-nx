@@ -9,7 +9,7 @@ import {
   nullToObject
 } from '@platformx/utilities';
 import ImageCrop from './ImageCrop';
-import CommonPictureComponent from './PictureComponent';
+import PictureComponent from './PictureComponent';
 import ShowCaseCrops from './ShowCaseCrops';
 import { useTranslation } from "react-i18next";
 import { usePostImageCrop } from '../hooks/usePostImageCrop';
@@ -182,13 +182,13 @@ const ImageRender = (props: any = {}) => {
         </RoundBox>
       )}
       {manualCropDone && manualCroppedImages.length > 0 ? (
-        <CommonPictureComponent
+        <PictureComponent
           croppedImages={manualCroppedImages}
           imgOrder={imgOrder}
           extension={imageExtension}
         />
       ) : autoCropDone && autoCroppedImages.length > 0 ? (
-        <CommonPictureComponent
+        <PictureComponent
           croppedImages={autoCroppedImages}
           imgOrder={imgOrder}
           extension={imageExtension}
