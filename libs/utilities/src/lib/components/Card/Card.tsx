@@ -10,7 +10,6 @@ import {
   CONTENT_TYPES,
   DASHBOARD_KEYS,
 } from '../../constants/CommonConstants';
-import useAccess from "../../hooks/useAccess/useAccess"
 // import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
 // import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
 // import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
@@ -20,8 +19,6 @@ import useAccess from "../../hooks/useAccess/useAccess"
 //   default as PlateformXDialogDelete,
 // } from '../../../pages/articles/deletePopup'; 
 
-import { iconsList, statusIcons } from './constants';
-import { CardProps } from './List.types';
 // import CardOption from '../CardOption/CardOption';
 // import CommunityOption from '../CommunityOption';
 import './List.css';
@@ -31,6 +28,9 @@ import PlateformXDialog from '../Popups/PlateformXDialog';
 // import CardMenu from '../CardMenu/CardMenu';
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
 import React from 'react';
+import useAccess from '../../hooks/useAccess/useAccess';
+import { CardProps } from './List.types';
+import { iconsList, statusIcons } from './constants';
 
 export const Card = ({
   dataList,

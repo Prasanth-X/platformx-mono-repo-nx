@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { categoryData } from '../../../Utils/constants/layoutConstant';
+import { categoryData } from '../../../../../utils/constant';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu

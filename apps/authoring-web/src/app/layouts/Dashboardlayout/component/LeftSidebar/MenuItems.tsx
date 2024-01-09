@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 // import { Store } from '../../../../store/ContextStore';
-import { headerMenus } from '../../Utils/constants/menuConstants';
+import { headerMenus } from '../../../../utils/constants';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion

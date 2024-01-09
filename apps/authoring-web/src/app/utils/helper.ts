@@ -1,5 +1,3 @@
-
-
 export const hasOwnProp = (obj: object, key: string): boolean => {
   return Object.prototype.hasOwnProperty.call(obj, key);
 };
@@ -19,7 +17,7 @@ export const createSession = (userSession, isActive = false, role: string) => {
     role: role,
     permissions: userSession?.permissions,
     userInfo: userSession,
-  }
+  };
 };
 
 export const getStyleString = (styles) =>
@@ -28,10 +26,10 @@ export const getStyleString = (styles) =>
     .join('; ');
 
 /**
-* string to parse convert
-* @param urijson
-* @returns object
-*/
+ * string to parse convert
+ * @param urijson
+ * @returns object
+ */
 export const uriToJSON = (urijson) => {
   if (urijson) {
     return JSON.parse(urijson);
@@ -49,5 +47,9 @@ export const defaultFalBackImage = () => {
   return `${gcpUrl}/${BucketName}/${defaultImage}`;
 };
 
-
- 
+export const removeSearchLocalStorage = () => {
+  localStorage.removeItem('contentType');
+  localStorage.removeItem('searchKeyword');
+  localStorage.removeItem('searchTags');
+  localStorage.removeItem('author');
+};

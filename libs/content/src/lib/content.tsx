@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ContListingContainer from './components/ContentListingContainer/ContentListingContainer';
-
 export default function Content() {
   const dispatch = useDispatch();
   const { canAccessAction } = useAccess();

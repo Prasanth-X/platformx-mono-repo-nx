@@ -7,7 +7,7 @@ import { contentTypeAPIs } from '@platformx/authoring-apis';
 import { SORT_ORDER, debounce } from '@platformx/utilities';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { iconMap } from '../../../Utils/constants/layoutConstant';
+import { iconMap } from '../../../../../utils/constant';
 
 const TextFieldBox = styled('div')({
   position: 'relative',
