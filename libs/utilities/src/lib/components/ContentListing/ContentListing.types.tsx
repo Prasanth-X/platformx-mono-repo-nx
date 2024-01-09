@@ -1,5 +1,6 @@
 
 export type ContentListingProps = {
+    CustomMenuList: React.ComponentType<any>;
     siteList?: any;
     contentType?: string;
     contentList?: any;

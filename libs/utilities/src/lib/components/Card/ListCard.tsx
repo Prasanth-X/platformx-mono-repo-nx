@@ -30,11 +30,11 @@ import PlateformXDialog from '../Popups/PlateformXDialog';
 
 // import { CourseMenu } from '../CourseMenu/CourseMenu';
 // import CardMenu from '../CardMenu/CardMenu';
-import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
+// import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
 import React from 'react';
 
 export const ListCard = ({
-  CustomComponent,
+  CustomMenuList,
   dataList,
   deleteContent,
   duplicate,
@@ -213,8 +213,8 @@ export const ListCard = ({
 
   return (
     <>
-      {/* {isDelete && renderConfirmation()} */}
-      {isDelete && <CustomComponent />}
+      {isDelete && renderConfirmation()}
+
       <Box className="listbox">
         <Grid container className="d-flex align-items-center">
           <Grid item xs={11} md={11} em={5} lg={7} xl={8} pr="20px">
@@ -391,26 +391,27 @@ export const ListCard = ({
                 tagName === 'event' ||
                 tagName === 'vod' ||
                 tagName === 'article') && (
-                  <QuizPollEventMenu
-                    deleteContent={deleteContent}
-                    duplicate={duplicate}
-                    preview={preview}
-                    unPublish={unPublish}
-                    view={view}
-                    edit={edit}
-                    anchorEl={anchorEl}
-                    open={open}
-                    handleClose={() => {
-                      setAnchorEl(null);
-                    }}
-                    contentType={tagName}
-                    listItemDetails={dataList}
-                    category={CATEGORY_CONTENT}
-                    subCategory={CONTENT_TYPES}
-                    fetchContentDetails={fetchContentDetails}
-                    siteList={siteList}
-                    duplicateToSite={duplicateToSite}
-                  />
+                  // <QuizPollEventMenu
+                  //   deleteContent={deleteContent}
+                  //   duplicate={duplicate}
+                  //   preview={preview}
+                  //   unPublish={unPublish}
+                  //   view={view}
+                  //   edit={edit}
+                  //   anchorEl={anchorEl}
+                  //   open={open}
+                  //   handleClose={() => {
+                  //     setAnchorEl(null);
+                  //   }}
+                  //   contentType={tagName}
+                  //   listItemDetails={dataList}
+                  //   category={CATEGORY_CONTENT}
+                  //   subCategory={CONTENT_TYPES}
+                  //   fetchContentDetails={fetchContentDetails}
+                  //   siteList={siteList}
+                  //   duplicateToSite={duplicateToSite}
+                  // />
+                  <CustomMenuList />
                 )}
               {/* {tagName === 'courses' && (
                 <CourseMenu

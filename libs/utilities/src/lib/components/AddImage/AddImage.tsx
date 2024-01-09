@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ArrowUpwardIcon from '../../assets/svg/UploadThumbnail.svg';
 import ThemeConstants from '../../themes/authoring/variable';
-import CommonImageRender from '../Gallery/CommonImageRender';
+// import CommonImageRender from '../Gallery/CommonImageRender';
 
 interface ImageProps {
   url?: any;
@@ -54,21 +54,22 @@ const AddImage = ({
           mb={2}
         >
           {isShowCrop ? (
-            <CommonImageRender
-              content={content}
-              imgOrder={{
-                1440: 'hero',
-                1280: 'landscape',
-                1024: 'card2',
-                768: 'square',
-                600: 'card2',
-                320: 'card2',
-              }}
-              updateField={updateField}
-              originalImage={originalImage}
-              publishedImages={publishedImages}
-              operationType={operationType}
-            />
+            // <CommonImageRender
+            //   content={content}
+            //   imgOrder={{
+            //     1440: 'hero',
+            //     1280: 'landscape',
+            //     1024: 'card2',
+            //     768: 'square',
+            //     600: 'card2',
+            //     320: 'card2',
+            //   }}
+            //   updateField={updateField}
+            //   originalImage={originalImage}
+            //   publishedImages={publishedImages}
+            //   operationType={operationType}
+            // />
+            <div>CommonImageRender</div>
           ) : (
             <img
               style={{

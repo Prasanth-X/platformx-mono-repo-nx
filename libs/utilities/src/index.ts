@@ -5,7 +5,7 @@ import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
 import DatePicker from './lib/components/DatePicker/DatePicker';
 import Error from './lib/components/Error/Error';
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
-import CommonImageRender from './lib/components/Gallery/CommonImageRender';
+// import CommonImageRender from './lib/components/Gallery/CommonImageRender';
 import { MiniHeader } from './lib/components/Header/MiniHeader';
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown';
 import ContentListLoader from './lib/components/Loader/ContentListLoader';
@@ -102,7 +102,7 @@ export {
   AutoTextArea,
   BasicSwitch,
   CommonBoxWithNumber,
-  CommonImageRender,
+  // CommonImageRender,
   Error,
   LOGOUT_URL,
   Loader,

@@ -3,8 +3,7 @@ import Typography from '@mui/material/Typography';
 import EmbedDesktopTabCard from 'platform-x-prelems/prelems/EmbedDesktopTabCard';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getSubDomain } from '@platformx/utilities';
-import SkeltonLoader from '../SkeltonLoader/SkeltonLoader';
+import { getSubDomain, SkeltonLoader } from '@platformx/utilities';
 
 const CardContent = ({ selectedItem, contentType }) => {
   const { t, i18n } = useTranslation();
@@ -18,9 +17,8 @@ const CardContent = ({ selectedItem, contentType }) => {
   const pageURL =
     `${getSubDomain()}/${i18n.language}/` +
     `embed/${contentType}/${selectedItem?.Page}`;
-  const landingPageURL = `${getSubDomain()}/${i18n.language}/${contentType}/${
-    selectedItem?.Page
-  }`;
+  const landingPageURL = `${getSubDomain()}/${i18n.language}/${contentType}/${selectedItem?.Page
+    }`;
 
   const content = {
     Title: selectedItem?.Title,

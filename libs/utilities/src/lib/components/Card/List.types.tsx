@@ -1,19 +1,13 @@
+import React from "react";
 
 
 export type CardProps = {
-  CustomComponent?: any;
+  CustomMenuList: React.ComponentType<any>;
   contentType?: string;
   siteList: any;
   dataList: any;
   deleteContent?: (content: any) => void;
-  duplicate?: (
-    content: any,
-    isDuplicate: boolean,
-    title: string,
-    language: string
-  ) => void;
-  // duplicate: (isDuplicate: boolean, title: string, language: any, selectedContent: any) => void;
-
+  duplicate: (isDuplicate: boolean, title: string, language: any, selectedContent: any) => void;
   preview?: (content: any) => void;
   unPublish?: (content: any) => void;
   view?: (content: any) => void;

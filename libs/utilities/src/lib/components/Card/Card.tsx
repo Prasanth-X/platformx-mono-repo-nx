@@ -26,13 +26,14 @@ import './List.css';
 import PlateformXDialog from '../Popups/PlateformXDialog';
 // import { CourseMenu } from '../CourseMenu/CourseMenu';
 // import CardMenu from '../CardMenu/CardMenu';
-import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
+// import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
 import React from 'react';
 import useAccess from '../../hooks/useAccess/useAccess';
 import { CardProps } from './List.types';
 import { iconsList, statusIcons } from './constants';
 
 export const Card = ({
+  CustomMenuList,
   dataList,
   deleteContent,
   duplicate,
@@ -382,8 +383,10 @@ export const Card = ({
                   handlePageDelete={handlePageDelete}
                 ></CardMenu>
               )} */}
-
-              {(tagName === 'quiz' ||
+              {
+                <CustomMenuList />
+              }
+              {/* {(tagName === 'quiz' ||
                 tagName === 'poll' ||
                 tagName === 'event' ||
                 tagName === 'vod' ||
@@ -408,7 +411,7 @@ export const Card = ({
                     siteList={siteList}
                     duplicateToSite={duplicateToSite}
                   />
-                )}
+                )} */}
               {/* {tagName === 'courses' && (
                 <CourseMenu
                   deleteContent={deleteContent}

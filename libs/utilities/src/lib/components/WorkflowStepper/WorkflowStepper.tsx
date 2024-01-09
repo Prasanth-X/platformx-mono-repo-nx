@@ -8,17 +8,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { articleApi } from '@platformx/authoring-apis';
-import { XLoader, capitalizeFirstLetter } from '@platformx/utilities';
+// import { articleApi } from '@platformx/authoring-apis';
+import XLoader from '../XLoader/XLoader';
 import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper';
-import { TaskNotFound } from '@platformx/utilities';
+import TaskNotFound from '../TaskNotFound/TaskNotFound';
+import { capitalizeFirstLetter } from '../../utils/helperFns';
 type WorkflowStepperProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
   path: string;
   contentType: string;
 };
-const WorkflowStepper = ({
+export const WorkflowStepper = ({
   open,
   setOpen,
   path,
@@ -33,13 +34,14 @@ const WorkflowStepper = ({
 
   const getStages = async () => {
     try {
-      const response: any = await articleApi.fetchArticleDetails({
-        contentType: capitalizeFirstLetter(contentType),
-        path: path,
-      });
-      if (response?.authoring_getCmsContentByPath?.stages) {
-        setStages(response.authoring_getCmsContentByPath.stages);
-      }
+      const response: any = {}
+      //  await articleApi.fetchArticleDetails({
+      //   contentType: capitalizeFirstLetter(contentType),
+      //   path: path,
+      // });
+      // if (response?.authoring_getCmsContentByPath?.stages) {
+      //   setStages(response.authoring_getCmsContentByPath.stages);
+      // }
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -83,11 +85,11 @@ const WorkflowStepper = ({
                   {stage.state === 'request_review'
                     ? lineBreak('Request', stage.user_name)
                     : stage.status === 'Completed'
-                    ? lineBreak(
+                      ? lineBreak(
                         `${capitalizeFirstLetter(stage.role)} Approved`,
                         stage.user_name
                       )
-                    : lineBreak(
+                      : lineBreak(
                         `${capitalizeFirstLetter(stage.role)} ${stage.status}`,
                         stage.user_name
                       )}
@@ -99,6 +101,4 @@ const WorkflowStepper = ({
       </DialogContent>
     </Dialog>
   );
-};
-
-export default WorkflowStepper;
+}; 

@@ -3,7 +3,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { DeletePopup, PlateformXDialogSuccess } from '@platformx/utilities';
+import { PlateformXDialog, PlateformXDialogSuccess } from '@platformx/utilities';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import imageUrl from '../../../assets/images/testimonial.png';
@@ -43,7 +43,7 @@ const UserDetails = () => {
   };
   const successPopup = {
     successTitle: 'User Created Successfully!',
-    successDescription: `We send an invitation e-mail to the “rkaushal@hello.com”. Users need to accept the invitation by clicking the “Activate Your Account” link in the e-mail address.`,
+    successDescription: `We send an invitation e-mail to the “rkaushal@hello.com”. Users need to accept the invitation by clicking the “Activate Your Account link in the e-mail address.`,
     successCloseText: 'Go to Listing',
     successConfirmText: 'Create Another',
   };
@@ -236,7 +236,7 @@ const UserDetails = () => {
         </Grid>
       </Box>
       {open && (
-        <DeletePopup
+        <PlateformXDialog
           isDialogOpen={open}
           closeButtonHandle={handleClose}
           confirmButtonHandle={deleteConfirmButtonHandle}

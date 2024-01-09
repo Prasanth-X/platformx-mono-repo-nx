@@ -38,7 +38,8 @@ const ContentListing = ({
   handlePageDelete,
   fetchContentDetails,
   duplicateToSite,
-  siteList
+  siteList,
+  CustomMenuList
 }: ContentListingProps) => {
 
   const [getSession] = useUserSession();
@@ -155,7 +156,7 @@ const ContentListing = ({
               return (
                 <Box key={index}>
                   <Card
-
+                    CustomMenuList={CustomMenuList}
                     dataList={
                       contentType == 'Course'
                         ? makeCourseContentData(item)
