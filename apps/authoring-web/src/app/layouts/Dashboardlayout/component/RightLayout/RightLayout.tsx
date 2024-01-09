@@ -30,10 +30,10 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-      marginLeft: '0px',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: '100%',
+    //   marginLeft: '0px',
+    // },
   }),
 }));
 

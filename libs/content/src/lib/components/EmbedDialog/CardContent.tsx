@@ -1,12 +1,12 @@
 import { Box, Button, Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import EmbedDesktopTabCard from 'platform-x-prelems/prelems/EmbedDesktopTabCard';
+import { EmbedDesktopTabCard } from '@platformx/prelems-library';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getSubDomain } from '@platformx/utilities';
 import SkeltonLoader from '../SkeltonLoader/SkeltonLoader';
 
-const CardContent = ({ selectedItem, contentType }) => {
+const CardContent = ({ selectedItem, contentType }: any) => {
   const { t, i18n } = useTranslation();
   const [value, setValue] = React.useState(0);
   const [copyStatus, setICopyStatus] = useState<boolean>(false);

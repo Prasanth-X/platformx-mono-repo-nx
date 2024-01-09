@@ -1,24 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/react';
+// src/components/ShowCaseCrops/ShowCaseCrops.stories.tsx
 
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import React from 'react';
 import ShowCaseCrops from './ShowCaseCrops';
 
-const meta: Meta<typeof ShowCaseCrops> = {
-  component: ShowCaseCrops,
+export default {
   title: 'ShowCaseCrops',
-};
-export default meta;
-type Story = StoryObj<typeof ShowCaseCrops>;
-
-export const Primary = {
-  args: {},
+  component: ShowCaseCrops,
 };
 
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to ShowCaseCrops!/gi)).toBeTruthy();
-  },
+const Template = (args) => <ShowCaseCrops {...args} />;
+
+const images = [
+  { visibility: 'public', folder_path: '/path/to/image1', aspect_ratio: '16:9' },
+  { visibility: 'public', folder_path: '/path/to/image2', aspect_ratio: '4:3' },
+  // Add more sample data as needed
+];
+
+export const Default: any = Template.bind({});
+Default.args = {
+  open: true,
+  Images: images,
+  backTo: () => console.log('BackTo clicked'),
+  handleEdit: () => console.log('Edit clicked'),
+  extension: 'jpg',
 };

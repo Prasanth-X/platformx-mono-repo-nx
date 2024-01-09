@@ -18,6 +18,7 @@ import { mapFetchALL } from './mapper';
 import { sortedData } from '../../utils/helper';
 
 // FetchQueries 
+export const fetchContentByPath = FETCH_CONTENT_BY_PATH;
 export const fetchContentTypeList = FETCH_CONTENT_TYPE_LIST_ALL;
 
 // MutateQueries

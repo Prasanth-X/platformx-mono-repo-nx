@@ -9,6 +9,15 @@ import {
 import { LanguageList, countries } from './helperConstants';
 import { Props } from './types';
 
+const siteLevelSchema = {
+  "siteName":"X",
+  "siteURL":"https://platform-x.com",
+  "siteDescription":"Lorem Ipsum is simply dummy text of the printing",
+  "siteImage":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fuicookies.com%2Ffree-html-contact-forms%2F&psig=AOvVaw2eVA8o8PsBkQZBaD49Qxf7&ust=1646374746446000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC60qamqfYCFQAAAAAdAAAAABAO",
+  "facebookAppId":"Platform-X",
+  "twitterAppId":"Platform-X"
+};
+
 const errorRequest =
   'We have not been able to complete the requested action. Please try again later';
 const headerData = {
@@ -506,7 +515,7 @@ export const dateTimeFormat = (dataTime: any = '') => {
   if (dataTime) {
     const assign: any = new Date(dataTime);
     if (assign !== 'Invalid Date' && !isNaN(assign)) {
-      return format(new Date(dataTime), 'LLL dd, yyyy | H:mm');
+      return format(new Date(dataTime), 'LLL dd, yyyy | H:mm a');
     }
     return dataTime;
   }
@@ -753,9 +762,69 @@ declare namespace Intl {
     | 'numberingSystem'
     | 'timeZone'
     | 'unit';
+    function supportedValuesOf(input: Key): string[];
+  };
 
-  function supportedValuesOf(input: Key): string[];
+//Set page settings wit default values on page creation
+export function setDefaultPageSettings(
+  name: string,
+  description?: string,
+  tags?: string[],
+  url?: string,
+) {
+  return {
+    PageName: name,
+    PageDescription: description != undefined ? description : "",
+    PageTags: tags != undefined ? [...tags] : [],
+    PageURL: url != undefined ? url : "",
+    PageViewer: "",
+    PageCaching: false,
+    PageMobileFriendly: false,
+    SeoTitle: `${name} | ${siteLevelSchema.siteName}`,
+    SeoDescription: description != undefined ? description : "",
+    SeoKeywords: tags != undefined ? [...tags] : [],
+    SeoBlockIndexing: false,
+    SocialOgTitle: `${name} | ${siteLevelSchema.siteName}`,
+    SocialOgDescription: description != undefined ? description : "",
+    SocialOgSiteName: `${name} | ${siteLevelSchema.siteName}`,
+    SocialOgType: "Website",
+    SocialOgURL: url != undefined ? url : "",
+    SocialOgLocale: "en_US",
+    SocialOgImage: "",
+    SocialOgTwitterTitle: `${name} | ${siteLevelSchema.siteName}`,
+    SocialOgTwitterDescription: description != undefined ? description : "",
+    SocialOgTwitterImage: "",
+    SocialOgTwitterURL: url != undefined ? url : "",
+    SocialTwitterCardSize: "summary_large_image",
+  };
 }
+
+export const formatChildren = (children: any, content: any) => {
+  const Children: any = [];
+  for (let i = 0; i < children.length; i++) {
+    const instance = { ...children[i] };
+    delete instance.__typename;
+    instance.content = content[instance.DocumentPath];
+    Children.push(instance);
+  }
+  return Children;
+}; 
+
+export const formatContentTitle = (title = '') => {
+  return title
+    ?.replace(/[_-]/g, ' ')
+    ?.replace(/([a-z])([0-9])/gi, '$1 $2')
+    ?.replace(/([0-9])([a-z])/gi, '$1 $2')
+    ?.replace(/([a-z])([A-Z])/g, '$1 $2');
+};
+
+export const capitalizeWords = (title = '') => {
+  return title
+    .toLowerCase()
+    .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
+};
+
+
 export const timeZoneData = () => {
   return Intl.supportedValuesOf('timeZone');
 };
@@ -779,18 +848,4 @@ export const getUniqueTimeZone = () => {
       index === self.findIndex((x: any) => x.time === item.time)
   );
   return data;
-};
-
-export const formatContentTitle = (title = '') => {
-  return title
-    ?.replace(/[_-]/g, ' ')
-    ?.replace(/([a-z])([0-9])/gi, '$1 $2')
-    ?.replace(/([0-9])([a-z])/gi, '$1 $2')
-    ?.replace(/([a-z])([A-Z])/g, '$1 $2');
-};
-
-export const capitalizeWords = (title = '') => {
-  return title
-    .toLowerCase()
-    .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
 };

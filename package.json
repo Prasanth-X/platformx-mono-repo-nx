@@ -2,7 +2,11 @@
   "name": "@platformx/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "storybook:build:all": "nx run-many --target=build-storybook --all",
+    "storybook:build:utilities": "nx run utilities:build-storybook",
+    "storybook:deploy": "npm run storybook:build:utilities && gh-pages -d dist/storybook"
+  },
   "private": true,
   "dependencies": {
     "@analytics/google-analytics": "^1.0.7",
@@ -77,6 +81,7 @@
     "platform-x-utils": "3.4.42",
     "prettier": "^2.8.8",
     "quill-delta": "^5.0.0",
+    "reacharts": "^0.4.5",
     "react": "18.2.0",
     "react-advanced-cropper": "^0.19.2",
     "react-beautiful-dnd": "^13.1.1",
@@ -106,6 +111,7 @@
     "react-toastify": "^8.2.0",
     "react-twitter-embed": "^4.0.4",
     "react-use": "^17.3.2",
+    "recharts": "^2.10.3",
     "slick-carousel": "^1.8.1",
     "styled-components": "5.3.6",
     "tslib": "^2.3.0",

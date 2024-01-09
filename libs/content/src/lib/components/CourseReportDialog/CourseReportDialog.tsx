@@ -18,7 +18,7 @@ export const CourseReportDialog = ({
   isDialogOpen,
   handleClose,
   courseTitle,
-}) => {
+}: any) => {
   return (
     <Dialog onClose={handleClose} open={isDialogOpen} maxWidth="em">
       <DialogTitle>

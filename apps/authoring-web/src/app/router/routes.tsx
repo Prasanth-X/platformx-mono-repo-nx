@@ -1,6 +1,8 @@
+import { Dashboard } from '@platformx/dashboard'
 import { CreateUser, UserListing } from '@platformx/user-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
+
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -11,7 +13,7 @@ export const routes: RouteConfig[] = [
         name="dashboard"
       >
         {' '}
-        Home{' '}
+        <Dashboard />{' '}
       </ProtectedRoute>
     ),
   },
@@ -24,7 +26,7 @@ export const routes: RouteConfig[] = [
         name="dashboard"
       >
         {' '}
-        Home{' '}
+        <Dashboard />{' '}
       </ProtectedRoute>
     ),
   },

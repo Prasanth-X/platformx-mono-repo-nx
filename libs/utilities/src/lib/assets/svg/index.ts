@@ -96,7 +96,25 @@ import IconTwitterLogoIconSvg from './twitterLogoIcon.svg'
 import UnpublishedStatusIcon from './unpublishStatusIcon.svg'
 import VideoIcon from './videoicon.svg'
 import VODListIcon from './vodListIcon.svg'
+// import  DraftIcon from './draftIcon.svg';
+import AssetManagerIcon from './DashBoardBoostContent/AssetManager.svg'
+import EcommerceIcon from './DashBoardBoostContent/Ecommerce.svg'
+import LoyalityIcon from './DashBoardBoostContent/Loyality.svg'
+import PersonalisationIcon from './DashBoardBoostContent/Personalisation.svg'
+import ReportsIcon from './DashBoardBoostContent/Reports&Analytics.svg'
+import CommunityIcon from './DashBoardBoostContent/community.svg'
+import ProgressIcon from './Frame.svg'
+import BookIcon from './ReadBook.svg'
+import AccountBalanceWalletIcon from './account_balance_wallet.svg'
+import CalenderIcon from './calendericon.svg'
+import GradeIcon from './grade.svg'
+import InsertIcon from './inserticon.svg'
+import TaskNotFoundIcon from './taskNotFoundIcon.svg'
+import TotalrevIcon from './totalrev.svg'
+import WarningIcon from './warningIcon.svg'
+
 export {
+  AccountBalanceWalletIcon,
   AiSvg,
   AiSvg2,
   AiSvgDisabled,
@@ -104,8 +122,11 @@ export {
   ApprovalStatus,
   ArticleIcon,
   ArticleListIcon,
+  AssetManagerIcon,
   BackButton,
   BlueDot,
+  BookIcon,
+  CalenderIcon,
   CardOptionApprovalStatusIcon,
   CardOptionCopyUrlIcon,
   CardOptionDeleteIcon,
@@ -119,6 +140,7 @@ export {
   ChatGPTSvg,
   CloseSearchSvg,
   CommentPlaceHolder,
+  CommunityIcon,
   CookieIcon,
   CopyIcon,
   CourseIcon,
@@ -127,6 +149,7 @@ export {
   DeleteIcon,
   DraftIcon,
   DraftStatusIcon,
+  EcommerceIcon,
   EditIcon,
   EventsIcon,
   EventsListIcon,
@@ -135,6 +158,7 @@ export {
   FilterIcon,
   FooterMenuUpdated,
   General_community,
+  GradeIcon,
   GreenDot,
   HamburgerMenuIcon,
   HeaderMenuUpdated,
@@ -147,6 +171,8 @@ export {
   IconRescheduleSvg,
   IconTimerSvg,
   IconTwitterLogoIconSvg,
+  InsertIcon,
+  LoyalityIcon,
   MediaIcon,
   MenuIcon,
   MobileMenuIconSvg,
@@ -156,6 +182,7 @@ export {
   NoContentFoundSvg,
   PagesIcon,
   PagesListIcon,
+  PersonalisationIcon,
   PlatXLogo,
   PlatXLogoWhite,
   PollIcon,
@@ -163,6 +190,7 @@ export {
   PostIconMenu,
   PostsIcon,
   PreviewNewIcon,
+  ProgressIcon,
   PublishedIcon,
   PublishedStatusIcon,
   QuizIcon,
@@ -170,6 +198,7 @@ export {
   RedBlinkingDot,
   RedDot,
   ReplyIcon,
+  ReportsIcon,
   SaveNewIcon,
   SchedulePublishIcon,
   SchedulePublishStatusIcon,
@@ -184,11 +213,14 @@ export {
   SpaceListIcon,
   SpacePrivateIcon,
   SpacePublicIcon,
+  TaskNotFoundIcon,
+  TotalrevIcon,
   UnpublishedStatusIcon,
   UsersIcon,
   VODIcon,
   VODListIcon,
   VideoIcon,
+  WarningIcon,
   warning,
   warningIcon,
 }

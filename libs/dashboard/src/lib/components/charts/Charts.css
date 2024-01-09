@@ -1,0 +1,57 @@
+.pageGraph .noxyAxsis .recharts-cartesian-axis-line,
+.noxyAxsis .recharts-cartesian-axis-tick-line {
+  display: none;
+}
+.pageGraph .recharts-default-tooltip {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 12px;
+  /* max-height: 420px;
+  overflow: auto; */
+}
+.pageGraph .recharts-wrapper {
+  /* border: 1px solid #ced3d9;
+  border-radius: 4px; */
+}
+.pageGraph {
+  margin-left: 16px;
+  border: 1px solid #ced3d9;
+  border-radius: 4px;
+  padding: 10px 10px 10px 0;
+}
+.pageGraph .heading {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 10px 0px 10px;
+}
+.recharts-legend-wrapper.pie .recharts-default-legend {
+  padding: 0;
+  margin: 0;
+}
+.recharts-legend-wrapper.pie {
+  margin-top: -20px;
+  text-align: center;
+}
+.recharts-legend-wrapper.pie ul li {
+  list-style-type: none;
+  display: inline-flex;
+  margin-right: 10px;
+}
+.recharts-legend-wrapper.pie ul li .boxshape {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  float: left;
+}
+.recharts-legend-wrapper.pie ul li .text,
+.recharts-text recharts-label {
+  font-size: 12px;
+}
+
+.pieChartneedle.pageGraph {
+  padding-right: 0;
+}
