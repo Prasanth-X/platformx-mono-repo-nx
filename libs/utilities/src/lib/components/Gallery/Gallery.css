@@ -62,7 +62,7 @@
 }
 .cropper {
   height: 400px;
-  background: url('../../assets/transicon.jpg') !important;
+  /* background: url('../../assets/transicon.jpg') !important; */
 }
 @media (max-width: 1023px) and (min-width: 768px) {
   .casecropsbox .boxwp {

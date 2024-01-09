@@ -50,6 +50,7 @@ import { getUniqueTimeZone } from './lib/utils/helperFns';
 import { NoContentFound } from "./lib/components/NoContentFound/NoContentFound";
 import { ArticleMapper } from './lib/mappers/articleMapper';
 import DeletePopup from './lib/components/Popups/PlateformXDialog';
+import Gallery from './lib/components/Gallery/Gallery';
 
 export * from './lib/assets/svg';
 export * from './lib/components';
@@ -127,4 +128,5 @@ export {
   NoContentFound,
   DeletePopup,
   ArticleMapper,
+  Gallery
 };
