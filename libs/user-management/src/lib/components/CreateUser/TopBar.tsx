@@ -1,9 +1,9 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { Box, Button, Divider, Tooltip, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import Logo from '../../../assets/images/platform-x-logo.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
+import { Box, Button, Divider, Tooltip, Typography } from '@mui/material'
+import { Logo } from '@platformx/utilities'
+import { useNavigate } from 'react-router-dom'
 
 const TopBar = ({
   returnBack,
@@ -13,8 +13,8 @@ const TopBar = ({
   createText,
   parentToolTip,
 }: any) => {
-  const navigate = useNavigate();
-  console.log('check', createUserDisable, isEmailExists);
+  const navigate = useNavigate()
+  console.log('check', createUserDisable, isEmailExists)
   return (
     <>
       <Box className="createusertophead">
@@ -185,7 +185,7 @@ const TopBar = ({
         </Box>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default TopBar;
+export default TopBar

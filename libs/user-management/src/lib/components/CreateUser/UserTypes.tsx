@@ -1,11 +1,11 @@
-import { Box, Grid, RadioGroup } from '@mui/material';
+import { Box, Grid, RadioGroup } from '@mui/material'
 import {
   CommonBoxWithNumber,
   RadioControlLabel,
   TitleSubTitle,
-} from '@platformx/utilities';
-import React from 'react';
-import { useCustomStyle } from '../../../components/Quiz/Quiz.style';
+} from '@platformx/utilities'
+import React from 'react'
+import { useCustomStyle } from './UserTypes.styles'
 
 export default function UserTypes({
   t,
@@ -24,9 +24,9 @@ export default function UserTypes({
             (event.target as HTMLInputElement).value === t('authoring_user'),
           is_Rendering_User:
             (event.target as HTMLInputElement).value === t('end_user'),
-        };
-      });
-      setRoleSelected('');
+        }
+      })
+      setRoleSelected('')
     } else {
       setState((prevState: any) => {
         return {
@@ -36,11 +36,11 @@ export default function UserTypes({
           is_Rendering_User:
             (event.target as HTMLInputElement).value === t('end_user'),
           is_Community_User: false,
-        };
-      });
+        }
+      })
     }
-  };
-  const classes = useCustomStyle();
+  }
+  const classes = useCustomStyle()
   return (
     <Box className={classes.mainStyleWrapper} id="userTypes">
       <CommonBoxWithNumber
@@ -81,5 +81,5 @@ export default function UserTypes({
         </Grid>
       </CommonBoxWithNumber>
     </Box>
-  );
+  )
 }

@@ -11,17 +11,12 @@ import CardOptionEditIcon from './EditIconOptionMenu.svg'
 import EventsIcon from './EventsIcon.svg'
 import EyeIcon from './Eye.svg'
 import FilterIcon from './FilterIcon.svg'
-import warning from './activeUserIcon.svg'
-import BlueDot from './blue.svg'
-import GreenDot from './green.svg'
-import RedDot from './red.svg'
-import warningIcon from './warningIcon.svg'
-
 import General_community from './General_community.svg'
 import HamburgerMenuIcon from './HamburgerMenuIcon.svg'
 import IconPreview from './IconPreview.svg'
 import CardOptionImbedIcon from './ImbedIconOptionMenu.svg'
 import News_community from './News_community.svg'
+import NoContentFoundSvg from './NoContentFound.svg'
 import PlatXLogo from './PlatX-logo.svg'
 import PlatXLogoWhite from './PlatXWhite-logo.svg'
 import PollIcon from './PollIcon.svg'
@@ -34,6 +29,11 @@ import CourseIcon from './ReadBook.svg'
 import RedBlinkingDot from './RedBlinkingDot.gif'
 import SaveNewIcon from './SaveNewIcon.svg'
 import SearchBlackSvg from './SearchBlack.svg' //  SearchIcon,
+import warning from './activeUserIcon.svg'
+import BlueDot from './blue.svg'
+import GreenDot from './green.svg'
+import RedDot from './red.svg'
+import warningIcon from './warningIcon.svg'
 
 import SettingNewIcon from './SettingNewIcon.svg'
 import CardOptionShareIcon from './ShareIconOptionMenu.svg'
@@ -149,6 +149,7 @@ export {
   MoreHorizIcon,
   MyDashboardIcon,
   News_community,
+  NoContentFoundSvg,
   PagesIcon,
   PagesListIcon,
   PlatXLogo,
