@@ -1,9 +1,9 @@
-import { Box, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import NoContentFoundSvg from '../../assets/svg/NoContentFound.svg';
+import { Box, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { NoContentFoundSvg } from '../../../index'
 
 export const NoContentFound = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <Box
@@ -13,5 +13,5 @@ export const NoContentFound = () => {
       <img src={NoContentFoundSvg} width={175} height={175} />
       <Typography variant="h5regular">{t('no_content_found')}</Typography>
     </Box>
-  );
-};
+  )
+}
