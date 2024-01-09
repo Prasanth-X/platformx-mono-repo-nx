@@ -8,7 +8,7 @@ import { Key, memo, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { capitalizeWords, formatContentTitle } from '@platformx/utilities';
 import { ContentListingProps, ListItem } from '../../utils/List.types';
-import { Card } from '../Card/Card';
+import { Card } from '@platformx/utilities';
 import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 import { useUserSession } from '@platformx/utilities';
 import React from 'react';
@@ -203,7 +203,7 @@ const ContentListing = ({
                     handleDeleteData={handleDeleteData}
                     handlePageDelete={handlePageDelete}
                     fetchContentDetails={fetchContentDetails}
-                    sitelist={sitelist}
+                    siteList={sitelist}
                     duplicateToSite={duplicateToSite}
                     contentType={contentType}
                   />

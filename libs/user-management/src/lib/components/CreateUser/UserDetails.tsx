@@ -1,5 +1,5 @@
-import { withStyles } from '@material-ui/core/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { withStyles } from '@material-ui/core/styles'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import {
   Autocomplete,
   Box,
@@ -10,12 +10,12 @@ import {
   MenuItem,
   TextField,
   Typography,
-} from '@mui/material';
-import Select from '@mui/material/Select';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { countries } from '@platformx/authoring-apis';
+} from '@mui/material'
+import Select from '@mui/material/Select'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { countries } from '@platformx/authoring-apis'
 import {
   AddImage,
   BasicSwitch,
@@ -24,18 +24,18 @@ import {
   ThemeConstants,
   TitleSubTitle,
   getUniqueTimeZone,
-} from '@platformx/utilities';
-import { ChangeEvent, SetStateAction, useEffect, useState } from 'react';
-import { Constants } from './Constants';
-import { useStyles } from './CreateUser.styles';
-import { useCustomStyle } from './RolePermissions.style';
+} from '@platformx/utilities'
+import { ChangeEvent, SetStateAction, useEffect, useState } from 'react'
+import { Constants } from './Constants'
+import { useStyles } from './CreateUser.styles'
+import { useCustomStyle } from './RolePermissions.style'
 
 const styles = (theme: any) => ({
   notchedOutline: {
     borderWidth: '1px',
     borderColor: 'rgb(211,47,47) !important',
   },
-});
+})
 const UserDetails = ({
   state,
   setState,
@@ -54,73 +54,73 @@ const UserDetails = ({
   const strTime = new Date().toLocaleString([], {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     hour12: false,
-  });
-  const time = new Date(strTime).toTimeString().slice(0, -21);
+  })
+  const time = new Date(strTime).toTimeString().slice(0, -21)
   const defaultTimeZone = `${
     Intl.DateTimeFormat().resolvedOptions().timeZone
-  } ${time}(IST)`;
-  const [operationType, setOperationType] = useState<string>('replace');
+  } ${time}(IST)`
+  const [operationType, setOperationType] = useState<string>('replace')
   // const [isd, setISD] = useState('');
-  const [isPhone, setIsPhone] = useState(false);
+  const [isPhone, setIsPhone] = useState(false)
 
-  const [usdTime, setUsdTime] = useState<any[]>([]);
-  const className = useStyles();
-  const [flag, setFlag] = useState('en');
+  const [usdTime, setUsdTime] = useState<any[]>([])
+  const className = useStyles()
+  const [flag, setFlag] = useState('en')
   const LanguageList = [
     { id: 'en', label: 'English (UK)' },
     { id: 'fr', label: 'French' },
     { id: 'de', label: 'German' },
-  ];
+  ]
 
   const onUploadClick = (type: SetStateAction<string>) => {
-    showGallery(type, 'image');
-    setOperationType(type);
-  };
+    showGallery(type, 'image')
+    setOperationType(type)
+  }
   const handleDateChangeRaw = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
   const handleChangeTimeZone = (event: any, newValue: { label: any }) => {
     setState({
       ...state,
       ['timezone']: newValue.label,
-    });
-  };
+    })
+  }
   const handleChangeLanguage = (event: any, newValue: any) => {
     setState({
       ...state,
       ['default_language']: newValue.id,
-    });
-    setFlag(newValue?.id);
-  };
+    })
+    setFlag(newValue?.id)
+  }
   const handleChange = () => {
     setState({
       ...state,
       ['default_site_checked']: !state.default_site_checked,
-    });
-  };
+    })
+  }
 
   const handleISD = (event: any, newValue: { label: any }) => {
-    setISD(newValue.label);
-    setIsPhone(false);
-  };
+    setISD(newValue.label)
+    setIsPhone(false)
+  }
   const handleChangePhone = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const value = e.target.value.replace(/\D/g, '');
-    setPhone(value);
-  };
+    const value = e.target.value.replace(/\D/g, '')
+    setPhone(value)
+  }
   useEffect(() => {
     getUniqueTimeZone().forEach((val: any) => {
-      setUsdTime((prev) => [...prev, { label: val.label, time: val.time }]);
-    });
+      setUsdTime((prev) => [...prev, { label: val.label, time: val.time }])
+    })
 
     !isDisabled &&
       setState({
         ...state,
         ['timezone']: defaultTimeZone,
-      });
-  }, []);
-  const classess = useCustomStyle();
+      })
+  }, [])
+  const classess = useCustomStyle()
   return (
     <Box className={classess.mainStyleWrapper} id="user">
       <CommonBoxWithNumber
@@ -208,8 +208,8 @@ const UserDetails = ({
               state={formik.values.email}
               borderColor={classes.notchedOutline}
               handleOnBlur={(e: any) => {
-                formik.handleBlur(e);
-                handleEmail(e);
+                formik.handleBlur(e)
+                handleEmail(e)
               }}
             />
             {isEmailExist ? (
@@ -307,21 +307,21 @@ const UserDetails = ({
               helperText={formik.touched.phone && formik.errors.phone}
               value={phone}
               onBlur={(e) => {
-                formik.handleBlur(e);
+                formik.handleBlur(e)
                 phone
                   ? isd === ''
                     ? setIsPhone(true)
                     : setIsPhone(false)
-                  : setIsPhone(false);
-                setState({ ...state, [e.target.name]: phone });
+                  : setIsPhone(false)
+                setState({ ...state, [e.target.name]: phone })
               }}
               inputProps={{
                 maxLength: 10,
                 readOnly: false,
               }}
               onChange={(e) => {
-                formik.handleChange(e);
-                handleChangePhone(e);
+                formik.handleChange(e)
+                handleChangePhone(e)
               }}
             />
           </Grid>
@@ -387,7 +387,7 @@ const UserDetails = ({
                 inputFormat="DD/MM/YYYY"
                 value={formik.values.dob}
                 onChange={(e) => {
-                  formik.setFieldValue('dob', new Date(e).toISOString());
+                  formik.setFieldValue('dob', new Date(e).toISOString())
                 }}
                 disableFuture
               />
@@ -449,7 +449,8 @@ const UserDetails = ({
                     startAdornment: (
                       <InputAdornment position="start">
                         <img
-                          src={require(`../../../assets/${flag}_flag.png`)}
+                          // src={require(`../../../assets/${flag}_flag.png`)}
+                          src={require(`../../../../../utilities/src/lib/assets/${flag}_flag.png`)}
                           style={{
                             objectFit: 'cover',
                             width: '24px',
@@ -489,7 +490,7 @@ const UserDetails = ({
         </Grid>
       </CommonBoxWithNumber>
     </Box>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(UserDetails);
+export default withStyles(styles)(UserDetails)
