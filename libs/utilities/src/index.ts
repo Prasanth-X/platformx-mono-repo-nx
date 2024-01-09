@@ -53,13 +53,12 @@ import DeletePopup from './lib/components/Popups/PlateformXDialog';
 
 export * from './lib/assets/svg';
 export * from './lib/components';
-export * from './lib/components/Cards/CardSkeleton';
+export * from './lib/components/CardSkeleton/CardSkeleton';
 export * from './lib/constants/AuthConstant';
 export * from './lib/constants/CommonConstants';
 export * from './lib/assets/svg';
 export * from './lib/assets/images';
 export * from './lib/components';
-export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from './lib/themes/authoring/lightTheme';
@@ -72,12 +71,13 @@ export * from './lib/hooks/useAccess/useMapPermissions';
 export * from './lib/mappers/articleMapper';
 export * from './lib/components/ToastNotification/ToastNotification';
 export * from './lib/hooks/useAccess/useMapPermissions';
-export * from './lib/components/Cards/CardSkeleton';
 export * from './lib/constants/CommonConstants';
 export * from './lib/layouts/TwoColumns/TwoColumnLayout';
 export * from './lib/themes/authoring/lightTheme';
 export * from './lib/themes/prelems/prelemTheme';
 export * from './lib/utils/helperFns';
+export * from './lib/mappers/articleMapper'
+
 export {
   AUTH_INFO,
   AUTH_URL,

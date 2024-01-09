@@ -106,6 +106,7 @@ import GreenDot from './green.svg'
 import RedDot from './red.svg'
 import warningIcon from './warningIcon.svg'
 import RedBlinkingDot from './RedBlinkingDot.gif'
+import NoContentFoundSvg from './NoContentFound.svg'
 
 export {
   AiSvg,
@@ -163,6 +164,7 @@ export {
   MoreHorizIcon,
   MyDashboardIcon,
   News_community,
+  NoContentFoundSvg,
   PagesIcon,
   PagesListIcon,
   PlatXLogo,

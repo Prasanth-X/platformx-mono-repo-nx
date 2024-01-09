@@ -1,12 +1,13 @@
 import useTheme from '@mui/material/styles/useTheme';
 import { makeStyles } from '@mui/styles';
+import ThemeConstants from '../../themes/authoring/variable';
 
 export const useCustomStyle = makeStyles(() => {
   const theme: any = useTheme();
   return {
     commonBoxWithNumber: {
       '&.commonBoxWithNumber': {
-        background: theme.palette.primaryColor[100],
+        background: ThemeConstants.PRIMARY_COLOR[100],
         borderRadius: '5px',
         border: '1px solid #D9DBE9',
         margin: '30px auto',

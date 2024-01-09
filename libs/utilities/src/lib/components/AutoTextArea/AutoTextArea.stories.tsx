@@ -1,24 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import   AutoTextArea   from './AutoTextArea';
-
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import AutoTextArea from './AutoTextArea';
 
 const meta: Meta<typeof AutoTextArea> = {
   component: AutoTextArea,
-  title: 'AutoTextArea',
+  title: 'Platfomx-Component-Library/AutoTextArea',
 };
 export default meta;
 type Story = StoryObj<typeof AutoTextArea>;
 
 export const Primary = {
-  args: {},
-};
-
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to AutoTextArea!/gi)).toBeTruthy();
+  args: {
+    name: 'AutoTextArea',
+    placeHolder: 'Type something...',
+    handleChange: (event: any) => { console.log(event.target.value); },
+    maxCharLength: 100,
+    state: '',
+    handleOnBlur: (event: any) => { console.log('Blurred'); },
+    isDisabled: false,
+    minRows: 3,
   },
 };

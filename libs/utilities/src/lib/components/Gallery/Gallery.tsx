@@ -1,24 +1,24 @@
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import SearchIcon from '@mui/icons-material/Search';
-import LoadingButton from '@mui/lab/LoadingButton';
-import Masonry from '@mui/lab/Masonry';
-import { Box, Button, Grid, Select, Typography } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
-import FormControl from '@mui/material/FormControl';
-import InputAdornment from '@mui/material/InputAdornment';
-import MenuItem from '@mui/material/MenuItem';
-import TextField from '@mui/material/TextField';
-import { KeyboardEvent, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { AUTH_INFO as authInfo } from '../../constants/AuthConstant';
-import ThemeConstants from '../../themes/authoring/variable';
-import { NoContentFound } from '../NoContentFound/NoContentFound';
-import { ShowToastError } from '../ToastNotification/ToastNotification';
-import './Gallery.css';
-import { GalleryProps, ImageProps } from './utils/galleryTypes';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
+import SearchIcon from '@mui/icons-material/Search'
+import LoadingButton from '@mui/lab/LoadingButton'
+import Masonry from '@mui/lab/Masonry'
+import { Box, Button, Grid, Select, Typography } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
+import FormControl from '@mui/material/FormControl'
+import InputAdornment from '@mui/material/InputAdornment'
+import MenuItem from '@mui/material/MenuItem'
+import TextField from '@mui/material/TextField'
+import { KeyboardEvent, useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { NoContentFoundSvg } from '../../../index'
+import { AUTH_INFO as authInfo } from '../../constants/AuthConstant'
+import ThemeConstants from '../../themes/authoring/variable'
+import { ShowToastError } from '../ToastNotification/ToastNotification'
+import './Gallery.css'
+import { GalleryProps, ImageProps } from './utils/galleryTypes'
 
 const Gallery = ({
   handleImageSelected,
@@ -28,41 +28,41 @@ const Gallery = ({
   keyName,
   id,
 }: GalleryProps) => {
-  const { t } = useTranslation();
-  const [images, setImages] = useState<ImageProps[]>([]);
-  const [isLazyLoad, setIsLazyLoad] = useState<boolean>(false);
-  const startIndex = useRef<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>('');
-  const [doneLoader, setDoneLoader] = useState<boolean>(false);
+  const { t } = useTranslation()
+  const [images, setImages] = useState<ImageProps[]>([])
+  const [isLazyLoad, setIsLazyLoad] = useState<boolean>(false)
+  const startIndex = useRef<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isError, setIsError] = useState<boolean>(false)
+  const [searchValue, setSearchValue] = useState<string>('')
+  const [doneLoader, setDoneLoader] = useState<boolean>(false)
   const imageListProps = {
     sort: 'dc.date.accessioned,DESC',
     page: startIndex.current,
     size: 20,
     scope: authInfo.dspaceImagesUuid,
-  };
+  }
   const [selectedImage, setSelectedImage] = useState<ImageProps>({
     Thumbnail: '',
     Title: '',
     Description: '',
-  });
+  })
 
   const videoListProps = {
     sort: 'dc.date.accessioned,DESC',
     page: startIndex.current,
     size: 20,
     scope: authInfo.dspaceVideosUuid,
-  };
+  }
   const [selectedVideo, setSelectedVideo] = useState<ImageProps>({
     Thumbnail: '',
     Title: '',
     Description: '',
-  });
-  const categoryRef = useRef<string>('All');
+  })
+  const categoryRef = useRef<string>('All')
 
   const getImages = async (thumbnailsArr) => {
-    const imagesArr: ImageProps[] = [];
+    const imagesArr: ImageProps[] = []
     await Promise.all(
       await thumbnailsArr.map(async (obj) => {
         await fetch(obj.Thumbnail)
@@ -74,48 +74,48 @@ const Gallery = ({
               Description: obj.Description,
               Author: obj.Author,
               Bundles: obj.Bundles,
-            });
-            return imagesArr;
+            })
+            return imagesArr
           })
           .catch(() => {
-            ShowToastError(t('proper_image_toast'));
-            console.log('Dspace missing image', obj.Thumbnail);
-            return imagesArr;
-          });
-        return imagesArr;
-      })
+            ShowToastError(t('proper_image_toast'))
+            console.log('Dspace missing image', obj.Thumbnail)
+            return imagesArr
+          })
+        return imagesArr
+      }),
     ).then(() => {
-      setIsLoading(false);
-      setIsLazyLoad(true);
-      const updateImages: ImageProps[] = images.concat(imagesArr);
-      setImages(updateImages);
-    });
-  };
+      setIsLoading(false)
+      setIsLazyLoad(true)
+      const updateImages: ImageProps[] = images.concat(imagesArr)
+      setImages(updateImages)
+    })
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const element: any = document.getElementsByTagName('BODY');
+      const element: any = document.getElementsByTagName('BODY')
 
       if (element) {
-        element[0].style.overflow = 'hidden';
+        element[0].style.overflow = 'hidden'
 
-        element[0].style.position = 'static';
+        element[0].style.position = 'static'
       }
     }
 
     return () => {
       if (typeof window !== 'undefined') {
-        const element = document.getElementsByTagName('BODY');
+        const element = document.getElementsByTagName('BODY')
 
         if (element) {
-          element[0].removeAttribute('style');
+          element[0].removeAttribute('style')
         }
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const getVideos = async (bundlesArr) => {
-    const contentArr: ImageProps[] = [];
+    const contentArr: ImageProps[] = []
     await bundlesArr
       .map(async (obj) => {
         await fetch(obj.Thumbnail)
@@ -129,24 +129,24 @@ const Gallery = ({
                   Title: obj.Title,
                   Description: obj.Description,
                   Author: obj.Author,
-                });
-                return contentArr;
-              });
+                })
+                return contentArr
+              })
           })
           .catch(() => {
-            ShowToastError(t('proper_image_toast'));
-            console.log('Dspace missing video', obj.Thumbnail);
-            return contentArr;
-          });
-        return contentArr;
+            ShowToastError(t('proper_image_toast'))
+            console.log('Dspace missing video', obj.Thumbnail)
+            return contentArr
+          })
+        return contentArr
       })
       .then(() => {
-        setIsLoading(false);
-        setIsLazyLoad(true);
-        const updateImages: ImageProps[] = images.concat(contentArr);
-        setImages(updateImages);
-      });
-  };
+        setIsLoading(false)
+        setIsLazyLoad(true)
+        const updateImages: ImageProps[] = images.concat(contentArr)
+        setImages(updateImages)
+      })
+  }
 
   const handleSelectedImage = (selectedItem) => {
     if (selectedImage == selectedItem) {
@@ -154,11 +154,11 @@ const Gallery = ({
         Thumbnail: '',
         Title: '',
         Description: '',
-      });
+      })
     } else {
-      setSelectedImage(selectedItem);
+      setSelectedImage(selectedItem)
     }
-  };
+  }
 
   const handleSelectedVideo = (selectedItem) => {
     if (selectedVideo == selectedItem) {
@@ -166,24 +166,24 @@ const Gallery = ({
         Thumbnail: '',
         Title: '',
         Description: '',
-      });
+      })
     } else {
-      setSelectedVideo(selectedItem);
+      setSelectedVideo(selectedItem)
     }
-  };
+  }
 
   const handleDone = () => {
-    setDoneLoader(true);
+    setDoneLoader(true)
     if (galleryMode == 'Images') {
       fetch(selectedImage.Bundles != undefined ? selectedImage.Bundles : '')
         .then((res) => res.json())
         .then((json) => {
           //bitstreams call
           const imgIndex = json._embedded.bundles.findIndex(
-            (x) => x.name == 'ORIGINAL'
-          );
+            (x) => x.name == 'ORIGINAL',
+          )
           const bitstream =
-            json._embedded.bundles[imgIndex]._links.bitstreams.href;
+            json._embedded.bundles[imgIndex]._links.bitstreams.href
           fetch(bitstream)
             .then((res) => res.json())
             .then((json1) => {
@@ -191,34 +191,33 @@ const Gallery = ({
                 ...selectedImage,
                 Thumbnail: json1._embedded.bitstreams[0]._links.content.href,
                 bitStreamId: json1._embedded.bitstreams[0].id,
-              };
-              handleImageSelected(imageSelected, keyName, id);
-              setDoneLoader(false);
-              toggleGallery(false, 'done', keyName);
-            });
-        });
+              }
+              handleImageSelected(imageSelected, keyName, id)
+              setDoneLoader(false)
+              toggleGallery(false, 'done', keyName)
+            })
+        })
     }
     if (galleryMode == 'Videos') {
       fetch(selectedVideo.Bundles != undefined ? selectedVideo.Bundles : '')
         .then((res) => res.json())
         .then((json) => {
-          const bitstream = json._embedded.bundles[0]._links.bitstreams.href;
+          const bitstream = json._embedded.bundles[0]._links.bitstreams.href
           fetch(bitstream)
             .then((res) => res.json())
             .then((json1) => {
-              const videoUrl =
-                json1._embedded.bitstreams[0]._links.content.href;
+              const videoUrl = json1._embedded.bitstreams[0]._links.content.href
               const videoSelected = {
                 ...selectedVideo,
                 Url: videoUrl,
-              };
-              handleVideoSelected(videoSelected);
-              setDoneLoader(false);
-              toggleGallery(false, 'done', keyName);
-            });
-        });
+              }
+              handleVideoSelected(videoSelected)
+              setDoneLoader(false)
+              toggleGallery(false, 'done', keyName)
+            })
+        })
     }
-  };
+  }
 
   const getData = (nextIndex) => {
     fetch(
@@ -228,14 +227,14 @@ const Gallery = ({
         galleryMode === 'Images' ? imageListProps.size : videoListProps.size
       }&scope=${
         galleryMode === 'Images' ? imageListProps.scope : videoListProps.scope
-      }&dsoType=ITEM`
+      }&dsoType=ITEM`,
     )
       .then((res) => res.json())
       .then(
         (json) => {
           if (json._embedded.searchResult._embedded.objects.length != 0) {
-            const imageObjects = json._embedded.searchResult._embedded.objects;
-            const thumbnailsArr: object[] = [];
+            const imageObjects = json._embedded.searchResult._embedded.objects
+            const thumbnailsArr: object[] = []
             imageObjects.map((obj) => {
               thumbnailsArr.push({
                 Bundles: obj._embedded.indexableObject._links.bundles.href,
@@ -261,24 +260,24 @@ const Gallery = ({
                     : obj._embedded.indexableObject.metadata[
                         'dc.contributor.author'
                       ][0].value,
-              });
+              })
               if (
                 thumbnailsArr.length ==
                 json._embedded.searchResult._embedded.objects.length
               ) {
-                getImages(thumbnailsArr);
+                getImages(thumbnailsArr)
               }
-            });
+            })
           } else {
-            setIsLazyLoad(false);
+            setIsLazyLoad(false)
           }
         },
         () => {
-          setIsError(true);
-          setIsLoading(false);
-        }
-      );
-  };
+          setIsError(true)
+          setIsLoading(false)
+        },
+      )
+  }
 
   const searchGallery = (index) => {
     const imageSearchProps = {
@@ -289,7 +288,7 @@ const Gallery = ({
       query: searchValue,
       embed: 'thumbnail',
       scope: authInfo.dspaceImagesUuid,
-    };
+    }
     const videoSearchProps = {
       sort: 'score,DESC',
       page: index,
@@ -298,16 +297,16 @@ const Gallery = ({
       query: searchValue,
       embed: 'thumbnail',
       scope: authInfo.dspaceVideosUuid,
-    };
+    }
     if (galleryMode == 'Images') {
       fetch(
-        `${authInfo.dspaceUri}server/api/discover/search/objects?sort=${imageSearchProps.sort}&page=${imageSearchProps.page}&size=${imageSearchProps.size}&configuration=${imageSearchProps.configuration}&query=${imageSearchProps.query}&scope=${imageSearchProps.scope}&embed=${imageSearchProps.embed}`
+        `${authInfo.dspaceUri}server/api/discover/search/objects?sort=${imageSearchProps.sort}&page=${imageSearchProps.page}&size=${imageSearchProps.size}&configuration=${imageSearchProps.configuration}&query=${imageSearchProps.query}&scope=${imageSearchProps.scope}&embed=${imageSearchProps.embed}`,
       )
         .then((res) => res.json())
         .then((json) => {
           if (json._embedded.searchResult._embedded.objects.length != 0) {
-            const imageObjects = json._embedded.searchResult._embedded.objects;
-            const thumbnailsArr: object[] = [];
+            const imageObjects = json._embedded.searchResult._embedded.objects
+            const thumbnailsArr: object[] = []
             imageObjects.map((obj) => {
               thumbnailsArr.push({
                 Bundles: obj._embedded.indexableObject._links.bundles.href,
@@ -333,27 +332,27 @@ const Gallery = ({
                     : obj._embedded.indexableObject.metadata[
                         'dc.contributor.author'
                       ][0].value,
-              });
+              })
               if (
                 thumbnailsArr.length ==
                 json._embedded.searchResult._embedded.objects.length
               ) {
-                getImages(thumbnailsArr);
+                getImages(thumbnailsArr)
               }
-            });
+            })
           } else {
-            setIsLazyLoad(false);
+            setIsLazyLoad(false)
           }
-        });
+        })
     } else {
       fetch(
-        `${authInfo.dspaceUri}server/api/discover/search/objects?sort=${videoSearchProps.sort}&page=${videoSearchProps.page}&size=${videoSearchProps.size}&configuration=${videoSearchProps.configuration}&query=${videoSearchProps.query}&scope=${videoSearchProps.scope}&embed=${videoSearchProps.embed}`
+        `${authInfo.dspaceUri}server/api/discover/search/objects?sort=${videoSearchProps.sort}&page=${videoSearchProps.page}&size=${videoSearchProps.size}&configuration=${videoSearchProps.configuration}&query=${videoSearchProps.query}&scope=${videoSearchProps.scope}&embed=${videoSearchProps.embed}`,
       )
         .then((res) => res.json())
         .then((json) => {
           if (json._embedded.searchResult._embedded.objects.length != 0) {
-            const imageObjects = json._embedded.searchResult._embedded.objects;
-            const thumbnailsArr: object[] = [];
+            const imageObjects = json._embedded.searchResult._embedded.objects
+            const thumbnailsArr: object[] = []
             imageObjects.map((obj) => {
               thumbnailsArr.push({
                 Thumbnail: obj._embedded.indexableObject._links.bundles.href,
@@ -378,20 +377,20 @@ const Gallery = ({
                     : obj._embedded.indexableObject.metadata[
                         'dc.contributor.author'
                       ][0].value,
-              });
+              })
               if (
                 thumbnailsArr.length ==
                 json._embedded.searchResult._embedded.objects.length
               ) {
-                getVideos(thumbnailsArr);
+                getVideos(thumbnailsArr)
               }
-            });
+            })
           } else {
-            setIsLazyLoad(false);
+            setIsLazyLoad(false)
           }
-        });
+        })
     }
-  };
+  }
 
   const searchCategory = (index, searchText) => {
     const imageCategoryProps = {
@@ -403,7 +402,7 @@ const Gallery = ({
       size: 10,
       startsWith: searchText,
       scope: authInfo.dspaceImagesUuid,
-    };
+    }
     const videoCategoryProps = {
       category: 'title',
       sort: `dc.${
@@ -413,16 +412,16 @@ const Gallery = ({
       size: 10,
       startsWith: searchText,
       scope: authInfo.dspaceVideosUuid,
-    };
+    }
     if (galleryMode == 'Images') {
       fetch(
-        `${authInfo.dspaceUri}server/api/discover/browses/${imageCategoryProps.category}/items?scope=${imageCategoryProps.scope}&sort=${imageCategoryProps.sort}&page=${imageCategoryProps.page}&size=${imageCategoryProps.size}&startsWith=${imageCategoryProps.startsWith}`
+        `${authInfo.dspaceUri}server/api/discover/browses/${imageCategoryProps.category}/items?scope=${imageCategoryProps.scope}&sort=${imageCategoryProps.sort}&page=${imageCategoryProps.page}&size=${imageCategoryProps.size}&startsWith=${imageCategoryProps.startsWith}`,
       )
         .then((res) => res.json())
         .then((json) => {
           if (json._embedded.items.length != 0) {
-            const imageObjects = json._embedded.items;
-            const thumbnailsArr: object[] = [];
+            const imageObjects = json._embedded.items
+            const thumbnailsArr: object[] = []
             imageObjects.map((obj) => {
               thumbnailsArr.push({
                 Bundles: obj._links.bundles.href,
@@ -439,24 +438,24 @@ const Gallery = ({
                   obj.metadata['dc.contributor.author'] == undefined
                     ? ''
                     : obj.metadata['dc.contributor.author'][0].value,
-              });
+              })
               if (thumbnailsArr.length == json._embedded.items.length) {
-                getImages(thumbnailsArr);
+                getImages(thumbnailsArr)
               }
-            });
+            })
           } else {
-            setIsLazyLoad(false);
+            setIsLazyLoad(false)
           }
-        });
+        })
     } else {
       fetch(
-        `${authInfo.dspaceUri}server/api/discover/browses/${videoCategoryProps.category}/items?scope=${videoCategoryProps.scope}&sort=${videoCategoryProps.sort}&page=${videoCategoryProps.page}&size=${videoCategoryProps.size}&startsWith=${videoCategoryProps.startsWith}`
+        `${authInfo.dspaceUri}server/api/discover/browses/${videoCategoryProps.category}/items?scope=${videoCategoryProps.scope}&sort=${videoCategoryProps.sort}&page=${videoCategoryProps.page}&size=${videoCategoryProps.size}&startsWith=${videoCategoryProps.startsWith}`,
       )
         .then((res) => res.json())
         .then((json) => {
           if (json._embedded.items.length != 0) {
-            const imageObjects = json._embedded.items;
-            const thumbnailsArr: object[] = [];
+            const imageObjects = json._embedded.items
+            const thumbnailsArr: object[] = []
             imageObjects.map((obj) => {
               thumbnailsArr.push({
                 Thumbnail: obj._links.bundles.href,
@@ -472,99 +471,99 @@ const Gallery = ({
                   obj.metadata['dc.contributor.author'] == undefined
                     ? ''
                     : obj.metadata['dc.contributor.author'][0].value,
-              });
+              })
               if (thumbnailsArr.length == json._embedded.items.length) {
-                getVideos(thumbnailsArr);
+                getVideos(thumbnailsArr)
               }
-            });
+            })
           } else {
-            setIsLazyLoad(false);
+            setIsLazyLoad(false)
           }
-        });
+        })
     }
-  };
+  }
 
   useEffect(() => {
-    getData(startIndex.current);
+    getData(startIndex.current)
     if (startIndex.current == 0) {
-      setIsLoading(true);
+      setIsLoading(true)
     }
-  }, []);
+  }, [])
 
   const fetchMoreData = () => {
-    const nextIndex = startIndex.current + 1;
-    startIndex.current = nextIndex;
+    const nextIndex = startIndex.current + 1
+    startIndex.current = nextIndex
     if (categoryRef.current == 'All') {
       if (searchValue) {
-        searchGallery(startIndex.current);
+        searchGallery(startIndex.current)
       } else {
-        getData(startIndex.current);
+        getData(startIndex.current)
       }
     } else {
-      searchCategory(startIndex.current, searchValue);
+      searchCategory(startIndex.current, searchValue)
     }
-  };
+  }
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     // do stuff
     if (e.key == 'Enter') {
-      setIsLazyLoad(false);
-      const button = e.target as HTMLButtonElement;
-      setSearchValue(button.value);
-      startIndex.current = 0;
-      setIsLoading(true);
+      setIsLazyLoad(false)
+      const button = e.target as HTMLButtonElement
+      setSearchValue(button.value)
+      startIndex.current = 0
+      setIsLoading(true)
       if (startIndex.current == 0) {
-        setImages(() => images.splice(0, images.length));
+        setImages(() => images.splice(0, images.length))
       }
       if (categoryRef.current != 'All') {
-        searchCategory(startIndex.current, searchValue);
+        searchCategory(startIndex.current, searchValue)
       } else {
         if (searchValue == '') {
-          getData(startIndex.current);
+          getData(startIndex.current)
         } else {
-          searchGallery(startIndex.current);
+          searchGallery(startIndex.current)
         }
       }
     }
-  };
+  }
 
   const handleResetInputFilter = () => {
-    setIsLazyLoad(false);
-    setSearchValue('');
-    startIndex.current = 0;
-    setIsLoading(true);
+    setIsLazyLoad(false)
+    setSearchValue('')
+    startIndex.current = 0
+    setIsLoading(true)
     if (startIndex.current == 0) {
-      setImages(() => images.splice(0, images.length));
+      setImages(() => images.splice(0, images.length))
     }
     if (categoryRef.current != 'All') {
-      searchCategory(startIndex.current, '');
+      searchCategory(startIndex.current, '')
     } else {
-      getData(startIndex.current);
+      getData(startIndex.current)
     }
-  };
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
+    setSearchValue(event.target.value)
+  }
 
   const handleCategory = (event) => {
-    setIsLazyLoad(false);
-    categoryRef.current = event.target.value;
-    startIndex.current = 0;
-    setIsLoading(true);
+    setIsLazyLoad(false)
+    categoryRef.current = event.target.value
+    startIndex.current = 0
+    setIsLoading(true)
     if (startIndex.current == 0) {
-      setImages(() => images.splice(0, images.length));
+      setImages(() => images.splice(0, images.length))
     }
     if (categoryRef.current != 'All') {
-      searchCategory(startIndex.current, searchValue);
+      searchCategory(startIndex.current, searchValue)
     } else {
       if (searchValue == '') {
-        getData(startIndex.current);
+        getData(startIndex.current)
       } else {
-        searchGallery(startIndex.current);
+        searchGallery(startIndex.current)
       }
     }
-  };
+  }
   const styles = {
     headTop: {
       padding: '15px',
@@ -582,7 +581,7 @@ const Gallery = ({
       backgroundImage:
         'linear-gradient(to bottom, rgba(255, 255, 255, 0) 8%, #fff)',
     },
-  };
+  }
   return (
     <Box
       sx={{
@@ -762,7 +761,7 @@ const Gallery = ({
             justifyContent: 'center',
           }}
         >
-          <NoContentFound />
+          <img src={NoContentFoundSvg}></img>
         </Box>
       ) : (
         <Box
@@ -1058,7 +1057,7 @@ const Gallery = ({
         </LoadingButton>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default Gallery;
+export default Gallery
