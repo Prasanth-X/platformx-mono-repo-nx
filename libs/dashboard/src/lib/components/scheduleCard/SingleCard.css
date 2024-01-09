@@ -1,0 +1,72 @@
+.schedulecard {
+  border: 1px solid transparent;
+  transition: all 0.5s;
+  color: #5c6574;
+  background: #f7f7fc;
+  border-radius: 5px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 20px;
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  padding: 20px;
+}
+.schedulecard .icon {
+  color: #2d2d39;
+  display: flex;
+}
+.schedulecard .day {
+  font-weight: 300;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  font-size: 48px;
+}
+.schedulecard .month {
+  text-transform: uppercase;
+}
+.schedulecard .boticontext {
+  display: inline-block;
+  border-bottom: 1px solid #5c6574;
+  padding-bottom: 5px;
+}
+.schedulecard:hover {
+  border-color: #ced3d9;
+}
+.schedulecard:first-child {
+  background: #4b9ef9;
+  color: #fff;
+}
+.schedulecard:first-child .boticontext {
+  border-color: #fff;
+}
+.schedulecard .publishby {
+  margin-bottom: 4px;
+}
+.schedulecard .title {
+  margin: 18px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.schedulecard:first-child .icon {
+  color: #fff;
+}
+.schedulecard:first-child .datetime {
+  color: #fff;
+}
+.schedulecard .datetime {
+  color: #4b9ef9;
+}
+
+@media (max-width: 768px) {
+  .schedulecard .day {
+    font-size: 28px;
+  }
+  .schedulecard {
+    padding: 15px;
+  }
+}

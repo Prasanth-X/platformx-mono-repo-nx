@@ -1,16 +1,16 @@
-import { Box, Button, Typography } from '@mui/material';
-import React from 'react';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { useCustomStyle } from './XCard4.style';
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import { Box, Button, Typography } from '@mui/material'
+import React from 'react'
 import {
   formAbsoluteUrl,
   getIcon,
   onClickCardUrlNavigate,
-} from '../../Utils/helperFns';
+} from '../../Utils/helperFns'
+import { useCustomStyle } from './XCard4.style'
 // import { t } from "i18next";
 // import "../../../service/i18n";
-import { dateTimeFormat } from 'lib/utils/helperFns';
-import fallBackImage from '../../../assets/fallBackImage.png';
+import { dateTimeFormat } from 'utils/helperFns'
+import fallBackImage from '../../../assets/fallBackImage.png'
 
 const XCard4 = ({
   content,
@@ -18,15 +18,15 @@ const XCard4 = ({
 }: // authoringHelper,
 // analytics,
 XCard4Props) => {
-  const classes = useCustomStyle();
+  const classes = useCustomStyle()
 
   const onClickCard = (e: any, id: string) => {
-    e.preventDefault && e.preventDefault();
+    e.preventDefault && e.preventDefault()
     if (typeof window !== 'undefined') {
-      const url = onClickCardUrlNavigate(id, content, secondaryArgs);
-      window.open(url);
+      const url = onClickCardUrlNavigate(id, content, secondaryArgs)
+      window.open(url)
     }
-  };
+  }
 
   return (
     <Box className={`${classes.XCard4Wrapper} XCard4Box`}>
@@ -42,12 +42,12 @@ XCard4Props) => {
               secondaryArgs.bucketName,
               content?.Thumbnail?.Url,
               content.Thumbnail?.ext,
-              content?.ContentType
+              content?.ContentType,
             )}
             onError={(e: any) => {
               if (e.target.src !== fallBackImage) {
-                e.target.onerror = null;
-                e.target.src = fallBackImage;
+                e.target.onerror = null
+                e.target.src = fallBackImage
               }
             }}
             height="100%"
@@ -79,62 +79,60 @@ XCard4Props) => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
 interface XCard4Props {
-  content: Content;
-  analytics: Analytics;
-  authoringHelper?: AuthoringHelper;
-  secondaryArgs?: any;
+  content: Content
+  analytics: Analytics
+  authoringHelper?: AuthoringHelper
+  secondaryArgs?: any
 }
 interface Analytics {
-  pageId?: number;
-  prelemId?: number;
-  pageTitle?: string;
-  prelemTitle?: string;
-  pageDesc?: string;
-  pageTags?: string;
-  prelemTags?: string;
-  prelemPosition?: number;
-  isAnalyticsEnabled: boolean;
-  isAuthoring: boolean;
-  isSeoEnabled: boolean;
+  pageId?: number
+  prelemId?: number
+  pageTitle?: string
+  prelemTitle?: string
+  pageDesc?: string
+  pageTags?: string
+  prelemTags?: string
+  prelemPosition?: number
+  isAnalyticsEnabled: boolean
+  isAuthoring: boolean
+  isSeoEnabled: boolean
 }
 interface AuthoringHelper {
-  innerRef: React.Ref<HTMLDivElement>;
-  sendStructureDataToAuthoringCB: (structureData: string) => void;
-  sendDefaultStructureDataForResetToAuthoringCB: (
-    structureData: string
-  ) => void;
-  openButtonEditWindowInAuthoringCB: (buttonObj?: object, e?: object) => void;
-  selectedButtonNameForEditing: string;
-  isEditing: boolean;
-  buttonRef?: React.Ref<HTMLButtonElement>;
-  buttonContentEditable?: boolean;
-  lastSavedStructuredData?: string;
-  isEditPage?: boolean;
+  innerRef: React.Ref<HTMLDivElement>
+  sendStructureDataToAuthoringCB: (structureData: string) => void
+  sendDefaultStructureDataForResetToAuthoringCB: (structureData: string) => void
+  openButtonEditWindowInAuthoringCB: (buttonObj?: object, e?: object) => void
+  selectedButtonNameForEditing: string
+  isEditing: boolean
+  buttonRef?: React.Ref<HTMLButtonElement>
+  buttonContentEditable?: boolean
+  lastSavedStructuredData?: string
+  isEditPage?: boolean
 }
 interface Content {
-  Description?: string;
-  Title?: string;
-  EditorialItemPath: string;
-  ImageDescription: string;
+  Description?: string
+  Title?: string
+  EditorialItemPath: string
+  ImageDescription: string
   Thumbnail: {
-    Description?: string;
-    Title?: string;
-    AltText: string;
-    Attribution: boolean;
-    Url: string;
-    Name: string;
-    ObjectType?: string;
-    Color?: string;
-    ext?: string;
-  };
-  ContentType: string;
-  PublishedBy: string;
-  PublishedDate: string;
-  background_content: any;
+    Description?: string
+    Title?: string
+    AltText: string
+    Attribution: boolean
+    Url: string
+    Name: string
+    ObjectType?: string
+    Color?: string
+    ext?: string
+  }
+  ContentType: string
+  PublishedBy: string
+  PublishedDate: string
+  background_content: any
 }
 // interface Image {
 //   aspect_ratio: string;
@@ -241,5 +239,5 @@ XCard4.defaultProps = {
     gcpUrl: 'https://storage.googleapis.com',
     bucketName: 'cropped_image_public',
   },
-};
-export default XCard4;
+}
+export default XCard4

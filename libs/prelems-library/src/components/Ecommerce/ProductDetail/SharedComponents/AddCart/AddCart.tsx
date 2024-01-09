@@ -1,29 +1,29 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import frame1 from '../../../../../assets/LoyalityPointIcon.png';
-import { nullToObject } from '../../lib/utils/helperFns';
-import ProductQuantityButton from './QuantityButton';
-import { Typography } from '@mui/material';
-import ToastContainerHandle from '../../../../../Common/ToastContainer/ToastContainerHandle';
-import ToastService from '../../../../../Common/ToastContainer/ToastService';
-import '../../../../../service/i18n';
-import { useCustomStyle } from './AddCart.style';
-import PopupDialog from './PopupDialog';
+import { Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { nullToObject } from 'utils/helperFns'
+import ToastContainerHandle from '../../../../../Common/ToastContainer/ToastContainerHandle'
+import ToastService from '../../../../../Common/ToastContainer/ToastService'
+import frame1 from '../../../../../assets/LoyalityPointIcon.png'
+import '../../../../../service/i18n'
+import { useCustomStyle } from './AddCart.style'
+import PopupDialog from './PopupDialog'
+import ProductQuantityButton from './QuantityButton'
 
 type ecommerceAddcartProps = {
-  rewardPoints?: string | number;
-  productId: string | number;
-  secondaryArgs: any;
-  parentPage: string;
-  productFullDetails?: any;
-  addToProductInCart?: any;
-  productInStockInfo: string;
-  cartData: any;
-};
+  rewardPoints?: string | number
+  productId: string | number
+  secondaryArgs: any
+  parentPage: string
+  productFullDetails?: any
+  addToProductInCart?: any
+  productInStockInfo: string
+  cartData: any
+}
 const AddCart = (props: ecommerceAddcartProps) => {
-  const classes = useCustomStyle();
+  const classes = useCustomStyle()
   const {
     rewardPoints = '',
     secondaryArgs = {},
@@ -33,48 +33,48 @@ const AddCart = (props: ecommerceAddcartProps) => {
     addToProductInCart = () => {},
     productInStockInfo,
     cartData,
-  } = nullToObject(props);
+  } = nullToObject(props)
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   // const [cartIdValue, setCartIdValue] = useState("");
-  const [cartQuantity, setCartQuantity] = useState(1);
-  const tempData = false;
+  const [cartQuantity, setCartQuantity] = useState(1)
+  const tempData = false
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleClick = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   /**
    * quantity add
    */
   const addToQuantity = () => {
     if (cartQuantity > 0) {
-      setCartQuantity(cartQuantity + 1);
+      setCartQuantity(cartQuantity + 1)
     }
-  };
+  }
 
   /**
    * quantity reduce
    */
   const removeQuantity = () => {
     if (cartQuantity > 1) {
-      setCartQuantity(cartQuantity - 1);
+      setCartQuantity(cartQuantity - 1)
     }
-  };
+  }
 
   /**
    * buyNow handle
    */
   const buyNowHandle = () => {
-    window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/cart-list`;
-  };
+    window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/cart-list`
+  }
 
   // useEffect(() => {
   //   const getCartIdFromLocal = localStorage.getItem("ecommerceCartId");
@@ -111,7 +111,7 @@ const AddCart = (props: ecommerceAddcartProps) => {
             variant="primaryButton2"
             onClick={() => {
               if (JSON.parse(productInStockInfo)) {
-                const errMsg = t('errorRequest');
+                const errMsg = t('errorRequest')
                 addToProductInCart({
                   secondaryArgs,
                   productId,
@@ -119,7 +119,7 @@ const AddCart = (props: ecommerceAddcartProps) => {
                   tempData,
                   productFullDetails,
                   errMsg,
-                });
+                })
                 // addToCartGetCartId(
                 //   secondaryArgs,
                 //   productId,
@@ -128,7 +128,7 @@ const AddCart = (props: ecommerceAddcartProps) => {
                 //   t("errorRequest")
                 // );
               } else {
-                ToastService.failToast(t('item_is_currently_out_of_stock'));
+                ToastService.failToast(t('item_is_currently_out_of_stock'))
               }
             }}
           >
@@ -172,6 +172,6 @@ const AddCart = (props: ecommerceAddcartProps) => {
 
       <PopupDialog open={open} handleClose={handleClose} />
     </>
-  );
-};
-export default AddCart;
+  )
+}
+export default AddCart

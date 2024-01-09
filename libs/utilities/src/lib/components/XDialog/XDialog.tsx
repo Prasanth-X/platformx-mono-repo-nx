@@ -1,17 +1,17 @@
-import { IconButton, Typography } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import { memo } from 'react';
-import { useDispatch } from 'react-redux';
-import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg';
-import FormatSubtitle from './FormatSubtitle';
+import { IconButton, Typography } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg'
+import FormatSubtitle from './FormatSubtitle'
 import {
   XDialogActions,
   XDialogButton,
   XDialogContent,
   XDialogImageContainer,
-} from './XDialog.styles';
-import { XDialogProps } from './XDialog.types';
+} from './XDialog.styles'
+import { XDialogProps } from './XDialog.types'
 
 const XDialog = ({
   handleClose,
@@ -24,8 +24,7 @@ const XDialog = ({
   leftButtonText,
   rightButtonText,
 }: XDialogProps) => {
-  console.log('subtitle is', subTitle2);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   return (
     <div>
       <Dialog
@@ -124,8 +123,8 @@ const XDialog = ({
           <XDialogButton
             variant="contained"
             onClick={() => {
-              dispatch(handleConfirm && handleConfirm());
-              dispatch(handleClose && handleClose());
+              dispatch(handleConfirm && handleConfirm())
+              dispatch(handleClose && handleClose())
             }}
             autoFocus
           >
@@ -134,6 +133,6 @@ const XDialog = ({
         </XDialogActions>
       </Dialog>
     </div>
-  );
-};
-export default memo(XDialog);
+  )
+}
+export default memo(XDialog)

@@ -4,9 +4,9 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import { fbGray, inGray, inGreen, fbGreen } from "@platformx/utilities"
 
-const SocialShareStep1 = ({ selectedSocial, setSelectedSocial }) => {
+const SocialShareStep1 = ({ selectedSocial, setSelectedSocial }: any) => {
   const { t } = useTranslation();
-  const handelNetworkSelect = (network) => {
+  const handelNetworkSelect = (network: any) => {
     setSelectedSocial({
       ...selectedSocial,
       [network]: !selectedSocial[network],

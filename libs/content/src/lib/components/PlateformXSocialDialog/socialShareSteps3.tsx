@@ -30,7 +30,7 @@ const SocialShareStep3 = ({
   contentType,
   facebookProfileData,
   loading,
-}) => {
+}: any) => {
   const { CurrentPageURL = '' } = nullToObject(selectedItems);
 
   let isInSelected = false;
@@ -52,10 +52,10 @@ const SocialShareStep3 = ({
 
   const [, setValue] = React.useState<Dayjs | null>(dayjs());
 
-  function removeHttp(url) {
+  function removeHttp(url: string) {
     return url.replace(/(^\w+:|^)\/\//, '');
   }
-  const handelNetworkSelect = (network) => {
+  const handelNetworkSelect = (network: string) => {
     if (network === 'fb') {
       setSelectLinkedIn(false);
       setSelectFacebook(true);

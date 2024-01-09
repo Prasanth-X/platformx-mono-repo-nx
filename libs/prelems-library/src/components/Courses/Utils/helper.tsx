@@ -1,8 +1,4 @@
-import {
-  getRestApiCall,
-  nullToObject,
-  postRestApiCall,
-} from 'lib/utils/helperFns';
+import { getRestApiCall, nullToObject, postRestApiCall } from 'utils/helperFns'
 
 /**
  * courseId based get course fill details
@@ -10,7 +6,7 @@ import {
  */
 export const getCourseDetailsApiCall = (
   courseId: string,
-  secondaryArgs: any
+  secondaryArgs: any,
 ) => {
   const {
     prelemBaseEndpoint: {
@@ -18,30 +14,30 @@ export const getCourseDetailsApiCall = (
       language = 'en',
     } = {},
     sitename,
-  } = secondaryArgs;
+  } = secondaryArgs
   return getRestApiCall(
     `${deliveryEndPoint}api/v1/web/en/delivery/course-model?path=${courseId}`,
     language,
-    sitename
-  );
+    sitename,
+  )
   // return getRestApiCall(
   //   `https://marvericks.delivery.hcl-x.com/platform-x/api/v1/web/en/delivery/course-model?path=108058619401306`
   // );
-};
+}
 
 /**
  * courseId based get course fill details
  * post call
  */
 export const getLearningListApiCall = (ele: any) => {
-  const { secondaryArgs = {}, userId = '' } = nullToObject(ele);
+  const { secondaryArgs = {}, userId = '' } = nullToObject(ele)
   const {
     prelemBaseEndpoint: {
       // deliveryEndPoint = "https://dev.users.hcl-x.com/platform-x/user-service/",
       language = 'en',
     } = {},
     sitename,
-  } = nullToObject(secondaryArgs);
+  } = nullToObject(secondaryArgs)
 
   const data = JSON.stringify({
     query: `query { userCoursesList(user_id:${JSON.stringify(userId)}) {
@@ -58,11 +54,11 @@ export const getLearningListApiCall = (ele: any) => {
       created_at
       updated_at
     } } `,
-  });
+  })
   return postRestApiCall(
     `https://dev.users.hcl-x.com/platform-x/user-service/`,
     data,
     language,
-    sitename
-  );
-};
+    sitename,
+  )
+}

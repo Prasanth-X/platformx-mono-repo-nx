@@ -1,0 +1,10 @@
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="grade">
+<mask id="mask0_98_2530" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="18">
+<rect id="Bounding box" width="18" height="18" fill="#B19E79"/>
+</mask>
+<g mask="url(#mask0_98_2530)">
+<path id="grade_2" d="M6.63758 13.3688L9.00008 11.9438L11.3626 13.3875L10.7438 10.6875L12.8251 8.88752L10.0876 8.64377L9.00008 6.09377L7.91258 8.62502L5.17508 8.86877L7.25633 10.6875L6.63758 13.3688ZM4.93137 15.7211L6.00587 11.0942L2.41602 7.9832L7.15251 7.57217L9.00008 3.20923L10.8476 7.57217L15.5841 7.9832L11.9943 11.0942L13.0688 15.7211L9.00008 13.2663L4.93137 15.7211Z" fill="#B19E79"/>
+</g>
+</g>
+</svg>

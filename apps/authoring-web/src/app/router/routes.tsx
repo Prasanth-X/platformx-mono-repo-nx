@@ -1,3 +1,4 @@
+import { Dashboard } from '@platformx/dashboard'
 import { UserListing } from '@platformx/user-management'
 import {
   WorkflowDetails,
@@ -15,7 +16,7 @@ export const routes: RouteConfig[] = [
         name="dashboard"
       >
         {' '}
-        Home{' '}
+        <Dashboard />{' '}
       </ProtectedRoute>
     ),
   },
@@ -28,7 +29,7 @@ export const routes: RouteConfig[] = [
         name="dashboard"
       >
         {' '}
-        Home{' '}
+        <Dashboard />{' '}
       </ProtectedRoute>
     ),
   },

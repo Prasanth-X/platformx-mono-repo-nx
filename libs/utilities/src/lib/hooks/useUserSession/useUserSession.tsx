@@ -1,3 +1,4 @@
+import { data } from './sessionData';
 import { UserSession } from './useUserSession.types';
 
 const useUserSession = (): [
@@ -7,21 +8,21 @@ const useUserSession = (): [
   const updateSession = (updatedSession: any) => {
     localStorage.setItem('userSession', '');
 
-    if (updatedSession) {
-      const session: UserSession = {
-        permissions: updatedSession.permissions,
-        isActive: updatedSession.isActive,
-        role: updatedSession.role,
-        userInfo: updatedSession.userInfo,
-      };
-
-      localStorage.setItem('userSession', JSON.stringify(session));
-    } else {
-      localStorage.removeItem('userSession');
-      localStorage.removeItem('selectedSite');
-      localStorage.removeItem('imageUuid');
-      localStorage.removeItem('videoUuid');
-    }
+    // if (updatedSession) {
+    //   const session: UserSession = {
+    //     permissions: updatedSession.permissions,
+    //     isActive: updatedSession.isActive,
+    //     role: updatedSession.role,
+    //     userInfo: updatedSession.userInfo,
+    //   };
+      localStorage.setItem('userSession', JSON.stringify(data));
+     // localStorage.setItem('userSession', JSON.stringify(session));
+    // } else {
+    //   localStorage.removeItem('userSession');
+    //   localStorage.removeItem('selectedSite');
+    //   localStorage.removeItem('imageUuid');
+    //   localStorage.removeItem('videoUuid');
+    // }
   };
 
   const getSession = (): UserSession => {

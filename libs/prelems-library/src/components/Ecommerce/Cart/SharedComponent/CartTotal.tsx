@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import './CartTotal.css';
-import Shipping from './Shipping';
-import { nullToObject } from '../lib/utils/helperFns';
-import { Box, Typography, Button, Divider } from '@mui/material';
-import ActualPrice from '../../ProductDetail/SharedComponents/ActualPrice';
-import { lineItemsOutOfStockCheck } from '../helper';
-import ToastService from '../../../../Common/ToastContainer/ToastService';
-import ToastContainerHandle from '../../../../Common/ToastContainer/ToastContainerHandle';
-import { useTranslation } from 'react-i18next';
-import '../../../../service/i18n';
-import { useCustomStyle } from './CartTotal.style';
+import { Box, Button, Divider, Typography } from '@mui/material'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { nullToObject } from 'utils/helperFns'
+import ToastContainerHandle from '../../../../Common/ToastContainer/ToastContainerHandle'
+import ToastService from '../../../../Common/ToastContainer/ToastService'
+import '../../../../service/i18n'
+import ActualPrice from '../../ProductDetail/SharedComponents/ActualPrice'
+import { lineItemsOutOfStockCheck } from '../helper'
+import './CartTotal.css'
+import { useCustomStyle } from './CartTotal.style'
+import Shipping from './Shipping'
 
 const CartTotal = (_props: any) => {
-  const classes = useCustomStyle();
+  const classes = useCustomStyle()
   const {
     addedCartDetails = {},
     secondaryArgs,
     refetchLoading = false,
-  } = _props;
-  const [shipType] = useState('freeShipping');
-  const { total_price = 0, currency_code } = nullToObject(addedCartDetails);
-  const { t } = useTranslation();
+  } = _props
+  const [shipType] = useState('freeShipping')
+  const { total_price = 0, currency_code } = nullToObject(addedCartDetails)
+  const { t } = useTranslation()
   const onCheckoutClick = () => {
     if (lineItemsOutOfStockCheck(addedCartDetails?.line_item)) {
-      window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/shipping`;
+      window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/shipping`
     } else {
-      ToastService.failToast(t('out_of_stock_info'));
+      ToastService.failToast(t('out_of_stock_info'))
     }
-  };
+  }
 
   return (
     <>
@@ -35,7 +35,7 @@ const CartTotal = (_props: any) => {
       <Box className={`${classes.cartrightSideWrapper} cartRightSideBarBg`}>
         <Box className={`top-section sideBarTopSection`}>
           <Typography variant="h3bold" color="tertiaryTitle">{`${t('cart')} ${t(
-            'total'
+            'total',
           )}`}</Typography>
           <Box className="top-section-ecom-wrapper" sx={{ display: 'flex' }}>
             <Typography
@@ -96,7 +96,7 @@ const CartTotal = (_props: any) => {
         </Box>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default CartTotal;
+export default CartTotal

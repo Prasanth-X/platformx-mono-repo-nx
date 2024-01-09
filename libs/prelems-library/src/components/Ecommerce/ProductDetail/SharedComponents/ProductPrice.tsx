@@ -1,13 +1,12 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import { nullToObject } from '../lib/utils/helperFns';
-import SellPrice from './SellPrice';
-import ActualPrice from './ActualPrice';
-import { useCustomStyle } from './ProductPrice.style';
+import Box from '@mui/material/Box'
+import { nullToObject } from 'utils/helperFns'
+import ActualPrice from './ActualPrice'
+import { useCustomStyle } from './ProductPrice.style'
+import SellPrice from './SellPrice'
 
 const ProductPrice = (_props: any = {}) => {
-  const classes = useCustomStyle();
-  const { productFullDetails = {} } = nullToObject(_props);
+  const classes = useCustomStyle()
+  const { productFullDetails = {} } = nullToObject(_props)
   return (
     <Box className={classes.productPriceWrapper}>
       {productFullDetails?.ecomx_list_price !==
@@ -26,7 +25,7 @@ const ProductPrice = (_props: any = {}) => {
         className={classes.actualPrice}
       />
     </Box>
-  );
-};
+  )
+}
 
-export default ProductPrice;
+export default ProductPrice

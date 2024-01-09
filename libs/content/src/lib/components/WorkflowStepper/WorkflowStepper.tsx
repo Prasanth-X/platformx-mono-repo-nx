@@ -1,58 +1,56 @@
-import CloseIcon from '@mui/icons-material/Close';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Stepper from '@mui/material/Stepper';
-import { articleApi } from '@platformx/authoring-apis';
+import CloseIcon from '@mui/icons-material/Close'
+import { Step, StepLabel, Stepper } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
+import IconButton from '@mui/material/IconButton'
+import { articleApi } from '@platformx/authoring-apis'
 import {
   TaskNotFound,
   XLoader,
   capitalizeFirstLetter,
-} from '@platformx/utilities';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper';
+} from '@platformx/utilities'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper'
 type WorkflowStepperProps = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  path: string;
-  contentType: string;
-};
+  open: boolean
+  setOpen: (open: boolean) => void
+  path: string
+  contentType: string
+}
 const WorkflowStepper = ({
   open,
   setOpen,
   path,
   contentType,
 }: WorkflowStepperProps) => {
-  const { t } = useTranslation();
-  const [stages, setStages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation()
+  const [stages, setStages] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const handleClickOpen = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   const getStages = async () => {
     try {
       const response: any = await articleApi.fetchArticleDetails({
         contentType: capitalizeFirstLetter(contentType),
         path: path,
-      });
+      })
       if (response?.authoring_getCmsContentByPath?.stages) {
-        setStages(response.authoring_getCmsContentByPath.stages);
+        setStages(response.authoring_getCmsContentByPath.stages)
       }
-      setIsLoading(false);
+      setIsLoading(false)
     } catch (error) {
-      console.log(error);
-      setIsLoading(false);
+      console.log(error)
+      setIsLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
-    getStages();
-  }, []);
+    getStages()
+  }, [])
   return (
     <Dialog
       open={open}
@@ -88,11 +86,11 @@ const WorkflowStepper = ({
                     : stage.status === 'Completed'
                     ? lineBreak(
                         `${capitalizeFirstLetter(stage.role)} Approved`,
-                        stage.user_name
+                        stage.user_name,
                       )
                     : lineBreak(
                         `${capitalizeFirstLetter(stage.role)} ${stage.status}`,
-                        stage.user_name
+                        stage.user_name,
                       )}
                 </StepLabel>
               </Step>
@@ -101,7 +99,7 @@ const WorkflowStepper = ({
         )}
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export default WorkflowStepper;
+export default WorkflowStepper

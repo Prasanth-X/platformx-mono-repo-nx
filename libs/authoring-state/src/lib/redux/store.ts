@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { articleSlice } from './slices/Article/ArticleSlice'
 import { commentSlice } from './slices/Comment/CommentSlice'
-import { contentSlice } from './slices/Contetent/ContentSlice'
+import { contentSlice } from './slices/Content/ContentSlice'
 import { dialogSlice } from './slices/Dialog/DialogSlice'
 
 export const store = configureStore({

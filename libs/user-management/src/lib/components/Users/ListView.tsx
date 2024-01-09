@@ -1,42 +1,42 @@
-import { useMutation } from '@apollo/client';
-import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
-import { Box, Grid, IconButton, Typography } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import MenuItem from '@mui/material/MenuItem';
+import { useMutation } from '@apollo/client'
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox'
+import { Box, Grid, IconButton, Typography } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import MenuItem from '@mui/material/MenuItem'
 import {
   BlueDot,
   EditIcon,
   GreenDot,
   Loader,
   RedDot,
+  WarningIcon,
   warning,
-  warningIcon,
-} from '@platformx/utilities';
-import { format } from 'date-fns';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+} from '@platformx/utilities'
+import { format } from 'date-fns'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 import {
   DialogBoxContentProps,
   UserManagementQueries,
   useDialog,
-} from '@platformx/authoring-apis';
+} from '@platformx/authoring-apis'
 import {
   BasicSwitch,
   ShowToastError,
   ShowToastSuccess,
   ThemeConstants,
   getSelectedSite,
-} from '@platformx/utilities';
-import { ListViewProps } from '../UserManagement.Types';
-import AcceptRejectButton from './AcceptRejectButton';
-import MoreDialog from './MoreDialog';
+} from '@platformx/utilities'
+import { ListViewProps } from '../UserManagement.Types'
+import AcceptRejectButton from './AcceptRejectButton'
+import MoreDialog from './MoreDialog'
 import {
   ADMIN_ACTIONS,
   ADMIN_ACTIONS_BUTTON,
   USERTYPES,
-} from './Utils/constant';
+} from './Utils/constant'
 const ListView = ({
   first_name,
   last_name,
@@ -53,31 +53,31 @@ const ListView = ({
   adminAction = '',
 }: ListViewProps) => {
   const [userMutate] = useMutation(
-    UserManagementQueries.ACTIVATE_DEACTIVATE_USERS
-  );
+    UserManagementQueries.ACTIVATE_DEACTIVATE_USERS,
+  )
   const [reSendEmailMutate] = useMutation(
-    UserManagementQueries.RESEND_EMAIL_TO_USERS
-  );
+    UserManagementQueries.RESEND_EMAIL_TO_USERS,
+  )
   const [approveRejectUser] = useMutation(
-    UserManagementQueries.APPROVE_REJECT_USER
-  );
+    UserManagementQueries.APPROVE_REJECT_USER,
+  )
   const rolename =
-    roles?.find((obj) => obj?.site === getSelectedSite())?.name || '';
-  const { t } = useTranslation();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false);
-  const open = Boolean(anchorEl);
-  const dialog = useDialog();
-  const [checked, setChecked] = useState(enabled);
-  const [isDelete, setIsDelete] = useState(false);
+    roles?.find((obj) => obj?.site === getSelectedSite())?.name || ''
+  const { t } = useTranslation()
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [openDialog, setOpenDialog] = useState(false)
+  const open = Boolean(anchorEl)
+  const dialog = useDialog()
+  const [checked, setChecked] = useState(enabled)
+  const [isDelete, setIsDelete] = useState(false)
   // const role: string = localStorage.getItem('role');
   const DateTime = format(
     new Date(created_timestamp || 0),
-    'LLL dd, yyyy | H:mm'
-  );
-  const isPendingWithAdmin = adminAction === ADMIN_ACTIONS.PENDING;
-  const isRejectedUser = adminAction === ADMIN_ACTIONS.REJECTED;
+    'LLL dd, yyyy | H:mm',
+  )
+  const isPendingWithAdmin = adminAction === ADMIN_ACTIONS.PENDING
+  const isRejectedUser = adminAction === ADMIN_ACTIONS.REJECTED
   const userStatus =
     adminAction === ADMIN_ACTIONS.PENDING
       ? 'Pending approval'
@@ -85,69 +85,69 @@ const ListView = ({
       ? 'Rejected'
       : adminAction === ADMIN_ACTIONS.APPROVED
       ? 'Approved'
-      : '';
+      : ''
   const handleDialogClose = () => {
-    setOpenDialog(false);
-  };
+    setOpenDialog(false)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
   const confirmDelete = () => {
-    setIsDelete(true);
-  };
+    setIsDelete(true)
+  }
 
   const handleConfirm = async () => {
-    setIsLoading(true);
-    setChecked(!checked);
+    setIsLoading(true)
+    setChecked(!checked)
     try {
       const response = await userMutate({
         variables: {
           input: { id: user_id, enabled: !enabled },
         },
         onCompleted: (res) => {
-          handleReload();
+          handleReload()
         },
-      });
-      setIsLoading(false);
+      })
+      setIsLoading(false)
       {
         checked
           ? ShowToastSuccess(t('deactivate_message'))
-          : ShowToastSuccess(t('activate_message'));
+          : ShowToastSuccess(t('activate_message'))
       }
     } catch (err: any) {
       ShowToastError(
         err.graphQLErrors.length > 0
           ? err.graphQLErrors[0].message
-          : t('api_error_toast')
-      );
-      setIsLoading(false);
+          : t('api_error_toast'),
+      )
+      setIsLoading(false)
     }
-  };
+  }
 
   const handleconfirmResend = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
       const responseEmail = await reSendEmailMutate({
         variables: {
           input: { user_id: user_id },
         },
-      });
-      setIsLoading(false);
-      ShowToastSuccess(responseEmail.data.authoring_reinviteUser.message);
+      })
+      setIsLoading(false)
+      ShowToastSuccess(responseEmail.data.authoring_reinviteUser.message)
     } catch (err: any) {
       ShowToastError(
         err.graphQLErrors.length > 0
           ? err.graphQLErrors[0].message
-          : t('api_error_toast')
-      );
-      setIsLoading(false);
+          : t('api_error_toast'),
+      )
+      setIsLoading(false)
     }
-  };
+  }
 
   const handleChange = (checked: boolean) => {
     const dialogContent: DialogBoxContentProps = {
-      Image: checked ? warning : warningIcon,
+      Image: checked ? warning : WarningIcon,
       Title: checked ? t('deactivate_title') : t('activate_title'),
       Subtitle: checked
         ? `${t('deactivate_subtitle_pre')}
@@ -159,37 +159,38 @@ const ListView = ({
         ? t('text_deactivate_right_button')
         : t('text_activate_right_button'),
       SubTitle2: checked ? t('deactivate_subtitle2') : t('activate_subtitle2'),
-    };
+    }
 
-    dialog.show(dialogContent, handleConfirm, handleDialogClose);
-  };
+    dialog.show(dialogContent, handleConfirm, handleDialogClose)
+  }
 
   const handleApproveReject = async (actionType: string) => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       const approveRejectUserResponse = await approveRejectUser({
         variables: {
           input: { users: [user_id], status: actionType },
         },
-      });
-      setIsLoading(false);
+      })
+      setIsLoading(false)
       ShowToastSuccess(
-        approveRejectUserResponse?.data?.authoring_approveRejectEndUser?.message
-      );
-      handleReload();
+        approveRejectUserResponse?.data?.authoring_approveRejectEndUser
+          ?.message,
+      )
+      handleReload()
     } catch (err: any) {
       ShowToastError(
         err.graphQLErrors.length > 0
           ? err.graphQLErrors[0].message
-          : t('api_error_toast')
-      );
-      setIsLoading(false);
+          : t('api_error_toast'),
+      )
+      setIsLoading(false)
     }
-  };
+  }
 
   const handleReSendMail = () => {
     const dialogContent: DialogBoxContentProps = {
-      Image: warningIcon,
+      Image: WarningIcon,
       Title: t('resend_invite'),
       Subtitle: `${t('resend_subtitle_pre')}
    #${email}# ${'  '}${t('')}`,
@@ -197,17 +198,17 @@ const ListView = ({
       LeftButtonText: t('resend_text_left_button'),
       RightButtonText: t('resend_text_right_button'),
       SubTitle2: `${t('resend_subtitle_post')}`,
-    };
-    dialog.show(dialogContent, handleconfirmResend, handleDialogClose);
-  };
+    }
+    dialog.show(dialogContent, handleconfirmResend, handleDialogClose)
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleEditUser = (event: any, userId: any) => {
     navigate(
-      `/user-management/user-create?path=${userId}&usertype=${filterValue.toLowerCase()}`
-    );
-  };
+      `/user-management/user-create?path=${userId}&usertype=${filterValue.toLowerCase()}`,
+    )
+  }
 
   return (
     <>
@@ -456,7 +457,7 @@ const ListView = ({
         </Grid>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default ListView;
+export default ListView
