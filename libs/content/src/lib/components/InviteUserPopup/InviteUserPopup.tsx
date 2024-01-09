@@ -41,7 +41,7 @@ export default function InviteUserPopup({
 }: DialogList) {
   const { t } = useTranslation();
   // const [title, setTitle] = useState(titledata);
-  const filterOptions = (options) => {
+  const filterOptions = (options: any) => {
     return ['Select all', ...options];
   };
   const [value, setValue] = useState(defaultValues);

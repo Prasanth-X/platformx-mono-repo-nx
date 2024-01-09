@@ -18,16 +18,16 @@ const SocialShareStep2 = ({
   scheduleDate,
   setScheduleDate,
   isReschedule,
-}) => {
+}: any) => {
   const { t } = useTranslation();
   const [selectFacebook, setSelectFacebook] = React.useState(true);
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = (event: any) => {
     setChecked(event.target.checked);
   };
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setCaption(event.target.value);
   };
-  const handleDateChangeRaw = (e) => {
+  const handleDateChangeRaw = (e: any) => {
     e.preventDefault();
   };
 

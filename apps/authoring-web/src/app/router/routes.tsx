@@ -1,32 +1,19 @@
+import { Error } from "@platformx/utilities";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { RouteConfig } from "./routes.type";
+import { Dashboard } from '@platformx/dashboard';
 import { UserListing } from '@platformx/user-management';
-import { ProtectedRoute } from './ProtectedRoute';
-import { RouteConfig } from './routes.type';
+import { Content } from "@platformx/content";
+
 export const routes: RouteConfig[] = [
   {
-    path: '/',
-    element: (
-      <ProtectedRoute
-        category="dashboard"
-        subCategory="dashboard"
-        name="dashboard"
-      >
-        {' '}
-        Home{' '}
-      </ProtectedRoute>
-    ),
+    path: "/",
+    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" > <Dashboard /> </ProtectedRoute>,
+
   },
   {
-    path: '/dashboard',
-    element: (
-      <ProtectedRoute
-        category="dashboard"
-        subCategory="dashboard"
-        name="dashboard"
-      >
-        {' '}
-        Home{' '}
-      </ProtectedRoute>
-    ),
+    path: "/dashboard",
+    element: <ProtectedRoute category="dashboard" subCategory="dashboard" name="dashboard" > <Dashboard /> </ProtectedRoute>,
   },
   {
     path: '/user-management/user-list',

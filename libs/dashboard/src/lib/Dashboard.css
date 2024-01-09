@@ -1,0 +1,51 @@
+.sectionMargin {
+  margin-top: '50px';
+}
+.contentBox {
+  display: flex;
+  align-items: center;
+  padding: 15px 0px;
+  border-bottom: 1px solid #ced3d9;
+  justify-content: space-between;
+}
+.contentBox:last-child {
+  border-bottom: 0;
+}
+
+.arrowicon {
+  background: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.contentBox:hover .arrowicon {
+  background: #f2effd;
+}
+.drafticon {
+  border: 1px solid #f0ad4e;
+  color: #f0ad4e;
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.publishicon {
+  border: 1px solid #5cb85b;
+  font-size: 12px;
+  color: #5cb85b;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+}
+.borderbottombox {
+  overflow-y: auto;
+  max-height: 305px;
+  min-height: 305px;
+  padding: 12px 24px 0 24px;
+}

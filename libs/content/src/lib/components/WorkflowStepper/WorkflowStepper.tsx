@@ -1,6 +1,4 @@
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Stepper from '@material-ui/core/Stepper';
+
 import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -12,6 +10,7 @@ import { articleApi } from '@platformx/authoring-apis';
 import { XLoader, capitalizeFirstLetter } from '@platformx/utilities';
 import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper';
 import { TaskNotFound } from '@platformx/utilities';
+import { Step, StepLabel, Stepper } from '@mui/material';
 type WorkflowStepperProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
