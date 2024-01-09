@@ -29,20 +29,17 @@ import CourseIcon from './ReadBook.svg'
 import RedBlinkingDot from './RedBlinkingDot.gif'
 import SaveNewIcon from './SaveNewIcon.svg'
 import SearchBlackSvg from './SearchBlack.svg' //  SearchIcon,
-import warning from './activeUserIcon.svg'
-import BlueDot from './blue.svg'
-import GreenDot from './green.svg'
-import RedDot from './red.svg'
-import warningIcon from './warningIcon.svg'
-
+import SendIcon from './Send.svg'
 import SettingNewIcon from './SettingNewIcon.svg'
 import CardOptionShareIcon from './ShareIconOptionMenu.svg'
 import SitesIcon from './SitesIcon.svg'
 import SpaceListIcon from './Space.svg'
+
 import CardOptionUnPublishIcon from './UnPublishIconOptionMenu.svg'
 import UsersIcon from './UsersIcon.svg'
 import VODIcon from './VODIcon.svg'
 import CardOptionViewIcon from './ViewIconOptionMenu.svg'
+import warning from './activeUserIcon.svg'
 import AiSvg from './ai.svg'
 import AiSvg2 from './ai2.svg'
 import AiSvgDisabled from './aiDisabled.svg'
@@ -50,14 +47,20 @@ import AllIcon from './allIcon.svg'
 import ArticleIcon from './articleIcon.svg'
 import ArticleListIcon from './articleListIcon.svg'
 import BackButton from './backbutton.svg'
+import BlueDot from './blue.svg'
 import IconCancelSvg from './cancel.svg'
 import ChatGPTSvg from './chatgpt.svg'
 import CloseSearchSvg from './closeSearch.svg'
 import CookieIcon from './cookieIcon.svg'
 import CourseListIcon from './course-icon.svg'
+import GreenDot from './green.svg'
+import RedDot from './red.svg'
+import warningIcon from './warningIcon.svg'
 // import  DraftIcon from './draftIcon.svg';
-import EventsListIcon5 from './Event.svg'
+import CommentPlaceHolder from './CommentPlaceHolder.svg'
 import DraftIcon from './DraftIcon.svg'
+import EventsListIcon5 from './Event.svg'
+import ReplyIcon from './Reply.svg'
 import DraftStatusIcon from './draftStatusIcon.svg'
 import EditIcon from './editIcon.svg'
 import EventsListIcon from './event-fill.svg' //  EventsListIcon5,
@@ -115,6 +118,7 @@ export {
   Challenge_community,
   ChatGPTSvg,
   CloseSearchSvg,
+  CommentPlaceHolder,
   CookieIcon,
   CopyIcon,
   CourseIcon,
@@ -165,6 +169,7 @@ export {
   QuizListIcon,
   RedBlinkingDot,
   RedDot,
+  ReplyIcon,
   SaveNewIcon,
   SchedulePublishIcon,
   SchedulePublishStatusIcon,
@@ -173,6 +178,7 @@ export {
   SearchBlackSvg,
   SearchGraySvg,
   SearchIcon,
+  SendIcon,
   SettingNewIcon,
   SitesIcon,
   SpaceListIcon,

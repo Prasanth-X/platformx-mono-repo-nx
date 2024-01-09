@@ -1,6 +1,6 @@
-import { UserListing } from '@platformx/user-management';
-import { ProtectedRoute } from './ProtectedRoute';
-import { RouteConfig } from './routes.type';
+import { CreateUser, UserListing } from '@platformx/user-management'
+import { ProtectedRoute } from './ProtectedRoute'
+import { RouteConfig } from './routes.type'
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -41,6 +41,20 @@ export const routes: RouteConfig[] = [
       </ProtectedRoute>
     ),
   },
+  {
+    path: 'user-management/user-create',
+    element: (
+      <ProtectedRoute
+        name="user"
+        category="UserManagement"
+        subCategory=""
+        isHeader={false}
+        isSideBar={false}
+      >
+        <CreateUser />
+      </ProtectedRoute>
+    ),
+  },
   // {
   //   path: "/content",
   //   element: <ProtectedRoute category="content" subCategory="content" name="page" >  <Content></Content> </ProtectedRoute>,
@@ -63,4 +77,4 @@ export const routes: RouteConfig[] = [
   //   path: "/error",
   //   element: <Error errorCode={404} errorMessage="Page not found" />,
   // }
-];
+]
