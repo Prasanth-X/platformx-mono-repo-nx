@@ -1,15 +1,14 @@
-import { Box, Checkbox, Grid, TextField } from '@mui/material';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import Typography from '@mui/material/Typography';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { Box, Checkbox, Grid, TextField } from '@mui/material'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormGroup from '@mui/material/FormGroup'
+import Typography from '@mui/material/Typography'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
-import { useTranslation } from 'react-i18next';
-import AutoTextArea from '../AutoTextArea/AutoTextArea';
-import { useState } from 'react';
-import React from 'react';
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import AutoTextArea from '../AutoTextArea/AutoTextArea'
 
 const SocialShareStep2 = ({
   selectedItems,
@@ -20,18 +19,18 @@ const SocialShareStep2 = ({
   scheduleDate,
   setScheduleDate,
   isReschedule,
-}) => {
-  const { t } = useTranslation();
-  const [selectFacebook, setSelectFacebook] = useState(true);
+}: any) => {
+  const { t } = useTranslation()
+  const [selectFacebook, setSelectFacebook] = useState(true)
   const handleCheckboxChange = (event: any) => {
-    setChecked(event.target.checked);
-  };
+    setChecked(event.target.checked)
+  }
   const handleChange = (event: any) => {
-    setCaption(event.target.value);
-  };
+    setCaption(event.target.value)
+  }
   const handleDateChangeRaw = (e: any) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   const inlineCss = `
  .Platform-x-FormControlLabel-label{
@@ -43,7 +42,7 @@ const SocialShareStep2 = ({
     height: 125px !important;
     overflow-y: auto !important;
   }}
- `;
+ `
   return (
     <Box>
       <style>{inlineCss}</style>
@@ -159,7 +158,7 @@ const SocialShareStep2 = ({
                     value={scheduleDate}
                     disablePast
                     onChange={(newValue) => {
-                      setScheduleDate(newValue);
+                      setScheduleDate(newValue)
                     }}
                   />
                 </LocalizationProvider>
@@ -169,6 +168,6 @@ const SocialShareStep2 = ({
         </Grid>
       </Grid>
     </Box>
-  );
-};
-export default SocialShareStep2;
+  )
+}
+export default SocialShareStep2

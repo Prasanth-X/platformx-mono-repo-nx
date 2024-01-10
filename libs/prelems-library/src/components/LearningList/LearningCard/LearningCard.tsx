@@ -1,12 +1,11 @@
-import React from 'react';
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
-import { useCustomStyle } from './LearningCard.style';
-import { CalendarTodayOutlined } from '@mui/icons-material';
-import { handleHtmlTags } from 'lib/utils/helperFns';
-import FallbackImage from '../../../assets/fallBackImage.png';
+import { CalendarTodayOutlined } from '@mui/icons-material'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import { handleHtmlTags } from 'utils/helperFns'
+import FallbackImage from '../../../assets/fallBackImage.png'
+import { useCustomStyle } from './LearningCard.style'
 
 const LearningCard = ({ viewCourse, item }: any) => {
-  const classes = useCustomStyle();
+  const classes = useCustomStyle()
   return (
     <Container
       className={`${classes.learningCardWrapper} grid_container learningCard`}
@@ -60,7 +59,7 @@ const LearningCard = ({ viewCourse, item }: any) => {
         </Grid>
       </Box>
     </Container>
-  );
-};
+  )
+}
 
-export default LearningCard;
+export default LearningCard

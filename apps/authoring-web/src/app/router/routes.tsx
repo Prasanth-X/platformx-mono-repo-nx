@@ -1,5 +1,9 @@
 import { Dashboard } from '@platformx/dashboard'
 import { CreateUser, UserListing } from '@platformx/user-management'
+import {
+  WorkflowDetails,
+  WorkflowManagement,
+} from '@platformx/workflow-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
 
@@ -40,6 +44,22 @@ export const routes: RouteConfig[] = [
       >
         {' '}
         <UserListing></UserListing>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/workflow/workflow-list',
+    element: (
+      <ProtectedRoute name="article" subCategory="article" category="content">
+        <WorkflowManagement />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/workflow/workflow-details',
+    element: (
+      <ProtectedRoute name="article" subCategory="article" category="content">
+        <WorkflowDetails />
       </ProtectedRoute>
     ),
   },

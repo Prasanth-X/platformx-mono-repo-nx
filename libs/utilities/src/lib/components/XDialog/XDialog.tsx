@@ -1,16 +1,17 @@
-import { Typography, IconButton  } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import { memo } from 'react';
-import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg';
-import FormatSubtitle from '../Modal/FormatSubtitle';
+import { IconButton, Typography } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import DialogCloseIcon from '../../assets/svg/DialogCloseIcon.svg'
+import FormatSubtitle from './FormatSubtitle'
 import {
   XDialogActions,
   XDialogButton,
   XDialogContent,
   XDialogImageContainer,
-} from './XDialog.styles';
-import { XDialogProps } from './XDialog.types';
+} from './XDialog.styles'
+import { XDialogProps } from './XDialog.types'
 
 const XDialog = ({
   handleClose,
@@ -23,15 +24,15 @@ const XDialog = ({
   leftButtonText,
   rightButtonText,
 }: XDialogProps) => {
-
+  const dispatch = useDispatch()
   return (
     <div>
       <Dialog
         fullWidth={true}
         open={open}
         onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
         sx={{
           '.Platform-x-Paper-root': {
             padding: '25px !important',
@@ -62,16 +63,16 @@ const XDialog = ({
               position: 'absolute',
               right: '20px',
               top: '10px',
-            }
+            },
           },
           textAlign: 'center',
         }}
       >
         <IconButton
-          className='popupCloseIcon'
+          className="popupCloseIcon"
           edge="end"
           color="inherit"
-          onClick={handleClose}
+          onClick={() => dispatch(handleClose && handleClose())}
           aria-label="close"
         >
           <img src={DialogCloseIcon} />
@@ -81,8 +82,8 @@ const XDialog = ({
         </XDialogImageContainer>
         {title && (
           <DialogTitle
-            id='alert-dialog-title'
-            variant='h4bold'
+            id="alert-dialog-title"
+            variant="h4bold"
             width={'auto'}
             sx={{
               textAlign: 'center',
@@ -93,16 +94,16 @@ const XDialog = ({
           </DialogTitle>
         )}
         {subTitle && (
-          <XDialogContent sx={{paddingBottom:'0px', paddingTop:'0px'}}>
-            <Typography variant='h5regular' width={'auto'}>
+          <XDialogContent sx={{ paddingBottom: '0px', paddingTop: '0px' }}>
+            <Typography variant="h5regular" width={'auto'}>
               <FormatSubtitle text={subTitle}></FormatSubtitle>
             </Typography>
           </XDialogContent>
         )}
 
         {subTitle2 && (
-          <XDialogContent sx={{paddingTop:'0px', paddingBottom:'0px',}}>
-            <Typography variant='h5regular' width={'auto'}>
+          <XDialogContent sx={{ paddingTop: '0px', paddingBottom: '0px' }}>
+            <Typography variant="h5regular" width={'auto'}>
               <FormatSubtitle text={subTitle2}></FormatSubtitle>
             </Typography>
           </XDialogContent>
@@ -110,25 +111,20 @@ const XDialog = ({
 
         <XDialogActions>
           <XDialogButton
-            variant='outlined'
+            variant="outlined"
             sx={{
               marginRight: '12px',
             }}
-            onClick={() => {
-              if(handleClose) handleClose();
-            }}
+            onClick={() => dispatch(handleClose && handleClose())}
           >
             {leftButtonText}
           </XDialogButton>
 
           <XDialogButton
-            variant='contained'
+            variant="contained"
             onClick={() => {
-              if(handleConfirm && handleClose)
-              {
-                 handleConfirm();
-                 handleClose();
-              }
+              dispatch(handleConfirm && handleConfirm())
+              dispatch(handleClose && handleClose())
             }}
             autoFocus
           >
@@ -137,6 +133,6 @@ const XDialog = ({
         </XDialogActions>
       </Dialog>
     </div>
-  );
-};
-export default memo(XDialog);
+  )
+}
+export default memo(XDialog)

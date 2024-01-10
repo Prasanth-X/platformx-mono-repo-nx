@@ -1,20 +1,19 @@
-import React from 'react';
-import { Button, ButtonGroup, Typography } from '@mui/material';
-import { nullToObject } from '../../lib/utils/helperFns';
-import { useCustomStyle } from './QuantityButton.style';
-import { useTranslation } from 'react-i18next';
-import '../../../../../service/i18n';
+import { Button, ButtonGroup, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { nullToObject } from 'utils/helperFns'
+import '../../../../../service/i18n'
+import { useCustomStyle } from './QuantityButton.style'
 
 const QuantityButton = (_props: any) => {
-  const { t } = useTranslation();
-  const classes = useCustomStyle();
+  const { t } = useTranslation()
+  const classes = useCustomStyle()
   const {
     cartQuantity = 0,
     addToQuantity = () => {},
     removeQuantity = () => {},
     loading = false,
     disabled = false,
-  } = nullToObject(_props);
+  } = nullToObject(_props)
 
   return (
     <ButtonGroup
@@ -50,7 +49,7 @@ const QuantityButton = (_props: any) => {
         +
       </Button>
     </ButtonGroup>
-  );
-};
+  )
+}
 
-export default QuantityButton;
+export default QuantityButton

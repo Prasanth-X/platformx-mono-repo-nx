@@ -9,8 +9,8 @@ import {
   GreenDot,
   Loader,
   RedDot,
+  WarningIcon,
   warning,
-  warningIcon,
 } from '@platformx/utilities'
 import { format } from 'date-fns'
 import { useState } from 'react'
@@ -146,7 +146,7 @@ const ListView = ({
 
   const handleChange = (checked: boolean) => {
     const dialogContent: DialogBoxContentProps = {
-      Image: checked ? warning : warningIcon,
+      Image: checked ? warning : WarningIcon,
       Title: checked ? t('deactivate_title') : t('activate_title'),
       Subtitle: checked
         ? `${t('deactivate_subtitle_pre')}
@@ -189,7 +189,7 @@ const ListView = ({
 
   const handleReSendMail = () => {
     const dialogContent: DialogBoxContentProps = {
-      Image: warningIcon,
+      Image: WarningIcon,
       Title: t('resend_invite'),
       Subtitle: `${t('resend_subtitle_pre')}
    #${email}# ${'  '}${t('')}`,

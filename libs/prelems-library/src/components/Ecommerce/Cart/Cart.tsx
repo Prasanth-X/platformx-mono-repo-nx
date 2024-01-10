@@ -1,72 +1,72 @@
-import React, { useEffect, useState } from 'react';
-import { Grid, Button, Box, Container, Typography } from '@mui/material';
-import { ChevronLeft } from '@mui/icons-material';
-import { nullToObject } from 'lib/utils/helperFns';
-import CartTotal from './SharedComponent/CartTotal';
-import ShoppingList from './SharedComponent/ShoppingList';
-import { ecomCartIdBasedGetItem } from '../ProductListing/helper';
-import { useTranslation } from 'react-i18next';
-import '../../../service/i18n';
-import './Cart.css';
-import { useCustomStyle } from './Cart.style';
+import { ChevronLeft } from '@mui/icons-material'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { nullToObject } from 'utils/helperFns'
+import '../../../service/i18n'
+import { ecomCartIdBasedGetItem } from '../ProductListing/helper'
+import './Cart.css'
+import { useCustomStyle } from './Cart.style'
+import CartTotal from './SharedComponent/CartTotal'
+import ShoppingList from './SharedComponent/ShoppingList'
 
 const Cart = ({ secondaryArgs = {}, cartCountUpdate = () => {} }: any) => {
-  const classes = useCustomStyle();
-  const [addedCartDetails, setAddedCartDetails] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [refetchLoading, setRefetchLoading] = useState(false);
-  const { t, i18n } = useTranslation();
+  const classes = useCustomStyle()
+  const [addedCartDetails, setAddedCartDetails] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [refetchLoading, setRefetchLoading] = useState(false)
+  const { t, i18n } = useTranslation()
   /**
    * cardId based get full add to card details
    * @param cartId string
    */
   const getCartIdUsedFullAddedItem = async (
     cartId: string | number,
-    refetch = false
+    refetch = false,
   ) => {
     if (!refetch) {
-      setLoading(true);
+      setLoading(true)
     }
-    setRefetchLoading(true);
+    setRefetchLoading(true)
     const response = await ecomCartIdBasedGetItem({
       cartId: cartId,
       secondaryArgs: secondaryArgs,
-    });
+    })
     const {
       data: {
         data: { getCartItems: { statusCode = 0, data = {} } = {} } = {},
       } = {},
-    } = nullToObject(response);
+    } = nullToObject(response)
 
     if (statusCode === 200) {
-      setAddedCartDetails(data);
-      cartCountUpdate(data);
+      setAddedCartDetails(data)
+      cartCountUpdate(data)
     } else {
-      setAddedCartDetails({});
+      setAddedCartDetails({})
     }
 
-    setRefetchLoading(false);
+    setRefetchLoading(false)
     if (!refetch) {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const backToShopping = () => {
-    window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/product-listing`;
-  };
+    window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/product-listing`
+  }
 
   useEffect(() => {
-    const getCartIdFromLocal = localStorage.getItem('ecommerceCartId'); //passing to user experince
+    const getCartIdFromLocal = localStorage.getItem('ecommerceCartId') //passing to user experince
     if (getCartIdFromLocal) {
-      getCartIdUsedFullAddedItem(getCartIdFromLocal);
+      getCartIdUsedFullAddedItem(getCartIdFromLocal)
     } else {
-      cartCountUpdate(null);
+      cartCountUpdate(null)
     }
     if (typeof window !== 'undefined') {
-      i18n.changeLanguage(secondaryArgs?.prelemBaseEndpoint?.language);
+      i18n.changeLanguage(secondaryArgs?.prelemBaseEndpoint?.language)
       // i18n.changeLanguage(url.pathname.split("/")[1]);
     }
-  }, []);
+  }, [])
 
   return (
     <Box
@@ -122,7 +122,7 @@ const Cart = ({ secondaryArgs = {}, cartCountUpdate = () => {} }: any) => {
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

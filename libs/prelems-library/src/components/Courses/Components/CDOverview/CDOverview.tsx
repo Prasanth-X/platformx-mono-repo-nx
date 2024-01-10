@@ -1,34 +1,34 @@
-import { Button, Typography } from '@mui/material';
-import '../../../../Style.css';
-import { useCustomStyle } from './CDOverview.style';
-import React, { useEffect, useState } from 'react';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { handleHtmlTags } from '../lib/utils/helperFns';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { Button, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { handleHtmlTags } from 'utils/helperFns'
+import '../../../../Style.css'
+import { useCustomStyle } from './CDOverview.style'
 
 const CDOverview = ({ content }: any) => {
-  const classes = useCustomStyle();
-  const limit = 200;
-  const [description, setDescription] = useState('');
-  const [readState, setReadState] = useState('');
+  const classes = useCustomStyle()
+  const limit = 200
+  const [description, setDescription] = useState('')
+  const [readState, setReadState] = useState('')
   const getDescription = () => {
-    return handleHtmlTags(content?.description);
-  };
+    return handleHtmlTags(content?.description)
+  }
   useEffect(() => {
     if (content?.description) {
-      setDescription(getDescription().substr(0, limit) + '...');
+      setDescription(getDescription().substr(0, limit) + '...')
       if (getDescription().length > limit) {
-        setReadState('more');
+        setReadState('more')
       }
     }
-  }, [content]);
+  }, [content])
   const readMore = () => {
-    setDescription(getDescription());
-    setReadState('less');
-  };
+    setDescription(getDescription())
+    setReadState('less')
+  }
   const readLess = () => {
-    setDescription(getDescription().substr(0, limit) + '...');
-    setReadState('more');
-  };
+    setDescription(getDescription().substr(0, limit) + '...')
+    setReadState('more')
+  }
   return (
     <div id="Description" className={`${classes.CDOverviewWrapper} CDOverview`}>
       <Typography variant="h4medium">Description</Typography>
@@ -50,7 +50,7 @@ const CDOverview = ({ content }: any) => {
         Read Less
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default CDOverview;
+export default CDOverview
