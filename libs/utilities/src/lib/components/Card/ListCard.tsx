@@ -226,8 +226,8 @@ export const ListCard = ({
 
               {/* content type icon */}
               <Box className="img">
-                {/* <img src={iconsList[dataList.tagName]} alt="" /> */}
-                {React.createElement(iconsList[dataList.tagName])}
+                <img src={iconsList[dataList.tagName]} alt="" />
+                {/* {React.createElement(iconsList[dataList.tagName])} */}
               </Box>
 
               <Box className="rightspace">
@@ -267,31 +267,25 @@ export const ListCard = ({
                       )}
                     <Box component="div" className="mobstatusIcon">
                       <Typography sx={{ marginLeft: '10px' }}>
+                        <img src={statusIcons[dataList.status]} alt="" />
 
-                        {
 
-                          React.createElement(statusIcons[dataList.status])
-
-                        }
 
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledPublishTriggerDateTime &&
-                          tagName === 'sitepage' && (
-
-                            React.createElement(statusIcons['scheduleUnpublish'])
-
-                          )}
-
+                          tagName === 'sitepage' &&
+                          <img src={statusIcons['scheduleUnpublish']} alt="" />
+                        }
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledUnPublishTriggerDateTime &&
                           tagName === 'sitepage' && (
-                            // <img
-                            //   alt=""
-                            //   src={statusIcons['scheduleUnpublish']}
-                            // />
-                            React.createElement(statusIcons['scheduleUnpublish'])
+                            <img
+                              alt=""
+                              src={statusIcons['scheduleUnpublish']}
+                            />
+                            // React.createElement(statusIcons['scheduleUnpublish'])
                           )}
                       </Typography>
                     </Box>
@@ -411,7 +405,7 @@ export const ListCard = ({
                   //   siteList={siteList}
                   //   duplicateToSite={duplicateToSite}
                   // />
-                  <CustomMenuList />
+                  CustomMenuList
                 )}
               {/* {tagName === 'courses' && (
                 <CourseMenu

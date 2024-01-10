@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { Box, IconButton } from '@mui/material';
 import { memo, useState } from 'react';
 import { MoreHorizIcon } from '@platformx/utilities';
@@ -14,8 +15,10 @@ const MenuList = ({
   edit,
   fetchContentDetails,
 }) => {
-  const selectedItem = getSelectedObject(item);
-  const contentType = selectedItem.contentType;
+  debugger
+  // const selectedItem = getSelectedObject(item); // TODO: need to check
+  const selectedItem = item;
+  const contentType = selectedItem.contentType || selectedItem.tagName
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

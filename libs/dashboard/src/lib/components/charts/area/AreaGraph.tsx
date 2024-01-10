@@ -96,7 +96,7 @@ const AreaGraph = ({ itemData }: any) => {
                       fontSize={config.fontSize}
                       fill={
                         config.graphColor[
-                          (index - 1) % config.graphColor.length
+                        (index - 1) % config.graphColor.length
                         ]
                       }
                     />

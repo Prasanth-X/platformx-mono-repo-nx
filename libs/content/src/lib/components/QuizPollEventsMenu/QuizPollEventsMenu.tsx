@@ -295,7 +295,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionEditIcon /> {t('write_a_blog')}
+                < img src={CardOptionEditIcon} alt="edit" /> {t('write_a_blog')}
               </div>
             </MenuItem>
           )}
@@ -310,7 +310,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionViewIcon />
+                <img src={CardOptionViewIcon} alt='view' />
               </div>
               {t('view')}
             </MenuItem>
@@ -326,7 +326,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionViewIcon /> {t('preview')}
+                <img src={CardOptionViewIcon} alt='view' /> {t('preview')}
               </div>
             </MenuItem>
           )}
@@ -339,7 +339,7 @@ export const QuizPollEventMenu = ({
                 onClick={() => onHandleMenuActions('edit')}
               >
                 <div className={classes.icon}>
-                  <CardOptionEditIcon />
+                  < img src={CardOptionEditIcon} alt="edit" />
                   {t('edit')}
                 </div>
               </MenuItem>
@@ -359,7 +359,7 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionDuplicateIcon />
+                  <img src={CardOptionDuplicateIcon} alt='duplicate' />
                   {t('duplicate')}
                 </div>
               </MenuItem>
@@ -379,7 +379,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionCopyUrlIcon />
+                <img src={CardOptionCopyUrlIcon} alt='copy' />
                 {t('copy_url')}
               </div>
             </MenuItem>
@@ -396,7 +396,8 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionUnPublishIcon />
+                  <img src={CardOptionUnPublishIcon} alt='UnPublish' />
+
                   {t('unpublish')}
                 </div>
               </MenuItem>
@@ -417,7 +418,7 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionDeleteIcon />
+                  <img src={CardOptionDeleteIcon} alt='delete' />
                   {t('delete')}
                 </div>
               </MenuItem>
@@ -437,7 +438,8 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionShareIcon /> {t('social_share')}
+                <img src={CardOptionShareIcon} alt='view' />
+                {t('social_share')}
               </div>
             </MenuItem>
           )}
@@ -460,7 +462,9 @@ export const QuizPollEventMenu = ({
                   }}
                 >
                   <div className={classes.icon}>
-                    <CardOptionShareIcon /> {t('share_with_sites')}
+                    <img src={CardOptionShareIcon} alt='UnPublish' />
+
+                    {t('share_with_sites')}
                   </div>
                 </MenuItem>
               }
@@ -481,7 +485,7 @@ export const QuizPollEventMenu = ({
                   }}
                 >
                   <div className={classes.icon}>
-                    <CardOptionImbedIcon /> {t('embed')}
+                    <img src={CardOptionImbedIcon} alt='view' /> {t('embed')}
                   </div>
                 </MenuItem>
               )}
@@ -519,7 +523,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionApprovalStatusIcon />
+                <img src={CardOptionApprovalStatusIcon} alt='Approval' />
                 {t('approval_status')}
               </div>
             </MenuItem>

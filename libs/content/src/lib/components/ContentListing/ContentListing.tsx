@@ -207,7 +207,13 @@ const ContentListing = ({
                     siteList={sitelist}
                     duplicateToSite={duplicateToSite}
                     contentType={contentType}
-                    CustomMenuList={MenuList}
+                    CustomMenuList={
+                      <MenuList
+                        item={makeContentData(item)}
+                        deleteContent={deleteContent}
+                        duplicate={duplicate} preview={preview}
+                        unPublish={unPublish}
+                        view={view} edit={edit} fetchContentDetails={fetchContentDetails} />}
                   />
                 </Box>
               );

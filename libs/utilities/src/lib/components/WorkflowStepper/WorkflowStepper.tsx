@@ -4,6 +4,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import IconButton from '@mui/material/IconButton'
+// import { articleApi } from '@platformx/authoring-apis'
 import {
   TaskNotFound,
   XLoader,
@@ -33,15 +34,14 @@ const WorkflowStepper = ({
 
   const getStages = async () => {
     try {
-      const response: any = {}
-      //  await articleApi.fetchArticleDetails({
+      // const response: any = await articleApi.fetchArticleDetails({ //TODO: need to change
       //   contentType: capitalizeFirstLetter(contentType),
       //   path: path,
-      // });
+      // })
       // if (response?.authoring_getCmsContentByPath?.stages) {
-      //   setStages(response.authoring_getCmsContentByPath.stages);
+      //   setStages(response.authoring_getCmsContentByPath.stages)
       // }
-      setIsLoading(false);
+      setIsLoading(false)
     } catch (error) {
       console.log(error)
       setIsLoading(false)

@@ -94,7 +94,7 @@ const BarChartVertical = ({ itemData }: any) => {
                       dataKey={colnames[index]}
                       fill={
                         config.graphColor[
-                          index - (1 % config.graphColor.length)
+                        index - (1 % config.graphColor.length)
                         ]
                       }
                       barSize={config.barSize}
@@ -106,7 +106,7 @@ const BarChartVertical = ({ itemData }: any) => {
                           position="top"
                           fill={
                             config.graphColor[
-                              index - (1 % config.graphColor.length)
+                            index - (1 % config.graphColor.length)
                             ]
                           }
                           fontSize={config.fontSize}
@@ -128,7 +128,7 @@ const BarChartVertical = ({ itemData }: any) => {
                       dataKey={colnames[index]}
                       fill={
                         config.graphColor[
-                          index - (1 % config.graphColor.length)
+                        index - (1 % config.graphColor.length)
                         ]
                       }
                       barSize={config.barSize}
@@ -140,7 +140,7 @@ const BarChartVertical = ({ itemData }: any) => {
                           position="top"
                           fill={
                             config.graphColor[
-                              index - (1 % config.graphColor.length)
+                            index - (1 % config.graphColor.length)
                             ]
                           }
                           fontSize={config.fontSize}

@@ -2,7 +2,7 @@ import React from "react";
 
 
 export type CardProps = {
-  CustomMenuList: React.ComponentType<any>;
+  CustomMenuList: React.ReactNode | React.ReactElement;
   contentType?: string;
   siteList: any;
   dataList: any;

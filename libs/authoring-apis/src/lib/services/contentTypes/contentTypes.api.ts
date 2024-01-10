@@ -28,6 +28,10 @@ export const publishContentType = PUBLISH_CONTENT_TYPE;
 export const deleteContentType = DELETE_CONTENT_TYPE;
 
 const contentTypeAPIs = {
+  createContentType: CREATE_CONTENT_TYPE,
+  updateContentType: UPDATE_CONTENT_TYPE,
+  publishContentType: PUBLISH_CONTENT_TYPE,
+  deleteContentType: DELETE_CONTENT_TYPE,
   fetchContent: async <T>(input: any): Promise<ApiResponse<T>> => {
     try {
       const { data } = await graphqlInstance.query({

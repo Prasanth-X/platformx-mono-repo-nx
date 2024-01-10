@@ -7,7 +7,7 @@ import ContentGridLoader from './lib/components/ContentGridLoader'
 import DatePicker from './lib/components/DatePicker/DatePicker'
 import Error from './lib/components/Error/Error'
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip'
-import Gallery from './lib/components/Gallery/Gallery'
+// import Gallery from './lib/components/Gallery/Gallery'
 import { MiniHeader } from './lib/components/Header/MiniHeader'
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown'
 import { Loader } from './lib/components/Loader'
@@ -25,12 +25,11 @@ import SkeltonLoader from './lib/components/Skeleton-loader/skeleton'
 import BasicSwitch from './lib/components/Switch/Switch'
 import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound'
 import TextBox from './lib/components/TextBox/TextBox'
-import TitleSubTitle from './lib/components/TitleSubTitle'
 import {
   ShowToastError,
   ShowToastSuccess,
 } from './lib/components/ToastNotification/ToastNotification'
-import XDialog from './lib/components/XDialog/XDialog'
+// import { XDialog } from './lib/components/XDialog/XDialog'
 import XLoader from './lib/components/XLoader/XLoader'
 import ArticleListDesktopLoader from './lib/components/contentListLoaderDesktop'
 import {
@@ -85,6 +84,7 @@ export * from './lib/themes/prelems/prelemTheme'
 export * from './lib/utils/helper'
 export * from './lib/utils/helperConstants'
 export * from './lib/utils/helperFns'
+export * from './lib/components/SchemaComponents'
 
 export {
   AUTH_INFO,
@@ -96,14 +96,14 @@ export {
   AutoTextArea,
   BasicSwitch,
   CommonBoxWithNumber,
-  CommonImageRender,
+  // CommonImageRender,
   ContentGridLoader,
   ContentListLoader,
   DatePicker,
   DeletePopup,
   Error,
   ErrorTooltip,
-  Gallery,
+  // Gallery,
   InterRegular,
   LOGOUT_URL,
   LanguageDropDown,
@@ -126,9 +126,9 @@ export {
   TaskNotFound,
   TextBox,
   ThemeConstants,
-  TitleSubTitle,
+  // TitleSubTitle,
   USERNAME_EMAIL_EXIST,
-  XDialog,
+  // XDialog,
   XLoader,
   getUniqueTimeZone,
   i18next,
