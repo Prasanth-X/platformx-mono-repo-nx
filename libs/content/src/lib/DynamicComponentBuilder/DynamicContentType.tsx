@@ -4,7 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useCustomStyle } from "./DynamicForm.style";
-import Loader from "../../Common/Loader";
 // import { SectionProps } from "../../CommonSchemaComponents/FormTextField/FormTextField.types";
 // import SectionWrapper from "../../CommonSchemaComponents/SectionWrapper/SectionWrapper";
 // import { CreateHeader } from "../../components/Common/CreateHeader";
@@ -24,11 +23,10 @@ import Loader from "../../Common/Loader";
 // import Gallery from "../Gallery/Gallery";
 import DynamicSectionComponent from "./DynamicSectionComponent";
 import { contentTypeSchemaApi } from "@platformx/authoring-apis";
-import { useUserSession, trimString, handleHtmlTags, capitalizeFirstLetter, XLoader, CATEGORY_CONTENT, PlateformXDialog, ShowToastSuccess, ShowToastError } from "@platformx/utilities";
+import { useUserSession, trimString, handleHtmlTags, capitalizeFirstLetter, XLoader, CATEGORY_CONTENT, PlateformXDialog, ShowToastSuccess, ShowToastError, AUTH_INFO, SectionWrapper } from "@platformx/utilities";
 import { ContentType } from "../enums/ContentType";
 import useDynamicForm from "../hooks/useDynamicForm/useDynamicForm";
 import { SectionProps } from "./DynamicComponent.types";
-import { SectionWrapper } from "./DynamicForm";
 
 export const DynamicContentType = () => {
   const [Template, setTemplate] = useState<any>();
@@ -70,7 +68,7 @@ export const DynamicContentType = () => {
 
   const { userInfo, role } = getSession();
   const login_user_id = userInfo?.user_id;
-  const { getWorkflowDetails } = useWorkflow();
+  // const { getWorkflowDetails } = useWorkflow(); // TODO: need to change
   const [workflow, setWorkflow] = useState({});
   const username = `${userInfo.first_name} ${userInfo.last_name}`;
   const [isDraft, setIsDraft] = useState<boolean>(true);
@@ -109,7 +107,7 @@ export const DynamicContentType = () => {
       background_image: socialShareImage,
     } = contentInstance;
     const contentSettings = {
-      socialog_url: `${authInfo.publishUri + i18n.language}/` + `${contentType}` + `/${pageUrl}`,
+      socialog_url: `${AUTH_INFO.publishUri + i18n.language}/` + `${contentType}` + `/${pageUrl}`,
       socialog_type: contentType,
       socialog_sitename: title ? trimString(handleHtmlTags(title), 100) : contentType,
       seo_title: title ? trimString(handleHtmlTags(title), 100) : "",
@@ -117,7 +115,7 @@ export const DynamicContentType = () => {
       socialog_twitter_title: title ? trimString(handleHtmlTags(title), 100) : "",
       socialog_description: title ? trimString(handleHtmlTags(title), 163) : "",
       socialog_twitter_description: title ? trimString(handleHtmlTags(title), 163) : "",
-      socialog_twitter_url: `${authInfo.publishUri + i18n.language}/` + `quiz` + `/${pageUrl}`,
+      socialog_twitter_url: `${AUTH_INFO.publishUri + i18n.language}/` + `quiz` + `/${pageUrl}`,
       keywords: ["Profile"],
       seo_keywords: ["Profile"],
       seo_description: title ? trimString(handleHtmlTags(title), 163) : "",
@@ -336,7 +334,7 @@ export const DynamicContentType = () => {
   useEffect(() => {
     setIsLoading(true);
     getSchema();
-    getWorkflowDetails(role, login_user_id, setWorkflow, capitalizeFirstLetter("profile"));
+    // getWorkflowDetails(role, login_user_id, setWorkflow, capitalizeFirstLetter("profile")); //TODO: need to change
   }, [contentType]);
 
   return (
@@ -355,7 +353,7 @@ export const DynamicContentType = () => {
             />
           )} */}
           <Box mb={3}>
-            <CreateHeader
+            {/* <CreateHeader
               createText={false ? `${t("edit")} ${t("quiz")}` : Template?.title}
               publishText={t("publish")}
               saveText={t("save_as_draft")}
@@ -390,7 +388,7 @@ export const DynamicContentType = () => {
                 throw new Error("Function not implemented.");
               }}
               createComment={""}
-            />
+            /> */}
             <Divider></Divider>
           </Box>
 

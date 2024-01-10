@@ -22,7 +22,7 @@ interface TagListingProps {
   selectedTags?: any;
   isPublishModal?: any;
 }
-const TagListing = (props: TagListingProps) => {
+const XTagListing = (props: TagListingProps) => {
   const { t } = useTranslation();
   const {
     categories = {},
@@ -127,4 +127,4 @@ const TagListing = (props: TagListingProps) => {
     </>
   );
 };
-export default React.memo(TagListing);
+export default React.memo(XTagListing);

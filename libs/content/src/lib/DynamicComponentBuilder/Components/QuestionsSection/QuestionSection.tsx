@@ -1,8 +1,6 @@
 import { Box, Grid } from '@mui/material';
-import { XButton } from '../../../../CommonSchemaComponents/XButton/XButton';
-import TitleSubTitle from '../../../../components/Common/TitleSubTitle';
-import { DragableQuestions } from '../../../../components/Quiz/DragableQuestions';
 import { useStyles } from './QuestionSection.styles';
+import { TitleSubTitle, XButton } from '@platformx/utilities';
 
 const QuestionSection = ({
   field,
@@ -16,18 +14,18 @@ const QuestionSection = ({
     <>
       <Grid item xs={12} sm={5} md={5} lg={5}>
         <TitleSubTitle
-          titleVarient={'h6medium'}
-          subTitleVarient={'h7regular'}
+          titleVariant={'h6medium'}
+          subTitleVariant={'h7regular'}
           title={field?.title}
           subTitle={field?.description}
         />
       </Grid>
       <Grid item xs={12} sm={7} md={7} lg={7}>
-        <DragableQuestions
+        {/* <DragableQuestions
           quizState={quizState}
           setQuizState={setQuizState}
-          onClickEditQuestion={() => {}}
-        />
+          onClickEditQuestion={() => { }}
+        /> */}
         <Box className={classes.container}>
           <XButton
             variant={'primaryButton'}

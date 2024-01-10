@@ -6,7 +6,7 @@ import {
 } from '@platformx/workflow-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
-
+import { CreateContent } from "@platformx/content"
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -74,6 +74,14 @@ export const routes: RouteConfig[] = [
         isSideBar={false}
       >
         <CreateUser />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/content/create",
+    element: (
+      <ProtectedRoute name='quiz' subCategory='quiz' category='content'>
+        <CreateContent />
       </ProtectedRoute>
     ),
   },

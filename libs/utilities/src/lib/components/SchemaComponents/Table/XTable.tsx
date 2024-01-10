@@ -6,7 +6,7 @@ export interface XTableprops {
   handleInput?: any;
   handleOnBlur?: any;
 }
-const Table = ({ data, handleInput, handleOnBlur }: XTableprops) => {
+const XTable = ({ data, handleInput, handleOnBlur }: XTableprops) => {
   const classes = useCustomStyle();
 
   return (
@@ -75,4 +75,4 @@ const Table = ({ data, handleInput, handleOnBlur }: XTableprops) => {
     </Box>
   );
 };
-export default Table;
+export default XTable;

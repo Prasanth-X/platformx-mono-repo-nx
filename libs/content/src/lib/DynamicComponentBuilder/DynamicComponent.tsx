@@ -1,21 +1,25 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-debugger */
 import { Container, Grid } from "@mui/material";
 import { useField, useFormikContext } from "formik";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import Answers from "../../CommonSchemaComponents/Answers/Answers";
-import Seo from "../../CommonSchemaComponents/Seo/Seo";
-import Table from "../../CommonSchemaComponents/Table/Table";
-import { Tags } from "../../CommonSchemaComponents/Tags/Tags";
-import TextArea from "../../CommonSchemaComponents/TextArea/TextArea";
-import AddImage from "../../components/Common/AddImage";
-import AutoCompleteText from "../../components/Common/AutoCompleteText";
-import FormikField from "../../components/Common/FormikField";
-import TitleSubTitle from "../../components/Common/TitleSubTitle";
+// import Answers from "../../CommonSchemaComponents/Answers/Answers";
+// import Seo from "../../CommonSchemaComponents/Seo/Seo";
+// import Table from "../../CommonSchemaComponents/Table/Table";
+// import { Tags } from "../../CommonSchemaComponents/Tags/Tags";
+// import TextArea from "../../CommonSchemaComponents/TextArea/TextArea";
+// import AddImage from "../../components/Common/AddImage";
+// import AutoCompleteText from "../../components/Common/AutoCompleteText";
+// import FormikField from "../../components/Common/FormikField";
+// import TitleSubTitle from "../../components/Common/TitleSubTitle";
 import FileUploadWrapper from "./Components/FilleUploadWrapper/FileUploadWrapper";
 import QuestionSection from "./Components/QuestionsSection/QuestionSection";
 import RadioGroupWrapper from "./Components/RadioGroupWrapper/RadioGroupWrapper";
 import SwitchWrapper from "./Components/SwitchWrapper/SwitchWrapper";
+import { TitleSubTitle, FormikField, AddImage, Answers, XTable, XTags, XTextArea, TextArea } from "@platformx/utilities";
 
 const DynamicComponent = ({
   fields,
@@ -99,8 +103,8 @@ const DynamicComponent = ({
               <>
                 <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
                   <TitleSubTitle
-                    titleVarient={"h6medium"}
-                    subTitleVarient={"h7regular"}
+                    titleVariant={"h6medium"}
+                    subTitleVariant={"h7regular"}
                     title={field?.title}
                     subTitle={field?.description}
                   />
@@ -119,8 +123,8 @@ const DynamicComponent = ({
               <>
                 <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
                   <TitleSubTitle
-                    titleVarient={"h6medium"}
-                    subTitleVarient={"h7regular"}
+                    titleVariant={"h6medium"}
+                    subTitleVariant={"h7regular"}
                     title={field?.title}
                     subTitle={field?.description}
                   />
@@ -142,8 +146,8 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
@@ -163,8 +167,8 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
@@ -179,14 +183,14 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
             </Grid>
             <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
-              <Table data={data} handleInput={handleInputQuote} handleOnBlur={handleOnBlurQuote} />
+              <XTable data={data} handleInput={handleInputQuote} handleOnBlur={handleOnBlurQuote} />
             </Grid>
           </>
         );
@@ -195,14 +199,14 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
             </Grid>
             <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
-              <Tags
+              <XTags
                 tagData={tagData}
                 selectedTag={selectedTag}
                 handleTagOnChange={handleTagOnChange}
@@ -215,8 +219,8 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
@@ -242,14 +246,14 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
             </Grid>
             <Grid item xs={12} sm={7} md={7} lg={7} className='textFiled'>
-              <AutoCompleteText socialShareInfo={quizState} setSocialShareInfo={setQuizState} />
+              {/* <AutoCompleteText socialShareInfo={quizState} setSocialShareInfo={setQuizState} /> */}
             </Grid>
           </>
         );
@@ -268,8 +272,8 @@ const DynamicComponent = ({
           <>
             <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
               <TitleSubTitle
-                titleVarient={"h6medium"}
-                subTitleVarient={"h7regular"}
+                titleVariant={"h6medium"}
+                subTitleVariant={"h7regular"}
                 title={field?.title}
                 subTitle={field?.description}
               />
@@ -296,8 +300,8 @@ const DynamicComponent = ({
             questionType={"single"}
           />
         );
-      case "structured_data":
-        return <Seo />;
+      // case "structured_data":
+      //   return <Seo />;
       default:
         return null;
     }

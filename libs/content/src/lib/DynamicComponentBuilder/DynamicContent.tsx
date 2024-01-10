@@ -1,8 +1,9 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-empty */
 import { useMutation } from '@apollo/client';
 import { Box, Divider } from '@mui/material';
 import { Form, Formik, useFormik } from 'formik';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 // import { useCustomStyle } from '../../Common/DynamicForm.style'; 
@@ -25,9 +26,9 @@ import { useNavigate } from 'react-router-dom';
 // import { authInfo } from '../../utils/authConstants';
 // import { CATEGORY_CONTENT } from '../../utils/constants';
 // import { handleHtmlTags, trimString } from '../../utils/helperFunctions';
-import { AddQuestion } from './Components/AddQuestions/AddQuestions';
+// import { AddQuestion } from './Components/AddQuestions/AddQuestions';
 import GalleryWrapper from './Components/GalleryWrapper/GalleryWrapper';
-import { QuestionListing } from './Components/QuestionListing/QuestionListing';
+// import { QuestionListing } from './Components/QuestionListing/QuestionListing';
 import DynamicComponent from './DynamicComponent';
 import { Template } from './schemas/index';
 import { AUTH_INFO, CATEGORY_CONTENT, PlateformXDialog, SectionWrapper, ShowToastError, ShowToastSuccess, XLoader, handleHtmlTags, trimString, useUserSession } from '@platformx/utilities';
@@ -36,9 +37,9 @@ import useDynamicForm from '../hooks/useDynamicForm/useDynamicForm';
 import { articleApi, contentTypeAPIs } from '@platformx/authoring-apis';
 import { ContentType } from '../enums/ContentType';
 import { SectionProps } from './DynamicComponent.types';
-
-export const DynamicContent = () => {
-  const { form_groups } = Template;
+const DynamicContent = ({ contentType }: { contentType: string }) => {
+  debugger;
+  const { form_groups, fields } = Template[contentType];
   const { t, i18n } = useTranslation();
   const classes = useCustomStyle();
   const [createquizmutate] = useMutation(contentTypeAPIs.createContentType);
@@ -49,7 +50,7 @@ export const DynamicContent = () => {
     tagsSocialShare: [],
     questions: [],
   });
-  const groupedFields: any = Template.fields.reduce((result, field) => {
+  const groupedFields: any = fields?.reduce((result, field) => {
     const { index, ...rest } = field;
     const existingGroup: any = result.find((group: any) => group.index === index);
     if (existingGroup) {
@@ -64,7 +65,7 @@ export const DynamicContent = () => {
     }
     return result;
   }, []);
-  const { initialValues, validationSchema } = useDynamicForm(Template.fields);
+  const { initialValues, validationSchema } = useDynamicForm(fields);
   const [tagData, setTagData] = useState<any>({});
   const [tagArr, setTagArr] = useState<any>([]);
   const [addQuestion, setAddQuestion] = useState(false);
@@ -379,12 +380,12 @@ export const DynamicContent = () => {
   return (
     <>
       {isLoading && <XLoader type="circular" />}
-      {addQuestion && (
+      {/* {addQuestion && (
         <AddQuestion
           toggleAddQuestion={toggleAddQuestion}
           saveQuestionCallBack={saveQuestionCallBack}
         />
-      )}
+      )} */}
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
@@ -445,13 +446,13 @@ export const DynamicContent = () => {
               </Box>
             )}
 
-            {questionListing && (
+            {/* {questionListing && (
               <QuestionListing
                 quizState={quizState}
                 setQuizState={setQuizState}
                 toggleQuestionListing={toggleQuestionListing}
               />
-            )}
+            )} */}
             {groupedFields?.length > 0 &&
               !addQuestion &&
               !questionListing &&
@@ -503,3 +504,5 @@ export const DynamicContent = () => {
     </>
   );
 };
+
+export default memo(DynamicContent);
