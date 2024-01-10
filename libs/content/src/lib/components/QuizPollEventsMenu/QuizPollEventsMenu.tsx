@@ -16,8 +16,7 @@ import {
 } from '@platformx/utilities';
 import DuplicateContentPopup from '../DuplicateContentPopup/DuplicateContentPopup';
 
-import {
-  CardOptionApprovalStatusIcon,
+import {CardOptionApprovalStatusIcon,
   CardOptionCopyUrlIcon,
   CardOptionDeleteIcon,
   CardOptionDuplicateIcon,
@@ -297,7 +296,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionEditIcon /> {t('write_a_blog')}
+              <img src={CardOptionEditIcon} alt='icon' /> {t('write_a_blog')}
               </div>
             </MenuItem>
           )}
@@ -312,7 +311,7 @@ export const QuizPollEventMenu = ({
             }}
           >
             <div className={classes.icon}>
-              <CardOptionViewIcon />
+            <img src={CardOptionViewIcon} alt='icon' />
             </div>
             {t('view')}
           </MenuItem>
@@ -328,7 +327,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionViewIcon /> {t('preview')}
+              <img src={CardOptionViewIcon} alt='icon' />{t('preview')}
               </div>
             </MenuItem>
           )}
@@ -341,7 +340,7 @@ export const QuizPollEventMenu = ({
                 onClick={() => onHandleMenuActions('edit')}
               >
                 <div className={classes.icon}>
-                  <CardOptionEditIcon />
+                <img src={CardOptionEditIcon} alt='icon' />
                   {t('edit')}
                 </div>
               </MenuItem>
@@ -361,7 +360,7 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionDuplicateIcon />
+                <img src={CardOptionDuplicateIcon} alt='icon' />
                   {t('duplicate')}
                 </div>
               </MenuItem>
@@ -381,7 +380,7 @@ export const QuizPollEventMenu = ({
             }}
           >
             <div className={classes.icon}>
-              <CardOptionCopyUrlIcon />
+            <img src={CardOptionCopyUrlIcon} alt='icon' />
               {t('copy_url')}
             </div>
           </MenuItem>
@@ -408,7 +407,7 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionUnPublishIcon />
+                <img src={CardOptionUnPublishIcon} alt='icon' />
                   {t('unpublish')}
                 </div>
               </MenuItem>
@@ -429,7 +428,7 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionDeleteIcon />
+                <img src={CardOptionDeleteIcon} alt='icon' />
                   {t('delete')}
                 </div>
               </MenuItem>
@@ -449,7 +448,7 @@ export const QuizPollEventMenu = ({
             }}
           >
             <div className={classes.icon}>
-              <CardOptionShareIcon /> {t('social_share')}
+            <img src={CardOptionShareIcon} alt='icon' />{t('social_share')}
             </div>
           </MenuItem>
         )}
@@ -472,7 +471,8 @@ export const QuizPollEventMenu = ({
                   }}
                 >
                   <div className={classes.icon}>
-                    <CardOptionShareIcon /> {t('share_with_sites')}
+                  <img src={CardOptionShareIcon} alt='icon' />
+                    {t('share_with_sites')}
                   </div>
                 </MenuItem>
               }
@@ -493,7 +493,8 @@ export const QuizPollEventMenu = ({
                 }}
               >
                 <div className={classes.icon}>
-                  <CardOptionImbedIcon /> {t('embed')}
+                <img src={CardOptionImbedIcon} alt='icon' />
+                {t('embed')}
                 </div>
               </MenuItem>
             )}
@@ -531,7 +532,7 @@ export const QuizPollEventMenu = ({
               }}
             >
               <div className={classes.icon}>
-                <CardOptionApprovalStatusIcon />
+                <img src={CardOptionApprovalStatusIcon} alt='icon' />
                 {t('approval_status')}
               </div>
             </MenuItem>
