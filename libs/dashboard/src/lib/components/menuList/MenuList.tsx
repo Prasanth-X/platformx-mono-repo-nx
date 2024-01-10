@@ -41,17 +41,6 @@ const MenuList = ({
           />
         </IconButton>
       </Box>
-
-      {/* {contentType === 'article' && (
-        <ArticleMenu
-          listItemDetails={selectedItem}
-          open={open}
-          anchorEl={anchorEl}
-          handleMenuClose={() => {
-            setAnchorEl(null);
-          }}
-        />
-      )} */}
       {(contentType === 'quiz' ||
         contentType === 'poll' ||
         contentType === 'event' ||
