@@ -52,7 +52,7 @@ export const QuizPollEventMenu = ({
   fetchContentDetails,
   sitelist,
   duplicateToSite,
-}) => {
+}: any) => {
   const classes = useStyles();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -74,17 +74,17 @@ export const QuizPollEventMenu = ({
     setSelectedContent(listItemDetails);
   }, [listItemDetails]);
 
-  const openSettingsPanel = (path) => {
+  const openSettingsPanel = (path: string) => {
     navigate(
       `/content/create-${contentType?.toLowerCase()}?path=${path}&open=socialShare`
     );
   };
 
-  const handleEditContentType = (listItemDetails) => {
+  const handleEditContentType = (listItemDetails: any) => {
     edit(listItemDetails);
   };
 
-  const handleStartBlog = (path) => {
+  const handleStartBlog = (path: string) => {
     navigate(`/content/create-blog?path=${path}`);
   };
 
@@ -136,7 +136,7 @@ export const QuizPollEventMenu = ({
     });
   };
 
-  const onHandleMenuActions = (action) => {
+  const onHandleMenuActions = (action: any) => {
     switch (action) {
       case MenuActions.EDIT:
         handleEditContentType(listItemDetails);

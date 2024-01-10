@@ -1,52 +1,52 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import { Box, Button, Grid, Typography } from '@mui/material';
-import { PlateformXDialog, PlateformXDialogSuccess } from '@platformx/utilities';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import imageUrl from '../../../assets/images/testimonial.png';
-import PermissionsCheckBoxCard from './PermissionsCheckBoxCard';
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import { Box, Button, Grid, Typography } from '@mui/material'
+import { PlateformXDialog, PlateformXDialogSuccess } from '@platformx/utilities'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import imageUrl from '../../../assets/images/testimonial.png'
+import PermissionsCheckBoxCard from './PermissionsCheckBoxCard'
 
 const UserDetails = () => {
-  const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
-  const [openSuccess, setOpenSuccess] = React.useState(false);
+  const navigate = useNavigate()
+  const [open, setOpen] = React.useState(false)
+  const [openSuccess, setOpenSuccess] = React.useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
   const deleteConfirmButtonHandle = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleClickOpenSuccess = () => {
-    setOpenSuccess(true);
-  };
+    setOpenSuccess(true)
+  }
 
   const handleCloseSuccess = () => {
-    setOpenSuccess(false);
-  };
+    setOpenSuccess(false)
+  }
   const successConfirmButtonHandle = () => {
-    setOpenSuccess(false);
-  };
+    setOpenSuccess(false)
+  }
   const deletePopup = {
     deleteTitle: 'Deactivate User!',
     deleteDescription: `Are you sure you want to deactivate “Prakash Raj”? The user won’t be able to perform any task if you deactivate him.`,
     deleteCloseText: 'No, Keep it!',
     deleteConfirmText: 'Yes, Delete it!',
-  };
+  }
   const successPopup = {
     successTitle: 'User Created Successfully!',
     successDescription: `We send an invitation e-mail to the “rkaushal@hello.com”. Users need to accept the invitation by clicking the “Activate Your Account link in the e-mail address.`,
     successCloseText: 'Go to Listing',
     successConfirmText: 'Create Another',
-  };
+  }
   const StyleCss = `
     @media (min-width: 1024px){
       .boxwp {
@@ -72,7 +72,7 @@ const UserDetails = () => {
     }
     
     
-  `;
+  `
   return (
     <>
       <Box sx={{ padding: { xs: '10px', md: '20px 20px 0 20px' } }}>
@@ -258,7 +258,7 @@ const UserDetails = () => {
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default UserDetails;
+export default UserDetails

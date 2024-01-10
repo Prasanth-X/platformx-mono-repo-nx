@@ -1,8 +1,7 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
-import { currencyBasedIcon, formateNumber } from '../lib/utils/helperFns';
-import './ActualPrice.css';
+import { Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import { currencyBasedIcon, formateNumber } from 'utils/helperFns'
+import './ActualPrice.css'
 
 const SellPrice = ({
   price,
@@ -26,7 +25,7 @@ const SellPrice = ({
         </Typography>
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default SellPrice;
+export default SellPrice

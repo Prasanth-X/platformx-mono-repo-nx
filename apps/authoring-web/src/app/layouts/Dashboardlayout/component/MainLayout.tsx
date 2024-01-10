@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import {
+  RootState,
+  handleCancel,
+  handleConfirm,
+} from '@platformx/authoring-state';
+import { XDialog } from '@platformx/utilities';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import Header from './Header/Header';
 import LeftSideBar from './LeftSidebar/LeftSideBar';
@@ -26,7 +34,10 @@ const LayoutWrapper: React.FC<LayoutWrapperProps> = ({
   const theme = useTheme();
   const pageUrl = new URL(window.location.href);
   const [menuItemSelected, setMenuItemSelected] = useState('menu');
-
+  const { isOpen, dialogProps } = useSelector(
+    (state: RootState) => state.dialog
+  );
+  const { t } = useTranslation();
   const handleDrawerOpen = () => {
     isSideBar && setOpen(!open);
   };
@@ -69,6 +80,19 @@ const LayoutWrapper: React.FC<LayoutWrapperProps> = ({
         <RightLayout open={isSideBar ? open : isSideBar} isSideBar={isSideBar}>
           {children}
         </RightLayout>
+        {isOpen && (
+          <XDialog
+            handleClose={handleCancel}
+            handleConfirm={handleConfirm}
+            open={isOpen}
+            imageIcon={dialogProps.imageIcon}
+            title={t(dialogProps.title)}
+            leftButtonText={t(dialogProps.leftButtonText)}
+            rightButtonText={t(dialogProps.rightButtonText)}
+            subTitle={t(dialogProps.subTitle)}
+            subTitle2={t(dialogProps.subTitle2)}
+          />
+        )}
       </>
     );
   }

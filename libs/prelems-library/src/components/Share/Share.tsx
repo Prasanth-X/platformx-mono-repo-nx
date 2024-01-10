@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { Box, useTheme } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { FacebookShareButton, LinkedinShareButton } from "react-share";
-import { nullToObject } from "../../utils/helperFns";
-import ToastService from "../../Common/ToastContainer/ToastService";
-import { errorRequest, linkCopy } from "../../Common/ConstantData";
-import ToastContainerHandle from "../../Common/ToastContainer/ToastContainerHandle";
-import IconCopySvg from "../../assets/svgIcon/Copy.svg";
-import IconEmbedInSvg from "../../assets/svgIcon/Embed.png";
-import IconFacebookSvg from "../../assets/svgIcon/Facebook.svg";
-import IconLinkedInSvg from "../../assets/svgIcon/LinkedIn.svg";
-import EmbedDialog from "../EmbededModal/EmbededModal";
+import { Box, useTheme } from '@mui/material'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { FacebookShareButton, LinkedinShareButton } from 'react-share'
+import { errorRequest, linkCopy } from '../../Common/ConstantData'
+import ToastContainerHandle from '../../Common/ToastContainer/ToastContainerHandle'
+import ToastService from '../../Common/ToastContainer/ToastService'
+import IconCopySvg from '../../assets/svgIcon/Copy.svg'
+import IconEmbedInSvg from '../../assets/svgIcon/Embed.png'
+import IconFacebookSvg from '../../assets/svgIcon/Facebook.svg'
+import IconLinkedInSvg from '../../assets/svgIcon/LinkedIn.svg'
+import { nullToObject } from '../../utils/helperFns'
+import EmbedDialog from '../EmbededModal/EmbededModal'
 
 type Sharetype = {
-  shareUrl?: string;
-  embedData?: any;
-  domainUrl?: string;
-  border?: string;
-  whiteIcon?: boolean;
-  enablePreview?: boolean;
-};
+  shareUrl?: string
+  embedData?: any
+  domainUrl?: string
+  border?: string
+  whiteIcon?: boolean
+  enablePreview?: boolean
+}
 
 const Share = (props: Sharetype) => {
-  const theme = useTheme();
-  const { shareUrl = "", domainUrl = "", enablePreview } = nullToObject(props);
+  const theme = useTheme()
+  const { shareUrl = '', domainUrl = '', enablePreview } = nullToObject(props)
 
   /**
    * back ground color will change based on their own brand based
@@ -33,79 +33,80 @@ const Share = (props: Sharetype) => {
   const imgCommon = () => {
     if (props.whiteIcon) {
       const styleImg = {
-        filter: "brightness(0) invert(1)",
-      };
-      return styleImg;
+        filter: 'brightness(0) invert(1)',
+      }
+      return styleImg
     }
-  };
-  const styleCommon = (bgColor = "#2d2d39") => {
+  }
+  const styleCommon = (bgColor = '#2d2d39') => {
     const boxStyle = {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "33px !important",
-      width: "33px !important",
-      borderRadius: "3px",
-      cursor: "pointer",
-      marginRight: "12px",
-      background: !props.whiteIcon ? theme.palette.textColor : " ",
-      "&:hover": {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '33px !important',
+      width: '33px !important',
+      borderRadius: '3px',
+      cursor: 'pointer',
+      marginRight: '12px',
+      background: !props.whiteIcon ? theme.palette.textColor : ' ',
+      '&:hover': {
         img: {
-          filter: "brightness(0) invert(1)",
+          filter: 'brightness(0) invert(1)',
         },
         background: bgColor,
       },
       border: props.border,
-    };
-    return boxStyle;
-  };
+    }
+    return boxStyle
+  }
 
   const buttonStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    cursor: !enablePreview ? "pointer" : "default",
-  };
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    cursor: !enablePreview ? 'pointer' : 'default',
+  }
 
   const disabledButtonStyle = {
     opacity: 1,
-  };
+  }
   /**
    * copy url
    */
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const copyClipBoardData = async () => {
-    if ("clipboard" in navigator && domainUrl) {
-      await navigator.clipboard.writeText(domainUrl);
-      ToastService.SuccessToast(t(linkCopy));
+    if ('clipboard' in navigator && domainUrl) {
+      await navigator.clipboard.writeText(domainUrl)
+      ToastService.SuccessToast(t(linkCopy))
     } else {
-      ToastService.failToast(t(errorRequest));
+      ToastService.failToast(t(errorRequest))
     }
-  };
+  }
 
-  const onShareWindowClose = () => {};
-  const [openEmbedModal, setOpenEmbedModal] = useState(false);
-  const emptyToastHandle = (shareUrlData = "") => {
+  const onShareWindowClose = () => {}
+  const [openEmbedModal, setOpenEmbedModal] = useState(false)
+  const emptyToastHandle = (shareUrlData = '') => {
     if (!shareUrlData) {
-      ToastService.failToast(t(errorRequest));
+      ToastService.failToast(t(errorRequest))
     }
-  };
+  }
 
   const handleEmbed = () => {
-    setOpenEmbedModal(true);
-  };
+    setOpenEmbedModal(true)
+  }
   const closeEmbedButtonHandle = () => {
-    setOpenEmbedModal(false);
-  };
+    setOpenEmbedModal(false)
+  }
   return (
     <Box
       sx={{
-        display: "flex",
+        display: 'flex',
         // justifyContent: { xs: "flex-start", md: "end" },
         // alignItems: "center",
-        mt: "5px",
-      }}>
+        mt: '5px',
+      }}
+    >
       <ToastContainerHandle />
 
       <FacebookShareButton
@@ -114,21 +115,23 @@ const Share = (props: Sharetype) => {
         onShareWindowClose={onShareWindowClose}
         url={shareUrl}
         style={buttonStyle}
-        disabledStyle={disabledButtonStyle}>
+        disabledStyle={disabledButtonStyle}
+      >
         <Box
           sx={{
-            ...styleCommon("#1078f0"),
-            cursor: !enablePreview ? "pointer" : "default",
+            ...styleCommon('#1078f0'),
+            cursor: !enablePreview ? 'pointer' : 'default',
           }}
-          onClick={() => !enablePreview && emptyToastHandle(shareUrl)}>
+          onClick={() => !enablePreview && emptyToastHandle(shareUrl)}
+        >
           <img
-            alt='share1'
-            width='15px'
-            height='15px'
+            alt="share1"
+            width="15px"
+            height="15px"
             src={IconFacebookSvg}
             style={{ ...imgCommon() }}
           />
-          {(shareCount: any) => <span className='myShareCountWrapper'>{shareCount}</span>}
+          {/* {(shareCount: any) => <span className='myShareCountWrapper'>{shareCount}</span>} */}
         </Box>
       </FacebookShareButton>
 
@@ -149,17 +152,19 @@ const Share = (props: Sharetype) => {
         onShareWindowClose={onShareWindowClose}
         url={shareUrl}
         style={buttonStyle}
-        disabledStyle={disabledButtonStyle}>
+        disabledStyle={disabledButtonStyle}
+      >
         <Box
           sx={{
-            ...styleCommon("#2d67b3"),
-            cursor: !enablePreview ? "pointer" : "default",
+            ...styleCommon('#2d67b3'),
+            cursor: !enablePreview ? 'pointer' : 'default',
           }}
-          onClick={() => !enablePreview && emptyToastHandle(shareUrl)}>
+          onClick={() => !enablePreview && emptyToastHandle(shareUrl)}
+        >
           <img
-            alt='share4'
-            width='15px'
-            height='15px'
+            alt="share4"
+            width="15px"
+            height="15px"
             src={IconLinkedInSvg}
             style={{ ...imgCommon() }}
           />
@@ -168,26 +173,34 @@ const Share = (props: Sharetype) => {
 
       <Box
         sx={{
-          ...styleCommon("#229af1"),
-          cursor: !enablePreview ? "pointer" : "default",
+          ...styleCommon('#229af1'),
+          cursor: !enablePreview ? 'pointer' : 'default',
         }}
-        onClick={() => !enablePreview && copyClipBoardData()}>
-        <img alt='share5' width='15px' height='15px' src={IconCopySvg} style={{ ...imgCommon() }} />
+        onClick={() => !enablePreview && copyClipBoardData()}
+      >
+        <img
+          alt="share5"
+          width="15px"
+          height="15px"
+          src={IconCopySvg}
+          style={{ ...imgCommon() }}
+        />
       </Box>
 
       <Box
         sx={{
-          ...styleCommon("#2d2d39"),
-          cursor: !enablePreview ? "pointer" : "default",
+          ...styleCommon('#2d2d39'),
+          cursor: !enablePreview ? 'pointer' : 'default',
           marginRight: 0,
         }}
         onClick={() => {
-          !enablePreview && handleEmbed();
-        }}>
+          !enablePreview && handleEmbed()
+        }}
+      >
         <img
-          alt='share6'
-          width='20px'
-          height='20px'
+          alt="share6"
+          width="20px"
+          height="20px"
           src={IconEmbedInSvg}
           style={{ ...imgCommon() }}
         />
@@ -200,7 +213,7 @@ const Share = (props: Sharetype) => {
         />
       ) : null}
     </Box>
-  );
-};
+  )
+}
 
-export default React.memo(Share);
+export default React.memo(Share)

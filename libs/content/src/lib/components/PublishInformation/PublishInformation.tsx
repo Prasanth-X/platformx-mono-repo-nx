@@ -45,7 +45,6 @@ export const PublishInformation = (props: PublishInformationProps) => {
         <Tooltip placement="top-start" title={t(`${dataList.status}`)}>
           <Typography sx={{ marginLeft: '10px' }}>
             {convertToLowerCase(contentType) === 'community' ?
-              // <img src={stateIcons.published} alt="" /> 
               <stateIcons.published /> :
               <img src={stateIcons[dataList.status]} alt="" />
               // React.createElement(stateIcons[dataList.status])

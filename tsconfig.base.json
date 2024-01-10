@@ -26,7 +26,9 @@
       "@platformx/theme-library": ["libs/theme-library/src/index.ts"],
       "@platformx/user-management": ["libs/user-management/src/index.ts"],
       "@platformx/utilities": ["libs/utilities/src/index.ts"],
-      "@platformx/x-image-render": ["libs/x-image-render/src/index.ts"]
+      "@platformx/x-image-render": ["libs/x-image-render/src/index.ts"],
+      "@platformx/dashboard": ["libs/dashboard/src/index.ts"],
+      "@platformx/workflow-management": ["libs/workflow-management/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

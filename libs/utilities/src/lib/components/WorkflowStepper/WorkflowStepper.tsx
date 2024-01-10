@@ -1,36 +1,35 @@
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Stepper from '@material-ui/core/Stepper';
-import CloseIcon from '@mui/icons-material/Close';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-// import { articleApi } from '@platformx/authoring-apis';
-import XLoader from '../XLoader/XLoader';
-import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper';
-import TaskNotFound from '../TaskNotFound/TaskNotFound';
-import { capitalizeFirstLetter } from '../../utils/helperFns';
+import CloseIcon from '@mui/icons-material/Close'
+import { Step, StepLabel, Stepper } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
+import IconButton from '@mui/material/IconButton'
+import {
+  TaskNotFound,
+  XLoader,
+  capitalizeFirstLetter,
+} from '@platformx/utilities'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { getStepperCount, lineBreak } from '../WorkflowStepper/Utils/helper'
 type WorkflowStepperProps = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  path: string;
-  contentType: string;
-};
-export const WorkflowStepper = ({
+  open: boolean
+  setOpen: (open: boolean) => void
+  path: string
+  contentType: string
+}
+const WorkflowStepper = ({
   open,
   setOpen,
   path,
   contentType,
 }: WorkflowStepperProps) => {
-  const { t } = useTranslation();
-  const [stages, setStages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation()
+  const [stages, setStages] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const handleClickOpen = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   const getStages = async () => {
     try {
@@ -44,14 +43,14 @@ export const WorkflowStepper = ({
       // }
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
-      setIsLoading(false);
+      console.log(error)
+      setIsLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
-    getStages();
-  }, []);
+    getStages()
+  }, [])
   return (
     <Dialog
       open={open}
@@ -87,11 +86,11 @@ export const WorkflowStepper = ({
                     : stage.status === 'Completed'
                       ? lineBreak(
                         `${capitalizeFirstLetter(stage.role)} Approved`,
-                        stage.user_name
+                        stage.user_name,
                       )
                       : lineBreak(
                         `${capitalizeFirstLetter(stage.role)} ${stage.status}`,
-                        stage.user_name
+                        stage.user_name,
                       )}
                 </StepLabel>
               </Step>
@@ -100,5 +99,7 @@ export const WorkflowStepper = ({
         )}
       </DialogContent>
     </Dialog>
-  );
-}; 
+  )
+}
+
+export default WorkflowStepper

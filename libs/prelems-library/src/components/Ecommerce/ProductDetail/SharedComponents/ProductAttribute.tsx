@@ -1,42 +1,42 @@
-import React, { useState } from 'react';
-import '../../../../service/i18n';
-import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { useCustomStyle } from './ProductSizeList.style';
-import TextAttribute from './AttributeVariant/TextAttribute';
-import ImageAttribute from './AttributeVariant/ImageAttribute';
-import ColourAttribute from './AttributeVariant/ColourAttribute';
-import { convertToLowerCase, nullToObject } from '../lib/utils/helperFns';
+import { Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import { useTheme } from '@mui/material/styles'
+import { useState } from 'react'
+import { convertToLowerCase, nullToObject } from 'utils/helperFns'
+import '../../../../service/i18n'
+import ColourAttribute from './AttributeVariant/ColourAttribute'
+import ImageAttribute from './AttributeVariant/ImageAttribute'
+import TextAttribute from './AttributeVariant/TextAttribute'
+import { useCustomStyle } from './ProductSizeList.style'
 
 type ProductAttributeProps = {
-  variantsHandle: any;
-  productFullDetails: any;
-};
+  variantsHandle: any
+  productFullDetails: any
+}
 
 const ProductAttribute = (_props: ProductAttributeProps) => {
   const { productFullDetails = {}, variantsHandle = () => {} } =
-    nullToObject(_props);
+    nullToObject(_props)
 
-  const theme = useTheme();
-  const classes = useCustomStyle();
-  const { attribute = {} } = nullToObject(productFullDetails);
+  const theme = useTheme()
+  const classes = useCustomStyle()
+  const { attribute = {} } = nullToObject(productFullDetails)
 
-  const [isActive, setIsactive] = useState(true);
+  const [isActive, setIsactive] = useState(true)
 
   const handleAttribute = (e: any) => {
-    setIsactive(true);
-    variantsHandle(e);
-  };
+    setIsactive(true)
+    variantsHandle(e)
+  }
 
   return (
     <>
       {Object.keys(nullToObject(attribute)).map((objKey, i: number) => {
         Object.keys(productFullDetails).forEach((el) => {
           if (objKey === el) {
-            attribute[objKey].selected = productFullDetails[el];
+            attribute[objKey].selected = productFullDetails[el]
           }
-        });
+        })
 
         return (
           <Box
@@ -69,7 +69,7 @@ const ProductAttribute = (_props: ProductAttributeProps) => {
                         handleAttribute={handleAttribute}
                       />
                     </Box>
-                  );
+                  )
                 } else if (
                   ele.indexOf('http://') === 0 ||
                   ele.indexOf('https://') === 0
@@ -94,7 +94,7 @@ const ProductAttribute = (_props: ProductAttributeProps) => {
                         handleAttribute={handleAttribute}
                       />
                     </Box>
-                  );
+                  )
                 } else {
                   return (
                     <Box
@@ -116,14 +116,14 @@ const ProductAttribute = (_props: ProductAttributeProps) => {
                         handleAttribute={handleAttribute}
                       />
                     </Box>
-                  );
+                  )
                 }
               })}
             </Box>
           </Box>
-        );
+        )
       })}
     </>
-  );
-};
-export default ProductAttribute;
+  )
+}
+export default ProductAttribute

@@ -114,7 +114,7 @@ const SocialShareSteps = ({
   contentType,
   onClickingDone,
   onDoneClick,
-}) => {
+}: any) => {
   const { t, i18n } = useTranslation();
   const [activeStep, setActiveStep] = React.useState(1);
   const [selectedSocial, setSelectedSocial] = React.useState({
@@ -151,7 +151,7 @@ const SocialShareSteps = ({
   const username = `${userInfo.first_name} ${userInfo.last_name}`;
 
   //Social Share Schedule API Call
-  const socialSchedule = (input, sharetype) => {
+  const socialSchedule = (input: any, sharetype: any) => {
     setLoading(true);
     socialShareSchedule({
       variables: {
@@ -177,7 +177,7 @@ const SocialShareSteps = ({
   };
 
   //Check VOD status before calling Social Share Schedule API
-  const getVodStatus = (page, scheduleInput, sharetype) => {
+  const getVodStatus = (page: any, scheduleInput: any, sharetype: any) => {
     runFetchVodById({
       variables: { folder: 'vodcontent', path: page },
     })
@@ -212,7 +212,7 @@ const SocialShareSteps = ({
       });
   };
   //Check Article status before calling Social Share Schedule API
-  const getArticleStatus = async (articleName, scheduleInput, sharetype) => {
+  const getArticleStatus = async (articleName: any, scheduleInput: any, sharetype: any) => {
     setLoading(true);
     if (articleName) {
       await runFetchArticleModel({
@@ -254,7 +254,7 @@ const SocialShareSteps = ({
     }
   };
   //Check Poll, Quiz and Event status before calling Social Share Schedule API
-  const getContentStatus = (type, contentPath, scheduleInput, sharetype) => {
+  const getContentStatus = (type: any, contentPath: any, scheduleInput: any, sharetype: any) => {
     setLoading(true);
     runFetchContentByPath({
       variables: {
@@ -292,7 +292,7 @@ const SocialShareSteps = ({
       });
   };
   //Social Share Re-Schedule API Call
-  const socialReSchedule = (ReScheduleInput) => {
+  const socialReSchedule = (ReScheduleInput: any) => {
     setLoading(true);
     socialShareReSchedule({
       variables: {
