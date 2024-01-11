@@ -1,6 +1,7 @@
 const HelveticaNeue =
-  require('../../fonts/HelventicaNeue/HelveticaNeue-Condensed-Bold.woff2') as string
-const Arial = require('../../fonts/Arial/arial.woff2') as string
+  require('../../../fonts/HelveticaNeue/HelveticaNeue-Condensed-Bold.woff2') as string
+const Arial = require('../../../fonts/Arial/arial.woff2') as string
+
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#333333',
@@ -928,10 +929,10 @@ const ThemeConstants = {
     },
   },
 
-  FONTNAMEPRIMARY: 'HelveticaNeue',
-  FONTNAMESECONDARY: 'Arial',
   FONTFAMILYPRIMARY: HelveticaNeue,
   FONTFAMILYSECONDARY: Arial,
-}
+  FONTNAMEPRIMARY: "HelveticaNeue",
+  FONTNAMESECONDARY: "Arial",
+};
 
 export default ThemeConstants

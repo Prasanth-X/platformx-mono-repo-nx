@@ -1,6 +1,6 @@
 import { Backdrop, Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import ThemeConstants from '../themes/authoring/variable';
+import ThemeConstants from '../themes/authoring/lightTheme/lightThemeVariable';
 
 export const Loader = () => {
   return (

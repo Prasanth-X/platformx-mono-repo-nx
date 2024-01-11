@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import ArrowUpwardIcon from "../../../assets/svg/UploadThumbnail.svg";
 // import CommonImageRender from "../../pages/Gallery/CommonImageRender";
-import ThemeConstants from "../../../themes/authoring/variable";
+import ThemeConstants from '../../../themes/authoring/lightTheme/lightThemeVariable';
 import { XTypography } from "../XTypography/XTypography";
 
 export interface XFileProps {
