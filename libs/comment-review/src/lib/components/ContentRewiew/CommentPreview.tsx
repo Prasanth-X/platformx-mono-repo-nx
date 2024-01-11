@@ -1,7 +1,7 @@
-import CloseSharpIcon from '@mui/icons-material/CloseSharp';
-import NavigateBeforeOutlinedIcon from '@mui/icons-material/NavigateBeforeOutlined';
-import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import CloseSharpIcon from '@mui/icons-material/CloseSharp'
+import NavigateBeforeOutlinedIcon from '@mui/icons-material/NavigateBeforeOutlined'
+import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined'
+import TaskAltIcon from '@mui/icons-material/TaskAlt'
 import {
   Avatar,
   Box,
@@ -12,86 +12,86 @@ import {
   TextField,
   Tooltip,
   Typography,
-} from '@mui/material';
-import { useComment } from '@platformx/authoring-apis';
-import { capitalizeFirstLetter, useUserSession } from '@platformx/utilities';
-import { useEffect, useState } from 'react';
-import { ReactComponent as ReplyIcon } from '../../../src/assets/svg/Reply.svg';
-import { useCommentContext } from '../../context/CommentsContext/CommentsContext';
-import CommentEditor from './CommentEditor';
-import { CommentPopover } from './ContentReview.styles';
-import { PreviewProps } from './ContentReview.types';
-import { formatTimestamp, stringAvatar } from './helper';
+} from '@mui/material'
+import { useComment } from '@platformx/authoring-apis'
+import { RootState, addReply, hasResolved } from '@platformx/authoring-state'
+import {
+  ReplyIcon,
+  capitalizeFirstLetter,
+  useUserSession,
+} from '@platformx/utilities'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import CommentEditor from './CommentEditor'
+import { CommentPopover } from './ContentReview.styles'
+import { PreviewProps } from './ContentReview.types'
+import { formatTimestamp, stringAvatar } from './helper'
 
 const CommentPreview: React.FC<PreviewProps> = ({
   parentRef,
 }: PreviewProps) => {
-  const [enableEdit, setEnableEdit] = useState(false);
-  const [replay, setReplay] = useState<string>('');
-  const [selectedId, setSelectedId] = useState(0);
-  const [open, setOpen] = useState(true);
-  const {
-    addReply,
-    selectedComment,
-    comments,
-    isCommentsPanelOpen,
-    hasResolved,
-    commentCountLength,
-  } = useCommentContext();
+  const [enableEdit, setEnableEdit] = useState(false)
+  const [replay, setReplay] = useState<string>('')
+  const [selectedId, setSelectedId] = useState(0)
+  const [open, setOpen] = useState(true)
+  const dispatch = useDispatch()
+  const { isReviewEnabled, selectedComment, comments } = useSelector(
+    (state: RootState) => state.comment.commentInfo,
+  )
 
-  const [getSession] = useUserSession();
-  const { userInfo } = getSession();
-  const { handleCommentClick } = useComment();
-  const username = `${userInfo.first_name} ${userInfo.last_name}`;
+  const [getSession] = useUserSession()
+  const { userInfo } = getSession()
+  const { handleCommentClick } = useComment()
+  const username = `${userInfo.first_name} ${userInfo.last_name}`
 
-  const resolveText = `Resolved By ${username}`;
+  const resolveText = `Resolved By ${username}`
   const handleClose = () => {
-    setOpen(false);
-  };
-  const handleKeyDown = (event) => {
+    setOpen(false)
+  }
+  const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-      addReply(replay, selectedComment);
-      setReplay('');
+      dispatch(addReply({ replyPayload: replay, comment: selectedComment }))
+      setReplay('')
     }
-  };
-  const groupedComments: any = {};
+  }
+  const groupedComments: any = {}
   comments?.forEach((comment: any) => {
     if (!groupedComments[comment.elementId]) {
-      groupedComments[comment.elementId] = [];
+      groupedComments[comment.elementId] = []
     }
-    groupedComments[comment.elementId].push(comment);
-  });
-  const findCommentId = (elementId, action = 'after') => {
+    groupedComments[comment.elementId].push(comment)
+  })
+  const findCommentId = (elementId: any, action = 'after') => {
     const id: any = Object.keys(groupedComments).findIndex((val, i) => {
-      console.log('val', val, i, elementId);
+      console.log('val', val, i, elementId)
 
-      return val == elementId; //val.commentId;
-    });
-    console.log('id', groupedComments[Object.keys(groupedComments)[id - 1]]);
+      return val == elementId //val.commentId;
+    })
+    console.log('id', groupedComments[Object.keys(groupedComments)[id - 1]])
     return groupedComments[
       Object.keys(groupedComments)[action === 'prev' ? id - 1 : id + 1]
-    ][0];
-  };
+    ][0]
+  }
   useEffect(() => {
     setOpen(
-      Object.keys(selectedComment || {}).length > 0 //&& isCommentsPanelOpen
-    );
-  }, [selectedComment]);
+      Object.keys(selectedComment || {}).length > 0, //&& isCommentsPanelOpen
+    )
+  }, [selectedComment])
 
-  if (!open) return <></>;
+  if (!open) return <></>
   const isDisabled = () => {
     if (selectedComment) {
       if (
-        groupedComments[selectedComment?.elementId][
-          groupedComments[selectedComment?.elementId]?.length - 1
+        groupedComments[selectedComment?.elementId || ''][
+          groupedComments[selectedComment?.elementId || '']?.length - 1
         ].commentId === selectedComment?.commentId
       ) {
-        return false;
+        return false
       } else {
-        return true;
+        return true
       }
     }
-  };
+  }
   return (
     <CommentPopover
       open={open}
@@ -143,8 +143,8 @@ const CommentPreview: React.FC<PreviewProps> = ({
                             .getElementById(
                               findCommentId(
                                 Number(selectedComment.elementId).toString(),
-                                'prev'
-                              ).elementId
+                                'prev',
+                              ).elementId,
                             )
                             ?.scrollIntoView({
                               behavior: 'smooth',
@@ -155,14 +155,14 @@ const CommentPreview: React.FC<PreviewProps> = ({
                               event,
                               findCommentId(
                                 Number(selectedComment.elementId).toString(),
-                                'prev'
+                                'prev',
                               ).elementId,
                               findCommentId(
                                 Number(selectedComment.elementId).toString(),
-                                'prev'
-                              ).commentId
-                            );
-                          }, 500));
+                                'prev',
+                              ).commentId,
+                            )
+                          }, 500))
                       }}
                     >
                       <NavigateBeforeOutlinedIcon
@@ -177,8 +177,8 @@ const CommentPreview: React.FC<PreviewProps> = ({
                           (document
                             .getElementById(
                               findCommentId(
-                                Number(selectedComment.elementId).toString()
-                              ).elementId
+                                Number(selectedComment.elementId).toString(),
+                              ).elementId,
                             )
                             ?.scrollIntoView({
                               behavior: 'smooth',
@@ -188,13 +188,13 @@ const CommentPreview: React.FC<PreviewProps> = ({
                             handleCommentClick(
                               event,
                               findCommentId(
-                                Number(selectedComment.elementId).toString()
+                                Number(selectedComment.elementId).toString(),
                               ).elementId,
                               findCommentId(
-                                Number(selectedComment.elementId).toString()
-                              ).commentId
-                            );
-                          }, 500));
+                                Number(selectedComment.elementId).toString(),
+                              ).commentId,
+                            )
+                          }, 500))
                       }}
                     >
                       <NavigateNextOutlinedIcon
@@ -212,8 +212,18 @@ const CommentPreview: React.FC<PreviewProps> = ({
                         <TaskAltIcon
                           onClick={() => {
                             !selectedComment?.isResolved &&
-                              addReply(resolveText, selectedComment);
-                            hasResolved(true, selectedComment.commentId);
+                              dispatch(
+                                addReply({
+                                  replyPayload: resolveText,
+                                  comment: selectedComment,
+                                }),
+                              )
+                            dispatch(
+                              hasResolved({
+                                hasResolve: true,
+                                commentId: selectedComment.commentId,
+                              }),
+                            )
                           }}
                           sx={{
                             color: selectedComment.isResolved
@@ -255,13 +265,13 @@ const CommentPreview: React.FC<PreviewProps> = ({
                   >
                     <Box display="flex" alignItems="center">
                       <Tooltip
-                        title={selectedComment.reviewer}
+                        title={selectedComment?.reviewer || ''}
                         placement="left-end"
                         sx={{ cursor: 'pointer' }}
                       >
                         <span style={{ cursor: 'pointer' }}>
                           <Avatar
-                            {...stringAvatar(selectedComment.reviewer)}
+                            {...stringAvatar(selectedComment?.reviewer || '')}
                             // sx={{ width: 24, height: 24 }}
                           />
                         </span>
@@ -289,7 +299,7 @@ const CommentPreview: React.FC<PreviewProps> = ({
                           color: '#6E7191',
                         }}
                       >
-                        {formatTimestamp(selectedComment?.timeStamp)}
+                        {formatTimestamp(selectedComment?.timeStamp || '')}
                       </Typography>
                     </Box>
                     {/* <Box>
@@ -361,7 +371,7 @@ const CommentPreview: React.FC<PreviewProps> = ({
                             }}
                           >
                             {capitalizeFirstLetter(
-                              selectedComment?.reviewer //userInfo.first_name
+                              selectedComment?.reviewer, //userInfo.first_name
                             )}
                           </Typography>
                           <Typography
@@ -488,7 +498,7 @@ const CommentPreview: React.FC<PreviewProps> = ({
                   minRows={1}
                   value={replay}
                   onChange={(e) => {
-                    setReplay(e.target.value);
+                    setReplay(e.target.value)
                   }}
                   onKeyDown={handleKeyDown}
                   maxRows={10}
@@ -501,8 +511,13 @@ const CommentPreview: React.FC<PreviewProps> = ({
                           aria-label="toggle password visibility"
                           disabled={replay ? false : true}
                           onClick={() => {
-                            addReply(replay, selectedComment);
-                            setReplay('');
+                            dispatch(
+                              addReply({
+                                replyPayload: replay,
+                                comment: selectedComment,
+                              }),
+                            )
+                            setReplay('')
                           }}
                           onMouseDown={() => {}}
                           edge="end"
@@ -512,11 +527,12 @@ const CommentPreview: React.FC<PreviewProps> = ({
                             pt: '0px',
                           }}
                         >
-                          <ReplyIcon
+                          <img
+                            src={ReplyIcon}
                             style={{
                               filter: replay ? '' : 'grayscale(90%)',
                             }}
-                          />
+                          ></img>
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -529,7 +545,7 @@ const CommentPreview: React.FC<PreviewProps> = ({
         )}
       </Card>
     </CommentPopover>
-  );
-};
+  )
+}
 
-export default CommentPreview;
+export default CommentPreview
