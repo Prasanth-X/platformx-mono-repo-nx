@@ -1,6 +1,6 @@
 const HCLRobort =
-  require('../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string;
-const InterRegular = require('../fonts/Inter/Inter-Regular.woff2') as string;
+  require('../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string
+const InterRegular = require('../../fonts/Inter/Inter-Regular.woff2') as string
 
 const ThemeConstants = {
   // Color Variables
@@ -980,6 +980,6 @@ const ThemeConstants = {
   FONTFAMILYSECONDARY: InterRegular,
   FONTNAMEPRIMARY: 'HCLTechRoobert',
   FONTNAMESECONDARY: 'Inter',
-};
+}
 
-export default ThemeConstants;
+export default ThemeConstants
