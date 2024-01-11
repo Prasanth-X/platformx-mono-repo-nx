@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import React from "react";
-import ThemeConstants from './variable';
+import ThemeConstants from './lightTheme/lightThemeVariable';
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
     xs: true;  

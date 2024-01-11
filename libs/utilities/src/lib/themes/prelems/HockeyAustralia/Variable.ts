@@ -1,7 +1,7 @@
-const PoppinsMedium =
-  require('../../fonts/Poppins/Poppins-Medium.woff2') as string
-const PoppinsRegular =
-  require('../../fonts/Poppins/Poppins-Regular.woff2') as string
+const Randnika =
+  require('../../../fonts/Radnika/Radnika-Medium.woff2') as string
+const InterRegular = require('../../../fonts/Inter/Inter-Regular.woff2') as string
+
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#333333',
@@ -212,7 +212,7 @@ const ThemeConstants = {
       },
     },
     BUTTON: {
-      BORDER_RADIUS: '50px',
+      BORDER_RADIUS: '5px',
       MEDIUM_HEIGHT: '47px',
       SMALL_HEIGHT: '38px',
       LARGE_HEIGHT: '63px',
@@ -273,206 +273,14 @@ const ThemeConstants = {
     CARDOVERLAY: '0, 0,0, 0.3',
   },
   RADIUS: {
-    VALUE1: '10px',
-    VALUE2: '16px',
+    VALUE1: '20px',
+    VALUE2: '20px',
   },
 
-  /* Prelem Type 1 PRIMARY (default White background)
-  default it was black now it is blue/ customertestimonial
-  */
-  SECONDARY_PRELEM: {
-    BACKGROUND: '#045694',
-    TITLE: '#FFFFFF',
-    PARAGRAPH: '#EFF0F6',
-    LABEL: '#ffffff',
-    LINE: '#93B1CE',
-    LINK: '#4B9EF9',
-    BUTTON: {
-      VARIANT1: {
-        COLOR: '#14142B',
-        COLOR_HOVER: '#14142B',
-        BACKGROUND_COLOR: '#FFFFFF',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
-      },
-      VARIANT2: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#14142B',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
-      },
-      VARIANT3: {
-        COLOR: '#4B9EF9',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#4B9EF9',
-        BORDER: 'solid 1px  #4B9EF9',
-        BORDER_HOVER: 'solid 1px  #4B9EF9',
-      },
-      VARIANT4: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#14142B',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
-      },
-    },
-    INPUT: {
-      PLACEHOLDER: '#343051',
-      TEXT: '#89909A',
-      TEXT_ACTIVE: '#fffff',
-      LABEL: '#6E7191',
-      BORDER: 'solid 2px transparent',
-      BORDER_ACTIVE: 'solid 2px #343051',
-      BORDER_ERROR: 'solid 2px #F33E41',
-      BORDER_SUCCESS: 'solid 2px #0FA069',
-      BACKGROUND_FOCUSED: '#343051',
-      BACKGROUND_ERROR: '#FFEBEE',
-      BACKGROUND_ERROR_TEXT: '#F33E41',
-      BACKGROUND_SUCCESS: '#DEF5D9',
-      BACKGROUND_SUCCESS_TEXT: '#0FA069',
-      DISABLED: '#343051',
-    },
-    SELECT: {
-      PLACEHOLDER: '#343051', //Selectbox bg
-      LABEL: '#6E7191', //animated tex of focus
-      TEXT: '#6E7191', //dropdownlist popup default text
-      TEXT_HOVER: '#ffffff', //dropdownlist popup hover text color,
-      TEXT_SELECTED: '#89909A',
-      TEXT_BACKGROUND_HOVER: '#4B9EF9', //dropdownlist popup hover text background
-      BORDER: 'solid 2px transparent',
-      BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
-    },
-    CHECKBOX: {
-      BOX_COLOR: '#4B9EF9',
-    },
-    RADIO: {
-      BOX_COLOR: '#4B9EF9',
-      BOX_COLOR_ACTIVE: '#4B9EF9',
-      SIZE: '24px',
-    },
-    ACCORDIAN: {
-      BACKGROUND: '#231C39',
-      COLOR: '#fff',
-      BORDER_COLOR: '#3E306A',
-    },
-    CARDS: {
-      VARIANT1: {
-        BACKGROUND: '#FFFFFF',
-        ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_HOVER: '#3E306A',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
-      },
-      VARIANT2: {
-        BACKGROUND: '#292647',
-        ALTERNET_BACKGROUND: '#343051',
-        TITLE: '#FFFFFF',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4E4B66',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_HOVER: '#14142B',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
-      },
-      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
-      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
-    },
-    ACCENTS: {
-      VARIANT1: {
-        BACKGROUND: '#F5F5FF',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT2: {
-        BACKGROUND: '#D7ECFD',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT3: {
-        BACKGROUND: '#A8E6CF',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT4: {
-        BACKGROUND: '#FFD3B6',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT5: {
-        BACKGROUND: '#FFAAA5',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT6: {
-        BACKGROUND: '#A2D2EC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-    },
-    NOTIFICATION: {
-      SUCCESS: {
-        BACKGROUND: '#0EA069',
-        COLOR: '#fff',
-      },
-      WARNING: {
-        BACKGROUND: '#FFCC40',
-        COLOR: '#fff',
-      },
-      ERROR: {
-        BACKGROUND: '#F33E41',
-        COLOR: '#fff',
-      },
-      INFO: {
-        BACKGROUND: '#009DDF',
-        COLOR: '#fff',
-      },
-    },
-    POPUP: {
-      BACKGROUND: 'orange',
-      COLOR: 'orange',
-    },
-    TAB: {
-      VARIANT1: {
-        TITLE: '#14142B',
-        TITLE_ACTIVE: '#FFFFFF',
-        TITLE_BACKGROUND: '#FFFFFF',
-        TITLE_ACTIVE_BACKGROUND: '#4B9EF9',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4B9EF9',
-        LINE: '#3E306A',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_ACTIVE: 'transparent',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_ACTIVE: '#4B9EF9',
-      },
-    },
-  },
-
-  /* Prelem Type 2 SECONDARY (default black background GREY BG)
-  white is now chnage as gery (major prelims)
-  */
+  /* Prelem Type 1 PRIMARY (default White background)*/
   PRIMARY_PRELEM: {
-    BACKGROUND: '#E4E8F0',
-    TITLE: '#14142B',
+    BACKGROUND: '#fff',
+    TITLE: '#008A8E',
     PARAGRAPH: '#4E4B66',
     LABEL: '#6E7191',
     LINE: '#D9DBE9',
@@ -481,20 +289,18 @@ const ThemeConstants = {
       VARIANT1: {
         COLOR: '#FFFFFF',
         COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR:
-          'linear-gradient(111.98deg,#00b8ff 18.07%,#1574c4 90.31%)',
-        BACKGROUND_COLOR_HOVER:
-          'linear-gradient(111.98deg,#1574c4 18.07%,#00b8ff 90.31%)',
-        BORDER: 'solid 1px  #1D2839',
-        BORDER_HOVER: 'solid 1px  #14142B',
+        BACKGROUND_COLOR: '#008A8E',
+        BACKGROUND_COLOR_HOVER: '#006568',
+        BORDER: 'solid 1px  #008A8E',
+        BORDER_HOVER: 'solid 1px  #008A8E',
       },
       VARIANT2: {
-        COLOR: '#14142B',
+        COLOR: '#008A8E',
         COLOR_HOVER: '#FFFFFF',
         BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#14142B',
-        BORDER: 'solid 1px  #14142B',
-        BORDER_HOVER: 'solid 1px  #14142B',
+        BACKGROUND_COLOR_HOVER: '#006568',
+        BORDER: 'solid 1px  #008A8E',
+        BORDER_HOVER: 'solid 1px  #008A8E',
       },
       VARIANT3: {
         COLOR: '#4B9EF9',
@@ -527,7 +333,7 @@ const ThemeConstants = {
       BACKGROUND_ERROR_TEXT: '#F33E41',
       BACKGROUND_SUCCESS: '#DEF5D9',
       BACKGROUND_SUCCESS_TEXT: '#0FA069',
-      DISABLED: '#dcdcdf',
+      DISABLED: '#EFF0F6',
     },
     SELECT: {
       PLACEHOLDER: '#EFF0F6', //Selectbox bg
@@ -554,19 +360,20 @@ const ThemeConstants = {
     },
     CARDS: {
       VARIANT1: {
-        BACKGROUND: '#ffffff',
+        BACKGROUND: '#FFFFFF',
         ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
+        TITLE: '#008A8E',
         PARAGRAPH: '#4E4B66',
         LABEL: '#6E7191',
-        BORDER_COLOR: '#fcfcfc',
-        BORDER_COLOR_HOVER: '#c9cbcf',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#B4D6D8',
+        BOX_SHADOW:
+          '-0.0625rem 0 0.625rem 0 rgba(0,0,0,0.07), 0.3125rem 1.25rem 2.5rem 0 rgba(0,0,0,0.04)',
       },
       VARIANT2: {
         BACKGROUND: '#F5F5FF',
         ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
+        TITLE: '#008A8E',
         PARAGRAPH: '#4E4B66',
         LABEL: '#6E7191',
         BORDER_COLOR: '#D9DBE9',
@@ -658,22 +465,20 @@ const ThemeConstants = {
       },
     },
   },
-  /* Prelem type 3 TERTIARY (default gray background)
-  previously it was gery now it is blue
-  */
-  TERTIARY_PRELEM: {
-    BACKGROUND: '#045694',
+  /* Prelem Type 2 SECONDARY (default black background)*/
+  SECONDARY_PRELEM: {
+    BACKGROUND: '#008A8E',
     TITLE: '#FFFFFF',
     PARAGRAPH: '#EFF0F6',
-    LABEL: '#FFFFFF',
-    LINE: '#93B1CE',
-    LINK: '#4B9EF9',
+    LABEL: '#FAE600',
+    LINE: '#88BAC0',
+    LINK: '#3E306A',
     BUTTON: {
       VARIANT1: {
         COLOR: '#14142B',
-        COLOR_HOVER: '#14142B',
+        COLOR_HOVER: '#FFFFFF',
         BACKGROUND_COLOR: '#FFFFFF',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR_HOVER: '#006568',
         BORDER: 'solid 1px  #FFFFFF',
         BORDER_HOVER: 'solid 1px  #FFFFFF',
       },
@@ -716,14 +521,14 @@ const ThemeConstants = {
       BACKGROUND_ERROR_TEXT: '#F33E41',
       BACKGROUND_SUCCESS: '#DEF5D9',
       BACKGROUND_SUCCESS_TEXT: '#0FA069',
-      DISABLED: '#343051',
+      DISABLED: '#FFD970',
     },
     SELECT: {
       PLACEHOLDER: '#343051', //Selectbox bg
       LABEL: '#6E7191', //animated tex of focus
       TEXT: '#6E7191', //dropdownlist popup default text
-      TEXT_HOVER: '#ffffff', //dropdownlist popup hover text color,
-      TEXT_SELECTED: '#89909A',
+      TEXT_HOVER: '#ffffff', //dropdownlist popup hover text color
+      TEXT_SELECTED: '#14142B', //dropdownlist selected text color
       TEXT_BACKGROUND_HOVER: '#4B9EF9', //dropdownlist popup hover text background
       BORDER: 'solid 2px transparent',
       BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
@@ -748,8 +553,8 @@ const ThemeConstants = {
         TITLE: '#14142B',
         PARAGRAPH: '#4E4B66',
         LABEL: '#6E7191',
-        BORDER_COLOR: '#3E306A',
-        BORDER_COLOR_HOVER: '#3E306A',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#14142B',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
       VARIANT2: {
@@ -757,13 +562,200 @@ const ThemeConstants = {
         ALTERNET_BACKGROUND: '#343051',
         TITLE: '#FFFFFF',
         PARAGRAPH: '#EFF0F6',
-        LABEL: '#4E4B66',
+        LABEL: '#EFF0F6',
         BORDER_COLOR: '#D9DBE9',
         BORDER_COLOR_HOVER: '#14142B',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
-      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
-      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
+      ECOM_CARD_BACKGROUND: '#fdfdfd',
+      ECOM_MASK_BACKGROUND: '#14142B',
+    },
+    ACCENTS: {
+      VARIANT1: {
+        BACKGROUND: '#F5F5FF',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT2: {
+        BACKGROUND: '#D7ECFD',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT3: {
+        BACKGROUND: '#A8E6CF',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT4: {
+        BACKGROUND: '#FFD3B6',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT5: {
+        BACKGROUND: '#FFAAA5',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT6: {
+        BACKGROUND: '#A2D2EC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+    },
+    NOTIFICATION: {
+      SUCCESS: {
+        BACKGROUND: '#0EA069',
+        COLOR: '#fff',
+      },
+      WARNING: {
+        BACKGROUND: '#FFCC40',
+        COLOR: '#fff',
+      },
+      ERROR: {
+        BACKGROUND: '#F33E41',
+        COLOR: '#fff',
+      },
+      INFO: {
+        BACKGROUND: '#009DDF',
+        COLOR: '#fff',
+      },
+    },
+    POPUP: {
+      BACKGROUND: 'orange',
+      COLOR: 'orange',
+    },
+    TAB: {
+      VARIANT1: {
+        TITLE: '',
+        TITLE_ACTIVE: '',
+        TITLE_BACKGROUND: '',
+        TITLE_ACTIVE_BACKGROUND: '',
+        PARAGRAPH: '',
+        LABEL: '',
+        LINE: '',
+        BACKGROUND_COLOR: '',
+        BACKGROUND_COLOR_ACTIVE: '',
+        BORDER_COLOR: '',
+        BORDER_COLOR_ACTIVE: '',
+      },
+    },
+  },
+  /* Prelem type 3 TERTIARY (default gray background)*/
+  TERTIARY_PRELEM: {
+    BACKGROUND: '#EAF5F6',
+    TITLE: '#14142B',
+    PARAGRAPH: '#4E4B66',
+    LABEL: '#6E7191',
+    LINE: '#D9DBE9',
+    LINK: '#4B9EF9',
+    BUTTON: {
+      VARIANT1: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR: '#008A8E',
+        BACKGROUND_COLOR_HOVER: '#006568',
+        BORDER: 'solid 1px  #008A8E',
+        BORDER_HOVER: 'solid 1px  #008A8E',
+      },
+      VARIANT2: {
+        COLOR: '#008A8E',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#006568',
+        BORDER: 'solid 1px  #008A8E',
+        BORDER_HOVER: 'solid 1px  #008A8E',
+      },
+      VARIANT3: {
+        COLOR: '#4B9EF9',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#4B9EF9',
+        BORDER: 'solid 1px  #4B9EF9',
+        BORDER_HOVER: 'solid 1px  #4B9EF9',
+      },
+      VARIANT4: {
+        COLOR: '#14142B',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#14142B',
+        BORDER: 'solid 1px  #14142B',
+        BORDER_HOVER: 'solid 1px  #14142B',
+      },
+    },
+    INPUT: {
+      PLACEHOLDER: '#EFF0F6',
+      TEXT: '#14142B',
+      TEXT_ACTIVE: '#14142B',
+      LABEL: '#6E7191',
+      BORDER: 'solid 2px transparent',
+      BORDER_ACTIVE: 'solid 2px #14142B',
+      BORDER_ERROR: 'solid 2px #F33E41',
+      BORDER_SUCCESS: 'solid 2px #0FA069',
+      BACKGROUND_FOCUSED: '#fff',
+      BACKGROUND_ERROR: '#FFEBEE',
+      BACKGROUND_ERROR_TEXT: '#F33E41',
+      BACKGROUND_SUCCESS: '#DEF5D9',
+      BACKGROUND_SUCCESS_TEXT: '#0FA069',
+      DISABLED: '#FFD970',
+    },
+    SELECT: {
+      PLACEHOLDER: '#EFF0F6', //Selectbox bg
+      LABEL: '#6E7191', //animated tex of focus
+      TEXT: '#6E7191', //dropdownlist popup default text
+      TEXT_HOVER: '#14142B', //dropdownlist popup hover text color
+      TEXT_SELECTED: '#14142B', //dropdownlist selected text color
+      TEXT_BACKGROUND_HOVER: '#FCFCFC', //dropdownlist popup hover text background
+      BORDER: 'solid 2px transparent',
+      BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
+    },
+    CHECKBOX: {
+      BOX_COLOR: '#6E7191',
+    },
+    RADIO: {
+      BOX_COLOR: '#14142B',
+      BOX_COLOR_ACTIVE: '#14142B',
+      SIZE: '24px',
+    },
+    ACCORDIAN: {
+      BACKGROUND: '#fff',
+      COLOR: '#14142B',
+      BORDER_COLOR: '#D9DBE9',
+    },
+    CARDS: {
+      VARIANT1: {
+        BACKGROUND: '#ffffff',
+        ALTERNET_BACKGROUND: '#F7F7FC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#14142B',
+        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+      },
+      VARIANT2: {
+        BACKGROUND: '#F5F5FF',
+        ALTERNET_BACKGROUND: '#F7F7FC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#14142B',
+        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+      },
+      ECOM_CARD_BACKGROUND: '#fdfdfd',
+      ECOM_MASK_BACKGROUND: '#14142B',
     },
     ACCENTS: {
       VARIANT1: {
@@ -834,31 +826,57 @@ const ThemeConstants = {
     TAB: {
       VARIANT1: {
         TITLE: '#14142B',
-        TITLE_ACTIVE: '#FFFFFF',
-        TITLE_BACKGROUND: '#FFFFFF',
-        TITLE_ACTIVE_BACKGROUND: '#4B9EF9',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4B9EF9',
-        LINE: '#3E306A',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_ACTIVE: 'transparent',
+        TITLE_ACTIVE: '#FFF',
+        TITLE_BACKGROUND: '#EAF5F6',
+        TITLE_ACTIVE_BACKGROUND: '#008A8E',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+        BACKGROUND_COLOR: '#EAF5F6',
+        BACKGROUND_COLOR_ACTIVE: '#EAF5F6',
         BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_ACTIVE: '#4B9EF9',
+        BORDER_COLOR_ACTIVE: '#14142B',
       },
     },
   },
   HEADER: {
     HEADER_HEIGHT: '60px',
-    VARIANT2: {
-      BACKGROUND: '#FFFFFF',
-      BACKGROUND_HOVER: '#F5F5FF',
-      TITLE: '#14142B',
-      TITLE_HOVER: '#14142B',
-      PARAGRAPH: '#4E4B66',
-      PARAGRAPH_HOVER: '#4E4B66',
+    VARIANT1: {
+      BACKGROUND: '#008A8E',
+      BACKGROUND_HOVER: '#008A8E',
+      TITLE: '#FFFFFF',
+      TITLE_HOVER: '#FAE600',
+      PARAGRAPH: '#FFFFFF',
+      PARAGRAPH_HOVER: '#FFFFFF',
       LABEL: '#6E7191',
       LABEL_HOVER: '#6E7191',
-      LINE: '#D9DBE9',
+      LINE: '#008A8E',
+      LINE_HOVER: '#D9DBE9',
+      BORDER_COLOR: '#D9DBE9',
+      BORDER_COLOR_HOVER: '#14142B',
+      BUTTON: {
+        COLOR: '#008A8E',
+        COLOR_HOVER: '#ffffff',
+        BACKGROUND_COLOR: '#FFFFFF',
+        BACKGROUND_COLOR_HOVER: '#006568',
+        BORDER_COLOR: '#008A8E',
+        BORDER_COLOR_HOVER: '#008A8E',
+      },
+      BADGE: {
+        BACKGROUND: '#FFE18D',
+        TITLE: '#14142B',
+      },
+    },
+    VARIANT2: {
+      BACKGROUND: '#231C39',
+      BACKGROUND_HOVER: '#343051',
+      TITLE: '#FFFFFF',
+      TITLE_HOVER: '#FFFFFF',
+      PARAGRAPH: '#FFFFFF',
+      PARAGRAPH_HOVER: '#FFFFFF',
+      LABEL: '#6E7191',
+      LABEL_HOVER: '#6E7191',
+      LINE: '#3E306A',
       LINE_HOVER: '#D9DBE9',
       BORDER_COLOR: '#D9DBE9',
       BORDER_COLOR_HOVER: '#14142B',
@@ -871,32 +889,6 @@ const ThemeConstants = {
         BORDER_COLOR_HOVER: '#14142B',
       },
       BADGE: {
-        BACKGROUND: '#4B9EF9',
-        TITLE: '#FFF',
-      },
-    },
-    VARIANT1: {
-      BACKGROUND: '#045694',
-      BACKGROUND_HOVER: '#045694', //#075e9e
-      TITLE: '#FFFFFF',
-      TITLE_HOVER: '#FFFFFF',
-      PARAGRAPH: '#FFFFFF',
-      PARAGRAPH_HOVER: '#FFFFFF',
-      LABEL: '#6E7191',
-      LABEL_HOVER: '#6E7191',
-      LINE: '#93B1CE',
-      LINE_HOVER: '#D9DBE9',
-      BORDER_COLOR: '#D9DBE9',
-      BORDER_COLOR_HOVER: '#14142B',
-      BUTTON: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#1a1a1a',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER_COLOR: '#FFFFFF',
-        BORDER_COLOR_HOVER: '#FFFFFF',
-      },
-      BADGE: {
         BACKGROUND: '#FFE18D',
         TITLE: '#14142B',
       },
@@ -904,8 +896,9 @@ const ThemeConstants = {
   },
   FOOTER: {
     VARIANT1: {
-      BACKGROUND: '#020f2a',
-      BACKGROUND_SECOND: '#0d1931',
+      BACKGROUND: '#0B0B0B',
+      BACKGROUND_SECOND:
+        'linear-gradient(to bottom, #424244 1px, #000 1px, #000 100%)',
       TITLE: '#FFFFFF',
       TITLE_HOVER: '#FFFFFF',
       PARAGRAPH: '#FFFFFF',
@@ -919,10 +912,10 @@ const ThemeConstants = {
     },
   },
 
-  FONTNAMEPRIMARY: 'PoppinsMedium',
-  FONTNAMESECONDARY: 'PoppinsRegular',
-  FONTFAMILYPRIMARY: PoppinsMedium,
-  FONTFAMILYSECONDARY: PoppinsRegular,
-}
+  FONTFAMILYPRIMARY: Randnika,
+  FONTFAMILYSECONDARY: InterRegular,
+  FONTNAMEPRIMARY: "Randnika",
+  FONTNAMESECONDARY: "Inter",
+};
 
 export default ThemeConstants

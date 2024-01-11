@@ -16,7 +16,7 @@ import useUserSession from '../../hooks/useUserSession/useUserSession';
 // import { capitalizeFirstLetter } from '../../utils/helperFunctions';
 // import PlateformXDialog from '../Modal';
 import { Users } from './Header.types';
-import ThemeConstants from '../../themes/authoring/variable';
+import ThemeConstants from '../../themes/authoring/lightTheme/lightThemeVariable';
 import { LOGOUT_URL } from '../../constants/AuthConstant';
 import PlateformXDialog from '../Popups/PlateformXDialog';
 import { capitalizeFirstLetter } from '../../utils/helperFns';

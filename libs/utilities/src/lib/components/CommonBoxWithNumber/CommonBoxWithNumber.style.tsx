@@ -1,6 +1,6 @@
 import useTheme from '@mui/material/styles/useTheme';
 import { makeStyles } from '@mui/styles';
-import ThemeConstants from '../../themes/authoring/variable';
+import ThemeConstants from '../../themes/authoring/lightTheme/lightThemeVariable';
 
 export const useCustomStyle = makeStyles(() => {
   const theme: any = useTheme();

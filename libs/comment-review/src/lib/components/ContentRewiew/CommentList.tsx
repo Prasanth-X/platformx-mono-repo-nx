@@ -18,11 +18,13 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import { useComment } from '@platformx/authoring-apis';
+import { addReply, hasResolved } from '@platformx/authoring-state';
 import { useUserSession } from '@platformx/utilities';
 import React, { useState } from 'react';
-import { useCommentContext } from '../../context/CommentsContext/CommentsContext';
+import { useDispatch } from 'react-redux';
 import { CommentListProps, ReviewComment } from './ContentReview.types';
 import { formatTimestamp, stringAvatar } from './helper';
+
 const PrimaryText = styled('div')(({ theme }) => ({
   wordWrap: 'break-word',
 
@@ -41,7 +43,8 @@ const SecondaryText = styled('div')(({ theme }) => ({
 const CommentList: React.FC<any> = ({ comments }: CommentListProps) => {
   const groupedComments: any = {};
   const { handleCommentClick } = useComment();
-  const { markAsRead, hasResolved, addReply } = useCommentContext();
+  const dispatch = useDispatch();
+
   const [items, setItems] = useState<ReviewComment>();
   const [getSession] = useUserSession();
   const { userInfo } = getSession();
@@ -161,10 +164,20 @@ const CommentList: React.FC<any> = ({ comments }: CommentListProps) => {
                         <TaskAltIcon
                           onClick={() => {
                             !comment?.isResolved &&
-                              addReply(resolveText, comment);
+                              dispatch(
+                                addReply({
+                                  replyPayload: resolveText,
+                                  comment: comment,
+                                })
+                              );
 
                             !comment?.isResolved &&
-                              hasResolved(true, comment.commentId);
+                              dispatch(
+                                hasResolved({
+                                  hasResolve: true,
+                                  commentId: comment.commentId,
+                                })
+                              );
                           }}
                           sx={{
                             color: comment.isResolved ? 'green' : 'grey',
@@ -262,8 +275,15 @@ const CommentList: React.FC<any> = ({ comments }: CommentListProps) => {
                     isDisabled()
                   }
                   onClick={() => {
-                    addReply(reopenText, items);
-                    hasResolved(false, items.commentId);
+                    dispatch(
+                      addReply({ replyPayload: reopenText, comment: items })
+                    );
+                    dispatch(
+                      hasResolved({
+                        hasResolve: false,
+                        commentId: items.commentId,
+                      })
+                    );
                     handleMenuClose();
                   }}
                 >
