@@ -1,3 +1,3 @@
-export * from './lib/site-page';
+import { SitePage } from './lib/site-page';
 
-export * from './lib/components/PageHeader';
+export { SitePage }

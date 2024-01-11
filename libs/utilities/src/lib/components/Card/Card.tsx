@@ -10,27 +10,13 @@ import {
   CONTENT_TYPES,
   DASHBOARD_KEYS,
 } from '../../constants/CommonConstants';
-// import { DASHBOARD_KEYS } from '../../../pages/Dashboard/utils/constant';
-// import CardMenu from '../../../pages/PageList/Components/CardMenu/CardMenu';
-// import { CourseMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/CourseMenu';
-// import { QuizPollEventMenu } from '../../../pages/QuizPollEvents/Components/QuizPollEventsMenu/QuizPollEventsMenu';
-// import {
-//   default as PlateformXDialog,
-//   default as PlateformXDialogDelete,
-// } from '../../../pages/articles/deletePopup'; 
-
-// import CardOption from '../CardOption/CardOption';
-// import CommunityOption from '../CommunityOption';
 import './List.css';
-// import { PublishInformation } from '../PublishInformation/PublishInformation';
 import PlateformXDialog from '../Popups/PlateformXDialog';
-// import { CourseMenu } from '../CourseMenu/CourseMenu';
-// import CardMenu from '../CardMenu/CardMenu';
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
-import React from 'react';
 import useAccess from '../../hooks/useAccess/useAccess';
 import { CardProps } from './List.types';
 import { iconsList, statusIcons } from './constants';
+import { PublishInformation } from './PublishInformation';
 
 export const Card = ({
   dataList,
@@ -220,13 +206,10 @@ export const Card = ({
               className="d-flex align-items-center"
               onClick={handleCardClick}
             >
-
               {/* content type icon */}
               <Box className="img">
-                {/* <img src={iconsList[dataList.tagName]} alt="" /> */}
-                {createElement(iconsList[dataList.tagName])}
+                <img src={iconsList[dataList.tagName]} alt="" />
               </Box>
-
               <Box className="rightspace">
                 <Grid container>
                   <Grid
@@ -264,31 +247,29 @@ export const Card = ({
                       )}
                     <Box component="div" className="mobstatusIcon">
                       <Typography sx={{ marginLeft: '10px' }}>
-
                         {
-
-                          createElement(statusIcons[dataList.status])
-
+                          <img
+                            alt=""
+                            src={statusIcons[dataList.status]}
+                          />
                         }
-
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledPublishTriggerDateTime &&
                           tagName === 'sitepage' && (
-
-                            createElement(statusIcons['scheduleUnpublish'])
-
+                            <img
+                              alt=""
+                              src={statusIcons['scheduleUnpublish']}
+                            />
                           )}
-
                       </Typography>
                       <Typography sx={{ marginLeft: '10px' }}>
                         {dataList.scheduledUnPublishTriggerDateTime &&
                           tagName === 'sitepage' && (
-                            // <img
-                            //   alt=""
-                            //   src={statusIcons['scheduleUnpublish']}
-                            // />
-                            createElement(statusIcons['scheduleUnpublish'])
+                            <img
+                              alt=""
+                              src={statusIcons['scheduleUnpublish']}
+                            />
                           )}
                       </Typography>
                     </Box>
@@ -334,12 +315,12 @@ export const Card = ({
           <Grid item xs={1} md={1} em={7} lg={5} xl={4}>
             <Box className="d-flex align-items-center justify-content-end">
               {/* publish icon */}
-              {/* <PublishInformation
+              <PublishInformation
                 tagName={tagName}
                 dataList={dataList}
                 contentType={contentType || ''}
                 handleCardClick={handleCardClick}
-              /> */}
+              />
 
               {/* {convertToLowerCase(contentType) === 'community' ? (
                 <CommunityOption dataList={dataList} />

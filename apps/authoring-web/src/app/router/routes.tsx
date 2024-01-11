@@ -2,6 +2,7 @@ import { Dashboard } from '@platformx/dashboard'
 import { CreateUser, UserListing } from '@platformx/user-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
+import { SitePage } from '@platformx/site-page'
 
 export const routes: RouteConfig[] = [
   {
@@ -27,6 +28,19 @@ export const routes: RouteConfig[] = [
       >
         {' '}
         <Dashboard />{' '}
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/Sitepage',
+    element: (
+      <ProtectedRoute
+        category="dashboard"
+        subCategory="dashboard"
+        name="dashboard"
+      >
+        {' '}
+        <SitePage />{' '}
       </ProtectedRoute>
     ),
   },
