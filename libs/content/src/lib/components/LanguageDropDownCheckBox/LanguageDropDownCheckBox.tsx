@@ -1,14 +1,13 @@
-import FormControl from '@mui/material/FormControl';
-import MenuItem from '@mui/material/MenuItem';
-import * as React from 'react';
+import FormControl from '@mui/material/FormControl'
+import MenuItem from '@mui/material/MenuItem'
+import * as React from 'react'
 // import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Box, ListItemIcon, Select, Typography } from '@mui/material';
-import Checkbox from '@mui/material/Checkbox';
-import { LanguageList } from '@platformx/utilities';
-import { getCurrentLang } from '@platformx/utilities';
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { Box, ListItemIcon, Select, Typography } from '@mui/material'
+import Checkbox from '@mui/material/Checkbox'
+import { LanguageList, getCurrentLang } from '@platformx/utilities'
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
 const MenuProps = {
   PaperProps: {
     style: {
@@ -17,29 +16,32 @@ const MenuProps = {
       // right: '438px'
     },
   },
-};
+}
 
-export default function LanguageDropDownCheckBox({ language, setLanguage }: any) {
+export default function LanguageDropDownCheckBox({
+  language,
+  setLanguage,
+}: any) {
   const handleChange = (
-    event: any //SelectChangeEvent<typeof language>
+    event: any, //SelectChangeEvent<typeof language>
   ) => {
     const {
       target: { value },
-    } = event;
+    } = event
     setLanguage(
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    );
-  };
+      typeof value === 'string' ? value.split(',') : value,
+    )
+  }
   React.useEffect(() => {
-    LanguageList().map((lang: any) => {
+    LanguageList()?.map((lang: any) => {
       if (getCurrentLang() === lang.id) {
         setLanguage(
-          typeof lang.value === 'string' ? lang.value.split(',') : lang.value
-        );
+          typeof lang.label === 'string' ? lang.label.split(',') : lang.label,
+        )
       }
-    });
-  }, []);
+    })
+  }, [])
   return (
     <FormControl
       // fullWidth
@@ -66,8 +68,8 @@ export default function LanguageDropDownCheckBox({ language, setLanguage }: any)
       >
         {LanguageList().map((l: any) => (
           <MenuItem
-            key={l.value}
-            value={l.value}
+            key={l.label}
+            value={l.label}
             sx={{
               minWidth: '230px',
               display: 'flex',
@@ -98,12 +100,12 @@ export default function LanguageDropDownCheckBox({ language, setLanguage }: any)
                   }}
                 /> */}
               </Box>
-              <Typography variant="h6regular">{l.value}</Typography>
+              <Typography variant="h6regular">{l.label}</Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {/* {getCurrentLang() === l.id && */}
               <ListItemIcon sx={{ minWidth: 'auto' }}>
-                <Checkbox checked={language.indexOf(l.value) > -1} />
+                <Checkbox checked={language?.indexOf(l.label) > -1} />
               </ListItemIcon>
               {/* } */}
             </Box>
@@ -112,5 +114,5 @@ export default function LanguageDropDownCheckBox({ language, setLanguage }: any)
       </Select>
     </FormControl>
     // </div>
-  );
+  )
 }
