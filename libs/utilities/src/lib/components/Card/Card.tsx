@@ -26,11 +26,16 @@ import './List.css'
 import PlateformXDialog from '../Popups/PlateformXDialog'
 // import { CourseMenu } from '../CourseMenu/CourseMenu';
 // import CardMenu from '../CardMenu/CardMenu';
-import useAccess from '../../hooks/useAccess/useAccess'
-import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu'
-import { iconsList, statusIcons } from './constants'
+// import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
+import React from 'react';
+import useAccess from '../../hooks/useAccess/useAccess';
+import { CardProps } from './List.types';
+import { iconsList, statusIcons } from './constants';
+import { PublishInformation } from '../PublishInformation';
+import CardOption from './CardOption';
 
 export const Card = ({
+  CustomMenuList,
   dataList,
   deleteContent,
   duplicate,
@@ -55,8 +60,9 @@ export const Card = ({
   siteList,
   duplicateToSite,
   contentType,
-}: any) => {
-  const { canAccessAction } = useAccess()
+}: CardProps) => {
+
+  const { canAccessAction } = useAccess();
   const tagName =
     dataList?.tagName?.toLowerCase() || dataList?.tags?.toLowerCase()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -169,11 +175,7 @@ export const Card = ({
         }
         break
     }
-  }
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget)
-  }
-
+  };
   const handleDeleteButton = () => {
     switch (tagName) {
       case 'sitepage':
@@ -210,211 +212,116 @@ export const Card = ({
   return (
     <>
       {isDelete && renderConfirmation()}
-      <Box className="listbox">
-        <Grid container className="d-flex align-items-center">
-          <Grid item xs={11} md={11} em={5} lg={7} xl={8} pr="20px">
+      <Box className='listbox'>
+        <Grid container className='d-flex align-items-center'>
+          <Grid item xs={11} md={11} em={5} lg={7} xl={8} pr='20px'>
             <Box
-              //  sx={{ display: 'flex', justifyContent: 'space-between' }}
-              className="d-flex align-items-center"
-              onClick={handleCardClick}
-            >
+
+              className='d-flex align-items-center'
+              onClick={handleCardClick}>
               {/* content type icon */}
-              <Box className="img">
-                {/* <img src={iconsList[dataList.tagName]} alt="" /> */}
-                {createElement(iconsList[dataList.tagName])}
+              <Box className='img'>
+                <img src={iconsList[dataList.tagName]} />
               </Box>
 
-              <Box className="rightspace">
+              <Box className='rightspace'>
                 <Grid container>
                   <Grid
                     item
                     sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      height: '24px',
-                    }}
-                  >
-                    <Tooltip title={dataList.title} placement="right-end">
+                      display: "flex",
+                      alignItems: "center",
+                      height: "24px",
+                    }}>
+                    <Tooltip title={dataList.title} placement='right-end'>
                       <Typography
-                        variant="h5bold"
+                        variant='h5bold'
                         sx={{
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          display: '-webkit-box',
-                          WebkitLineClamp: '1',
-                          WebkitBoxOrient: 'vertical',
-                          wordBreak: 'break-all',
-                        }}
-                      >
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          display: "-webkit-box",
+                          WebkitLineClamp: "1",
+                          WebkitBoxOrient: "vertical",
+                          wordBreak: "break-all",
+                        }}>
                         {dataList.title}
                       </Typography>
                     </Tooltip>
-                    {tagName === 'event' &&
-                      dataList.page_state === 'published' &&
+                    {tagName === "event" &&
+                      dataList.page_state === "published" &&
                       date > dataList.eventStartDate &&
                       date < dataList.eventEndDate && (
-                        <img
-                          alt=""
-                          style={{ height: '43px', width: '43px' }}
-                          src={RedBlinkingDot}
-                        />
+                        <img style={{ height: "43px", width: "43px" }} src={RedBlinkingDot} />
                       )}
-                    <Box component="div" className="mobstatusIcon">
-                      <Typography sx={{ marginLeft: '10px' }}>
-                        {createElement(statusIcons[dataList.status])}
+                    <Box component='div' className='mobstatusIcon'>
+                      <Typography sx={{ marginLeft: "10px" }}>
+                        <img src={statusIcons[dataList.status]} />
                       </Typography>
-                      <Typography sx={{ marginLeft: '10px' }}>
-                        {dataList.scheduledPublishTriggerDateTime &&
-                          tagName === 'sitepage' &&
-                          createElement(statusIcons['scheduleUnpublish'])}
+                      <Typography sx={{ marginLeft: "10px" }}>
+                        {dataList.scheduledPublishTriggerDateTime && tagName == "sitepage" && (
+                          <img src={statusIcons["schedulePublish"]} />
+                        )}
                       </Typography>
-                      <Typography sx={{ marginLeft: '10px' }}>
-                        {dataList.scheduledUnPublishTriggerDateTime &&
-                          tagName === 'sitepage' &&
-                          // <img
-                          //   alt=""
-                          //   src={statusIcons['scheduleUnpublish']}
-                          // />
-                          createElement(statusIcons['scheduleUnpublish'])}
+                      <Typography sx={{ marginLeft: "10px" }}>
+                        {dataList.scheduledUnPublishTriggerDateTime && tagName == "sitepage" && (
+                          <img src={statusIcons["scheduleUnpublish"]} />
+                        )}
                       </Typography>
                     </Box>
                   </Grid>
                 </Grid>
                 <Box
                   sx={{
-                    flexWrap: { xs: 'wrap', em: 'inherit' },
-                    display: { xs: 'none', em: 'flex' },
-                  }}
-                >
+                    flexWrap: { xs: "wrap", em: "inherit" },
+                    display: { xs: "none", em: "flex" },
+                  }}>
                   <Typography
-                    variant="h7regular"
+                    variant='h7regular'
                     sx={{
-                      color: '#89909a',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
-                      WebkitLineClamp: '1',
-                      WebkitBoxOrient: 'vertical',
-                      wordBreak: 'break-all',
+                      color: "#89909a",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "1",
+                      WebkitBoxOrient: "vertical",
+                      wordBreak: "break-all",
                       order: { xs: 2, em: 1 },
-                    }}
-                  >
+                    }}>
                     {dataList.description}
                   </Typography>
                 </Box>
-                <Box className="datetimemob">
-                  <Typography variant="h7regular" component="div">
+                <Box className='datetimemob'>
+                  <Typography variant='h7regular' component='div'>
                     {dataList.lastModifiedBy}
                   </Typography>
-                  <Typography variant="h7regular" component="div">
+                  <Typography variant='h7regular' component='div'>
                     {dataList.lastModifiedDate &&
-                      format(
-                        new Date(dataList.lastModifiedDate),
-                        'MMM d, yyyy | hh:mm a',
-                      )}
+                      format(new Date(dataList.lastModifiedDate), "MMM d, yyyy | hh:mm a")}
                   </Typography>
                 </Box>
               </Box>
             </Box>
           </Grid>
           <Grid item xs={1} md={1} em={7} lg={5} xl={4}>
-            <Box className="d-flex align-items-center justify-content-end">
+            <Box className='d-flex align-items-center justify-content-end'>
               {/* publish icon */}
-              {/* <PublishInformation
+              <PublishInformation
                 tagName={tagName}
                 dataList={dataList}
-                contentType={contentType || ''}
+                contentType={contentType || "quiz"}
                 handleCardClick={handleCardClick}
-              /> */}
-
-              {/* {convertToLowerCase(contentType) === 'community' ? (
-                <CommunityOption dataList={dataList} />
-              ) : (
-                <CardOption
-                  tagName={tagName}
-                  dataList={dataList}
-                  handleEdit={handleEdit}
-                  handleClick={handleClick}
-                  canAccessAction={canAccessAction}
-                  handleDeleteButton={handleDeleteButton}
-                  getContentCategory={getContentCategory}
-                  getContentSubCategory={getContentSubCategory}
-                />
-              )} */}
-              {/* card option */}
-
-              {/* {tagName === 'sitepage' && (
-                <CardMenu
-                  listItemDetails={dataList}
-                  open={open}
-                  anchorEl={anchorEl}
-                  handleMenuClose={() => {
-                    setAnchorEl(null);
-                  }}
-                  category={CATEGORY_PAGE}
-                  subCategory=""
-                  editPage={editPage}
-                  viewPage={viewPage}
-                  previewPage={previewPage}
-                  handleDuplicatePopup={handleDuplicatePopup}
-                  duplicatePage={duplicatePage}
-                  unPublishPage={unPublishPage}
-                  handleReschedulePopup={handleReschedulePopup}
-                  reschedulePublishPage={reschedulePublishPage}
-                  rescheduleUnPublishPage={rescheduleUnPublishPage}
-                  handleCancelTriggerPopup={handleCancelTriggerPopup}
-                  cancelPublishUnpublishTrigger={cancelPublishUnpublishTrigger}
-                  handleDeleteData={handleDeleteData}
-                  handlePageDelete={handlePageDelete}
-                ></CardMenu>
-              )} */}
-
-              {(tagName === 'quiz' ||
-                tagName === 'poll' ||
-                tagName === 'event' ||
-                tagName === 'vod' ||
-                tagName === 'article') && (
-                <QuizPollEventMenu
-                  deleteContent={deleteContent}
-                  duplicate={duplicate}
-                  preview={preview}
-                  unPublish={unPublish}
-                  view={view}
-                  edit={edit}
-                  anchorEl={anchorEl}
-                  open={open}
-                  handleClose={() => {
-                    setAnchorEl(null)
-                  }}
-                  contentType={tagName}
-                  listItemDetails={dataList}
-                  category={CATEGORY_CONTENT}
-                  subCategory={CONTENT_TYPES}
-                  fetchContentDetails={fetchContentDetails}
-                  siteList={siteList}
-                  duplicateToSite={duplicateToSite}
-                />
-              )}
-              {/* {tagName === 'courses' && (
-                <CourseMenu
-                  deleteContent={deleteContent}
-                  duplicate={duplicate}
-                  preview={preview}
-                  unPublish={unPublish}
-                  view={view}
-                  edit={edit}
-                  anchorEl={anchorEl}
-                  open={open}
-                  handleClose={() => {
-                    setAnchorEl(null);
-                  }}
-                  contentType={tagName}
-                  listItemDetails={dataList}
-                  category={CATEGORY_CONTENT}
-                  subCategory={CONTENT_TYPES}
-                  fetchContentDetails={fetchContentDetails}
-                />
-              )} */}
+              />
+              {/* Edit, Delete Options */}
+              <CardOption
+                tagName={tagName}
+                dataList={dataList}
+                handleEdit={handleEdit}
+                canAccessAction={canAccessAction}
+                handleDeleteButton={handleDeleteButton}
+                getContentCategory={getContentCategory}
+                getContentSubCategory={getContentSubCategory}
+              />
+              {CustomMenuList}
             </Box>
           </Grid>
         </Grid>

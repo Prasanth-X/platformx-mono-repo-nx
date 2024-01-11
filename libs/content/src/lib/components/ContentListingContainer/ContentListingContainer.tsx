@@ -43,8 +43,9 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
   } = useContentListing('ALL');
 
   const createContentNew = () => {
-    dispatch(previewArticle({}));
-    navigate(`/content/create-${contentType?.toLowerCase()}`);
+    debugger;
+    // dispatch(previewArticle({}));
+    navigate(`/content/create`, { state: contentType?.trim()?.toLowerCase() });
   };
 
   const handleFilter = async (filter: string) => {

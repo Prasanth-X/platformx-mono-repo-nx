@@ -43,7 +43,7 @@ const UserDetails = () => {
   }
   const successPopup = {
     successTitle: 'User Created Successfully!',
-    successDescription: `We send an invitation e-mail to the “rkaushal@hello.com”. Users need to accept the invitation by clicking the “Activate Your Account” link in the e-mail address.`,
+    successDescription: `We send an invitation e-mail to the “rkaushal@hello.com”. Users need to accept the invitation by clicking the “Activate Your Account link in the e-mail address.`,
     successCloseText: 'Go to Listing',
     successConfirmText: 'Create Another',
   }

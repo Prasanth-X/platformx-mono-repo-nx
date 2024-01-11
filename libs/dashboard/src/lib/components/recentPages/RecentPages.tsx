@@ -5,7 +5,7 @@ import { RecentPagesProps } from './RecentPages.types'
 
 const RecentPages = ({ recentPages }: RecentPagesProps) => {
   if (!recentPages || recentPages.length === 0) {
-    ;<Skeleton animation="wave" height={10} width="80%" />
+    ; <Skeleton animation="wave" height={10} width="80%" />
   }
   return (
     <>

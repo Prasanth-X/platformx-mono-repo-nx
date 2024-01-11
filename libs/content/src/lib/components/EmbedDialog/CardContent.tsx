@@ -1,10 +1,9 @@
 import { Box, Button, Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { EmbedDesktopTabCard } from '@platformx/prelems-library';
+// import { EmbedDesktopTabCard } from '@platformx/utilities';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getSubDomain } from '@platformx/utilities';
-import SkeltonLoader from '../SkeltonLoader/SkeltonLoader';
+import { getSubDomain, SkeltonLoader } from '@platformx/utilities';
 
 const CardContent = ({ selectedItem, contentType }: any) => {
   const { t, i18n } = useTranslation();
@@ -18,9 +17,8 @@ const CardContent = ({ selectedItem, contentType }: any) => {
   const pageURL =
     `${getSubDomain()}/${i18n.language}/` +
     `embed/${contentType}/${selectedItem?.Page}`;
-  const landingPageURL = `${getSubDomain()}/${i18n.language}/${contentType}/${
-    selectedItem?.Page
-  }`;
+  const landingPageURL = `${getSubDomain()}/${i18n.language}/${contentType}/${selectedItem?.Page
+    }`;
 
   const content = {
     Title: selectedItem?.Title,
@@ -74,13 +72,17 @@ const CardContent = ({ selectedItem, contentType }: any) => {
               alignItems: 'center',
             }}
           >
-            {selectedItem && selectedItem?.Thumbnail ? (
+            <Box sx={{ marginLeft: '70px !important' }}>
+              <SkeltonLoader maxWidth={480} maxHeight={500} />
+            </Box>
+            {/* TODO: Fix this */}
+            {/* {selectedItem && selectedItem?.Thumbnail ? (
               <EmbedDesktopTabCard content={content} />
             ) : (
               <Box sx={{ marginLeft: '70px !important' }}>
                 <SkeltonLoader maxWidth={480} maxHeight={500} />
               </Box>
-            )}
+            )} */}
           </Box>
         </Grid>
         <Grid

@@ -7,8 +7,7 @@ import ContentGridLoader from './lib/components/ContentGridLoader'
 import DatePicker from './lib/components/DatePicker/DatePicker'
 import Error from './lib/components/Error/Error'
 import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip'
-import CommonImageRender from './lib/components/Gallery/CommonImageRender'
-import Gallery from './lib/components/Gallery/Gallery'
+// import Gallery from './lib/components/Gallery/Gallery'
 import { MiniHeader } from './lib/components/Header/MiniHeader'
 import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown'
 import { Loader } from './lib/components/Loader'
@@ -26,12 +25,11 @@ import SkeltonLoader from './lib/components/Skeleton-loader/skeleton'
 import BasicSwitch from './lib/components/Switch/Switch'
 import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound'
 import TextBox from './lib/components/TextBox/TextBox'
-import TitleSubTitle from './lib/components/TitleSubTitle'
 import {
   ShowToastError,
   ShowToastSuccess,
 } from './lib/components/ToastNotification/ToastNotification'
-import XDialog from './lib/components/XDialog/XDialog'
+// import { XDialog } from './lib/components/XDialog/XDialog'
 import XLoader from './lib/components/XLoader/XLoader'
 import ArticleListDesktopLoader from './lib/components/contentListLoaderDesktop'
 import {
@@ -60,6 +58,23 @@ import PrelemsHockeyAustraliaThemeConstants from './lib/themes/prelems/HockeyAus
 import { getUniqueTimeZone } from './lib/utils/helperFns'
 import i18next from './lib/utils/i18next'
 
+
+
+// import AutoCompleteMultiSelect from './lib/components/AutoCompleteMultiSelect/AutoCompleteMultiSelect';
+// import AutoTextArea from './lib/components/AutoTextArea/AutoTextArea';
+// import DatePicker from './lib/components/DatePicker/DatePicker';
+// import Error from './lib/components/Error/Error';
+// import { ErrorTooltip } from './lib/components/ErrorTooltip/ErrorTooltip';
+// import CommonImageRender from './lib/components/Gallery/CommonImageRender';
+// import { MiniHeader } from './lib/components/Header/MiniHeader';
+// import LanguageDropDown from './lib/components/LanguageDropDown/LanguageDropDown';
+// import ContentListLoader from './lib/components/Loader/ContentListLoader';
+// import NoSearchResult from './lib/components/NoSearchResult/NoSearchResult';
+// import TaskNotFound from './lib/components/TaskNotFound/TaskNotFound';
+// import TextBox from './lib/components/TextBox/TextBox';
+// import XLoader from './lib/components/XLoader/XLoader';
+// import ArticleListDesktopLoader from './lib/components/contentListLoaderDesktop';
+
 export * from './lib/assets/images'
 export * from './lib/assets/svg'
 export * from './lib/components'
@@ -75,6 +90,7 @@ export * from './lib/themes/prelems/prelemTheme'
 export * from './lib/utils/helper'
 export * from './lib/utils/helperConstants'
 export * from './lib/utils/helperFns'
+export * from './lib/components/SchemaComponents'
 
 export {
   AUTH_INFO,
@@ -86,14 +102,14 @@ export {
   AutoTextArea,
   BasicSwitch,
   CommonBoxWithNumber,
-  CommonImageRender,
+  // CommonImageRender,
   ContentGridLoader,
   ContentListLoader,
   DatePicker,
   DeletePopup,
   Error,
   ErrorTooltip,
-  Gallery,
+  // Gallery,
   InterRegular,
   LOGOUT_URL,
   LanguageDropDown,
@@ -120,9 +136,9 @@ export {
   TaskNotFound,
   TextBox,
   ThemeConstants,
-  TitleSubTitle,
+  // TitleSubTitle,
   USERNAME_EMAIL_EXIST,
-  XDialog,
+  // XDialog,
   XLoader,
   getUniqueTimeZone,
   i18next,

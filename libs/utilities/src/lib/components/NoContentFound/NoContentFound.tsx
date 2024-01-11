@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { NoContentFoundSvg } from '../../../index'
+import NoContentFoundSvg from '../../assets/svg/NoContentFound.svg'
 
 export const NoContentFound = () => {
   const { t } = useTranslation()
