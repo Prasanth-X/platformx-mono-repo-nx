@@ -11,6 +11,7 @@ import { ContentListingProps, ListItem } from '../../utils/List.types';
 import { Card } from '@platformx/utilities';
 import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 import { useUserSession } from '@platformx/utilities';
+import MenuList from '../MenuList/MenuList';
 import React from 'react';
 const ContentListing = ({
   contentList,
@@ -206,6 +207,13 @@ const ContentListing = ({
                     siteList={sitelist}
                     duplicateToSite={duplicateToSite}
                     contentType={contentType}
+                    CustomMenuList={
+                      <MenuList
+                        item={makeContentData(item)}
+                        deleteContent={deleteContent}
+                        duplicate={duplicate} preview={preview}
+                        unPublish={unPublish}
+                        view={view} edit={edit} fetchContentDetails={fetchContentDetails} />}
                   />
                 </Box>
               );

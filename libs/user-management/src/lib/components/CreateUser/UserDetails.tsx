@@ -30,12 +30,7 @@ import { Constants } from './Constants'
 import { useStyles } from './CreateUser.styles'
 import { useCustomStyle } from './RolePermissions.style'
 
-const styles = (theme: any) => ({
-  notchedOutline: {
-    borderWidth: '1px',
-    borderColor: 'rgb(211,47,47) !important',
-  },
-})
+
 const UserDetails = ({
   state,
   setState,
@@ -56,9 +51,8 @@ const UserDetails = ({
     hour12: false,
   })
   const time = new Date(strTime).toTimeString().slice(0, -21)
-  const defaultTimeZone = `${
-    Intl.DateTimeFormat().resolvedOptions().timeZone
-  } ${time}(IST)`
+  const defaultTimeZone = `${Intl.DateTimeFormat().resolvedOptions().timeZone
+    } ${time}(IST)`
   const [operationType, setOperationType] = useState<string>('replace')
   // const [isd, setISD] = useState('');
   const [isPhone, setIsPhone] = useState(false)
@@ -82,20 +76,20 @@ const UserDetails = ({
   const handleChangeTimeZone = (event: any, newValue: { label: any }) => {
     setState({
       ...state,
-      ['timezone']: newValue.label,
+      'timezone': newValue.label,
     })
   }
   const handleChangeLanguage = (event: any, newValue: any) => {
     setState({
       ...state,
-      ['default_language']: newValue.id,
+      'default_language': newValue.id,
     })
     setFlag(newValue?.id)
   }
   const handleChange = () => {
     setState({
       ...state,
-      ['default_site_checked']: !state.default_site_checked,
+      'default_site_checked': !state.default_site_checked,
     })
   }
 
@@ -117,7 +111,7 @@ const UserDetails = ({
     !isDisabled &&
       setState({
         ...state,
-        ['timezone']: defaultTimeZone,
+        'timezone': defaultTimeZone,
       })
   }, [])
   const classess = useCustomStyle()
@@ -135,8 +129,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('profile_picture')}
               subTitle={`${t('sub_title')} ${t('profile_picture')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} className="textFiled">
@@ -150,8 +144,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('first_name')}
               subTitle={`${t('sub_title')} ${t('first_name')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
@@ -171,8 +165,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('last_name')}
               subTitle={`${t('sub_title')} ${t('last_name')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
@@ -192,8 +186,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('email')}
               subTitle={`${t('sub_title')} ${t('email')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
@@ -230,8 +224,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('phone')}
               subTitle={`${t('sub_title')} ${t('phone')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={2.5} md={2.5} className="textFiled">
@@ -329,14 +323,14 @@ const UserDetails = ({
             <TitleSubTitle
               title={`${t('gender')}`}
               subTitle={`${t('sub_title')} ${t('gender')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
             <FormControl
               fullWidth
-              // error={formik.touched.gender && Boolean(formik.errors.gender)}
+            // error={formik.touched.gender && Boolean(formik.errors.gender)}
             >
               <InputLabel id="demo-simple-select-label">
                 {t('gender')}
@@ -350,7 +344,7 @@ const UserDetails = ({
                 onChange={(e) =>
                   formik.setFieldValue('gender', e.target.value as string)
                 }
-                // onBlur={formik.handleBlur}
+              // onBlur={formik.handleBlur}
               >
                 {Constants.map((item) => (
                   <MenuItem key={item} value={t(`${item}`)}>
@@ -367,8 +361,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={`${t('date_of_birth')}`}
               subTitle={`${t('sub_title')} ${t('date_of_birth')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7} className="textFiled">
@@ -380,8 +374,8 @@ const UserDetails = ({
                     name="dob"
                     // onBlur={formik.handleBlur}
                     onKeyDown={handleDateChangeRaw}
-                    // error={formik.touched.dob && Boolean(formik.errors.dob)}
-                    // helperText={formik.touched.dob && formik.errors.dob}
+                  // error={formik.touched.dob && Boolean(formik.errors.dob)}
+                  // helperText={formik.touched.dob && formik.errors.dob}
                   />
                 )}
                 inputFormat="DD/MM/YYYY"
@@ -397,8 +391,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('time_zone')}
               subTitle={t('time_subHead')}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid
@@ -427,8 +421,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('default_language')}
               subTitle={t('choose_language')}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} className="textFiled">
@@ -470,8 +464,8 @@ const UserDetails = ({
             <TitleSubTitle
               title={t('default_site')}
               subTitle={t('is_it_your_default_site')}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} className="textFiledLast">
@@ -493,4 +487,4 @@ const UserDetails = ({
   )
 }
 
-export default withStyles(styles)(UserDetails)
+export default UserDetails

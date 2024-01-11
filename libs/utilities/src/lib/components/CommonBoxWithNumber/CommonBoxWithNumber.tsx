@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { PropsWithChildren } from 'react';
-import TitleSubTitle from '../TitleSubTitle';
 import { useCustomStyle } from './CommonBoxWithNumber.style';
+import TitleSubTitle from '../SchemaComponents/TitleSubtitle/TitleSubTitle';
 
 interface CommonBoxWithNumberProp {
   number: string;
@@ -28,8 +28,8 @@ export const CommonBoxWithNumber = ({
         <TitleSubTitle
           title={title}
           subTitle={subTitle}
-          titleVarient={titleVarient}
-          subTitleVarient={subTitleVarient}
+          titleVariant={titleVarient}
+          subTitleVariant={subTitleVarient}
         />
       </Box>
       <Box className="contentWrapper" sx={panelStyle}>

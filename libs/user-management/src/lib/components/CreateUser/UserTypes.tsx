@@ -55,8 +55,8 @@ export default function UserTypes({
             <TitleSubTitle
               title={`${t('choose_user_type')}*`}
               subTitle={`${t('sub_title')} ${t('user_types')}`}
-              titleVarient="h6medium"
-              subTitleVarient="h7regular"
+              titleVariant="h6medium"
+              subTitleVariant="h7regular"
             />
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7} className="textFiledLast">

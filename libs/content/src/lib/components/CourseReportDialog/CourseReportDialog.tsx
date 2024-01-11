@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import ReportGraph from '../ReportGraph/ReportGraph';
+import { ReportGraph } from '@platformx/utilities';
 
 export const CourseReportDialog = ({
   isDialogOpen,
