@@ -1,5 +1,6 @@
-const HCLRobort = require("../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
-const InterRegular = require("../fonts/Inter/Inter-Regular.woff2");
+const PoppinsMedium =
+  require('../../../fonts/Poppins/Poppins-Medium.woff2') as string
+const PoppinsRegular = require('../../../fonts/Poppins/Poppins-Regular.woff2') as string
 
 const ThemeConstants = {
   // Color Variables
@@ -503,7 +504,7 @@ const ThemeConstants = {
       },
       VARIANT4: {
         COLOR: "#14142B",
-        COLOR_HOVER: "#FFFFFF",
+        COLOR_HOVER: "#4B9EF9",
         BACKGROUND_COLOR: "transparent",
         BACKGROUND_COLOR_HOVER: "#14142B",
         BORDER: "solid 1px  #14142B",
@@ -524,7 +525,7 @@ const ThemeConstants = {
       BACKGROUND_ERROR_TEXT: "#F33E41",
       BACKGROUND_SUCCESS: "#DEF5D9",
       BACKGROUND_SUCCESS_TEXT: "#0FA069",
-      DISABLED: "#FFD970",
+      DISABLED: "#dcdcdf",
     },
     SELECT: {
       PLACEHOLDER: "#EFF0F6", //Selectbox bg
@@ -887,11 +888,11 @@ const ThemeConstants = {
       BORDER_COLOR_HOVER: "#14142B",
       BUTTON: {
         COLOR: "#FFFFFF",
-        COLOR_HOVER: "#FFFFFF",
-        BACKGROUND_COLOR: "#14142B",
-        BACKGROUND_COLOR_HOVER: "#413C61",
-        BORDER_COLOR: "#14142B",
-        BORDER_COLOR_HOVER: "#14142B",
+        COLOR_HOVER: "#1a1a1a",
+        BACKGROUND_COLOR: "transparent",
+        BACKGROUND_COLOR_HOVER: "#FFFFFF",
+        BORDER_COLOR: "#FFFFFF",
+        BORDER_COLOR_HOVER: "#FFFFFF",
       },
       BADGE: {
         BACKGROUND: "#FFE18D",
@@ -902,7 +903,7 @@ const ThemeConstants = {
   FOOTER: {
     VARIANT1: {
       BACKGROUND: "#020f2a",
-      BACKGROUND_SECOND: "#020f2a",
+      BACKGROUND_SECOND: "#0d1931",
       TITLE: "#FFFFFF",
       TITLE_HOVER: "#FFFFFF",
       PARAGRAPH: "#FFFFFF",
@@ -916,9 +917,9 @@ const ThemeConstants = {
     },
   },
 
-  FONTFAMILYPRIMARY: HCLRobort,
-  FONTFAMILYSECONDARY: InterRegular,
-  FONTNAMEPRIMARY: "HCLTechRoobert",
-  FONTNAMESECONDARY: "Inter",
+  FONTFAMILYPRIMARY: PoppinsMedium,
+  FONTFAMILYSECONDARY: PoppinsRegular,
+  FONTNAMEPRIMARY: "PoppinsMedium",
+  FONTNAMESECONDARY: "PoppinsRegular",
 };
 export default ThemeConstants;

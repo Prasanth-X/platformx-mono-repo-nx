@@ -11,7 +11,7 @@ import {
   XDialogContent,
   XDialogImageContainer,
 } from './XDialog.styles'
-import { XDialogProps } from './XDialog.types'
+// import { XDialogProps } from './XDialog.types'
 
 const XDialog = ({
   handleClose,
@@ -23,7 +23,7 @@ const XDialog = ({
   imageIcon,
   leftButtonText,
   rightButtonText,
-}: XDialogProps) => {
+}: any) => {
   const dispatch = useDispatch()
   return (
     <div>

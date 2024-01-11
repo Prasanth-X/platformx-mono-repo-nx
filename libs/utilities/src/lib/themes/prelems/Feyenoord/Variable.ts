@@ -1,12 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// import HCLRobort from "../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2";
-// import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
-//  import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
-// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
-// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2");
-
-// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2") as string;
-// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
+const HelveticaNeue =
+  require('../../../fonts/HelveticaNeue/HelveticaNeue-Condensed-Bold.woff2') as string
+const Arial = require('../../../fonts/Arial/arial.woff2') as string
 
 const ThemeConstants = {
   // Color Variables
@@ -218,7 +212,7 @@ const ThemeConstants = {
       },
     },
     BUTTON: {
-      BORDER_RADIUS: "5px",
+      BORDER_RADIUS: "0px 0px 15px 0px",
       MEDIUM_HEIGHT: "47px",
       SMALL_HEIGHT: "38px",
       LARGE_HEIGHT: "63px",
@@ -276,29 +270,35 @@ const ThemeConstants = {
   OVERYLAY: {
     EDITOVERLAY: "50, 130, 250, 0.9",
     BGOVERLAY: "255, 255, 255, 0.3",
-    CARDOVERLAY: "0, 0,0, 0.6",
+    CARDOVERLAY: "0, 0,0, 0.2",
   },
   RADIUS: {
-    VALUE1: "5px",
-    VALUE2: "8px",
+    VALUE1: "0px",
+    VALUE2: "0px 0px 0px 0px",
   },
 
   /* Prelem Type 1 PRIMARY (default White background)*/
   SECONDARY_PRELEM: {
-    BACKGROUND: "#343051",
+    BACKGROUND: "#010101",
     TITLE: "#FFFFFF",
     PARAGRAPH: "#EFF0F6",
-    LABEL: "#4B9EF9",
-    LINE: "#655792",
-    LINK: "#4B9EF9",
+    LABEL: "#ed1c24",
+    LINE: "#323232",
+    LINK: "#ed1c24",
     BUTTON: {
       VARIANT1: {
-        COLOR: "#14142B",
-        COLOR_HOVER: "#14142B",
-        BACKGROUND_COLOR: "#FFFFFF",
-        BACKGROUND_COLOR_HOVER: "#D7ECFD",
-        BORDER: "solid 1px  #FFFFFF",
-        BORDER_HOVER: "solid 1px  #FFFFFF",
+        COLOR: "#FFFFFF",
+        COLOR_HOVER: "#FFFFFF",
+        BACKGROUND_COLOR: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BACKGROUND_COLOR_HOVER: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BORDER: "none",
+        BORDER_HOVER: "none",
+        // COLOR: "#14142B",
+        // COLOR_HOVER: "#14142B",
+        // BACKGROUND_COLOR: "#FFFFFF",
+        // BACKGROUND_COLOR_HOVER: "#D7ECFD",
+        // BORDER: "solid 1px  #FFFFFF",
+        // BORDER_HOVER: "solid 1px  #FFFFFF",
       },
       VARIANT2: {
         COLOR: "#FFFFFF",
@@ -366,13 +366,13 @@ const ThemeConstants = {
     },
     CARDS: {
       VARIANT1: {
-        BACKGROUND: "#FFFFFF",
-        ALTERNET_BACKGROUND: "#F7F7FC",
-        TITLE: "#14142B",
-        PARAGRAPH: "#4E4B66",
-        LABEL: "#6E7191",
-        BORDER_COLOR: "#3E306A",
-        BORDER_COLOR_HOVER: "#3E306A",
+        BACKGROUND: "#010101",
+        ALTERNET_BACKGROUND: "#2c2b2b",
+        TITLE: "#FFFFFF",
+        PARAGRAPH: "#FFFFFF",
+        LABEL: "#ed1c24",
+        BORDER_COLOR: "#323232",
+        BORDER_COLOR_HOVER: "#010101",
         BOX_SHADOW: "0px 10px 15px 0px rgba(0, 0, 0, 0.03)",
       },
       VARIANT2: {
@@ -473,28 +473,28 @@ const ThemeConstants = {
 
   /* Prelem Type 2 SECONDARY (default black background)*/
   PRIMARY_PRELEM: {
-    BACKGROUND: "#231C39",
+    BACKGROUND: "#262626",
     TITLE: "#FFFFFF",
     PARAGRAPH: "#EFF0F6",
-    LABEL: "#4B9EF9",
-    LINE: "#3E306A",
-    LINK: "#4B9EF9",
+    LABEL: "#ed1c24",
+    LINE: "#858487",
+    LINK: "#ed1c24",
     BUTTON: {
       VARIANT1: {
-        COLOR: "#14142B",
-        COLOR_HOVER: "#14142B",
-        BACKGROUND_COLOR: "#FFFFFF",
-        BACKGROUND_COLOR_HOVER: "#D7ECFD",
-        BORDER: "solid 1px  #FFFFFF",
-        BORDER_HOVER: "solid 1px  #FFFFFF",
+        COLOR: "#FFFFFF",
+        COLOR_HOVER: "#FFFFFF",
+        BACKGROUND_COLOR: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BACKGROUND_COLOR_HOVER: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BORDER: "none",
+        BORDER_HOVER: "none",
       },
       VARIANT2: {
         COLOR: "#FFFFFF",
-        COLOR_HOVER: "#14142B",
-        BACKGROUND_COLOR: "transparent",
-        BACKGROUND_COLOR_HOVER: "#FFFFFF",
-        BORDER: "solid 1px  #FFFFFF",
-        BORDER_HOVER: "solid 1px  #FFFFFF",
+        COLOR_HOVER: "#FFFFFF",
+        BACKGROUND_COLOR: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BACKGROUND_COLOR_HOVER: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BORDER: "none",
+        BORDER_HOVER: "none",
       },
       VARIANT3: {
         COLOR: "#4B9EF9",
@@ -514,57 +514,57 @@ const ThemeConstants = {
       },
     },
     INPUT: {
-      PLACEHOLDER: "#343051",
-      TEXT: "#89909A",
-      TEXT_ACTIVE: "#fffff",
+      PLACEHOLDER: "#EFF0F6",
+      TEXT: "#14142B",
+      TEXT_ACTIVE: "#14142B",
       LABEL: "#6E7191",
       BORDER: "solid 2px transparent",
-      BORDER_ACTIVE: "solid 2px #6E7191",
+      BORDER_ACTIVE: "solid 2px #14142B",
       BORDER_ERROR: "solid 2px #F33E41",
       BORDER_SUCCESS: "solid 2px #0FA069",
-      BACKGROUND_FOCUSED: "#343051",
+      BACKGROUND_FOCUSED: "#fff",
       BACKGROUND_ERROR: "#FFEBEE",
       BACKGROUND_ERROR_TEXT: "#F33E41",
       BACKGROUND_SUCCESS: "#DEF5D9",
       BACKGROUND_SUCCESS_TEXT: "#0FA069",
-      DISABLED: "#343051",
+      DISABLED: "#EFF0F6",
     },
     SELECT: {
-      PLACEHOLDER: "#343051", //Selectbox bg
+      PLACEHOLDER: "#EFF0F6", //Selectbox bg
       LABEL: "#6E7191", //animated tex of focus
       TEXT: "#6E7191", //dropdownlist popup default text
-      TEXT_HOVER: "#ffffff", //dropdownlist popup hover text color,
-      TEXT_SELECTED: "#89909A",
-      TEXT_BACKGROUND_HOVER: "#4B9EF9", //dropdownlist popup hover text background
+      TEXT_HOVER: "#14142B", //dropdownlist popup hover text color
+      TEXT_SELECTED: "#14142B", //dropdownlist selected text color
+      TEXT_BACKGROUND_HOVER: "#FCFCFC", //dropdownlist popup hover text background
       BORDER: "solid 2px transparent",
-      BORDER_ACTIVE: "solid 2px #6E7191", //focused border color
+      BORDER_ACTIVE: "solid 2px #14142B", //focused border color
     },
     CHECKBOX: {
-      BOX_COLOR: "#4B9EF9",
+      BOX_COLOR: "#ed1c24",
     },
     RADIO: {
-      BOX_COLOR: "#4B9EF9",
-      BOX_COLOR_ACTIVE: "#4B9EF9",
+      BOX_COLOR: "#ed1c24",
+      BOX_COLOR_ACTIVE: "#ed1c24",
       SIZE: "24px",
     },
     ACCORDIAN: {
-      BACKGROUND: "#231C39",
+      BACKGROUND: "#010101",
       COLOR: "#fff",
-      BORDER_COLOR: "#3E306A",
+      BORDER_COLOR: "#858487",
     },
     CARDS: {
       VARIANT1: {
-        BACKGROUND: "#FFFFFF",
-        ALTERNET_BACKGROUND: "#F7F7FC",
-        TITLE: "#14142B",
-        PARAGRAPH: "#4E4B66",
-        LABEL: "#6E7191",
-        BORDER_COLOR: "#3E306A",
-        BORDER_COLOR_HOVER: "#4E4B66",
+        BACKGROUND: "#010101",
+        ALTERNET_BACKGROUND: "#2c2b2b",
+        TITLE: "#FFFFFF",
+        PARAGRAPH: "#FFFFFF",
+        LABEL: "#808080",
+        BORDER_COLOR: "#010101",
+        BORDER_COLOR_HOVER: "#010101",
         BOX_SHADOW: "0px 10px 15px 0px rgba(0, 0, 0, 0.03)",
       },
       VARIANT2: {
-        BACKGROUND: "#292647",
+        BACKGROUND: "#010101",
         ALTERNET_BACKGROUND: "#343051",
         TITLE: "#FFFFFF",
         PARAGRAPH: "#EFF0F6",
@@ -647,7 +647,7 @@ const ThemeConstants = {
         TITLE: "#14142B",
         TITLE_ACTIVE: "#FFFFFF",
         TITLE_BACKGROUND: "#FFFFFF",
-        TITLE_ACTIVE_BACKGROUND: "#4B9EF9",
+        TITLE_ACTIVE_BACKGROUND: "#ed1c24",
         PARAGRAPH: "#EFF0F6",
         LABEL: "#4B9EF9",
         LINE: "#3E306A",
@@ -660,28 +660,28 @@ const ThemeConstants = {
   },
   /* Prelem type 3 TERTIARY (default gray background)*/
   TERTIARY_PRELEM: {
-    BACKGROUND: "#343051",
+    BACKGROUND: "#131313",
     TITLE: "#FFFFFF",
     PARAGRAPH: "#EFF0F6",
-    LABEL: "#4B9EF9",
-    LINE: "#655792",
-    LINK: "#4B9EF9",
+    LABEL: "#ed1c24",
+    LINE: "#323232",
+    LINK: "#ed1c24",
     BUTTON: {
       VARIANT1: {
-        COLOR: "#14142B",
-        COLOR_HOVER: "#14142B",
-        BACKGROUND_COLOR: "#FFFFFF",
-        BACKGROUND_COLOR_HOVER: "#D7ECFD",
-        BORDER: "solid 1px  #FFFFFF",
-        BORDER_HOVER: "solid 1px  #FFFFFF",
+        COLOR: "#FFFFFF",
+        COLOR_HOVER: "#FFFFFF",
+        BACKGROUND_COLOR: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BACKGROUND_COLOR_HOVER: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BORDER: "none",
+        BORDER_HOVER: "none",
       },
       VARIANT2: {
         COLOR: "#FFFFFF",
-        COLOR_HOVER: "#14142B",
-        BACKGROUND_COLOR: "transparent",
-        BACKGROUND_COLOR_HOVER: "#FFFFFF",
-        BORDER: "solid 1px  #FFFFFF",
-        BORDER_HOVER: "solid 1px  #FFFFFF",
+        COLOR_HOVER: "#FFFFFF",
+        BACKGROUND_COLOR: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BACKGROUND_COLOR_HOVER: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BORDER: "none",
+        BORDER_HOVER: "none",
       },
       VARIANT3: {
         COLOR: "#4B9EF9",
@@ -727,11 +727,11 @@ const ThemeConstants = {
       BORDER_ACTIVE: "solid 2px #14142B", //focused border color
     },
     CHECKBOX: {
-      BOX_COLOR: "#4B9EF9",
+      BOX_COLOR: "#ed1c24",
     },
     RADIO: {
-      BOX_COLOR: "#4B9EF9",
-      BOX_COLOR_ACTIVE: "#4B9EF9",
+      BOX_COLOR: "#ed1c24",
+      BOX_COLOR_ACTIVE: "#ed1c24",
       SIZE: "24px",
     },
     ACCORDIAN: {
@@ -746,8 +746,8 @@ const ThemeConstants = {
         TITLE: "#14142B",
         PARAGRAPH: "#4E4B66",
         LABEL: "#6E7191",
-        BORDER_COLOR: "#3E306A",
-        BORDER_COLOR_HOVER: "#3E306A",
+        BORDER_COLOR: "#2e2d2d",
+        BORDER_COLOR_HOVER: "#2e2d2d",
         BOX_SHADOW: "0px 10px 15px 0px rgba(0, 0, 0, 0.03)",
       },
       VARIANT2: {
@@ -834,7 +834,7 @@ const ThemeConstants = {
         TITLE: "#14142B",
         TITLE_ACTIVE: "#FFFFFF",
         TITLE_BACKGROUND: "#FFFFFF",
-        TITLE_ACTIVE_BACKGROUND: "#4B9EF9",
+        TITLE_ACTIVE_BACKGROUND: "#ed1c24",
         PARAGRAPH: "#EFF0F6",
         LABEL: "#4B9EF9",
         LINE: "#3E306A",
@@ -874,25 +874,25 @@ const ThemeConstants = {
       },
     },
     VARIANT1: {
-      BACKGROUND: "#231C39",
-      BACKGROUND_HOVER: "#343051",
+      BACKGROUND: "#010101",
+      BACKGROUND_HOVER: "#010101",
       TITLE: "#FFFFFF",
       TITLE_HOVER: "#FFFFFF",
       PARAGRAPH: "#FFFFFF",
       PARAGRAPH_HOVER: "#FFFFFF",
       LABEL: "#6E7191",
       LABEL_HOVER: "#6E7191",
-      LINE: "#3E306A",
+      LINE: "#010101",
       LINE_HOVER: "#D9DBE9",
       BORDER_COLOR: "#D9DBE9",
       BORDER_COLOR_HOVER: "#14142B",
       BUTTON: {
         COLOR: "#FFFFFF",
         COLOR_HOVER: "#FFFFFF",
-        BACKGROUND_COLOR: "#14142B",
-        BACKGROUND_COLOR_HOVER: "#413C61",
-        BORDER_COLOR: "#14142B",
-        BORDER_COLOR_HOVER: "#14142B",
+        BACKGROUND_COLOR: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BACKGROUND_COLOR_HOVER: "linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)",
+        BORDER_COLOR: "none",
+        BORDER_COLOR_HOVER: "none",
       },
       BADGE: {
         BACKGROUND: "#FFE18D",
@@ -902,25 +902,25 @@ const ThemeConstants = {
   },
   FOOTER: {
     VARIANT1: {
-      BACKGROUND: "#231C39",
-      BACKGROUND_SECOND: "#262338",
+      BACKGROUND: "#010101",
+      BACKGROUND_SECOND: "#262626",
       TITLE: "#FFFFFF",
       TITLE_HOVER: "#FFFFFF",
       PARAGRAPH: "#FFFFFF",
       PARAGRAPH_HOVER: "#FFFFFF",
       LABEL: "#6E7191",
       LABEL_HOVER: "#6E7191",
-      LINE: "#3E306A",
+      LINE: "#212121",
       LINE_HOVER: "#D9DBE9",
       BORDER_COLOR: "#D9DBE9",
       BORDER_COLOR_HOVER: "#14142B",
     },
   },
 
-  FONTFAMILYPRIMARY: "HCLRobort",
-  FONTFAMILYSECONDARY: "InterRegular",
-  FONTNAMEPRIMARY: "HCLTechRoobert",
-  FONTNAMESECONDARY: "Inter",
+  FONTFAMILYPRIMARY: HelveticaNeue,
+  FONTFAMILYSECONDARY: Arial,
+  FONTNAMEPRIMARY: "HelveticaNeue",
+  FONTNAMESECONDARY: "Arial",
 };
 
 export default ThemeConstants;

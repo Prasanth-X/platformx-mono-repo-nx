@@ -47,10 +47,16 @@ import usePlatformAnalytics from './lib/hooks/usePlatformAnalytics/usePlatformAn
 import { usePrelemImpression } from './lib/hooks/usePrelemImpression/usePrelemImpression'
 import useUserSession from './lib/hooks/useUserSession/useUserSession'
 import { ArticleMapper } from './lib/mappers/articleMapper'
-import LightTheme from './lib/themes/authoring/lightTheme'
-import ThemeConstants from './lib/themes/authoring/variable'
+
+import LightTheme from './lib/themes/authoring/theme'
+import ThemeConstants from './lib/themes/authoring/lightTheme/lightThemeVariable'
 import PrelemTheme from './lib/themes/prelems/prelemTheme'
-import PrelemsThemeConstants from './lib/themes/prelems/prelemVariableDark'
+import PrelemsDarkThemeConstants from './lib/themes/prelems/DarkTheme/Variable'
+import PrelemsLightThemeConstants from './lib/themes/prelems/LightTheme/Variable'
+import PrelemsFeyenoordThemeConstants from './lib/themes/prelems/Feyenoord/Variable'
+import PrelemsFifaThemeConstants from './lib/themes/prelems/Fifa/Variable'
+import PrelemsHockeyAustraliaThemeConstants from './lib/themes/prelems/HockeyAustralia/Variable'
+
 import { getUniqueTimeZone } from './lib/utils/helperFns'
 import i18next from './lib/utils/i18next'
 
@@ -64,7 +70,7 @@ export * from './lib/constants/CommonConstants'
 export * from './lib/hooks/useAccess/useMapPermissions'
 export * from './lib/layouts/TwoColumns/TwoColumnLayout'
 export * from './lib/mappers/articleMapper'
-export * from './lib/themes/authoring/lightTheme'
+export * from './lib/themes/authoring/theme'
 export * from './lib/themes/prelems/prelemTheme'
 export * from './lib/utils/helper'
 export * from './lib/utils/helperConstants'
@@ -100,7 +106,11 @@ export {
   PlateformXDialog,
   PlateformXDialogSuccess,
   PrelemTheme,
-  PrelemsThemeConstants,
+  PrelemsDarkThemeConstants,
+  PrelemsLightThemeConstants,
+  PrelemsFeyenoordThemeConstants,
+  PrelemsFifaThemeConstants,
+  PrelemsHockeyAustraliaThemeConstants,
   REDIRECT_AUTH_URL,
   RadioControlLabel,
   RadioLabelWithSubheading,

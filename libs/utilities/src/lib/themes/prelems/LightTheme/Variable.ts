@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// import HCLRobort from "../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2";
-// import InterRegular from "../../fonts/Inter/Inter-Regular.woff2";
-
-// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2") as string;
-// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
+const HCLRobort =
+  require('../../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string
+const InterRegular = require('../../../fonts/Inter/Inter-Regular.woff2') as string
 
 const ThemeConstants = {
   // Color Variables
@@ -857,10 +854,10 @@ const ThemeConstants = {
       BORDER_COLOR: "#D9DBE9",
       BORDER_COLOR_HOVER: "#14142B",
       BUTTON: {
-        COLOR: "#FFFFFF",
+        COLOR: "#1a1a1a",
         COLOR_HOVER: "#FFFFFF",
-        BACKGROUND_COLOR: "#14142B",
-        BACKGROUND_COLOR_HOVER: "#413C61",
+        BACKGROUND_COLOR: "#FFFFFF",
+        BACKGROUND_COLOR_HOVER: "#14142B",
         BORDER_COLOR: "#14142B",
         BORDER_COLOR_HOVER: "#14142B",
       },
@@ -913,8 +910,8 @@ const ThemeConstants = {
     },
   },
 
-  FONTFAMILYPRIMARY: "HCLRobort",
-  FONTFAMILYSECONDARY: "InterRegular",
+  FONTFAMILYPRIMARY: HCLRobort,
+  FONTFAMILYSECONDARY: InterRegular,
   FONTNAMEPRIMARY: "HCLTechRoobert",
   FONTNAMESECONDARY: "Inter",
 };
