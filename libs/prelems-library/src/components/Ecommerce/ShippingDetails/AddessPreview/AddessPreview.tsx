@@ -1,20 +1,19 @@
-import React from 'react';
-import './AddessPreview.css';
-import { Box, Typography } from '@mui/material';
-import { nullToObject } from '../lib/utils/helperFns';
-import { useTranslation } from 'react-i18next';
-import '../../../../service/i18n';
-import { useCustomStyle } from './AddressPreview.style';
+import { Box, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { nullToObject } from 'utils/helperFns'
+import '../../../../service/i18n'
+import './AddessPreview.css'
+import { useCustomStyle } from './AddressPreview.style'
 
 type ecomAddessPreviewProps = {
-  stateManage?: any;
-  preViewAddress?: any;
-};
+  stateManage?: any
+  preViewAddress?: any
+}
 
 const AddessPreview = (_props: ecomAddessPreviewProps) => {
-  const { t } = useTranslation();
-  const classes = useCustomStyle();
-  const { stateManage = {}, preViewAddress = () => {} } = nullToObject(_props);
+  const { t } = useTranslation()
+  const classes = useCustomStyle()
+  const { stateManage = {}, preViewAddress = () => {} } = nullToObject(_props)
   const {
     city = '',
     state = '',
@@ -26,7 +25,7 @@ const AddessPreview = (_props: ecomAddessPreviewProps) => {
     firstName = '',
     alterNumber = '',
     contactNumber = '',
-  } = nullToObject(stateManage);
+  } = nullToObject(stateManage)
 
   const renderData = (label = '', valueData = '') => {
     return (
@@ -51,15 +50,15 @@ const AddessPreview = (_props: ecomAddessPreviewProps) => {
           </Typography>
         </Box>
       </Box>
-    );
-  };
+    )
+  }
 
   const commaAdded = (val: string | number) => {
     if (val) {
-      return val + ', ';
+      return val + ', '
     }
-    return '';
-  };
+    return ''
+  }
 
   return (
     <Box className={`${classes.addressPreviewWrapper} addressdetailScreen`}>
@@ -75,14 +74,14 @@ const AddessPreview = (_props: ecomAddessPreviewProps) => {
               commaAdded(state) +
               commaAdded(pincode) +
               ' ' +
-              landmark
+              landmark,
           )}
           {renderData(`${t('contact_no')}`, contactNumber)}
           {renderData(`${t('alternate_no')}`, alterNumber)}
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default AddessPreview;
+export default AddessPreview

@@ -1,24 +1,23 @@
-import React from 'react';
-import './ProductColorList.css';
-import { Typography } from '@mui/material';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import { useTranslation } from 'react-i18next';
-import '../../../../service/i18n';
-import { nullToArray, nullToObject } from '../lib/utils/helperFns';
-import { useCustomStyle } from './ProductColorList.style';
+import { Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import { useTranslation } from 'react-i18next'
+import { nullToArray, nullToObject } from 'utils/helperFns'
+import '../../../../service/i18n'
+import './ProductColorList.css'
+import { useCustomStyle } from './ProductColorList.style'
 
 type ProductColorListProps = {
-  variantsHandle: any;
-  productFullDetails: any;
-};
+  variantsHandle: any
+  productFullDetails: any
+}
 const ProductColorList = (_props: ProductColorListProps) => {
   const { productFullDetails = {}, variantsHandle = () => {} } =
-    nullToObject(_props);
-  const { attribute = {} } = nullToObject(productFullDetails);
-  const classes = useCustomStyle();
-  const { colour = [] } = nullToObject(attribute);
-  const { t } = useTranslation();
+    nullToObject(_props)
+  const { attribute = {} } = nullToObject(productFullDetails)
+  const classes = useCustomStyle()
+  const { colour = [] } = nullToObject(attribute)
+  const { t } = useTranslation()
 
   return (
     <Box
@@ -46,7 +45,7 @@ const ProductColorList = (_props: ProductColorListProps) => {
         ))}
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default ProductColorList;
+export default ProductColorList

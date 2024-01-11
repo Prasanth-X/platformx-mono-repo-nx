@@ -13,7 +13,7 @@ import {
 } from '@platformx/utilities';
 import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import WorkflowStepper from '../WorkflowStepper/WorkflowStepper';
+import { WorkflowStepper } from '@platformx/utilities';
 // import usePage from '../../../../hooks/usePage/usePage';
 import {
   capitalizeFirstLetter,
@@ -392,33 +392,33 @@ const CardMenu = (props: any) => {
         ) : null}
         {(scheduledPublishTriggerDateTime === null ||
           scheduledPublishTriggerDateTime === undefined) &&
-        (scheduledUnPublishTriggerDateTime === null ||
-          scheduledUnPublishTriggerDateTime === undefined)
+          (scheduledUnPublishTriggerDateTime === null ||
+            scheduledUnPublishTriggerDateTime === undefined)
           ? tabView && (
-              <ErrorTooltip
-                component={
-                  <MenuItem
-                    disableRipple
-                    disabled={!canAccessAction(category, subCategory, 'Update')}
-                    onClick={() => {
-                      onHandleMenuActions('edit');
-                    }}
-                  >
-                    {/* <CardOptionEditIcon
+            <ErrorTooltip
+              component={
+                <MenuItem
+                  disableRipple
+                  disabled={!canAccessAction(category, subCategory, 'Update')}
+                  onClick={() => {
+                    onHandleMenuActions('edit');
+                  }}
+                >
+                  {/* <CardOptionEditIcon
                     className={classes.icon}
                   /> */}
-                    <img
-                      src={CardOptionEditIcon}
-                      alt=""
-                      style={{ width: '16px', marginRight: '10px' }}
-                    />
+                  <img
+                    src={CardOptionEditIcon}
+                    alt=""
+                    style={{ width: '16px', marginRight: '10px' }}
+                  />
 
-                    {t(CARD_MENUS.EDIT.displayName)}
-                  </MenuItem>
-                }
-                doAccess={!canAccessAction(category, subCategory, 'Update')}
-              />
-            )
+                  {t(CARD_MENUS.EDIT.displayName)}
+                </MenuItem>
+              }
+              doAccess={!canAccessAction(category, subCategory, 'Update')}
+            />
+          )
           : null}
         <ErrorTooltip
           component={
@@ -467,7 +467,7 @@ const CardMenu = (props: any) => {
           />
         )}
         {status === 'published' &&
-        scheduledUnPublishTriggerDateTime === null ? (
+          scheduledUnPublishTriggerDateTime === null ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -492,7 +492,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledPublishTriggerDateTime != null ||
-        scheduledPublishTriggerDateTime != undefined ? (
+          scheduledPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -514,7 +514,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledPublishTriggerDateTime != null ||
-        scheduledPublishTriggerDateTime != undefined ? (
+          scheduledPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -534,7 +534,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledUnPublishTriggerDateTime != null ||
-        scheduledUnPublishTriggerDateTime != undefined ? (
+          scheduledUnPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem
@@ -560,7 +560,7 @@ const CardMenu = (props: any) => {
           />
         ) : null}
         {scheduledUnPublishTriggerDateTime != null ||
-        scheduledUnPublishTriggerDateTime != undefined ? (
+          scheduledUnPublishTriggerDateTime != undefined ? (
           <ErrorTooltip
             component={
               <MenuItem

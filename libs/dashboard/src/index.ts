@@ -1,3 +1,3 @@
-import { Dashboard } from './lib/Dashboard';
+import { Dashboard } from './lib/dashboards'
 
 export { Dashboard }

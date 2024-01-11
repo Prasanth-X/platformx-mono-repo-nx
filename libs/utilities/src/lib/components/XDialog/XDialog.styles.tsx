@@ -1,5 +1,5 @@
-import { styled } from '@material-ui/core';
-import { Box, Button, DialogActions, DialogContent } from '@mui/material';
+import { styled, Box, Theme } from '@mui/system';
+import { Button, DialogActions, DialogContent } from '@mui/material';
 
 export const XDialogContent = styled(DialogContent)({
   textAlign: 'center',
@@ -15,7 +15,11 @@ export const XDialogActions = styled(DialogActions)({
   paddingBottom: '30px',
 });
 
-export const XDialogImageContainer = styled(Box)({
+interface XDialogImageContainerProps {
+  theme?: Theme;
+}
+
+export const XDialogImageContainer = styled(Box)<XDialogImageContainerProps>({
   textAlign: 'center',
   color: '#fd0c0d',
   margin: '71px 0 4px',
@@ -31,9 +35,5 @@ export const XDialogButton = ({
   startIcon = '',
   ...rest
 }: any & DialogButtonPros) => (
-  <Button
-    startIcon={startIcon}
-    variant={variant}
-    {...rest}
-  />
-);
+  <Button startIcon={startIcon} variant={variant} {...rest} />
+)

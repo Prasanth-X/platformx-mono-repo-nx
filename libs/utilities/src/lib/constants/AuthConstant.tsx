@@ -6,11 +6,9 @@ const AUTH_INFO = {
   publishUri: process.env.NX_PUBLISH_URI,
   dspaceUri: process.env.NX_DSPACE_URI,
   dspaceImagesUuid:
-    localStorage.getItem('imageUuid') ||
-    process.env.NX_DSPACE_IMAGES_UUID,
+    localStorage.getItem('imageUuid') || process.env.NX_DSPACE_IMAGES_UUID,
   dspaceVideosUuid:
-    localStorage.getItem('videoUuid') ||
-    process.env.NX_DSPACE_VIDEOS_UUID,
+    localStorage.getItem('videoUuid') || process.env.NX_DSPACE_VIDEOS_UUID,
   gcpUri: process.env.NX_GCP_URL,
   gcpBucketName: process.env.NX_BUCKET_NAME,
 };
@@ -20,4 +18,4 @@ const AUTH_URL = `${process.env.NX_KEYCLOAK_URI}/auth/realms/${process.env.NX_RE
 const REDIRECT_AUTH_URL = `${process.env.NX_KEYCLOAK_URI}/auth/realms/${process.env.NX_REALM}/protocol/openid-connect/auth?client_id=${process.env.NX_CLIENT_ID}&prompt=login&response_type=code&redirect_uri=${process.env.NX_REDIRECT_URI}`;
 const NEW_LOGOUT_URL = `${process.env.NX_KEYCLOAK_URI}/auth/realms/${process.env.NX_REALM}/protocol/openid-connect/logout?redirect_uri=${process.env.NX_REDIRECT_URI}`;
 
-export { AUTH_INFO, LOGOUT_URL, AUTH_URL, REDIRECT_AUTH_URL, NEW_LOGOUT_URL };
+export { AUTH_INFO, AUTH_URL, LOGOUT_URL, NEW_LOGOUT_URL, REDIRECT_AUTH_URL };

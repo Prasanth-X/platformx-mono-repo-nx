@@ -1,0 +1,303 @@
+.d-flex {
+  display: flex;
+}
+.d-inline-flex {
+  display: inline-flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.align-items-end {
+  align-items: flex-end;
+}
+.align-items-start {
+  align-items: flex-start;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+.justify-content-start {
+  justify-content: flex-start;
+}
+.justify-content-space-between {
+  justify-content: space-between;
+}
+.flex-direction-colum {
+  flex-direction: column;
+}
+.userlisttophead {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+.userlisttophead .thicon {
+  font-size: 24px;
+  vertical-align: middle;
+}
+.PermissionsCheckbox {
+  max-width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: auto;
+  border: solid 1px #f5f6f8;
+}
+.UserDetailssc {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  border-left: 1px solid #ced3d9;
+  border-top: 0;
+  padding: 0 0 0 15px;
+  color: #89909a;
+  margin-top: 0;
+}
+@media (max-width: 767px) {
+  .userlisttophead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .UserDetailssc {
+    border-left: 0;
+    border-top: 1px solid #ced3d9;
+    padding: 15px 0;
+    margin-top: 15px;
+  }
+  .mobalignment {
+    width: 100%;
+    justify-content: space-between !important;
+  }
+}
+.userlistbox .doticon {
+  position: relative;
+  margin-left: 10px;
+  order: 2;
+  min-width: auto;
+  padding-left: 14px;
+}
+.userlistbox .doticon:after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2d2d39;
+}
+.userlistbox .doticonmobile {
+  position: relative;
+  display: none;
+  order: inherit;
+  margin-left: 10px;
+  padding-left: 14px;
+}
+.boxbasicswitch span:first-child {
+  margin-left: 0px;
+  /* padding: 0px;
+    margin-right: 25px; */
+}
+.userlistbox .doticonmobile:after {
+  content: '.';
+  position: absolute;
+  color: white;
+  left: 0px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2d2d39;
+}
+.userlistbox {
+  transition: all 0.3s;
+  align-items: center;
+  padding: 12px 20px;
+  display: flex;
+  min-height: 72px;
+  background: #ffffff;
+  border: 1px solid #ced3d9;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.userlistbox:hover {
+  box-shadow: 0px 9px 21px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s;
+}
+.userlistbox .iconsmob {
+  margin: 10px;
+}
+.userlistbox .icons {
+  padding: 0;
+  display: flex;
+  width: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.userlistbox .icons svg {
+  margin: 0;
+}
+.userlistbox .icon1 {
+  padding: 0;
+  display: flex;
+  margin-right: 0px;
+}
+
+.userlistbox .icons:hover {
+  background: transparent;
+}
+.userlistbox:hover .icons,
+.userlistbox:hover .icons svg {
+  color: #2d2d39;
+}
+.userlistbox .img {
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 44px;
+  max-height: 44px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-right: 20px;
+  display: flex;
+}
+.usergridview .img {
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-right: 14px;
+}
+.userlistbox .datetimeweb {
+  display: inline-flex;
+  padding: 0 30px;
+  min-width: 182px;
+  margin-right: 30px;
+  min-height: 40px;
+  align-items: center;
+  border-left: 1px solid #ced3d9;
+  border-right: 1px solid #ced3d9;
+  max-width: 170px;
+  justify-content: center;
+  text-align: center;
+}
+.usergridview {
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+}
+.usergridview .greendot {
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  background: #5cb85b;
+  border-radius: 50%;
+  display: inline-block;
+}
+.usergridview .gridbox {
+  padding: 12.7px;
+  display: flex;
+  min-height: 72px;
+  background: #ffffff;
+  border: 1px solid #ced3d9;
+  border-radius: 4px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.horizThreeDotIcon,
+.vertThreeDotIcon {
+  vertical-align: middle;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.userlistbox .horizThreeDotIcon {
+  display: flex;
+}
+.userlistbox .vertThreeDotIcon,
+.usergridview .horizThreeDotIcon {
+  display: none;
+}
+.userSearchBox {
+  width: 251px;
+}
+.userSearchBox input {
+  padding: 0;
+}
+.listViewradionone .Platform-x-Radio-root {
+  display: none;
+}
+.listViewradionone {
+  margin: 5px 0 !important;
+}
+@media (min-width: 1024px) {
+  .user-list-actions {
+    min-width: 220px;
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 1023px) {
+  .userlistbox .doticon:after {
+    display: none;
+  }
+  .userlistbox {
+    padding: 5px 10px;
+  }
+  .userlistbox .img {
+    margin-right: 10px;
+    display: none;
+  }
+  .userlistbox .icons {
+    display: none;
+  }
+  .userlistbox .iconsmob {
+    display: flex;
+    margin: 10px 0;
+  }
+  .userlistbox .doticonmobile {
+    display: flex;
+    order: 3;
+    padding-left: 10px;
+  }
+  .userlistbox .doticon {
+    position: relative;
+    margin-left: 0;
+    order: 1;
+    min-width: 100%;
+    padding-left: 0;
+  }
+  .userlistbox .datetimeweb {
+    display: none;
+  }
+  .usergridview {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .usergridview .gridbox {
+    padding: 8px;
+  }
+  .userlistbox .horizThreeDotIcon {
+    display: none;
+  }
+  .userlistbox .vertThreeDotIcon {
+    display: flex;
+  }
+  .userSearchBox {
+    width: 185px;
+  }
+  .userlistbox .svg {
+    margin-left: '10px';
+  }
+  .edit-Box {
+    width: 40px;
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+  }
+}

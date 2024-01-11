@@ -1,6 +1,6 @@
-// const HCLRobort =
-//   require('../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string;
-// const InterRegular = require('../fonts/Inter/Inter-Regular.woff2') as string;
+const HCLRobort =
+  require('../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string
+const InterRegular = require('../../fonts/Inter/Inter-Regular.woff2') as string
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#2d2d39',
@@ -265,10 +265,10 @@ const ThemeConstants = {
     VALUE1: '5px',
     VALUE2: '8px',
   },
-  FONTFAMILYPRIMARY: 'Inter',
-  FONTFAMILYSECONDARY: 'HCLTechRoobert',
+  FONTFAMILYPRIMARY: InterRegular,
+  FONTFAMILYSECONDARY: HCLRobort,
   FONTNAMEPRIMARY: 'Inter',
   FONTNAMESECONDARY: 'HCLTechRoobert',
-};
+}
 
-export default ThemeConstants;
+export default ThemeConstants

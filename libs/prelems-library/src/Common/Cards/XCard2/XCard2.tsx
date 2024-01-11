@@ -1,15 +1,15 @@
-import EastIcon from '@mui/icons-material/East';
-import { Box, Grid, Typography } from '@mui/material';
-import React from 'react';
+import EastIcon from '@mui/icons-material/East'
+import { Box, Grid, Typography } from '@mui/material'
+import React from 'react'
 // import CourseIcon from "../../../assets/dynamicprelemicons/CourseIcon.png";
-import FallbackImage from '../../../assets/fallBackImage.png';
-import { dateFormat, handleHtmlTags } from 'lib/utils/helperFns';
-import { XButton } from '../../XButton/XButton';
-import CardSkeleton from '../CardSkeleton';
-import { useCustomStyle } from './XCard2.style';
+import { dateFormat, handleHtmlTags } from 'utils/helperFns'
+import FallbackImage from '../../../assets/fallBackImage.png'
+import { XButton } from '../../XButton/XButton'
+import CardSkeleton from '../CardSkeleton'
+import { useCustomStyle } from './XCard2.style'
 
 const XCard2 = ({ content, Icon, onCardClick }: XCard2Props) => {
-  const classes = useCustomStyle();
+  const classes = useCustomStyle()
   return (
     <Box className={`${classes.XCard2Wrapper} XCard2Box`}>
       {Object.keys(content)?.length > 0 ? (
@@ -21,8 +21,8 @@ const XCard2 = ({ content, Icon, onCardClick }: XCard2Props) => {
                   src={content?.teaser_image || FallbackImage}
                   onError={(e: any) => {
                     if (e.target.src !== FallbackImage) {
-                      e.target.onerror = null;
-                      e.target.src = FallbackImage;
+                      e.target.onerror = null
+                      e.target.src = FallbackImage
                     }
                   }}
                   alt=""
@@ -78,64 +78,62 @@ const XCard2 = ({ content, Icon, onCardClick }: XCard2Props) => {
         <CardSkeleton />
       )}
     </Box>
-  );
-};
+  )
+}
 
 interface XCard2Props {
-  content: Content;
-  analytics: Analytics;
-  authoringHelper?: AuthoringHelper;
-  secondaryArgs?: any;
-  Icon?: any;
-  onCardClick: () => void;
+  content: Content
+  analytics: Analytics
+  authoringHelper?: AuthoringHelper
+  secondaryArgs?: any
+  Icon?: any
+  onCardClick: () => void
 }
 interface Analytics {
-  pageId?: number;
-  prelemId?: number;
-  pageTitle?: string;
-  prelemTitle?: string;
-  pageDesc?: string;
-  pageTags?: string;
-  prelemTags?: string;
-  prelemPosition?: number;
-  isAnalyticsEnabled: boolean;
-  isAuthoring: boolean;
-  isSeoEnabled: boolean;
+  pageId?: number
+  prelemId?: number
+  pageTitle?: string
+  prelemTitle?: string
+  pageDesc?: string
+  pageTags?: string
+  prelemTags?: string
+  prelemPosition?: number
+  isAnalyticsEnabled: boolean
+  isAuthoring: boolean
+  isSeoEnabled: boolean
 }
 interface AuthoringHelper {
-  innerRef: React.Ref<HTMLDivElement>;
-  sendStructureDataToAuthoringCB: (structureData: string) => void;
-  sendDefaultStructureDataForResetToAuthoringCB: (
-    structureData: string
-  ) => void;
-  openButtonEditWindowInAuthoringCB: (buttonObj?: object, e?: object) => void;
-  selectedButtonNameForEditing: string;
-  isEditing: boolean;
-  buttonRef?: React.Ref<HTMLButtonElement>;
-  buttonContentEditable?: boolean;
-  lastSavedStructuredData?: string;
-  isEditPage?: boolean;
+  innerRef: React.Ref<HTMLDivElement>
+  sendStructureDataToAuthoringCB: (structureData: string) => void
+  sendDefaultStructureDataForResetToAuthoringCB: (structureData: string) => void
+  openButtonEditWindowInAuthoringCB: (buttonObj?: object, e?: object) => void
+  selectedButtonNameForEditing: string
+  isEditing: boolean
+  buttonRef?: React.Ref<HTMLButtonElement>
+  buttonContentEditable?: boolean
+  lastSavedStructuredData?: string
+  isEditPage?: boolean
 }
 interface Content {
-  adminName?: string;
-  publishDate: string;
-  title?: string;
-  description?: string;
-  button_Name?: string;
-  teaser_image?: string;
+  adminName?: string
+  publishDate: string
+  title?: string
+  description?: string
+  button_Name?: string
+  teaser_image?: string
   ImageCompound: {
     ImageCompound_1: {
-      published_images: Image[];
-      original_image: object;
-    };
-  };
+      published_images: Image[]
+      original_image: object
+    }
+  }
 }
 interface Image {
-  aspect_ratio: string;
-  bucket_path: string;
-  folder_path: string;
-  visibility: string;
-  ext: string;
+  aspect_ratio: string
+  bucket_path: string
+  folder_path: string
+  visibility: string
+  ext: string
 }
 XCard2.defaultProps = {
   content: {
@@ -233,5 +231,5 @@ XCard2.defaultProps = {
     gcpUrl: 'https://storage.googleapis.com',
     bucketName: 'cropped_image_public',
   },
-};
-export default XCard2;
+}
+export default XCard2

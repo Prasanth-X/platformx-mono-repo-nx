@@ -1,70 +1,70 @@
-import React, { useState } from 'react';
-import ImagePopup from './Popup';
-import { convertToLowerCase, nullToObject } from '../lib/utils/helperFns';
 import {
-  ArrowUpward,
   ArrowDownward,
+  ArrowUpward,
   ChevronLeft,
   ChevronRight,
-} from '@mui/icons-material';
+} from '@mui/icons-material'
 import {
-  Grid,
+  Box,
   Card,
   CardActionArea,
   CardMedia,
+  Grid,
   IconButton,
   useMediaQuery,
-  Box,
-} from '@mui/material';
-import './CartGallery.css';
-import { useCustomStyle } from './CartGallery.style';
-import fallBackImage from '../../../../assets/fallBackImage.png';
+} from '@mui/material'
+import { useState } from 'react'
+import { convertToLowerCase, nullToObject } from 'utils/helperFns'
+import fallBackImage from '../../../../assets/fallBackImage.png'
+import './CartGallery.css'
+import { useCustomStyle } from './CartGallery.style'
+import ImagePopup from './Popup'
 
 const CartGallery = (props: any = {}) => {
-  const classes = useCustomStyle();
-  const { loading = true, productFullDetails = {} } = nullToObject(props);
-  const { attr_images: images = [] } = nullToObject(productFullDetails);
+  const classes = useCustomStyle()
+  const { loading = true, productFullDetails = {} } = nullToObject(props)
+  const { attr_images: images = [] } = nullToObject(productFullDetails)
 
-  const [isPopupOpen, setPopupOpen] = useState(false);
-  const [activeThumbnailIndex, setActiveThumbnailIndex] = useState(0);
+  const [isPopupOpen, setPopupOpen] = useState(false)
+  const [activeThumbnailIndex, setActiveThumbnailIndex] = useState(0)
 
-  const isMobile = useMediaQuery('(max-width: 1023px)');
-  const isMobileThumbNail = useMediaQuery('(max-width: 540px)');
-  const isTabletThumbNail = useMediaQuery('(min-width: 541px)');
+  const isMobile = useMediaQuery('(max-width: 1023px)')
+  const isMobileThumbNail = useMediaQuery('(max-width: 540px)')
+  const isTabletThumbNail = useMediaQuery('(min-width: 541px)')
 
   const handleThumbnailClick = (index: number) => {
-    setActiveThumbnailIndex(index);
-  };
+    setActiveThumbnailIndex(index)
+  }
 
   const handleLargeImageClick = () => {
-    setPopupOpen(true);
-  };
+    setPopupOpen(true)
+  }
 
   const handleClosePopup = () => {
-    setPopupOpen(false);
-  };
+    setPopupOpen(false)
+  }
 
   const handleNextThumbnail = () => {
     setActiveThumbnailIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+    )
+  }
 
   const handlePrevThumbnail = () => {
     setActiveThumbnailIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  let initialThumbnailCount;
-  if (isMobileThumbNail) {
-    initialThumbnailCount = 3;
-  } else if (isTabletThumbNail) {
-    initialThumbnailCount = 4;
-  } else {
-    initialThumbnailCount = 5;
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+    )
   }
-  const initialThumbnails = images.slice(0, initialThumbnailCount);
+
+  let initialThumbnailCount
+  if (isMobileThumbNail) {
+    initialThumbnailCount = 3
+  } else if (isTabletThumbNail) {
+    initialThumbnailCount = 4
+  } else {
+    initialThumbnailCount = 5
+  }
+  const initialThumbnails = images.slice(0, initialThumbnailCount)
 
   return (
     <Grid
@@ -214,8 +214,8 @@ const CartGallery = (props: any = {}) => {
               }
               onError={(e: any) => {
                 if (e.target.src !== fallBackImage) {
-                  e.target.onerror = null;
-                  e.target.src = fallBackImage;
+                  e.target.onerror = null
+                  e.target.src = fallBackImage
                 }
               }}
               sx={{
@@ -238,7 +238,7 @@ const CartGallery = (props: any = {}) => {
         imageUrl={images[activeThumbnailIndex]}
       />
     </Grid>
-  );
-};
+  )
+}
 
-export default CartGallery;
+export default CartGallery

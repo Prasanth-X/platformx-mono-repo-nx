@@ -1,8 +1,12 @@
 import { Dashboard } from '@platformx/dashboard'
 import { CreateUser, UserListing } from '@platformx/user-management'
+import {
+  WorkflowDetails,
+  WorkflowManagement,
+} from '@platformx/workflow-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
-
+import { CreateContent } from "@platformx/content"
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -44,6 +48,22 @@ export const routes: RouteConfig[] = [
     ),
   },
   {
+    path: '/workflow/workflow-list',
+    element: (
+      <ProtectedRoute name="article" subCategory="article" category="content">
+        <WorkflowManagement />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/workflow/workflow-details',
+    element: (
+      <ProtectedRoute name="article" subCategory="article" category="content">
+        <WorkflowDetails />
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: 'user-management/user-create',
     element: (
       <ProtectedRoute
@@ -54,6 +74,14 @@ export const routes: RouteConfig[] = [
         isSideBar={false}
       >
         <CreateUser />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/content/create",
+    element: (
+      <ProtectedRoute name='quiz' subCategory='quiz' category='content'>
+        <CreateContent />
       </ProtectedRoute>
     ),
   },

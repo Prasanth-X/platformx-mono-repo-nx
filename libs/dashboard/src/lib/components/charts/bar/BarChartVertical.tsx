@@ -1,45 +1,53 @@
-import React from "react";
+import { Typography } from '@mui/material'
+import { Box } from '@mui/system'
 import {
-  BarChart,
   Bar,
-  XAxis,
-  YAxis,
+  BarChart,
   CartesianGrid,
-  Tooltip,
+  LabelList,
   Legend,
   ResponsiveContainer,
-  LabelList,
-} from "recharts";
-import { graph } from "../Constants";
-import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
+import { graph } from '../Constants'
 
 const BarChartVertical = ({ itemData }: any) => {
-  const { chartData: data, column_names: colnames, title } = itemData;
-  const config = graph.bar;
-  const [firstKey] = Object.keys(data[0]);
-  const isTimestamp = firstKey === config.timestamp;
+  const { chartData: data, column_names: colnames, title } = itemData
+  const config = graph.bar
+  const [firstKey] = Object.keys(data[0])
+  const isTimestamp = firstKey === config.timestamp
   return (
-    <Box className='barChartVertical pageGraph'>
-      <Typography variant='p3semibold' className='heading'>
+    <Box className="barChartVertical pageGraph">
+      <Typography variant="p3semibold" className="heading">
         {title}
       </Typography>
-      <ResponsiveContainer width={config.width} height={config.height} className='noxyAxsis'>
-        <BarChart data={data} margin={{ top: 20, right: 10, left: -10, bottom: 40 }}>
-          {config.showGrid && <CartesianGrid strokeDasharray='3 3' />}
+      <ResponsiveContainer
+        width={config.width}
+        height={config.height}
+        className="noxyAxsis"
+      >
+        <BarChart
+          data={data}
+          margin={{ top: 20, right: 10, left: -10, bottom: 40 }}
+        >
+          {config.showGrid && <CartesianGrid strokeDasharray="3 3" />}
           {isTimestamp ? (
             <XAxis
               dataKey={colnames[0]}
               tick={{
                 fontSize: config.fontSize,
                 fill: config.textColor,
-                alignmentBaseline: "middle",
+                alignmentBaseline: 'middle',
               }}
               tickMargin={20}
               interval={0}
               angle={config.textXAngle}
               dx={-25}
-              tickFormatter={(unixTime) => new Date(unixTime).toLocaleDateString()}
+              tickFormatter={(unixTime: any) =>
+                new Date(unixTime).toLocaleDateString()
+              }
             />
           ) : (
             <XAxis
@@ -47,7 +55,7 @@ const BarChartVertical = ({ itemData }: any) => {
               tick={{
                 fontSize: config.fontSize,
                 fill: config.textColor,
-                alignmentBaseline: "mathematical",
+                alignmentBaseline: 'mathematical',
               }}
               tickMargin={20}
               interval={0}
@@ -61,11 +69,13 @@ const BarChartVertical = ({ itemData }: any) => {
           />
           {isTimestamp ? (
             <Tooltip
-              cursor={{ fill: "transparent" }}
-              labelFormatter={(unixTime) => new Date(unixTime).toLocaleDateString()}
+              cursor={{ fill: 'transparent' }}
+              labelFormatter={(unixTime: any) =>
+                new Date(unixTime).toLocaleDateString()
+              }
             />
           ) : (
-            <Tooltip cursor={{ fill: "transparent" }} />
+            <Tooltip cursor={{ fill: 'transparent' }} />
           )}
           {config.showLegend && (
             <Legend
@@ -82,21 +92,30 @@ const BarChartVertical = ({ itemData }: any) => {
                     <Bar
                       key={index}
                       dataKey={colnames[index]}
-                      fill={config.graphColor[index - (1 % config.graphColor.length)]}
+                      fill={
+                        config.graphColor[
+                        index - (1 % config.graphColor.length)
+                        ]
+                      }
                       barSize={config.barSize}
-                      radius={config.radius}>
+                      radius={config.radius}
+                    >
                       {config.showValuesOnTop && (
                         <LabelList
                           dataKey={colnames[index]}
-                          position='top'
-                          fill={config.graphColor[index - (1 % config.graphColor.length)]}
+                          position="top"
+                          fill={
+                            config.graphColor[
+                            index - (1 % config.graphColor.length)
+                            ]
+                          }
                           fontSize={config.fontSize}
                         />
                       )}
                     </Bar>
-                  );
+                  )
                 }
-                return null;
+                return null
               })}
             </>
           ) : (
@@ -107,28 +126,37 @@ const BarChartVertical = ({ itemData }: any) => {
                     <Bar
                       key={index}
                       dataKey={colnames[index]}
-                      fill={config.graphColor[index - (1 % config.graphColor.length)]}
+                      fill={
+                        config.graphColor[
+                        index - (1 % config.graphColor.length)
+                        ]
+                      }
                       barSize={config.barSize}
-                      radius={config.radius}>
+                      radius={config.radius}
+                    >
                       {config.showValuesOnTop && (
                         <LabelList
                           dataKey={colnames[index]}
-                          position='top'
-                          fill={config.graphColor[index - (1 % config.graphColor.length)]}
+                          position="top"
+                          fill={
+                            config.graphColor[
+                            index - (1 % config.graphColor.length)
+                            ]
+                          }
                           fontSize={config.fontSize}
                         />
                       )}
                     </Bar>
-                  );
+                  )
                 }
-                return null;
+                return null
               })}
             </>
           )}
         </BarChart>
       </ResponsiveContainer>
     </Box>
-  );
-};
+  )
+}
 
-export default BarChartVertical;
+export default BarChartVertical

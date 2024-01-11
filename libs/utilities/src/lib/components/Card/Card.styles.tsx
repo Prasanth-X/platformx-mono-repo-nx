@@ -1,17 +1,15 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles(() => ({
- 
-  BoxWorkflowStatus :{
+  BoxWorkflowStatus: {
     justifyContent: 'center',
     minWidth: '160px',
     height: '38px',
     borderLeft: ' 1px solid #ced3d9',
     padding: '0px 15px',
     marginLeft: '12px',
-
   },
-  TypoWorkFlowStatus:{
+  TypoWorkFlowStatus: {
     padding: '3px 4px',
     whiteSpace: 'nowrap',
     display: 'flex',
@@ -21,7 +19,5 @@ export const useStyles = makeStyles(() => ({
     borderRadius: '3px',
     cursor: 'pointer',
     color: '#0FA069',
-
-  }
- 
+  },
 }));

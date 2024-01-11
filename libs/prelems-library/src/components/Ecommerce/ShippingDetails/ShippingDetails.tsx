@@ -1,47 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import './ShippingDetails.css';
-import EcomCoupon from './Coupon/Coupon';
-import SubTotal from './SubTotal/SubTotal';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import EcomCoupon from './Coupon/Coupon'
+import './ShippingDetails.css'
+import SubTotal from './SubTotal/SubTotal'
 // import CartItems from "./CartItems/CartItems";
-import OrderNotes from './OrderNotes/OrderNotes';
-import Shipping from '../Cart/SharedComponent/Shipping';
-import AddessPreview from './AddessPreview/AddessPreview';
-import ReturnCustomer from './ReturnCustomer/ReturnCustomer';
-import { Grid, Box, Button, Container } from '@mui/material';
-import ShippingAddress from './ShippingAddress/ShippingAddress';
-import {
-  ecomCartIdBasedGetItem,
-  proceedToShippingAddress,
-} from '../ProductListing/helper';
-import ToastService from '../../../Common/ToastContainer/ToastService';
-import ContactInformation from './ContactInformation/ContactInformation';
+import { ChevronLeft } from '@mui/icons-material'
+import { Box, Button, Container, Grid } from '@mui/material'
 import {
   emailValidate,
   inputEmptyFieldValidate,
   inputNonEmptyFieldValidate,
   nullToObject,
-} from 'lib/utils/helperFns';
-import { ChevronLeft } from '@mui/icons-material';
-import { inStateList, usStateList } from './ShippingAddress/helperAddress';
-import ToastContainerHandle from '../../../Common/ToastContainer/ToastContainerHandle';
-import '../../../service/i18n';
-import { useCustomStyle } from './ShippingDetails.style';
+} from 'utils/helperFns'
+import ToastContainerHandle from '../../../Common/ToastContainer/ToastContainerHandle'
+import ToastService from '../../../Common/ToastContainer/ToastService'
+import '../../../service/i18n'
+import Shipping from '../Cart/SharedComponent/Shipping'
+import {
+  ecomCartIdBasedGetItem,
+  proceedToShippingAddress,
+} from '../ProductListing/helper'
+import AddessPreview from './AddessPreview/AddessPreview'
+import ContactInformation from './ContactInformation/ContactInformation'
+import OrderNotes from './OrderNotes/OrderNotes'
+import ReturnCustomer from './ReturnCustomer/ReturnCustomer'
+import ShippingAddress from './ShippingAddress/ShippingAddress'
+import { inStateList, usStateList } from './ShippingAddress/helperAddress'
+import { useCustomStyle } from './ShippingDetails.style'
 
 type ShippingDetailsProps = {
-  secondaryArgs: any;
-  cartCountUpdate: any;
-};
+  secondaryArgs: any
+  cartCountUpdate: any
+}
 
 const ShippingDetails = ({
   secondaryArgs = {},
   cartCountUpdate = () => {},
 }: ShippingDetailsProps) => {
-  const { t, i18n } = useTranslation();
-  const classes = useCustomStyle();
-  const [shipType] = useState('freeShipping');
-  const [stateArray, setStateArray] = useState(usStateList);
-  const [preViewAddressToggle, setAPeViewAddressToggle] = useState(false);
+  const { t, i18n } = useTranslation()
+  const classes = useCustomStyle()
+  const [shipType] = useState('freeShipping')
+  const [stateArray, setStateArray] = useState(usStateList)
+  const [preViewAddressToggle, setAPeViewAddressToggle] = useState(false)
   const [stateManage, setStateManage] = useState<any>({
     city: '',
     email: '',
@@ -53,23 +53,23 @@ const ShippingDetails = ({
     alterNumber: '',
     contactNumber: '',
     state: usStateList[0].name,
-  });
+  })
 
   const [stateErrorManage, setStateErrorManage] = useState<any>({
     emailError: '',
     addressError: '',
     firstNameError: '',
     contactNumberError: '',
-  });
+  })
 
   const onChange = (event: any) => {
-    const { target: { name = '', value = '' } = {} } = event;
+    const { target: { name = '', value = '' } = {} } = event
     const newObj = {
       ...stateManage,
       [name]: value,
-    };
-    setStateManage(newObj);
-  };
+    }
+    setStateManage(newObj)
+  }
 
   /**
    * error msg update
@@ -91,8 +91,8 @@ const ShippingDetails = ({
           ? `${t('email_id')} ${t('is_not_in_valid_format')}`
           : ''
         : `${t('email_id')} ${t('is_mandatory')}`,
-    };
-  };
+    }
+  }
 
   /**]
    * go to address and preview mode
@@ -103,29 +103,29 @@ const ShippingDetails = ({
       address: stateManage.address,
       firstName: stateManage.firstName,
       contactNumber: stateManage.contactNumber,
-    });
+    })
 
     if (stateManage.email) {
       //email validate
       if (inputEmptyValidate) {
         //empty validate
-        const newObj = errorMsgUpdate();
-        setStateErrorManage(newObj);
+        const newObj = errorMsgUpdate()
+        setStateErrorManage(newObj)
         const errorMsgValidate = inputNonEmptyFieldValidate({
           ...newObj,
-        });
+        })
 
         if (errorMsgValidate) {
           //error msg need to be empty
-          setAPeViewAddressToggle(!preViewAddressToggle);
+          setAPeViewAddressToggle(!preViewAddressToggle)
         }
       } else {
-        setStateErrorManage(errorMsgUpdate());
+        setStateErrorManage(errorMsgUpdate())
       }
     } else {
-      setStateErrorManage(errorMsgUpdate());
+      setStateErrorManage(errorMsgUpdate())
     }
-  };
+  }
 
   /**
    * go to payment page
@@ -137,27 +137,27 @@ const ShippingDetails = ({
         ...stateManage,
         cartId: localStorage.getItem('ecommerceCartId'),
       },
-    });
+    })
     const { data: { data: { addProductToCart = {} } = {} } = {} } =
-      nullToObject(res);
-    const { statusCode = 0 } = nullToObject(addProductToCart);
+      nullToObject(res)
+    const { statusCode = 0 } = nullToObject(addProductToCart)
     if (statusCode === 200) {
-      window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/payment`;
+      window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/payment`
     } else {
-      ToastService.failToast(t('errorRequest'));
+      ToastService.failToast(t('errorRequest'))
     }
-  };
+  }
 
   const handleChange1 = (e: any) => {
-    const { target: { value = '' } = {} } = e;
-    setStateArray(value === 'India' ? inStateList : usStateList);
+    const { target: { value = '' } = {} } = e
+    setStateArray(value === 'India' ? inStateList : usStateList)
     const newObj = {
       ...stateManage,
       state: value === 'India' ? inStateList[0].name : usStateList[0].name,
       country: value,
-    };
-    setStateManage(newObj);
-  };
+    }
+    setStateManage(newObj)
+  }
 
   /**
    * passing cart details to user experiance
@@ -167,36 +167,36 @@ const ShippingDetails = ({
     const response = await ecomCartIdBasedGetItem({
       cartId: cartId,
       secondaryArgs: secondaryArgs,
-    });
+    })
 
     const {
       data: {
         data: { getCartItems: { statusCode = 0, data = {} } = {} } = {},
       } = {},
-    } = nullToObject(response);
+    } = nullToObject(response)
 
     if (statusCode === 200) {
-      cartCountUpdate(data);
+      cartCountUpdate(data)
     } else {
-      cartCountUpdate(null);
+      cartCountUpdate(null)
     }
-  };
+  }
 
   useEffect(() => {
-    const getCartIdFromLocal = localStorage.getItem('ecommerceCartId');
+    const getCartIdFromLocal = localStorage.getItem('ecommerceCartId')
     if (getCartIdFromLocal) {
-      cartItemDetails(getCartIdFromLocal);
+      cartItemDetails(getCartIdFromLocal)
     } else {
-      cartCountUpdate(null);
+      cartCountUpdate(null)
     }
     if (typeof window !== 'undefined') {
-      i18n.changeLanguage(secondaryArgs?.prelemBaseEndpoint?.language);
+      i18n.changeLanguage(secondaryArgs?.prelemBaseEndpoint?.language)
       // i18n.changeLanguage(url.pathname.split("/")[1]);
     }
-  }, []);
-  const userId = localStorage.getItem('userId');
-  const userLoginDetails = localStorage.getItem('userLoginDetails');
-  const isLoggedInUser = Boolean(userId && userLoginDetails);
+  }, [])
+  const userId = localStorage.getItem('userId')
+  const userLoginDetails = localStorage.getItem('userLoginDetails')
+  const isLoggedInUser = Boolean(userId && userLoginDetails)
 
   return (
     <Box
@@ -287,7 +287,7 @@ const ShippingDetails = ({
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default ShippingDetails;
+export default ShippingDetails
