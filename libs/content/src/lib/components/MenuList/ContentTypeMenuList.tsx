@@ -2,10 +2,9 @@
 import { Box, IconButton } from '@mui/material';
 import { memo, useState } from 'react';
 import { MoreHorizIcon } from '@platformx/utilities';
-import { getSelectedObject } from './Utils/Mapper';
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
 
-const MenuList = ({
+const ContentTypeMenuList = ({
   item,
   deleteContent,
   duplicate,
@@ -83,4 +82,4 @@ const MenuList = ({
   );
 };
 
-export default memo(MenuList);
+export default memo(ContentTypeMenuList);
