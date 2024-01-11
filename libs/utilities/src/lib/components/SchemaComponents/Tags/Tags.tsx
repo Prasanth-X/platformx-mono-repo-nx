@@ -15,7 +15,7 @@ interface TagsProps {
   isPublishModal?: boolean;
 }
 
-export const Tags = (props: TagsProps) => {
+export const XTags = (props: TagsProps) => {
   const { t } = useTranslation();
   const {
     tagData = [],
@@ -215,4 +215,4 @@ export const Tags = (props: TagsProps) => {
   );
 };
 
-React.memo(Tags);
+React.memo(XTags);

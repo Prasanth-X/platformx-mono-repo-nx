@@ -1,5 +1,5 @@
+import { XSwitch } from '@platformx/utilities';
 import { useField, useFormikContext } from 'formik';
-import Switch from '../../../../CommonSchemaComponents/Switch/Switch';
 
 const SwitchWrapper = ({ field }) => {
   const { setFieldValue } = useFormikContext();
@@ -9,7 +9,7 @@ const SwitchWrapper = ({ field }) => {
   };
 
   return (
-    <Switch
+    <XSwitch
       disabled={false}
       color={'#000000'}
       onChange={handleSwitch}

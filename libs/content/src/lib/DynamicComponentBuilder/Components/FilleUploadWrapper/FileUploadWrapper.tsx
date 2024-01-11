@@ -1,8 +1,7 @@
 import { Box } from '@mui/material';
+import { ColorPallet, XFileUpload } from '@platformx/utilities';
 import { useField, useFormikContext } from 'formik';
 import { useState } from 'react';
-import ColorPallet from '../../../../CommonSchemaComponents/ColorPallet/ColorPallet';
-import FileUpload from '../../../../CommonSchemaComponents/FileUpload/FileUpload';
 
 const FileUploadWrapper = ({
   chooseText,
@@ -51,7 +50,7 @@ const FileUploadWrapper = ({
   return (
     <>
       {color === '' ? (
-        <FileUpload
+        <XFileUpload
           url={meta?.value?.Thumbnail}
           onUploadClick={onUploadClick}
           content={meta.value}

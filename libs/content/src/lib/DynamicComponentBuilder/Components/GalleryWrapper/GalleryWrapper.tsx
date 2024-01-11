@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useFormikContext } from 'formik';
-import Gallery from '../../../Gallery/Gallery';
+// import Gallery from '../../../Gallery/Gallery';
 
 const GalleryWrapper = ({
   toggleGallery,
@@ -7,17 +8,17 @@ const GalleryWrapper = ({
   keyVal,
   fieldName,
   answerId,
-  setAnswers = (props) => {},
+  setAnswers = (props) => { },
   answers = [],
 }) => {
   const { setFieldValue } = useFormikContext();
   const handleSelectedImage = (image, keyName, id) => {
     if (keyName === 'answers') {
-      setAnswers(
-        answers.map((answer) =>
-          answer.id == id ? { ...answer, image: image?.Thumbnail } : answer
-        ) as []
-      );
+      // setAnswers(
+      //   answers.map((answer) =>
+      //     answer.id == id ? { ...answer, image: image?.Thumbnail } : answer // TODO: fix this
+      //   ) as []
+      // );
     } else {
       if (localStorage.getItem('socialShareKey') === 'socialShareImage') {
         setFieldValue('socialShareImage', image);
@@ -30,14 +31,15 @@ const GalleryWrapper = ({
   };
 
   return (
-    <Gallery
-      handleImageSelected={handleSelectedImage}
-      toggleGallery={toggleGallery}
-      galleryMode={galleryType}
-      // handleVideoSelected={handleSelectedVideo}
-      keyName={keyVal}
-      id={answerId}
-    />
+    // <Gallery
+    //   handleImageSelected={handleSelectedImage}
+    //   toggleGallery={toggleGallery}
+    //   galleryMode={galleryType}
+    //   // handleVideoSelected={handleSelectedVideo}
+    //   keyName={keyVal}
+    //   id={answerId}
+    // />
+    <>Gallery TODO</>
   );
 };
 

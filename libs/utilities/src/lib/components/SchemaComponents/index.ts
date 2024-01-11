@@ -23,7 +23,14 @@ import FormikTextField from "./FormikTextField/FormikTextField";
 import FormikField from "./FormikField/FormikField";
 import ErrorHandleAutoTextArea from "./ErrorHandleAutoTextArea/ErrorHandleAutoTextArea";
 import ErrorHandleTextBox from "./ErrorHandleTextBox/ErrorHandleTextBox";
+import XTable from "./Table/XTable";
+import { XTags } from "./Tags/Tags";
+import XTagListing from "./Tags/TagListing";
+import TextArea from "../TextArea/TextArea";
 export {
+    XTagListing,
+    TextArea,
+    XTags,
     ErrorHandleAutoTextArea,
     ErrorHandleTextBox,
     XButton,
@@ -48,5 +55,6 @@ export {
     ColorPallet,
     Answers,
     AddImageBackGroundColor,
-    ContentHeader
+    ContentHeader,
+    XTable,
 };

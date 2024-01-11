@@ -1,6 +1,6 @@
 import { RadioGroup } from '@mui/material';
+import { RadioControlLabel } from '@platformx/utilities';
 import { useField, useFormikContext } from 'formik';
-import RadioControlLabel from '../../../../components/Common/RadioControlLabel';
 
 const RadioGroupWrapper = ({ field }) => {
   const { setFieldValue } = useFormikContext();

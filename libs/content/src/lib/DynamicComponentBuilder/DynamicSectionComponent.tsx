@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { Container, Grid } from "@mui/material";
-import { ErrorHandleTextBox, TitleSubTitle, XCheckBox, XDatePicker, XFileUpload } from "@platformx/utilities";
+import { ErrorHandleAutoTextArea, ErrorHandleTextBox, TitleSubTitle, XCheckBox, XDatePicker, XFileUpload } from "@platformx/utilities";
 import { useState } from "react";
 
 const DynamicSectionComponent = ({
@@ -56,8 +56,8 @@ const DynamicSectionComponent = ({
               <>
                 <Grid item xs={12} sm={5} md={5} lg={5} className='leftFiled'>
                   <TitleSubTitle
-                    titleVarient={"h6medium"}
-                    subTitleVarient={"h7regular"}
+                    titleVariant={"h6medium"}
+                    subTitleVariant={"h7regular"}
                     title={field?.title}
                     subTitle={field?.description}
                   />
