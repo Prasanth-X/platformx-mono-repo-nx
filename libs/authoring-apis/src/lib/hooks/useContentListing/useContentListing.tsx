@@ -190,24 +190,19 @@ const useContentListing = (filter = 'ALL') => {
 
     if (listItemDetails.tagName.toUpperCase() === 'VOD') {
       window.open(
-        `${getSubDomain()}/${i18n.language}/video${
-          listItemDetails?.currentPageUrl
+        `${getSubDomain()}/${i18n.language}/video${listItemDetails?.currentPageUrl
         }`,
       )
     } else if (listItemDetails.tagName === convertToLowerCase('Courses')) {
       window.open(
-        `${getSubDomain()}/${i18n.language}/course/course-details?courseId=${
-          listItemDetails?.course_id
+        `${getSubDomain()}/${i18n.language}/course/course-details?courseId=${listItemDetails?.course_id
         }`,
       )
       // window.open(`${listItemDetails?.currentPageUrl}`);
     } else {
-      console.log('text')
       window.open(
-        `${getSubDomain()}/${
-          i18n.language
-        }/${listItemDetails.tagName?.toLowerCase()}${
-          listItemDetails?.currentPageUrl
+        `${getSubDomain()}/${i18n.language
+        }/${listItemDetails.tagName?.toLowerCase()}${listItemDetails?.currentPageUrl
         }`,
       )
     }
@@ -217,8 +212,7 @@ const useContentListing = (filter = 'ALL') => {
     dispatch(previewContent({}))
     dispatch(previewArticle({}))
     navigate(
-      `/content/create-${listItemDetails.tagName?.toLowerCase()}?path=${
-        listItemDetails.page
+      `/content/create-${listItemDetails.tagName?.toLowerCase()}?path=${listItemDetails.page
       }`,
     )
   }

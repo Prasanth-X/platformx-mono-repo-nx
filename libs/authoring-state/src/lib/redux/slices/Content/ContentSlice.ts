@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ContentState } from './ContentSlice.types'
 export const contentSlice = createSlice({
@@ -15,9 +16,7 @@ export const contentSlice = createSlice({
     apiState: false,
   } as ContentState,
   reducers: {
-    updateContentInitialState: (state, action: PayloadAction<any>) => {
-      state.contentArray = [...state.contentArray, ...action.payload]
-    },
+
     updateContentList: (state, action: PayloadAction<any>) => {
       state.contentArray = [...action.payload]
     },
@@ -39,7 +38,6 @@ export const contentSlice = createSlice({
 })
 
 export const {
-  updateContentInitialState,
   updateContentList,
   previewContent,
   contentProp,
