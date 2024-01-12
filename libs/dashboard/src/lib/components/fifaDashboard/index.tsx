@@ -18,16 +18,14 @@ const Index = () => {
 
   return (
     <Box className={classes.container}>
-      <Box>
+      <Box sx={{ display: {xs: 'block', em: 'flex' }}}>
         <Title
-          titleVarient="h1bold"
+          titleVarient="h2bold"
           titleColor="#4B9EF9"
-          padding="0"
+          padding="0 5px 0 0"
           title={t('greets_x')}
         />
-      </Box>
-      <Box>
-        <Title titleVarient="h1bold" padding="0" title={userInfo?.name} />
+        <Title titleVarient="h2bold" title={userInfo?.name} />
       </Box>
       <Box mt="15px">
         <TaskCard
