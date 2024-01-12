@@ -1,58 +1,54 @@
-import {
-  Box,
-  IconButton,
-  MenuItem,
-} from '@mui/material';
-import EditIcon from '../../assets/svg//editIcon.svg';
-import DeleteIcon from '../../assets/svg//deleteIcon.svg';
-import MoreHorizIcon from '../../assets/svg/moreHoriz.svg';
-import { ErrorTooltip } from '../ErrorTooltip/ErrorTooltip';
-import { useState } from 'react';
+import { Box, IconButton, MenuItem } from '@mui/material'
+import DeleteIcon from '../../assets/svg//deleteIcon.svg'
+import EditIcon from '../../assets/svg//editIcon.svg'
+// import MoreHorizIcon from '../../assets/svg/moreHoriz.svg';
+import { useState } from 'react'
+import { ErrorTooltip } from '../ErrorTooltip/ErrorTooltip'
 
 const CardOption = (props: any) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const {
-    getContentCategory, getContentSubCategory,
-    dataList = {}, tagName = "", handleEdit = () => { },
-    canAccessAction, handleDeleteButton = () => { }
-  } = props;
+    getContentCategory,
+    getContentSubCategory,
+    dataList = {},
+    tagName = '',
+    handleEdit = () => {},
+    canAccessAction,
+    handleDeleteButton = () => {},
+  } = props
 
   return (
     <>
       <Box
-        color='#89909A'
-        className='d-inline-flex align-items-center justify-content-end'
+        color="#89909A"
+        className="d-inline-flex align-items-center justify-content-end"
         sx={{ minWidth: '104px' }}
       >
-        <Box className='d-flex align-items-center'>
+        <Box className="d-flex align-items-center">
           {(dataList?.scheduledPublishTriggerDateTime == null ||
             dataList?.scheduledPublishTriggerDateTime == undefined) &&
-            (dataList?.scheduledUnPublishTriggerDateTime == null ||
-              dataList?.scheduledUnPublishTriggerDateTime ==
-              undefined) ? (
+          (dataList?.scheduledUnPublishTriggerDateTime == null ||
+            dataList?.scheduledUnPublishTriggerDateTime == undefined) ? (
             <ErrorTooltip
               component={
                 <MenuItem
-                  className='icons'
+                  className="icons"
                   disableRipple
                   onClick={handleEdit}
                   disabled={
                     !canAccessAction(
                       getContentCategory(),
                       getContentSubCategory(),
-                      'Update'
+                      'Update',
                     ) || tagName === 'courses'
                   }
                 >
                   <IconButton className="hoverIcon">
-                    <img
-                      src={EditIcon}
-                      style={{ objectFit: 'cover' }}
-                    />
+                    <img src={EditIcon} style={{ objectFit: 'cover' }} />
                   </IconButton>
                 </MenuItem>
               }
@@ -60,32 +56,29 @@ const CardOption = (props: any) => {
                 !canAccessAction(
                   getContentCategory(),
                   getContentSubCategory(),
-                  'Update'
+                  'Update',
                 ) || tagName === 'courses'
               }
             />
           ) : null}
         </Box>
-        <Box className='d-flex align-items-center'>
+        <Box className="d-flex align-items-center">
           <ErrorTooltip
             component={
               <MenuItem
-                className='icons'
+                className="icons"
                 disableRipple
                 onClick={handleDeleteButton}
                 disabled={
                   !canAccessAction(
                     getContentCategory(),
                     getContentSubCategory(),
-                    'Delete'
+                    'Delete',
                   ) || tagName === 'courses'
                 }
               >
                 <IconButton className="hoverIcon">
-                  <img
-                    src={DeleteIcon}
-                    style={{ objectFit: 'cover' }}
-                  />
+                  <img src={DeleteIcon} style={{ objectFit: 'cover' }} />
                 </IconButton>
               </MenuItem>
             }
@@ -93,11 +86,11 @@ const CardOption = (props: any) => {
               !canAccessAction(
                 getContentCategory(),
                 getContentSubCategory(),
-                'Delete'
+                'Delete',
               ) || tagName === 'courses'
             }
           />
-          <IconButton
+          {/* <IconButton
             aria-label='settings'
             id='long-button'
             aria-controls={open ? 'long-menu' : undefined}
@@ -107,11 +100,11 @@ const CardOption = (props: any) => {
             className='viewallctamob'
           >
             <img src={MoreHorizIcon} style={{ objectFit: 'cover' }} />
-          </IconButton>
+          </IconButton> */}
         </Box>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default CardOption;
+export default CardOption

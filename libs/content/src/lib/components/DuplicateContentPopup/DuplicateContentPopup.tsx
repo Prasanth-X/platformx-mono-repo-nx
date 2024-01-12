@@ -1,22 +1,22 @@
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-import { Box, Button, TextField, Typography } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import LanguageDropDownCheckBox from '../LanguageDropDownCheckBox/LanguageDropDownCheckBox';
-import './DuplicateContentPopup.css';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
+import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
+import { Box, Button, TextField, Typography } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogTitle from '@mui/material/DialogTitle'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import LanguageDropDownCheckBox from '../LanguageDropDownCheckBox/LanguageDropDownCheckBox'
+import './DuplicateContentPopup.css'
 
 interface DialogList {
-  titledata: string;
-  isDialogOpen: boolean;
-  closeButtonHandle: () => void;
-  doneButtonHandle: (pageExist: boolean, currTitle: string) => void;
-  contentType?: string;
-  language?: any;
-  setLanguage?: any;
+  titledata: string
+  isDialogOpen: boolean
+  closeButtonHandle: () => void
+  doneButtonHandle: (pageExist: boolean, currTitle: string) => void
+  contentType?: string
+  language?: any
+  setLanguage?: any
 }
 
 export default function DuplicateContentPopup({
@@ -28,8 +28,8 @@ export default function DuplicateContentPopup({
   language,
   setLanguage,
 }: DialogList) {
-  const { t } = useTranslation();
-  const [title, setTitle] = useState(titledata);
+  const { t } = useTranslation()
+  const [title, setTitle] = useState(titledata)
 
   return (
     <div>
@@ -96,7 +96,9 @@ export default function DuplicateContentPopup({
               {t('cancel')}
             </Button>
             <Button
-              disabled={title?.length > 0 && language.length > 0 ? false : true}
+              disabled={
+                title?.length > 0 && language?.length > 0 ? false : true
+              }
               variant="contained"
               className="buttonsBottom"
               onClick={() => doneButtonHandle(false, title)}
@@ -109,5 +111,5 @@ export default function DuplicateContentPopup({
         </Box>
       </Dialog>
     </div>
-  );
+  )
 }

@@ -1,8 +1,8 @@
 /* eslint-disable no-debugger */
-import { Box, IconButton } from '@mui/material';
-import { memo, useState } from 'react';
-import { MoreHorizIcon } from '@platformx/utilities';
-import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
+import { Box, IconButton } from '@mui/material'
+import { MoreHorizIcon } from '@platformx/utilities'
+import { memo, useState } from 'react'
+import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu'
 
 const ContentTypeMenuList = ({
   item,
@@ -16,13 +16,13 @@ const ContentTypeMenuList = ({
 }) => {
   debugger
   // const selectedItem = getSelectedObject(item); // TODO: need to check
-  const selectedItem = item;
+  const selectedItem = item
   const contentType = selectedItem.contentType || selectedItem.tagName
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const open = Boolean(anchorEl);
+    setAnchorEl(event.currentTarget)
+  }
+  const open = Boolean(anchorEl)
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -34,11 +34,11 @@ const ContentTypeMenuList = ({
       >
         <IconButton>
           <img
-            alt='moreHorizIcon'
+            alt="moreHorizIcon"
             src={MoreHorizIcon}
             style={{
               objectFit: 'cover',
-              transform: 'rotate(90deg)',
+              // transform: 'rotate(90deg)',
               padding: '4px 0px',
             }}
           />
@@ -47,17 +47,18 @@ const ContentTypeMenuList = ({
       {(contentType === 'quiz' ||
         contentType === 'poll' ||
         contentType === 'event' ||
-        contentType === 'article') &&
+        contentType === 'article' ||
+        contentType === 'vod') && (
         <QuizPollEventMenu
           anchorEl={anchorEl}
           open={open}
           handleClose={() => {
-            setAnchorEl(null);
+            setAnchorEl(null)
           }}
           contentType={contentType}
           listItemDetails={selectedItem}
-          category='content'
-          subCategory='QuizPollARticleEvents'
+          category="content"
+          subCategory={contentType}
           deleteContent={deleteContent}
           duplicate={duplicate}
           preview={preview}
@@ -67,7 +68,8 @@ const ContentTypeMenuList = ({
           fetchContentDetails={fetchContentDetails}
           sitelist={[]}
           duplicateToSite={undefined}
-        />}
+        />
+      )}
       {/* {contentType === 'vod' &&
         <VodMenu
           anchorEl={anchorEl}
@@ -79,7 +81,7 @@ const ContentTypeMenuList = ({
           listItemDetails={item}
         />} */}
     </Box>
-  );
-};
+  )
+}
 
-export default memo(ContentTypeMenuList);
+export default memo(ContentTypeMenuList)
