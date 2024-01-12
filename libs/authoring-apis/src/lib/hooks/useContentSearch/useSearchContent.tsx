@@ -1,5 +1,6 @@
+/* eslint-disable no-debugger */
 import { useQuery } from '@apollo/client'
-import { updateContentInitialState } from '@platformx/authoring-state'
+import { updateContentList } from '@platformx/authoring-state'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { SearchContentListQueries } from '../../graphQL/queries/searchQueries'
@@ -46,15 +47,19 @@ const useContentSearch = ({
     variables,
     fetchPolicy: 'no-cache',
   })
-
   useEffect(() => {
-    setContents(sortedData(data?.authoring_getContentTypeItems || []))
-    dispatch(
-      updateContentInitialState(
-        sortedData(data?.authoring_getContentTypeItems || []),
-      ),
-    )
-  }, [data])
+    const sortedContent = sortedData(data?.authoring_getContentTypeItems || []);
+
+    if (sortedContent) {
+      const serializableData = sortedContent.map(item => ({
+        ...item
+      }));
+
+      setContents(sortedContent);
+      dispatch(updateContentList(serializableData));
+    }
+  }, [data]);
+
 
   const fetchMoreContent = async () => {
     try {
@@ -70,7 +75,7 @@ const useContentSearch = ({
 
       const fetchMoreData = result.data?.authoring_getContentTypeItems || []
       const combinedData: any = [...contents, ...fetchMoreData]
-
+      dispatch(updateContentList(combinedData));
       setContents(combinedData)
 
       console.log(result)

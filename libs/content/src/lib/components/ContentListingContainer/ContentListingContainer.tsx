@@ -6,12 +6,13 @@ import {
   useContentSearch,
 } from '@platformx/authoring-apis'
 import { RootState } from '@platformx/authoring-state'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import ContentListing from '../ContentListing/ContentListing'
 import ContentListingHeader from '../ContentListingHeader/ContentListingHeader'
 const ContListingContainer = ({ contentType }: { contentType: string }) => {
+
   const navigate = useNavigate()
   const startIndex = 0
   const location = useLocation()
@@ -37,8 +38,17 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
     duplicateToSite,
   } = useContentListing('ALL')
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsSpinning(true);
+      await refetch();
+      setIsSpinning(false);
+    };
+
+    fetchData();
+  }, [contentType]);
+
   const createContentNew = () => {
-    debugger
     // dispatch(previewArticle({}));
     navigate(`/content/create`, { state: contentType?.trim()?.toLowerCase() })
   }

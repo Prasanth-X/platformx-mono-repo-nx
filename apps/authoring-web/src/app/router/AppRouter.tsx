@@ -25,7 +25,6 @@ function AppRouter() {
   const code = searchParams.get('code');
 
   useEffect(() => {
-    debugger
     if (location.search.includes('code') && Object.entries(userInfo || {}).length === 0) {
       handleSignIn(location.search.split('code=')[1]);
     } else if (location.search.includes('code') && Object.entries(userInfo || {}).length !== 0) {
@@ -55,22 +54,6 @@ function AppRouter() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   
-
-  //   const fetchData = async () => {
-  //     if (!userInfo && !code) {
-  //       localStorage.removeItem('selectedSite');
-  //     }
-
-  //     if (!code) {
-  //       await verifySession();
-  //     }
-
-  //   };
-
-  //   fetchData();
-  // }, [location]);
 
   if (Object.entries(userInfo || {}).length < 1) {
     return <XLoader type='linear' />
