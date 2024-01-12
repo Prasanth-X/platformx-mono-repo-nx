@@ -19,7 +19,7 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
 
   const [filterValue, setFilterValue] = useState('ALL')
   const { contentArray } = useSelector((state: RootState) => state.content)
-  const { loading, error, refetch, contentList, fetchMore } = useContentSearch({
+  const { loading, error, refetch, fetchMore } = useContentSearch({
     contentType,
     locationState: location,
     filter: filterValue,

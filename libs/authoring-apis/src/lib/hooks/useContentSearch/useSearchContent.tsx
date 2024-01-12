@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client'
-import { updateContentList } from '@platformx/authoring-state'
+import { updateContentInitialState } from '@platformx/authoring-state'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { SearchContentListQueries } from '../../graphQL/queries/searchQueries'
@@ -19,7 +19,6 @@ interface UseContentSearchProps {
 interface UseContentSearchResult {
   loading: boolean
   error: any
-  contentList: any[]
   fetchMore: () => void
   refetch: () => void
 }
@@ -51,7 +50,9 @@ const useContentSearch = ({
   useEffect(() => {
     setContents(sortedData(data?.authoring_getContentTypeItems || []))
     dispatch(
-      updateContentList(sortedData(data?.authoring_getContentTypeItems || [])),
+      updateContentInitialState(
+        sortedData(data?.authoring_getContentTypeItems || []),
+      ),
     )
   }, [data])
 
@@ -83,7 +84,6 @@ const useContentSearch = ({
   return {
     loading,
     error,
-    contentList: contents,
     fetchMore: fetchMoreContent,
     refetch: refresh,
   }

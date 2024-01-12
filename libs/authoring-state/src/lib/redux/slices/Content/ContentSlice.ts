@@ -16,10 +16,9 @@ export const contentSlice = createSlice({
   } as ContentState,
   reducers: {
     updateContentInitialState: (state, action: PayloadAction<any>) => {
-      state.contentArray = action.payload
+      state.contentArray = [...state.contentArray, ...action.payload]
     },
     updateContentList: (state, action: PayloadAction<any>) => {
-      console.log('updateContentInitialState', action.payload)
       state.contentArray = [...action.payload]
     },
     previewContent: (state, action: PayloadAction<any>) => {
