@@ -28,7 +28,7 @@ import { ContentType } from "../enums/ContentType";
 import useDynamicForm from "../hooks/useDynamicForm/useDynamicForm";
 import { SectionProps } from "./DynamicComponent.types";
 
-export const DynamicContentType = () => {
+export const DynamicContentType = ({ contentType }: { contentType: string }) => {
   const [Template, setTemplate] = useState<any>();
   const { t, i18n } = useTranslation();
   const classes = useCustomStyle();
@@ -36,7 +36,6 @@ export const DynamicContentType = () => {
   const pageUrl = new URL(window.location.href);
   const arr = pageUrl.pathname.split("/");
   const length = arr[arr.length - 1];
-  const contentType = arr[arr.length - 1].split("-")[1];
   const [showPublishConfirm, setShowPublishConfirm] = useState(false);
   //   const [path, setPath] = useState("");
   const path = useRef("");

@@ -1,11 +1,10 @@
 import { Box } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import TopHeader from '../ContentHeader/ContentHeader';
-import SectionWrapper from '../SectionWrapper/SectionWrapper';
-import VerticalScrollTab from '../VerticalScrollTab/VerticalScrollTab';
 import { useStyles } from './ContentWrapper.styles';
 import InViewWrapper from './InViewWrapper/InViewWrapper';
 import icons from './Utils/Constants';
+import ContentTopHeader from '../CommonHeader/CommonHeader';
+import { SectionWrapper, VerticalScrollTab } from '@platformx/utilities';
 
 type ContentWrapperProp = {
   scrollTo?: number;
@@ -51,7 +50,7 @@ export default function ContentWrapper({
           activeScroll={activeScroll}
         />
       </Box>
-      <TopHeader
+      <ContentTopHeader
         Title={Title}
         Button1={Button1}
         Button2={Button2}

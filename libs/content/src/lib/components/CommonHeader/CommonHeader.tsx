@@ -2,11 +2,11 @@ import { ArrowBack } from '@mui/icons-material';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { HeaderProps } from './common.types';
 import Submit from './Submit';
-import PreviewNewIcon from '../../../assets/svg/PreviewNewIcon.svg';
-import WorkflowIcon from '../../../assets/svg/WorkflowHistory/timer.svg';
-import { useStyles } from './ContentHeader.styles';
+import { PreviewNewIcon } from '@platformx/utilities';
+import WorkflowIcon from '../../assets/svg/WorkflowHistory/timer.svg';
+import { useStyles } from './CommonHeader.styles';
 
-export const ContentHeader = ({
+export const ContentTopHeader = ({
   Title,
   Button1,
   Button2,
@@ -118,4 +118,4 @@ export const ContentHeader = ({
   );
 };
 
-export default ContentHeader;
+export default ContentTopHeader;

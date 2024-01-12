@@ -1,14 +1,15 @@
+/* eslint-disable no-debugger */
 
 import { Box } from '@mui/material';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
-import {ArticleIcon} from '@platformx/utilities';
-import { MenuData } from '../../../../utils/constants';
+import { PollIcon } from '@platformx/utilities';
 import MenuItems from './MenuItems';
 import { ShowToastError, useUserSession } from '@platformx/utilities';
 import { contentTypeSchemaApi } from '@platformx/authoring-apis';
 import MenuSitesListDropdown from '../../../../components/MenuSitesListDropdown/MenuSitesListDropdown';
+import { MenuData } from '../../../../hooks/useDynamicRoutes/menuData';
 
 export default function Menu(props) {
   const [getSession] = useUserSession();
@@ -24,10 +25,11 @@ export default function Menu(props) {
     try {
       const detailsRes: any = await fetchSchema();
       const menu: any = [];
+      debugger
       detailsRes?.authoring_getDocument?.map((val, i) => {
         return menu.push({
           MenuName: val?.title,
-          Icon: ArticleIcon,
+          Icon: <img alt='settings' src={PollIcon} />,
           url: `/content/${val?.name}`,
           id: val?.title,
           category: 'content',
