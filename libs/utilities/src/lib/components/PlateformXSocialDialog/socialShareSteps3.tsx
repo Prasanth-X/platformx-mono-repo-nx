@@ -1,27 +1,25 @@
-
-import dayjs, { Dayjs } from 'dayjs';
-import Card from '@mui/material/Card';
-import Avatar from '@mui/material/Avatar';
-import { useTranslation } from 'react-i18next';
-import CardMedia from '@mui/material/CardMedia';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
-import { Box, Grid, TextField } from '@mui/material';
-import avtarImg from '../../assets/images/avatar.png';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { getSHareDetailsBasedOnContentType } from './utils/socialShareTypes';
-import React from 'react';
+import { Box, Grid, TextField } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardHeader from '@mui/material/CardHeader'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import dayjs, { Dayjs } from 'dayjs'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import avtarImg from '../../assets/images/avatar.png'
 import {
   convertToLowerCase,
   getSubDomain,
   nullToObject,
   relativeImageURL,
 } from '../../utils/helperFns'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import XLoader from '../XLoader/XLoader';
-import { useEffect, useState } from 'react';
+import XLoader from '../XLoader/XLoader'
+import { getSHareDetailsBasedOnContentType } from './utils/socialShareTypes'
 
 const SocialShareStep3 = ({
   selectedItems,
@@ -32,49 +30,48 @@ const SocialShareStep3 = ({
   contentType,
   facebookProfileData,
   loading,
-}) => {
-  const { CurrentPageURL = '' } = nullToObject(selectedItems);
+}: any) => {
+  const { CurrentPageURL = '' } = nullToObject(selectedItems)
 
-  let isInSelected = false;
-  const { t, i18n } = useTranslation();
+  let isInSelected = false
+  const { t, i18n } = useTranslation()
   if (!selectedNetwork.fb && selectedNetwork.in) {
-    isInSelected = true;
+    isInSelected = true
   } else {
-    isInSelected = false;
+    isInSelected = false
   }
 
-  const [selectLinkedIn, setSelectLinkedIn] = useState(isInSelected);
-  const [selectFacebook, setSelectFacebook] = useState(true);
+  const [selectLinkedIn, setSelectLinkedIn] = useState(isInSelected)
+  const [selectFacebook, setSelectFacebook] = useState(true)
   const [sharedContentDetailsLoader, setSharedContentDetailsLoader] =
-    useState(false);
-  const [sharedContentDetails, setSharedContentDetails] = useState<any>(
-    {}
-  );
-  const { description, title = '', thumbnail = '' } = sharedContentDetails;
+    useState(false)
+  const [sharedContentDetails, setSharedContentDetails] = useState<any>({})
+  const { description, title = '', thumbnail = '' } = sharedContentDetails
 
-  const [, setValue] = useState<Dayjs | null>(dayjs());
+  const [, setValue] = useState<Dayjs | null>(dayjs())
 
-  function removeHttp(url) {
-    return url.replace(/(^\w+:|^)\/\//, '');
+  function removeHttp(url: string) {
+    return url.replace(/(^\w+:|^)\/\//, '')
   }
   const handelNetworkSelect = (network: string) => {
     if (network === 'fb') {
-      setSelectLinkedIn(false);
-      setSelectFacebook(true);
+      setSelectLinkedIn(false)
+      setSelectFacebook(true)
     }
     if (network === 'in') {
-      setSelectFacebook(false);
-      setSelectLinkedIn(true);
+      setSelectFacebook(false)
+      setSelectLinkedIn(true)
     }
-  };
+  }
 
   const redirectURL =
     contentType == 'article'
       ? `${getSubDomain()}/${i18n.language}/${convertToLowerCase(
-        contentType
-      )}/${selectedItems?.CurrentPageURL}`
-      : `${getSubDomain()}/${i18n.language}/${convertToLowerCase(contentType)}${selectedItems?.CurrentPageURL
-      }`;
+          contentType,
+        )}/${selectedItems?.CurrentPageURL}`
+      : `${getSubDomain()}/${i18n.language}/${convertToLowerCase(contentType)}${
+          selectedItems?.CurrentPageURL
+        }`
 
   const inlineCss = `
   .Platform-x-CardContent-root:last-child{
@@ -111,7 +108,7 @@ const SocialShareStep3 = ({
     overflow: hidden;
     word-wrap: break-word;
   }
- `;
+ `
 
   /**
    * passing contentType and page url
@@ -121,23 +118,23 @@ const SocialShareStep3 = ({
     const newObj = {
       ContentType: contentType,
       CurrentPageURL: CurrentPageURL,
-    };
-
-    setSharedContentDetailsLoader(true); //loader off
-    const response = await getSHareDetailsBasedOnContentType(newObj);
-    if (response) {
-      setSharedContentDetails(response);
-    } else {
-      setSharedContentDetails({});
     }
-    setSharedContentDetailsLoader(false); //loader off
-  };
+
+    setSharedContentDetailsLoader(true) //loader off
+    const response = await getSHareDetailsBasedOnContentType(newObj)
+    if (response) {
+      setSharedContentDetails(response)
+    } else {
+      setSharedContentDetails({})
+    }
+    setSharedContentDetailsLoader(false) //loader off
+  }
 
   useEffect(() => {
     if (contentType) {
-      getContentTypeInformation();
+      getContentTypeInformation()
     }
-  }, [contentType]);
+  }, [contentType])
 
   return (
     <Box>
@@ -205,8 +202,8 @@ const SocialShareStep3 = ({
                       alt="Platform-X"
                       src={
                         facebookProfileData &&
-                          selectedNetwork?.fb &&
-                          selectFacebook
+                        selectedNetwork?.fb &&
+                        selectFacebook
                           ? facebookProfileData.picture
                           : avtarImg
                       }
@@ -311,7 +308,7 @@ const SocialShareStep3 = ({
                       renderInput={(params) => <TextField {...params} />}
                       value={scheduleDateVal}
                       onChange={(newValue) => {
-                        setValue(newValue);
+                        setValue(newValue)
                       }}
                     />
                   </LocalizationProvider>
@@ -324,6 +321,6 @@ const SocialShareStep3 = ({
         </Grid>
       </Grid>
     </Box>
-  );
-};
-export default SocialShareStep3;
+  )
+}
+export default SocialShareStep3

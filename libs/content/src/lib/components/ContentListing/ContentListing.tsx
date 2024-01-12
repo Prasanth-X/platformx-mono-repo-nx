@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import {
-  ContentListLoader, capitalizeFirstLetter,
+  ContentListLoader, NoSearchResult, capitalizeFirstLetter,
   convertToLowerCase,
   handleHtmlTags
 } from '@platformx/utilities';
@@ -12,6 +12,7 @@ import { Card } from '@platformx/utilities';
 import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
 import { useUserSession } from '@platformx/utilities';
 import React from 'react';
+import ContentTypeMenuList from '../MenuList/ContentTypeMenuList';
 const ContentListing = ({
   contentList,
   loading,
@@ -25,18 +26,9 @@ const ContentListing = ({
   editPage,
   viewPage,
   previewPage,
-  handleDuplicatePopup,
-  duplicatePage,
-  unPublishPage,
-  handleReschedulePopup,
-  reschedulePublishPage,
-  rescheduleUnPublishPage,
-  handleCancelTriggerPopup,
-  cancelPublishUnpublishTrigger,
   handleDeleteData,
   handlePageDelete,
   fetchContentDetails,
-  duplicateToSite,
 
 }: ContentListingProps) => {
 
@@ -172,7 +164,7 @@ const ContentListing = ({
 
         <Box sx={{ padding: '0 10px 0 15px' }}>
           <Box>
-            {contentList?.map((item: any, index: Key | null | undefined) => {
+            {contentList?.length > 0 && contentList?.map((item: any, index: Key | null | undefined) => {
               return (
                 <Box key={index}>
                   <Card
@@ -182,30 +174,24 @@ const ContentListing = ({
                         : makeContentData(item)
                     }
                     deleteContent={deleteContent}
-                    duplicate={duplicate}
                     preview={preview}
-                    unPublish={unPublish}
                     view={view}
                     edit={edit}
                     editPage={editPage}
                     viewPage={viewPage}
                     previewPage={previewPage}
-                    handleDuplicatePopup={handleDuplicatePopup}
-                    duplicatePage={duplicatePage}
-                    unPublishPage={unPublishPage}
-                    handleReschedulePopup={handleReschedulePopup}
-                    reschedulePublishPage={reschedulePublishPage}
-                    rescheduleUnPublishPage={rescheduleUnPublishPage}
-                    handleCancelTriggerPopup={handleCancelTriggerPopup}
-                    cancelPublishUnpublishTrigger={
-                      cancelPublishUnpublishTrigger
-                    }
                     handleDeleteData={handleDeleteData}
                     handlePageDelete={handlePageDelete}
-                    fetchContentDetails={fetchContentDetails}
                     siteList={sitelist}
-                    duplicateToSite={duplicateToSite}
                     contentType={contentType}
+                    CustomMenuList={
+                      <ContentTypeMenuList
+                        item={makeContentData(item)}
+                        deleteContent={deleteContent}
+                        duplicate={duplicate} preview={preview}
+                        unPublish={unPublish}
+                        view={view} edit={edit}
+                        fetchContentDetails={fetchContentDetails} />}
                   />
                 </Box>
               );
@@ -214,6 +200,9 @@ const ContentListing = ({
         </Box>
 
       </InfiniteScroll>
+      {
+        !loading && contentList?.length === 0 && <NoSearchResult />
+      }
     </Box>
   );
 };

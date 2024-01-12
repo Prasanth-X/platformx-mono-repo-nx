@@ -54,22 +54,6 @@ function AppRouter() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   
-
-  //   const fetchData = async () => {
-  //     if (!userInfo && !code) {
-  //       localStorage.removeItem('selectedSite');
-  //     }
-
-  //     if (!code) {
-  //       await verifySession();
-  //     }
-
-  //   };
-
-  //   fetchData();
-  // }, [location]);
 
   if (Object.entries(userInfo || {}).length < 1) {
     return <XLoader type='linear' />

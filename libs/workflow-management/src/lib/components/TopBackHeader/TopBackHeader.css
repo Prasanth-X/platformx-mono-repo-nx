@@ -1,0 +1,61 @@
+.workflowtophead {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: solid 1px #ced3d9;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.workflowtophead .backarrow {
+  color: #2d2d39;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+.workflowbottomhead {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: solid 1px #ced3d9;
+  margin-bottom: 29px;
+  justify-content: space-between;
+  padding: 13px 20px;
+  position: sticky;
+  top: 61px;
+  background: #fff;
+  z-index: 2;
+}
+.workflowbottomhead .backarrow {
+  color: #2d2d39;
+  cursor: pointer;
+  border: 1px solid #d9dbe9;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  display: flex;
+}
+@media (max-width: 767px) {
+  .workflowbottomhead {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+  .workflowbottomhead .backarrow {
+    display: none;
+  }
+  .workflowtophead {
+    padding: 10px;
+  }
+  .workflowtophead .backarrow {
+    display: flex;
+  }
+}

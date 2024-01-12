@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 // import Typography from "@mui/material/Typography";
-import { Typography, Tab, Tabs, Box } from '@mui/material';
-import CardSkeleton from '../../../Common/Cards/CardSkeleton';
-import { getLearningListApiCall } from '../../../utils/helper';
-import { getCourseLandingPageURL } from 'lib/utils/helperFns';
-import LearningCard from '../LearningCard/LearningCard';
-import { useCustomStyle } from './ListTabs.style';
+import { Box, Tab, Tabs, Typography } from '@mui/material'
+import { getCourseLandingPageURL } from 'utils/helperFns'
+import CardSkeleton from '../../../Common/Cards/CardSkeleton'
+import { getLearningListApiCall } from '../../../utils/helper'
+import LearningCard from '../LearningCard/LearningCard'
+import { useCustomStyle } from './ListTabs.style'
 // import { getLearningListApiCall } from "../../Utils/helper";
 
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
+  children?: React.ReactNode
+  index: number
+  value: number
 }
 
 function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -27,63 +27,63 @@ function CustomTabPanel(props: TabPanelProps) {
     >
       {value === index && <>{children}</>}
     </div>
-  );
+  )
 }
 
 function tabProps(index: number) {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
-  };
+  }
 }
 
 export default function ListTabs({
   secondaryArgs = {},
   authoringHelper = {},
 }: any) {
-  const [value, setValue] = React.useState(0);
-  const [courseList, setCourseList] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [value, setValue] = React.useState(0)
+  const [courseList, setCourseList] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-  const classes = useCustomStyle();
+    setValue(newValue)
+  }
+  const classes = useCustomStyle()
   const getOngoingList = async () => {
-    setLoading(true);
+    setLoading(true)
     // await sleep(2000);
-    const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem('userId')
     if (userId?.length) {
       const res = await getLearningListApiCall({
         userId: userId,
         secondaryArgs: secondaryArgs,
-      });
-      const { data: { data: { getuserCourses = [] } = {} } = {} } = res;
-      setCourseList(getuserCourses);
-      setLoading(false);
+      })
+      const { data: { data: { getuserCourses = [] } = {} } = {} } = res
+      setCourseList(getuserCourses)
+      setLoading(false)
     } else {
-      setCourseList([]);
-      setLoading(false);
+      setCourseList([])
+      setLoading(false)
     }
-  };
+  }
 
   React.useEffect(() => {
-    getOngoingList();
-  }, []);
+    getOngoingList()
+  }, [])
 
   const viewCourse = (item: any) => {
     if (authoringHelper.isEditPage) {
-      return;
+      return
     } else {
       const url = getCourseLandingPageURL(
         secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
         secondaryArgs?.prelemBaseEndpoint?.language,
         item.tag_name,
-        item.key
-      );
-      window.open(url);
+        item.key,
+      )
+      window.open(url)
     }
-  };
+  }
   return (
     <Box className={`${classes.TabMainWrapper} TabWrapper`}>
       <Box className="tabTopBox">
@@ -128,7 +128,7 @@ export default function ListTabs({
                     key={index}
                     viewCourse={viewCourse}
                   />
-                );
+                )
               })
             ) : (
               <Box className={classes.noResults}>
@@ -142,5 +142,5 @@ export default function ListTabs({
         <CustomTabPanel value={value} index={3}></CustomTabPanel>
       </Box>
     </Box>
-  );
+  )
 }

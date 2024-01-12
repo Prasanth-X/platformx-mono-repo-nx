@@ -12,7 +12,7 @@ import { I18nextProvider, useTranslation } from 'react-i18next';
 // import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import './App.css'; 
+import './App.css'; 
 // import { CommentProvider } from './context/CommentsContext/CommentsContext';
 // import { ActionProvider } from './context/actionContext/ActionProvider';
 // import RootRouter from './router/rootRouter';

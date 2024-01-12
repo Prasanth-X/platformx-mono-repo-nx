@@ -1,25 +1,26 @@
-import { Box, Button, Grid } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import EmbedDesktopTabCard from 'platform-x-prelems/prelems/EmbedDesktopTabCard';
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import SkeltonLoader from '../SkeltonLoader/SkeltonLoader';
-import { getSubDomain } from '../../utils/helperFns';
+import { Box, Button, Grid } from '@mui/material'
+import Typography from '@mui/material/Typography'
+// import EmbedDesktopTabCard from 'platform-x-prelems/prelems/EmbedDesktopTabCard';
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { getSubDomain } from '../../utils/helperFns'
+import SkeltonLoader from '../SkeltonLoader/SkeltonLoader'
 
-const CardContent = ({ selectedItem, contentType }) => {
-  const { t, i18n } = useTranslation();
-  const [value, setValue] = React.useState(0);
-  const [copyStatus, setICopyStatus] = useState<boolean>(false);
+const CardContent = ({ selectedItem, contentType }: any) => {
+  const { t, i18n } = useTranslation()
+  const [value, setValue] = React.useState(0)
+  const [copyStatus, setICopyStatus] = useState<boolean>(false)
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-    setICopyStatus(false);
-  };
+    setValue(newValue)
+    setICopyStatus(false)
+  }
 
   const pageURL =
     `${getSubDomain()}/${i18n.language}/` +
-    `embed/${contentType}/${selectedItem?.Page}`;
-  const landingPageURL = `${getSubDomain()}/${i18n.language}/${contentType}/${selectedItem?.Page
-    }`;
+    `embed/${contentType}/${selectedItem?.Page}`
+  const landingPageURL = `${getSubDomain()}/${i18n.language}/${contentType}/${
+    selectedItem?.Page
+  }`
 
   const content = {
     Title: selectedItem?.Title,
@@ -30,17 +31,17 @@ const CardContent = ({ selectedItem, contentType }) => {
     Page: pageURL,
     LandingPage: landingPageURL,
     colorCode: selectedItem?.colorCode,
-  };
+  }
   const mobileEmbededCode = `
  <iframe src="${content?.Page}" width="360" height="203" style="border:none;overflow:hidden"></iframe>
-`;
+`
   const desktopEmbededCode = `
  <iframe src="${content?.Page}" width="480" height="270" style="border:none;overflow:hidden"></iframe>
-`;
+`
   const copyEmbededCode = (code: any) => {
-    navigator.clipboard.writeText(code);
-    setICopyStatus(true);
-  };
+    navigator.clipboard.writeText(code)
+    setICopyStatus(true)
+  }
 
   return (
     <Box
@@ -73,13 +74,13 @@ const CardContent = ({ selectedItem, contentType }) => {
               alignItems: 'center',
             }}
           >
-            {selectedItem && selectedItem?.Thumbnail ? (
+            {/* {selectedItem && selectedItem?.Thumbnail ? (
               <EmbedDesktopTabCard content={content} />
             ) : (
               <Box sx={{ marginLeft: '70px !important' }}>
                 <SkeltonLoader maxWidth={480} maxHeight={500} />
               </Box>
-            )}
+            )} */}
           </Box>
         </Grid>
         <Grid
@@ -202,6 +203,6 @@ const CardContent = ({ selectedItem, contentType }) => {
         </Grid>
       </Grid>
     </Box>
-  );
-};
-export default CardContent;
+  )
+}
+export default CardContent

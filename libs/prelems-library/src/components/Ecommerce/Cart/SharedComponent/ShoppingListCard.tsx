@@ -1,25 +1,25 @@
 /* eslint-disable no-console */
-import React, { useState, useRef } from 'react';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import {
   Box,
   Card,
   CardActionArea,
   CardMedia,
-  Typography,
   Tooltip,
-} from '@mui/material';
-import QuantityButton from '../../ProductDetail/SharedComponents/AddCart/QuantityButton';
-import { updateQuantityOfCartItem, removeCartItem } from '../helper';
-import { nullToObject } from '../lib/utils/helperFns';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import ShoppingSkeletonListCard from './ShoppingSkeletonListCard';
-import SellPrice from '../../ProductDetail/SharedComponents/SellPrice';
-import ActualPrice from '../../ProductDetail/SharedComponents/ActualPrice';
-import ToastService from '../../../../Common/ToastContainer/ToastService';
-import ToastContainerHandle from '../../../../Common/ToastContainer/ToastContainerHandle';
+  Typography,
+} from '@mui/material'
+import { useRef, useState } from 'react'
+import { nullToObject } from 'utils/helperFns'
+import ToastContainerHandle from '../../../../Common/ToastContainer/ToastContainerHandle'
+import ToastService from '../../../../Common/ToastContainer/ToastService'
+import ActualPrice from '../../ProductDetail/SharedComponents/ActualPrice'
+import QuantityButton from '../../ProductDetail/SharedComponents/AddCart/QuantityButton'
+import SellPrice from '../../ProductDetail/SharedComponents/SellPrice'
+import { removeCartItem, updateQuantityOfCartItem } from '../helper'
+import ShoppingSkeletonListCard from './ShoppingSkeletonListCard'
 // import { useTranslation } from "react-i18next";
-import '../../../../service/i18n';
-import { useCustomStyle } from './ShoppingListCard.style';
+import '../../../../service/i18n'
+import { useCustomStyle } from './ShoppingListCard.style'
 
 function ShoppingListCard({
   product,
@@ -29,61 +29,61 @@ function ShoppingListCard({
   refetchLoading,
   secondaryArgs,
 }: any) {
-  const classes = useCustomStyle();
-  const [quantity, setQuantity] = useState(product?.ecomx_quantity);
-  const itemRefforRemoval = useRef('');
-  const iftemRefforUpdating = useRef('');
-  const [removeItemLoading, setRemoveItemLoading] = useState(false);
-  const [quantityLoading, setQuantityLoading] = useState(false);
+  const classes = useCustomStyle()
+  const [quantity, setQuantity] = useState(product?.ecomx_quantity)
+  const itemRefforRemoval = useRef('')
+  const iftemRefforUpdating = useRef('')
+  const [removeItemLoading, setRemoveItemLoading] = useState(false)
+  const [quantityLoading, setQuantityLoading] = useState(false)
   // const { t } = useTranslation();
   const updateQuantityOfItem = async (quant: number) => {
-    iftemRefforUpdating.current = product?.id;
-    setQuantityLoading(true);
+    iftemRefforUpdating.current = product?.id
+    setQuantityLoading(true)
     const response = await updateQuantityOfCartItem({
       secondaryArgs: secondaryArgs,
       cartId: cartId,
       lineItemId: product?.id,
       quantity: quant,
-    });
+    })
     const {
       data: {
         data: { updateLineItem: { statusCode = 0, msg = '' } = {} } = {},
       } = {},
-    } = nullToObject(response);
+    } = nullToObject(response)
 
     if (statusCode === 200) {
-      setQuantity(quant);
-      setQuantityLoading(false);
-      loadCart(cartId, true);
-      iftemRefforUpdating.current = '';
+      setQuantity(quant)
+      setQuantityLoading(false)
+      loadCart(cartId, true)
+      iftemRefforUpdating.current = ''
     } else {
-      ToastService.failToast(msg);
-      setQuantityLoading(false);
+      ToastService.failToast(msg)
+      setQuantityLoading(false)
     }
-  };
+  }
 
   const removeProduct = async () => {
-    itemRefforRemoval.current = product?.id;
-    setRemoveItemLoading(true);
+    itemRefforRemoval.current = product?.id
+    setRemoveItemLoading(true)
     const response = await removeCartItem({
       secondaryArgs: secondaryArgs,
       cartId: cartId,
       lineItemId: product?.id,
-    });
+    })
     const {
       data: { data: { removeLineItem: { statusCode = 0 } = {} } = {} } = {},
-    } = nullToObject(response);
+    } = nullToObject(response)
 
     if (statusCode === 200) {
-      setRemoveItemLoading(false);
-      loadCart(cartId, true);
+      setRemoveItemLoading(false)
+      loadCart(cartId, true)
     }
-  };
+  }
 
   const prices = {
     realPrice: product?.ecomx_quantity * product?.ecomx_list_price,
     discountedPrice: product?.ecomx_quantity * product?.ecomx_sale_price,
-  };
+  }
 
   const increaseQuantity = () => {
     // if (quantity > 0 && parseInt(product?.ecomx_stock_quantity) > 0) {
@@ -92,18 +92,18 @@ function ShoppingListCard({
     //   ToastService.failToast(t("please_enter_lesser_quantity"));
     // }
     if (quantity > 0) {
-      updateQuantityOfItem(quantity + 1);
+      updateQuantityOfItem(quantity + 1)
     }
-  };
+  }
 
   const decreaseQuantity = () => {
     if (quantity > 1) {
-      updateQuantityOfItem(quantity - 1);
+      updateQuantityOfItem(quantity - 1)
     }
-  };
+  }
   const quantityLoadingCheck =
     (quantityLoading || refetchLoading) &&
-    product?.id === iftemRefforUpdating.current;
+    product?.id === iftemRefforUpdating.current
   return (
     <>
       <ToastContainerHandle />
@@ -227,7 +227,7 @@ function ShoppingListCard({
         </Box>
       )}
     </>
-  );
+  )
 }
 
-export default ShoppingListCard;
+export default ShoppingListCard

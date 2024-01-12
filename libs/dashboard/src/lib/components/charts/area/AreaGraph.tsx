@@ -1,54 +1,66 @@
-import React from "react";
+import { Typography } from '@mui/material'
+import { Box } from '@mui/system'
 import {
-  AreaChart,
   Area,
-  XAxis,
-  YAxis,
+  AreaChart,
   CartesianGrid,
-  Tooltip,
+  LabelList,
   Legend,
   ResponsiveContainer,
-  LabelList,
-} from "recharts";
-import { graph } from "../Constants";
-import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
+import { graph } from '../Constants'
 
 const AreaGraph = ({ itemData }: any) => {
-  const { chartData: data, title } = itemData;
-  const config = graph.area;
-  const [firstKey] = Object.keys(data[0]);
-  const isTimestamp = firstKey === config.timestamp;
+  const { chartData: data, title } = itemData
+  const config = graph.area
+  const [firstKey] = Object.keys(data[0])
+  const isTimestamp = firstKey === config.timestamp
   return (
-    <Box className='areaGraph pageGraph'>
-      <Typography variant='p3semibold' className='heading'>
+    <Box className="areaGraph pageGraph">
+      <Typography variant="p3semibold" className="heading">
         {title}
       </Typography>
-      <ResponsiveContainer width={config.width} height={config.height} className='noxyAxsis'>
-        <AreaChart data={data} margin={{ top: 20, right: 10, left: -10, bottom: 40 }}>
-          {config.showGrid && <CartesianGrid strokeDasharray='3 3' />}
+      <ResponsiveContainer
+        width={config.width}
+        height={config.height}
+        className="noxyAxsis"
+      >
+        <AreaChart
+          data={data}
+          margin={{ top: 20, right: 10, left: -10, bottom: 40 }}
+        >
+          {config.showGrid && <CartesianGrid strokeDasharray="3 3" />}
           {isTimestamp ? (
             <XAxis
               dataKey={firstKey}
               interval={0}
-              textAnchor='end'
+              textAnchor="end"
               angle={config.textXAngle}
               // scale="time"
-              tickFormatter={(unixTime) => new Date(unixTime).toLocaleDateString()}
+              tickFormatter={(unixTime: any) =>
+                new Date(unixTime).toLocaleDateString()
+              }
               tick={{ fontSize: config.fontSize, fill: config.textColor }}
             />
           ) : (
             <XAxis
               dataKey={firstKey}
               interval={0}
-              textAnchor='end'
+              textAnchor="end"
               angle={config.textXAngle}
               tick={{ fontSize: config.fontSize, fill: config.textColor }}
             />
           )}
           <YAxis tick={{ fontSize: config.fontSize, fill: config.textColor }} />
           {isTimestamp ? (
-            <Tooltip labelFormatter={(unixTime) => new Date(unixTime).toLocaleDateString()} />
+            <Tooltip
+              labelFormatter={(unixTime: any) =>
+                new Date(unixTime).toLocaleDateString()
+              }
+            />
           ) : (
             <Tooltip />
           )}
@@ -67,28 +79,37 @@ const AreaGraph = ({ itemData }: any) => {
                   type={config.type as any}
                   dataKey={key}
                   stackId={index}
-                  stroke={config.graphColor[(index - 1) % config.graphColor.length]}
+                  stroke={
+                    config.graphColor[(index - 1) % config.graphColor.length]
+                  }
                   strokeWidth={config.strokeWidth}
                   // fill={`url(#MyGradient${index})`}
-                  fill={config.graphColor[(index - 1) % config.graphColor.length]}>
+                  fill={
+                    config.graphColor[(index - 1) % config.graphColor.length]
+                  }
+                >
                   {config.showValuesOnTop && (
                     <LabelList
                       dataKey={key}
                       name={key}
-                      position='top'
+                      position="top"
                       fontSize={config.fontSize}
-                      fill={config.graphColor[(index - 1) % config.graphColor.length]}
+                      fill={
+                        config.graphColor[
+                        (index - 1) % config.graphColor.length
+                        ]
+                      }
                     />
                   )}
                 </Area>
-              );
+              )
             }
-            return null;
+            return null
           })}
         </AreaChart>
       </ResponsiveContainer>
     </Box>
-  );
-};
+  )
+}
 
-export default AreaGraph;
+export default AreaGraph

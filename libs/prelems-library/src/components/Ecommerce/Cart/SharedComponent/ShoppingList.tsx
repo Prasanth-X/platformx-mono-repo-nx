@@ -1,31 +1,30 @@
-import React from 'react';
-import { nullToArray, nullToObject } from '../lib/utils/helperFns';
-import { Box, Typography } from '@mui/material';
-import './ShoppingList.css';
-import ShoppingListCard from './ShoppingListCard';
-import ShoppingSkeletonListCard from './ShoppingSkeletonListCard';
-import { useTranslation } from 'react-i18next';
-import '../../../../service/i18n';
-import { useCustomStyle } from './ShoppingList.style';
+import { Box, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { nullToArray, nullToObject } from 'utils/helperFns'
+import '../../../../service/i18n'
+import './ShoppingList.css'
+import { useCustomStyle } from './ShoppingList.style'
+import ShoppingListCard from './ShoppingListCard'
+import ShoppingSkeletonListCard from './ShoppingSkeletonListCard'
 
 type ecommerceShoppingListProps = {
-  addedCartDetails: any;
-  loading: boolean;
-  loadCart: any;
-  refetchLoading: boolean;
-  secondaryArgs: any;
-};
+  addedCartDetails: any
+  loading: boolean
+  loadCart: any
+  refetchLoading: boolean
+  secondaryArgs: any
+}
 const ShoppingList = (_props: ecommerceShoppingListProps) => {
-  const classes = useCustomStyle();
-  const { t } = useTranslation();
+  const classes = useCustomStyle()
+  const { t } = useTranslation()
   const {
     addedCartDetails = {},
     loading,
     loadCart,
     refetchLoading,
     secondaryArgs = {},
-  } = nullToObject(_props);
-  const { line_item = [] } = nullToObject(addedCartDetails);
+  } = nullToObject(_props)
+  const { line_item = [] } = nullToObject(addedCartDetails)
 
   return (
     <Box
@@ -70,7 +69,7 @@ const ShoppingList = (_props: ecommerceShoppingListProps) => {
         </Box>
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default ShoppingList;
+export default ShoppingList

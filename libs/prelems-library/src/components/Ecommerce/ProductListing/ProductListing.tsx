@@ -1,67 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import EastIcon from '@mui/icons-material/East';
-import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
-import { nullToArray, nullToObject } from 'lib/utils/helperFns';
-import { ecomCartIdBasedGetItem, getProductDetails } from './helper';
-import './ProductListing.css';
-import { useCustomStyle } from './ProductListing.style';
-import { Box, Typography, Grid, Button, Container } from '@mui/material';
-import ActualPrice from '../ProductDetail/SharedComponents/ActualPrice';
-import '../../../service/i18n';
-import { addToCartGetCartId } from '../hepler';
-import ProductLoader from './ProductLoader';
-import fallBackImage from '../../../assets/fallBackImage.png';
+import EastIcon from '@mui/icons-material/East'
+import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded'
+import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { nullToArray, nullToObject } from 'utils/helperFns'
+import fallBackImage from '../../../assets/fallBackImage.png'
+import '../../../service/i18n'
+import ActualPrice from '../ProductDetail/SharedComponents/ActualPrice'
+import { addToCartGetCartId } from '../hepler'
+import './ProductListing.css'
+import { useCustomStyle } from './ProductListing.style'
+import ProductLoader from './ProductLoader'
+import { ecomCartIdBasedGetItem, getProductDetails } from './helper'
 
 type ProductListingProps = {
-  secondaryArgs: any;
-  cartCountUpdate: any;
-  fromPage: any;
+  secondaryArgs: any
+  cartCountUpdate: any
+  fromPage: any
   attributes?: {
-    key: string;
-    value: string[];
-  };
-};
+    key: string
+    value: string[]
+  }
+}
 const ProductListing = ({
   secondaryArgs = {},
   fromPage = '',
   attributes,
   cartCountUpdate = () => {},
 }: ProductListingProps) => {
-  const rowData = 12;
-  const classes = useCustomStyle();
-  const [productList, setProductList] = useState([]);
-  const [pagePerStart, setPagePerStart] = useState(0);
-  const [loadMoreIsEnable, setLoadMoreIsEnable] = useState(true);
-  const pageFrom = fromPage === 'productList' ? true : false;
-  const [loading, setLoading] = useState(false);
-  const { t, i18n } = useTranslation();
-  const { key, value } = attributes;
+  const rowData = 12
+  const classes = useCustomStyle()
+  const [productList, setProductList] = useState([])
+  const [pagePerStart, setPagePerStart] = useState(0)
+  const [loadMoreIsEnable, setLoadMoreIsEnable] = useState(true)
+  const pageFrom = fromPage === 'productList' ? true : false
+  const [loading, setLoading] = useState(false)
+  const { t, i18n } = useTranslation()
+  const { key, value } = attributes
   /**
    * get product list api call
    */
   const getProductList = async () => {
-    setLoading(true);
+    setLoading(true)
     const res = await getProductDetails(
       secondaryArgs,
       pageFrom === true ? 8 : rowData,
       pagePerStart,
       key,
-      value
-    );
+      value,
+    )
     const { data: { data: { fetchEcomProducts = [] } = {} } = {}, status = 0 } =
-      res;
-    setLoading(false);
+      res
+    setLoading(false)
     if (status === 200) {
-      const newArray = [...productList, ...fetchEcomProducts]; //product concat
-      setLoadMoreIsEnable(
-        productList.length !== newArray.length ? true : false
-      ); //load more button show
-      setProductList(newArray);
+      const newArray = [...productList, ...fetchEcomProducts] //product concat
+      setLoadMoreIsEnable(productList.length !== newArray.length ? true : false) //load more button show
+      setProductList(newArray)
     } else {
-      setProductList([]);
+      setProductList([])
     }
-  };
+  }
 
   /**
    * product details navigate
@@ -69,50 +67,50 @@ const ProductListing = ({
    */
   const onViewDetails = (productId: string) => {
     //Todo: logic to be added for direct cart navigation.
-    window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/product-detail?productId=${productId}`;
-  };
+    window.location.href = `${secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint}${secondaryArgs?.prelemBaseEndpoint?.language}/ecommerce/product-detail?productId=${productId}`
+  }
 
   const cartItemDetails = async (cartId = '') => {
-    setLoading(true);
+    setLoading(true)
     const response = await ecomCartIdBasedGetItem({
       cartId: cartId,
       secondaryArgs: secondaryArgs,
-    });
-    setLoading(false);
+    })
+    setLoading(false)
     const {
       data: {
         data: { getCartItems: { statusCode = 0, data = {} } = {} } = {},
       } = {},
-    } = nullToObject(response);
+    } = nullToObject(response)
 
     if (statusCode === 200) {
-      cartCountUpdate(data);
+      cartCountUpdate(data)
     } else {
-      cartCountUpdate(null);
+      cartCountUpdate(null)
     }
-  };
+  }
 
   const addtoCartAndRedirect = async (id: string) => {
-    setLoading(true);
+    setLoading(true)
     const response = await addToCartGetCartId(
       secondaryArgs,
       id,
       1,
       true,
       {},
-      t('errorRequest')
-    );
+      t('errorRequest'),
+    )
 
-    setLoading(false);
+    setLoading(false)
     if (response) {
-      const getCartIdFromLocal = localStorage.getItem('ecommerceCartId');
+      const getCartIdFromLocal = localStorage.getItem('ecommerceCartId')
       if (getCartIdFromLocal) {
-        cartItemDetails(getCartIdFromLocal);
+        cartItemDetails(getCartIdFromLocal)
       } else {
-        cartCountUpdate(null);
+        cartCountUpdate(null)
       }
     }
-  };
+  }
 
   // const addtoCartAndRedirect = (id: string) => {
   //   addToCartGetCartId(secondaryArgs, id, 1, true, t("errorRequest"));
@@ -121,24 +119,24 @@ const ProductListing = ({
    * infinity load more option
    */
   const loadMoreItems = () => {
-    setPagePerStart(pagePerStart + rowData);
-  };
+    setPagePerStart(pagePerStart + rowData)
+  }
 
   useEffect(() => {
-    getProductList();
-  }, [pagePerStart]);
+    getProductList()
+  }, [pagePerStart])
 
   useEffect(() => {
-    const getCartIdFromLocal = localStorage.getItem('ecommerceCartId');
+    const getCartIdFromLocal = localStorage.getItem('ecommerceCartId')
     if (getCartIdFromLocal) {
-      cartItemDetails(getCartIdFromLocal);
+      cartItemDetails(getCartIdFromLocal)
     } else {
-      cartCountUpdate(null);
+      cartCountUpdate(null)
     }
     if (typeof window !== 'undefined') {
-      i18n.changeLanguage(secondaryArgs?.prelemBaseEndpoint?.language);
+      i18n.changeLanguage(secondaryArgs?.prelemBaseEndpoint?.language)
     }
-  }, []);
+  }, [])
 
   return (
     <Box className={`${classes.productListingWrapper} productListingPage`}>
@@ -181,8 +179,8 @@ const ProductListing = ({
                           className="image"
                           onError={(e: any) => {
                             if (e.target.src !== fallBackImage) {
-                              e.target.onerror = null;
-                              e.target.src = fallBackImage;
+                              e.target.onerror = null
+                              e.target.src = fallBackImage
                             }
                           }}
                           src={
@@ -197,9 +195,9 @@ const ProductListing = ({
                         <Button
                           variant="primaryButton1"
                           onClick={(event) => {
-                            event.stopPropagation();
-                            if (!JSON.parse(card?.ecomx_in_stock)) return;
-                            addtoCartAndRedirect(card.id);
+                            event.stopPropagation()
+                            if (!JSON.parse(card?.ecomx_in_stock)) return
+                            addtoCartAndRedirect(card.id)
                           }}
                         >
                           {JSON.parse(card?.ecomx_in_stock)
@@ -253,12 +251,12 @@ const ProductListing = ({
         </Grid>
       </Container>
     </Box>
-  );
-};
+  )
+}
 ProductListing.defaultProps = {
   attributes: {
     key: '',
     value: [''],
   },
-};
-export default ProductListing;
+}
+export default ProductListing

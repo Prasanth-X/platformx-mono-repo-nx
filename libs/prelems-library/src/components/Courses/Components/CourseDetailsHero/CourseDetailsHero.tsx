@@ -1,15 +1,14 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LanguageIcon from '@mui/icons-material/Language';
-import { Box, Container, Grid, Typography } from '@mui/material';
-import { format } from 'date-fns';
-import React from 'react';
-import '../../../../Style.css';
-import { handleHtmlTags } from '../lib/utils/helperFns';
-import RightCard from '../RightCard/RightCard';
-import { useCustomStyle } from './CourseDetailsHero.style';
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import LanguageIcon from '@mui/icons-material/Language'
+import { Box, Container, Grid, Typography } from '@mui/material'
+import { format } from 'date-fns'
+import { handleHtmlTags } from 'utils/helperFns'
+import '../../../../Style.css'
+import RightCard from '../RightCard/RightCard'
+import { useCustomStyle } from './CourseDetailsHero.style'
 
 const CourseDetailsHero = ({ content, setIsCourseFrame }: any) => {
-  const classes = useCustomStyle();
+  const classes = useCustomStyle()
   return (
     <div className={`${classes.CourseDetailsHeroWrapper} CourseDetailsHero`}>
       <Container className="grid_container">
@@ -44,7 +43,7 @@ const CourseDetailsHero = ({ content, setIsCourseFrame }: any) => {
                       {content?.mainlanguage &&
                         format(
                           new Date(content?.published_date),
-                          'LLL dd, yyyy'
+                          'LLL dd, yyyy',
                         )}
                     </Typography>
                   </li>
@@ -58,7 +57,7 @@ const CourseDetailsHero = ({ content, setIsCourseFrame }: any) => {
         </Grid>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default CourseDetailsHero;
+export default CourseDetailsHero

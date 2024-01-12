@@ -21,7 +21,7 @@ import {
 import { ThemeConstants, USERNAME_EMAIL_EXIST } from '@platformx/utilities'
 
 import { snowplowTrackingHook } from '@platformx/authoring-apis'
-import { Gallery, getSelectedSite, getSubDomain } from '@platformx/utilities'
+import { getSelectedSite, getSubDomain } from '@platformx/utilities'
 import {
   BEFORE_UNLOAD,
   DRAFT,
@@ -222,7 +222,7 @@ const CreateUser = () => {
         isEditMode.current,
         usertype === USERTYPES.AUTHORINGUSER.toLowerCase(),
         usertype === USERTYPES.ENDUSER.toLowerCase() ||
-          usertype === USERTYPES.COMMUNITYUSER.toLowerCase(),
+        usertype === USERTYPES.COMMUNITYUSER.toLowerCase(),
       )
       setIsLoading(false)
       const {
@@ -327,8 +327,8 @@ const CreateUser = () => {
       const default__site = userDetails.default_site_checked
         ? getSelectedSite()
         : userDetails?.default_site
-        ? userDetails.default_site
-        : getSelectedSite()
+          ? userDetails.default_site
+          : getSelectedSite()
       const url = getSubDomain()?.replace('https://', '')
       // try {
       //   const { authoring_getSitedetails = {} } = await fetchSites({
@@ -513,7 +513,7 @@ const CreateUser = () => {
       window.history.pushState(
         null,
         '',
-        window.location.pathname + location?.search,
+        window.location.pathname + window.location?.search,
       )
 
       window.addEventListener(BEFORE_UNLOAD, unloadCallback)
@@ -591,8 +591,8 @@ const CreateUser = () => {
     subtitle: isEditMode.current
       ? ' '
       : `${t('save_popup_subtitle_1')} #${formik.values.email}#.` +
-        `<br />` +
-        `${t('save_popup_subtitle_2')}`,
+      `<br />` +
+      `${t('save_popup_subtitle_2')}`,
   }
 
   const [parentToolTip, setParentToolTip] = useState('userTypes')
@@ -640,14 +640,14 @@ const CreateUser = () => {
             backgroundColor: ThemeConstants.WHITE_COLOR,
           }}
         >
-          {galleryState && (
+          {/* {galleryState && (
             <Gallery
               handleImageSelected={handleSelectedImage}
               toggleGallery={toggleGallery}
               galleryMode={galleryType.current}
               keyName={key}
             />
-          )}
+          )} */}
         </Box>
         <TopBar
           returnBack={returnBack}

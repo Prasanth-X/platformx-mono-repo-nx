@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material';
 import ContentRow from '../contentRow/ContentRow';
 import '../../Dashboard.css';
-import { RecentContentProps } from './RecentContent.types';
+import { memo } from 'react';
 
 const RecentContent = ({
   recentContent,
@@ -36,4 +36,4 @@ const RecentContent = ({
   );
 };
 
-export default RecentContent;
+export default memo(RecentContent);

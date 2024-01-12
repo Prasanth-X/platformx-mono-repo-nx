@@ -5,21 +5,19 @@ import Box from '@mui/material/Box';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import * as React from 'react';
 
-import { useCommentContext } from '../../context/CommentsContext/CommentsContext';
+import { RootState, setIsCommentPanelOpen } from '@platformx/authoring-state';
+import { useDispatch, useSelector } from 'react-redux';
 import CommentList from './CommentList';
 import { StyledDrawer } from './ContentReview.styles';
 import DefaultCommentList from './DefaultCommentList';
-
 const CommentListPanel: React.FC = () => {
-  const {
-    isCommentsPanelOpen,
-    setIsCommentPanelOpen,
-    comments,
-    setIsReviewEnabled,
-    isReviewEnabled,
-  } = useCommentContext();
+  const { isCommentsPanelOpen, comments } = useSelector(
+    (state: RootState) => state.comment.commentInfo
+  );
+  const dispatch = useDispatch();
+
   return (
-    <div id='pannel'>
+    <div id="pannel">
       <React.Fragment key={'right'}>
         <StyledDrawer
           PaperProps={{
@@ -56,12 +54,12 @@ const CommentListPanel: React.FC = () => {
           hideBackdrop
           anchor={'right'}
           onClose={() => {
-            setIsCommentPanelOpen(false);
+            dispatch(setIsCommentPanelOpen({ value: false }));
           }}
         >
           <Box
             sx={{ width: 250, height: '-webkit-fill-available' }}
-            role='presentation'
+            role="presentation"
           >
             <Box
               sx={{
@@ -73,7 +71,7 @@ const CommentListPanel: React.FC = () => {
                 backgroundColor: '#F7F7FC',
               }}
             >
-              <Typography variant='p3semibold'>Comments</Typography>
+              <Typography variant="p3semibold">Comments</Typography>
               <IconButton
                 sx={{
                   display: 'flex',
@@ -82,7 +80,7 @@ const CommentListPanel: React.FC = () => {
                   right: '7px',
                 }}
                 onClick={() => {
-                  setIsCommentPanelOpen(false);
+                  dispatch(setIsCommentPanelOpen({ value: false }));
                   // setIsReviewEnabled(true);
                 }}
               >

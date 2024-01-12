@@ -1,5 +1,6 @@
+import { RootState } from '@platformx/authoring-state';
 import { memo, useRef } from 'react';
-import { useCommentContext } from '../../context/CommentsContext/CommentsContext';
+import { useSelector } from 'react-redux';
 import CommentBox from './CommentBox';
 import CommentPreview from './CommentPreview';
 import { WrapperProps } from './ContentReview.types';
@@ -9,7 +10,9 @@ const Wrapper: React.FC<WrapperProps> = ({
   elementId,
   workflow,
 }: WrapperProps) => {
-  const { selectedComment, comments } = useCommentContext();
+  const { selectedComment, comments } = useSelector(
+    (state: RootState) => state.comment.commentInfo
+  );
   const popOverRef = useRef(null);
   const pageUrl = new URL(window.location.href);
   console.log('pageUrl', pageUrl);
@@ -27,26 +30,9 @@ const Wrapper: React.FC<WrapperProps> = ({
       .slice(-1) || ''
   );
   const isValid = Object.keys(selectedComment || {}).length > 0;
-  // useEffect(() => {
-  //   // if (scrollRef && scrollRef?.current) {
-  //   console.log('scroll');
-  //   document.getElementById(elementId)?.scrollIntoView({
-  //     behavior: 'smooth',
-  //     block: 'start',
-  //   });
-  //   // }
-  // }, [elementId]);
 
-  console.log('elementId', elementId);
   return (
-    <div
-      id={elementId}
-      style={{ position: 'relative' }}
-      // style={{
-      //   display: elementId === '1' ? 'flex' : '',
-      //   alignItems: elementId === '1' ? 'center' : 'none',
-      // }}
-    >
+    <div id={elementId} style={{ position: 'relative' }}>
       <div ref={popOverRef}></div>
 
       <CommentBox

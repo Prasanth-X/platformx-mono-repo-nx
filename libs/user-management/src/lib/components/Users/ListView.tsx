@@ -9,8 +9,8 @@ import {
   GreenDot,
   Loader,
   RedDot,
+  WarningIcon,
   warning,
-  warningIcon,
 } from '@platformx/utilities'
 import { format } from 'date-fns'
 import { useState } from 'react'
@@ -81,10 +81,10 @@ const ListView = ({
     adminAction === ADMIN_ACTIONS.PENDING
       ? 'Pending approval'
       : adminAction === ADMIN_ACTIONS.REJECTED
-      ? 'Rejected'
-      : adminAction === ADMIN_ACTIONS.APPROVED
-      ? 'Approved'
-      : ''
+        ? 'Rejected'
+        : adminAction === ADMIN_ACTIONS.APPROVED
+          ? 'Approved'
+          : ''
   const handleDialogClose = () => {
     setOpenDialog(false)
   }
@@ -146,7 +146,7 @@ const ListView = ({
 
   const handleChange = (checked: boolean) => {
     const dialogContent: DialogBoxContentProps = {
-      Image: checked ? warning : warningIcon,
+      Image: checked ? warning : WarningIcon,
       Title: checked ? t('deactivate_title') : t('activate_title'),
       Subtitle: checked
         ? `${t('deactivate_subtitle_pre')}
@@ -189,7 +189,7 @@ const ListView = ({
 
   const handleReSendMail = () => {
     const dialogContent: DialogBoxContentProps = {
-      Image: warningIcon,
+      Image: WarningIcon,
       Title: t('resend_invite'),
       Subtitle: `${t('resend_subtitle_pre')}
    #${email}# ${'  '}${t('')}`,
@@ -262,22 +262,22 @@ const ListView = ({
                     </Typography>
                   )
                 ) : //  );
-                //  })
-                filterValue === USERTYPES.COMMUNITYUSER ||
-                  filterValue === USERTYPES.ENDUSER ? (
-                  <Typography
-                    variant="h7medium"
-                    //className='doticon'
-                    sx={{
-                      marginLeft: { xs: 0, em: '10px' },
-                      minWidth: { xs: '100%', em: 'auto' },
-                      paddingLeft: { xs: 0, em: '14px' },
-                      display: { xs: 'inline-block', em: 'none' },
-                    }}
-                  >
-                    {userStatus}
-                  </Typography>
-                ) : null}
+                  //  })
+                  filterValue === USERTYPES.COMMUNITYUSER ||
+                    filterValue === USERTYPES.ENDUSER ? (
+                    <Typography
+                      variant="h7medium"
+                      //className='doticon'
+                      sx={{
+                        marginLeft: { xs: 0, em: '10px' },
+                        minWidth: { xs: '100%', em: 'auto' },
+                        paddingLeft: { xs: 0, em: '14px' },
+                        display: { xs: 'inline-block', em: 'none' },
+                      }}
+                    >
+                      {userStatus}
+                    </Typography>
+                  ) : null}
 
                 <Box
                   className="d-flex"
@@ -328,23 +328,23 @@ const ListView = ({
                         </Typography>
                       )
                     ) : //   );
-                    // })
-                    filterValue === USERTYPES.COMMUNITYUSER ||
-                      filterValue === USERTYPES.ENDUSER ? (
-                      <Typography
-                        variant="h7medium"
-                        //className='doticon'
-                        sx={{
-                          marginLeft: { xs: 0, em: '10px' },
-                          order: { xs: 1, em: 2 },
-                          minWidth: { xs: '100%', em: 'auto' },
-                          paddingLeft: { xs: 0, em: '14px' },
-                          display: { xs: 'none', em: 'initial' },
-                        }}
-                      >
-                        {userStatus}
-                      </Typography>
-                    ) : null}
+                      // })
+                      filterValue === USERTYPES.COMMUNITYUSER ||
+                        filterValue === USERTYPES.ENDUSER ? (
+                        <Typography
+                          variant="h7medium"
+                          //className='doticon'
+                          sx={{
+                            marginLeft: { xs: 0, em: '10px' },
+                            order: { xs: 1, em: 2 },
+                            minWidth: { xs: '100%', em: 'auto' },
+                            paddingLeft: { xs: 0, em: '14px' },
+                            display: { xs: 'none', em: 'initial' },
+                          }}
+                        >
+                          {userStatus}
+                        </Typography>
+                      ) : null}
                   </Box>
 
                   <Typography variant="h7regular" className="doticonmobile">
@@ -363,16 +363,15 @@ const ListView = ({
               </Box>
               <Box color="#89909A" className="d-inline-flex align-items-center">
                 <Box
-                  className={`d-flex align-items-center ${
-                    filterValue === USERTYPES.COMMUNITYUSER ||
-                    filterValue === USERTYPES.ENDUSER
+                  className={`d-flex align-items-center ${filterValue === USERTYPES.COMMUNITYUSER ||
+                      filterValue === USERTYPES.ENDUSER
                       ? 'user-list-actions'
                       : ''
-                  }`}
+                    }`}
                 >
                   {(filterValue === USERTYPES.COMMUNITYUSER ||
                     filterValue === USERTYPES.ENDUSER) &&
-                  isPendingWithAdmin ? (
+                    isPendingWithAdmin ? (
                     <>
                       <AcceptRejectButton
                         onClick={() =>
@@ -435,21 +434,21 @@ const ListView = ({
                   filterValue === USERTYPES.ENDUSER) &&
                   !isPendingWithAdmin) ||
                   filterValue === USERTYPES.AUTHORINGUSER) && (
-                  <Box sx={{ display: { xs: 'flex', em: 'none' } }}>
-                    <MoreDialog
-                      user_id={user_id}
-                      first_name={first_name}
-                      last_name={last_name}
-                      checked={checked}
-                      onChange={handleChange}
-                      handleDelete={confirmDelete}
-                      handleEditUser={handleEditUser}
-                      action_pending={action_pending}
-                      handleReSendMail={handleReSendMail}
-                      disabled={isRejectedUser}
-                    />
-                  </Box>
-                )}
+                    <Box sx={{ display: { xs: 'flex', em: 'none' } }}>
+                      <MoreDialog
+                        user_id={user_id}
+                        first_name={first_name}
+                        last_name={last_name}
+                        checked={checked}
+                        onChange={handleChange}
+                        handleDelete={confirmDelete}
+                        handleEditUser={handleEditUser}
+                        action_pending={action_pending}
+                        handleReSendMail={handleReSendMail}
+                        disabled={isRejectedUser}
+                      />
+                    </Box>
+                  )}
               </Box>
             </Box>
           </Grid>

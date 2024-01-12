@@ -1,44 +1,48 @@
-import { ApolloError } from '@apollo/client';
-import graphqlInstance from '../../config/graphqlConfig';
+import { ApolloError } from '@apollo/client'
+import graphqlInstance from '../../config/graphqlConfig'
 
 import {
   CREATE_CONTENT_TYPE,
   DELETE_CONTENT_TYPE,
   PUBLISH_CONTENT_TYPE,
   UPDATE_CONTENT_TYPE,
-} from '../../graphQL/mutations/contentTypeMutations';
+} from '../../graphQL/mutations/contentTypeMutations'
 import {
   FETCH_CONTENT_BY_PATH,
   FETCH_CONTENT_TYPE_LIST_ALL,
-} from '../../graphQL/queries/contentTypesQueries';
-import { SearchContentListQueries } from '../../graphQL/queries/searchQueries';
-import { ApiResponse } from '../../utils/types';
-import { ROW_SIZE } from '../../utils/constants';
-import { mapFetchALL } from './mapper';
-import { sortedData } from '../../utils/helper';
+} from '../../graphQL/queries/contentTypesQueries'
+import { SearchContentListQueries } from '../../graphQL/queries/searchQueries'
+import { ROW_SIZE } from '../../utils/constants'
+import { sortedData } from '../../utils/helper'
+import { ApiResponse } from '../../utils/types'
+import { mapFetchALL } from './mapper'
 
-// FetchQueries 
-export const fetchContentByPath = FETCH_CONTENT_BY_PATH;
-export const fetchContentTypeList = FETCH_CONTENT_TYPE_LIST_ALL;
+// FetchQueries
+export const fetchContentByPath = FETCH_CONTENT_BY_PATH
+export const fetchContentTypeList = FETCH_CONTENT_TYPE_LIST_ALL
 
 // MutateQueries
-export const createContentType = CREATE_CONTENT_TYPE;
-export const updateContentType = UPDATE_CONTENT_TYPE;
-export const publishContentType = PUBLISH_CONTENT_TYPE;
-export const deleteContentType = DELETE_CONTENT_TYPE;
+export const createContentType = CREATE_CONTENT_TYPE
+export const updateContentType = UPDATE_CONTENT_TYPE
+export const publishContentType = PUBLISH_CONTENT_TYPE
+export const deleteContentType = DELETE_CONTENT_TYPE
 
 const contentTypeAPIs = {
+  createContentType: CREATE_CONTENT_TYPE,
+  updateContentType: UPDATE_CONTENT_TYPE,
+  publishContentType: PUBLISH_CONTENT_TYPE,
+  deleteContentType: DELETE_CONTENT_TYPE,
   fetchContent: async <T>(input: any): Promise<ApiResponse<T>> => {
     try {
       const { data } = await graphqlInstance.query({
         query: FETCH_CONTENT_BY_PATH,
         variables: input,
         fetchPolicy: 'no-cache',
-      });
-      return data;
+      })
+      return data
     } catch (err: any) {
-      if (err instanceof ApolloError) console.log(err.graphQLErrors);
-      throw err;
+      if (err instanceof ApolloError) console.log(err.graphQLErrors)
+      throw err
     }
   },
   fetchContentAll: async <T>(input: any): Promise<ApiResponse<T>> => {
@@ -47,38 +51,38 @@ const contentTypeAPIs = {
         query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
         variables: input,
         fetchPolicy: 'no-cache',
-      });
-      return data;
+      })
+      return data
     } catch (err: any) {
-      if (err instanceof ApolloError) console.log(err.graphQLErrors);
-      throw err;
+      if (err instanceof ApolloError) console.log(err.graphQLErrors)
+      throw err
     }
   },
 
   fetchSearchContent: async (
     contentType: string,
-    location: { state: any; },
+    location: { state: any },
     filter: string,
     startIndex: number,
     contentList: any,
-    reloadContent = false
+    reloadContent = false,
   ) => {
     const newPagination = {
       start: reloadContent ? 0 : startIndex,
       rows: ROW_SIZE,
-    };
+    }
     const variables = mapFetchALL(
       location.state,
       filter,
       contentType,
-      newPagination
-    );
+      newPagination,
+    )
     const { data } = await graphqlInstance.query({
       query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
       variables: variables,
       fetchPolicy: 'no-cache',
-    });
-    const sortedContent = sortedData(data?.authoring_getContentTypeItems || []);
+    })
+    const sortedContent = sortedData(data?.authoring_getContentTypeItems || [])
 
     return sortedContent
     // return {
@@ -92,18 +96,17 @@ const contentTypeAPIs = {
     // };
   },
 
-
   fetchContentTypeList: async <T>(input: any): Promise<ApiResponse<T>> => {
     try {
       const { data, loading } = await graphqlInstance.query({
         query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
         variables: input,
         fetchPolicy: 'no-cache',
-      });
-      return { data: data, loading: loading };
+      })
+      return { data: data, loading: loading }
     } catch (err: any) {
-      if (err instanceof ApolloError) console.log(err.graphQLErrors);
-      throw err;
+      if (err instanceof ApolloError) console.log(err.graphQLErrors)
+      throw err
     }
   },
   fetchSuggestions: async <T>(input: any): Promise<ApiResponse<T>> => {
@@ -112,11 +115,11 @@ const contentTypeAPIs = {
         query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
         variables: input,
         fetchPolicy: 'no-cache',
-      });
-      return { data: data, loading: loading };
+      })
+      return { data: data, loading: loading }
     } catch (err: any) {
-      if (err instanceof ApolloError) console.log(err.graphQLErrors);
-      throw err;
+      if (err instanceof ApolloError) console.log(err.graphQLErrors)
+      throw err
     }
   },
 
@@ -126,25 +129,25 @@ const contentTypeAPIs = {
     filter: any,
     startIndex: any,
     contentList: any,
-    reloadContent = false
+    reloadContent = false,
   ) => {
     // const { startIndex, contentList } = state.content;
     const pagination = {
       start: reloadContent ? 0 : startIndex,
       rows: ROW_SIZE,
-    };
+    }
     const variables = {
       pagination,
       filter: contentType,
       isListing: true,
-    };
+    }
     const { data } = await graphqlInstance.query({
       query: SearchContentListQueries.FETCH_COURSE_LIST,
       variables: variables,
       fetchPolicy: 'no-cache',
-    });
-    console.log('courseList', data);
-    const sortedContent = sortedData(data?.authoring_recentContents || []);
+    })
+    console.log('courseList', data)
+    const sortedContent = sortedData(data?.authoring_recentContents || [])
 
     return {
       type: 'UPDATE_CONTENT',
@@ -154,9 +157,8 @@ const contentTypeAPIs = {
       loading: false,
       newDataSize: [...JSON.parse(JSON.stringify(sortedContent))].length,
       contentType: contentType,
-    };
-  }
+    }
+  },
+}
 
-};
-
-export default contentTypeAPIs;
+export default contentTypeAPIs

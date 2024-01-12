@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import './StringTextBoxComponent.css';
-import CloseIcon from '@mui/icons-material/Close';
-import { InputAdornment, TextField } from '@mui/material';
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import CloseIcon from '@mui/icons-material/Close'
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
+import { InputAdornment, TextField } from '@mui/material'
+import { useEffect, useState } from 'react'
 import {
+  allowOnlyLetterInputData,
   allowOnlyNumberInputData,
   allowOnlyShippingLetterInputData,
-  allowOnlyLetterInputData,
-} from 'lib/utils/helperFns';
+} from 'utils/helperFns'
+import './StringTextBoxComponent.css'
 
 const allowInputParams = (e: any, key: string) => {
   switch (key) {
     case 'number':
-      return allowOnlyNumberInputData(e);
+      return allowOnlyNumberInputData(e)
     case 'CustomFirstName':
-      return allowOnlyShippingLetterInputData(e);
+      return allowOnlyShippingLetterInputData(e)
     case 'charter':
-      return allowOnlyLetterInputData(e);
+      return allowOnlyLetterInputData(e)
     default:
-      return null;
+      return null
   }
-};
+}
 
 type StringOnBlurTextBoxProps = {
-  maxLength?: number;
-  name?: string;
-  label?: string;
-  value?: string;
-  helperText?: any;
-  handleChange?: any;
-  required?: boolean;
-  isDisabled?: boolean;
-  isCloseIcon?: boolean;
-  rows?: string | number;
-  errorMessage?: string;
-  cssClass?: string | number;
-  isPasswordField?: boolean;
-  customInPutAllowField?: string;
-  multiline?: string | number | boolean;
-};
+  maxLength?: number
+  name?: string
+  label?: string
+  value?: string
+  helperText?: any
+  handleChange?: any
+  required?: boolean
+  isDisabled?: boolean
+  isCloseIcon?: boolean
+  rows?: string | number
+  errorMessage?: string
+  cssClass?: string | number
+  isPasswordField?: boolean
+  customInPutAllowField?: string
+  multiline?: string | number | boolean
+}
 
 const StringOnBlurTextBox = (props: StringOnBlurTextBoxProps) => {
   const {
@@ -56,15 +56,15 @@ const StringOnBlurTextBox = (props: StringOnBlurTextBoxProps) => {
     errorMessage = '',
     isCloseIcon = true,
     customInPutAllowField = '',
-  } = props;
+  } = props
 
-  const [stateValue, setStateValue] = useState('');
-  const [textBoxType, setTextBoxType] = useState('text');
+  const [stateValue, setStateValue] = useState('')
+  const [textBoxType, setTextBoxType] = useState('text')
 
   const onChange = (e: any) => {
-    const { target: { value: val = '' } = {} } = e;
-    setStateValue(val);
-  };
+    const { target: { value: val = '' } = {} } = e
+    setStateValue(val)
+  }
 
   const clearText = (names = '') => {
     handleChange({
@@ -72,21 +72,21 @@ const StringOnBlurTextBox = (props: StringOnBlurTextBoxProps) => {
         name: names,
         value: '',
       },
-    });
-    setStateValue('');
-  };
+    })
+    setStateValue('')
+  }
 
   const showHideShowText = () => {
-    setTextBoxType(textBoxType === 'text' ? 'password' : 'text');
-  };
+    setTextBoxType(textBoxType === 'text' ? 'password' : 'text')
+  }
 
   useEffect(() => {
-    isPasswordField ? setTextBoxType('password') : setTextBoxType('text');
-  }, [isPasswordField]);
+    isPasswordField ? setTextBoxType('password') : setTextBoxType('text')
+  }, [isPasswordField])
 
   useEffect(() => {
-    setStateValue(value);
-  }, [value]);
+    setStateValue(value)
+  }, [value])
 
   return (
     <>
@@ -152,6 +152,6 @@ const StringOnBlurTextBox = (props: StringOnBlurTextBoxProps) => {
         </Typography>
       ) : null} */}
     </>
-  );
-};
-export default StringOnBlurTextBox;
+  )
+}
+export default StringOnBlurTextBox

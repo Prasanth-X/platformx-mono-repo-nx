@@ -1,22 +1,22 @@
-import { Box, Grid, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import Title from '../../components/common/Title';
-import { useDashboardData } from "@platformx/authoring-apis";
-import { useUserSession } from "@platformx/utilities";
-import RecentCard from '../recentCard/RecentCard';
-import { useStyles } from '../../Dashboard.styles';
-import AllStudents from '../fifaDashboard/components/AllStudents';
-import CourseCard from '../fifaDashboard/components/CourseCard';
-import RecentContent from '../recentContent/RecentContent';
-import { courseListMapper } from '../../utils/mapper';
+import { Box, Grid, Typography } from '@mui/material'
+import { useDashboardData } from '@platformx/authoring-apis'
+import { useUserSession } from '@platformx/utilities'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import Title from '../../components/common/Title'
+import { useStyles } from '../../dashboards.styles'
+import { courseListMapper } from '../../utils/mapper'
+import AllStudents from '../fifaDashboard/components/AllStudents'
+import CourseCard from '../fifaDashboard/components/CourseCard'
+import RecentCard from '../recentCard/RecentCard'
+import RecentContent from '../recentContent/RecentContent'
 
 const InstructorDashBoard = () => {
-  const classes = useStyles();
-  const { t } = useTranslation();
-  const [getSession] = useUserSession();
-  const { userInfo, role } = getSession();
-  const [courses, setCourses] = useState([]);
+  const classes = useStyles()
+  const { t } = useTranslation()
+  const [getSession] = useUserSession()
+  const { userInfo, role } = getSession()
+  const [courses, setCourses] = useState([])
   const {
     dashBoard,
     error,
@@ -29,39 +29,37 @@ const InstructorDashBoard = () => {
     view,
     fetchDashBoardData,
     fetchContentDetails,
-  } = useDashboardData();
+  } = useDashboardData()
 
-  const taskLength = dashBoard?.taskPages?.length || 0;
+  const taskLength = dashBoard?.taskPages?.length || 0
 
   const overDueTaskLength = () => {
-    let duetaskCount = 0;
+    let duetaskCount = 0
     dashBoard?.taskPages?.forEach((val) => {
       if (new Date() > new Date(val.due_date)) {
-        duetaskCount = duetaskCount + 1;
+        duetaskCount = duetaskCount + 1
       }
-    });
-    return duetaskCount;
-  };
+    })
+    return duetaskCount
+  }
 
   useEffect(() => {
     dashBoard?.coursesList?.length !== 0 &&
-      setCourses(courseListMapper(dashBoard?.coursesList));
-  }, [dashBoard]);
+      setCourses(courseListMapper(dashBoard?.coursesList))
+  }, [dashBoard])
 
   return (
     <Box className={classes.container}>
-      <Box>
+      <Box sx={{ display: {xs: 'block', em: 'flex' }}}>
         <Title
-          titleVarient='h1bold'
-          titleColor='#4B9EF9'
-          padding='0'
+          titleVarient="h2bold"
+          titleColor="#4B9EF9"
+          padding="0 5px 0 0"
           title={t('greets_x')}
         />
+        <Title titleVarient="h2bold" title={userInfo?.name} />
       </Box>
-      <Box>
-        <Title titleVarient='h1bold' padding='0' title={userInfo?.name} />
-      </Box>
-      <Typography variant='h6medium' sx={{ marginTop: '18px' }}>
+      <Typography variant="h6medium" mt="5px">
         {/* #TODO Commenting for X-Launch */}
         {taskLength > 0 &&
           ` ${t('you_have')} ${taskLength} ${t('new_task')}`}{' '}
@@ -79,7 +77,7 @@ const InstructorDashBoard = () => {
             lg={12}
             sx={{ marginTop: { xs: '20px', lg: '0' } }}
           >
-            <RecentCard title={t('recent_content')} titleVariant='h5bold'>
+            <RecentCard title={t('recent_content')} titleVariant="h5bold">
               {(dashBoard?.recentContent?.length || 0) > 0 && (
                 <RecentContent
                   deleteContent={deleteContent}
@@ -108,7 +106,7 @@ const InstructorDashBoard = () => {
       >
         <Grid container spacing={3} sx={{ margin: '0' }}>
           <Grid item xs={12} sx={{ marginBottom: '20px' }}>
-            <Typography variant='h5bold'>All Courses</Typography>
+            <Typography variant="h5bold">All Courses</Typography>
           </Grid>
           <Box
             sx={{
@@ -135,14 +133,14 @@ const InstructorDashBoard = () => {
         }}
       >
         <Box className={classes.cardText}>
-          <Title titleVarient='h5bold' title='All Users' />
+          <Title titleVarient="h5bold" title="All Users" />
         </Box>
         {(dashBoard?.userCourseList?.length || 0) > 0 && (
           <AllStudents users={dashBoard?.userCourseList} />
         )}
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default InstructorDashBoard;
+export default InstructorDashBoard

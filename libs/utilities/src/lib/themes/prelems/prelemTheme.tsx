@@ -1,17 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import React from "react";
-import ThemeConstants from "./prelemVariableLight";
+import ThemeConstants from "./Feyenoord/Variable";
 
-declare module "@mui/material/styles" {
-  interface BreakpointOverrides {
-    xs: true;  
-    sm: true;
-    md: true;
-    lg: true;
-    xl: true;
-    em: true;   
-  }
-}
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     weblarge: true;
@@ -299,6 +289,7 @@ const PrelemTheme = createTheme({
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
             "&:hover": {
               background: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR_HOVER,
+              color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.COLOR_HOVER,
             },
             "&:disabled": {
               color: ThemeConstants.PRIMARY_PRELEM.BUTTON.VARIANT1.COLOR,
@@ -521,6 +512,7 @@ const PrelemTheme = createTheme({
             margin: `${ThemeConstants.ELEMENT.BUTTON.MARGIN.MDMARGIN}`,
             minWidth: `${ThemeConstants.ELEMENT.BUTTON.MIN_WIDTH}`,
             "&:hover": {
+              color: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.COLOR_HOVER,
               background: ThemeConstants.SECONDARY_PRELEM.BUTTON.VARIANT1.BACKGROUND_COLOR_HOVER,
             },
             "&:disabled": {
@@ -2659,19 +2651,6 @@ const PrelemTheme = createTheme({
           "&.footer-link-grid": {
             fontSize: ThemeConstants.FONTSIZE_12,
           },
-          "&.xerox-footer-wrapper": {
-            backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
-            color: ThemeConstants.WHITE_COLOR,
-            borderRadius: "0",
-            justifyContent: "space-between",
-            alignItems: "center",
-            [`@media (max-width:${ThemeConstants.LG}px)`]: {
-              justifyContent: "center",
-            },
-            a: {
-              margin: " 0 20px",
-            },
-          },
         },
       },
     },
@@ -3139,7 +3118,7 @@ const PrelemTheme = createTheme({
         root: {
           // this is styles for the new variants
           "&.header-appbar": {
-            backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
+            background: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.WHITE_COLOR,
             padding: "10px 0",
             position: "relative",
@@ -3165,94 +3144,6 @@ const PrelemTheme = createTheme({
               },
             },
           },
-          "&.xerox-header-appbar": {
-            // backgroundColor: ThemeConstants.WHITE_COLOR,
-            // color: ThemeConstants.PRIMARY_MAIN_COLOR,
-            padding: "55px 0 0",
-            position: "relative",
-            boxShadow: "none",
-            [`@media (min-width:${ThemeConstants.SM}px)`]: {
-              padding: "15px 0 0",
-            },
-            [`@media (min-width:${ThemeConstants.LG}px)`]: {
-              padding: "0 0",
-              borderBottom: "1px solid #c4c4c4",
-            },
-            ".logo": {
-              width: "36px",
-              [`@media (min-width:${ThemeConstants.MD}px)`]: {
-                width: "42px",
-              },
-              img: {
-                maxWidth: "100%",
-                display: "block",
-              },
-            },
-            ".xerox-logo": {
-              width: "225px",
-              display: "flex",
-              flexWrap: "wrap",
-              minWidth: "225px",
-              img: {
-                maxWidth: "100%",
-                display: "block",
-              },
-            },
-            ".powered-by-x": {
-              padding: "8px 13px",
-              borderLeft: "1px solid #d8d8d8",
-              borderRight: "1px solid #d8d8d8",
-              marginLeft: "20px",
-              // maxWidth: '140px',
-              [`@media (max-width:${ThemeConstants.LG}px)`]: {
-                position: "absolute",
-                right: "24px",
-                top: "0",
-                whiteSpace: "initial",
-                padding: "5px 13px",
-              },
-              [`@media (max-width:${ThemeConstants.SM}px)`]: {
-                right: "auto",
-                top: "0",
-                left: "0",
-                width: "100%",
-                maxWidth: "none",
-                border: "0",
-                borderTop: "1px solid #d8d8d8",
-                borderBottom: "1px solid #d8d8d8",
-                whiteSpace: "initial",
-                padding: "5px 0",
-                display: "flex",
-                margin: "0",
-                alignItems: "center",
-                justifyContent: "center",
-              },
-              p: {
-                fontSize: ThemeConstants.FONTSIZE_14,
-              },
-              img: {
-                marginRight: "5px",
-              },
-              span: {
-                color: ThemeConstants.PRIMARY_MAIN_COLOR,
-                fontWeight: ThemeConstants.FONTWEIGHT_BOLD,
-                fontSize: ThemeConstants.FONTSIZE_12,
-              },
-            },
-            ".xerox-profile-name": {
-              p: {
-                fontWeight: ThemeConstants.FONTWEIGHT_REGULAR,
-                [`@media (max-width:${ThemeConstants.XL}px)`]: {
-                  fontSize: ThemeConstants.FONTSIZE_14,
-                },
-              },
-            },
-            "div::-webkit-scrollbar": {
-              background: "transparent",
-              width: "0px",
-              height: "0px",
-            },
-          },
         },
       },
     },
@@ -3261,7 +3152,7 @@ const PrelemTheme = createTheme({
         root: {
           color: ThemeConstants.PRIMARY_PRELEM.TITLE,
           "&.footer-wrapper": {
-            backgroundColor: ThemeConstants.PRIMARY_MAIN_COLOR,
+            background: ThemeConstants.PRIMARY_MAIN_COLOR,
             color: ThemeConstants.WHITE_COLOR,
             minHeight: "7rem",
           },

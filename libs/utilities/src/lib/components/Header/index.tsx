@@ -23,7 +23,7 @@ import {
   getSelectedSite,
 } from '../../utils/helperFns';
 import { LOGOUT_URL } from '../../constants/AuthConstant';
-import ThemeConstants from '../../themes/authoring/variable';
+import ThemeConstants from '../../themes/authoring/lightTheme/lightThemeVariable';
 import PlateformXDialog from '../Popups/PlateformXDialog';
 
 const saveWarningMessage = {

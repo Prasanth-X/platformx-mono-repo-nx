@@ -3,34 +3,30 @@ import {
   CATEGORY_CONTENT,
   CONTENT_TYPES,
   useContentListing,
-  useContentSearch
-} from '@platformx/authoring-apis';
-import {
-  ContentState,
-  previewArticle
-} from '@platformx/authoring-state';
-import { NoSearchResult } from '@platformx/utilities';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import ContentListing from '../ContentListing/ContentListing';
-import ContentListingHeader from '../ContentListingHeader/ContentListingHeader';
+  useContentSearch,
+} from '@platformx/authoring-apis'
+import { RootState } from '@platformx/authoring-state'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
+import ContentListing from '../ContentListing/ContentListing'
+import ContentListingHeader from '../ContentListingHeader/ContentListingHeader'
 const ContListingContainer = ({ contentType }: { contentType: string }) => {
-  const navigate = useNavigate();
-  const startIndex = 0;
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const [isSpinning, setIsSpinning] = useState(false);
 
-  const [filterValue, setFilterValue] = useState('ALL');
+  const navigate = useNavigate()
+  const startIndex = 0
+  const location = useLocation()
+  const [isSpinning, setIsSpinning] = useState(false)
 
-  const { loading, error, refetch, contentList, fetchMore } = useContentSearch({
+  const [filterValue, setFilterValue] = useState('ALL')
+  const { contentArray } = useSelector((state: RootState) => state.content)
+  const { loading, error, refetch, fetchMore } = useContentSearch({
     contentType,
     locationState: location,
     filter: filterValue,
     startIndex,
     reloadContent: false,
-  });
+  })
   const {
     deleteContent,
     duplicate,
@@ -40,28 +36,35 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
     edit,
     fetchContentDetails,
     duplicateToSite,
-  } = useContentListing('ALL');
+  } = useContentListing('ALL')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsSpinning(true);
+      await refetch();
+      setIsSpinning(false);
+    };
+
+    fetchData();
+  }, [contentType]);
 
   const createContentNew = () => {
-    dispatch(previewArticle({}));
-    navigate(`/content/create-${contentType?.toLowerCase()}`);
-  };
+    // dispatch(previewArticle({}));
+    navigate(`/content/create`, { state: contentType?.trim()?.toLowerCase() })
+  }
 
   const handleFilter = async (filter: string) => {
-    setFilterValue(filter);
-  };
+    setFilterValue(filter)
+  }
   const handleRefresh = async () => {
-
-    setIsSpinning(true);
-    refetch();
-
-  };
-
+    setIsSpinning(true)
+    refetch()
+  }
 
   const handleFetchMore = async () => {
-    await fetchMore();
-  };
-  console.log('contentList', contentList?.length);
+    await fetchMore()
+  }
+  console.log('contentList', contentArray?.length)
 
   return (
     <>
@@ -75,26 +78,26 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
         animationState={isSpinning}
       />
 
-      {(!loading && contentList && contentList?.length > 0) && (
-        <ContentListing
-          contentList={contentList}
-          deleteContent={deleteContent}
-          dataList={contentList}
-          fetchMore={handleFetchMore}
-          preview={preview}
-          unPublish={unPublish}
-          view={view}
-          edit={edit}
-          loading={loading}
-          duplicate={duplicate}
-          fetchContentDetails={fetchContentDetails}
-          duplicateToSite={duplicateToSite}
-        />
-      )}
-      {
+      {/* {(!loading && contentList && contentList?.length > 0) && ( */}
+      <ContentListing
+        contentList={contentArray}
+        deleteContent={deleteContent}
+        dataList={contentArray}
+        fetchMore={handleFetchMore}
+        preview={preview}
+        unPublish={unPublish}
+        view={view}
+        edit={edit}
+        loading={loading}
+        duplicate={duplicate}
+        fetchContentDetails={fetchContentDetails}
+        duplicateToSite={duplicateToSite}
+      />
+      {/* )} */}
+      {/* {
         !loading && contentList?.length === 0 && <NoSearchResult />
-      }
+      } */}
     </>
-  );
-};
-export default ContListingContainer;
+  )
+}
+export default ContListingContainer
