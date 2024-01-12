@@ -1,5 +1,7 @@
-const Radnika = require('../../fonts/Radnika/Radnika-Medium.woff2') as string
-const Inter = require('../../fonts/Inter/Inter-Regular.woff2') as string
+const Randnika =
+  require('../../../fonts/Radnika/Radnika-Medium.woff2') as string
+const InterRegular = require('../../../fonts/Inter/Inter-Regular.woff2') as string
+
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#333333',
@@ -910,10 +912,10 @@ const ThemeConstants = {
     },
   },
 
-  FONTNAMEPRIMARY: 'Radnika',
-  FONTNAMESECONDARY: 'Inter',
-  FONTFAMILYPRIMARY: Radnika,
-  FONTFAMILYSECONDARY: Inter,
-}
+  FONTFAMILYPRIMARY: Randnika,
+  FONTFAMILYSECONDARY: InterRegular,
+  FONTNAMEPRIMARY: "Randnika",
+  FONTNAMESECONDARY: "Inter",
+};
 
 export default ThemeConstants

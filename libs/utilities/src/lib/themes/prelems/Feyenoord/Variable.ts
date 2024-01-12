@@ -1,6 +1,6 @@
-const HCLRobort =
-  require('../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string
-const InterRegular = require('../../fonts/Inter/Inter-Regular.woff2') as string
+const HelveticaNeue =
+  require('../../../fonts/HelveticaNeue/HelveticaNeue-Condensed-Bold.woff2') as string
+const Arial = require('../../../fonts/Arial/arial.woff2') as string
 
 const ThemeConstants = {
   // Color Variables
@@ -90,73 +90,8 @@ const ThemeConstants = {
   TEXTTRANSFORMLOWERCASE: 'lowercase',
   // Border Radius
   DEFAULT_BORDER_RADIUS: '3px',
-  ROUND_BORDER_RADIUS: '35px',
   DEFAULT_BORDER_RADIUS_CTA: '5px',
-  // FONTFAMILYREGULAR: PoppinsRegular,
-  // FONTFAMILYLIGHT: PoppinsLight,
-
   /***== New Design System Implementation ==***/
-  /* COLORS */
-  // PRIMARY_COLOR: {
-  //   950: "#14142B",
-  //   900: "#262338",
-  //   800: "#4E4B66",
-  //   700: "#6E7191",
-  //   600: "#A0A3BD",
-  //   500: "#D9DBE9",
-  //   400: "#EFF0F6",
-  //   300: "#F7F7FC",
-  //   200: "#FCFCFC",
-  //   100: "#FFFFFF",
-  // },
-  // SECONDRY_COLOR: {
-  //   950: "#0049B2",
-  //   900: "#0F5FDC",
-  //   800: "#2874F0",
-  //   700: "#3282FA",
-  //   600: "#3C91FF",
-  //   500: "#4B9EF9",
-  //   400: "#6EB8F9",
-  //   300: "#8CC8FA",
-  //   200: "#B4DBFC",
-  //   100: "#D7ECFD",
-  // },
-  // WARNING_COLOR: {
-  //   950: "#AD6F0B",
-  //   900: "#C8870A",
-  //   800: "#D8991D",
-  //   700: "#E2AB30",
-  //   600: "#F2BB33",
-  //   500: "#FFCD41",
-  //   400: "#FFD970",
-  //   300: "#FFE18D",
-  //   200: "#FFECC7",
-  //   100: "#FFF2D9",
-  // },
-  // ERROR_COLOR: {
-  //   950: "#B71C1C",
-  //   900: "#C62828",
-  //   800: "#D32F2F",
-  //   700: "#E53935",
-  //   600: "#F44336",
-  //   500: "#EF5350",
-  //   400: "#E57373",
-  //   300: "#EF9A9A",
-  //   200: "#FFCDD2",
-  //   100: "#FFEBEE",
-  // },
-  // SUCCESS_COLOR: {
-  //   950: "#077251",
-  //   900: "#0A875D",
-  //   800: "#0FA069",
-  //   700: "#2DB26C",
-  //   600: "#49C173",
-  //   500: "#62D16B",
-  //   400: "#82DC73",
-  //   300: "#A1E596",
-  //   200: "#BEEBB4",
-  //   100: "#DEF5D9",
-  // },
   /*  Typography */
   TYPOGRAPHY: {
     HEADING: {
@@ -277,7 +212,7 @@ const ThemeConstants = {
       },
     },
     BUTTON: {
-      BORDER_RADIUS: '5px',
+      BORDER_RADIUS: '0px 0px 15px 0px',
       MEDIUM_HEIGHT: '47px',
       SMALL_HEIGHT: '38px',
       LARGE_HEIGHT: '63px',
@@ -335,404 +270,37 @@ const ThemeConstants = {
   OVERYLAY: {
     EDITOVERLAY: '50, 130, 250, 0.9',
     BGOVERLAY: '255, 255, 255, 0.3',
-    CARDOVERLAY: '0, 0,0, 0.6',
+    CARDOVERLAY: '0, 0,0, 0.2',
   },
   RADIUS: {
-    VALUE1: '5px',
-    VALUE2: '8px',
+    VALUE1: '0px',
+    VALUE2: '0px 0px 0px 0px',
   },
 
   /* Prelem Type 1 PRIMARY (default White background)*/
   SECONDARY_PRELEM: {
-    BACKGROUND: '#fff',
-    TITLE: '#14142B',
-    PARAGRAPH: '#4E4B66',
-    LABEL: '#6E7191',
-    LINE: '#D9DBE9',
-    LINK: '#4B9EF9',
-    BUTTON: {
-      VARIANT1: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: '#14142B',
-        BACKGROUND_COLOR_HOVER: '#413C61',
-        BORDER: 'solid 1px  #14142B',
-        BORDER_HOVER: 'solid 1px  #14142B',
-      },
-      VARIANT2: {
-        COLOR: '#14142B',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#14142B',
-        BORDER: 'solid 1px  #14142B',
-        BORDER_HOVER: 'solid 1px  #14142B',
-      },
-      VARIANT3: {
-        COLOR: '#4B9EF9',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#4B9EF9',
-        BORDER: 'solid 1px  #4B9EF9',
-        BORDER_HOVER: 'solid 1px  #4B9EF9',
-      },
-      VARIANT4: {
-        COLOR: '#14142B',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#14142B',
-        BORDER: 'solid 1px  #14142B',
-        BORDER_HOVER: 'solid 1px  #14142B',
-      },
-    },
-    INPUT: {
-      PLACEHOLDER: '#EFF0F6',
-      TEXT: '#14142B',
-      TEXT_ACTIVE: '#14142B',
-      LABEL: '#6E7191',
-      BORDER: 'solid 2px transparent',
-      BORDER_ACTIVE: 'solid 2px #14142B',
-      BORDER_ERROR: 'solid 2px #F33E41',
-      BORDER_SUCCESS: 'solid 2px #0FA069',
-      BACKGROUND_FOCUSED: '#fff',
-      BACKGROUND_ERROR: '#FFEBEE',
-      BACKGROUND_ERROR_TEXT: '#F33E41',
-      BACKGROUND_SUCCESS: '#DEF5D9',
-      BACKGROUND_SUCCESS_TEXT: '#0FA069',
-      DISABLED: '#FFD970',
-    },
-    SELECT: {
-      PLACEHOLDER: '#EFF0F6', //Selectbox bg
-      LABEL: '#6E7191', //animated tex of focus
-      TEXT: '#6E7191', //dropdownlist popup default text
-      TEXT_HOVER: '#14142B', //dropdownlist popup hover text color
-      TEXT_SELECTED: '#14142B', //dropdownlist selected text color
-      TEXT_BACKGROUND_HOVER: '#FCFCFC', //dropdownlist popup hover text background
-      BORDER: 'solid 2px transparent',
-      BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
-    },
-    CHECKBOX: {
-      BOX_COLOR: '#6E7191',
-    },
-    RADIO: {
-      BOX_COLOR: '#14142B',
-      BOX_COLOR_ACTIVE: '#14142B',
-      SIZE: '24px',
-    },
-    ACCORDIAN: {
-      BACKGROUND: '#fff',
-      COLOR: '#14142B',
-      BORDER_COLOR: '#D9DBE9',
-    },
-    CARDS: {
-      VARIANT1: {
-        BACKGROUND: '#FFFFFF',
-        ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_HOVER: '#14142B',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
-      },
-      VARIANT2: {
-        BACKGROUND: '#F5F5FF',
-        ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_HOVER: '#14142B',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
-      },
-      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
-      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
-    },
-    ACCENTS: {
-      VARIANT1: {
-        BACKGROUND: '#F5F5FF',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT2: {
-        BACKGROUND: '#D7ECFD',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT3: {
-        BACKGROUND: '#A8E6CF',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT4: {
-        BACKGROUND: '#FFD3B6',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT5: {
-        BACKGROUND: '#FFAAA5',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT6: {
-        BACKGROUND: '#A2D2EC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-    },
-    NOTIFICATION: {
-      SUCCESS: {
-        BACKGROUND: '#0EA069',
-        COLOR: '#fff',
-      },
-      WARNING: {
-        BACKGROUND: '#FFCC40',
-        COLOR: '#fff',
-      },
-      ERROR: {
-        BACKGROUND: '#F33E41',
-        COLOR: '#fff',
-      },
-      INFO: {
-        BACKGROUND: '#009DDF',
-        COLOR: '#fff',
-      },
-    },
-    POPUP: {
-      BACKGROUND: 'orange',
-      COLOR: 'orange',
-    },
-    TAB: {
-      VARIANT1: {
-        TITLE: '',
-        TITLE_ACTIVE: '',
-        TITLE_BACKGROUND: '',
-        TITLE_ACTIVE_BACKGROUND: '',
-        PARAGRAPH: '',
-        LABEL: '',
-        LINE: '',
-        BACKGROUND_COLOR: '',
-        BACKGROUND_COLOR_ACTIVE: '',
-        BORDER_COLOR: '',
-        BORDER_COLOR_ACTIVE: '',
-      },
-    },
-  },
-
-  /* Prelem Type 2 SECONDARY (default black background)*/
-  PRIMARY_PRELEM: {
-    BACKGROUND: '#231C39',
+    BACKGROUND: '#010101',
     TITLE: '#FFFFFF',
     PARAGRAPH: '#EFF0F6',
-    LABEL: '#4B9EF9',
-    LINE: '#3E306A',
-    LINK: '#4B9EF9',
+    LABEL: '#ed1c24',
+    LINE: '#323232',
+    LINK: '#ed1c24',
     BUTTON: {
       VARIANT1: {
-        COLOR: '#14142B',
-        COLOR_HOVER: '#14142B',
-        BACKGROUND_COLOR: '#FFFFFF',
-        BACKGROUND_COLOR_HOVER: '#D7ECFD',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
-      },
-      VARIANT2: {
         COLOR: '#FFFFFF',
-        COLOR_HOVER: '#14142B',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
-      },
-      VARIANT3: {
-        COLOR: '#4B9EF9',
         COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#4B9EF9',
-        BORDER: 'solid 1px  #4B9EF9',
-        BORDER_HOVER: 'solid 1px  #4B9EF9',
-      },
-      VARIANT4: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#4B9EF9',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
-      },
-    },
-    INPUT: {
-      PLACEHOLDER: '#343051',
-      TEXT: '#89909A',
-      TEXT_ACTIVE: '#fffff',
-      LABEL: '#6E7191',
-      BORDER: 'solid 2px transparent',
-      BORDER_ACTIVE: 'solid 2px #6E7191',
-      BORDER_ERROR: 'solid 2px #F33E41',
-      BORDER_SUCCESS: 'solid 2px #0FA069',
-      BACKGROUND_FOCUSED: '#343051',
-      BACKGROUND_ERROR: '#FFEBEE',
-      BACKGROUND_ERROR_TEXT: '#F33E41',
-      BACKGROUND_SUCCESS: '#DEF5D9',
-      BACKGROUND_SUCCESS_TEXT: '#0FA069',
-      DISABLED: '#343051',
-    },
-    SELECT: {
-      PLACEHOLDER: '#343051', //Selectbox bg
-      LABEL: '#6E7191', //animated tex of focus
-      TEXT: '#6E7191', //dropdownlist popup default text
-      TEXT_HOVER: '#ffffff', //dropdownlist popup hover text color,
-      TEXT_SELECTED: '#89909A',
-      TEXT_BACKGROUND_HOVER: '#4B9EF9', //dropdownlist popup hover text background
-      BORDER: 'solid 2px transparent',
-      BORDER_ACTIVE: 'solid 2px #6E7191', //focused border color
-    },
-    CHECKBOX: {
-      BOX_COLOR: '#4B9EF9',
-    },
-    RADIO: {
-      BOX_COLOR: '#4B9EF9',
-      BOX_COLOR_ACTIVE: '#4B9EF9',
-      SIZE: '24px',
-    },
-    ACCORDIAN: {
-      BACKGROUND: '#231C39',
-      COLOR: '#fff',
-      BORDER_COLOR: '#3E306A',
-    },
-    CARDS: {
-      VARIANT1: {
-        BACKGROUND: '#FFFFFF',
-        ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        BORDER_COLOR: '#3E306A',
-        BORDER_COLOR_HOVER: '#4E4B66',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
-      },
-      VARIANT2: {
-        BACKGROUND: '#292647',
-        ALTERNET_BACKGROUND: '#343051',
-        TITLE: '#FFFFFF',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4E4B66',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_HOVER: '#14142B',
-        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
-      },
-      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
-      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
-    },
-    ACCENTS: {
-      VARIANT1: {
-        BACKGROUND: '#F5F5FF',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT2: {
-        BACKGROUND: '#D7ECFD',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT3: {
-        BACKGROUND: '#A8E6CF',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT4: {
-        BACKGROUND: '#FFD3B6',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT5: {
-        BACKGROUND: '#FFAAA5',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-      VARIANT6: {
-        BACKGROUND: '#A2D2EC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        LINE: '#D9DBE9',
-      },
-    },
-    NOTIFICATION: {
-      SUCCESS: {
-        BACKGROUND: '#0EA069',
-        COLOR: '#fff',
-      },
-      WARNING: {
-        BACKGROUND: '#FFCC40',
-        COLOR: '#fff',
-      },
-      ERROR: {
-        BACKGROUND: '#F33E41',
-        COLOR: '#fff',
-      },
-      INFO: {
-        BACKGROUND: '#009DDF',
-        COLOR: '#fff',
-      },
-    },
-    POPUP: {
-      BACKGROUND: 'orange',
-      COLOR: 'orange',
-    },
-    TAB: {
-      VARIANT1: {
-        TITLE: '#14142B',
-        TITLE_ACTIVE: '#FFFFFF',
-        TITLE_BACKGROUND: '#FFFFFF',
-        TITLE_ACTIVE_BACKGROUND: '#4B9EF9',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4B9EF9',
-        LINE: '#3E306A',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_ACTIVE: 'transparent',
-        BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_ACTIVE: '#4B9EF9',
-      },
-    },
-  },
-  /* Prelem type 3 TERTIARY (default gray background)*/
-  TERTIARY_PRELEM: {
-    BACKGROUND: '#343051',
-    TITLE: '#FFFFFF',
-    PARAGRAPH: '#EFF0F6',
-    LABEL: '#4B9EF9',
-    LINE: '#655792',
-    LINK: '#4B9EF9',
-    BUTTON: {
-      VARIANT1: {
-        COLOR: '#14142B',
-        COLOR_HOVER: '#14142B',
-        BACKGROUND_COLOR: '#FFFFFF',
-        BACKGROUND_COLOR_HOVER: '#D7ECFD',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
+        BACKGROUND_COLOR:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BACKGROUND_COLOR_HOVER:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BORDER: 'none',
+        BORDER_HOVER: 'none',
+        // COLOR: "#14142B",
+        // COLOR_HOVER: "#14142B",
+        // BACKGROUND_COLOR: "#FFFFFF",
+        // BACKGROUND_COLOR_HOVER: "#D7ECFD",
+        // BORDER: "solid 1px  #FFFFFF",
+        // BORDER_HOVER: "solid 1px  #FFFFFF",
       },
       VARIANT2: {
         COLOR: '#FFFFFF',
@@ -800,13 +368,13 @@ const ThemeConstants = {
     },
     CARDS: {
       VARIANT1: {
-        BACKGROUND: '#FFFFFF',
-        ALTERNET_BACKGROUND: '#F7F7FC',
-        TITLE: '#14142B',
-        PARAGRAPH: '#4E4B66',
-        LABEL: '#6E7191',
-        BORDER_COLOR: '#3E306A',
-        BORDER_COLOR_HOVER: '#3E306A',
+        BACKGROUND: '#010101',
+        ALTERNET_BACKGROUND: '#2c2b2b',
+        TITLE: '#FFFFFF',
+        PARAGRAPH: '#FFFFFF',
+        LABEL: '#ed1c24',
+        BORDER_COLOR: '#323232',
+        BORDER_COLOR_HOVER: '#010101',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
       VARIANT2: {
@@ -904,6 +472,389 @@ const ThemeConstants = {
       },
     },
   },
+
+  /* Prelem Type 2 SECONDARY (default black background)*/
+  PRIMARY_PRELEM: {
+    BACKGROUND: '#262626',
+    TITLE: '#FFFFFF',
+    PARAGRAPH: '#EFF0F6',
+    LABEL: '#ed1c24',
+    LINE: '#858487',
+    LINK: '#ed1c24',
+    BUTTON: {
+      VARIANT1: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BACKGROUND_COLOR_HOVER:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BORDER: 'none',
+        BORDER_HOVER: 'none',
+      },
+      VARIANT2: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BACKGROUND_COLOR_HOVER:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BORDER: 'none',
+        BORDER_HOVER: 'none',
+      },
+      VARIANT3: {
+        COLOR: '#4B9EF9',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#4B9EF9',
+        BORDER: 'solid 1px  #4B9EF9',
+        BORDER_HOVER: 'solid 1px  #4B9EF9',
+      },
+      VARIANT4: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#4B9EF9',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BORDER: 'solid 1px  #FFFFFF',
+        BORDER_HOVER: 'solid 1px  #FFFFFF',
+      },
+    },
+    INPUT: {
+      PLACEHOLDER: '#EFF0F6',
+      TEXT: '#14142B',
+      TEXT_ACTIVE: '#14142B',
+      LABEL: '#6E7191',
+      BORDER: 'solid 2px transparent',
+      BORDER_ACTIVE: 'solid 2px #14142B',
+      BORDER_ERROR: 'solid 2px #F33E41',
+      BORDER_SUCCESS: 'solid 2px #0FA069',
+      BACKGROUND_FOCUSED: '#fff',
+      BACKGROUND_ERROR: '#FFEBEE',
+      BACKGROUND_ERROR_TEXT: '#F33E41',
+      BACKGROUND_SUCCESS: '#DEF5D9',
+      BACKGROUND_SUCCESS_TEXT: '#0FA069',
+      DISABLED: '#EFF0F6',
+    },
+    SELECT: {
+      PLACEHOLDER: '#EFF0F6', //Selectbox bg
+      LABEL: '#6E7191', //animated tex of focus
+      TEXT: '#6E7191', //dropdownlist popup default text
+      TEXT_HOVER: '#14142B', //dropdownlist popup hover text color
+      TEXT_SELECTED: '#14142B', //dropdownlist selected text color
+      TEXT_BACKGROUND_HOVER: '#FCFCFC', //dropdownlist popup hover text background
+      BORDER: 'solid 2px transparent',
+      BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
+    },
+    CHECKBOX: {
+      BOX_COLOR: '#ed1c24',
+    },
+    RADIO: {
+      BOX_COLOR: '#ed1c24',
+      BOX_COLOR_ACTIVE: '#ed1c24',
+      SIZE: '24px',
+    },
+    ACCORDIAN: {
+      BACKGROUND: '#010101',
+      COLOR: '#fff',
+      BORDER_COLOR: '#858487',
+    },
+    CARDS: {
+      VARIANT1: {
+        BACKGROUND: '#010101',
+        ALTERNET_BACKGROUND: '#2c2b2b',
+        TITLE: '#FFFFFF',
+        PARAGRAPH: '#FFFFFF',
+        LABEL: '#808080',
+        BORDER_COLOR: '#010101',
+        BORDER_COLOR_HOVER: '#010101',
+        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+      },
+      VARIANT2: {
+        BACKGROUND: '#010101',
+        ALTERNET_BACKGROUND: '#343051',
+        TITLE: '#FFFFFF',
+        PARAGRAPH: '#EFF0F6',
+        LABEL: '#4E4B66',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#14142B',
+        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+      },
+      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
+      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
+    },
+    ACCENTS: {
+      VARIANT1: {
+        BACKGROUND: '#F5F5FF',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT2: {
+        BACKGROUND: '#D7ECFD',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT3: {
+        BACKGROUND: '#A8E6CF',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT4: {
+        BACKGROUND: '#FFD3B6',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT5: {
+        BACKGROUND: '#FFAAA5',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT6: {
+        BACKGROUND: '#A2D2EC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+    },
+    NOTIFICATION: {
+      SUCCESS: {
+        BACKGROUND: '#0EA069',
+        COLOR: '#fff',
+      },
+      WARNING: {
+        BACKGROUND: '#FFCC40',
+        COLOR: '#fff',
+      },
+      ERROR: {
+        BACKGROUND: '#F33E41',
+        COLOR: '#fff',
+      },
+      INFO: {
+        BACKGROUND: '#009DDF',
+        COLOR: '#fff',
+      },
+    },
+    POPUP: {
+      BACKGROUND: 'orange',
+      COLOR: 'orange',
+    },
+    TAB: {
+      VARIANT1: {
+        TITLE: '#14142B',
+        TITLE_ACTIVE: '#FFFFFF',
+        TITLE_BACKGROUND: '#FFFFFF',
+        TITLE_ACTIVE_BACKGROUND: '#ed1c24',
+        PARAGRAPH: '#EFF0F6',
+        LABEL: '#4B9EF9',
+        LINE: '#3E306A',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_ACTIVE: 'transparent',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_ACTIVE: '#4B9EF9',
+      },
+    },
+  },
+  /* Prelem type 3 TERTIARY (default gray background)*/
+  TERTIARY_PRELEM: {
+    BACKGROUND: '#131313',
+    TITLE: '#FFFFFF',
+    PARAGRAPH: '#EFF0F6',
+    LABEL: '#ed1c24',
+    LINE: '#323232',
+    LINK: '#ed1c24',
+    BUTTON: {
+      VARIANT1: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BACKGROUND_COLOR_HOVER:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BORDER: 'none',
+        BORDER_HOVER: 'none',
+      },
+      VARIANT2: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BACKGROUND_COLOR_HOVER:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BORDER: 'none',
+        BORDER_HOVER: 'none',
+      },
+      VARIANT3: {
+        COLOR: '#4B9EF9',
+        COLOR_HOVER: '#FFFFFF',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#4B9EF9',
+        BORDER: 'solid 1px  #4B9EF9',
+        BORDER_HOVER: 'solid 1px  #4B9EF9',
+      },
+      VARIANT4: {
+        COLOR: '#FFFFFF',
+        COLOR_HOVER: '#14142B',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BORDER: 'solid 1px  #FFFFFF',
+        BORDER_HOVER: 'solid 1px  #FFFFFF',
+      },
+    },
+    INPUT: {
+      PLACEHOLDER: '#343051',
+      TEXT: '#89909A',
+      TEXT_ACTIVE: '#fffff',
+      LABEL: '#6E7191',
+      BORDER: 'solid 2px transparent',
+      BORDER_ACTIVE: 'solid 2px #343051',
+      BORDER_ERROR: 'solid 2px #F33E41',
+      BORDER_SUCCESS: 'solid 2px #0FA069',
+      BACKGROUND_FOCUSED: '#343051',
+      BACKGROUND_ERROR: '#FFEBEE',
+      BACKGROUND_ERROR_TEXT: '#F33E41',
+      BACKGROUND_SUCCESS: '#DEF5D9',
+      BACKGROUND_SUCCESS_TEXT: '#0FA069',
+      DISABLED: '#343051',
+    },
+    SELECT: {
+      PLACEHOLDER: '#343051', //Selectbox bg
+      LABEL: '#6E7191', //animated tex of focus
+      TEXT: '#6E7191', //dropdownlist popup default text
+      TEXT_HOVER: '#ffffff', //dropdownlist popup hover text color,
+      TEXT_SELECTED: '#89909A',
+      TEXT_BACKGROUND_HOVER: '#4B9EF9', //dropdownlist popup hover text background
+      BORDER: 'solid 2px transparent',
+      BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
+    },
+    CHECKBOX: {
+      BOX_COLOR: '#ed1c24',
+    },
+    RADIO: {
+      BOX_COLOR: '#ed1c24',
+      BOX_COLOR_ACTIVE: '#ed1c24',
+      SIZE: '24px',
+    },
+    ACCORDIAN: {
+      BACKGROUND: '#231C39',
+      COLOR: '#fff',
+      BORDER_COLOR: '#3E306A',
+    },
+    CARDS: {
+      VARIANT1: {
+        BACKGROUND: '#FFFFFF',
+        ALTERNET_BACKGROUND: '#F7F7FC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        BORDER_COLOR: '#2e2d2d',
+        BORDER_COLOR_HOVER: '#2e2d2d',
+        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+      },
+      VARIANT2: {
+        BACKGROUND: '#292647',
+        ALTERNET_BACKGROUND: '#343051',
+        TITLE: '#FFFFFF',
+        PARAGRAPH: '#EFF0F6',
+        LABEL: '#4E4B66',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#14142B',
+        BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
+      },
+      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
+      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
+    },
+    ACCENTS: {
+      VARIANT1: {
+        BACKGROUND: '#F5F5FF',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT2: {
+        BACKGROUND: '#D7ECFD',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT3: {
+        BACKGROUND: '#A8E6CF',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT4: {
+        BACKGROUND: '#FFD3B6',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT5: {
+        BACKGROUND: '#FFAAA5',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+      VARIANT6: {
+        BACKGROUND: '#A2D2EC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+      },
+    },
+    NOTIFICATION: {
+      SUCCESS: {
+        BACKGROUND: '#0EA069',
+        COLOR: '#fff',
+      },
+      WARNING: {
+        BACKGROUND: '#FFCC40',
+        COLOR: '#fff',
+      },
+      ERROR: {
+        BACKGROUND: '#F33E41',
+        COLOR: '#fff',
+      },
+      INFO: {
+        BACKGROUND: '#009DDF',
+        COLOR: '#fff',
+      },
+    },
+    POPUP: {
+      BACKGROUND: 'orange',
+      COLOR: 'orange',
+    },
+    TAB: {
+      VARIANT1: {
+        TITLE: '#14142B',
+        TITLE_ACTIVE: '#FFFFFF',
+        TITLE_BACKGROUND: '#FFFFFF',
+        TITLE_ACTIVE_BACKGROUND: '#ed1c24',
+        PARAGRAPH: '#EFF0F6',
+        LABEL: '#4B9EF9',
+        LINE: '#3E306A',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_ACTIVE: 'transparent',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_ACTIVE: '#4B9EF9',
+      },
+    },
+  },
   HEADER: {
     HEADER_HEIGHT: '60px',
     VARIANT2: {
@@ -933,25 +884,27 @@ const ThemeConstants = {
       },
     },
     VARIANT1: {
-      BACKGROUND: '#231C39',
-      BACKGROUND_HOVER: '#343051',
+      BACKGROUND: '#010101',
+      BACKGROUND_HOVER: '#010101',
       TITLE: '#FFFFFF',
       TITLE_HOVER: '#FFFFFF',
       PARAGRAPH: '#FFFFFF',
       PARAGRAPH_HOVER: '#FFFFFF',
       LABEL: '#6E7191',
       LABEL_HOVER: '#6E7191',
-      LINE: '#3E306A',
+      LINE: '#010101',
       LINE_HOVER: '#D9DBE9',
       BORDER_COLOR: '#D9DBE9',
       BORDER_COLOR_HOVER: '#14142B',
       BUTTON: {
         COLOR: '#FFFFFF',
         COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR: '#14142B',
-        BACKGROUND_COLOR_HOVER: '#413C61',
-        BORDER_COLOR: '#14142B',
-        BORDER_COLOR_HOVER: '#14142B',
+        BACKGROUND_COLOR:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BACKGROUND_COLOR_HOVER:
+          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+        BORDER_COLOR: 'none',
+        BORDER_COLOR_HOVER: 'none',
       },
       BADGE: {
         BACKGROUND: '#FFE18D',
@@ -961,25 +914,25 @@ const ThemeConstants = {
   },
   FOOTER: {
     VARIANT1: {
-      BACKGROUND: '#231C39',
-      BACKGROUND_SECOND: '#262338',
+      BACKGROUND: '#010101',
+      BACKGROUND_SECOND: '#262626',
       TITLE: '#FFFFFF',
       TITLE_HOVER: '#FFFFFF',
       PARAGRAPH: '#FFFFFF',
       PARAGRAPH_HOVER: '#FFFFFF',
       LABEL: '#6E7191',
       LABEL_HOVER: '#6E7191',
-      LINE: '#3E306A',
+      LINE: '#212121',
       LINE_HOVER: '#D9DBE9',
       BORDER_COLOR: '#D9DBE9',
       BORDER_COLOR_HOVER: '#14142B',
     },
   },
 
-  FONTFAMILYPRIMARY: HCLRobort,
-  FONTFAMILYSECONDARY: InterRegular,
-  FONTNAMEPRIMARY: 'HCLTechRoobert',
-  FONTNAMESECONDARY: 'Inter',
-}
+  FONTFAMILYPRIMARY: HelveticaNeue,
+  FONTFAMILYSECONDARY: Arial,
+  FONTNAMEPRIMARY: "HelveticaNeue",
+  FONTNAMESECONDARY: "Arial",
+};
 
 export default ThemeConstants

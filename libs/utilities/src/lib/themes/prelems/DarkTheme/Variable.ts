@@ -1,12 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// import HCLRobort from "../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2";
-// import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
-//  import InterRegular from "../fonts/Inter/Inter-Regular.woff2";
-// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2");
-// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2");
-
-// const InterRegular = require("../../fonts/Inter/Inter-Regular.woff2") as string;
-// const HCLRobort = require("../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2") as string;
+const HCLRobort =
+  require('../../../fonts/HCLTechRoobert/HCLTechRoobert-Regular.woff2') as string
+const InterRegular = require('../../../fonts/Inter/Inter-Regular.woff2') as string
 
 const ThemeConstants = {
   // Color Variables
@@ -889,10 +883,10 @@ const ThemeConstants = {
       BUTTON: {
         COLOR: "#FFFFFF",
         COLOR_HOVER: "#FFFFFF",
-        BACKGROUND_COLOR: "#14142B",
-        BACKGROUND_COLOR_HOVER: "#413C61",
-        BORDER_COLOR: "#14142B",
-        BORDER_COLOR_HOVER: "#14142B",
+        BACKGROUND_COLOR: "transparent",
+        BACKGROUND_COLOR_HOVER: "#1474C4",
+        BORDER_COLOR: "#FFFFFF",
+        BORDER_COLOR_HOVER: "#1474C4",
       },
       BADGE: {
         BACKGROUND: "#FFE18D",
@@ -917,8 +911,8 @@ const ThemeConstants = {
     },
   },
 
-  FONTFAMILYPRIMARY: "HCLRobort",
-  FONTFAMILYSECONDARY: "InterRegular",
+  FONTFAMILYPRIMARY: HCLRobort,
+  FONTFAMILYSECONDARY: InterRegular,
   FONTNAMEPRIMARY: "HCLTechRoobert",
   FONTNAMESECONDARY: "Inter",
 };

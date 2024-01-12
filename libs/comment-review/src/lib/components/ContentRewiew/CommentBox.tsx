@@ -5,16 +5,27 @@ import {
   IconButton,
   InputAdornment,
   OutlinedInput,
-} from '@mui/material';
-import { commentsApi, useComment } from '@platformx/authoring-apis';
-import { ShowToastError, getCurrentLang } from '@platformx/utilities';
-import { t } from 'i18next';
-import { memo, useEffect, useState } from 'react';
-import { ReactComponent as DefaultStateCommentIcon } from '../../../src/assets/svg/DefaultStateCommentIcon.svg';
-import { ReactComponent as SendIcon } from '../../../src/assets/svg/Send.svg';
-import { useCommentContext } from '../../context/CommentsContext/CommentsContext';
-import { CommentPopover, useCustomStyle } from './ContentReview.styles';
-import { ReviewComment } from './ContentReview.types';
+} from '@mui/material'
+import { commentsApi, useComment } from '@platformx/authoring-apis'
+import {
+  RootState,
+  addComment,
+  getComment,
+  setIsCommentPanelOpen,
+  setSelectedComment,
+} from '@platformx/authoring-state'
+import {
+  DefaultStateCommentIcon,
+  SendIcon,
+  ShowToastError,
+  getCurrentLang,
+} from '@platformx/utilities'
+import { t } from 'i18next'
+import { memo, useEffect, useState } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { CommentPopover, useCustomStyle } from './ContentReview.styles'
+import { ReviewComment } from './ContentReview.types'
 const CommentBox: React.FC<any> = ({
   elementId,
   comments,
@@ -22,89 +33,105 @@ const CommentBox: React.FC<any> = ({
   contentName,
   workflow,
 }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [comment, setComment] = useState<string>('');
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const dispatch = useDispatch()
+  const { isReviewEnabled } = useSelector(
+    (state: RootState) => state.comment.commentInfo,
+  )
+  const [comment, setComment] = useState<string>('')
   const commentCount = comments?.filter(
-    (x: ReviewComment) => x.elementId === elementId //&& x.isResolved === false
-  );
+    (x: ReviewComment) => x.elementId === elementId, //&& x.isResolved === false
+  )
   const resolvedCommentCount = comments?.filter(
-    (x: ReviewComment) => x.elementId === elementId && x.isResolved === true
-  );
-  const {
-    addComment,
-    setIsCommentPanelOpen,
-    isReviewEnabled,
-    getComment,
-    setSelectedComment,
-  } = useCommentContext();
-  const { handleCommentClick } = useComment();
+    (x: ReviewComment) => x.elementId === elementId && x.isResolved === true,
+  )
+  // const {
+  //   addComment,
+  //   setIsCommentPanelOpen,
+  //   isReviewEnabled,
+  //   getComment,
+  //   setSelectedComment,
+  // } = useCommentContext();
+  const { handleCommentClick } = useComment()
 
   const handleAddComment = (comment: string, elementId: string) => {
-    addComment(comment, elementId);
-    setAnchorEl(null);
-  };
+    dispatch(addComment({ content: comment, elementId: elementId }))
+    setAnchorEl(null)
+  }
 
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-      addComment(comment, elementId);
-      setAnchorEl(null);
+      dispatch(addComment({ content: comment, elementId: elementId }))
+      setAnchorEl(null)
     }
-  };
+  }
 
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (commentCount?.length > 0) {
       //setIsCommentPanelOpen(true);
     }
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const [highlighted, setHighlighted] = useState(false);
+    setAnchorEl(null)
+  }
+  const [highlighted, setHighlighted] = useState(false)
 
   const handleInputChange = (e: any) => {
-    setComment(e.target.value);
+    setComment(e.target.value)
     if (e.target.value.length > 0) {
-      setHighlighted(true);
+      setHighlighted(true)
     } else {
-      setHighlighted(false);
+      setHighlighted(false)
     }
-  };
+  }
   //Get Comments
   const commentDetails = async () => {
-    const currentLanguage = getCurrentLang();
-    setIsCommentPanelOpen(false);
+    const currentLanguage = getCurrentLang()
+    dispatch(setIsCommentPanelOpen({ value: false }))
     // const temp: ReviewComment[] = [];
     // getComment(temp);
     try {
       const response: any = await commentsApi.getComment({
         document_path: `/content/documents/hclplatformx/${currentLanguage}/${contentType}/${contentName}`,
-      });
+      })
       const commentsData: ReviewComment[] =
-        response?.authoring_getReviewComments[0]?.reviewer_comments[0] || [];
-      getComment(commentsData, contentType[0], contentName);
+        response?.authoring_getReviewComments[0]?.reviewer_comments[0] || []
+      dispatch(
+        getComment({
+          commentsNew: commentsData,
+          contentType: contentType[0],
+          contentName: contentName,
+        }),
+      )
     } catch (err: any) {
-      ShowToastError(t('api_error_toast'));
+      ShowToastError(t('api_error_toast'))
     }
-  };
+  }
   useEffect(() => {
-    setSelectedComment(null);
+    dispatch(setSelectedComment({ value: null }))
     if (contentType && contentName) {
-      commentDetails();
+      commentDetails()
     } else {
-      const commentsData: ReviewComment[] = [];
-      getComment(commentsData, contentType[0], contentName);
+      const commentsData: ReviewComment[] = []
+      dispatch(
+        getComment({
+          commentsNew: commentsData,
+          contentType: contentType[0],
+          contentName: contentName,
+        }),
+      )
     }
-  }, [contentType, contentName]);
+  }, [contentType, contentName])
 
-  const groupedComments: any = {};
+  const groupedComments: any = {}
   comments?.forEach((comment: any) => {
     if (!groupedComments[comment.elementId]) {
-      groupedComments[comment.elementId] = [];
+      groupedComments[comment.elementId] = []
     }
-    groupedComments[comment.elementId].push(comment);
-  });
+    groupedComments[comment.elementId].push(comment)
+  })
   const handleCommentOpen = (event: React.MouseEvent<HTMLElement>) => {
     if (
       commentCount?.length > 0 &&
@@ -113,21 +140,21 @@ const CommentBox: React.FC<any> = ({
     ) {
       console.log(
         'group comment',
-        groupedComments[elementId][groupedComments[elementId]?.length - 1]
-      );
+        groupedComments[elementId][groupedComments[elementId]?.length - 1],
+      )
       handleCommentClick(
         event,
         elementId,
         groupedComments[elementId][groupedComments[elementId]?.length - 1]
-          .commentId
-      );
+          .commentId,
+      )
     } else {
-      handleClick(event);
+      handleClick(event)
     }
-  };
-  const pageUrl = new URL(window.location.href);
-  console.log('url123', pageUrl.pathname.includes('/edit-page'));
-  const classes = useCustomStyle();
+  }
+  const pageUrl = new URL(window.location.href)
+  console.log('url123', pageUrl.pathname.includes('/edit-page'))
+  const classes = useCustomStyle()
   return (
     <>
       {isReviewEnabled && (
@@ -180,10 +207,18 @@ const CommentBox: React.FC<any> = ({
                   >
                     {' '}
                   </span>
-                  <DefaultStateCommentIcon height="24px" width="24px" />
+                  <img
+                    src={DefaultStateCommentIcon}
+                    height="24px"
+                    width="24px"
+                  ></img>
                 </Box>
               ) : (
-                <DefaultStateCommentIcon height="24px" width="24px" />
+                <img
+                  src={DefaultStateCommentIcon}
+                  height="24px"
+                  width="24px"
+                ></img>
               )}
               {/* <ChatBubbleOutlineOutlinedIcon color='info'></ChatBubbleOutlineOutlinedIcon> */}
             </IconButton>
@@ -228,15 +263,19 @@ const CommentBox: React.FC<any> = ({
                         <IconButton
                           aria-label="toggle password visibility"
                           onClick={() => {
-                            handleAddComment(comment, elementId);
+                            handleAddComment(comment, elementId)
                           }}
                           onMouseDown={() => {}}
                           disabled={comment?.length === 0}
                           edge="end"
                         >
-                          <SendIcon
+                          <img
+                            src={SendIcon}
                             color={highlighted ? 'primary' : 'disabled'}
-                          />
+                          ></img>
+                          {/* <SendIcon
+                            color={highlighted ? 'primary' : 'disabled'}
+                          /> */}
                         </IconButton>
                       </InputAdornment>
                     }
@@ -249,6 +288,6 @@ const CommentBox: React.FC<any> = ({
         </>
       )}
     </>
-  );
-};
-export default memo(CommentBox);
+  )
+}
+export default memo(CommentBox)

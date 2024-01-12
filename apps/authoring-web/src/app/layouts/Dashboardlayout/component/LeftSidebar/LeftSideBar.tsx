@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import './LeftSideBar.css';
 import { useStyles } from './LeftSidebar.styles';
 import MenuList from './MenuList';
-const DrawerWidth = 240;
+const DrawerWidth = 250;
 const openedMixin = (theme: Theme): CSSObject => ({
   width: DrawerWidth,
   [theme.breakpoints.down('sm')]: {

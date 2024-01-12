@@ -161,6 +161,15 @@ export const commentSlice = createSlice({
       state.commentInfo.selectedComment = selected;
       state.commentInfo.isCommentsPanelOpen = true;
     },
+    setSelectedComment: (state, action: PayloadAction<any>) => {
+      state.commentInfo.selectedComment = action.payload.value;
+    },
+    setIsCommentPanelOpen: (state, action: PayloadAction<any>) => {
+      state.commentInfo.isCommentsPanelOpen = action.payload.value;
+    },
+    setIsReviewEnabled: (state, action: PayloadAction<any>) => {
+      state.commentInfo.isCommentsPanelOpen = action.payload.value;
+    },
   },
 });
 export const {
@@ -171,6 +180,9 @@ export const {
   markAsRead,
   hasResolved,
   addReply,
+  setIsCommentPanelOpen,
+  setSelectedComment,
+  setIsReviewEnabled,
 } = commentSlice.actions;
 
 export default commentSlice.reducer;

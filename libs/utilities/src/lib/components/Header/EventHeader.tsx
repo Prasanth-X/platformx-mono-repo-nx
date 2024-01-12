@@ -10,7 +10,7 @@ import Profile from '../../assets/images/avatar.png';
 import usePlatformAnalytics from 'platform-x-utils/dist/analytics';
 import useUserSession from '../../hooks/useUserSession/useUserSession';
 import { LOGOUT_URL } from '../../constants/AuthConstant';
-import ThemeConstants from '../../themes/authoring/variable';
+import ThemeConstants from '../../themes/authoring/lightTheme/lightThemeVariable';
 import PlateformXDialog from '../Popups/PlateformXDialog';
 import { PageData } from 'analytics';
 // import { callSaveandResetWarning } from '../../store/Actions';

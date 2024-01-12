@@ -5,7 +5,7 @@ import Icon from '../../../assets/svg/Icon.svg';
 import RefreshIcon from '../../../assets/svg/Refresh.svg';
 import ArrowUpwardIcon from '../../../assets/svg/UploadThumbnail.svg';
 // import CommonImageRender from '../../pages/Gallery/CommonImageRender';
-import ThemeConstants from '../../../themes/authoring/variable'
+import ThemeConstants from '../../../themes/authoring/lightTheme/lightThemeVariable';
 import { useStyles } from './AddImageBackgroundColor.style';
 import { ErrorTooltip } from '../../ErrorTooltip/ErrorTooltip';
 

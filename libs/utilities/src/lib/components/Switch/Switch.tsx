@@ -2,7 +2,7 @@ import { useSwitch } from '@mui/base/SwitchUnstyled';
 import { styled } from '@mui/system';
 import clsx from 'clsx';
 
-import ThemeConstants from '../../themes/authoring/variable';
+import ThemeConstants from '../../themes/authoring/lightTheme/lightThemeVariable';
 
 const blue = {
   500: ThemeConstants.PRIMARY_MAIN_COLOR,

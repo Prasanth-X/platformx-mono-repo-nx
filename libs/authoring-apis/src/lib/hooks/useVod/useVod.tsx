@@ -14,13 +14,12 @@ import {
 } from '../../services/vod/vod.api'
 import { LanguageList, MENU_STATE_DRAFT } from '../../utils/constants'
 import { formatUrl } from '../../utils/helper'
-import useContentListing from '../useContentListing/useContentListing'
 import { VodInstance } from './Utils/constants'
 import { updateStructureDataVOD } from './Utils/helper'
 import { getSampVod } from './Utils/mapper'
 
 const useVod = (filter = 'ALL') => {
-  const { fetchContentDetails } = useContentListing()
+  // const { fetchContentDetails } = useContentListing()
   const [getSession] = useUserSession()
   const navigate = useNavigate()
   const { userInfo } = getSession()
@@ -127,21 +126,20 @@ const useVod = (filter = 'ALL') => {
     }
   }
 
-  const duplicate = async ({
+  const duplicateVod = async ({
     IsDuplicate,
     title,
     language,
     listItemDetails,
-    isCalled,
-    arr,
-    setArr,
-    setOpenPageExistModal,
-    setLangContent,
-  }) => {
-    const selectedItem = await fetchContentDetails(listItemDetails)
-    getVodInstance(selectedItem)
-
-    let temp = ''
+    isCalled = false,
+    arr = [],
+  }: // setArr,
+  // setOpenPageExistModal,
+  // setLangContent,
+  any) => {
+    // const selectedItem = await fetchContentDetails(listItemDetails)
+    getVodInstance(listItemDetails)
+    // const temp = ''
     const url = formatUrl(title ? title : vodInstance.current.Title)
     if (title) {
       vodInstance.current.Title = title
@@ -181,19 +179,16 @@ const useVod = (filter = 'ALL') => {
               .then((resp) => {
                 localStorage.removeItem('lang')
                 if (resp?.data?.authoring_createVod?.isExist) {
-                  temp += `${l.value},`
-                  setLangContent(temp)
-
-                  setOpenPageExistModal(true)
-                  setArr((prev) => [...prev, { id: l.id, value: lang }])
+                  // temp += `${l.value},`
+                  // setLangContent(temp)
+                  // setOpenPageExistModal(true)
+                  // setArr((prev) => [...prev, { id: l.id, value: lang }])
                 } else {
                   ShowToastSuccess(
                     `${t('vod')} ${t('duplicated_toast')} ${t('for')} ${
                       l.value
                     }`,
                   )
-
-                  // fetchContent(0, 'ALL', true);
                 }
               })
               .catch((error) => {
@@ -207,7 +202,7 @@ const useVod = (filter = 'ALL') => {
         })
       })
     } else {
-      arr.map((val) => {
+      arr.map((val: any) => {
         localStorage.setItem('lang', val.id)
         createvodemutate({
           variables: {
@@ -222,10 +217,9 @@ const useVod = (filter = 'ALL') => {
           .then((resp) => {
             localStorage.removeItem('lang')
             if (resp?.data?.authoring_createVod?.isExist) {
-              setOpenPageExistModal(true)
+              // setOpenPageExistModal(true)
             } else {
-              setOpenPageExistModal(false)
-
+              // setOpenPageExistModal(false)
               ShowToastSuccess(
                 `${t('vod')} ${t('duplicated_toast')} ${t('for')} ${val.value}`,
               )
@@ -240,14 +234,14 @@ const useVod = (filter = 'ALL') => {
             }
           })
       })
-      setArr([])
+      // setArr([])
     }
   }
 
   return {
     deleteVod,
-    duplicate,
-    fetchContentDetails,
+    duplicateVod,
+    // fetchContentDetails,
     unPublish,
     onCopy,
     handleOpenVod,

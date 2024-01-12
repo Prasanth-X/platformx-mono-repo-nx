@@ -1,6 +1,7 @@
-const HelveticaNeue =
-  require('../../fonts/HelventicaNeue/HelveticaNeue-Condensed-Bold.woff2') as string
-const Arial = require('../../fonts/Arial/arial.woff2') as string
+const PoppinsMedium =
+  require('../../../fonts/Poppins/Poppins-Medium.woff2') as string
+const PoppinsRegular = require('../../../fonts/Poppins/Poppins-Regular.woff2') as string
+
 const ThemeConstants = {
   // Color Variables
   PRIMARY_MAIN_COLOR: '#333333',
@@ -211,7 +212,7 @@ const ThemeConstants = {
       },
     },
     BUTTON: {
-      BORDER_RADIUS: '0px 0px 15px 0px',
+      BORDER_RADIUS: '50px',
       MEDIUM_HEIGHT: '47px',
       SMALL_HEIGHT: '38px',
       LARGE_HEIGHT: '63px',
@@ -269,37 +270,31 @@ const ThemeConstants = {
   OVERYLAY: {
     EDITOVERLAY: '50, 130, 250, 0.9',
     BGOVERLAY: '255, 255, 255, 0.3',
-    CARDOVERLAY: '0, 0,0, 0.2',
+    CARDOVERLAY: '0, 0,0, 0.3',
   },
   RADIUS: {
-    VALUE1: '0px',
-    VALUE2: '0px 0px 0px 0px',
+    VALUE1: '10px',
+    VALUE2: '16px',
   },
 
-  /* Prelem Type 1 PRIMARY (default White background)*/
+  /* Prelem Type 1 PRIMARY (default White background)
+  default it was black now it is blue/ customertestimonial
+  */
   SECONDARY_PRELEM: {
-    BACKGROUND: '#010101',
+    BACKGROUND: '#045694',
     TITLE: '#FFFFFF',
     PARAGRAPH: '#EFF0F6',
-    LABEL: '#ed1c24',
-    LINE: '#323232',
-    LINK: '#ed1c24',
+    LABEL: '#ffffff',
+    LINE: '#93B1CE',
+    LINK: '#4B9EF9',
     BUTTON: {
       VARIANT1: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BACKGROUND_COLOR_HOVER:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BORDER: 'none',
-        BORDER_HOVER: 'none',
-        // COLOR: "#14142B",
-        // COLOR_HOVER: "#14142B",
-        // BACKGROUND_COLOR: "#FFFFFF",
-        // BACKGROUND_COLOR_HOVER: "#D7ECFD",
-        // BORDER: "solid 1px  #FFFFFF",
-        // BORDER_HOVER: "solid 1px  #FFFFFF",
+        COLOR: '#14142B',
+        COLOR_HOVER: '#14142B',
+        BACKGROUND_COLOR: '#FFFFFF',
+        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BORDER: 'solid 1px  #FFFFFF',
+        BORDER_HOVER: 'solid 1px  #FFFFFF',
       },
       VARIANT2: {
         COLOR: '#FFFFFF',
@@ -367,13 +362,13 @@ const ThemeConstants = {
     },
     CARDS: {
       VARIANT1: {
-        BACKGROUND: '#010101',
-        ALTERNET_BACKGROUND: '#2c2b2b',
-        TITLE: '#FFFFFF',
-        PARAGRAPH: '#FFFFFF',
-        LABEL: '#ed1c24',
-        BORDER_COLOR: '#323232',
-        BORDER_COLOR_HOVER: '#010101',
+        BACKGROUND: '#FFFFFF',
+        ALTERNET_BACKGROUND: '#F7F7FC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        BORDER_COLOR: '#D9DBE9',
+        BORDER_COLOR_HOVER: '#3E306A',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
       VARIANT2: {
@@ -472,34 +467,34 @@ const ThemeConstants = {
     },
   },
 
-  /* Prelem Type 2 SECONDARY (default black background)*/
+  /* Prelem Type 2 SECONDARY (default black background GREY BG)
+  white is now chnage as gery (major prelims)
+  */
   PRIMARY_PRELEM: {
-    BACKGROUND: '#262626',
-    TITLE: '#FFFFFF',
-    PARAGRAPH: '#EFF0F6',
-    LABEL: '#ed1c24',
-    LINE: '#858487',
-    LINK: '#ed1c24',
+    BACKGROUND: '#E4E8F0',
+    TITLE: '#14142B',
+    PARAGRAPH: '#4E4B66',
+    LABEL: '#6E7191',
+    LINE: '#D9DBE9',
+    LINK: '#4B9EF9',
     BUTTON: {
       VARIANT1: {
         COLOR: '#FFFFFF',
         COLOR_HOVER: '#FFFFFF',
         BACKGROUND_COLOR:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
+          'linear-gradient(111.98deg,#00b8ff 18.07%,#1574c4 90.31%)',
         BACKGROUND_COLOR_HOVER:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BORDER: 'none',
-        BORDER_HOVER: 'none',
+          'linear-gradient(111.98deg,#1574c4 18.07%,#00b8ff 90.31%)',
+        BORDER: 'solid 1px  #1D2839',
+        BORDER_HOVER: 'solid 1px  #14142B',
       },
       VARIANT2: {
-        COLOR: '#FFFFFF',
+        COLOR: '#14142B',
         COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BACKGROUND_COLOR_HOVER:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BORDER: 'none',
-        BORDER_HOVER: 'none',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#14142B',
+        BORDER: 'solid 1px  #14142B',
+        BORDER_HOVER: 'solid 1px  #14142B',
       },
       VARIANT3: {
         COLOR: '#4B9EF9',
@@ -510,12 +505,12 @@ const ThemeConstants = {
         BORDER_HOVER: 'solid 1px  #4B9EF9',
       },
       VARIANT4: {
-        COLOR: '#FFFFFF',
+        COLOR: '#14142B',
         COLOR_HOVER: '#4B9EF9',
         BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_HOVER: '#FFFFFF',
-        BORDER: 'solid 1px  #FFFFFF',
-        BORDER_HOVER: 'solid 1px  #FFFFFF',
+        BACKGROUND_COLOR_HOVER: '#14142B',
+        BORDER: 'solid 1px  #14142B',
+        BORDER_HOVER: 'solid 1px  #14142B',
       },
     },
     INPUT: {
@@ -532,7 +527,7 @@ const ThemeConstants = {
       BACKGROUND_ERROR_TEXT: '#F33E41',
       BACKGROUND_SUCCESS: '#DEF5D9',
       BACKGROUND_SUCCESS_TEXT: '#0FA069',
-      DISABLED: '#EFF0F6',
+      DISABLED: '#dcdcdf',
     },
     SELECT: {
       PLACEHOLDER: '#EFF0F6', //Selectbox bg
@@ -545,41 +540,41 @@ const ThemeConstants = {
       BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
     },
     CHECKBOX: {
-      BOX_COLOR: '#ed1c24',
+      BOX_COLOR: '#6E7191',
     },
     RADIO: {
-      BOX_COLOR: '#ed1c24',
-      BOX_COLOR_ACTIVE: '#ed1c24',
+      BOX_COLOR: '#14142B',
+      BOX_COLOR_ACTIVE: '#14142B',
       SIZE: '24px',
     },
     ACCORDIAN: {
-      BACKGROUND: '#010101',
-      COLOR: '#fff',
-      BORDER_COLOR: '#858487',
+      BACKGROUND: '#fff',
+      COLOR: '#14142B',
+      BORDER_COLOR: '#D9DBE9',
     },
     CARDS: {
       VARIANT1: {
-        BACKGROUND: '#010101',
-        ALTERNET_BACKGROUND: '#2c2b2b',
-        TITLE: '#FFFFFF',
-        PARAGRAPH: '#FFFFFF',
-        LABEL: '#808080',
-        BORDER_COLOR: '#010101',
-        BORDER_COLOR_HOVER: '#010101',
+        BACKGROUND: '#ffffff',
+        ALTERNET_BACKGROUND: '#F7F7FC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        BORDER_COLOR: '#fcfcfc',
+        BORDER_COLOR_HOVER: '#c9cbcf',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
       VARIANT2: {
-        BACKGROUND: '#010101',
-        ALTERNET_BACKGROUND: '#343051',
-        TITLE: '#FFFFFF',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4E4B66',
+        BACKGROUND: '#F5F5FF',
+        ALTERNET_BACKGROUND: '#F7F7FC',
+        TITLE: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
         BORDER_COLOR: '#D9DBE9',
         BORDER_COLOR_HOVER: '#14142B',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
-      ECOM_CARD_BACKGROUND: '#fdfdfd', //not to be changed
-      ECOM_MASK_BACKGROUND: '#14142B', //not to be changed
+      ECOM_CARD_BACKGROUND: '#fdfdfd',
+      ECOM_MASK_BACKGROUND: '#14142B',
     },
     ACCENTS: {
       VARIANT1: {
@@ -650,47 +645,45 @@ const ThemeConstants = {
     TAB: {
       VARIANT1: {
         TITLE: '#14142B',
-        TITLE_ACTIVE: '#FFFFFF',
-        TITLE_BACKGROUND: '#FFFFFF',
-        TITLE_ACTIVE_BACKGROUND: '#ed1c24',
-        PARAGRAPH: '#EFF0F6',
-        LABEL: '#4B9EF9',
-        LINE: '#3E306A',
-        BACKGROUND_COLOR: 'transparent',
-        BACKGROUND_COLOR_ACTIVE: 'transparent',
+        TITLE_ACTIVE: '#FFF',
+        TITLE_BACKGROUND: '#F7F7FC',
+        TITLE_ACTIVE_BACKGROUND: '#14142B',
+        PARAGRAPH: '#4E4B66',
+        LABEL: '#6E7191',
+        LINE: '#D9DBE9',
+        BACKGROUND_COLOR: '#F7F7FC',
+        BACKGROUND_COLOR_ACTIVE: '#F7F7FC',
         BORDER_COLOR: '#D9DBE9',
-        BORDER_COLOR_ACTIVE: '#4B9EF9',
+        BORDER_COLOR_ACTIVE: '#14142B',
       },
     },
   },
-  /* Prelem type 3 TERTIARY (default gray background)*/
+  /* Prelem type 3 TERTIARY (default gray background)
+  previously it was gery now it is blue
+  */
   TERTIARY_PRELEM: {
-    BACKGROUND: '#131313',
+    BACKGROUND: '#045694',
     TITLE: '#FFFFFF',
     PARAGRAPH: '#EFF0F6',
-    LABEL: '#ed1c24',
-    LINE: '#323232',
-    LINK: '#ed1c24',
+    LABEL: '#FFFFFF',
+    LINE: '#93B1CE',
+    LINK: '#4B9EF9',
     BUTTON: {
       VARIANT1: {
-        COLOR: '#FFFFFF',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BACKGROUND_COLOR_HOVER:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BORDER: 'none',
-        BORDER_HOVER: 'none',
+        COLOR: '#14142B',
+        COLOR_HOVER: '#14142B',
+        BACKGROUND_COLOR: '#FFFFFF',
+        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BORDER: 'solid 1px  #FFFFFF',
+        BORDER_HOVER: 'solid 1px  #FFFFFF',
       },
       VARIANT2: {
         COLOR: '#FFFFFF',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BACKGROUND_COLOR_HOVER:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BORDER: 'none',
-        BORDER_HOVER: 'none',
+        COLOR_HOVER: '#14142B',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BORDER: 'solid 1px  #FFFFFF',
+        BORDER_HOVER: 'solid 1px  #FFFFFF',
       },
       VARIANT3: {
         COLOR: '#4B9EF9',
@@ -736,11 +729,11 @@ const ThemeConstants = {
       BORDER_ACTIVE: 'solid 2px #14142B', //focused border color
     },
     CHECKBOX: {
-      BOX_COLOR: '#ed1c24',
+      BOX_COLOR: '#4B9EF9',
     },
     RADIO: {
-      BOX_COLOR: '#ed1c24',
-      BOX_COLOR_ACTIVE: '#ed1c24',
+      BOX_COLOR: '#4B9EF9',
+      BOX_COLOR_ACTIVE: '#4B9EF9',
       SIZE: '24px',
     },
     ACCORDIAN: {
@@ -755,8 +748,8 @@ const ThemeConstants = {
         TITLE: '#14142B',
         PARAGRAPH: '#4E4B66',
         LABEL: '#6E7191',
-        BORDER_COLOR: '#2e2d2d',
-        BORDER_COLOR_HOVER: '#2e2d2d',
+        BORDER_COLOR: '#3E306A',
+        BORDER_COLOR_HOVER: '#3E306A',
         BOX_SHADOW: '0px 10px 15px 0px rgba(0, 0, 0, 0.03)',
       },
       VARIANT2: {
@@ -843,7 +836,7 @@ const ThemeConstants = {
         TITLE: '#14142B',
         TITLE_ACTIVE: '#FFFFFF',
         TITLE_BACKGROUND: '#FFFFFF',
-        TITLE_ACTIVE_BACKGROUND: '#ed1c24',
+        TITLE_ACTIVE_BACKGROUND: '#4B9EF9',
         PARAGRAPH: '#EFF0F6',
         LABEL: '#4B9EF9',
         LINE: '#3E306A',
@@ -883,27 +876,25 @@ const ThemeConstants = {
       },
     },
     VARIANT1: {
-      BACKGROUND: '#010101',
-      BACKGROUND_HOVER: '#010101',
+      BACKGROUND: '#045694',
+      BACKGROUND_HOVER: '#045694', //#075e9e
       TITLE: '#FFFFFF',
       TITLE_HOVER: '#FFFFFF',
       PARAGRAPH: '#FFFFFF',
       PARAGRAPH_HOVER: '#FFFFFF',
       LABEL: '#6E7191',
       LABEL_HOVER: '#6E7191',
-      LINE: '#010101',
+      LINE: '#93B1CE',
       LINE_HOVER: '#D9DBE9',
       BORDER_COLOR: '#D9DBE9',
       BORDER_COLOR_HOVER: '#14142B',
       BUTTON: {
         COLOR: '#FFFFFF',
-        COLOR_HOVER: '#FFFFFF',
-        BACKGROUND_COLOR:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BACKGROUND_COLOR_HOVER:
-          'linear-gradient(315deg,transparent 10px,#ed1c24 10px,#ed1c24)',
-        BORDER_COLOR: 'none',
-        BORDER_COLOR_HOVER: 'none',
+        COLOR_HOVER: '#1a1a1a',
+        BACKGROUND_COLOR: 'transparent',
+        BACKGROUND_COLOR_HOVER: '#FFFFFF',
+        BORDER_COLOR: '#FFFFFF',
+        BORDER_COLOR_HOVER: '#FFFFFF',
       },
       BADGE: {
         BACKGROUND: '#FFE18D',
@@ -913,25 +904,24 @@ const ThemeConstants = {
   },
   FOOTER: {
     VARIANT1: {
-      BACKGROUND: '#010101',
-      BACKGROUND_SECOND: '#262626',
+      BACKGROUND: '#020f2a',
+      BACKGROUND_SECOND: '#0d1931',
       TITLE: '#FFFFFF',
       TITLE_HOVER: '#FFFFFF',
       PARAGRAPH: '#FFFFFF',
       PARAGRAPH_HOVER: '#FFFFFF',
       LABEL: '#6E7191',
       LABEL_HOVER: '#6E7191',
-      LINE: '#212121',
+      LINE: '#3E306A',
       LINE_HOVER: '#D9DBE9',
       BORDER_COLOR: '#D9DBE9',
       BORDER_COLOR_HOVER: '#14142B',
     },
   },
 
-  FONTNAMEPRIMARY: 'HelveticaNeue',
-  FONTNAMESECONDARY: 'Arial',
-  FONTFAMILYPRIMARY: HelveticaNeue,
-  FONTFAMILYSECONDARY: Arial,
-}
-
-export default ThemeConstants
+  FONTFAMILYPRIMARY: PoppinsMedium,
+  FONTFAMILYSECONDARY: PoppinsRegular,
+  FONTNAMEPRIMARY: "PoppinsMedium",
+  FONTNAMESECONDARY: "PoppinsRegular",
+};
+export default ThemeConstants;

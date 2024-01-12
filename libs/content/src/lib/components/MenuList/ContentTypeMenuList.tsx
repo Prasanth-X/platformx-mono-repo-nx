@@ -47,7 +47,8 @@ const ContentTypeMenuList = ({
       {(contentType === 'quiz' ||
         contentType === 'poll' ||
         contentType === 'event' ||
-        contentType === 'article') && (
+        contentType === 'article' ||
+        contentType === 'vod') && (
         <QuizPollEventMenu
           anchorEl={anchorEl}
           open={open}
