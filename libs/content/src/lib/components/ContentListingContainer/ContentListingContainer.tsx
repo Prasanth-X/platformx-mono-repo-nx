@@ -5,20 +5,14 @@ import {
   useContentListing,
   useContentSearch
 } from '@platformx/authoring-apis';
-import {
-  ContentState,
-  previewArticle
-} from '@platformx/authoring-state';
 import { NoSearchResult } from '@platformx/utilities';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ContentListing from '../ContentListing/ContentListing';
 import ContentListingHeader from '../ContentListingHeader/ContentListingHeader';
 const ContListingContainer = ({ contentType }: { contentType: string }) => {
   const navigate = useNavigate();
   const startIndex = 0;
-  const dispatch = useDispatch();
   const location = useLocation();
   const [isSpinning, setIsSpinning] = useState(false);
 
@@ -76,25 +70,25 @@ const ContListingContainer = ({ contentType }: { contentType: string }) => {
         animationState={isSpinning}
       />
 
-      {(!loading && contentList && contentList?.length > 0) && (
-        <ContentListing
-          contentList={contentList}
-          deleteContent={deleteContent}
-          dataList={contentList}
-          fetchMore={handleFetchMore}
-          preview={preview}
-          unPublish={unPublish}
-          view={view}
-          edit={edit}
-          loading={loading}
-          duplicate={duplicate}
-          fetchContentDetails={fetchContentDetails}
-          duplicateToSite={duplicateToSite}
-        />
-      )}
-      {
+      {/* {(!loading && contentList && contentList?.length > 0) && ( */}
+      <ContentListing
+        contentList={contentList}
+        deleteContent={deleteContent}
+        dataList={contentList}
+        fetchMore={handleFetchMore}
+        preview={preview}
+        unPublish={unPublish}
+        view={view}
+        edit={edit}
+        loading={loading}
+        duplicate={duplicate}
+        fetchContentDetails={fetchContentDetails}
+        duplicateToSite={duplicateToSite}
+      />
+      {/* )} */}
+      {/* {
         !loading && contentList?.length === 0 && <NoSearchResult />
-      }
+      } */}
     </>
   );
 };

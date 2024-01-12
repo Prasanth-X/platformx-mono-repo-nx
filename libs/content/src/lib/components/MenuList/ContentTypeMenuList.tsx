@@ -4,7 +4,7 @@ import { MoreHorizIcon } from '@platformx/utilities'
 import { memo, useState } from 'react'
 import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu'
 
-const MenuList = ({
+const ContentTypeMenuList = ({
   item,
   deleteContent,
   duplicate,
@@ -83,4 +83,4 @@ const MenuList = ({
   )
 }
 
-export default memo(MenuList)
+export default memo(ContentTypeMenuList)

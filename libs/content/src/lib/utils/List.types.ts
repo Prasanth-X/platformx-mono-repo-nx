@@ -62,14 +62,6 @@ export type ContentListingProps = {
   editPage?: any;
   viewPage?: any;
   previewPage?: any;
-  handleDuplicatePopup?: any;
-  duplicatePage?: any;
-  unPublishPage?: any;
-  handleReschedulePopup?: any;
-  reschedulePublishPage?: any;
-  rescheduleUnPublishPage?: any;
-  handleCancelTriggerPopup?: any;
-  cancelPublishUnpublishTrigger?: any;
   handleDeleteData?: any;
   handlePageDelete?: any;
   duplicateToSite?: any;

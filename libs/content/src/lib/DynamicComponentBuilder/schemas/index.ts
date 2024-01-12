@@ -462,7 +462,100 @@ export const Template: any = {
         tags: ['Lorem', 'Ipsum', 'Article'],
       },
     ],
+  },
+  "poll": {
+    "title": "Poll",
+    "name": "poll",
+    "type": "document|Prelem|product",
+    "form_groups": [
+      {
+        "index": "01",
+        "title": "Title & Description",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "02",
+        "title": "Choose Background Image",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "03",
+        "title": "Question",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "04",
+        "title": "Results",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "05",
+        "title": "Choose Tags",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "06",
+        "title": "Social Share",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "07",
+        "title": "Analytics",
+        "description": "Fields with * are mandatory"
+      },
+      {
+        "index": "08",
+        "title": "SEO",
+        "description": "Fields with * are mandatory"
+      }
+    ],
+    "fields": [
+      {
+        "type": "text",
+        "name": "title",
+        "title": "Title",
+        "index": "01",
+        "description": "This will be your poll title",
+        "placeholder": "Enter your title here",
+        "validations": [
+          {
+            "type": "required",
+            "message": "Required"
+          },
+          {
+            "type": "maxLength",
+            "value": 120,
+            "message": "120 characters max"
+          }
+        ],
+        "variant": "string|Number|Multiline"
+      },
+      // Other fields similar to the quiz structure
+      {
+        "type": "question",
+        "name": "question",
+        "title": "Question*",
+        "index": "03",
+        "description": "Add a question for your poll",
+        "buttonObj": {
+          "buttonLabel1": "Add question",
+          "buttonLabel2": "Choose from list",
+          "buttonVariant1": "primaryButton",
+          "buttonVariant2": "primaryButton"
+        },
+        "variant": "primary|secondary"
+      },
+      // Additional poll-specific fields can be added here
+    ],
+    "initialData": [
+      {
+        "title": "Lorem ipsum title",
+        "short_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "description": "Nullam sem ex, gravida quis dui et, pretium luctus tellus. Donec enim justo, vestibulum non augue nec, volutpat suscipit augue. Proin sit amet mi in odio efficitur fringilla. Quisque dictum odio ligula, vitae laoreet turpis sollicitudin at."
+      }
+    ]
   }
+
 };
 
 export const AddQuestionData = {

@@ -1,7 +1,7 @@
 import { ArrowBack } from '@mui/icons-material';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { HeaderProps } from './common.types';
-import Submit from './Submit';
+import SubmitButton from '../SubmitButton/SubmitButton';
 import PreviewNewIcon from '../../../assets/svg/PreviewNewIcon.svg';
 import WorkflowIcon from '../../../assets/svg/WorkflowHistory/timer.svg';
 import { useStyles } from './ContentHeader.styles';
@@ -64,7 +64,7 @@ export const ContentHeader = ({
         container
         alignItems='flex-end'
       >
-        <Submit Button2={Button2} Tab1={Tab1} Tab2={Tab2} />
+        <SubmitButton Button2={Button2} Tab1={Tab1} Tab2={Tab2} />
 
         <Button
           variant='secondaryButton'

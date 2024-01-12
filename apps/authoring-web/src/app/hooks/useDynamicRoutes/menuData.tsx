@@ -60,6 +60,15 @@ const ContentRoutes = {
             component: <Content></Content>,
         },
         {
+            MenuName: "Profile",
+            Icon: PollIcon,
+            url: "content/profile",
+            category: "content",
+            subCategory: "profile",
+            id: "profile",
+            component: <Content></Content>,
+        },
+        {
             MenuName: "Events",
             Icon: EventsIcon,
             url: "/content/event",

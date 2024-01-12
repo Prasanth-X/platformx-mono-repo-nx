@@ -53,4 +53,5 @@ export const iconsList: any = {
     general: General_community,
     'challenges-announcement': Challenge_community,
     Space: SpaceListIcon,
+    profile: ArticleListIcon,
 };
