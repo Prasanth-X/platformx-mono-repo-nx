@@ -112,6 +112,8 @@ import TaskNotFoundIcon from './taskNotFoundIcon.svg'
 import WarningIcon from './warningIcon.svg'
 import WorkflowDetails from './workflow.svg'
 import WorkflowIcon from './workflowIcon.svg'
+import LeftArrowIcon from './leftarrow.svg'
+import RightArrowIcon from './rightarrow.svg'
 
 export {
   AccountBalanceWalletIcon,
@@ -224,4 +226,6 @@ export {
   WorkflowDetails,
   WorkflowIcon,
   warning,
+  LeftArrowIcon,
+  RightArrowIcon,
 }

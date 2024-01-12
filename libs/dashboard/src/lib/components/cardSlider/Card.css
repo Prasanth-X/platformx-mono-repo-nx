@@ -37,23 +37,6 @@
 .cardslider .slick-prev.slick-disabled {
   visibility: hidden;
 }
-.cardslider .slick-arrow.slick-prev:before {
-  content: '';
-  width: 11px;
-  height: 16px;
-  /* background-image: url('../../../../assets/svg/leftarrow.svg'); */
-  filter: brightness(0) invert(1);
-  opacity: 1;
-}
-.cardslider .slick-arrow.slick-next:before {
-  content: '';
-  text-indent: 0;
-  width: 11px;
-  height: 16px;
-  /* background-image: url('../../../../assets/svg/rightarrow.svg'); */
-  filter: brightness(0) invert(1);
-  opacity: 1;
-}
 .cardslider .slick-prev:hover,
 .cardslider .slick-prev:focus,
 .cardslider .slick-next:hover,

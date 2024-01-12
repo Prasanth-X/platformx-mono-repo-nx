@@ -50,18 +50,16 @@ const InstructorDashBoard = () => {
 
   return (
     <Box className={classes.container}>
-      <Box>
+      <Box sx={{ display: {xs: 'block', em: 'flex' }}}>
         <Title
-          titleVarient="h1bold"
+          titleVarient="h2bold"
           titleColor="#4B9EF9"
-          padding="0"
+          padding="0 5px 0 0"
           title={t('greets_x')}
         />
+        <Title titleVarient="h2bold" title={userInfo?.name} />
       </Box>
-      <Box>
-        <Title titleVarient="h1bold" padding="0" title={userInfo?.name} />
-      </Box>
-      <Typography variant="h6medium" sx={{ marginTop: '18px' }}>
+      <Typography variant="h6medium" mt="5px">
         {/* #TODO Commenting for X-Launch */}
         {taskLength > 0 &&
           ` ${t('you_have')} ${taskLength} ${t('new_task')}`}{' '}
