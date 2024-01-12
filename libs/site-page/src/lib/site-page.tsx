@@ -1,17 +1,11 @@
 import styled from 'styled-components';
+import { Content } from '@platformx/content';
 
 /* eslint-disable-next-line */
 export interface SitePageProps {}
-
-const StyledSitePage = styled.div`
-  color: pink;
-`;
-
 export function SitePage(props: SitePageProps) {
   return (
-    <StyledSitePage>
-      <h1>Welcome to SitePage!</h1>
-    </StyledSitePage>
+    <Content />
   );
 }
 

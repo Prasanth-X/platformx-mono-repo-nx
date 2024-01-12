@@ -20,6 +20,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@platformx/site-page": [
+        "libs/site-page/src/index.ts"
+      ],
       "@platformx/authoring-apis": [
         "libs/authoring-apis/src/index.ts"
       ],
