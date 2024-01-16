@@ -55,12 +55,12 @@ export const MenuData = [
   {
     Title: "pages",
     id: "page",
-    url: "/page-list",
+    url: "/Sitepage",
     Menu: [
       {
         MenuName: "Pages",
         Icon: PagesIcon,
-        url: "/page-list",
+        url: "/Sitepage",
         id: "pages",
         category: "page",
         subCategory: "",

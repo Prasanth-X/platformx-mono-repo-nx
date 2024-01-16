@@ -65,21 +65,19 @@ export const Dashboard = () => {
       default:
         return (
           <Box className={classes.container} key={taskLength}>
-            <Box>
+            <Box sx={{ display: {xs: 'block', em: 'flex' }}}>
               <Title
-                titleVarient="h1bold"
+                titleVarient="h2bold"
                 titleColor="#4B9EF9"
-                padding="0"
+                padding="0 5px 0 0"
                 title={t('greets_x')}
               />
-            </Box>
-            <Box>
-              <Title titleVarient="h1bold" padding="0" title={userInfo?.name} />
+              <Title titleVarient="h2bold" title={userInfo?.name} />
             </Box>
             {/* #TODO Commenting for X-Launch */}
-            <Typography variant="h6medium" sx={{ marginTop: '18px' }}>
+            <Typography variant="h6medium" mt="5px">
               {taskLength > 0 &&
-                ` ${t('you_have')} ${taskLength} ${t('new_task')}`}{' '}
+                ` ${t('you_have')} ${taskLength} ${t('new_task')}`}{" "}
               {overDueTaskLength() > 0 &&
                 `${t('and')} ${overDueTaskLength()} ${t('overdue_task_text')}`}
             </Typography>
