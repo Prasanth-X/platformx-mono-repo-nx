@@ -25,7 +25,7 @@ function AppRouter() {
   const code = searchParams.get('code');
 
   useEffect(() => {
-    debugger
+  //  debugger
     if (location.search.includes('code') && Object.entries(userInfo || {}).length === 0) {
       handleSignIn(location.search.split('code=')[1]);
     } else if (location.search.includes('code') && Object.entries(userInfo || {}).length !== 0) {

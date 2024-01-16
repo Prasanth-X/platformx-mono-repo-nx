@@ -7,6 +7,7 @@ import {
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
 import { CreateContent } from "@platformx/content"
+import { SiteSetting } from "@platformx/site-setting"
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -44,6 +45,22 @@ export const routes: RouteConfig[] = [
       >
         {' '}
         <UserListing></UserListing>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/site-setting/global-setting",
+    element: (
+      <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
+        <SiteSetting />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/site-setting/feature-flag",
+    element: (
+      <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
+        <SiteSetting />
       </ProtectedRoute>
     ),
   },

@@ -38,7 +38,7 @@ import { articleApi, contentTypeAPIs } from '@platformx/authoring-apis';
 import { ContentType } from '../enums/ContentType';
 import { SectionProps } from './DynamicComponent.types';
 const DynamicContent = ({ contentType }: { contentType: string }) => {
-  debugger;
+ // debugger;
   const { form_groups, fields } = Template[contentType];
   const { t, i18n } = useTranslation();
   const classes = useCustomStyle();
