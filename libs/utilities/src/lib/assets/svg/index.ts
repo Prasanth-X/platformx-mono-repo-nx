@@ -114,6 +114,7 @@ import WorkflowDetails from './workflow.svg'
 import WorkflowIcon from './workflowIcon.svg'
 import LeftArrowIcon from './leftarrow.svg'
 import RightArrowIcon from './rightarrow.svg'
+import PlayIcon from './playIcon.svg'
 
 export {
   AccountBalanceWalletIcon,
@@ -228,4 +229,5 @@ export {
   warning,
   LeftArrowIcon,
   RightArrowIcon,
+  PlayIcon,
 }

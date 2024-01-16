@@ -1,6 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
-export const prelemTypes = makeStyles(() => {
+const prelemTypes = makeStyles(() => {
   return {
     prelemType1: {
       "&.prelemType1": {},
@@ -13,3 +13,4 @@ export const prelemTypes = makeStyles(() => {
     },
   };
 });
+export default prelemTypes
