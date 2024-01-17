@@ -1,5 +1,6 @@
 import { Dashboard } from '@platformx/dashboard'
 import { CreateUser, UserListing } from '@platformx/user-management'
+import PrelemComponent from '../components/PrelemLibrary/PrelemComponent'
 import {
   WorkflowDetails,
   WorkflowManagement,
@@ -33,6 +34,18 @@ export const routes: RouteConfig[] = [
       >
         {' '}
         <Dashboard />{' '}
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/prelem',
+    element: (
+      <ProtectedRoute
+        category="dashboard"
+        subCategory="dashboard"
+        name="dashboard" isSideBar={false} isHeader={false}
+      >
+        <PrelemComponent />
       </ProtectedRoute>
     ),
   },

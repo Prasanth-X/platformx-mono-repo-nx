@@ -122,6 +122,8 @@ import MenuIcon5 from "./MenuIcons-5.svg"
 import MenuIcon6 from "./MenuIcons-6.svg"
 import MenuIcon7 from "./MenuIcons-7.svg"
 import MenuIcon8 from "./MenuIcons-8.svg"
+import PlayIcon from './playIcon.svg'
+
 export {
   MenuIcon1,
   MenuIcon2,
@@ -243,4 +245,5 @@ export {
   warning,
   LeftArrowIcon,
   RightArrowIcon,
+  PlayIcon,
 }
