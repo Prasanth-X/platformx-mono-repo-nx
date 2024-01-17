@@ -7,7 +7,7 @@ import ImageRender from "../../components/ImageRender";
 import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout";
 import { completeButtonUrl, formCroppedUrl, Frame1, Frame2, Frame3 } from "@platformx/utilities";
 import BasicButton from "../../components/BasicButton/BasicButton";
-import prelemTypes from '../../globalStyle';
+import prelemTypes from "../../globalStyle";
 import { useCustomStyle } from "./AboutUS2.style";
 import "../../Style.css";
 import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
