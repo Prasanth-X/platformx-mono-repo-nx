@@ -5,8 +5,9 @@ import { useInView } from "react-intersection-observer";
 import ImageRender from "../../Common/ImageRender";
 import "../../Style.css";
 import TwoColumnLayout from "../../layouts/TwoColumns/TwoColumnLayout";
-import { completeButtonUrl, formCroppedUrl, prelemTypes } from "@platformx/utilities";
-import BasicButton from "../BasicButton/BasicButton";
+import { completeButtonUrl, formCroppedUrl } from "@platformx/utilities";
+import prelemTypes from '../../globalStyle';
+import BasicButton from "../../Common/BasicButton/BasicButton";
 import { useCustomStyle } from "./WebsiteIntroduction.style";
 import { usePrelemImpression } from "../../Common/ImpressionHooks/PrelemImpressionHook";
 

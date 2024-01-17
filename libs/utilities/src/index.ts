@@ -55,7 +55,6 @@ import PrelemsFifaThemeConstants from './lib/themes/prelems/Fifa/Variable'
 import PrelemsHockeyAustraliaThemeConstants from './lib/themes/prelems/HockeyAustralia/Variable'
 import PrelemsLightThemeConstants from './lib/themes/prelems/LightTheme/Variable'
 import PrelemTheme from './lib/themes/prelems/prelemTheme'
-import prelemTypes from './lib/themes/prelems/globalStyle'
 import { LanguageList } from './lib/utils/helperConstants'
 import { getCurrentLang, getUniqueTimeZone, getFormattedImageUrl } from './lib/utils/helperFns'
 import i18next from './lib/utils/i18next'
@@ -94,7 +93,6 @@ export * from './lib/utils/helperConstants'
 export * from './lib/utils/helperFns'
 
 export {
-  prelemTypes,
   AUTH_INFO,
   AUTH_URL,
   AddImage,

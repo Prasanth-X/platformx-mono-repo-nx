@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import DoneIcon from "@mui/icons-material/Done";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageRender from "../../Common/ImageRender";
-import BasicButton from "../BasicButton/BasicButton";
+import BasicButton from "../../Common/BasicButton/BasicButton";
 import { useCustomStyle } from "./AboutUsThree.style";
-import { completeButtonUrl, formCroppedUrl, prelemTypes } from "@platformx/utilities";
+import { completeButtonUrl, formCroppedUrl } from "@platformx/utilities";
+import prelemTypes from '../../globalStyle';
 import { usePrelemImpression } from "../../Common/ImpressionHooks/PrelemImpressionHook";
 import VideoPlayer from "../../Common/VideoPlayers/VideoPlayer";
 

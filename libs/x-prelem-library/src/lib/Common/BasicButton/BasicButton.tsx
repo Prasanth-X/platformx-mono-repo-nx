@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { errorRequest } from "../../Common/ConstantData";
-import ToastService from "../../Common/ToastContainer/ToastService";
+import { errorRequest } from "../ConstantData";
+import ToastService from "../ToastContainer/ToastService";
 import {
   nullToObject,
   convertToLowerCase,
@@ -16,12 +16,12 @@ import {
   eComTypeUriToJSON,
 } from "@platformx/utilities";
 import usePlatformAnalytics from "../../analytics";
-import { IMPRESSIONS } from "../../Common/ImpressionHooks/constants";
+import { IMPRESSIONS } from "../ImpressionHooks/constants";
 import {
   createClickImpression,
   snowplowPrelemClickImpression,
-} from "../../Common/ImpressionHooks/helper";
-import CustomModalSlider from "../../Common/CustomModalSlider/CustomModalSlider";
+} from "../ImpressionHooks/helper";
+import CustomModalSlider from "../CustomModalSlider/CustomModalSlider";
 
 const BasicButton = (props: BasicButtonProps) => {
   const {

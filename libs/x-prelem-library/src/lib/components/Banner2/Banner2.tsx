@@ -3,8 +3,10 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageRender from "../../Common/ImageRender";
-import { formCroppedUrl, prelemTypes } from "@platformx/utilities";
+import { formCroppedUrl } from "@platformx/utilities";
+import prelemTypes from '../../globalStyle';
 import { useCustomStyle } from "./Banner2.style";
+import "../../Style.css";
 import { usePrelemImpression } from "../../Common/ImpressionHooks/PrelemImpressionHook";
 
 const Banner2 = ({ content, analytics, authoringHelper, secondaryArgs }: Banner2Prop) => {
