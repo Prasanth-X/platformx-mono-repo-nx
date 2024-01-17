@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { format } from 'date-fns';
-import FallBackImage from '../assets/fallBackImage.png';
+import FallBackImage from '../assets/images/fallBackImage.png';
 import ToastService from '../components/ToastContainer/ToastService';
 import {
   CONTENT_TYPE_WITH_ABSOLUTEURL,
@@ -10,12 +10,12 @@ import { LanguageList, countries } from './helperConstants';
 import { Props } from './types';
 
 const siteLevelSchema = {
-  "siteName":"X",
-  "siteURL":"https://platform-x.com",
-  "siteDescription":"Lorem Ipsum is simply dummy text of the printing",
-  "siteImage":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fuicookies.com%2Ffree-html-contact-forms%2F&psig=AOvVaw2eVA8o8PsBkQZBaD49Qxf7&ust=1646374746446000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC60qamqfYCFQAAAAAdAAAAABAO",
-  "facebookAppId":"Platform-X",
-  "twitterAppId":"Platform-X"
+  "siteName": "X",
+  "siteURL": "https://platform-x.com",
+  "siteDescription": "Lorem Ipsum is simply dummy text of the printing",
+  "siteImage": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fuicookies.com%2Ffree-html-contact-forms%2F&psig=AOvVaw2eVA8o8PsBkQZBaD49Qxf7&ust=1646374746446000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC60qamqfYCFQAAAAAdAAAAABAO",
+  "facebookAppId": "Platform-X",
+  "twitterAppId": "Platform-X"
 };
 
 const errorRequest =
@@ -210,7 +210,7 @@ export const triggerAnalytics = ({
   e,
   analytics,
   defaultObj,
-  handleTrack = () => {},
+  handleTrack = () => { },
 }: Props) => {
   if (!analytics?.isAuthoring && analytics?.isAnalyticsEnabled) {
     const buttonClickObj = {
@@ -762,8 +762,8 @@ declare namespace Intl {
     | 'numberingSystem'
     | 'timeZone'
     | 'unit';
-    function supportedValuesOf(input: Key): string[];
-  };
+  function supportedValuesOf(input: Key): string[];
+};
 
 //Set page settings wit default values on page creation
 export function setDefaultPageSettings(
@@ -808,7 +808,7 @@ export const formatChildren = (children: any, content: any) => {
     Children.push(instance);
   }
   return Children;
-}; 
+};
 
 export const formatContentTitle = (title = '') => {
   return title

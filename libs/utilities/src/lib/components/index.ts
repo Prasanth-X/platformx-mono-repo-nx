@@ -11,6 +11,11 @@ import { XToolTip } from "./XToolTip/XToolTip";
 import MarkedFeatured from "./MarkFeatured/MarkedFeatured"
 import ToolTipMessage from "./MarkFeatured/ToolTipMessage"
 import Timer from "./Timer/Timer";
-export { Timer, DatePicker, ToolTipMessage, MarkedFeatured, Card, WorkflowStepper, XToolTip, ReportGraph, SkeltonLoader, NoContentFound, SubmitButton };
+import IconAndLabel from "./IconAndLabel"
+export * from "./DragAndDrop/index"
+import { XTags } from "./SchemaComponents";
+import AutoCompleteText from "./AutoCompleteText/AutoCompleteText";
+import BasicSwitchText from "./BasicSwitchText";
+export { BasicSwitchText, AutoCompleteText, IconAndLabel, XTags, Timer, DatePicker, ToolTipMessage, MarkedFeatured, Card, WorkflowStepper, XToolTip, ReportGraph, SkeltonLoader, NoContentFound, SubmitButton };
 
 

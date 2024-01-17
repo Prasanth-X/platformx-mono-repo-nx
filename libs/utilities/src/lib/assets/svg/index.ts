@@ -114,8 +114,23 @@ import WorkflowDetails from './workflow.svg'
 import WorkflowIcon from './workflowIcon.svg'
 import LeftArrowIcon from './leftarrow.svg'
 import RightArrowIcon from './rightarrow.svg'
-
+import MenuIcon1 from "./MenuIcons-1.svg"
+import MenuIcon2 from "./MenuIcons-2.svg"
+import MenuIcon3 from "./MenuIcons-3.svg"
+import MenuIcon4 from "./MenuIcons-4.svg"
+import MenuIcon5 from "./MenuIcons-5.svg"
+import MenuIcon6 from "./MenuIcons-6.svg"
+import MenuIcon7 from "./MenuIcons-7.svg"
+import MenuIcon8 from "./MenuIcons-8.svg"
 export {
+  MenuIcon1,
+  MenuIcon2,
+  MenuIcon3,
+  MenuIcon4,
+  MenuIcon5,
+  MenuIcon6,
+  MenuIcon7,
+  MenuIcon8,
   AccountBalanceWalletIcon,
   AiSvg,
   AiSvg2,

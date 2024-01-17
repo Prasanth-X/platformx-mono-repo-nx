@@ -32,6 +32,8 @@ const contentTypeAPIs = {
   updateContentType: UPDATE_CONTENT_TYPE,
   publishContentType: PUBLISH_CONTENT_TYPE,
   deleteContentType: DELETE_CONTENT_TYPE,
+  fetchContentByPath: FETCH_CONTENT_BY_PATH,
+  fetchContentTypeListAll: FETCH_CONTENT_TYPE_LIST_ALL,
   fetchContent: async <T>(input: any): Promise<ApiResponse<T>> => {
     try {
       const { data } = await graphqlInstance.query({

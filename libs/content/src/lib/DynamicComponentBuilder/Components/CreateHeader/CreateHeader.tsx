@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { ArrowBack } from "@mui/icons-material";
 import SaveAsRoundedIcon from "@mui/icons-material/SaveAsRounded";
 import TelegramIcon from "@mui/icons-material/Telegram";
@@ -47,6 +48,7 @@ export const CreateHeader = ({
   setIsFeatured,
   isFeatured,
 }: HeaderProps) => {
+  debugger
   const { canAccessAction } = useAccess();
   const theme = useTheme();
   const { setIsReviewEnabled, setIsCommentPanelOpen, isReviewEnabled, comments } =

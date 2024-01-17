@@ -11,3 +11,5 @@ export { default as inGreen } from './in-green.png'
 export { default as avtarImg } from './avatar.png'
 export { default as Logo } from './logo.png'
 export { default as successGif } from './success.gif'
+
+export { default as FallBackImage } from './fallBackImage.png'
