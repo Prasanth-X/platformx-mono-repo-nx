@@ -259,6 +259,14 @@ export const MenuData = [
         category: 'SiteSetting',
         subCategory: 'GlobalSetting',
       },
+      {
+        MenuName: 'Global Setting',
+        Icon: HeaderMenuUpdated,
+        url: '/site-setting/global-setting',
+        id: 'feature_flag_setting',
+        category: 'SiteSetting',
+        subCategory: 'GlobalSetting',
+      },
     ],
   },
   {
