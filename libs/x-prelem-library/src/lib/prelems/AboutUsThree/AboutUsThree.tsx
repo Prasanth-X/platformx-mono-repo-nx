@@ -3,13 +3,13 @@ import DoneIcon from "@mui/icons-material/Done";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-import ImageRender from "../../Common/ImageRender";
-import BasicButton from "../../Common/BasicButton/BasicButton";
+import ImageRender from "../../components/ImageRender";
+import BasicButton from "../../components/BasicButton/BasicButton";
 import { useCustomStyle } from "./AboutUsThree.style";
 import { completeButtonUrl, formCroppedUrl } from "@platformx/utilities";
 import prelemTypes from '../../globalStyle';
-import { usePrelemImpression } from "../../Common/ImpressionHooks/PrelemImpressionHook";
-import VideoPlayer from "../../Common/VideoPlayers/VideoPlayer";
+import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
+import VideoPlayer from "../../components/VideoPlayers/VideoPlayer";
 
 const AboutUsThree = ({
   content,

@@ -2,24 +2,22 @@
 import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-import ImageRender from "../../Common/ImageRender";
+import ImageRender from "../../components/ImageRender";
 import "../../Style.css";
-import TwoColumnLayout from "../../layouts/TwoColumns/TwoColumnLayout";
+import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout";
 import { completeButtonUrl, formCroppedUrl } from "@platformx/utilities";
+import BasicButton from "../../components/BasicButton/BasicButton";
+import { useCustomStyle } from "./productSummaryViaImage.style";
 import prelemTypes from '../../globalStyle';
-import BasicButton from "../../Common/BasicButton/BasicButton";
-import { useCustomStyle } from "./WebsiteIntroduction.style";
-import { usePrelemImpression } from "../../Common/ImpressionHooks/PrelemImpressionHook";
+import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
 
-const WebsiteIntroduction = ({
+const ProductSummaryViaImage = ({
   content,
   analytics,
   authoringHelper,
   secondaryArgs,
-}: WebsiteIntroductionProps) => {
-  const classes = useCustomStyle();
-  const globalClasses = prelemTypes();
-  const ButtonObj1 = {
+}: ProductSummaryViaImageProps) => {
+  const ButtonObj = {
     Button_Name: "Button1_Name",
     Button_RedirectURL: "Button1_RedirectURL",
     Button_Type: "Button1_Type",
@@ -27,7 +25,7 @@ const WebsiteIntroduction = ({
     Button_Action: "Button1_Action",
     Button_Content: "Button1_Content",
   };
-  const ButtonDataObj1 = {
+  const ButtonDataObj = {
     Button_Name: content?.Button1_Name,
     Button_RedirectURL: content?.Button1_RedirectURL,
     Button_Type: content?.Button1_Type,
@@ -35,22 +33,8 @@ const WebsiteIntroduction = ({
     Button_Action: content?.Button1_Action,
     Button_Content: content?.Button1_Content,
   };
-  const ButtonObj2 = {
-    Button_Name: "Button2_Name",
-    Button_RedirectURL: "Button2_RedirectURL",
-    Button_Type: "Button2_Type",
-    Button_Value: "Button2_Value",
-    Button_Action: "Button2_Action",
-    Button_Content: "Button2_Content",
-  };
-  const ButtonDataObj2 = {
-    Button_Name: content?.Button2_Name,
-    Button_RedirectURL: content?.Button2_RedirectURL,
-    Button_Type: content?.Button2_Type,
-    Button_Value: content?.Button2_Value,
-    Button_Action: content?.Button2_Action,
-    Button_Content: content?.Button2_Content,
-  };
+  const classes = useCustomStyle();
+  const globalClasses = prelemTypes();
   const firstRender = useRef(true);
   const { ref, inView } = useInView({
     /* Optional options */
@@ -58,7 +42,7 @@ const WebsiteIntroduction = ({
   });
 
   const defaultStructureData = () => {
-    let websiteIntroductionStructureData;
+    let ProductSummaryViaImageStructureData;
     const { original_image_relative_path, ext }: any =
       content?.ImageCompound?.ImageCompound_1?.original_image || {};
     const img = formCroppedUrl(
@@ -69,9 +53,9 @@ const WebsiteIntroduction = ({
     );
 
     try {
-      websiteIntroductionStructureData = {
+      ProductSummaryViaImageStructureData = {
         "@context": "http://schema.org/",
-        "@type": "Service",
+        "@type": "Product",
         name: content?.Title,
         image: img,
         description: content?.Description,
@@ -82,12 +66,13 @@ const WebsiteIntroduction = ({
         ),
       };
     } catch (e) {
-      websiteIntroductionStructureData = {};
+      ProductSummaryViaImageStructureData = {};
     }
-    return websiteIntroductionStructureData;
+    return ProductSummaryViaImageStructureData;
   };
+
   const genrateStructureData = () => {
-    let websiteIntroductionStructureData;
+    let ProductSummaryViaImageStructureData;
     const tempSD = String(authoringHelper?.lastSavedStructuredData);
 
     if (firstRender.current) {
@@ -96,15 +81,15 @@ const WebsiteIntroduction = ({
       authoringHelper?.sendDefaultStructureDataForResetToAuthoringCB(stringifyStructureData || "");
 
       if (String(tempSD).length > 0) {
-        websiteIntroductionStructureData = JSON.parse(tempSD);
+        ProductSummaryViaImageStructureData = JSON.parse(tempSD);
       } else {
-        websiteIntroductionStructureData = defaultStructureData();
+        ProductSummaryViaImageStructureData = defaultStructureData();
       }
       firstRender.current = false;
     } else {
-      websiteIntroductionStructureData = defaultStructureData();
+      ProductSummaryViaImageStructureData = defaultStructureData();
     }
-    return websiteIntroductionStructureData;
+    return ProductSummaryViaImageStructureData;
   };
 
   useEffect(() => {
@@ -115,60 +100,21 @@ const WebsiteIntroduction = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    content?.Description,
-    content?.ImageCompound?.ImageCompound_1?.original_image,
-    content?.Title,
-    content?.Button1_Value,
+    content.Description,
+    content.ImageCompound?.ImageCompound_1?.original_image,
+    content.Title,
     content?.Button1_RedirectURL,
   ]);
 
   usePrelemImpression(analytics, inView, secondaryArgs);
-
+  const gridVal = {
+    md: [12, 12],
+    em: [6, 6],
+    lg: [6, 6],
+  };
   const firstColumnContent = () => {
     return (
-      <Box>
-        <Typography variant='h2semibold' id='Title'>
-          {content.Title}
-        </Typography>
-        <Typography variant='p3regular' id='Description'>
-          {content.Description}
-        </Typography>
-        <BasicButton
-          openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
-          isAuthoring={analytics?.isAuthoring}
-          currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
-          //buttonRef={buttonRef}
-          //buttonContentEditable={buttonContentEditable}
-          variant='primaryButton1'
-          analyticsEnabled={analytics?.isAnalyticsEnabled}
-          ButtonObj={ButtonObj1}
-          isEditing={authoringHelper?.isEditing}
-          buttonDataObj={ButtonDataObj1}
-          secondaryArgs={secondaryArgs}
-          analytics={analytics}
-        />
-        <Box sx={{ display: "none" }}>
-          <BasicButton
-            openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
-            isAuthoring={analytics?.isAuthoring}
-            currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
-            //buttonRef={buttonRef}
-            //buttonContentEditable={buttonContentEditable}
-            variant='primaryButton1'
-            analyticsEnabled={analytics?.isAnalyticsEnabled}
-            ButtonObj={ButtonObj2}
-            isEditing={authoringHelper?.isEditing}
-            buttonDataObj={ButtonDataObj2}
-            secondaryArgs={secondaryArgs}
-            analytics={analytics}
-          />
-        </Box>
-      </Box>
-    );
-  };
-  const secondColumnContent = () => {
-    return (
-      <Box className='imageWrapper widthheight100'>
+      <Box className='wrapperImg widthheight100'>
         <ImageRender
           originalImage={content?.ImageCompound?.ImageCompound_1?.original_image}
           publishedImages={content?.ImageCompound?.ImageCompound_1?.published_images}
@@ -185,33 +131,62 @@ const WebsiteIntroduction = ({
       </Box>
     );
   };
-
+  const secondColumnContent = () => {
+    return (
+      <Box>
+        <Typography variant='h2semibold' id='Title'>
+          {content.Title}
+        </Typography>
+        <Typography variant='p3regular' id='Description'>
+          {content.Description}
+        </Typography>
+        <Box>
+          <BasicButton
+            openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
+            isAuthoring={analytics?.isAuthoring}
+            currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
+            //buttonRef={buttonRef}
+            //buttonContentEditable={buttonContentEditable}
+            variant='primaryButton1'
+            analyticsEnabled={analytics?.isAnalyticsEnabled}
+            ButtonObj={ButtonObj}
+            isEditing={authoringHelper?.isEditing}
+            buttonDataObj={ButtonDataObj}
+            secondaryArgs={secondaryArgs}
+            analytics={analytics}
+          />
+        </Box>
+      </Box>
+    );
+  };
   return (
     <div
       ref={authoringHelper?.innerRef}
-      className={`${classes.websiteintroWrapper} ${globalClasses.prelemType1} prelem prelemType1 websiteintrobg website-introduction`}>
+      className={`${classes.productSummaryViaImageWrapper} ${globalClasses.prelemType1} prelem prelemType1 productSummaryViaImage productSummaryViaImageBg`}>
       <Container
         className={
-          authoringHelper?.isEditPage ? "grid_full_width prelem-py" : "grid_container prelem-py"
+          authoringHelper?.isEditPage ? `grid_full_width prelem-py` : `grid_container prelem-py`
         }
         ref={ref}>
-        <Box className='websiteIntroduction'>
-          <TwoColumnLayout
-            firstColumnContent={firstColumnContent()}
-            secondColumnContent={secondColumnContent()}
-          />
-        </Box>
+        <TwoColumnLayout
+          firstColumnContent={firstColumnContent()}
+          secondColumnContent={secondColumnContent()}
+          gridVal={gridVal}
+          customClassName='productSummaryViaImageInnerWrapper'
+          noGap={true}
+        />
       </Container>
     </div>
   );
 };
 
-interface WebsiteIntroductionProps {
+interface ProductSummaryViaImageProps {
   content: Content;
   analytics: Analytics;
   authoringHelper?: AuthoringHelper;
   secondaryArgs?: any;
 }
+
 interface Analytics {
   pageId?: number;
   prelemId?: number;
@@ -250,14 +225,6 @@ interface Content {
   Button1_Type?: string;
   Button1_Value?: string;
 
-  Button2_Action?: string;
-  Button2_Content?: string;
-  Button2_Name?: string;
-  Button2_RedirectURL?: string;
-  Button2_RestEndPonit?: string;
-  Button2_Type?: string;
-  Button2_Value?: string;
-
   TagName?: string;
   ImageCompound: {
     ImageCompound_1: {
@@ -274,27 +241,18 @@ interface Image {
   ext: string;
 }
 
-WebsiteIntroduction.defaultProps = {
+ProductSummaryViaImage.defaultProps = {
   content: {
-    Button1_Name: "ICT Certified Course",
-    Button1_RedirectURL: "www.google.com", // relative page url | link url
+    Button1_Name: "LearnMore",
+    Button1_RedirectURL: "https://www.google.com/", // relative page url | link url
     Button1_RestEndPonit: "RestEndPoint 1", // ?
     Button1_Action: "External", // Page |  Link
 
-    Button1_Type: "Button1_Type", // current window | new window
+    Button1_Type: "current window", // current window | new window
     Button1_Value: "Lorem ipsum",
-
-    Button2_Name: "DBE iCloud",
-    Button2_RedirectURL: "https://www.google.com/", // relative page url | link url
-    Button2_RestEndPonit: "RestEndPoint 2", // ?
-    Button2_Action: "External", // Page |  Link
-
-    Button2_Type: "Button2_Type", // current window | new window
-    Button2_Value: "DBE iCloud",
-
-    Title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    Title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
     Description:
-      "Nullam sem ex, gravida quis dui et, pretium luctus tellus. Donec enim justo, vestibulum non augue nec, volutpat suscipit augue. Proin sit amet mi in odio efficitur fringilla. Quisque dictum odio ligula, vitae laoreet turpis sollicitudin at.",
+      "Nullam sem ex, gravida quis dui et, pretium luctus tellus. Donec enim justo, vestibulum non augue nec, volutpat suscipit augue.Proin sit amet mi in odio efficitur fringilla.Quisque dictum odio ligula, vitae laoreet turpis sollicitudin at.",
 
     TagName: "SiteComponents",
     PrelemContentType: ["Select"],
@@ -302,43 +260,44 @@ WebsiteIntroduction.defaultProps = {
       ImageCompound_1: {
         original_image: {
           original_image_relative_path:
-            "machine_assets/1689934844153/public/png/WebsiteIntroduction",
+            "machine_assets/1689938027653/public/png/ProductSummary-ViaImage",
           visibility: "public",
           ext: "png",
           bitStreamId: "",
           auto: true,
           MetaFields: {
-            AltText: "HomeBanner",
-            Name: "HomeBanner",
-            Title: "HomeBanner",
-            Description: "This is for HeroBanner",
+            AltText: "Imagecard1",
+            Name: "Imagecard1",
+            Title: "Imagecard1",
+            Description: "This is for Imagecard1",
             Attribution: false,
           },
         },
         published_images: [
           {
             aspect_ratio: "portrait",
-            folder_path: "machine_assets/1689934844153/public/png/WebsiteIntroduction-portrait",
-          },
-          {
-            aspect_ratio: "hero",
-            folder_path: "machine_assets/1689934844153/public/png/WebsiteIntroduction-hero",
-          },
-          {
-            aspect_ratio: "landscape",
-            folder_path: "machine_assets/1689934844153/public/png/WebsiteIntroduction-landscape",
+            folder_path: "machine_assets/1689938027653/public/png/ProductSummary-ViaImage-portrait",
           },
           {
             aspect_ratio: "card1",
-            folder_path: "machine_assets/1689934844153/public/png/WebsiteIntroduction-card1",
+            folder_path: "machine_assets/1689938027653/public/png/ProductSummary-ViaImage-card1",
+          },
+          {
+            aspect_ratio: "hero",
+            folder_path: "machine_assets/1689938027653/public/png/ProductSummary-ViaImage-hero",
+          },
+          {
+            aspect_ratio: "landscape",
+            folder_path:
+              "machine_assets/1689938027653/public/png/ProductSummary-ViaImage-landscape",
           },
           {
             aspect_ratio: "square",
-            folder_path: "machine_assets/1689934844153/public/png/WebsiteIntroduction-square",
+            folder_path: "machine_assets/1689938027653/public/png/ProductSummary-ViaImage-square",
           },
           {
             aspect_ratio: "card2",
-            folder_path: "machine_assets/1689934844153/public/png/WebsiteIntroduction-card2",
+            folder_path: "machine_assets/1689938027653/public/png/ProductSummary-ViaImage-card2",
           },
         ],
       },
@@ -361,13 +320,12 @@ WebsiteIntroduction.defaultProps = {
     isSeoEnabled: false,
     isAuthoring: false,
     position: 0,
-    pageId: 12345,
-    prelemId: 23456,
-    pageTitle: "Website Introduction",
-    pageDesc:
-      "The Prelem ‘Website Introduction’ can be used to give an introduction to your website. It has an image, title, description & CTA which can be used to add the required information.",
-    pageTags: "Website, Introduction, Website Introduction, Image, CTA, Title, Hero Banner",
-    prelemTags: "Website, Introduction, Website Introduction, Image, CTA, Title, Hero Banner",
+    pageId: 1234,
+    prelemId: 2345,
+    pageTitle: "Product Summary via Image",
+    pageDesc: "Prelem Description",
+    pageTags: "Product Page, Summary page",
+    prelemTags: "Product Summary, Summary, Article Summary, NewsLetter",
   },
   secondaryArgs: {
     prelemBaseEndpoint: {
@@ -382,4 +340,4 @@ WebsiteIntroduction.defaultProps = {
   },
 };
 
-export default WebsiteIntroduction;
+export default ProductSummaryViaImage;

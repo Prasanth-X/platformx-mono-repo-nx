@@ -3,14 +3,14 @@ import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import Typewriter from "typewriter-effect";
-import ImageRender from "../../Common/ImageRender";
-import TwoColumnLayout from "../../layouts/TwoColumns/TwoColumnLayout";
+import ImageRender from "../../components/ImageRender";
+import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout";
 import { completeButtonUrl, formCroppedUrl, Frame1, Frame2, Frame3 } from "@platformx/utilities";
-import BasicButton from "../../Common/BasicButton/BasicButton";
+import BasicButton from "../../components/BasicButton/BasicButton";
 import prelemTypes from '../../globalStyle';
 import { useCustomStyle } from "./AboutUS2.style";
 import "../../Style.css";
-import { usePrelemImpression } from "../../Common/ImpressionHooks/PrelemImpressionHook";
+import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
 
 const AboutUs2 = ({ content, analytics, authoringHelper, secondaryArgs }: AboutUs2Props) => {
   const classes = useCustomStyle();

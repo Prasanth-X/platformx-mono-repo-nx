@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { emailValidate } from "utils/helperFns";
+import { emailValidate } from "@platformx/utilities";
 
 const FormValidate = () => {
   const { t } = useTranslation();

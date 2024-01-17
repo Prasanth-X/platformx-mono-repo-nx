@@ -1,6 +1,6 @@
 import { createClickImpression, snowplowPrelemClickImpression } from "./helper";
 import { IMPRESSIONS } from "./constants";
-import usePlatformAnalytics from "../../analytics/index";
+import usePlatformAnalytics from "../../hooks/usePlatformxAnalytics/index";
 
 export const useClickImpression = () => {
   const [handleTrack] = usePlatformAnalytics();

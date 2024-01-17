@@ -15,7 +15,7 @@ import {
   conCatUrlPath,
   eComTypeUriToJSON,
 } from "@platformx/utilities";
-import usePlatformAnalytics from "../../analytics";
+import usePlatformAnalytics from "../../hooks/usePlatformxAnalytics/index";
 import { IMPRESSIONS } from "../ImpressionHooks/constants";
 import {
   createClickImpression,
