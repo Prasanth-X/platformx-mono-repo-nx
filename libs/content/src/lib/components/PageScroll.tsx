@@ -42,6 +42,7 @@ const PageScroll = ({ icons, parentToolTip, srollToView }) => {
 
           <Tooltip
             title={t(icon.tooltip)}
+            key={icon.tooltip}
             placement='left'
             sx={{
               '.Platform-x-Tooltip-tooltipPlacementLeft': {
@@ -75,9 +76,18 @@ const PageScroll = ({ icons, parentToolTip, srollToView }) => {
               }}
             >
               {activeScoll === icon.tooltip ? (
-                <icon.iconName filter='brightness(0) saturate(100%) invert(55%) sepia(48%) saturate(2094%) hue-rotate(188deg) brightness(100%) contrast(96%)' />
-              ) : (
-                <icon.iconName />
+                 <img
+                 src={icon.iconName}
+                 alt="Icon"
+                 className="your-custom-class"
+                 style={{
+                  filter: 'brightness(0) saturate(100%) invert(55%) sepia(48%) saturate(2094%) hue-rotate(188deg) brightness(100%) contrast(96%)',
+
+                }}
+               />) : (
+                <img
+                 src={icon.iconName}
+                 alt="Icon"/>
               )}
             </IconButton>
           </Tooltip>

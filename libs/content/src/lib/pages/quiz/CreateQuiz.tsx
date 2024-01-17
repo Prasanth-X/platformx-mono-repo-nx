@@ -10,7 +10,7 @@ import {
   useComment,
   useWorkflow,
 } from "@platformx/authoring-apis";
-import { ContentState, QuizState } from "@platformx/authoring-state";
+import { ContentState, QuizState, RootState } from "@platformx/authoring-state";
 import { CommentListPanel } from "@platformx/comment-review";
 import {
   CATEGORY_CONTENT,
@@ -45,13 +45,13 @@ import SocialShare from "./components/socialshare/SocialShare";
 import { createInitialQuizState, createNewQuiz } from "./helper";
 
 export const CreateQuiz = () => {
-  debugger
+
   const { getWorkflowDetails, workflowRequest } = useWorkflow();
   const { t, i18n } = useTranslation();
   const params = useParams();
   const updateTempObj = useRef<any>({});
-  const { currentContent } = useSelector((state: ContentState) => state)
-  const { currentQuiz } = useSelector((state: QuizState) => state);
+  const { currentContent } = useSelector((state: RootState) => state.content);
+  const { currentQuiz } = useSelector((state: RootState) => state.quiz);
   // const { quiz, content } = state;
   const [getSession] = useUserSession();
   const { userInfo, role } = getSession();
@@ -107,13 +107,13 @@ export const CreateQuiz = () => {
   const [showPublishConfirm, setShowPublishConfirm] = useState(false);
   const scrollDebounceRef = useRef<any>(null);
   const [timerState, setTimerState] = useState(
-    localStorage.getItem("contentTypeTimerState") == "true" ? true : false,
+    localStorage.getItem("contentTypeTimerState") === "true" ? true : false,
   );
   const [lastmodifiedDate, setLastmodifiedDate] = useState(new Date().toISOString());
   const { comments } = useComment();
   const login_user_id = userInfo?.user_id;
   const [isReload, setIsReload] = useState(false);
-  const { createQuiz, publishQuiz, updateQuizSettings } = useQuizAPI()
+  const { createQuiz, publishQuiz, updateQuizSettings } = useQuizAPI();
   useEffect(() => {
     setIsReload(!isReload);
   }, [comments]);
@@ -182,7 +182,6 @@ export const CreateQuiz = () => {
     });
   };
 
-
   const updateCurrentInstance = (pageURL) => {
     const updatedObj = {
       page: pageURL,
@@ -248,7 +247,7 @@ export const CreateQuiz = () => {
         : setShowWorkflowSubmit(true);
     }
   };
-  const handleQuizCreation = async (resp, pageState, IsDuplicate, isWorkflow, quizState, quizInstance, updateTempObj) => {
+  const handleQuizCreation = async (resp, pageState, IsDuplicate, isWorkflow) => {
     try {
       unsavedChanges.current = false;
       setTimerState(true);
@@ -331,7 +330,7 @@ export const CreateQuiz = () => {
 
     if (pageState) {
       const resp = await createQuiz(pageState, true, isWorkflowStatus, quizState, editedSD, quizInstance, updateTempObj, isFeatured);
-      await handleQuizCreation(resp, pageState, true, isWorkflowStatus, quizState, quizInstance, updateTempObj);
+      await handleQuizCreation(resp, pageState, true, isWorkflowStatus);
     }
   };
 
@@ -409,8 +408,8 @@ export const CreateQuiz = () => {
           // dispatch(checkIfUnsavedChanges(unsavedChanges.current));
           setShowExitWarning(false);
         } else {
-          const { showPublishConfirm, publishUrl } = await publishQuiz(draftPageURL ? draftPageURL : currentQuizData.current, quizState, publishPopup);
-          setShowPublishConfirm(showPublishConfirm);
+          const { showPublishConfirm: hasConfirm, publishUrl } = await publishQuiz(draftPageURL ? draftPageURL : currentQuizData.current, quizState, publishPopup);
+          setShowPublishConfirm(hasConfirm);
           setPublishUrl(publishUrl);
         }
       })
@@ -456,8 +455,7 @@ export const CreateQuiz = () => {
       if (!currentQuizData.current && isDraft) {
         // createQuiz(DRAFT, false, status, props, event_step);
         const resp = await createQuiz(DRAFT, false, status, props, event_step, quizInstance, updateTempObj, isFeatured);
-        await handleQuizCreation(resp, DRAFT, false, status, props, quizInstance, updateTempObj);
-
+        await handleQuizCreation(resp, DRAFT, false, status);
 
       } else {
         updateQUIZ(DRAFT, status, props, event_step);
@@ -534,7 +532,6 @@ export const CreateQuiz = () => {
     }
   }, [timerState]);
 
-
   const handleSelectedVideo = (video) => {
     setSelectedVideo(video);
     setQuizState({
@@ -560,7 +557,7 @@ export const CreateQuiz = () => {
   };
   const toggleGallery = (toggleState, type) => {
     setGalleryState(toggleState);
-    if (type == "cancel") {
+    if (type === "cancel") {
       setImageOrVideoToDefault();
     }
   };
@@ -651,8 +648,9 @@ export const CreateQuiz = () => {
   );
   const [runFetchContentByPath, { loading }] = useLazyQuery(contentTypeAPIs.fetchContentByPath);
   useEffect(() => {
+    debugger;
     if (
-      (Object.keys(currentQuiz).length > 0 && params.id) ||
+      (currentQuiz&&Object.keys(currentQuiz).length > 0 && params.id) ||
       Object.keys(currentQuiz).length
     ) {
       setQuizInstance(currentQuiz);

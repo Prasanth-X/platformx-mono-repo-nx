@@ -1,7 +1,5 @@
 import PageScroll from "./PageScroll";
 
-
-
 const ContentPageScroll = ({ icons, parentToolTip, srollToView }) => {
   return (
     <PageScroll

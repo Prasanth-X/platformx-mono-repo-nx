@@ -1,23 +1,24 @@
+/* eslint-disable no-console */
 /* eslint-disable no-debugger */
 import { ArrowBack } from "@mui/icons-material";
 import SaveAsRoundedIcon from "@mui/icons-material/SaveAsRounded";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import { Box, Button, Grid, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { DefaultStateCommentIcon, ErrorTooltip, MarkedFeatured, PreviewNewIcon, SubmitButton, Timer, XToolTip, enableReferBack, useAccess } from "@platformx/utilities";
 import { useEffect } from "react";
-import { DefaultStateCommentIcon, ErrorTooltip, SubmitButton, Timer, XToolTip, enableReferBack } from "@platformx/utilities";
 // import Timer from "../../Common/Timer/Timer";
-import { PreviewNewIcon, useAccess, MarkedFeatured } from "@platformx/utilities";
-import { CommentData } from "@platformx/authoring-state"
+
+import { RootState } from "@platformx/authoring-state";
 // import useAccess from "../../hooks/usePermissions/useAccess";
 // import MarkFeatured from "../MarkFeatured/MarkedFeatured";
-// import SubmitButton from "../Submit/Submit"; 
+// import SubmitButton from "../Submit/Submit";
 // import WorkflowHistoryIcon from "../WorkflowHistory/WorkflowHistoryIcon/WorkflowHistoryIcon";
 import { useStyles } from "./CreateHeader.style";
 // import { ErrorTooltip } from "./ErrorTooltip";
 // import { ToolTip } from "./ToolTip";
-import { HeaderProps } from "./Header.types";
 import { useSelector } from "react-redux";
+import { HeaderProps } from "./Header.types";
 
 export const CreateHeader = ({
   className,
@@ -48,11 +49,12 @@ export const CreateHeader = ({
   setIsFeatured,
   isFeatured,
 }: HeaderProps) => {
-  debugger
+
   const { canAccessAction } = useAccess();
   const theme = useTheme();
+  console.log("comments", useSelector((state: RootState) => state.comment.commentInfo));
   const { setIsReviewEnabled, setIsCommentPanelOpen, isReviewEnabled, comments } =
-    useSelector((state: CommentData) => state.commentInfo);
+  useSelector((state: RootState) => state.comment.commentInfo);
   const handleReview = () => {
     setIsReviewEnabled(!isReviewEnabled);
     // if (comments.length > 0) {
@@ -175,7 +177,7 @@ export const CreateHeader = ({
             component={
               <Button
                 disabled={previewButton}
-                startIcon={<PreviewNewIcon />}
+                startIcon={<img src={PreviewNewIcon} alt="" />}
                 onClick={handelPreview}
                 className='iconBtn'></Button>
             }
