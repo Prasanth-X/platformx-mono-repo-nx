@@ -65,13 +65,11 @@ const useQuizAPI = () => {
                 ShowToastError(t("api_error_toast"));
             }
         }
-    }
-
-
-
+    };
     const updateQuizSettings = (quizRef, quizState, pageUrl = "") => {
         const QuizSettings = {
-            socialog_url: `${getSubDomain()}/${i18n.language}/` + `quiz` + `/${pageUrl}`,
+            socialog_url: `${getSubDomain()}/${i18n.language}/quiz/${pageUrl}`,
+
             socialog_type: "quiz",
             socialog_sitename: quizRef.current?.title
                 ? trimString(handleHtmlTags(quizRef.current?.title), 100)
@@ -91,7 +89,8 @@ const useQuizAPI = () => {
             socialog_twitter_description: quizRef.current?.descriptionSocialShare
                 ? trimString(handleHtmlTags(quizRef.current?.descriptionSocialShare), 163)
                 : "",
-            socialog_twitter_url: `${getSubDomain()}/${i18n.language}/` + `quiz` + `/${pageUrl}`,
+                socialog_twitter_url: `${getSubDomain()}/${i18n.language}/quiz/${pageUrl}`,
+
             keywords: quizState?.tagsSocialShare, //quizRef.current.tags,
             seo_keywords: quizRef.current.tags,
             seo_description: quizRef.current?.description
@@ -119,7 +118,6 @@ const useQuizAPI = () => {
                     input: quizToSend,
                 },
             });
-
 
             let showPublishConfirm = false;
             let publishUrl = '';
@@ -179,7 +177,6 @@ const useQuizAPI = () => {
             return { showPublishConfirm: false, publishUrl: '' };
         }
     };
-
 
     return {
         publishQuiz,

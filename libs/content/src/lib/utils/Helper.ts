@@ -2,6 +2,7 @@
 
 import { ContentType } from '../enums/ContentType';
 import { DEFAULT_EMBED_IMAGE, DEFAULT_SOCIAL_IMAGE } from './Constants';
+
 export const getEmbedTempData = (selectedContent: any) => {
   const { original_image } = selectedContent;
   const relativeUrl = `${original_image?.original_image_relative_path}.${original_image?.ext}`;
@@ -157,4 +158,65 @@ export const relativeImageURL = (url) => {
   return url ? `${gcpUrl}/${bucketName}/${url}` : "";
 };
 
+export const quizResponseMapper = (res, quizState, tempArray) => {
 
+  return {
+    ...quizState,
+    title: res?.data?.authoring_getCmsContentByPath?.title,
+    short_title: res?.data?.authoring_getCmsContentByPath?.short_title,
+    short_description: res?.data?.authoring_getCmsContentByPath?.short_description,
+    description: res?.data?.authoring_getCmsContentByPath?.description,
+    imagevideoURL: res?.data?.authoring_getCmsContentByPath?.background_content?.Url,
+    questions: tempArray,
+    // questions: res?.data?.authoring_getCmsContentByPath?.questions.length>0 ? [...quizState.questions,{current_page_url:res?.data?.authoring_getCmsContentByPath?.questions}]:quizState.questions,
+    scoreBy: res?.data?.authoring_getCmsContentByPath?.display_scores,
+    tags: res?.data?.authoring_getCmsContentByPath?.tags,
+    result_range_1: res?.data?.authoring_getCmsContentByPath?.result_range_1,
+    result_range_2: res?.data?.authoring_getCmsContentByPath?.result_range_2,
+    result_range_3: res?.data?.authoring_getCmsContentByPath?.result_range_3,
+    result_range_4: res?.data?.authoring_getCmsContentByPath?.result_range_4,
+    original_image: res?.data?.authoring_getCmsContentByPath?.original_image,
+    published_images: res?.data?.authoring_getCmsContentByPath?.published_images,
+    is_schedule_publish:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.is_schedule_publish,
+    is_schedule_unpublish:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.is_schedule_unpublish,
+    schedule_publish_datetime:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties
+        ?.schedule_publish_datetime,
+    schedule_unpublish_datetime:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties
+        ?.schedule_unpublish_datetime,
+    socialShareImgURL:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_image,
+    titleSocialShare:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_title,
+    descriptionSocialShare:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_description,
+    tagsSocialShare:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.keywords,
+    structure_data: res?.data?.authoring_getCmsContentByPath?.structure_data,
+    seo_enable: res?.data?.authoring_getCmsContentByPath?.seo_enable,
+    analytics_enable: res?.data?.authoring_getCmsContentByPath?.analytics_enable,
+    createdBy: res?.data?.authoring_getCmsContentByPath?.createdBy,
+  };
+};
+
+export const getCurrentQuiz = (res,) => {
+  return {
+    title: res?.data?.authoring_getCmsContentByPath?.title,
+    short_title: res?.data?.authoring_getCmsContentByPath?.short_title,
+    short_description: res?.data?.authoring_getCmsContentByPath?.short_description,
+    description: res?.data?.authoring_getCmsContentByPath?.description,
+    imagevideoURL: res?.data?.authoring_getCmsContentByPath?.background_content?.Url,
+    tags: res?.data?.authoring_getCmsContentByPath?.tags,
+    titleSocialShare:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_title,
+    descriptionSocialShare:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_description,
+    socialShareImgURL:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_image,
+    tagsSocialShare:
+      res?.data?.authoring_getCmsContentByPath?.settingsProperties?.keywords,
+  };
+};

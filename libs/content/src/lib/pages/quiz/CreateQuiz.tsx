@@ -1,3 +1,4 @@
+/* eslint-disable require-atomic-updates */
 /* eslint-disable no-debugger */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useLazyQuery, useMutation } from "@apollo/client";
@@ -10,7 +11,7 @@ import {
   useComment,
   useWorkflow,
 } from "@platformx/authoring-apis";
-import { ContentState, QuizState, RootState } from "@platformx/authoring-state";
+import { RootState } from "@platformx/authoring-state";
 import { CommentListPanel } from "@platformx/comment-review";
 import {
   CATEGORY_CONTENT,
@@ -35,7 +36,7 @@ import icons from "../../components/ContentWrapper/Utils/Constants";
 import { ContentType } from "../../enums/ContentType";
 import useQuizAPI from "../../hooks/useQuizAPI/useQuizAPI";
 import { DRAFT, PUBLISHED } from '../../utils/Constants';
-import { onBackButtonEvent, unloadCallback, updateStructureData } from "../../utils/Helper";
+import { getCurrentQuiz, onBackButtonEvent, quizResponseMapper, unloadCallback, updateStructureData } from "../../utils/Helper";
 import { QuizType } from "./Quiz.types";
 import { TitleDescription } from "./components/TitleDescription";
 import ChooseTags from "./components/choosetags/ChooseTags";
@@ -518,7 +519,7 @@ export const CreateQuiz = () => {
 
       if (!currentQuizData.current && isDraft) {
         const resp = await createQuiz("PUBLISHED", false, false, quizState, editedSD, quizInstance, updateTempObj, isFeatured);
-        await handleQuizCreation(resp, "PUBLISHED", false, false, quizState, quizInstance, updateTempObj);
+        await handleQuizCreation(resp, "PUBLISHED", false, false);
 
         // createQuiz("PUBLISHED", false, false);
       } else {
@@ -673,19 +674,23 @@ export const CreateQuiz = () => {
         });
     }
   }, [params.id]);
+
   useEffect(() => {
-    setIsEditMode(true);
-    if (Object.keys(currentContent).length > 0) {
-      setQuizState(currentContent);
-      setTagArr(currentContent?.tagsSocialShare);
-      quizRef.current = currentContent;
-    } else if (currentQuizData.current && unsavedChanges.current != true) {
-      setIsLoading(true);
-      const tempArray: any = [];
-      runFetchContentByPath({
-        variables: { contentType: contentType, path: currentQuizData.current },
-      })
-        .then((res) => {
+    const fetchData = async () => {
+      try {
+        setIsEditMode(true);
+
+        if (Object.keys(currentContent).length > 0) {
+          setQuizState(currentContent);
+          setTagArr(currentContent?.tagsSocialShare);
+          quizRef.current = currentContent;
+        } else if (currentQuizData.current && !unsavedChanges.current) {
+          setIsLoading(true);
+
+          const res = await runFetchContentByPath({
+            variables: { contentType, path: currentQuizData.current },
+          });
+
           if (res?.data?.authoring_getCmsContentByPath) {
             const {
               path,
@@ -699,7 +704,9 @@ export const CreateQuiz = () => {
               user_id,
               user_name,
               is_featured,
+              questions,
             } = res.data.authoring_getCmsContentByPath;
+
             setIsFeatured(is_featured);
             setWorkflow({
               path,
@@ -710,109 +717,58 @@ export const CreateQuiz = () => {
               createdBy,
               role,
               title,
-              enable: stages?.length > 0 ? true : false,
+              enable: stages?.length > 0,
               login_user_id,
               task_status,
               task_user_id: user_id,
               task_user_name: user_name,
             });
-            const filtered = res?.data?.authoring_getCmsContentByPath?.questions.filter(
-              (val) => !val.startsWith("/"),
-            );
-            if (filtered.length === 0) {
+
+            if (!questions || questions.length === 0) {
               setIsLoading(false);
+              return;
             }
-            filtered?.map((val, index) => {
-              runFetchContentByPath({
-                variables: { contentType: "Question", path: val },
-              })
-                .then((resp) => {
+
+            const tempArray = await Promise.all(
+              questions
+                .filter((val) => !val.startsWith("/"))
+                .map(async (questionPath) => {
+                  const resp = await runFetchContentByPath({
+                    variables: { contentType: "Question", path: questionPath },
+                  });
+
                   if (resp?.data?.authoring_getCmsContentByPath) {
-                    !loading && setIsLoading(false);
-                    tempArray[index] = {
-                      question: resp?.data?.authoring_getCmsContentByPath.question,
-                      current_page_url: resp?.data?.authoring_getCmsContentByPath.current_page_url,
-                      question_type: resp?.data?.authoring_getCmsContentByPath.question_type,
+                    setIsLoading(false);
+
+                    return {
+                      question: resp.data.authoring_getCmsContentByPath.question,
+                      current_page_url: resp.data.authoring_getCmsContentByPath.current_page_url,
+                      question_type: resp.data.authoring_getCmsContentByPath.question_type,
                       options_compound_fields:
-                        resp?.data?.authoring_getCmsContentByPath.options_compound_fields,
-                      background_content:
-                        resp?.data?.authoring_getCmsContentByPath.background_content,
+                        resp.data.authoring_getCmsContentByPath.options_compound_fields,
+                      background_content: resp.data.authoring_getCmsContentByPath.background_content,
                     };
                   }
-                })
-                .catch((err) => {
-                  setIsLoading(false);
-                  console.log(JSON.stringify(err, null, 2));
-                });
-            });
-            const tempObj = {
-              ...quizState,
-              title: res?.data?.authoring_getCmsContentByPath?.title,
-              short_title: res?.data?.authoring_getCmsContentByPath?.short_title,
-              short_description: res?.data?.authoring_getCmsContentByPath?.short_description,
-              description: res?.data?.authoring_getCmsContentByPath?.description,
-              imagevideoURL: res?.data?.authoring_getCmsContentByPath?.background_content?.Url,
-              questions: tempArray,
-              // questions: res?.data?.authoring_getCmsContentByPath?.questions.length>0 ? [...quizState.questions,{current_page_url:res?.data?.authoring_getCmsContentByPath?.questions}]:quizState.questions,
-              scoreBy: res?.data?.authoring_getCmsContentByPath?.display_scores,
-              tags: res?.data?.authoring_getCmsContentByPath?.tags,
-              result_range_1: res?.data?.authoring_getCmsContentByPath?.result_range_1,
-              result_range_2: res?.data?.authoring_getCmsContentByPath?.result_range_2,
-              result_range_3: res?.data?.authoring_getCmsContentByPath?.result_range_3,
-              result_range_4: res?.data?.authoring_getCmsContentByPath?.result_range_4,
-              original_image: res?.data?.authoring_getCmsContentByPath?.original_image,
-              published_images: res?.data?.authoring_getCmsContentByPath?.published_images,
-              is_schedule_publish:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.is_schedule_publish,
-              is_schedule_unpublish:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.is_schedule_unpublish,
-              schedule_publish_datetime:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties
-                  ?.schedule_publish_datetime,
-              schedule_unpublish_datetime:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties
-                  ?.schedule_unpublish_datetime,
-              socialShareImgURL:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_image,
-              titleSocialShare:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_title,
-              descriptionSocialShare:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_description,
-              tagsSocialShare:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.keywords,
-              structure_data: res?.data?.authoring_getCmsContentByPath?.structure_data,
-              seo_enable: res?.data?.authoring_getCmsContentByPath?.seo_enable,
-              analytics_enable: res?.data?.authoring_getCmsContentByPath?.analytics_enable,
-              createdBy: res?.data?.authoring_getCmsContentByPath?.createdBy,
-            };
-            setQuizState(tempObj);
-            setQuizInstance(tempObj);
-            quizRef.current = {
-              title: res?.data?.authoring_getCmsContentByPath?.title,
-              short_title: res?.data?.authoring_getCmsContentByPath?.short_title,
-              short_description: res?.data?.authoring_getCmsContentByPath?.short_description,
-              description: res?.data?.authoring_getCmsContentByPath?.description,
-              imagevideoURL: res?.data?.authoring_getCmsContentByPath?.background_content?.Url,
-              tags: res?.data?.authoring_getCmsContentByPath?.tags,
-              titleSocialShare:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_title,
-              descriptionSocialShare:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_description,
-              socialShareImgURL:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.socialog_image,
-              tagsSocialShare:
-                res?.data?.authoring_getCmsContentByPath?.settingsProperties?.keywords,
-            };
-            setTagArr(res?.data?.authoring_getCmsContentByPath?.tags);
+                }),
+            );
+
+            setQuizState(quizResponseMapper(res, quizState, tempArray));
+            setQuizInstance(quizResponseMapper(res, quizState, tempArray));
+            quizRef.current = getCurrentQuiz(res);
+
+            setTagArr(res.data.authoring_getCmsContentByPath.tags);
           }
-        })
-        .catch(() => {
-          ShowToastError(t("api_error_toast"));
-        });
-    }
+        }
+      } catch (error) {
+        setIsLoading(false);
+        ShowToastError(t("api_error_toast"));
+      }
+    };
+
+    fetchData();
   }, []);
   useEffect(() => {
-    if (Object.keys(tagData).length == 0) {
+    if (Object.keys(tagData).length === 0) {
       runFetchTagList({
         variables: { start: 0, rows: 1000 },
       })
@@ -921,7 +877,7 @@ export const CreateQuiz = () => {
   const [changes, setChanges] = useState(unsavedChanges.current);
 
   useEffect(() => {
-    if (unsavedChanges.current == true) {
+    if (unsavedChanges.current === true) {
       window.history.pushState(null, "", window.location.pathname + window.location?.search);
       window.addEventListener("beforeunload", (e) => unloadCallback(e, unsavedChanges.current));
       window.addEventListener("popstate", (e) =>
@@ -965,10 +921,10 @@ export const CreateQuiz = () => {
       last_modified_by: username,
       reviewer_comments: [comments],
     };
-
-    return commentsApi.createOrUpdateComment({
+    const result = await commentsApi.createOrUpdateComment({
       input: createCommentRequest,
     });
+     return result;
   };
 
   useEffect(() => {
@@ -1025,25 +981,25 @@ export const CreateQuiz = () => {
         <Box>
           <Box>
             <CreateHeader
-              previewButton={previewButton}
+              hasPreviewButton={previewButton}
               handelPreview={handelPreview}
               createText={currentQuizData.current ? `${t("edit")} ${t("quiz")}` : t("create_quiz")}
-              returnBack={returnBack}
+              handleReturn ={returnBack}
               isQuiz={isQuiz}
-              publishButton={publishButton}
-              saveButton={saveButton}
-              saveorPublish={saveQuiz}
+              hasPublishButton={publishButton}
+              hasSaveButton={saveButton}
+              handleSaveOrPublish={saveQuiz}
               publishText={t("publish")}
               saveText={t("save_as_draft")}
               previewText={t("preview")}
               toolTipText={t("preview_tooltip")}
               saveVariant='secondaryButton'
-              publish={publish}
+              handlePublish={publish}
               category={CATEGORY_CONTENT}
               subCategory={ContentType.Quiz}
               workflow={workflow}
-              timerState={timerState}
-              lastmodifiedDate={lastmodifiedDate}
+              hasTimerState={timerState}
+              lastModifiedDate={lastmodifiedDate}
               setEnableWorkflowHistory={setEnableWorkflowHistory}
               createComment={createComment}
               setIsFeatured={setIsFeatured}

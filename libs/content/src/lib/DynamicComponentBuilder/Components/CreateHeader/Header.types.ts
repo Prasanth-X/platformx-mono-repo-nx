@@ -1,29 +1,35 @@
 export type HeaderProps = {
-    id?: any;
-    previewButton?: any;
-    returnBack?: any;
-    publish?: any;
-    saveorPublish?: any;
-    handelPreview?: any;
+    id?: string;
+    hasPreviewButton: boolean;
+    handleReturn: () => void;
+    handlePublish: () => void;
+    handleSaveOrPublish: any
+    handelPreview: () => void;
     editText?: string;
     createText?: string;
-    toolTipText?: any;
-    isQuiz?: any;
-    publishButton?: any;
-    saveButton?: any;
-    publishText?: any;
-    saveText?: any;
-    previewText?: any;
-    saveVariant?: any;
+    toolTipText?: string;
+    isQuiz?: boolean;
+    hasPublishButton?: boolean;
+    hasSaveButton?: boolean;
+    publishText?: string;
+    saveText?: string;
+    previewText?: string;
+    saveVariant?: string;
     showPreview?: boolean;
-    className?: string;
     category: string;
     subCategory: string | string[];
-    workflow?: any;
-    timerState?: any;
-    lastmodifiedDate?: any;
-    setEnableWorkflowHistory?: (boolean) => void;
-    createComment?: any;
-    setIsFeatured?: any;
-    isFeatured?: any;
+    workflow: any;
+    hasTimerState: boolean;
+    lastModifiedDate: string;
+    setEnableWorkflowHistory: (boolean) => void;
+    createComment: () => void;
+    setIsFeatured: (val: boolean) => void;
+    isFeatured: boolean;
+    commentInfo?: CommentType;
 };
+interface CommentType {
+    setIsReviewEnabled: (isOpen: boolean) => void;
+    setIsCommentPanelOpen: (isOpen: boolean) => void;
+    isReviewEnabled: boolean;
+    comments: any[];
+}
