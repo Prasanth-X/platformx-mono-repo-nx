@@ -3,7 +3,7 @@ import { Container, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { useCustomStyle } from "./quote.style";
-import prelemTypes from '../../globalStyle';
+import prelemTypes from "../../globalStyle";
 import "../../Style.css";
 import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
 

@@ -95,19 +95,13 @@ export const createClickImpression = (
   // const gender =
   //   JSON.parse(localStorage.getItem("userLoginDetails"))?.data?.gender || IMPRESSIONS.NA;
 
-
   let gender;
   const storedDetail = localStorage.getItem("userLoginDetails");
-  if (storedDetail !== null) 
-  {   
-    gender =  JSON.parse(storedDetail)?.data?.gender || IMPRESSIONS.NA;
+  if (storedDetail !== null) {
+    gender = JSON.parse(storedDetail)?.data?.gender || IMPRESSIONS.NA;
+  } else {
+    gender = {};
   }
-  else {
-    gender = {}
-  }
-
-
-
 
   if (type === IMPRESSIONS.Button) {
     const { prelemBaseEndpoint = {} } = nullToObject(secondaryArgs);

@@ -8,7 +8,7 @@ import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout
 import { completeButtonUrl, formCroppedUrl } from "@platformx/utilities";
 import BasicButton from "../../components/BasicButton/BasicButton";
 import { useCustomStyle } from "./productSummaryViaImage.style";
-import prelemTypes from '../../globalStyle';
+import prelemTypes from "../../globalStyle";
 import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
 
 const ProductSummaryViaImage = ({

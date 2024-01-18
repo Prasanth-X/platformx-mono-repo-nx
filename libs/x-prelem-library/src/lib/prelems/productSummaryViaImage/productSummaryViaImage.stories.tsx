@@ -1,26 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { ProductSummaryViaImage } from './productSummaryViaImage'
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import ProductSummaryViaImage from "./productSummaryViaImage";
 
-import { within } from '@storybook/testing-library'
-import { expect } from '@storybook/jest'
-
-const meta: Meta<typeof ProductSummaryViaImage> = {
+export default {
+  title: "Prelems/Product Summary Via Image",
   component: ProductSummaryViaImage,
-  title: 'ProductSummaryViaImage',
-}
-export default meta
-type Story = StoryObj<typeof ProductSummaryViaImage>
+} as Meta;
 
-export const Primary = {
-  args: {},
-}
+const Template: Story = (args) => <ProductSummaryViaImage {...args} />;
 
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
-    expect(
-      canvas.getByText(/Welcome to ProductSummaryViaImage!/gi),
-    ).toBeTruthy()
-  },
-}
+export const Default = Template.bind({});
+Default.args = {
+  content: ProductSummaryViaImage.defaultProps.content,
+  authoringHelper: ProductSummaryViaImage.defaultProps.authoringHelper,
+  analytics: ProductSummaryViaImage.defaultProps.analytics,
+  secondaryArgs: ProductSummaryViaImage.defaultProps.secondaryArgs,
+};
