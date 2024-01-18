@@ -45,6 +45,7 @@ import Result from "./components/result/Result";
 import SocialShare from "./components/socialshare/SocialShare";
 import { createInitialQuizState, createNewQuiz } from "./helper";
 import AddQuestion from "./components/addquestion/AddQuestion";
+import QuestionListing from "./components/questionlisting/QuestionListing";
 
 export const CreateQuiz = () => {
 
@@ -899,6 +900,7 @@ export const CreateQuiz = () => {
   const [isOpenedOther, setIsOpenedOther] = useState(false);
   // flat = true: open add new question or choose from list and not scroll to question container.
   useEffect(() => {
+    debugger;
     if (openAddQuestion || isClickedQueList) {
       setIsOpenedOther(true);
     } else if (isOpenedOther) {
@@ -954,7 +956,7 @@ export const CreateQuiz = () => {
           />
         )} */}
       </Box>
-      {/* {isClickedQueList && (
+      {isClickedQueList && (
         <QuestionListing
           setIsClickedQueList={setIsClickedQueList}
           quizState={quizState}
@@ -964,7 +966,7 @@ export const CreateQuiz = () => {
           handleQuesReturn={handleQuesReturn}
           unsavedChanges={unsavedChanges}
         />
-      )} */}
+      )}
       {openAddQuestion && (
         <AddQuestion
           setAddQuestion={setOpenAddQuestion}
