@@ -17,6 +17,7 @@ import {
   SitesIcon,
   UsersIcon,
   VideoIcon,
+  FeatureStarIcon
 } from '@platformx/utilities'
 const ContentRoutes = {
   url: '',
@@ -260,9 +261,9 @@ export const MenuData = [
         subCategory: 'GlobalSetting',
       },
       {
-        MenuName: 'Global Setting',
-        Icon: HeaderMenuUpdated,
-        url: '/site-setting/global-setting',
+        MenuName: 'Feature Setting',
+        Icon: FeatureStarIcon,
+        url: '/site-setting/feature-flag',
         id: 'feature_flag_setting',
         category: 'SiteSetting',
         subCategory: 'GlobalSetting',

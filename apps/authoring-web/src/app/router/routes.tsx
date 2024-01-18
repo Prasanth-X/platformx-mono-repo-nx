@@ -10,6 +10,7 @@ import { SitePage } from '@platformx/site-page'
 
 import { CreateContent } from "@platformx/content"
 import { FeatureFlagSetting } from "@platformx/site-setting"
+import { GlobalSetting } from '../../../../../libs/site-setting/src'
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -67,7 +68,7 @@ export const routes: RouteConfig[] = [
     path: "/site-setting/global-setting",
     element: (
       <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
-        <FeatureFlagSetting />
+        <GlobalSetting />
       </ProtectedRoute>
     ),
   },
