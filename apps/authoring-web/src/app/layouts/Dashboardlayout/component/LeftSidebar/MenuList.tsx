@@ -25,7 +25,7 @@ export default function Menu(props) {
     try {
       const detailsRes: any = await fetchSchema();
       const menu: any = [];
-      debugger
+
       detailsRes?.authoring_getDocument?.map((val, i) => {
         return menu.push({
           MenuName: val?.title,

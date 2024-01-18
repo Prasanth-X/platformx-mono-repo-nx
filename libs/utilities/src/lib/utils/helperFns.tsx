@@ -805,6 +805,16 @@ export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: a
   }
   return FallBackImage;
 };
+export const getRandomNumber = (min, max, answerArray = []) => {
+  if (answerArray.length < max) {
+    const existingNumbers = answerArray.map((arr:any) => arr.id);
+    let randomNumber;
+    do {
+      randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (existingNumbers.includes(randomNumber?.toString()));
+    return randomNumber;
+  }
+};
 
 export const getImg = (content: any, secondaryArgs: any, index: number) => {
   const ImageCompound_index = `ImageCompound_${index}`;

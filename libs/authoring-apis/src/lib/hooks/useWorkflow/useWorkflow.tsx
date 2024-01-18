@@ -2,29 +2,37 @@ import { ShowToastError } from '@platformx/utilities'
 import workflowApi from '../../services/workflow/workflow.api'
 import { workflowMapper } from './mapper'
 
+interface WorkflowResponse {
+  workflow_status: string;
+  success: boolean;
+  event_step: string;
+}
 function useWorkflow() {
-  const workflowRequest = async (props: any, event_step: any) => {
+  const workflowRequest = async (
+    props: { [key: string]: any },
+    event_step: string
+  ): Promise<WorkflowResponse> => {
     try {
       const response: any = await workflowApi.workflow_submission({
         input: workflowMapper(props, event_step),
         contentType: props?.tag_name,
-      })
-      if (
-        response?.authoring_contentWorkflow.message ===
-        'Successfully created!!!'
-      ) {
+      });
+      if (response?.authoring_contentWorkflow.message === "Successfully created!!!") {
         return {
           workflow_status: props?.workflow_status,
           success: true,
           event_step,
-        }
+        };
       } else {
-        ShowToastError('Something went wrong!!!')
+        ShowToastError("Something went wrong!!!");
+        throw new Error("Workflow submission failed");
       }
     } catch (err) {
-      ShowToastError('Something went wrong!!!')
+      ShowToastError("Something went wrong!!!");
+      throw new Error("Workflow submission failed");
     }
-  }
+  };
+
 
   const getWorkflowDetails = async (
     role: any,

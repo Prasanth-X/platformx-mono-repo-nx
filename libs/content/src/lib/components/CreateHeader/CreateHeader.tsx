@@ -3,59 +3,48 @@ import SaveAsRoundedIcon from "@mui/icons-material/SaveAsRounded";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import { Box, Button, Grid, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { DefaultStateCommentIcon, ErrorTooltip, MarkedFeatured, PreviewNewIcon, SubmitButton, Timer, XToolTip, enableReferBack, useAccess } from "@platformx/utilities";
 import { useEffect } from "react";
-import { DefaultStateCommentIcon, ErrorTooltip, SubmitButton, Timer, XToolTip, enableReferBack } from "@platformx/utilities";
-// import Timer from "../../Common/Timer/Timer";
-import { PreviewNewIcon, useAccess, MarkedFeatured } from "@platformx/utilities";
-import { CommentData } from "@platformx/authoring-state"
-// import useAccess from "../../hooks/usePermissions/useAccess";
-// import MarkFeatured from "../MarkFeatured/MarkedFeatured";
-// import SubmitButton from "../Submit/Submit"; 
-// import WorkflowHistoryIcon from "../WorkflowHistory/WorkflowHistoryIcon/WorkflowHistoryIcon";
+import { RootState } from "@platformx/authoring-state";
 import { useStyles } from "./CreateHeader.style";
-// import { ErrorTooltip } from "./ErrorTooltip";
-// import { ToolTip } from "./ToolTip";
-import { HeaderProps } from "./Header.types";
 import { useSelector } from "react-redux";
+import { HeaderProps } from "./Header.types";
 
 export const CreateHeader = ({
-  className,
   id,
-  previewButton,
-  returnBack,
-  publish,
-  saveorPublish,
+  hasPreviewButton,
+  handleReturn,
+  handlePublish,
+  handleSaveOrPublish,
   handelPreview,
   editText,
   createText,
   toolTipText,
   isQuiz,
-  publishButton = false,
-  saveButton = false,
+  hasPublishButton = false,
+  hasSaveButton = false,
   publishText,
   saveText,
-  previewText,
-  saveVariant,
   showPreview = true,
   category,
   subCategory,
   workflow,
-  timerState,
-  lastmodifiedDate,
-  setEnableWorkflowHistory,
+  hasTimerState,
+  lastModifiedDate,
   createComment,
   setIsFeatured,
   isFeatured,
 }: HeaderProps) => {
+
   const { canAccessAction } = useAccess();
   const theme = useTheme();
   const { setIsReviewEnabled, setIsCommentPanelOpen, isReviewEnabled, comments } =
-    useSelector((state: CommentData) => state.commentInfo);
+  useSelector((state: RootState) => state.comment.commentInfo);
   const handleReview = () => {
     setIsReviewEnabled(!isReviewEnabled);
-    // if (comments.length > 0) {
+    if (comments?.length > 0) {
     setIsCommentPanelOpen(true);
-    //}
+    }
   };
   useEffect(() => {
     if (enableReferBack(workflow) || comments?.length > 0) {
@@ -69,7 +58,7 @@ export const CreateHeader = ({
   return (
     <Grid
       container //spacing={2}
-      className={className}
+      // className={className}
       sx={
         isQuiz
           ? {
@@ -99,7 +88,7 @@ export const CreateHeader = ({
             textTransform: "capitalize",
             "&:hover": { backgroundColor: "transparent" },
           }}
-          onClick={returnBack}>
+          onClick={handleReturn}>
           {!noWeb && <Typography variant='h4bold'>{id ? editText : createText}</Typography>}
         </Button>
       </Grid>
@@ -113,41 +102,14 @@ export const CreateHeader = ({
         direction='row-reverse'
         container
         alignItems='flex-end'>
-        {/* {publishText && (
-          <ErrorTooltip
-            component={
-              <Button
-                variant='contained'
-                disabled={
-                  !canAccessAction(category, subCategory, 'Publish') ||
-                  publishButton
-                }
-                startIcon={<TelegramIcon />}
-                size='small'
-                sx={{
-                  marginRight: '10px',
-                  height: isQuiz ? '40px' : 'none',
-                  textTransform: 'capitalize',
-                  '&:disabled': {
-                    fontSize: ThemeConstants.FONTSIZE_SM,
-                    color: '#89909a',
-                  },
-                }}
-                onClick={() => publish()}
-              >
-                {publishText}
-              </Button>
-            }
-            doAccess={!canAccessAction(category, subCategory, 'Publish')}
-          />
-        )} */}
+
         {publishText && (
           <SubmitButton
             category={category}
             subCategory={subCategory}
             workflow={workflow}
-            handlePublish={publish}
-            handleSave={saveorPublish}
+            handlePublish={handlePublish}
+            handleSave={handleSaveOrPublish}
             createComment={createComment}
           />
         )}
@@ -156,10 +118,10 @@ export const CreateHeader = ({
             <Button
               type='submit'
               variant='secondaryButton'
-              disabled={!canAccessAction(category, subCategory, "Create") || saveButton}
+              disabled={!canAccessAction(category, subCategory, "Create") || hasSaveButton}
               className='sm'
               sx={{ marginRight: "12px", marginLeft: "12px" }}
-              onClick={() => saveorPublish(false)}>
+              onClick={() => handleSaveOrPublish(false)}>
               {saveText}
             </Button>
           }
@@ -168,12 +130,12 @@ export const CreateHeader = ({
         {showPreview && (
           <XToolTip
             className={classes.buttonWrapper}
-            Title={previewButton ? toolTipText : ""}
+            Title={hasPreviewButton ? toolTipText : ""}
             position='bottom'
             component={
               <Button
-                disabled={previewButton}
-                startIcon={<PreviewNewIcon />}
+                disabled={hasPreviewButton}
+                startIcon={<img src={PreviewNewIcon} alt="" />}
                 onClick={handelPreview}
                 className='iconBtn'></Button>
             }
@@ -228,7 +190,7 @@ export const CreateHeader = ({
             )
           )
         }
-        {timerState && <Timer lastmodifiedDate={lastmodifiedDate} />}
+        {hasTimerState && <Timer lastmodifiedDate={lastModifiedDate} />}
         {showPreview && (
           // <WorkflowHistoryIcon TODO enable workflow history
           //   enableWorkflowHistory={setEnableWorkflowHistory}
@@ -255,9 +217,13 @@ export const CreateHeader = ({
                 startIcon={<TelegramIcon />}
                 type='submit'
                 sx={{ minWidth: "0px" }}
-                onClick={() => publish()}
+                onClick={() => {
+                  if (handlePublish) {
+                    handlePublish();
+                  }
+                }}
                 disabled={
-                  !canAccessAction(category, subCategory, "Publish") || publishButton
+                  !canAccessAction(category, subCategory, "Publish") || hasPublishButton
                 }></Button>
             }
             doAccess={!canAccessAction(category, subCategory, "Publish")}
@@ -270,21 +236,21 @@ export const CreateHeader = ({
               type='submit'
               startIcon={<SaveAsRoundedIcon />}
               sx={{ minWidth: "0px" }}
-              onClick={() => saveorPublish()}
-              disabled={!canAccessAction(category, subCategory, "Create") || saveButton}></Button>
+              onClick={() => handleSaveOrPublish()}
+              disabled={!canAccessAction(category, subCategory, "Create") || hasSaveButton}></Button>
           }
           doAccess={!canAccessAction(category, subCategory, "Create")}
         />
-        <Tooltip title={previewButton ? toolTipText : ""} placement='left'>
+        <Tooltip title={hasPreviewButton ? toolTipText ?? "" : ""} placement='left'>
           <span style={{ cursor: "pointer" }}>
             <Button
-              disabled={previewButton}
+              disabled={hasPreviewButton}
               startIcon={<VisibilityRoundedIcon />}
               sx={{ minWidth: "0px" }}
               onClick={handelPreview}></Button>
           </span>
         </Tooltip>
-        {timerState && <Timer lastmodifiedDate={lastmodifiedDate} />}
+        {hasTimerState && <Timer lastmodifiedDate={lastModifiedDate} />}
         {showPreview && (
           // <WorkflowHistoryIcon TODO enable workflow history
           //   enableWorkflowHistory={setEnableWorkflowHistory}

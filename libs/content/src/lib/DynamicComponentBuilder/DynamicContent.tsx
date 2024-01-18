@@ -6,7 +6,7 @@ import { Form, Formik, useFormik } from 'formik';
 import { memo, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-// import { useCustomStyle } from '../../Common/DynamicForm.style'; 
+// import { useCustomStyle } from '../../Common/DynamicForm.style';
 // import { SectionProps } from '../../CommonSchemaComponents/FormTextField/FormTextField.types';
 // import SectionWrapper from '../../CommonSchemaComponents/SectionWrapper/SectionWrapper';
 // import { CreateHeader } from '../../components/Common/CreateHeader';
@@ -37,8 +37,9 @@ import useDynamicForm from '../hooks/useDynamicForm/useDynamicForm';
 import { articleApi, contentTypeAPIs } from '@platformx/authoring-apis';
 import { ContentType } from '../enums/ContentType';
 import { SectionProps } from './DynamicComponent.types';
+
 const DynamicContent = ({ contentType }: { contentType: string }) => {
-  debugger;
+
   const { form_groups, fields } = Template[contentType];
   const { t, i18n } = useTranslation();
   const classes = useCustomStyle();
@@ -103,7 +104,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
     }
   };
 
-  //  debugger
+  //
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,

@@ -158,3 +158,6 @@ const defaultImage = process.env.NX_DEFAULT_IMAGE;
 
 export const DEFAULT_EMBED_IMAGE = `${gcpUrl}/${BucketName}/${defaultImage}`;
 export const DEFAULT_SOCIAL_IMAGE = `${gcpUrl}/${BucketName}/${defaultImage}`;
+
+export const DRAFT = 'DRAFT';
+export const PUBLISHED = 'PUBLISHED';

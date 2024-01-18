@@ -40,7 +40,7 @@ const DynamicComponent = ({
   setQuizState,
   handleAddImage,
 }: any) => {
-  debugger;
+
   const validationSchemaFields = {};
   const initialValues = {};
   const [meta] = useField("scoreBy");
