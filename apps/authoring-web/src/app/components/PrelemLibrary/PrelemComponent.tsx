@@ -9,8 +9,11 @@ import {
   Banner7,
   CoreHighlights,
   ProductSummaryViaImage,
+  ProductSummaryViaVideo2,
   Quote,
+  ServiceCard,
   Sponsor,
+  Testimonial,
   WebsiteIntroduction,
   WebsiteIntroduction2,
 } from "@platformx/x-prelem-library";
@@ -35,6 +38,9 @@ function PrelemComponent() {
           <Sponsor />
           <ProductSummaryViaImage />
           <WebsiteIntroduction />
+          <Testimonial />
+          <ProductSummaryViaVideo2 />
+          <ServiceCard />
         </Box>
       </ThemeProvider>
     </div>
