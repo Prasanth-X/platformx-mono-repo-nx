@@ -118,6 +118,7 @@ import GlobalImageIcon from './globalimageicon.svg'
 import GlobalVideoIcon from './globalvideoicon.svg'
 import GlobalMiscIcon from './globalmiscicon.svg'
 import FeatureStarIcon from './featurestar.svg'
+import PlayIcon from './playIcon.svg'
 
 export {
   GlobalImageIcon,GlobalVideoIcon,GlobalMiscIcon,FeatureStarIcon,
@@ -233,4 +234,5 @@ export {
   warning,
   LeftArrowIcon,
   RightArrowIcon,
+  PlayIcon,
 }

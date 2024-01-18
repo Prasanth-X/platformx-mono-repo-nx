@@ -1,66 +1,104 @@
-import { Dashboard } from '@platformx/dashboard'
-import { CreateUser, UserListing } from '@platformx/user-management'
-import {
-  WorkflowDetails,
-  WorkflowManagement,
-} from '@platformx/workflow-management'
-import { ProtectedRoute } from './ProtectedRoute'
-import { RouteConfig } from './routes.type'
-import { SitePage } from '@platformx/site-page'
+import { Dashboard } from "@platformx/dashboard";
+import { CreateUser, UserListing } from "@platformx/user-management";
+import PrelemComponent from "../components/PrelemLibrary/PrelemComponent";
+import { WorkflowDetails, WorkflowManagement } from "@platformx/workflow-management";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { RouteConfig } from "./routes.type";
+import { CreateContent } from "@platformx/content";
+import { MediaHandle, FeatureFlagSetting, GlobalSetting } from "@platformx/site-setting";
 
-import { CreateContent } from "@platformx/content"
-import { FeatureFlagSetting } from "@platformx/site-setting"
-import { GlobalSetting } from '../../../../../libs/site-setting/src'
 export const routes: RouteConfig[] = [
   {
-    path: '/',
+    path: "/",
     element: (
-      <ProtectedRoute
-        category="dashboard"
-        subCategory="dashboard"
-        name="dashboard"
-      >
-        {' '}
-        <Dashboard />{' '}
+      <ProtectedRoute category='dashboard' subCategory='dashboard' name='dashboard'>
+        {" "}
+        <Dashboard />{" "}
       </ProtectedRoute>
     ),
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: (
-      <ProtectedRoute
-        category="dashboard"
-        subCategory="dashboard"
-        name="dashboard"
-      >
-        {' '}
-        <Dashboard />{' '}
+      <ProtectedRoute category='dashboard' subCategory='dashboard' name='dashboard'>
+        {" "}
+        <Dashboard />{" "}
       </ProtectedRoute>
     ),
   },
   {
-    path: '/Sitepage',
+    path: "/prelem",
     element: (
       <ProtectedRoute
-        category="dashboard"
-        subCategory="dashboard"
-        name="dashboard"
-      >
-        {' '}
-        <SitePage />{' '}
+        category='dashboard'
+        subCategory='dashboard'
+        name='dashboard'
+        isSideBar={false}
+        isHeader={false}>
+        <PrelemComponent />
       </ProtectedRoute>
     ),
   },
   {
-    path: '/user-management/user-list',
+    path: "/Sitepage",
     element: (
-      <ProtectedRoute
-        category="user-list"
-        subCategory="user-list"
-        name="user-list"
-      >
-        {' '}
+      <ProtectedRoute category='dashboard' subCategory='dashboard' name='dashboard'>
+        {" "}
+        <SitePage />{" "}
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/user-management/user-list",
+    element: (
+      <ProtectedRoute category='user-list' subCategory='user-list' name='user-list'>
+        {" "}
         <UserListing></UserListing>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/workflow/workflow-list",
+    element: (
+      <ProtectedRoute name='article' subCategory='article' category='content'>
+        <WorkflowManagement />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/workflow/workflow-details",
+    element: (
+      <ProtectedRoute name='article' subCategory='article' category='content'>
+        <WorkflowDetails />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "user-management/user-create",
+    element: (
+      <ProtectedRoute
+        name='user'
+        category='UserManagement'
+        subCategory=''
+        isHeader={false}
+        isSideBar={false}>
+        <CreateUser />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/content/create",
+    element: (
+      <ProtectedRoute name='quiz' subCategory='quiz' category='content'>
+        <CreateContent />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/site-setting/media-handle",
+    element: (
+      <ProtectedRoute name='medis=a' category='SiteSetting' subCategory='MediaHandle'>
+        <MediaHandle />
       </ProtectedRoute>
     ),
   },
@@ -77,44 +115,6 @@ export const routes: RouteConfig[] = [
     element: (
       <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
         <FeatureFlagSetting />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: '/workflow/workflow-list',
-    element: (
-      <ProtectedRoute name="article" subCategory="article" category="content">
-        <WorkflowManagement />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: '/workflow/workflow-details',
-    element: (
-      <ProtectedRoute name="article" subCategory="article" category="content">
-        <WorkflowDetails />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: 'user-management/user-create',
-    element: (
-      <ProtectedRoute
-        name="user"
-        category="UserManagement"
-        subCategory=""
-        isHeader={false}
-        isSideBar={false}
-      >
-        <CreateUser />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/content/create",
-    element: (
-      <ProtectedRoute name='quiz' subCategory='quiz' category='content'>
-        <CreateContent />
       </ProtectedRoute>
     ),
   },
@@ -140,4 +140,4 @@ export const routes: RouteConfig[] = [
   //   path: "/error",
   //   element: <Error errorCode={404} errorMessage="Page not found" />,
   // }
-]
+];
