@@ -1,46 +1,49 @@
-import { useRef, useState } from 'react';
-// import { useCommentContext } from '../../context/CommentsContext/CommentsContext';
+import { RootState, setSelectedComment } from '@platformx/authoring-state'
+import { useUserSession } from '@platformx/utilities'
+import { useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 export function useComment() {
-  // const { comments, setSelectedComment } = useCommentContext();
-
-  const [selectedElementId, setSelectedElementId] = useState<string>('');
-  const scrollToRef = useRef(null);
+  const [userInfo] = useUserSession()
+  const dispatch = useDispatch()
+  const { comments } = useSelector(
+    (state: RootState) => state.comment.commentInfo,
+  )
+  const [selectedElementId, setSelectedElementId] = useState<string>('')
+  const scrollToRef = useRef(null)
 
   const handleCommentClick = (
     event: any,
     elementId: string,
-    commentId: number
+    commentId: number,
   ) => {
-    // const selectedComment: ReviewComment =
-    //   comments.find(
-    //     (x: ReviewComment) =>
-    //       x.elementId === elementId && x.commentId === commentId
-    //   ) || null;
+    const selectedComment: any =
+      comments.find(
+        (x: any) => x.elementId === elementId && x.commentId === commentId,
+      ) || null
 
-    const element = document.getElementById(elementId);
+    const element = document.getElementById(elementId)
 
-    const parentElement = element?.parentNode as HTMLElement;
+    const parentElement = element?.parentNode as HTMLElement
 
     if (parentElement) {
-      const elements = document.querySelectorAll('.selected-comment');
+      const elements = document.querySelectorAll('.selected-comment')
 
       elements.forEach((element) => {
-        element.classList.remove('selected-comment');
-      });
+        element.classList.remove('selected-comment')
+      })
 
-      parentElement.classList.add('selected-comment');
+      parentElement.classList.add('selected-comment')
 
-      parentElement.scrollIntoView({ behavior: 'smooth' });
+      parentElement.scrollIntoView({ behavior: 'smooth' })
     }
-    // setSelectedComment({ ...selectedComment });
-    console.log('check scroll', elementId);
-    setSelectedElementId(elementId);
-  };
+    dispatch(setSelectedComment({ value: { ...selectedComment } }))
+    setSelectedElementId(elementId)
+  }
 
   return {
-    // comments,
+    comments,
     selectedElementId,
     scrollToRef,
     handleCommentClick,
-  };
+  }
 }

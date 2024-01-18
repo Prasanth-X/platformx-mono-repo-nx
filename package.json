@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
     "storybook:build:all": "nx run-many --target=build-storybook --all",
     "storybook:build:utilities": "nx run utilities:build-storybook",
     "storybook:deploy": "npm run storybook:build:utilities && gh-pages -d dist/storybook"
@@ -75,7 +76,6 @@
     "jest-watch-typeahead": "^0.6.5",
     "jquery": "^3.7.1",
     "json-loader": "^0.5.7",
-    "lint-staged": "^13.2.1",
     "mx-utils": "^3.0.16",
     "platform-x-prelems": "5.10.80",
     "platform-x-utils": "3.4.42",
@@ -182,13 +182,16 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-playwright": "^0.15.3",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "jsdom": "~22.1.0",
+    "lint-staged": "^15.2.0",
     "prettier": "^2.6.2",
     "react-refresh": "^0.10.0",
     "ts-jest": "^29.1.0",
@@ -201,5 +204,29 @@
     "vitest": "0.34.6",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "lint-staged": {
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.tsx": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.ts": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.jsx": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.css": [
+      "prettier --write"
+    ]
   }
 }

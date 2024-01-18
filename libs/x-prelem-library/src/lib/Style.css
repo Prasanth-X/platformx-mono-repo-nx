@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+}
+
+.prelem-py {
+  padding-top: 35px !important;
+  padding-bottom: 35px !important;
+}
+
+.prelem-pt {
+  padding-top: 35px !important;
+}
+
+.prelem-pb {
+  padding-bottom: 35px !important;
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .prelem-py {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .prelem-pt {
+    padding-top: 30px !important;
+  }
+
+  .prelem-pb {
+    padding-bottom: 30px !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .prelem-py {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+  }
+
+  .prelem-pt {
+    padding-top: 25px !important;
+  }
+
+  .prelem-pb {
+    padding-bottom: 25px !important;
+  }
+}
+
+.widthheight100 {
+  width: inherit;
+  height: inherit;
+}
+
+.react-player__shadow {
+  background: #14142B !important;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+
+    h4,
+    h1 {
+      letter-spacing: -1px;
+    }
+  }
+}

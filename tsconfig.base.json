@@ -61,7 +61,8 @@
       ],
       "@platformx/site-setting": [
         "libs/site-setting/src/index.ts"
-      ]
+      ],
+      "@platformx/x-prelem-library": ["libs/x-prelem-library/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
