@@ -15,7 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set Environment Variables
+      #- name: Set Environment Variables
+      - name: Set env vars (develop)
+        if: endsWith(github.ref, '/develop')
         run: |
           #echo "CLUSTER_NAME=your-gke-cluster-name" >> $GITHUB_ENV
           #echo "NAMESPACE=x-user-experience-namespace" >> $GITHUB_ENV
