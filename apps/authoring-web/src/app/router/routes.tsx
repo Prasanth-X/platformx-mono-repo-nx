@@ -4,8 +4,10 @@ import PrelemComponent from "../components/PrelemLibrary/PrelemComponent";
 import { WorkflowDetails, WorkflowManagement } from "@platformx/workflow-management";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { RouteConfig } from "./routes.type";
-import { CreateContent } from "@platformx/content";
+
 import { MediaHandle, FeatureFlagSetting, GlobalSetting } from "@platformx/site-setting";
+import { SitePage } from "@platformx/site-page";
+import { CreateContent } from "@platformx/content";
 
 export const routes: RouteConfig[] = [
   {

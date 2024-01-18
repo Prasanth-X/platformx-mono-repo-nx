@@ -1,51 +1,44 @@
-import Icon1 from '../../../../assets/svg/MenuIcons-1.svg';
-import Icon2 from '../../../../assets/svg/MenuIcons-2.svg';
-import Icon3 from '../../../../assets/svg/MenuIcons-3.svg';
-import Icon4 from '../../../../assets/svg/MenuIcons-4.svg';
-import Icon5 from '../../../../assets/svg/MenuIcons-5.svg';
-import Icon6 from '../../../../assets/svg/MenuIcons-6.svg';
-import Icon7 from '../../../../assets/svg/MenuIcons-7.svg';
-import Icon8 from '../../../../assets/svg/MenuIcons-8.svg';
 
+import { MenuIcon1, MenuIcon2, MenuIcon3, MenuIcon4, MenuIcon5, MenuIcon6, MenuIcon7, MenuIcon8 } from "@platformx/utilities"
 const icons = [
   {
     id: 'titleDescription',
-    iconName: Icon1,
+    iconName: MenuIcon1,
     tooltip: 'title_description',
   },
   {
     id: 'imageVideo',
-    iconName: Icon8,
+    iconName: MenuIcon8,
     tooltip: 'image_video',
   },
   {
     id: 'questions',
-    iconName: Icon2,
+    iconName: MenuIcon2,
     tooltip: 'questions',
   },
   {
     id: 'results',
-    iconName: Icon3,
+    iconName: MenuIcon3,
     tooltip: 'results',
   },
   {
     id: 'tags',
-    iconName: Icon4,
+    iconName: MenuIcon4,
     tooltip: 'choose_tags',
   },
   {
     id: 'socialShare',
-    iconName: Icon5,
+    iconName: MenuIcon5,
     tooltip: 'social_share',
   },
   {
     id: 'Analytics',
-    iconName: Icon6,
+    iconName: MenuIcon6,
     tooltip: 'analytics',
   },
   {
     id: 'seo',
-    iconName: Icon7,
+    iconName: MenuIcon7,
     tooltip: 'seo',
   },
 ];
