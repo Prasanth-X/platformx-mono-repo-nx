@@ -38,8 +38,11 @@ jobs:
       # Get the GKE credentials so we can deploy to the cluster
       - uses: google-github-actions/get-gke-credentials@v0.2.1
         with:
-          cluster_name: ${{ secrets[env.GKE_CLUSTER_DEVELOP] }}
-          location: ${{ secrets[env.GKE_ZONE_DEVELOP] }}
+          #cluster_name: ${{ secrets[env.GKE_CLUSTER_DEVELOP] }}
+          #location: ${{ secrets[env.GKE_ZONE_DEVELOP] }}
+          #credentials: ${{ secrets[env.GKE_SA_KEY_DEVELOP] }}
+          cluster_name: platformx-dev
+          location: us-central1-a
           credentials: ${{ secrets[env.GKE_SA_KEY_DEVELOP] }}
 
 
@@ -88,8 +91,11 @@ jobs:
       # Get the GKE credentials so we can deploy to the cluster
       - uses: google-github-actions/get-gke-credentials@v0.2.1
         with:
-          cluster_name: ${{ secrets[env.GKE_CLUSTER_DEVELOP] }}
-          location: ${{ secrets[env.GKE_ZONE_DEVELOP] }}
+          #cluster_name: ${{ secrets[env.GKE_CLUSTER_DEVELOP] }}
+          #location: ${{ secrets[env.GKE_ZONE_DEVELOP] }}
+          #credentials: ${{ secrets[env.GKE_SA_KEY_DEVELOP] }}
+          cluster_name: platformx-dev
+          location: us-central1-a
           credentials: ${{ secrets[env.GKE_SA_KEY_DEVELOP] }}
 
       #- name: Authenticate with GKE
