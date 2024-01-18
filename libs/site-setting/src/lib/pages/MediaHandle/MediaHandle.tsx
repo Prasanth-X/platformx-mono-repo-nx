@@ -10,8 +10,8 @@ import {
   ThemeConstants,
   TitleSubTitle,
   TextBox,
-  DatePicker
-} from '@platformx/utilities';
+  DatePicker,
+} from "@platformx/utilities";
 
 import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ import { userMediaHanleStyle } from "./MediaHandle.style";
 import { Divider } from "@mui/material";
 //import TextBox from "../../../components/Common/TextBox";
 
-const MediaHandle = () => {
+export const MediaHandle = () => {
   const [isSuccessPopup, setIsSuccessPopup] = useState<boolean>(false);
   const galleryType = useRef<string>("Images");
   const currentMediaHandleIndex = useRef<number | null>(null);
@@ -139,16 +139,16 @@ const MediaHandle = () => {
     //       mediahandle: formValue,
     //     },
     //   },
-    };
-    // updateMediaHanle(param)
-    //   .then(() => {
-    //     setIsLoading(false);
-    //     publishmediaHandle();
-    //   })
-    //   .catch((err) => {
-    //     setIsLoading(false);
-    //     throw err;
-    //   });
+  };
+  // updateMediaHanle(param)
+  //   .then(() => {
+  //     setIsLoading(false);
+  //     publishmediaHandle();
+  //   })
+  //   .catch((err) => {
+  //     setIsLoading(false);
+  //     throw err;
+  //   });
   //};
 
   const handleTextChange = (event, fieldName) => {
@@ -194,46 +194,46 @@ const MediaHandle = () => {
           <Grid container className={classes.contentContainer}>
             {/* {isLoading && <Loader />} */}
             {/* {form.map((control, index) => ( */}
-              <Fragment key={`control`}>
-                <Grid
-                  item
-                  xs={12}
-                  sm={4}
-                  md={4}
-                  lg={4}
-                  sx={{
-                    marginTop: { xs: "37.5px", sm: "32px" },
-                  }}
-                  className={classes.left}>
-                  <Box className={classes.switchBox}>
-                    <BasicSwitch
-                      color='black'
-                      bgcolor='#A0A3BD'
-                      onChange={() => switchChange(true)}
-                      checked={true}
-                    />
-                  </Box>
-                  <Box className={classes.mediaTitle}>
-                    <Typography sx={{ textTransform: "capitalize" }}>{'Hello'}</Typography>
-                  </Box>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={8}
-                  md={8}
-                  lg={8}
-                  sx={{
-                    marginTop: { xs: "17.5px", sm: "32px", md: "32px", lg: "32px" },
-                  }}
-                  className={classes.right}>
-                  <Box
-                    className={classes.pictureBox}
-                    onClick={() => {
-                      toggleGallery(true);
-                      currentMediaHandleIndex.current = 0;
-                    }}>
-                    {/* {control.icon_image ? (
+            <Fragment key={`control`}>
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                md={4}
+                lg={4}
+                sx={{
+                  marginTop: { xs: "37.5px", sm: "32px" },
+                }}
+                className={classes.left}>
+                <Box className={classes.switchBox}>
+                  <BasicSwitch
+                    color='black'
+                    bgcolor='#A0A3BD'
+                    onChange={() => switchChange(true)}
+                    checked={true}
+                  />
+                </Box>
+                <Box className={classes.mediaTitle}>
+                  <Typography sx={{ textTransform: "capitalize" }}>{"Hello"}</Typography>
+                </Box>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={8}
+                md={8}
+                lg={8}
+                sx={{
+                  marginTop: { xs: "17.5px", sm: "32px", md: "32px", lg: "32px" },
+                }}
+                className={classes.right}>
+                <Box
+                  className={classes.pictureBox}
+                  onClick={() => {
+                    toggleGallery(true);
+                    currentMediaHandleIndex.current = 0;
+                  }}>
+                  {/* {control.icon_image ? (
                       <img
                         src={
                           process.env.REACT_APP_GCP_URL +
@@ -249,17 +249,17 @@ const MediaHandle = () => {
                     ) : (
                       <PictureIcon />
                     )} */}
-                  </Box>
-                  <Box className={classes.textBox}>
-                    <TextBox
-                      name='title'
-                      state={'#'}
-                      handleChange={(event) => handleTextChange(event, 'title')}
-                    />
-                  </Box>
-                </Grid>
-              </Fragment>
-             {/* ))} */}
+                </Box>
+                <Box className={classes.textBox}>
+                  <TextBox
+                    name='title'
+                    state={"#"}
+                    handleChange={(event) => handleTextChange(event, "title")}
+                  />
+                </Box>
+              </Grid>
+            </Fragment>
+            {/* ))} */}
             {/* {isSuccessPopup && (
               <PlateformXDialog
                 isDialogOpen={isSuccessPopup}
@@ -274,7 +274,8 @@ const MediaHandle = () => {
               />
             )} */}
           </Grid>
-        </Box>)}
+        </Box>
+      )}
       {galleryState && (
         <Box className={classes.galleryBox}>
           {/* <Gallery

@@ -1,5 +1,4 @@
-import MediaHandle from "./lib/components/MediaHandle/MediaHandle";
-export { MediaHandle };
+export { MediaHandle } from "./lib/pages/MediaHandle/MediaHandle";
 
-export {FeatureFlagSetting} from './lib/components/FeatureFlagSetting/FeatureFlagSetting'
-export {GlobalSetting} from './lib/components/GlobalSetting/GlobalSetting'
+export { FeatureFlagSetting } from "./lib/pages/FeatureFlagSetting/FeatureFlagSetting";
+export { GlobalSetting } from "./lib/pages/GlobalSetting/GlobalSetting";
