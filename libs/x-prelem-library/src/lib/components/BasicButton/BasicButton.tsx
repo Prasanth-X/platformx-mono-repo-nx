@@ -17,10 +17,7 @@ import {
 } from "@platformx/utilities";
 import usePlatformAnalytics from "../../hooks/usePlatformxAnalytics/index";
 import { IMPRESSIONS } from "../ImpressionHooks/constants";
-import {
-  createClickImpression,
-  snowplowPrelemClickImpression,
-} from "../ImpressionHooks/helper";
+import { createClickImpression, snowplowPrelemClickImpression } from "../ImpressionHooks/helper";
 import CustomModalSlider from "../CustomModalSlider/CustomModalSlider";
 
 const BasicButton = (props: BasicButtonProps) => {
@@ -53,7 +50,7 @@ const BasicButton = (props: BasicButtonProps) => {
     } = nullToObject(prelemBaseEndpoint);
     const platformEndPoint = buttonBaseUrl ? buttonBaseUrl : PublishEndPoint;
 
-    if (!isAuthoring && analyticsEnabled  && analytics) {
+    if (!isAuthoring && analyticsEnabled && analytics) {
       const buttonClickImpressionObj = createClickImpression(
         analytics,
         IMPRESSIONS.Button,

@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageRender from "../../components/ImageRender";
 import { formCroppedUrl } from "@platformx/utilities";
-import prelemTypes from '../../globalStyle';
+import prelemTypes from "../../globalStyle";
 import { useCustomStyle } from "./Banner2.style";
 import "../../Style.css";
 import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
