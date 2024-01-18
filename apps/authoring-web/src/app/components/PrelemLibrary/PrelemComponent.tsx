@@ -7,8 +7,11 @@ import {
   // AnimationOnPageScroll,
   ArticleDetail,
   ProductSummaryViaImage,
+  ProductSummaryViaVideo2,
   Quote,
+  ServiceCard,
   Sponsor,
+  Testimonial,
   WebsiteIntroduction,
   WebsiteIntroduction2,
 } from "@platformx/x-prelem-library";
@@ -31,6 +34,9 @@ function PrelemComponent() {
           <Sponsor />
           <ProductSummaryViaImage />
           <WebsiteIntroduction />
+          <Testimonial />
+          <ServiceCard />
+          <ProductSummaryViaVideo2 />
         </Box>
       </ThemeProvider>
     </div>
