@@ -28,7 +28,6 @@ export const useCustomStyle = makeStyles(() => {
               },
               "& img": {
                 [theme.breakpoints.up("em")]: {
-                  // WebkitMaskImage: `url(${MaskImg})`,
                   WebkitMaskSize: "cover",
                   WebkitMaskPosition: "center left",
                 },

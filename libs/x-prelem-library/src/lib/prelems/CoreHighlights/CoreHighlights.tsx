@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import ImageRender from "../../components/ImageRender";
 import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout";
 import { formCroppedUrl, handleHtmlTags } from "@platformx/utilities";
-// import PhoneIcon from "../../assets/svgIcon/phoneIcon.svg";
+import { PhoneIcon } from "../../assets/svg";
 import { useCustomStyle } from "./CoreHighlights.style";
 import prelemTypes from "../../globalStyle";
 import "../../Style.css";
@@ -211,7 +211,7 @@ CoreHighlightsProp) => {
         <Divider variant='fullWidth' />
         <Box className='bootomTextContent'>
           <Box className='imgBoxIcon'>
-            <img src='{PhoneIcon}' alt='Icon' />
+            <img src={PhoneIcon} alt='Icon' />
           </Box>
           <Box className='rightContent'>
             <Typography variant='p2regular' m={0}>
