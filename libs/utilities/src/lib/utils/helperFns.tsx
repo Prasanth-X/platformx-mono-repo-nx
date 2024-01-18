@@ -849,3 +849,14 @@ export const getUniqueTimeZone = () => {
   );
   return data;
 };
+
+export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: any) => {
+  if (path && ext) {
+    const url = `${secondaryArgs?.gcpUrl}/${secondaryArgs?.bucketName}/${path}.${ext}`;
+    if (url.match(/^https?:\/\/.+\/.+$/)) {
+      return url;
+    }
+    return FallBackImage;
+  }
+  return FallBackImage;
+};

@@ -1,1 +1,2 @@
-export * from './lib/site-setting'
+import MediaHandle from "./lib/components/MediaHandle/MediaHandle";
+export { MediaHandle };
