@@ -6,10 +6,9 @@ import {
 } from '@platformx/workflow-management'
 import { ProtectedRoute } from './ProtectedRoute'
 import { RouteConfig } from './routes.type'
-import { SitePage } from '@platformx/site-page'
-
 import { CreateContent } from "@platformx/content"
-import { SiteSetting } from "@platformx/site-setting"
+import { MediaHandle } from "@platformx/site-setting"
+
 export const routes: RouteConfig[] = [
   {
     path: '/',
@@ -38,19 +37,6 @@ export const routes: RouteConfig[] = [
     ),
   },
   {
-    path: '/Sitepage',
-    element: (
-      <ProtectedRoute
-        category="dashboard"
-        subCategory="dashboard"
-        name="dashboard"
-      >
-        {' '}
-        <SitePage />{' '}
-      </ProtectedRoute>
-    ),
-  },
-  {
     path: '/user-management/user-list',
     element: (
       <ProtectedRoute
@@ -60,22 +46,6 @@ export const routes: RouteConfig[] = [
       >
         {' '}
         <UserListing></UserListing>
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/site-setting/global-setting",
-    element: (
-      <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
-        <SiteSetting />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/site-setting/feature-flag",
-    element: (
-      <ProtectedRoute category='SiteSetting' subCategory='GlobalSetting'>
-        <SiteSetting />
       </ProtectedRoute>
     ),
   },
@@ -114,6 +84,14 @@ export const routes: RouteConfig[] = [
     element: (
       <ProtectedRoute name='quiz' subCategory='quiz' category='content'>
         <CreateContent />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/site-setting/media-handle",
+    element: (
+      <ProtectedRoute name='medis=a' category='SiteSetting' subCategory='MediaHandle'>
+        <MediaHandle />
       </ProtectedRoute>
     ),
   },
