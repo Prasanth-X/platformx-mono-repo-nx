@@ -51,8 +51,7 @@ data:
   NX_USERS_URI: https://dev.users.hcl-x.com/platform-x/
   NX_SITE_BASED_THEME: dev,,delhiuniversity
   NX_USER_REGISTER_SCHEMA: "iglu:com.hcl-x/user-registration-schema/jsonschema/1-0-2"
-
 kind: ConfigMap
 metadata:
   name: hep-authoring-ui-config
-  namespace: default
+  namespace: dev-v2
