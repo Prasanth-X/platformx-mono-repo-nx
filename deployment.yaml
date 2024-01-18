@@ -1,0 +1,268 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: platformx-mono-repo-nx
+  name: platformx-mono-repo-nx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: platformx-mono-repo-nx
+  template:
+    metadata:
+      labels:
+        app: platformx-mono-repo-nx
+    spec:
+      containers:
+        - name: platformx-mono-repo-nx
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
+          resources:
+            limits:
+              cpu: '4'
+              memory: 12Gi
+            requests:
+              cpu: '3'
+              memory: 8Gi
+          env:
+            - name: NX_API_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_API_URI
+                  name: hep-authoring-ui-config
+            - name: NX_KEYCLOAK_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_KEYCLOAK_URI
+                  name: hep-authoring-ui-config
+            - name: NX_REALM
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_REALM
+                  name: hep-authoring-ui-config
+            - name: NX_REDIRECT_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_REDIRECT_URI
+                  name: hep-authoring-ui-config
+            - name: NX_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_CLIENT_ID
+                  name: hep-authoring-ui-config
+            - name: NX_GRANT_TYPE
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_GRANT_TYPE
+                  name: hep-authoring-ui-config
+            - name: NX_AUTHOR_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_AUTHOR_URI
+                  name: hep-authoring-ui-config
+            - name: NX_PUBLISH_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_PUBLISH_URI
+                  name: hep-authoring-ui-config
+            - name: NX_GRAPHQL_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_GRAPHQL_URI
+                  name: hep-authoring-ui-config
+            - name: NX_DSPACE_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_DSPACE_URI
+                  name: hep-authoring-ui-config
+            - name: NX_DSPACE_IMAGES_UUID
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_DSPACE_IMAGES_UUID
+                  name: hep-authoring-ui-config
+            - name: NX_DSPACE_VIDEOS_UUID
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_DSPACE_VIDEOS_UUID
+                  name: hep-authoring-ui-config
+            - name: NX_HEADER
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_HEADER
+                  name: hep-authoring-ui-config
+            - name: NX_FOOTER
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_FOOTER
+                  name: hep-authoring-ui-config
+            - name: NX_FOOTER_THEME
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_FOOTER_THEME
+                  name: hep-authoring-ui-config
+            - name: NX_HEADER_THEME
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_HEADER_THEME
+                  name: hep-authoring-ui-config
+            - name: NX_COMPONENT_THEME
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_COMPONENT_THEME
+                  name: hep-authoring-ui-config
+            - name: NX_PRELEM_THEME
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_PRELEM_THEME
+                  name: hep-authoring-ui-config
+            - name: NX_GA_ID
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_GA_ID
+                  name: hep-authoring-ui-config
+            - name: NX_GTM_ID
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_GTM_ID
+                  name: hep-authoring-ui-config
+            - name: NX_ANALYTICS_PROVIDER
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_ANALYTICS_PROVIDER
+                  name: hep-authoring-ui-config
+            - name: NX_GOOGLE_SEARCH_VERIFICATION
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_GOOGLE_SEARCH_VERIFICATION
+                  name: hep-authoring-ui-config
+            - name: NX_DELIVERY_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_DELIVERY_URI
+                  name: hep-authoring-ui-config
+            - name: NX_BLOG_API_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_BLOG_API_URI
+                  name: hep-authoring-ui-config
+            - name: NX_CHATGPT_API_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_CHATGPT_API_URI
+                  name: hep-authoring-ui-config
+            - name: NX_APM_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  key: APM_ENV
+                  name: apm-config
+            - name: NX_APM_SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  # key: APM_HOST_URL
+                  key: NX_APM_SERVER_URL
+                  name: apm-config
+            - name: NX_APM_TRACING
+              valueFrom:
+                configMapKeyRef:
+                  key: APM_HOST_TRACING
+                  name: apm-config
+            - name: NX_APM_TRACING_ORIGINS
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_APM_TRACING_ORIGINS
+                  name: apm-config
+            - name: NX_CHAT_GPT_PROMPT
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_CHAT_GPT_PROMPT
+                  name: hep-authoring-ui-config
+            - name: NX_GCP_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_GCP_URL
+                  name: hep-authoring-ui-config
+            - name: NX_BUCKET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_BUCKET_NAME
+                  name: hep-authoring-ui-config
+            - name: NX_DEFAULT_IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_DEFAULT_IMAGE
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_1
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_1
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_2
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_2
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_3
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_3
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_4
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_4
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_5
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_5
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_6
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_6
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_7
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_7
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_8
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_8
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_9
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_9
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_10
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_10
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_11
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_11
+                  name: hep-authoring-ui-config
+            - name: NX_NAV_ICON_12
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_NAV_ICON_12
+                  name: hep-authoring-ui-config
+            - name: NX_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_BASE_URL
+                  name: hep-authoring-ui-config
+            - name: NX_SITE_BASED_THEME
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_SITE_BASED_THEME
+                  name: hep-authoring-ui-config
+            - name: NX_USER_REGISTER_SCHEMA
+              valueFrom:
+                configMapKeyRef:
+                  key: NX_USER_REGISTER_SCHEMA
+                  name: hep-authoring-ui-config

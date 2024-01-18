@@ -1,8 +1,8 @@
 /* eslint-disable no-debugger */
-import { Box, IconButton } from '@mui/material'
-import { MoreHorizIcon } from '@platformx/utilities'
-import { memo, useState } from 'react'
-import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu'
+import { Box, IconButton } from '@mui/material';
+import { MoreHorizIcon } from '@platformx/utilities';
+import { memo, useState } from 'react';
+import { QuizPollEventMenu } from '../QuizPollEventsMenu/QuizPollEventsMenu';
 
 const ContentTypeMenuList = ({
   item,
@@ -14,15 +14,15 @@ const ContentTypeMenuList = ({
   edit,
   fetchContentDetails,
 }) => {
-  debugger
+
   // const selectedItem = getSelectedObject(item); // TODO: need to check
-  const selectedItem = item
-  const contentType = selectedItem.contentType || selectedItem.tagName
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const selectedItem = item;
+  const contentType = selectedItem.contentType || selectedItem.tagName;
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-  const open = Boolean(anchorEl)
+    setAnchorEl(event.currentTarget);
+  };
+  const open = Boolean(anchorEl);
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -53,7 +53,7 @@ const ContentTypeMenuList = ({
           anchorEl={anchorEl}
           open={open}
           handleClose={() => {
-            setAnchorEl(null)
+            setAnchorEl(null);
           }}
           contentType={contentType}
           listItemDetails={selectedItem}
@@ -81,7 +81,7 @@ const ContentTypeMenuList = ({
           listItemDetails={item}
         />} */}
     </Box>
-  )
-}
+  );
+};
 
-export default memo(ContentTypeMenuList)
+export default memo(ContentTypeMenuList);

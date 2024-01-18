@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import CommentBox from './CommentBox';
 import CommentPreview from './CommentPreview';
 import { WrapperProps } from './ContentReview.types';
-const Wrapper: React.FC<WrapperProps> = ({
+const CommentWrapper: React.FC<WrapperProps> = ({
   children,
   scrollRef,
   elementId,
@@ -26,7 +26,7 @@ const Wrapper: React.FC<WrapperProps> = ({
   const contentType = useRef(
     pageUrl.pathname
       .split('/')
-      [pageUrl.pathname.split('/').length - 1].split('-')
+    [pageUrl.pathname.split('/').length - 1].split('-')
       .slice(-1) || ''
   );
   const isValid = Object.keys(selectedComment || {}).length > 0;
@@ -54,4 +54,4 @@ const Wrapper: React.FC<WrapperProps> = ({
     </div>
   );
 };
-export default memo(Wrapper);
+export default memo(CommentWrapper);

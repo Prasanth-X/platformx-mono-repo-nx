@@ -7,6 +7,7 @@ import ContentGridLoader from "./lib/components/ContentGridLoader";
 import DatePicker from "./lib/components/DatePicker/DatePicker";
 import Error from "./lib/components/Error/Error";
 import { ErrorTooltip } from "./lib/components/ErrorTooltip/ErrorTooltip";
+import DuplicateContentPopup from "./lib/components/DuplicateContentPopup/DuplicateContentPopup";
 // import Gallery from './lib/components/Gallery/Gallery'
 import { MiniHeader } from "./lib/components/Header/MiniHeader";
 import LanguageDropDown from "./lib/components/LanguageDropDown/LanguageDropDown";
@@ -104,6 +105,7 @@ export {
   AutoTextArea,
   BasicSwitch,
   CommonBoxWithNumber,
+  DuplicateContentPopup,
   // CommonImageRender,
   ContentGridLoader,
   ContentListLoader,
@@ -125,11 +127,11 @@ export {
   PlateformXDialog,
   PlateformXDialogSuccess,
   PrelemTheme,
-  PrelemsDarkThemeConstants,
-  PrelemsFeyenoordThemeConstants,
-  PrelemsFifaThemeConstants,
-  PrelemsHockeyAustraliaThemeConstants,
-  PrelemsLightThemeConstants,
+  PrelemsDarkThemeConstants as PrelemDarkTheme,
+  PrelemsFeyenoordThemeConstants as FeyenoordTheme,
+  PrelemsFifaThemeConstants as FifaTheme,
+  PrelemsHockeyAustraliaThemeConstants as HockeyAustraliaTheme,
+  PrelemsLightThemeConstants as PrelemsLightTheme,
   REDIRECT_AUTH_URL,
   RadioControlLabel,
   RadioLabelWithSubheading,
