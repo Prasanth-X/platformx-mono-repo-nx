@@ -8,6 +8,9 @@ import WebsiteIntroduction2 from "./WebsiteIntroduction2/WebsiteIntroduction2";
 // import Banner2 from "./Banner2/Banner2"
 // import AboutUs2 from "./AboutUs2/AboutUs2"
 // import AboutUsThree from "./AboutUsThree/AboutUsThree"
+import ProductSummaryViaVideo2 from "./ProductSummaryViaVideo2/ProductSummaryViaVideo2";
+import ServiceCard from "./ServiceCards/ServiceCards";
+import Testimonial from "./Testimonial/Testimonial";
 
 export {
   WebsiteIntroduction,
@@ -20,4 +23,7 @@ export {
   // Banner2,
   // AboutUs2,
   // AboutUsThree,
+  ProductSummaryViaVideo2,
+  ServiceCard,
+  Testimonial,
 };
