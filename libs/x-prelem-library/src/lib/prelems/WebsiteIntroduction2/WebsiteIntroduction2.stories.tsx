@@ -1,24 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { WebsiteIntroduction2 } from './WebsiteIntroduction2'
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import WebsiteIntroduction2 from "./WebsiteIntroduction2";
 
-import { within } from '@storybook/testing-library'
-import { expect } from '@storybook/jest'
-
-const meta: Meta<typeof WebsiteIntroduction2> = {
+export default {
+  title: "Prelems/Website Introduction 2",
   component: WebsiteIntroduction2,
-  title: 'WebsiteIntroduction2',
-}
-export default meta
-type Story = StoryObj<typeof WebsiteIntroduction2>
+} as Meta;
 
-export const Primary = {
-  args: {},
-}
+const Template: Story = (args) => <WebsiteIntroduction2 {...args} />;
 
-export const Heading: Story = {
-  args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
-    expect(canvas.getByText(/Welcome to WebsiteIntroduction2!/gi)).toBeTruthy()
-  },
-}
+export const Default = Template.bind({});
+Default.args = {
+  content: WebsiteIntroduction2.defaultProps.content,
+  authoringHelper: WebsiteIntroduction2.defaultProps.authoringHelper,
+  analytics: WebsiteIntroduction2.defaultProps.analytics,
+  secondaryArgs: WebsiteIntroduction2.defaultProps.secondaryArgs,
+};

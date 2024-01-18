@@ -6,6 +6,8 @@ import { unstable_ClassNameGenerator } from "@mui/material/utils";
 import {
   // AnimationOnPageScroll,
   ArticleDetail,
+  Banner7,
+  CoreHighlights,
   ProductSummaryViaImage,
   Quote,
   Sponsor,
@@ -25,6 +27,8 @@ function PrelemComponent() {
         <Box sx={{ margin: (themeOptions) => themeOptions.prelemMargin.value }}>
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
+          <Banner7 />
+          <CoreHighlights />
           <WebsiteIntroduction2 />
           <ArticleDetail />
           <Quote />
