@@ -818,3 +818,7 @@ export const getImg = (content: any, secondaryArgs: any, index: number) => {
   );
   return img;
 };
+
+export const createIconUrl = (secondaryArgs: any, imgUrl: string) => {
+  return `${secondaryArgs?.gcpUrl}${imgUrl}`;
+};

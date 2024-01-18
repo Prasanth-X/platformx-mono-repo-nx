@@ -1,12 +1,13 @@
+const machineAssets = "/cropped_image_public/machine_assets/documents/icons";
 export const assetsSvg = {
-  leftarrow: "./svg/leftarrow.svg",
-  rightarrow: "./svg/rightarrow.svg",
-  playIcon: "./svg/playvideoIcon.svg",
+  leftarrow: `${machineAssets}/leftarrow.svg`,
+  rightarrow: `${machineAssets}/rightarrow.svg`,
+  playIcon: `${machineAssets}/playvideoIcon.svg`,
 };
 export const assetsPng = {
-  fallBackImage: "./png/fallBackImage.png",
-  frame1: "./png/Frame1.png",
-  frame2: "./png/Frame2.png",
-  frame3: "./png/Frame3.png",
-  testimonialImg: "./png/CustomerTestimonial_Icon.png",
+  fallBackImage: `${machineAssets}/fallBackImage.png`,
+  frame1: `${machineAssets}/Frame1.png`,
+  frame2: `${machineAssets}/Frame2.png`,
+  frame3: `${machineAssets}/Frame3.png`,
+  testimonialImg: `${machineAssets}/CustomerTestimonial_Icon.png`,
 };
