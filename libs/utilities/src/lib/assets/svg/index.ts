@@ -114,9 +114,14 @@ import WorkflowDetails from './workflow.svg'
 import WorkflowIcon from './workflowIcon.svg'
 import LeftArrowIcon from './leftarrow.svg'
 import RightArrowIcon from './rightarrow.svg'
+import GlobalImageIcon from './globalimageicon.svg'
+import GlobalVideoIcon from './globalvideoicon.svg'
+import GlobalMiscIcon from './globalmiscicon.svg'
+import FeatureStarIcon from './featurestar.svg'
 import PlayIcon from './playIcon.svg'
 
 export {
+  GlobalImageIcon,GlobalVideoIcon,GlobalMiscIcon,FeatureStarIcon,
   AccountBalanceWalletIcon,
   AiSvg,
   AiSvg2,

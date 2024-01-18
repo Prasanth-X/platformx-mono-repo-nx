@@ -1,14 +1,16 @@
-import { Box, Grid, Typography } from '@mui/material';
-import { t } from 'i18next';
-import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SiteSettingPanel from '../Common/SiteSettingPanel/SiteSettingPanel';
-import { useStyles } from './FeatureFlagSetting.style';
-import {ThemeConstants, TitleSubTitle ,BasicSwitch} from '@platformx/utilities'
-import SiteTopBar from '../Common/SiteTopBar/SiteTopBar';
+import { Box, Grid, Typography, Divider } from '@mui/material'
+import { t } from 'i18next'
+import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useStyles } from './FeatureFlagSetting.style'
+import {
+  ThemeConstants,
+  TitleSubTitle,
+  BasicSwitch,
+  CommonBoxWithNumber,
+} from '@platformx/utilities'
 
-const FeatureFlagSetting = () => {
-  const informativeFormRef = useRef<HTMLElement>(null);
+export const FeatureFlagSetting = () => {
   const [feature, setFeature] = useState({
     personalisation: false,
     google_analytics_tracking: false,
@@ -17,48 +19,48 @@ const FeatureFlagSetting = () => {
     poll: false,
     vod: false,
     snowplow_tracking: false,
-  });
-  const classes = useStyles();
-  const navigate = useNavigate();
+  })
+  const classes = useStyles()
+  const navigate = useNavigate()
   const onSaveClick = async () => {
     // setIsLoading(true);
-  };
+  }
   const handleChange = (name) => {
-    setFeature((prev) => ({ ...prev, [name]: !prev[name] }));
-  };
+    setFeature((prev) => ({ ...prev, [name]: !prev[name] }))
+  }
   const masterControl = () => {
     setFeature((feature) => {
       const istrue =
-        feature.article || feature.quiz || feature.vod || feature.poll;
+        feature.article || feature.quiz || feature.vod || feature.poll
       return {
         ...feature,
         article: !istrue,
         vod: !istrue,
         quiz: !istrue,
         poll: !istrue,
-      };
-    });
-  };
-
+      }
+    })
+  }
 
   return (
     <>
-      <SiteTopBar
+      {/* <SiteTopBar
         siteLabel={t('feature_flag_setting')}
         returnBack={() => {
           navigate('/dashboard');
         }}
         onSaveClick={onSaveClick}
-      />
+      /> */}
+      <Divider/>
       <Box className={classes.pageContainer}>
         <Box className={classes.contentContainer}>
-          <Box ref={informativeFormRef}>
-            
-            <SiteSettingPanel
-              number='01'
+          <Box>
+            <CommonBoxWithNumber
+              number="01"
               title={t('feature_flag_setting')}
               subTitle={t('subhead')}
-              contentContainerSx={{ padding: '20px' }}
+              titleVarient="p3semibold"
+              subTitleVarient="p4regular"
             >
               <Box className={classes.informativeContentContainer}>
                 <Grid container className={classes.contentContainer}>
@@ -66,8 +68,8 @@ const FeatureFlagSetting = () => {
                     <TitleSubTitle
                       title={t('personalisation')}
                       subTitle={t('analytics_info_toast')}
-                      titleVariant='h6medium'
-                      subTitleVariant='h7regular'
+                      titleVariant="h6medium"
+                      subTitleVariant="h7regular"
                     />
                   </Grid>
                   <Grid item xs={7} sm={7} md={7}>
@@ -84,8 +86,8 @@ const FeatureFlagSetting = () => {
                     <TitleSubTitle
                       title={t('google_analytics_tracking')}
                       subTitle={t('analytics_info_toast')}
-                      titleVariant='h6medium'
-                      subTitleVariant='h7regular'
+                      titleVariant="h6medium"
+                      subTitleVariant="h7regular"
                     />
                   </Grid>
                   <Grid item xs={7} sm={7} md={7}>
@@ -102,8 +104,8 @@ const FeatureFlagSetting = () => {
                     <TitleSubTitle
                       title={t('share_with_sites')}
                       subTitle={t('analytics_info_toast')}
-                      titleVariant='h6medium'
-                      subTitleVariant='h7regular'
+                      titleVariant="h6medium"
+                      subTitleVariant="h7regular"
                     />
                   </Grid>
 
@@ -123,13 +125,13 @@ const FeatureFlagSetting = () => {
                           />
                           <Box className={classes.subtitle}>
                             <Typography
-                              variant='h5regular'
+                              variant="h5regular"
                               sx={{ textTransform: 'capitalize' }}
                             >
                               {t('master_control')}
                             </Typography>
                             <Typography
-                              variant='h7regular'
+                              variant="h7regular"
                               sx={{ textTransform: 'capitalize' }}
                             >
                               {t('master_control')}
@@ -145,7 +147,7 @@ const FeatureFlagSetting = () => {
                             color={ThemeConstants.BLACK_COLOR}
                           />
                           <Typography
-                            variant='h5regular'
+                            variant="h5regular"
                             className={classes.subtitle2}
                           >
                             {t('article')}
@@ -161,7 +163,7 @@ const FeatureFlagSetting = () => {
                             color={ThemeConstants.BLACK_COLOR}
                           />
                           <Typography
-                            variant='h5regular'
+                            variant="h5regular"
                             className={classes.subtitle2}
                           >
                             {t('quiz')}
@@ -177,7 +179,7 @@ const FeatureFlagSetting = () => {
                             color={ThemeConstants.BLACK_COLOR}
                           />
                           <Typography
-                            variant='h5regular'
+                            variant="h5regular"
                             className={classes.subtitle2}
                           >
                             {t('vod')}
@@ -193,7 +195,7 @@ const FeatureFlagSetting = () => {
                             color={ThemeConstants.BLACK_COLOR}
                           />
                           <Typography
-                            variant='h5regular'
+                            variant="h5regular"
                             className={classes.subtitle2}
                           >
                             {t('poll')}
@@ -209,8 +211,8 @@ const FeatureFlagSetting = () => {
                     <TitleSubTitle
                       title={t('snowplow_tracking')}
                       subTitle={t('analytics_info_toast')}
-                      titleVariant='h6medium'
-                      subTitleVariant='h7regular'
+                      titleVariant="h6medium"
+                      subTitleVariant="h7regular"
                     />
                   </Grid>
                   <Grid item xs={7} sm={7} md={7}>
@@ -222,12 +224,10 @@ const FeatureFlagSetting = () => {
                   </Grid>
                 </Grid>
               </Box>
-            </SiteSettingPanel>
+            </CommonBoxWithNumber>
           </Box>
         </Box>
       </Box>
     </>
-  );
-};
-
-export default FeatureFlagSetting;
+  )
+}
