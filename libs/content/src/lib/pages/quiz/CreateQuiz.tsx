@@ -29,7 +29,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { CreateHeader } from "../../DynamicComponentBuilder/Components/CreateHeader/CreateHeader";
+import { CreateHeader } from "../../components/CreateHeader/CreateHeader";
 import Analytics from "../../components/Analytics/Analytics";
 import ContentPageScroll from "../../components/ContentPageScroll";
 import icons from "../../components/ContentWrapper/Utils/Constants";
@@ -44,6 +44,7 @@ import { Question } from "./components/question/Question";
 import Result from "./components/result/Result";
 import SocialShare from "./components/socialshare/SocialShare";
 import { createInitialQuizState, createNewQuiz } from "./helper";
+import AddQuestion from "./components/addquestion/AddQuestion";
 
 export const CreateQuiz = () => {
 
@@ -963,7 +964,7 @@ export const CreateQuiz = () => {
           handleQuesReturn={handleQuesReturn}
           unsavedChanges={unsavedChanges}
         />
-      )}
+      )} */}
       {openAddQuestion && (
         <AddQuestion
           setAddQuestion={setOpenAddQuestion}
@@ -971,7 +972,7 @@ export const CreateQuiz = () => {
           qusUnsavedChanges={qusUnsavedChanges}
           questionId={currentQuestionId}
         />
-      )} */}
+      )}
       <Box
         sx={{
           display: isClickedQueList || openAddQuestion ? "none" : "initial",

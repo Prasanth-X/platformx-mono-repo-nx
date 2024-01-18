@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useCustomStyle } from '../../quiz.style';
+import { useCustomStyle } from '../../pages/quiz/quiz.style';
 import { BasicSwitchText, CommonBoxWithNumber } from '@platformx/utilities';
 
 

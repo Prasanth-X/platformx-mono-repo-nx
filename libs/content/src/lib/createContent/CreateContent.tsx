@@ -5,7 +5,7 @@ import { DynamicContentType } from "../DynamicComponentBuilder/DynamicContentTyp
 import { CreateQuiz } from "../pages/quiz/CreateQuiz";
 
 export const CreateContent = () => {
-    debugger
+
     const location = useLocation();
     const contentType = location.state;
 
@@ -17,7 +17,7 @@ export const CreateContent = () => {
         case "quiz":
             return <CreateQuiz></CreateQuiz>;
         default:
-            return <>DynamicContent</>
+            return <>DynamicContent</>;
         // return <DynamicContent contentType={contentType}></DynamicContent>;
     }
 };

@@ -114,6 +114,9 @@ import WorkflowDetails from './workflow.svg'
 import WorkflowIcon from './workflowIcon.svg'
 import LeftArrowIcon from './leftarrow.svg'
 import RightArrowIcon from './rightarrow.svg'
+import ArrowUpwardIcon from './ArrowUp.svg'
+import Icon from './Icon.svg';
+import Refresh from './Refresh.svg'
 import MenuIcon1 from "./MenuIcons-1.svg"
 import MenuIcon2 from "./MenuIcons-2.svg"
 import MenuIcon3 from "./MenuIcons-3.svg"
@@ -125,6 +128,9 @@ import MenuIcon8 from "./MenuIcons-8.svg"
 import PlayIcon from './playIcon.svg'
 
 export {
+  ArrowUpwardIcon,
+  Icon,
+  Refresh,
   MenuIcon1,
   MenuIcon2,
   MenuIcon3,

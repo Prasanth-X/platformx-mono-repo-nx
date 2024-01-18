@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 // import TextBox from "../Common/TextBox";
 // import TitleSubTitle from "../Common/TitleSubTitle"; 
 // import CommonBoxWithNumber from "../../Common/CommonBoxWithNumber/CommonBoxWithNumber";
-import { useCustomStyle } from "../../../quiz.style";
+import { useCustomStyle } from "../quiz.style";
 import { AutoTextArea, CommonBoxWithNumber, TextBox, TitleSubTitle } from "@platformx/utilities";
 import { useComment } from "@platformx/authoring-apis";
 import { CommentWrapper } from "@platformx/comment-review"

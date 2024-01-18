@@ -1,7 +1,7 @@
 import { Box, Grid, RadioGroup } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useCustomStyle } from '../../../../quiz.style';
+import { useCustomStyle } from '../../quiz.style';
 import './Result.css';
 import { useComment } from '@platformx/authoring-apis';
 import { CommentWrapper } from '@platformx/comment-review';

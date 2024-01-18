@@ -217,7 +217,11 @@ export const CreateHeader = ({
                 startIcon={<TelegramIcon />}
                 type='submit'
                 sx={{ minWidth: "0px" }}
-                onClick={() => handlePublish()}
+                onClick={() => {
+                  if (handlePublish) {
+                    handlePublish();
+                  }
+                }}
                 disabled={
                   !canAccessAction(category, subCategory, "Publish") || hasPublishButton
                 }></Button>

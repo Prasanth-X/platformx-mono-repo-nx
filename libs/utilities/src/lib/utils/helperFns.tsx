@@ -860,3 +860,13 @@ export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: a
   }
   return FallBackImage;
 };
+export const getRandomNumber = (answerArray = [], min, max) => {
+  if (answerArray.length < max) {
+    const existingNumbers = answerArray.map((arr:any) => arr.id);
+    let randomNumber;
+    do {
+      randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (existingNumbers.includes(randomNumber?.toString()));
+    return randomNumber;
+  }
+};

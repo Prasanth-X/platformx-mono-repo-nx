@@ -2,9 +2,9 @@ export type HeaderProps = {
     id?: string;
     hasPreviewButton: boolean;
     handleReturn: () => void;
-    handlePublish: () => void;
+    handlePublish?: () => void;
     handleSaveOrPublish: any
-    handelPreview: () => void;
+    handelPreview?: () => void;
     editText?: string;
     createText?: string;
     toolTipText?: string;
@@ -18,12 +18,12 @@ export type HeaderProps = {
     showPreview?: boolean;
     category: string;
     subCategory: string | string[];
-    workflow: any;
-    hasTimerState: boolean;
-    lastModifiedDate: string;
-    setEnableWorkflowHistory: (boolean) => void;
-    createComment: () => void;
-    setIsFeatured: (val: boolean) => void;
+    workflow?: any;
+    hasTimerState?: boolean;
+    lastModifiedDate?: string;
+    setEnableWorkflowHistory?: (boolean) => void;
+    createComment?: () => void;
+    setIsFeatured?: (val: boolean) => void;
     isFeatured: boolean;
     commentInfo?: CommentType;
 };

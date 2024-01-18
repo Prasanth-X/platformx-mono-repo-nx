@@ -4,7 +4,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { DraggableQuestions } from "./DragableQuestions";
 // import CommonBoxWithNumber from "../../Common/CommonBoxWithNumber/CommonBoxWithNumber";
-import { useCustomStyle } from "../../../../quiz.style";
+import { useCustomStyle } from "../../quiz.style";
 import { CommentWrapper } from "@platformx/comment-review";
 import { CommonBoxWithNumber, TitleSubTitle } from "@platformx/utilities";
 import { useComment } from "@platformx/authoring-apis";

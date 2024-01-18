@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 // import TextBox from '../Common/TextBox';
 // import TitleSubTitle from '../Common/TitleSubTitle';
 // import CommonBoxWithNumber from '../../Common/CommonBoxWithNumber/CommonBoxWithNumber';
-import { useCustomStyle } from '../../../../quiz.style';
+import { useCustomStyle } from '../../quiz.style';
 import { AddImage, AutoCompleteText, AutoTextArea, CommonBoxWithNumber, TextBox, TitleSubTitle, relativeImageURL } from '@platformx/utilities';
 
 const SocialShare = ({

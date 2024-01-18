@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 
 import { useTranslation } from 'react-i18next';
-import { useCustomStyle } from '../../../../quiz.style';
+import { useCustomStyle } from '../../quiz.style';
 import { CommonBoxWithNumber, XTags } from '@platformx/utilities';
 
 const ChooseTags = ({ isEdit, tagData, selectedTag, handleTagOnChange }) => {
