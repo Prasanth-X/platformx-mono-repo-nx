@@ -1,0 +1,314 @@
+name: hep-caching
+on:
+  push:
+    branches:
+    - develop
+    - qa 
+    - master
+    - xerox_stg
+    - xerox_master
+    - stg
+    - x_site_live
+    - mavericks_dev
+    - marvels_dev
+    - kiwi_dev
+    - x_site_qa
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:      
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set env vars (develop)
+      if: endsWith(github.ref, '/develop')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (master)
+      if: endsWith(github.ref, '/master')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (qa)
+      if: endsWith(github.ref, '/qa')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (xerox_stg)
+      if: endsWith(github.ref, '/xerox_stg')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (xerox_master)
+      if: endsWith(github.ref, '/xerox_master')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (x_site_live)
+      if: endsWith(github.ref, '/x_site_live')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "WORKLOAD_IDENTITY_PROVIDER=WORKLOAD_IDENTITY_PROVIDER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT=SERVICE_ACCOUNT_X_SITE_LIVE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (stg)
+      if: endsWith(github.ref, '/stg')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "WORKLOAD_IDENTITY_PROVIDER=WORKLOAD_IDENTITY_PROVIDER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT=SERVICE_ACCOUNT_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (mavericks_dev)
+      if: endsWith(github.ref, '/mavericks_dev')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (kiwi_dev)
+      if: endsWith(github.ref, '/kiwi_dev')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (marvels_dev)
+      if: endsWith(github.ref, '/marvels_dev')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Set env vars (x_site_qa)
+      if: endsWith(github.ref, '/x_site_qa')
+      run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "WORKLOAD_IDENTITY_PROVIDER=WORKLOAD_IDENTITY_PROVIDER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT=SERVICE_ACCOUNT_X_SITE_QA_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+    - name: Checkout
+      uses: actions/checkout@v3
+     
+    # Setup gcloud CLI
+    - name: setup-gcloud
+      if:
+        contains('
+          refs/heads/kiwi_dev
+          refs/heads/marvels_dev
+          refs/heads/mavericks_dev
+          refs/heads/develop
+          refs/heads/qa
+          refs/heads/master
+          refs/heads/xerox_stg
+          refs/heads/xerox_master', github.ref)
+      uses: google-github-actions/setup-gcloud@v0.2.0 
+      with:
+        service_account_key: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+        project_id: ${{ secrets[env.PROJECT_ID] }}
+
+    - name: stg-cluster-auth
+      if: endsWith(github.ref, '/stg')
+      uses: google-github-actions/auth@v0
+      with:
+        workload_identity_provider: ${{ secrets[env.WORKLOAD_IDENTITY_PROVIDER] }}
+        service_account: ${{ secrets.SERVICE_ACCOUNT }}
+        token_format: 'access_token'
+
+    - name: stg-cluster-live
+      if: endsWith(github.ref, '/x_site_qa')
+      uses: google-github-actions/auth@v0
+      with:
+        workload_identity_provider: ${{ secrets[env.WORKLOAD_IDENTITY_PROVIDER] }}
+        service_account: ${{ secrets.SERVICE_ACCOUNT_X_SITE_QA }}
+        token_format: 'access_token'
+
+    - name: stg-cluster-live
+      if: endsWith(github.ref, '/x_site_live')
+      uses: google-github-actions/auth@v0
+      with:
+        workload_identity_provider: ${{ secrets[env.WORKLOAD_IDENTITY_PROVIDER] }}
+        service_account: ${{ secrets.SERVICE_ACCOUNT_X_SITE_LIVE }}
+        token_format: 'access_token'
+        
+    # Get the GKE credentials so we can deploy to the cluster
+    - name: gke-credentails-dev-qa
+      if:
+        contains('
+          refs/heads/kiwi_dev
+          refs/heads/marvels_dev
+          refs/heads/mavericks_dev
+          refs/heads/develop
+          refs/heads/qa
+          refs/heads/master
+          refs/heads/xerox_stg
+          refs/heads/xerox_master', github.ref)
+      uses: google-github-actions/get-gke-credentials@v0.2.1
+      with:
+        cluster_name: ${{ secrets[env.CLUSTER_NAME] }}
+        location: ${{ secrets[env.GKE_ZONE] }}
+        credentials: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+    
+    - name: get-gke-credentials-stg-live
+      if:
+        contains('
+          refs/heads/x_site_live
+          refs/heads/x_site_qa
+          refs/heads/stg', github.ref)
+      uses: google-github-actions/get-gke-credentials@v0.4.0
+      with:
+       cluster_name: ${{ secrets[env.CLUSTER_NAME] }}
+       location: ${{ secrets[env.GKE_ZONE] }}
+
+    # Build the Docker image
+    - name: Build
+      run: |-
+        docker build --tag "gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:$GITHUB_RUN_NUMBER"  .
+
+    # Push the Docker image to Google Container Registry
+    - name: Publish
+      run: |-
+        gcloud auth configure-docker --quiet
+        docker push "gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:$GITHUB_RUN_NUMBER"
+    
+    # Deploy Configmap
+    - name: Deploy Configmap on stage branch
+      if: ${{ github.ref == 'refs/heads/stg' }}
+      run: |-
+        kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-stg.yaml
+    - name: Deploy Configmap on x_site_qa branch
+      if: ${{ github.ref == 'refs/heads/x_site_qa' }}
+      run: |-
+        kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-qa.yaml
+    - name: Deploy Configmap on live branch
+      if: ${{ github.ref == 'refs/heads/x_site_live' }}
+      run: |-
+        echo ${{ secrets.HEP_AUTHORING_UI_LIVE }} | base64 --decode > hep-authoring-ui-config-live.yaml
+        kubectl apply -f hep-authoring-ui-config-live.yaml
+    # Deploy the Docker image to the GKE cluster
+    - name: Deploy-dev-qa
+      if:
+        contains('
+          refs/heads/kiwi_dev
+          refs/heads/marvels_dev
+          refs/heads/mavericks_dev
+          refs/heads/develop
+          refs/heads/qa
+          refs/heads/master
+          refs/heads/xerox_stg
+          refs/heads/xerox_master', github.ref)
+      uses: appleboy/ssh-action@v0.1.4
+      env: 
+        GKE_ZONE: ${{ secrets[env.GKE_ZONE] }}
+        REPO_NAME: ${{ env.REPO_NAME }} 
+        TAG: ${{ github.run_number }}
+        BRANCH: ${{ github.ref_name }}
+        CLUSTER: ${{ secrets[env.CLUSTER_NAME] }}
+        IMAGE: ${{ secrets[env.IMAGE_NAME] }}
+        PROJECT: ${{ secrets[env.PROJECT_ID] }}
+        DEPLOYMENT_NAME: ${{ secrets[env.DEPLOYMENT_NAME] }}
+        NAMESPACE_NAME: ${{ secrets[env.NAMESPACE_NAME] }}
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME_ANGLO }}
+        key: ${{ secrets.PRIVATE_KEY_ANGLO }}
+        envs: TAG, BRANCH, CLUSTER, PROJECT, IMAGE, REPO_NAME, GKE_ZONE, DEPLOYMENT_NAME, NAMESPACE_NAME   
+        port: 22
+        script_stop: true
+        script: |
+            echo $TAG, $BRANCH, $CLUSTER, $PROJECT, $REPO_NAME, $GKE_ZONE, $DEPLOYMENT_NAME, $NAMESPACE_NAME
+            rm -rf  $REPO_NAME
+            git clone git@github.com:hcl-x/$REPO_NAME.git ;cd $REPO_NAME; git checkout $BRANCH
+            curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+            chmod u+x ./kustomize
+            gcloud container clusters get-credentials $CLUSTER --zone $GKE_ZONE --project $PROJECT
+            ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT/$IMAGE:$TAG
+            ./kustomize build . | kubectl apply -f - -n $NAMESPACE_NAME
+            kubectl rollout status deployment $DEPLOYMENT_NAME
+            if [ $BRANCH == "develop" ]; then
+            kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-develop.yaml
+            elif [ $BRANCH == "qa" ]; then
+            kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-qa.yaml
+            elif [ $BRANCH == "mavericks_dev" ]; then
+            kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-mavericks.yaml
+            elif [ $BRANCH == "marvels_dev" ]; then
+            kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-marvels.yaml
+            elif [ $BRANCH == "kiwi_dev" ]; then
+            kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-kiwi.yaml
+            else
+            echo "No Configmap to apply"
+            fi
+            # curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+            # chmod u+x ./kustomize
+            # gcloud container clusters get-credentials $CLUSTER --zone $GKE_ZONE --project $PROJECT
+            # ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT/$IMAGE:$TAG
+            # ./kustomize build . | kubectl apply -f - -n $NAMESPACE_NAME
+            # kubectl rollout status deployment $DEPLOYMENT_NAME
+
+    - name: deploy-stg-live
+      if:
+        contains('
+          refs/heads/x_site_live
+          refs/heads/x_site_qa
+          refs/heads/stg', github.ref)
+      run: |-
+        curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+        chmod u+x ./kustomize
+        ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/${{ secrets[env.PROJECT_ID] }}/${{ secrets[env.IMAGE_NAME] }}:$GITHUB_RUN_NUMBER
+        ./kustomize build . | kubectl apply -f -
+        kubectl rollout status deployment ${{ secrets[env.DEPLOYMENT_NAME] }}
