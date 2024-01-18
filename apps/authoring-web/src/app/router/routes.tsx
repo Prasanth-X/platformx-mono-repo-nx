@@ -26,19 +26,19 @@ export const routes: RouteConfig[] = [
       </ProtectedRoute>
     ),
   },
-  {
-    path: "/prelem",
-    element: (
-      <ProtectedRoute
-        category='dashboard'
-        subCategory='dashboard'
-        name='dashboard'
-        isSideBar={false}
-        isHeader={false}>
-        <PrelemComponent />
-      </ProtectedRoute>
-    ),
-  },
+  // {
+  //   path: "/prelem",
+  //   element: (
+  //     <ProtectedRoute
+  //       category='dashboard'
+  //       subCategory='dashboard'
+  //       name='dashboard'
+  //       isSideBar={false}
+  //       isHeader={false}>
+  //       <PrelemComponent />
+  //     </ProtectedRoute>
+  //   ),
+  // },
   {
     path: "/Sitepage",
     element: (

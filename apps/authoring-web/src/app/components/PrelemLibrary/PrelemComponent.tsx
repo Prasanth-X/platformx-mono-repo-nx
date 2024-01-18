@@ -7,7 +7,10 @@ import {
   // AnimationOnPageScroll,
   ArticleDetail,
   Banner7,
+  // ContactUsForm,
   CoreHighlights,
+  FullWidthBanner3,
+  InfoBox,
   ProductSummaryViaImage,
   ProductSummaryViaVideo2,
   Quote,
@@ -16,6 +19,7 @@ import {
   Testimonial,
   WebsiteIntroduction,
   WebsiteIntroduction2,
+  WebsiteIntroduction4,
 } from "@platformx/x-prelem-library";
 // call this function at the root of the application
 unstable_ClassNameGenerator.configure((componentName) =>
@@ -30,6 +34,10 @@ function PrelemComponent() {
         <Box sx={{ margin: (themeOptions) => themeOptions.prelemMargin.value }}>
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
+          {/* <ContactUsForm /> */}
+          <FullWidthBanner3 />
+          <WebsiteIntroduction4 />
+          <InfoBox />
           <Banner7 />
           <CoreHighlights />
           <WebsiteIntroduction2 />

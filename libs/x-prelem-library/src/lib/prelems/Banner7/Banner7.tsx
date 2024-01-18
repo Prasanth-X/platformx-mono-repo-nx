@@ -146,14 +146,18 @@ Banner7Prop) => {
   2. if its available we are setting AnalyticsEnabled to true
   3. if its not available we are setting false
 */
-  const stylecss = `
-  .Banner7 .mobRevCol .rightImgBox img {
-    -webkit-mask-image: url(${MaskImg});
+  const style = `
+  @media (min-width: 1024px) {
+    .Banner7 .mobRevCol .rightImgBox img { 
+      -webkit-mask-image: url(${MaskImg});
+    },
   }
+  
+  
 `;
   return (
     <>
-      <style>{stylecss}</style>
+      <style>{style}</style>
       <div
         ref={authoringHelper?.innerRef}
         className={`${classes.Banner7Wrapper} ${globalClasses.prelemType1} prelem prelemType1 Banner7Bg`}>

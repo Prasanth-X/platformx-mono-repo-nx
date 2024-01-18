@@ -7,7 +7,7 @@ import {
   allowOnlyNumberInputData,
   allowOnlyShippingLetterInputData,
   allowOnlyLetterInputData,
-} from "../../../utils/helperFns";
+} from "@platformx/utilities";
 
 const allowInputParams = (e: any, key: string) => {
   switch (key) {
@@ -58,7 +58,7 @@ const StringOnBlurTextBox = (props: StringOnBlurTextBoxProps) => {
     customInPutAllowField = "",
   } = props;
 
-  const [stateValue, setStateValue] = useState("");
+  const [stateValue, setStateValue] = useState(value);
   const [textBoxType, setTextBoxType] = useState("text");
 
   const onChange = (e: any) => {
