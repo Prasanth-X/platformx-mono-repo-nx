@@ -1,13 +1,11 @@
-import AddIcon from "@mui/icons-material/Add";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { DraggableQuestions } from "./DragableQuestions";
 // import CommonBoxWithNumber from "../../Common/CommonBoxWithNumber/CommonBoxWithNumber";
-import { useCustomStyle } from "../../quiz.style";
+import { useComment } from "@platformx/authoring-apis";
 import { CommentWrapper } from "@platformx/comment-review";
 import { CommonBoxWithNumber, TitleSubTitle } from "@platformx/utilities";
-import { useComment } from "@platformx/authoring-apis";
+import { useCustomStyle } from "../../quiz.style";
 // import TitleSubTitle from "../Common/TitleSubTitle";
 
 export const Question = ({
@@ -21,11 +19,11 @@ export const Question = ({
     setIsClickedQueList(true);
   };
   const { t } = useTranslation();
-  const { comments, handleCommentClick, scrollToRef, selectedElementId } = useComment();
+  const { scrollToRef, } = useComment();
   const classes = useCustomStyle();
   return (
     <Box id='questions' className={classes.mainStyleWrapper}>
-      <CommentWrapper elementId='3' scrollRef={scrollToRef}  >
+      <CommentWrapper elementId='3' scrollRef={scrollToRef} >
         <CommonBoxWithNumber
           number='03'
           title={t("quiz_question_head")}
