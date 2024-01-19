@@ -1,9 +1,7 @@
 import EastIcon from "@mui/icons-material/East";
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-// import CourseIcon from "../../../assets/dynamicprelemicons/CourseIcon.png";
-import FallbackImage from "../../../assets/fallBackImage.png";
-import { dateFormat, handleHtmlTags } from "../../../utils/helperFns";
+import { dateFormat, handleHtmlTags, fallBackImage } from "@platformx/utilities";
 import { XButton } from "../../XButton/XButton";
 import CardSkeleton from "../CardSkeleton";
 import { useCustomStyle } from "./XCard2.style";
@@ -18,11 +16,11 @@ const XCard2 = ({ content, Icon, onCardClick }: XCard2Props) => {
             <Grid xs={12} md={6}>
               <Box className='imgWrapper'>
                 <img
-                  src={content?.teaser_image || FallbackImage}
+                  src={content?.teaser_image || fallBackImage}
                   onError={(e: any) => {
-                    if (e.target.src !== FallbackImage) {
+                    if (e.target.src !== fallBackImage) {
                       e.target.onerror = null;
-                      e.target.src = FallbackImage;
+                      e.target.src = fallBackImage;
                     }
                   }}
                   alt=''

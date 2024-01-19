@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import ProductSummaryViaVideo2 from "./ProductSummaryViaVideo2";
 
 export default {
-  title: "Prelems/Product Summary",
+  title: "Prelems/Product Summary Via Video 2",
   component: ProductSummaryViaVideo2,
 } as Meta;
 

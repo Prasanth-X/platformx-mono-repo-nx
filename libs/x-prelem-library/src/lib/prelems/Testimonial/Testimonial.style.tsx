@@ -1,6 +1,6 @@
 import useTheme from "@mui/material/styles/useTheme";
 import { makeStyles } from "@mui/styles";
-import { leftarrow, rightarrow } from "../../assets/svg";
+import { LeftArrowIcon, RightArrowIcon } from "@platformx/utilities";
 
 export const useCustomStyle = makeStyles(() => {
   const theme = useTheme();
@@ -13,6 +13,7 @@ export const useCustomStyle = makeStyles(() => {
         },
         "& .testimonialCardWrapper": {
           border: `solid 1px ${theme.palette.prelemType1.LINE}`,
+          background: theme.palette.prelemType1.CARDS.VARIANT1.BACKGROUND,
           minHeight: "312px",
           borderRadius: "3px",
           boxShadow: "none",
@@ -40,10 +41,10 @@ export const useCustomStyle = makeStyles(() => {
         },
         "& .editContent": {
           "& .slick-arrow.slick-prev:before": {
-            backgroundImage: `url('${leftarrow}')`,
+            backgroundImage: `url('${LeftArrowIcon}')`,
           },
           "& .slick-arrow.slick-next:before": {
-            backgroundImage: `url('${rightarrow}')`,
+            backgroundImage: `url('${RightArrowIcon}')`,
           },
         },
         "& .my20": {

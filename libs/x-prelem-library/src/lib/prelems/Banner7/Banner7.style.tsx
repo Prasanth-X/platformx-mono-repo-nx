@@ -1,8 +1,6 @@
 import { makeStyles } from "@mui/styles";
 import useTheme from "@mui/material/styles/useTheme";
-// import MaskImg from "../../assets/mask-diag-simple.svg";
-// import RightArrow from "../../assets/svgIcon/rightarrow.svg";
-// import LeftArrow from "../../assets/svgIcon/leftarrow.svg";
+import { MaskImg, LeftArrowIcon, RightArrowIcon } from "@platformx/utilities";
 
 export const useCustomStyle = makeStyles(() => {
   const theme = useTheme();
@@ -28,7 +26,7 @@ export const useCustomStyle = makeStyles(() => {
               },
               "& img": {
                 [theme.breakpoints.up("em")]: {
-                  // WebkitMaskImage: `url(${MaskImg})`,
+                  WebkitMaskImage: `url(${MaskImg})`,
                   WebkitMaskSize: "cover",
                   WebkitMaskPosition: "center left",
                 },
@@ -36,12 +34,12 @@ export const useCustomStyle = makeStyles(() => {
             },
             "& .slick-arrow.slick-next": {
               "&::after": {
-                // backgroundImage: `url('${RightArrow}')`,
+                backgroundImage: `url('${RightArrowIcon}')`,
               },
             },
             "& .slick-arrow.slick-prev": {
               "&::after": {
-                // backgroundImage: `url('${LeftArrow}')`,
+                backgroundImage: `url('${LeftArrowIcon}')`,
               },
             },
           },

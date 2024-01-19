@@ -145,7 +145,6 @@ Banner7Prop) => {
   2. if its available we are setting AnalyticsEnabled to true
   3. if its not available we are setting false
 */
-
   return (
     <div
       ref={authoringHelper?.innerRef}
