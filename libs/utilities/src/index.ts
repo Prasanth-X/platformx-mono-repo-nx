@@ -13,7 +13,7 @@ import { MiniHeader } from "./lib/components/Header/MiniHeader";
 import LanguageDropDown from "./lib/components/LanguageDropDown/LanguageDropDown";
 import { Loader } from "./lib/components/Loader";
 import ContentListDesktopLoader from "./lib/components/Loader/ContentListDesktopLoader";
-// import ContentListMobileLoader from "./lib/components/Loader/contentListLoaderMobile";
+import ContentListMobileLoader from "./lib/components/Loader/contentListLoaderMobile";
 import { NoContentFound } from "./lib/components/NoContentFound/NoContentFound";
 import NoSearchResult from "./lib/components/NoSearchResult/NoSearchResult";
 import {
@@ -99,7 +99,7 @@ export {
   AUTH_URL,
   AddImage,
   ToastContainerHandle,
-  // ContentListMobileLoader,
+  ContentListMobileLoader,
   ContentListDesktopLoader,
   ArticleMapper,
   AutoCompleteMultiSelect,

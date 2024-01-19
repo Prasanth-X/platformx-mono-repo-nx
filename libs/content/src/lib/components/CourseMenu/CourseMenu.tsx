@@ -15,7 +15,7 @@ import { userManagementAPI } from '@platformx/authoring-apis';
 import { CourseReportDialog } from '../CourseReportDialog/CourseReportDialog';
 import InviteUserPopup from '../InviteUserPopup/InviteUserPopup';
 import { getEmbedTempData } from '../../utils/Helper';
-import { MenuActions } from '../CardMenu/CardMenu.types';
+import { MenuActions } from './CardMenu.types';
 
 export const CourseMenu = ({
   anchorEl,

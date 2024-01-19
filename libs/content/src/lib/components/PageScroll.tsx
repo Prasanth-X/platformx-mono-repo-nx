@@ -76,18 +76,18 @@ const PageScroll = ({ icons, parentToolTip, srollToView }) => {
               }}
             >
               {activeScoll === icon.tooltip ? (
-                 <img
-                 src={icon.iconName}
-                 alt="Icon"
-                 className="your-custom-class"
-                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(55%) sepia(48%) saturate(2094%) hue-rotate(188deg) brightness(100%) contrast(96%)',
-
-                }}
-               />) : (
                 <img
-                 src={icon.iconName}
-                 alt="Icon"/>
+                  src={icon.iconName}
+                  alt="Icon"
+                  className="your-custom-class"
+                  style={{
+                    filter: 'brightness(0) saturate(100%) invert(55%) sepia(48%) saturate(2094%) hue-rotate(188deg) brightness(100%) contrast(96%)',
+
+                  }}
+                />) : (
+                <img
+                  src={icon.iconName}
+                  alt="Icon" />
               )}
             </IconButton>
           </Tooltip>
