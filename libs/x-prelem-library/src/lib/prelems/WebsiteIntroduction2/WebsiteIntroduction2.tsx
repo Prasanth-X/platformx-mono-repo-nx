@@ -2,9 +2,8 @@ import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageRender from "../../components/ImageRender";
-// import RedDots from "../../assets/RedDots.svg";
 import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout";
-import { formCroppedUrl, structureDataUrlPoint } from "@platformx/utilities";
+import { formCroppedUrl, structureDataUrlPoint, RedDots } from "@platformx/utilities";
 import BasicButton from "../../components/BasicButton/BasicButton";
 import { useCustomStyle } from "./WebsiteIntroduction2.style";
 import prelemTypes from "../../globalStyle";
@@ -366,10 +365,10 @@ WebsiteIntroduction2Prop) => {
             />
           </Box>
           <Box className='dottedImgFirst'>
-            <img alt='intor3' src='' width='140' height='63' />
+            <img alt='intor3' src={RedDots} width='140' height='63' />
           </Box>
           <Box className='dottedImgSecond'>
-            <img alt='intro4' src='' width='140' height='63' />
+            <img alt='intro4' src={RedDots} width='140' height='63' />
           </Box>
         </Box>
       </Box>

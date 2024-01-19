@@ -7,7 +7,7 @@ import "./Testimonial.css";
 import { useCustomStyle } from "./Testimonial.style";
 import prelemTypes from "../../globalStyle";
 import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
-import { TestimonialImg } from "../../assets/png";
+import { TestimonialImg } from "@platformx/utilities";
 
 const Testimonial = ({ content, analytics, authoringHelper, secondaryArgs }: TestimonialProps) => {
   const { ref, inView } = useInView({
@@ -292,8 +292,14 @@ Testimonial.defaultProps = {
   },
   secondaryArgs: {
     prelemBaseEndpoint: {
-      device: "",
+      APIEndPoint: "https://platx-api-dev.fanuep.com/platform-x/",
+      device: "window",
+      buttonBaseUrl: "https://platx-publish-dev.fanuep.com/",
     },
+    editState: false,
+    multiSlot: {},
+    gcpUrl: "https://storage.googleapis.com",
+    bucketName: "cropped_image_public",
   },
 };
 

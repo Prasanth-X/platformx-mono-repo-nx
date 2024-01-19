@@ -3,8 +3,9 @@ import { format } from "date-fns";
 import FallBackImage from "../assets/images/fallBackImage.png";
 import ToastService from "../components/ToastContainer/ToastService";
 import { CONTENT_TYPE_WITH_ABSOLUTEURL, DefaultLocale } from "../constants/CommonConstants";
-import { LanguageList, countries } from "./helperConstants";
+import { LanguageList, countries, defaultImages } from "./helperConstants";
 import { Props } from "./types";
+import { SecondaryArgs, Content } from "./interface";
 
 const siteLevelSchema = {
   siteName: "X",
@@ -795,6 +796,49 @@ export const getUniqueTimeZone = () => {
   return data;
 };
 
+export const onClickCardUrlNavigate = (id: string, content: any, secondaryArgs: any) => {
+  if (typeof window !== "undefined") {
+    // let url = "";
+    if (id && id.charAt(0) === "/") {
+      // eslint-disable-next-line no-param-reassign
+      id = id.substring(1);
+    }
+
+    if (content.ContentType === "Article") {
+      return getLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        "article",
+        id,
+      );
+    } else if (content.ContentType === "VOD") {
+      return getLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        "video",
+        id,
+      );
+    } else if (content.ContentType === "Course") {
+      return getCourseLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        content.ContentType,
+        id,
+      );
+    } else if (convertToLowerCase(content.ContentType) === "community") {
+      return id;
+    } else {
+      return getLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        content.ContentType,
+        id,
+      );
+    }
+  }
+  return "";
+};
+
 export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: any) => {
   if (path && ext) {
     const url = `${secondaryArgs?.gcpUrl}/${secondaryArgs?.bucketName}/${path}.${ext}`;
@@ -805,9 +849,9 @@ export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: a
   }
   return FallBackImage;
 };
-export const getRandomNumber = (answerArray, min, max,) => {
+export const getRandomNumber = (answerArray, min, max) => {
   if (answerArray?.length < max) {
-    const existingNumbers = answerArray.map((arr:any) => arr.id);
+    const existingNumbers = answerArray.map((arr: any) => arr.id);
     let randomNumber;
     do {
       randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -827,4 +871,109 @@ export const getImg = (content: any, secondaryArgs: any, index: number) => {
     ext,
   );
   return img;
+};
+export const getFallBackImage = (content: Content, secondaryArgs: SecondaryArgs) => {
+  const { tags = "", ContentType: contentType = "" } = content || {};
+  if (tags?.includes("Community")) {
+    return getCommunityFallBackImageBasedOnContentType(contentType, secondaryArgs);
+  } else {
+    return FallBackImage;
+  }
+};
+export const getImage = (content: Content, secondaryArgs: SecondaryArgs) => {
+  const {
+    Thumbnail: { Url: url = "", ext = "" } = {},
+    ContentType: contentType = "",
+    background_content: { Color: color = "" } = {},
+  } = nullToObject(content);
+  const { gcpUrl = "", bucketName = "" } = nullToObject(secondaryArgs);
+  const imageColorObject: { color: string | null; imageUrl: string | null } = {
+    color: null,
+    imageUrl: null,
+  };
+  if (color === "") {
+    const urlOfImage = formCroppedUrl(gcpUrl, bucketName, url, ext, contentType) || "";
+    const httpRegex = /https?:\/\//g;
+    const httpCount = (urlOfImage.match(httpRegex) || []).length;
+    if (httpCount === 1) {
+      return {
+        ...imageColorObject,
+        imageUrl: urlOfImage,
+      };
+    } else {
+      return {
+        ...imageColorObject,
+        imageUrl: getFallBackImage(content, secondaryArgs),
+      };
+    }
+  } else {
+    return { ...imageColorObject, color };
+  }
+};
+export const getCommunityFallBackImageBasedOnContentType = (
+  contentType: string,
+  secondaryArgs: SecondaryArgs,
+) => {
+  switch (contentType) {
+    case "event":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.event,
+        defaultImages?.ext,
+      );
+    case "challenges-announcement":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.challenges,
+        defaultImages?.ext,
+      );
+    case "exokudos:activity":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.kudos,
+        defaultImages?.ext,
+      );
+    case "poll":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.poll,
+        defaultImages?.ext,
+      );
+    case "news":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.news,
+        defaultImages?.ext,
+      );
+    case "quiz":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.quiz,
+        defaultImages?.ext,
+      );
+    case "general":
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.event,
+        defaultImages?.ext,
+      );
+    default:
+      return formCroppedUrl(
+        secondaryArgs?.gcpUrl,
+        secondaryArgs?.bucketName,
+        defaultImages?.event,
+        defaultImages?.ext,
+      );
+  }
+};
+
+export const createIconUrl = (secondaryArgs: any, imgUrl: string) => {
+  return `${secondaryArgs?.gcpUrl}${imgUrl}`;
 };

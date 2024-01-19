@@ -1,27 +1,24 @@
-import EventIcon from "../../assets/dynamicprelemicons/EventWhiteIcon.png";
-import articleIcon from "../../assets/dynamicprelemicons/article.svg";
-import imgIcon from "../../assets/dynamicprelemicons/imggallery.svg";
-import pollIcon from "../../assets/dynamicprelemicons/poll.svg";
-import quizIcon from "../../assets/dynamicprelemicons/quiz.svg";
-import vodIcon from "../../assets/dynamicprelemicons/vod.svg";
-import Faq from "../../assets/dynamicprelemicons/FAQ.png";
-import Testimonial from "../../assets/dynamicprelemicons/TestimonialWhite.png";
-import Awards from "../../assets/dynamicprelemicons/Awards.png";
-import FeatureCard from "../../assets/dynamicprelemicons/Feature card.png";
-import ServiceCard from "../../assets/dynamicprelemicons/Service card.png";
-import Shopping_bag from "../../assets/dynamicprelemicons/shopping_bag.png";
-import courseIcon from "../../assets/dynamicprelemicons/course.svg";
-import General_community from "../../assets/dynamicprelemicons/General_community.svg";
-import News_community from "../../assets/dynamicprelemicons/News_community.svg";
-import playerIcon from "../../assets/dynamicprelemicons/profil_icon.svg";
-import Community from "../../assets/dynamicprelemicons/community.svg";
-import Challenges_community from "../../assets/dynamicprelemicons/Challenges_community.svg";
 import {
   convertToLowerCase,
-  getCourseLandingPageURL,
-  getLandingPageURL,
+  articleIcon,
+  imgIcon,
+  pollIcon,
+  quizIcon,
+  vodIcon,
+  courseIcon,
+  General_community,
+  News_community,
+  playerIcon,
+  Community,
+  Challenges_community,
+  Faq,
+  EventIcon,
+  Testimonial,
+  Awards,
+  FeatureCard,
+  ServiceCard,
+  Shopping_bag,
 } from "@platformx/utilities";
-import fallBackImage from "../../assets/fallBackImage.png";
 
 export const getIcon = (ct: string) => {
   switch (convertToLowerCase(ct)) {
@@ -62,58 +59,4 @@ export const getIcon = (ct: string) => {
     default:
       return vodIcon;
   }
-};
-
-export const onClickCardUrlNavigate = (id: string, content: any, secondaryArgs: any) => {
-  if (typeof window !== "undefined") {
-    // let url = "";
-    if (id && id.charAt(0) === "/") {
-      // eslint-disable-next-line no-param-reassign
-      id = id.substring(1);
-    }
-
-    if (content.ContentType === "Article") {
-      return getLandingPageURL(
-        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
-        secondaryArgs?.prelemBaseEndpoint?.language,
-        "article",
-        id,
-      );
-    } else if (content.ContentType === "VOD") {
-      return getLandingPageURL(
-        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
-        secondaryArgs?.prelemBaseEndpoint?.language,
-        "video",
-        id,
-      );
-    } else if (content.ContentType === "Course") {
-      return getCourseLandingPageURL(
-        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
-        secondaryArgs?.prelemBaseEndpoint?.language,
-        content.ContentType,
-        id,
-      );
-    } else if (convertToLowerCase(content.ContentType) === "community") {
-      return id;
-    } else {
-      return getLandingPageURL(
-        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
-        secondaryArgs?.prelemBaseEndpoint?.language,
-        content.ContentType,
-        id,
-      );
-    }
-  }
-  return "";
-};
-
-export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: any) => {
-  if (path && ext) {
-    const url = `${secondaryArgs?.gcpUrl}/${secondaryArgs?.bucketName}/${path}.${ext}`;
-    if (url.match(/^https?:\/\/.+\/.+$/)) {
-      return url;
-    }
-    return fallBackImage;
-  }
-  return fallBackImage;
 };
