@@ -796,6 +796,49 @@ export const getUniqueTimeZone = () => {
   return data;
 };
 
+export const onClickCardUrlNavigate = (id: string, content: any, secondaryArgs: any) => {
+  if (typeof window !== "undefined") {
+    // let url = "";
+    if (id && id.charAt(0) === "/") {
+      // eslint-disable-next-line no-param-reassign
+      id = id.substring(1);
+    }
+
+    if (content.ContentType === "Article") {
+      return getLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        "article",
+        id,
+      );
+    } else if (content.ContentType === "VOD") {
+      return getLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        "video",
+        id,
+      );
+    } else if (content.ContentType === "Course") {
+      return getCourseLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        content.ContentType,
+        id,
+      );
+    } else if (convertToLowerCase(content.ContentType) === "community") {
+      return id;
+    } else {
+      return getLandingPageURL(
+        secondaryArgs?.prelemBaseEndpoint?.PublishEndPoint,
+        secondaryArgs?.prelemBaseEndpoint?.language,
+        content.ContentType,
+        id,
+      );
+    }
+  }
+  return "";
+};
+
 export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: any) => {
   if (path && ext) {
     const url = `${secondaryArgs?.gcpUrl}/${secondaryArgs?.bucketName}/${path}.${ext}`;

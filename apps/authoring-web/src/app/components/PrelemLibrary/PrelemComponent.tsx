@@ -6,6 +6,7 @@ import { unstable_ClassNameGenerator } from "@mui/material/utils";
 import {
   // AnimationOnPageScroll,
   AboutUs2,
+  AboutUsThree,
   ArticleDetail,
   Banner7,
   CoreHighlights,
@@ -23,6 +24,9 @@ import {
   WebsiteIntroduction,
   WebsiteIntroduction2,
   WebsiteIntroduction4,
+  DynamicPrelemWithCarousel1,
+  DynamicPrelemWithCarousel2,
+  Banner6,
 } from "@platformx/x-prelem-library";
 // call this function at the root of the application
 unstable_ClassNameGenerator.configure((componentName) =>
@@ -37,6 +41,10 @@ function PrelemComponent() {
         <Box sx={{ margin: (themeOptions) => themeOptions.prelemMargin.value }}>
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
+          <Banner6 />
+          <DynamicPrelemWithCarousel1 />
+          <DynamicPrelemWithCarousel2 />
+          <AboutUsThree />
           <AboutUs2 />
           <FullWidthBanner3 />
           <WebsiteIntroduction4 />

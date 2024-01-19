@@ -2,10 +2,10 @@ import { Box, Button, CardMedia, Typography } from "@mui/material";
 import React from "react";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useCustomStyle } from "./XCard4.style";
-import { getIcon, onClickCardUrlNavigate } from "../../Utils/helperFns";
+import { getIcon } from "../../Utils/helperFns";
 // import { t } from "i18next";
 // import "../../../service/i18n";
-import { dateTimeFormat, getImage } from "../../../utils/helperFns";
+import { dateTimeFormat, getImage, onClickCardUrlNavigate } from "@platformx/utilities";
 
 const XCard4 = ({
   content,
@@ -36,7 +36,7 @@ XCard4Props) => {
           <CardMedia
             component={imageUrl ? "img" : "div"}
             image={imageUrl ? imageUrl : ""}
-            alt={imageUrl ? content?.Thumbnail?.AltText : null}
+            title={imageUrl ? content?.Thumbnail?.AltText : "image"}
             sx={{ backgroundColor: color ? color : "", height: "100%", width: "100%" }}
           />
           <Box className='mainContentBox'>

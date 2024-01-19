@@ -16,8 +16,16 @@ import FullWidthBanner3 from "./FullWidthBanner3/FullWidthBanner3";
 import ServiceShowcase from "./ServiceShowcase/ServiceShowcase";
 import ImageAndVideoGallery from "./ImageAndVideoGallery/ImageAndVideoGallery";
 import ProductSummaryViaImage2 from "./productSummaryViaImage2/productSummaryViaImage2";
+import AboutUsThree from "./AboutUsThree/AboutUsThree";
+import DynamicPrelemWithCarousel2 from "./DynamicPrelemWithCarousel2/DynamicPrelemWithCarousel2";
+import DynamicPrelemWithCarousel1 from "./DynamicPrelemWithCarousel1/DynamicPrelemWithCarousel1";
+import Banner6 from "./Banner6/Banner6";
 
 export {
+  Banner6,
+  DynamicPrelemWithCarousel1,
+  DynamicPrelemWithCarousel2,
+  AboutUsThree,
   AboutUs2,
   WebsiteIntroduction,
   ProductSummaryViaImage,
