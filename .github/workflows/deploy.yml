@@ -63,6 +63,9 @@ jobs:
           npm install -g @nrwl/nx
           ls -la
 
+      - name: Install Package
+        run: npm install --force
+
       - name: Debug Nx CLI location
         run: which nx
 
