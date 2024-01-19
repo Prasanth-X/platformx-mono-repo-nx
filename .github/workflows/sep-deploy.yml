@@ -1,38 +1,73 @@
 name: ci-cd
-
 on:
   push:
     branches:
-      - develop
-      - qa
-      - master
-
-jobs:
+    - develop
+    - qa 
+    - master
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:      
   deploy-authoring-web:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set Environment Variables
+      - name: Set env vars (develop)
+        if: endsWith(github.ref, '/develop')
         run: |
-          echo "CLUSTER_NAME=your-gke-cluster-name" >> $GITHUB_ENV
-          echo "NAMESPACE=authoring-web-namespace" >> $GITHUB_ENV
-          # Add other environment variables as needed
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+      - name: Set env vars (master)
+        if: endsWith(github.ref, '/master')
+        run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+      - name: Set env vars (qa)
+        if: endsWith(github.ref, '/qa')
+        run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Setup gcloud CLI
-        uses: google-github-actions/setup-gcloud@v0.4.0
+      - name: setup-gcloud
+        if: contains('refs/heads/develop refs/heads/master', github.ref)
+        uses: google-github-actions/setup-gcloud@v0.2.0 
         with:
-          service_account_key: ${{ secrets.GCP_CREDENTIALS_JSON }}
-          project_id: your-gcp-project-id
+          service_account_key: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+          project_id: ${{ secrets[env.PROJECT_ID] }}
 
-      - name: Authenticate with GKE
-        uses: google-github-actions/auth@v1.0.0
+      - name: gke-credentials-dev-qa
+        if: contains('refs/heads/develop refs/heads/master', github.ref)
+        uses: google-github-actions/get-gke-credentials@v0.2.1
         with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          token_format: 'access_token'
+          cluster_name: ${{ secrets[env.CLUSTER_NAME] }}
+          location: ${{ secrets[env.GKE_ZONE] }}
+          credentials: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+
+      - name: get-gke-credentials-stg-live
+        if: contains('refs/heads/x_site_live refs/heads/x_site_qa refs/heads/stg', github.ref)
+        uses: google-github-actions/get-gke-credentials@v0.4.0
+        with:
+          cluster_name: ${{ secrets[env.CLUSTER_NAME] }}
+          location: ${{ secrets[env.GKE_ZONE] }}
 
       - name: Install Nx CLI
         run: npm install -g @nrwl/nx
@@ -40,38 +75,74 @@ jobs:
       - name: Build affected libraries and deploy authoring-web
         run: |
           nx affected --target=build --base=main --head=$GITHUB_SHA
-          nx run authoring-web:deploy --namespace=$NAMESPACE
+          nx run authoring-web:deploy --namespace=${{ secrets.NAMESPACE_NAME_DEVELOP }}
 
   deploy-x-user-experience:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set Environment Variables
+      - name: Set env vars (develop)
+        if: endsWith(github.ref, '/develop')
         run: |
-          echo "CLUSTER_NAME=your-gke-cluster-name" >> $GITHUB_ENV
-          echo "NAMESPACE=x-user-experience-namespace" >> $GITHUB_ENV
-          # Add other environment variables as needed
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+      - name: Set env vars (master)
+        if: endsWith(github.ref, '/master')
+        run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+      - name: Set env vars (qa)
+        if: endsWith(github.ref, '/qa')
+        run: |
+          echo "CLUSTER_NAME=GKE_CLUSTER_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "IMAGE_NAME=IMAGE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "PROJECT_ID=PROJECT_ID_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_KEY=GKE_SA_KEY_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GKE_ZONE=GKE_ZONE_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=DEPLOYMENT_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+          echo "NAMESPACE_NAME=NAMESPACE_NAME_$(echo ${{ github.ref_name }} | tr  '[:lower:]' '[:upper:]')" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Setup gcloud CLI
-        uses: google-github-actions/setup-gcloud@v0.4.0
+      # Setup gcloud CLI
+      - name: setup-gcloud
+        if: contains('refs/heads/develop refs/heads/master', github.ref)
+        uses: google-github-actions/setup-gcloud@v0.2.0 
         with:
-          service_account_key: ${{ secrets.GCP_CREDENTIALS_JSON }}
-          project_id: your-gcp-project-id
+          service_account_key: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+          project_id: ${{ secrets[env.PROJECT_ID] }}
 
-      - name: Authenticate with GKE
-        uses: google-github-actions/auth@v1.0.0
+      # Get the GKE credentials so we can deploy to the cluster
+      - name: gke-credentials-dev-qa
+        if: contains('refs/heads/develop refs/heads/master', github.ref)
+        uses: google-github-actions/get-gke-credentials@v0.2.1
         with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          token_format: 'access_token'
+          cluster_name: ${{ secrets[env.CLUSTER_NAME] }}
+          location: ${{ secrets[env.GKE_ZONE] }}
+          credentials: ${{ secrets[env.SERVICE_ACCOUNT_KEY] }}
+
+      - name: get-gke-credentials-stg-live
+        if: contains('refs/heads/x_site_live refs/heads/x_site_qa refs/heads/stg', github.ref)
+        uses: google-github-actions/get-gke-credentials@v0.4.0
+        with:
+          cluster_name: ${{ secrets[env.CLUSTER_NAME] }}
+          location: ${{ secrets[env.GKE_ZONE] }}
 
       - name: Install Nx CLI
         run: npm install -g @nrwl/nx
 
-      - name: Build affected libraries and deploy x-user-experience
+      - name: Build affected libraries and deploy authoring-web
         run: |
           nx affected --target=build --base=main --head=$GITHUB_SHA
-          nx run x-user-experience:deploy --namespace=$NAMESPACE
+          nx run authoring-web:deploy --namespace=${{ secrets.NAMESPACE_NAME_DEVELOP }}
