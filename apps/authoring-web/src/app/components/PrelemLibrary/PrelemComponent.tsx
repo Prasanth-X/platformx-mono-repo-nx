@@ -5,9 +5,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { unstable_ClassNameGenerator } from "@mui/material/utils";
 import {
   // AnimationOnPageScroll,
+  AboutUs2,
   ArticleDetail,
   Banner7,
-  // ContactUsForm,
   CoreHighlights,
   FullWidthBanner3,
   ImageAndVideoGallery,
@@ -37,13 +37,12 @@ function PrelemComponent() {
         <Box sx={{ margin: (themeOptions) => themeOptions.prelemMargin.value }}>
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
-          {/* <ContactUsForm /> */}
-          {/* <AboutUs2 />
+          <AboutUs2 />
           <FullWidthBanner3 />
           <WebsiteIntroduction4 />
-          <InfoBox /> */}
+          <InfoBox />
           <Banner7 />
-          {/* <CoreHighlights />
+          <CoreHighlights />
           <WebsiteIntroduction2 />
           <ArticleDetail />
           <Quote />
@@ -52,7 +51,7 @@ function PrelemComponent() {
           <WebsiteIntroduction />
           <Testimonial />
           <ProductSummaryViaVideo2 />
-          <ServiceCard /> */}
+          <ServiceCard />
           <ServiceShowcase />
           <ImageAndVideoGallery />
           <ProductSummaryViaImage2 />

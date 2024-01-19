@@ -1,6 +1,6 @@
 import useTheme from "@mui/material/styles/useTheme";
 import { makeStyles } from "@mui/styles";
-import ProductsummaryviaImage2 from "../../assets/svg/ProductsummaryviaImage2.svg";
+import { ProductsummaryviaImage2 } from "@platformx/utilities";
 
 export const useCustomStyle = makeStyles(() => {
   const theme = useTheme();
