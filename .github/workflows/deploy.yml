@@ -62,8 +62,9 @@ jobs:
           pwd
           npm install -g @nrwl/nx
           ls -la
-
-      - name: Install Package
+      - name: Update NPM
+        run: npm install -g npm@10.3.0 to update
+      - name: Install Package         
         run: npm install --force
 
       - name: Debug Nx CLI location
