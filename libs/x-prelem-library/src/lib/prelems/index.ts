@@ -12,7 +12,10 @@ import Testimonial from "./Testimonial/Testimonial";
 import InfoBox from "./InfoBox/InfoBox";
 import WebsiteIntroduction4 from "./WebsiteIntroduction4/WebsiteIntroduction4";
 import FullWidthBanner3 from "./FullWidthBanner3/FullWidthBanner3";
-import AboutUs2 from "./AboutUs2/AboutUs2";
+// import ContactUsForm from "./ContactUsForm/ContactUsForm";
+import ServiceShowcase from "./ServiceShowcase/ServiceShowcase";
+import ImageAndVideoGallery from "./ImageAndVideoGallery/ImageAndVideoGallery";
+import ProductSummaryViaImage2 from "./productSummaryViaImage2/productSummaryViaImage2";
 
 export {
   WebsiteIntroduction,
@@ -29,5 +32,8 @@ export {
   InfoBox,
   WebsiteIntroduction4,
   FullWidthBanner3,
-  AboutUs2,
+  // ContactUsForm,
+  ServiceShowcase,
+  ImageAndVideoGallery,
+  ProductSummaryViaImage2,
 };

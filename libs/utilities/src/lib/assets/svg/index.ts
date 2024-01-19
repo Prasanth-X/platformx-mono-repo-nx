@@ -127,6 +127,7 @@ import MenuIcon6 from "./MenuIcons-6.svg";
 import MenuIcon7 from "./MenuIcons-7.svg";
 import MenuIcon8 from "./MenuIcons-8.svg";
 import PlayIcon from "./playIcon.svg";
+import RedDots from "./icon/RedDots.svg";
 
 export {
   ArrowUpwardIcon,
@@ -253,4 +254,5 @@ export {
   LeftArrowIcon,
   RightArrowIcon,
   PlayIcon,
+  RedDots,
 };
