@@ -2,8 +2,7 @@
   "name": "@platformx/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "prepare": "husky install",
+  "scripts": { 
     "storybook:build:all": "nx run-many --target=build-storybook --all",
     "storybook:build:utilities": "nx run utilities:build-storybook",
     "storybook:deploy": "npm run storybook:build:utilities && gh-pages -d dist/storybook"
@@ -186,8 +185,7 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "gh-pages": "^6.1.1",
-    "html-webpack-plugin": "^5.5.3",
-    "husky": "^8.0.3",
+    "html-webpack-plugin": "^5.5.3", 
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "jsdom": "~22.1.0",
@@ -205,26 +203,6 @@
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
-  "lint-staged": {
-    "*.json": [
-      "prettier --write"
-    ],
-    "*.tsx": [
-      "eslint",
-      "prettier --write"
-    ],
-    "*.ts": [
-      "eslint",
-      "prettier --write"
-    ],
-    "*.jsx": [
-      "eslint",
-      "prettier --write"
-    ],
-    "*.js": [
-      "eslint",
-      "prettier --write"
-    ],
     "*.css": [
       "prettier --write"
     ]
