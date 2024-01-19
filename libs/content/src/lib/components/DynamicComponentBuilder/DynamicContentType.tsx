@@ -24,8 +24,8 @@ import { useCustomStyle } from "./DynamicForm.style";
 import DynamicSectionComponent from "./DynamicSectionComponent";
 import { contentTypeSchemaApi } from "@platformx/authoring-apis";
 import { useUserSession, trimString, handleHtmlTags, capitalizeFirstLetter, XLoader, CATEGORY_CONTENT, PlateformXDialog, ShowToastSuccess, ShowToastError, AUTH_INFO, SectionWrapper } from "@platformx/utilities";
-import { ContentType } from "../enums/ContentType";
-import useDynamicForm from "../hooks/useDynamicForm/useDynamicForm";
+import { ContentType } from "../../enums/ContentType";
+import useDynamicForm from "../../hooks/useDynamicForm/useDynamicForm";
 import { SectionProps } from "./DynamicComponent.types";
 
 export const DynamicContentType = ({ contentType }: { contentType: string }) => {

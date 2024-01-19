@@ -3,13 +3,7 @@ name: Platform-X Workflow
 on:
   push:
     branches:
-      - develop
-      - qa
-      - stg
-      - mavericks_dev
-      - marvels_dev
-      - kiwi_dev
-
+      - develop 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -61,13 +55,26 @@ jobs:
             ~/.nx-cache
           key: ${{ runner.os }}-nx-${{ hashFiles('nx.json') }}
           restore-keys: |
-            ${{ runner.os }}-nx-
+            ${{ runner.os }}-nx- 
 
       - name: Install Nx CLI
-        run: npm install -g @nrwl/nx
+        run: |
+          pwd
+          npm install -g @nrwl/nx
+          ls -la
+      - name: Update NPM
+        run: npm install -g npm@10.3.0 to update
+      - name: Install Package         
+        run: npm install --force
+
+      - name: Debug Nx CLI location
+        run: which nx
 
       - name: Build affected libraries
-        run: nx affected --target=build --base=main --head=$GITHUB_SHA
+        # run: /usr/local/bin/nx affected --target=build --base=main --head=$GITHUB_SHA
+        # run: npx nx affected --target=build --base=main --head=$GITHUB_SHA
+        run: nx build authoring-web
+
 
       # Deploying Docker image to GKE clusters based on branches
 

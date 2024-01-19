@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 
-const ContentListLoader = () => {
+const ContentListDesktopLoader = () => {
   return (
     <Box>
       {[1, 2, 3, 4].map((item, index) => (
@@ -57,4 +57,4 @@ const ContentListLoader = () => {
   );
 };
 
-export default ContentListLoader;
+export default ContentListDesktopLoader;

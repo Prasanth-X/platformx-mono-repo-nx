@@ -46,7 +46,7 @@ export const routes: RouteConfig[] = [
     element: (
       <ProtectedRoute category='dashboard' subCategory='dashboard' name='dashboard'>
         {" "}
-        <SitePage />{" "}
+        {/* <SitePage />{" "} */}
       </ProtectedRoute>
     ),
   },
