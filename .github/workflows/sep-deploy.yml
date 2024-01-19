@@ -74,7 +74,8 @@ jobs:
 
       - name: Build affected libraries and deploy authoring-web
         run: |
-          nx affected --target=build --base=main --head=$GITHUB_SHA
+          # nx affected --target=build --base=main --head=$GITHUB_SHA
+          nx build authoring-web
           nx run authoring-web:deploy --namespace=${{ secrets.NAMESPACE_NAME_DEVELOP }}
 
   deploy-x-user-experience:
