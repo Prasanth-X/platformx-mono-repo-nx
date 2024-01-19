@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageDropDownCheckBox from '../LanguageDropDownCheckBox/LanguageDropDownCheckBox';
 import './DuplicateContentPopup.css';
-import React from 'react';
 
 interface DialogList {
   titledata: string;

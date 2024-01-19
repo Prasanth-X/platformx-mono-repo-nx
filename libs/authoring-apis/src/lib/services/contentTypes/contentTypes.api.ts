@@ -14,7 +14,6 @@ import {
 import { SearchContentListQueries } from '../../graphQL/queries/searchQueries';
 import { ROW_SIZE } from '../../utils/constants';
 import { sortedData } from '../../utils/helper';
-import { ApiResponse } from '../../utils/types';
 import { mapFetchALL } from './mapper';
 
 // FetchQueries
@@ -34,7 +33,7 @@ const contentTypeAPIs = {
   deleteContentType: DELETE_CONTENT_TYPE,
   fetchContentByPath: FETCH_CONTENT_BY_PATH,
   fetchContentTypeListAll: FETCH_CONTENT_TYPE_LIST_ALL,
-  fetchContent: async <T>(input: any): Promise<ApiResponse<T>> => {
+  fetchContent: async (input: any) => {
     try {
       const { data } = await graphqlInstance.query({
         query: FETCH_CONTENT_BY_PATH,
@@ -43,11 +42,11 @@ const contentTypeAPIs = {
       });
       return data;
     } catch (err: any) {
-      if (err instanceof ApolloError) console.log(err.graphQLErrors);
-      throw err;
+      if (err instanceof ApolloError)
+        throw err;
     }
   },
-  fetchContentAll: async <T>(input: any): Promise<ApiResponse<T>> => {
+  fetchContentAll: async (input: any) => {
     try {
       const { data } = await graphqlInstance.query({
         query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
@@ -98,7 +97,7 @@ const contentTypeAPIs = {
     // };
   },
 
-  fetchContentTypeList: async <T>(input: any): Promise<ApiResponse<T>> => {
+  fetchContentTypeList: async (input: any) => {
     try {
       const { data, loading } = await graphqlInstance.query({
         query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
@@ -111,7 +110,7 @@ const contentTypeAPIs = {
         throw err;
     }
   },
-  fetchSuggestions: async <T>(input: any): Promise<ApiResponse<T>> => {
+  fetchSuggestions: async (input: any) => {
     try {
       const { data, loading } = await graphqlInstance.query({
         query: SearchContentListQueries.FETCH_CONTENT_TYPE_LIST,
@@ -120,8 +119,8 @@ const contentTypeAPIs = {
       });
       return { data: data, loading: loading };
     } catch (err: any) {
-      if (err instanceof ApolloError) console.log(err.graphQLErrors);
-      throw err;
+      if (err instanceof ApolloError)
+        throw err;
     }
   },
 

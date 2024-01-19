@@ -96,6 +96,7 @@ import TotalrevIcon from './totalrev.svg';
 import IconTwitterLogoIconSvg from './twitterLogoIcon.svg';
 import UnpublishedStatusIcon from './unpublishStatusIcon.svg';
 //import VideoIcon from './VODIcon.svg';
+import VideoIcon from './VODIcon.svg';
 import VODListIcon from './vodListIcon.svg';
 // import  DraftIcon from './draftIcon.svg';
 import AssetManagerIcon from './DashBoardBoostContent/AssetManager.svg';
@@ -250,7 +251,7 @@ export {
   UsersIcon,
   VODIcon,
   VODListIcon,
-  //VideoIcon,
+  VideoIcon,
   WarningIcon,
   WorkflowDetails,
   WorkflowIcon,

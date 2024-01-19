@@ -32,10 +32,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { CreateHeader } from "../../components/CreateHeader/CreateHeader";
 import Analytics from "../../components/Analytics/Analytics";
 import ContentPageScroll from "../../components/ContentPageScroll";
-import icons from "../../components/ContentWrapper/Utils/Constants";
 import { ContentType } from "../../enums/ContentType";
 import useQuizAPI from "../../hooks/useQuizAPI/useQuizAPI";
-import { DRAFT, PUBLISHED } from '../../utils/Constants';
+import { DRAFT, PUBLISHED, icons } from '../../utils/Constants';
 import { getCurrentQuiz, onBackButtonEvent, quizResponseMapper, unloadCallback, updateStructureData } from "../../utils/Helper";
 import { QuizType } from "./Quiz.types";
 import { TitleDescription } from "./components/TitleDescription";
@@ -45,6 +44,7 @@ import Result from "./components/result/Result";
 import SocialShare from "./components/socialshare/SocialShare";
 import { createInitialQuizState, createNewQuiz } from "./helper";
 import AddQuestion from "./components/addquestion/AddQuestion";
+import QuestionListing from "./components/questionlisting/QuestionListing";
 
 export const CreateQuiz = () => {
 
@@ -652,7 +652,7 @@ export const CreateQuiz = () => {
   useEffect(() => {
     debugger;
     if (
-      (currentQuiz&&Object.keys(currentQuiz).length > 0 && params.id) ||
+      (currentQuiz && Object.keys(currentQuiz).length > 0 && params.id) ||
       Object.keys(currentQuiz).length
     ) {
       setQuizInstance(currentQuiz);
@@ -899,6 +899,7 @@ export const CreateQuiz = () => {
   const [isOpenedOther, setIsOpenedOther] = useState(false);
   // flat = true: open add new question or choose from list and not scroll to question container.
   useEffect(() => {
+    debugger;
     if (openAddQuestion || isClickedQueList) {
       setIsOpenedOther(true);
     } else if (isOpenedOther) {
@@ -925,7 +926,7 @@ export const CreateQuiz = () => {
     const result = await commentsApi.createOrUpdateComment({
       input: createCommentRequest,
     });
-     return result;
+    return result;
   };
 
   useEffect(() => {
@@ -954,7 +955,7 @@ export const CreateQuiz = () => {
           />
         )} */}
       </Box>
-      {/* {isClickedQueList && (
+      {isClickedQueList && (
         <QuestionListing
           setIsClickedQueList={setIsClickedQueList}
           quizState={quizState}
@@ -964,7 +965,7 @@ export const CreateQuiz = () => {
           handleQuesReturn={handleQuesReturn}
           unsavedChanges={unsavedChanges}
         />
-      )} */}
+      )}
       {openAddQuestion && (
         <AddQuestion
           setAddQuestion={setOpenAddQuestion}
@@ -985,7 +986,7 @@ export const CreateQuiz = () => {
               hasPreviewButton={previewButton}
               handelPreview={handelPreview}
               createText={currentQuizData.current ? `${t("edit")} ${t("quiz")}` : t("create_quiz")}
-              handleReturn ={returnBack}
+              handleReturn={returnBack}
               isQuiz={isQuiz}
               hasPublishButton={publishButton}
               hasSaveButton={saveButton}

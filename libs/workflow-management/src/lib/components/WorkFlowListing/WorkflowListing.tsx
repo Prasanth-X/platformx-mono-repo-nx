@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import { workflowApi } from '@platformx/authoring-apis';
-import { ContentListLoader } from '@platformx/utilities';
+import { ContentListDesktopLoader } from '@platformx/utilities';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ListView from '../ListView/ListView';
 import TopHeader from '../TopBackHeader/TopHeader';
@@ -22,13 +22,11 @@ export const WorkflowListing = () => {
         const getWorkFlowListing = [
           ...(response?.authoring_getWorkFlowListing || []),
         ];
-        console.log('list', getWorkFlowListing);
         setList(getWorkFlowListing);
       }
       setIsLazyLoad(false);
     } catch (err: any) {
       setIsLazyLoad(false);
-      console.log('error', err);
     }
   };
 
@@ -49,7 +47,7 @@ export const WorkflowListing = () => {
           dataLength={getList ? getList?.length : 0}
           next={getList}
           hasMore={isLazyLoad}
-          loader={<ContentListLoader />}
+          loader={<ContentListDesktopLoader />}
           scrollableTarget="scrollableDiv"
           style={{ overflowX: 'hidden' }}
         >
