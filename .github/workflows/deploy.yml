@@ -67,7 +67,8 @@ jobs:
         run: which nx
 
       - name: Build affected libraries
-        run: /usr/local/bin/nx affected --target=build --base=main --head=$GITHUB_SHA
+        # run: /usr/local/bin/nx affected --target=build --base=main --head=$GITHUB_SHA
+        run: npx nx affected --target=build --base=main --head=$GITHUB_SHA
 
 
       # Deploying Docker image to GKE clusters based on branches
