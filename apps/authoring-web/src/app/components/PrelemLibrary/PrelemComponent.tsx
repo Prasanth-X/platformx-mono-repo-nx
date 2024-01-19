@@ -36,12 +36,12 @@ function PrelemComponent() {
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
           {/* <ContactUsForm /> */}
-          <AboutUs2 />
+          {/* <AboutUs2 />
           <FullWidthBanner3 />
           <WebsiteIntroduction4 />
-          <InfoBox />
+          <InfoBox /> */}
           <Banner7 />
-          <CoreHighlights />
+          {/* <CoreHighlights />
           <WebsiteIntroduction2 />
           <ArticleDetail />
           <Quote />
@@ -50,7 +50,7 @@ function PrelemComponent() {
           <WebsiteIntroduction />
           <Testimonial />
           <ProductSummaryViaVideo2 />
-          <ServiceCard />
+          <ServiceCard /> */}
         </Box>
       </ThemeProvider>
     </div>

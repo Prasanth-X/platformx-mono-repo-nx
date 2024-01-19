@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageRender from "../../components/ImageRender";
 import Slider from "react-slick";
-import { MaskImg } from "../../assets/svg";
 import BasicButton from "../../components/BasicButton/BasicButton";
 import { formCroppedUrl, handleHtmlTags } from "@platformx/utilities";
 import { useCustomStyle } from "./Banner7.style";
@@ -146,129 +145,113 @@ Banner7Prop) => {
   2. if its available we are setting AnalyticsEnabled to true
   3. if its not available we are setting false
 */
-  const style = `
-  @media (min-width: 1024px) {
-    .Banner7 .mobRevCol .rightImgBox img { 
-      -webkit-mask-image: url(${MaskImg});
-    },
-  }
-  
-  
-`;
   return (
-    <>
-      <style>{style}</style>
-      <div
-        ref={authoringHelper?.innerRef}
-        className={`${classes.Banner7Wrapper} ${globalClasses.prelemType1} prelem prelemType1 Banner7Bg`}>
-        <Container
-          className={authoringHelper?.isEditPage ? "grid_full_width" : "grid_container"}
-          ref={ref}>
-          <Box className='Banner7'>
-            <Slider {...sliderSettings}>
-              <Box>
-                <Grid className='mobRevCol' container>
-                  <Grid xs={12} em={6} className='contentLeftWp'>
-                    <Box className='LeftContent'>
-                      <Typography variant='h1largebold' id='title1'>
-                        {content.title1}
-                      </Typography>
-                      <Typography variant='p2regular' id='description1'>
-                        {content.description1}
-                      </Typography>
-                      <BasicButton
-                        openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
-                        isAuthoring={analytics?.isAuthoring}
-                        currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
-                        //buttonRef={buttonRef}
-                        //buttonContentEditable={buttonContentEditable}
-                        variant='primaryButton1'
-                        analyticsEnabled={analytics?.isAnalyticsEnabled}
-                        ButtonObj={ButtonObj1}
-                        isEditing={authoringHelper?.isEditing}
-                        buttonDataObj={ButtonDataObj1}
+    <div
+      ref={authoringHelper?.innerRef}
+      className={`${classes.Banner7Wrapper} ${globalClasses.prelemType1} prelem prelemType1 Banner7Bg`}>
+      <Container
+        className={authoringHelper?.isEditPage ? "grid_full_width" : "grid_container"}
+        ref={ref}>
+        <Box className='Banner7'>
+          <Slider {...sliderSettings}>
+            <Box>
+              <Grid className='mobRevCol' container>
+                <Grid xs={12} em={6} className='contentLeftWp'>
+                  <Box className='LeftContent'>
+                    <Typography variant='h1largebold' id='title1'>
+                      {content.title1}
+                    </Typography>
+                    <Typography variant='p2regular' id='description1'>
+                      {content.description1}
+                    </Typography>
+                    <BasicButton
+                      openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
+                      isAuthoring={analytics?.isAuthoring}
+                      currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
+                      //buttonRef={buttonRef}
+                      //buttonContentEditable={buttonContentEditable}
+                      variant='primaryButton1'
+                      analyticsEnabled={analytics?.isAnalyticsEnabled}
+                      ButtonObj={ButtonObj1}
+                      isEditing={authoringHelper?.isEditing}
+                      buttonDataObj={ButtonDataObj1}
+                      secondaryArgs={secondaryArgs}
+                      analytics={analytics}
+                    />
+                  </Box>
+                </Grid>
+                <Grid xs={12} em={6}>
+                  <Box className='rightImgBox'>
+                    <Box className='widthheight100'>
+                      <ImageRender
+                        originalImage={content?.ImageCompound?.ImageCompound_1?.original_image}
+                        publishedImages={content?.ImageCompound?.ImageCompound_1?.published_images}
                         secondaryArgs={secondaryArgs}
-                        analytics={analytics}
+                        imgOrder={{
+                          1440: "square",
+                          1280: "square",
+                          1024: "square",
+                          768: "card2",
+                          600: "card2",
+                          320: "card2",
+                        }}
                       />
                     </Box>
-                  </Grid>
-                  <Grid xs={12} em={6}>
-                    <Box className='rightImgBox'>
-                      <Box className='widthheight100'>
-                        <ImageRender
-                          originalImage={content?.ImageCompound?.ImageCompound_1?.original_image}
-                          publishedImages={
-                            content?.ImageCompound?.ImageCompound_1?.published_images
-                          }
-                          secondaryArgs={secondaryArgs}
-                          imgOrder={{
-                            1440: "square",
-                            1280: "square",
-                            1024: "square",
-                            768: "card2",
-                            600: "card2",
-                            320: "card2",
-                          }}
-                        />
-                      </Box>
-                    </Box>
-                  </Grid>
+                  </Box>
                 </Grid>
-              </Box>
-              <Box>
-                <Grid className='mobRevCol' container>
-                  <Grid xs={12} em={6} className='contentLeftWp'>
-                    <Box className='LeftContent'>
-                      <Typography variant='h1largebold' id='title2'>
-                        {content.title2}
-                      </Typography>
-                      <Typography variant='p2regular' id='description2'>
-                        {content.description2}
-                      </Typography>
-                      <BasicButton
-                        openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
-                        isAuthoring={analytics?.isAuthoring}
-                        currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
-                        //buttonRef={buttonRef}
-                        //buttonContentEditable={buttonContentEditable}
-                        variant='primaryButton1'
-                        analyticsEnabled={analytics?.isAnalyticsEnabled}
-                        ButtonObj={ButtonObj2}
-                        isEditing={authoringHelper?.isEditing}
-                        buttonDataObj={ButtonDataObj2}
+              </Grid>
+            </Box>
+            <Box>
+              <Grid className='mobRevCol' container>
+                <Grid xs={12} em={6} className='contentLeftWp'>
+                  <Box className='LeftContent'>
+                    <Typography variant='h1largebold' id='title2'>
+                      {content.title2}
+                    </Typography>
+                    <Typography variant='p2regular' id='description2'>
+                      {content.description2}
+                    </Typography>
+                    <BasicButton
+                      openButtonEditWindow={authoringHelper?.openButtonEditWindowInAuthoringCB}
+                      isAuthoring={analytics?.isAuthoring}
+                      currentBtnEditing={authoringHelper?.selectedButtonNameForEditing}
+                      //buttonRef={buttonRef}
+                      //buttonContentEditable={buttonContentEditable}
+                      variant='primaryButton1'
+                      analyticsEnabled={analytics?.isAnalyticsEnabled}
+                      ButtonObj={ButtonObj2}
+                      isEditing={authoringHelper?.isEditing}
+                      buttonDataObj={ButtonDataObj2}
+                      secondaryArgs={secondaryArgs}
+                      analytics={analytics}
+                    />
+                  </Box>
+                </Grid>
+                <Grid xs={12} em={6}>
+                  <Box className='rightImgBox'>
+                    <Box className='widthheight100'>
+                      <ImageRender
+                        originalImage={content?.ImageCompound?.ImageCompound_1?.original_image}
+                        publishedImages={content?.ImageCompound?.ImageCompound_2?.published_images}
                         secondaryArgs={secondaryArgs}
-                        analytics={analytics}
+                        imgOrder={{
+                          1440: "square",
+                          1280: "square",
+                          1024: "square",
+                          768: "card2",
+                          600: "card2",
+                          320: "card2",
+                        }}
                       />
                     </Box>
-                  </Grid>
-                  <Grid xs={12} em={6}>
-                    <Box className='rightImgBox'>
-                      <Box className='widthheight100'>
-                        <ImageRender
-                          originalImage={content?.ImageCompound?.ImageCompound_1?.original_image}
-                          publishedImages={
-                            content?.ImageCompound?.ImageCompound_2?.published_images
-                          }
-                          secondaryArgs={secondaryArgs}
-                          imgOrder={{
-                            1440: "square",
-                            1280: "square",
-                            1024: "square",
-                            768: "card2",
-                            600: "card2",
-                            320: "card2",
-                          }}
-                        />
-                      </Box>
-                    </Box>
-                  </Grid>
+                  </Box>
                 </Grid>
-              </Box>
-            </Slider>
-          </Box>
-        </Container>
-      </div>
-    </>
+              </Grid>
+            </Box>
+          </Slider>
+        </Box>
+      </Container>
+    </div>
   );
 };
 
