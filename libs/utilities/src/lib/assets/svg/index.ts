@@ -1,4 +1,3 @@
-/* eslint-disable no-duplicate-imports */
 import ApprovalStatus from './ApprovalStatusIcon.svg';
 import CardOptionApprovalStatusIcon from './ApprovalStatusIconOptionMenu.svg';
 import Challenge_community from './Challenge_community.svg';
@@ -96,6 +95,7 @@ import IconTimerSvg from './timerIcon.svg';
 import TotalrevIcon from './totalrev.svg';
 import IconTwitterLogoIconSvg from './twitterLogoIcon.svg';
 import UnpublishedStatusIcon from './unpublishStatusIcon.svg';
+//import VideoIcon from './VODIcon.svg';
 import VideoIcon from './VODIcon.svg';
 import VODListIcon from './vodListIcon.svg';
 // import  DraftIcon from './draftIcon.svg';
@@ -115,6 +115,12 @@ import WorkflowDetails from './workflow.svg';
 import WorkflowIcon from './workflowIcon.svg';
 import LeftArrowIcon from './leftarrow.svg';
 import RightArrowIcon from './rightarrow.svg';
+import GlobalImageIcon from './globalimageicon.svg';
+import GlobalVideoIcon from './globalvideoicon.svg';
+import GlobalMiscIcon from './globalmiscicon.svg';
+import FeatureStarIcon from './featurestar.svg';
+import PlayIcon from './playIcon.svg';
+import PictureIcon from './pictureIcon.svg';
 import ArrowUpwardIcon from './ArrowUp.svg';
 import Icon from './Icon.svg';
 import Refresh from './Refresh.svg';
@@ -126,9 +132,9 @@ import MenuIcon5 from "./MenuIcons-5.svg";
 import MenuIcon6 from "./MenuIcons-6.svg";
 import MenuIcon7 from "./MenuIcons-7.svg";
 import MenuIcon8 from "./MenuIcons-8.svg";
-import PlayIcon from './playIcon.svg';
 
 export {
+  GlobalImageIcon, GlobalVideoIcon, GlobalMiscIcon, FeatureStarIcon,
   ArrowUpwardIcon,
   Icon,
   Refresh,
@@ -253,4 +259,5 @@ export {
   LeftArrowIcon,
   RightArrowIcon,
   PlayIcon,
+  PictureIcon,
 };

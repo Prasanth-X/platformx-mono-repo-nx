@@ -1,11 +1,11 @@
 /* eslint-disable no-debugger */
 /* eslint-disable no-empty */
-import { useMutation } from '@apollo/client';
-import { Box, Divider } from '@mui/material';
-import { Form, Formik, useFormik } from 'formik';
-import { memo, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useMutation } from "@apollo/client";
+import { Box, Divider } from "@mui/material";
+import { Form, Formik, useFormik } from "formik";
+import { memo, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 // import { useCustomStyle } from '../../Common/DynamicForm.style';
 // import { SectionProps } from '../../CommonSchemaComponents/FormTextField/FormTextField.types';
 // import SectionWrapper from '../../CommonSchemaComponents/SectionWrapper/SectionWrapper';
@@ -27,19 +27,29 @@ import { useNavigate } from 'react-router-dom';
 // import { CATEGORY_CONTENT } from '../../utils/constants';
 // import { handleHtmlTags, trimString } from '../../utils/helperFunctions';
 // import { AddQuestion } from './Components/AddQuestions/AddQuestions';
-import GalleryWrapper from './Components/GalleryWrapper/GalleryWrapper';
+import GalleryWrapper from "./Components/GalleryWrapper/GalleryWrapper";
 // import { QuestionListing } from './Components/QuestionListing/QuestionListing';
-import DynamicComponent from './DynamicComponent';
-import { Template } from './schemas/index';
-import { AUTH_INFO, CATEGORY_CONTENT, PlateformXDialog, SectionWrapper, ShowToastError, ShowToastSuccess, XLoader, handleHtmlTags, trimString, useUserSession } from '@platformx/utilities';
-import { useCustomStyle } from './DynamicForm.style';
-import useDynamicForm from '../../hooks/useDynamicForm/useDynamicForm';
-import { articleApi, contentTypeAPIs } from '@platformx/authoring-apis';
-import { ContentType } from '../../enums/ContentType';
-import { SectionProps } from './DynamicComponent.types';
+import DynamicComponent from "./DynamicComponent";
+import { Template } from "./schemas/index";
+import {
+  AUTH_INFO,
+  CATEGORY_CONTENT,
+  PlateformXDialog,
+  SectionWrapper,
+  ShowToastError,
+  ShowToastSuccess,
+  XLoader,
+  handleHtmlTags,
+  trimString,
+  useUserSession,
+} from "@platformx/utilities";
+import { useCustomStyle } from "./DynamicForm.style";
+import useDynamicForm from "../../hooks/useDynamicForm/useDynamicForm";
+import { articleApi, contentTypeAPIs } from "@platformx/authoring-apis";
+import { ContentType } from "../../enums/ContentType";
+import { SectionProps } from "./DynamicComponent.types";
 
 const DynamicContent = ({ contentType }: { contentType: string }) => {
-
   const { form_groups, fields } = Template[contentType];
   const { t, i18n } = useTranslation();
   const classes = useCustomStyle();
@@ -73,9 +83,9 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
   const [questionListing, setQuestionListing] = useState(false);
 
   const [galleryState, setGalleryState] = useState<boolean>(false);
-  const galleryType = useRef<string>('Images');
-  const [key, setKey] = useState('');
-  const [answerId, setAnswerId] = useState('');
+  const galleryType = useRef<string>("Images");
+  const [key, setKey] = useState("");
+  const [answerId, setAnswerId] = useState("");
   const navigate = useNavigate();
 
   const handleTagOnChange = (event) => {
@@ -83,7 +93,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
 
     if (event.target.checked && tagsArray?.length > 14) {
       event.target.checked = false;
-      ShowToastError(t('allowed_tags_toast'));
+      ShowToastError(t("allowed_tags_toast"));
     } else {
       if (event.target.checked) {
         tagsArray = [...tagArr, event.target.value];
@@ -93,7 +103,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
       setTagArr(tagsArray);
       setQuizState({
         ...quizState,
-        'tagsSocialShare': tagsArray,
+        tagsSocialShare: tagsArray,
       });
       // quizRef.current = {
       //   ...quizRef.current,
@@ -118,68 +128,41 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
   const username = `${userInfo.first_name} ${userInfo.last_name}`;
   const [isDraft, setIsDraft] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(false);
-  const updateQuizSettings = (pageUrl = '', data) => {
-    const {
-      title,
-      short_title,
-      socialShareTitle,
-      socialShareDesc,
-      description,
-      socialShareImage,
-    } = data;
+  const updateQuizSettings = (pageUrl = "", data) => {
+    const { title, short_title, socialShareTitle, socialShareDesc, description, socialShareImage } =
+      data;
     const contentSettings = {
-      socialog_url:
-        `${AUTH_INFO.publishUri + i18n.language}/` + `quiz` + `/${pageUrl}`,
-      socialog_type: 'quiz',
-      socialog_sitename: title
-        ? trimString(handleHtmlTags(title), 100)
-        : 'quiz',
-      seo_title: title ? trimString(handleHtmlTags(title), 100) : '',
-      socialog_title: short_title
-        ? trimString(handleHtmlTags(short_title), 100)
-        : '',
+      socialog_url: `${AUTH_INFO.publishUri + i18n.language}/` + `quiz` + `/${pageUrl}`,
+      socialog_type: "quiz",
+      socialog_sitename: title ? trimString(handleHtmlTags(title), 100) : "quiz",
+      seo_title: title ? trimString(handleHtmlTags(title), 100) : "",
+      socialog_title: short_title ? trimString(handleHtmlTags(short_title), 100) : "",
       socialog_twitter_title: socialShareTitle
         ? trimString(handleHtmlTags(socialShareTitle), 100)
-        : '',
-      socialog_description: socialShareDesc
-        ? trimString(handleHtmlTags(socialShareDesc), 163)
-        : '',
+        : "",
+      socialog_description: socialShareDesc ? trimString(handleHtmlTags(socialShareDesc), 163) : "",
       socialog_twitter_description: socialShareDesc
         ? trimString(handleHtmlTags(socialShareDesc), 163)
-        : '',
-      socialog_twitter_url:
-        `${AUTH_INFO.publishUri + i18n.language}/` + `quiz` + `/${pageUrl}`,
+        : "",
+      socialog_twitter_url: `${AUTH_INFO.publishUri + i18n.language}/` + `quiz` + `/${pageUrl}`,
       keywords: quizState?.tagsSocialShare,
       seo_keywords: tagArr,
-      seo_description: description
-        ? trimString(handleHtmlTags(description), 163)
-        : '',
+      seo_description: description ? trimString(handleHtmlTags(description), 163) : "",
       socialog_image: socialShareImage?.Thumbnail,
       socialog_twitter_image: socialShareImage?.Thumbnail,
     };
     return contentSettings;
   };
   const publish = async (data) => {
-    const {
-      title,
-      short_description,
-      description,
-      short_title,
-      background_content,
-    } = data || {};
-    if (
-      title === '' ||
-      short_description === '' ||
-      description === '' ||
-      short_title === ''
-    ) {
-    } else if (background_content === '') {
-      ShowToastError(`${t('banner_image')} ${t('is_required')}`);
+    const { title, short_description, description, short_title, background_content } = data || {};
+    if (title === "" || short_description === "" || description === "" || short_title === "") {
+    } else if (background_content === "") {
+      ShowToastError(`${t("banner_image")} ${t("is_required")}`);
     } else if (tagArr?.length === 0) {
-      ShowToastError(t('tag_error'));
+      ShowToastError(t("tag_error"));
     } else {
       if (isDraft) {
-        createQuiz(data, 'PUBLISHED');
+        createQuiz(data, "PUBLISHED");
       } else {
         // updateQUIZ('PUBLISHED', false);
       }
@@ -191,7 +174,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
     };
     publishquizmutate({
       variables: {
-        contentType: 'Quiz',
+        contentType: "Quiz",
         input: quizToSend,
       },
     })
@@ -200,18 +183,18 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
 
         setShowPublishConfirm(true);
 
-        ShowToastSuccess(`${t('quiz')} ${t('published_toast')}`);
+        ShowToastSuccess(`${t("quiz")} ${t("published_toast")}`);
       })
       .catch((error) => {
         if (error.graphQLErrors[0]) {
           ShowToastError(error.graphQLErrors[0].message);
         } else {
-          ShowToastError(t('api_error_toast'));
+          ShowToastError(t("api_error_toast"));
         }
       });
   };
 
-  const createQuiz = async (data, pageState = 'DRAFT') => {
+  const createQuiz = async (data, pageState = "DRAFT") => {
     setIsLoading(true);
     const {
       title,
@@ -244,7 +227,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
         modificationDate: new Date().toISOString(),
         page_lastmodifiedby: username,
         createdBy: username,
-        parent_page_url: '/',
+        parent_page_url: "/",
         current_page_url: `/${title}`,
         tags: tagArr,
         page_state: pageState,
@@ -256,11 +239,11 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
       ObjectFields: {
         questions: [...quesArr],
         background_content: {
-          objectType: 'image',
+          objectType: "image",
           Url: background_content.Thumbnail,
           Title: background_content.Title,
           Thumbnail: background_content.Thumbnail,
-          Color: '',
+          Color: "",
         },
         display_scores: scoreBy,
         result_range_1,
@@ -274,30 +257,27 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
 
     createquizmutate({
       variables: {
-        contenttype: 'Quiz',
+        contenttype: "Quiz",
         input: quizToSend,
       },
     })
       .then((resp) => {
-        if (pageState !== 'PUBLISHED') {
+        if (pageState !== "PUBLISHED") {
           setIsLoading(false);
           if (resp?.data?.authoring_createContent?.isExist === true) {
             // setOpenPageExistModal(true);
           } else {
             // setOnSavedModal(true);
             setIsDraft(false);
-            if (
-              resp?.data?.authoring_createContent?.message ===
-              'Successfully created!!!'
-            ) {
-              ShowToastSuccess(`${t('quiz')} ${t('saved_toast')}`);
+            if (resp?.data?.authoring_createContent?.message === "Successfully created!!!") {
+              ShowToastSuccess(`${t("quiz")} ${t("saved_toast")}`);
             }
           }
         } else {
           if (resp?.data?.authoring_createContent?.isExist === true) {
             // setOpenPageExistModal(true);
           } else {
-            publishContent(title.replace(/[^A-Z0-9]+/gi, '-').toLowerCase());
+            publishContent(title.replace(/[^A-Z0-9]+/gi, "-").toLowerCase());
           }
         }
       })
@@ -305,18 +285,13 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
         if (error?.graphQLErrors[0]) {
           ShowToastError(error.graphQLErrors[0].message);
         } else {
-          ShowToastError(t('api_error_toast'));
+          ShowToastError(t("api_error_toast"));
         }
       });
   };
   const save = (data) => {
     const { title, short_description, description, short_title } = data || {};
-    if (
-      title === '' ||
-      short_description === '' ||
-      description === '' ||
-      short_title === ''
-    ) {
+    if (title === "" || short_description === "" || description === "" || short_title === "") {
     } else {
       createQuiz(data);
     }
@@ -339,7 +314,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
     getTags();
   }, []);
   const handleSubmit = (values) => {
-    console.log('val', values);
+    console.log("val", values);
   };
   const toggleAddQuestion = () => {
     setAddQuestion(!addQuestion);
@@ -357,14 +332,14 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
     window.scrollTo(0, 0);
     galleryType.current = gType;
     setGalleryState(true);
-    localStorage.setItem('socialShareKey', keyName);
+    localStorage.setItem("socialShareKey", keyName);
     setKey(keyName);
     if (id) {
       setAnswerId(id);
     }
   };
   const onUploadClick = (type) => {
-    showGallery('Images', 'socialShareImage');
+    showGallery("Images", "socialShareImage");
   };
   const handleCloseDialog = () => {
     setShowPublishConfirm(false);
@@ -380,7 +355,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
 
   return (
     <>
-      {isLoading && <XLoader type="circular" />}
+      {isLoading && <XLoader type='circular' />}
       {/* {addQuestion && (
         <AddQuestion
           toggleAddQuestion={toggleAddQuestion}
@@ -390,8 +365,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit}>
         {({ isSubmitting, values }) => (
           <Form>
             {galleryState && (
@@ -400,7 +374,7 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
                 galleryType={galleryType.current}
                 keyVal={key}
                 answerId={answerId}
-                fieldName={'background_content'}
+                fieldName={"background_content"}
               />
             )}
             {!addQuestion && !questionListing && (
@@ -464,9 +438,8 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
                       number={section.index}
                       title={section.title}
                       subTitle={section.description}
-                      titleVariant={'h6'}
-                      subTitleVariant={'caption'}
-                    >
+                      titleVariant={"h6"}
+                      subTitleVariant={"caption"}>
                       <DynamicComponent
                         fields={section.fields}
                         formik={formik}
@@ -490,15 +463,11 @@ const DynamicContent = ({ contentType }: { contentType: string }) => {
       {showPublishConfirm ? (
         <PlateformXDialog
           isDialogOpen={showPublishConfirm}
-          title={t('congratulations')}
-          subTitle={
-            showPublishConfirm
-              ? t('quiz_publish_popoup')
-              : t('requested_action')
-          }
+          title={t("congratulations")}
+          subTitle={showPublishConfirm ? t("quiz_publish_popoup") : t("requested_action")}
           closeButtonHandle={handleCloseDialog}
-          confirmButtonText={t('go_to_listing')}
-          confirmButtonHandle={() => navigate('/content/quiz')}
+          confirmButtonText={t("go_to_listing")}
+          confirmButtonHandle={() => navigate("/content/quiz")}
           modalType='publish'
         />
       ) : null}

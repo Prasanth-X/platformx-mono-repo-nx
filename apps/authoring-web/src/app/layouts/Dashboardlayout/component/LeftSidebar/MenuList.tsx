@@ -1,15 +1,15 @@
 /* eslint-disable no-debugger */
 
-import { Box } from '@mui/material';
-import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { Box } from "@mui/material";
+import { t } from "i18next";
+import { useEffect, useState } from "react";
 
-import { PollIcon } from '@platformx/utilities';
-import MenuItems from './MenuItems';
-import { ShowToastError, useUserSession } from '@platformx/utilities';
-import { contentTypeSchemaApi } from '@platformx/authoring-apis';
-import MenuSitesListDropdown from '../../../../components/MenuSitesListDropdown/MenuSitesListDropdown';
-import { MenuData } from '../../../../hooks/useDynamicRoutes/menuData';
+import { PollIcon } from "@platformx/utilities";
+import MenuItems from "./MenuItems";
+import { ShowToastError, useUserSession } from "@platformx/utilities";
+import { contentTypeSchemaApi } from "@platformx/authoring-apis";
+import MenuSitesListDropdown from "../../../../components/MenuSitesListDropdown/MenuSitesListDropdown";
+import { MenuData } from "../../../../hooks/useDynamicRoutes/menuData";
 
 export default function Menu(props) {
   const [getSession] = useUserSession();
@@ -25,29 +25,26 @@ export default function Menu(props) {
     try {
       const detailsRes: any = await fetchSchema();
       const menu: any = [];
-
       detailsRes?.authoring_getDocument?.map((val, i) => {
         return menu.push({
           MenuName: val?.title,
           Icon: <img alt='settings' src={PollIcon} />,
           url: `/content/${val?.name}`,
           id: val?.title,
-          category: 'content',
-          subCategory: '',
+          category: "content",
+          subCategory: "",
         });
       });
 
-      const menuArr = [
-        { url: '', Title: 'content', id: 'content', Menu: menu },
-      ];
+      const menuArr = [{ url: "", Title: "content", id: "content", Menu: menu }];
       const temp: any = MenuData.filter((val) => {
-        return val.id === 'content' ? val['Menu'].push(...menu) : val;
+        return val.id === "content" ? val["Menu"].push(...menu) : val;
       });
 
       setDynamicMenu(temp);
     } catch (err: any) {
-      console.info('error in MenuList', err);
-      ShowToastError(t('api_error_toast'));
+      console.info("error in MenuList", err);
+      ShowToastError(t("api_error_toast"));
     }
   };
   useEffect(() => {
@@ -55,7 +52,7 @@ export default function Menu(props) {
   }, []);
 
   return (
-    <Box className="menulist">
+    <Box className='menulist'>
       <MenuSitesListDropdown />
 
       {dynamicMenu?.map((val, index) => {

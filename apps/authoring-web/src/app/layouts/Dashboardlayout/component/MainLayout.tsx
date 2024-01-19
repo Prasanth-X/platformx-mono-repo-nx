@@ -52,7 +52,7 @@ const LayoutWrapper: React.FC<LayoutWrapperProps> = ({
     setMenuItemSelected(menu);
   };
 
-  const noLayoutRoute = ['site-setting'];
+  const noLayoutRoute = [];
 
   if (
     !noLayoutRoute.some((routeName) => location.pathname.includes(routeName))
