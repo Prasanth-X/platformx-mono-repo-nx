@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-debugger */
@@ -6,20 +7,12 @@ import { useField, useFormikContext } from "formik";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-// import Answers from "../../CommonSchemaComponents/Answers/Answers";
-// import Seo from "../../CommonSchemaComponents/Seo/Seo";
-// import Table from "../../CommonSchemaComponents/Table/Table";
-// import { Tags } from "../../CommonSchemaComponents/Tags/Tags";
-// import TextArea from "../../CommonSchemaComponents/TextArea/TextArea";
-// import AddImage from "../../components/Common/AddImage";
-// import AutoCompleteText from "../../components/Common/AutoCompleteText";
-// import FormikField from "../../components/Common/FormikField";
-// import TitleSubTitle from "../../components/Common/TitleSubTitle";
+
 import FileUploadWrapper from "./Components/FilleUploadWrapper/FileUploadWrapper";
 import QuestionSection from "./Components/QuestionsSection/QuestionSection";
 import RadioGroupWrapper from "./Components/RadioGroupWrapper/RadioGroupWrapper";
 import SwitchWrapper from "./Components/SwitchWrapper/SwitchWrapper";
-import { TitleSubTitle, FormikField, AddImage, Answers, XTable, XTags, XTextArea, TextArea } from "@platformx/utilities";
+import { TitleSubTitle, FormikField, AddImage, Answers, XTable, XTags, TextArea, } from "@platformx/utilities";
 
 const DynamicComponent = ({
   fields,
@@ -43,9 +36,7 @@ const DynamicComponent = ({
 
   const validationSchemaFields = {};
   const initialValues = {};
-  const [meta] = useField("scoreBy");
   const [imgURL] = useField("socialShareImage");
-  const [backgroundContent] = useField("background_content");
 
   const { setFieldValue } = useFormikContext();
   const [data, setData] = useState({});
@@ -71,7 +62,6 @@ const DynamicComponent = ({
     setFieldValue(e.target.name, e.target.value);
   };
 
-  console.log("score", meta);
   fields.forEach((field) => {
     initialValues[field?.name] = "";
     const fieldValidations = field?.validations?.reduce((validations, validation) => {
@@ -89,12 +79,8 @@ const DynamicComponent = ({
       validationSchemaFields[field?.name] = fieldValidations?.label(field?.title).trim();
     }
   });
-  const handleSwitch = (field) => {
-    console.log("field", field);
-    setFieldValue(field.name, !field.value);
-  };
 
-  function builder(field: any, formik: any) {
+  function builder(field: any, formikInstance: any) {
     switch (field.type) {
       case "text":
         return (
@@ -115,7 +101,7 @@ const DynamicComponent = ({
                     maxRows={8}
                     name={field?.name}
                     metadata={field}
-                    formik={formik}
+                    formik={formikInstance}
                   />
                 </Grid>{" "}
               </>
@@ -134,7 +120,7 @@ const DynamicComponent = ({
                     name={field?.name}
                     label={field?.title}
                     metadata={field}
-                    formik={formik}
+                    formik={formikInstance}
                   />
                 </Grid>
               </>

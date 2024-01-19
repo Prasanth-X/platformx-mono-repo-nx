@@ -4,10 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useCustomStyle } from '../../pages/quiz/quiz.style';
 import { BasicSwitchText, CommonBoxWithNumber } from '@platformx/utilities';
 
-
 const Analytics = ({ state, setState, number, unsavedChanges }) => {
   const { t } = useTranslation();
-  const [isDisable, setIsDisable] = useState(false);
   const [state1, setState1] = useState({
     analytics_enable: true,
     impression: true,
@@ -38,7 +36,7 @@ const Analytics = ({ state, setState, number, unsavedChanges }) => {
         <Box className='textFiled'>
           <BasicSwitchText
             state={state1.analytics_enable}
-            isDisable={isDisable}
+            isDisable={false}
             handleChange={handleChange}
             title={`${t('quiz')} ${t('analytics')}`}
             subtitle=''
@@ -48,7 +46,7 @@ const Analytics = ({ state, setState, number, unsavedChanges }) => {
         <Box className='textFiledLast'>
           <BasicSwitchText
             state={state1.impression}
-            isDisable={isDisable}
+            isDisable={false}
             handleChange={handleChange}
             title={t('impression')}
             subtitle=''

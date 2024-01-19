@@ -33,9 +33,9 @@ import DynamicComponent from './DynamicComponent';
 import { Template } from './schemas/index';
 import { AUTH_INFO, CATEGORY_CONTENT, PlateformXDialog, SectionWrapper, ShowToastError, ShowToastSuccess, XLoader, handleHtmlTags, trimString, useUserSession } from '@platformx/utilities';
 import { useCustomStyle } from './DynamicForm.style';
-import useDynamicForm from '../hooks/useDynamicForm/useDynamicForm';
+import useDynamicForm from '../../hooks/useDynamicForm/useDynamicForm';
 import { articleApi, contentTypeAPIs } from '@platformx/authoring-apis';
-import { ContentType } from '../enums/ContentType';
+import { ContentType } from '../../enums/ContentType';
 import { SectionProps } from './DynamicComponent.types';
 
 const DynamicContent = ({ contentType }: { contentType: string }) => {

@@ -18,6 +18,7 @@ import ContentListMobileLoader from "./Loader/contentListLoaderMobile";
 
 export * from "./SchemaComponents/SubmitButton/helper";
 export * from "./DragAndDrop/index";
-export * from "./ListingHeader";
+export * from "./ListingHeader"; 
+export * from "./PlateformXSocialDialog"; 
 
 export { ContentListMobileLoader, BasicSwitchText, AutoCompleteText, IconAndLabel, XTags, Timer, DatePicker, ToolTipMessage, MarkedFeatured, Card, WorkflowStepper, XToolTip, ReportGraph, SkeltonLoader, NoContentFound, SubmitButton };
