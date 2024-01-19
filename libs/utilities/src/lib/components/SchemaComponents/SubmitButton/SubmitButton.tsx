@@ -13,7 +13,7 @@ import {
   isDisabledSubmit,
 } from "./helper";
 import { ErrorTooltip, useAccess } from "@platformx/utilities";
-import { workflowKeys } from "./utils/contstants";
+import { workflowKeys } from "./utils/constants";
 
 const Submit = ({
   category,

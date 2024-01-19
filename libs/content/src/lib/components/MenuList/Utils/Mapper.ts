@@ -1,7 +1,4 @@
 export const getSelectedObject = (item: any) => {
-  // eslint-disable-next-line no-debugger
-  debugger
-  console.log('item', item);
   return {
     ...item,
     page_state: 'published',

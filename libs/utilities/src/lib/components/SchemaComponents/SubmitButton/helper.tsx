@@ -1,7 +1,7 @@
 
 
 import { capitalizeFirstLetter } from "../../../utils/helperFns";
-import { workflowKeys } from "./utils/contstants";
+import { workflowKeys } from "./utils/constants";
 
 export const getPreviousStepOwner = (props) => {
   let index = 0;

@@ -1069,7 +1069,7 @@
   "global_setting": "Global Setting",
   "images": "Images",
   "videos": "Videos",
-  "miscellanious": "Miscellanious",
+  "miscellanious": "Miscellaneous",
   "the_berbenhiemer_effect": "The Barbenheimer Effect",
   "Saving": "Saving",
   "is_it_your_default_site": "Is it your default site",
@@ -1170,5 +1170,10 @@
   "last_name_label": "Last Name",
   "toolTip_title": "Mark as Featured:",
   "toolTip_message": "Enable it if you want to highlight this content for better enhanced visibility.",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "feature_flag_setting": "Feature Flag",
+  "personalisation": "Personalisation",
+  "google_analytics_tracking": "Google Analytics Tracking",
+  "snowplow_tracking": "Snowplow Tracking",
+  "master_control": "Master"
 }

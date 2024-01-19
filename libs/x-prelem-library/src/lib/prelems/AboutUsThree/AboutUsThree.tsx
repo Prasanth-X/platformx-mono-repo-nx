@@ -7,7 +7,7 @@ import ImageRender from "../../components/ImageRender";
 import BasicButton from "../../components/BasicButton/BasicButton";
 import { useCustomStyle } from "./AboutUsThree.style";
 import { completeButtonUrl, formCroppedUrl } from "@platformx/utilities";
-import prelemTypes from '../../globalStyle';
+import prelemTypes from "../../globalStyle";
 import { usePrelemImpression } from "../../components/ImpressionHooks/PrelemImpressionHook";
 import VideoPlayer from "../../components/VideoPlayers/VideoPlayer";
 

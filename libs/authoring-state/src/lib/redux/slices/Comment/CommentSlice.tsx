@@ -1,5 +1,6 @@
+/* eslint-disable no-debugger */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { useUserSession } from '@platformx/utilities';
+
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CommentData, ReviewComment } from './Comment.types';
 
@@ -32,16 +33,11 @@ function removeDuplicates(arr: any) {
 // const [getSession] = useUserSession();
 // const { userInfo } = getSession();
 const storedUserInfoString: string | null = localStorage.getItem('userInfo');
-let username = ""
+let username = "";
 if (storedUserInfoString !== null) {
   const userInfo: any = JSON.parse(storedUserInfoString);
   username = `${userInfo.first_name} ${userInfo.last_name}`;
-  // Use the username or any other logic with the userInfo
-} else {
-  // Handle the case when 'userInfo' is not found in localStorage
-  console.error("userInfo not found in localStorage");
 }
-
 export const commentSlice = createSlice({
   name: 'Comment',
   initialState,
@@ -49,16 +45,21 @@ export const commentSlice = createSlice({
     getComment: (state, action: PayloadAction<any>) => {
       state.commentInfo.contentType = action.payload.contentType;
       state.commentInfo.contentTitle = action.payload.contentName;
+
+      const incomingComments = Array.isArray(action.payload.commentsNew)
+        ? action.payload.commentsNew
+        : [];
+
       if (
         state.commentInfo.contentType === action.payload.contentType &&
         state.commentInfo.contentTitle === action.payload.contentName
       ) {
         state.commentInfo.comments = removeDuplicates([
-          ...action.payload.commentsNew,
-          ...action.payload.comments,
+          ...state.commentInfo.comments,
+          ...incomingComments,
         ]);
       } else {
-        state.commentInfo.comments = action.payload.commentsNew;
+        state.commentInfo.comments = incomingComments;
       }
     },
     addComment: (state, action: PayloadAction<any>) => {
