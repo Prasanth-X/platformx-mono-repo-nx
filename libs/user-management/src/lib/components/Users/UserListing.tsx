@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { userManagementAPI } from '@platformx/authoring-apis';
 import {
-  ArticleListDesktopLoader,
+    ContentListDesktopLoader,
   ContentGridLoader,
   capitalizeWords,
 } from '@platformx/utilities';
@@ -12,16 +12,16 @@ import ListView from './ListView';
 import TopHeader from './TopHeader';
 import './User.css';
 import { USERTYPES } from './Utils/constant';
+
 const UserListing = () => {
   const [users, setUsers] = useState([]);
   const [baseUsers, setBaseUsers] = useState([]);
   const [isLazyLoad, setIsLazyLoad] = useState<boolean>(true);
-  const [listView, setListView] = useState('List');
   const [isloading, setLoading] = useState(false);
   const [filterValue, setFilterValue] = useState(USERTYPES.AUTHORINGUSER);
   const gridListViewLoaderDesktop = (viewType = '') => {
     if (viewType === 'List') {
-      return <ArticleListDesktopLoader />;
+      return < ContentListDesktopLoader />;
     }
     return <ContentGridLoader />;
   };
@@ -52,7 +52,6 @@ const UserListing = () => {
     } catch (err: any) {
       setIsLazyLoad(false);
       setLoading(false);
-      console.log('error', err);
     }
   }, [filterValue]);
 
@@ -87,13 +86,13 @@ const UserListing = () => {
         sx={{ height: 'calc(100vh - 140px)', overflowY: 'auto' }}
       >
         {isloading ? (
-          <>{gridListViewLoaderDesktop(listView)} </>
+          <>{gridListViewLoaderDesktop('List')} </>
         ) : (
           <InfiniteScroll
             dataLength={getUsers ? getUsers?.length : 0}
             next={getUsers}
             hasMore={isLazyLoad}
-            loader={gridListViewLoaderDesktop(listView)}
+            loader={gridListViewLoaderDesktop('List')}
             scrollableTarget="scrollableDiv"
             style={{ overflowX: 'hidden' }}
           >

@@ -20,6 +20,7 @@ import {
   WebsiteIntroduction,
   WebsiteIntroduction2,
   WebsiteIntroduction4,
+  AboutUs2,
 } from "@platformx/x-prelem-library";
 // call this function at the root of the application
 unstable_ClassNameGenerator.configure((componentName) =>
@@ -35,6 +36,7 @@ function PrelemComponent() {
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
           {/* <ContactUsForm /> */}
+          <AboutUs2 />
           <FullWidthBanner3 />
           <WebsiteIntroduction4 />
           <InfoBox />

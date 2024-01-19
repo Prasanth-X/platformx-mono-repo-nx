@@ -12,7 +12,7 @@ import Testimonial from "./Testimonial/Testimonial";
 import InfoBox from "./InfoBox/InfoBox";
 import WebsiteIntroduction4 from "./WebsiteIntroduction4/WebsiteIntroduction4";
 import FullWidthBanner3 from "./FullWidthBanner3/FullWidthBanner3";
-// import ContactUsForm from "./ContactUsForm/ContactUsForm";
+import AboutUs2 from "./AboutUs2/AboutUs2";
 
 export {
   WebsiteIntroduction,
@@ -29,5 +29,5 @@ export {
   InfoBox,
   WebsiteIntroduction4,
   FullWidthBanner3,
-  // ContactUsForm,
+  AboutUs2,
 };

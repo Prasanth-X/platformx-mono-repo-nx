@@ -1,18 +1,14 @@
+/* eslint-disable no-console */
 import { Box } from '@mui/material';
-import {
-  ContentListLoader, NoSearchResult, capitalizeFirstLetter,
-  convertToLowerCase,
-  handleHtmlTags
-} from '@platformx/utilities';
 import { Key, memo, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { capitalizeWords, formatContentTitle } from '@platformx/utilities';
+import { ContentListDesktopLoader, NoSearchResult, capitalizeFirstLetter,
+  convertToLowerCase,
+  handleHtmlTags, capitalizeWords, Card, formatContentTitle, useUserSession } from '@platformx/utilities';
 import { ContentListingProps, ListItem } from '../../utils/List.types';
-import { Card } from '@platformx/utilities';
 import { fetchUserSitePermissionList } from '@platformx/authoring-apis';
-import { useUserSession } from '@platformx/utilities';
-import React from 'react';
 import ContentTypeMenuList from '../MenuList/ContentTypeMenuList';
+
 const ContentListing = ({
   contentList,
   loading,
@@ -157,7 +153,7 @@ const ContentListing = ({
         dataLength={contentList?.length || 0}
         next={fetchMore}
         hasMore={!loading}
-        loader={<ContentListLoader />}
+        loader={<ContentListDesktopLoader />}
         scrollableTarget="scrollableDiv"
         style={{ overflowX: 'hidden' }}
       >
@@ -169,7 +165,7 @@ const ContentListing = ({
                 <Box key={index}>
                   <Card
                     dataList={
-                      contentType == 'Course'
+                      contentType === 'Course'
                         ? makeCourseContentData(item)
                         : makeContentData(item)
                     }

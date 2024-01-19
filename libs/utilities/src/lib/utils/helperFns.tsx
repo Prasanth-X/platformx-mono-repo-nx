@@ -1,6 +1,6 @@
 import axios from "axios";
 import { format } from "date-fns";
-import FallBackImage from "../assets/fallBackImage.png";
+import FallBackImage from "../assets/images/fallBackImage.png";
 import ToastService from "../components/ToastContainer/ToastService";
 import { CONTENT_TYPE_WITH_ABSOLUTEURL, DefaultLocale } from "../constants/CommonConstants";
 import { LanguageList, countries } from "./helperConstants";
@@ -805,9 +805,9 @@ export const getFormattedImageUrl = (path: string, ext: string, secondaryArgs: a
   }
   return FallBackImage;
 };
-export const getRandomNumber = (min, max, answerArray = []) => {
-  if (answerArray.length < max) {
-    const existingNumbers = answerArray.map((arr:any) => arr.id);
+export const getRandomNumber = (answerArray, min, max) => {
+  if (answerArray?.length < max) {
+    const existingNumbers = answerArray.map((arr: any) => arr.id);
     let randomNumber;
     do {
       randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -827,8 +827,4 @@ export const getImg = (content: any, secondaryArgs: any, index: number) => {
     ext,
   );
   return img;
-};
-
-export const createIconUrl = (secondaryArgs: any, imgUrl: string) => {
-  return `${secondaryArgs?.gcpUrl}${imgUrl}`;
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-duplicate-imports */
 import ApprovalStatus from "./ApprovalStatusIcon.svg";
 import CardOptionApprovalStatusIcon from "./ApprovalStatusIconOptionMenu.svg";
 import Challenge_community from "./Challenge_community.svg";

@@ -12,7 +12,8 @@ import DuplicateContentPopup from "./lib/components/DuplicateContentPopup/Duplic
 import { MiniHeader } from "./lib/components/Header/MiniHeader";
 import LanguageDropDown from "./lib/components/LanguageDropDown/LanguageDropDown";
 import { Loader } from "./lib/components/Loader";
-import ContentListLoader from "./lib/components/Loader/ContentListLoader";
+import ContentListDesktopLoader from "./lib/components/Loader/ContentListDesktopLoader";
+// import ContentListMobileLoader from "./lib/components/Loader/contentListLoaderMobile";
 import { NoContentFound } from "./lib/components/NoContentFound/NoContentFound";
 import NoSearchResult from "./lib/components/NoSearchResult/NoSearchResult";
 import {
@@ -32,7 +33,6 @@ import {
 } from "./lib/components/ToastNotification/ToastNotification";
 // import { XDialog } from './lib/components/XDialog/XDialog'
 import XLoader from "./lib/components/XLoader/XLoader";
-import ArticleListDesktopLoader from "./lib/components/contentListLoaderDesktop";
 import {
   AUTH_INFO,
   AUTH_URL,
@@ -76,9 +76,9 @@ const InterRegular = require("./lib/fonts/Inter/Inter-Regular.woff2") as string;
 // import XLoader from './lib/components/XLoader/XLoader';
 // import ArticleListDesktopLoader from './lib/components/contentListLoaderDesktop';
 
-export * from "./lib/assets";
 export * from "./lib/assets/images";
 export * from "./lib/assets/svg";
+export * from "./lib/assets/pngIcons";
 export * from "./lib/components";
 export * from "./lib/components/CardSkeleton/CardSkeleton";
 export * from "./lib/components/SchemaComponents";
@@ -99,7 +99,8 @@ export {
   AUTH_URL,
   AddImage,
   ToastContainerHandle,
-  ArticleListDesktopLoader,
+  // ContentListMobileLoader,
+  ContentListDesktopLoader,
   ArticleMapper,
   AutoCompleteMultiSelect,
   AutoTextArea,
@@ -108,7 +109,6 @@ export {
   DuplicateContentPopup,
   // CommonImageRender,
   ContentGridLoader,
-  ContentListLoader,
   DatePicker,
   DeletePopup,
   Error,
@@ -141,9 +141,7 @@ export {
   TaskNotFound,
   TextBox,
   ThemeConstants,
-  // TitleSubTitle,
   USERNAME_EMAIL_EXIST,
-  // XDialog,
   XLoader,
   getCurrentLang,
   getUniqueTimeZone,
