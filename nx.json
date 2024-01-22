@@ -110,11 +110,17 @@
   },
   "tasksRunnerOptions": {
     "default": {
+      "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [
-          "build-storybook"
+          "build-storybook",
+          "build",
+          "lint",
+          "e2e",
+          "test",
+          "deploy"
         ],
-        "parallel": 8
+        "nxCloudAccessToken": "OTk3YzZjOGEtNjNiNC00NDZkLWFiN2EtODliMzkxYThlOTQ5fHJlYWQtd3JpdGU="
       }
     }
   },
