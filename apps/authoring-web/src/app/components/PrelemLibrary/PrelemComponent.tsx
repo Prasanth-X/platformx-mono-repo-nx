@@ -24,9 +24,16 @@ import {
   WebsiteIntroduction,
   WebsiteIntroduction2,
   WebsiteIntroduction4,
+  FullWidthImage,
+  FullWidthVideo,
+  Banner6,
   DynamicPrelemWithCarousel1,
   DynamicPrelemWithCarousel2,
-  Banner6,
+  Banner3,
+  Banner1,
+  Description,
+  FullWidthText,
+  ImageCarousel,
 } from "@platformx/x-prelem-library";
 // call this function at the root of the application
 unstable_ClassNameGenerator.configure((componentName) =>
@@ -63,6 +70,13 @@ function PrelemComponent() {
           <ServiceShowcase />
           <ImageAndVideoGallery />
           <ProductSummaryViaImage2 />
+          <FullWidthImage />
+          <FullWidthVideo />
+          <Banner1 />
+          <Banner3 />
+          <Description />
+          <FullWidthText />
+          <ImageCarousel />
         </Box>
       </ThemeProvider>
     </div>
