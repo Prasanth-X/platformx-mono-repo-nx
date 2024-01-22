@@ -13,11 +13,9 @@ import CardOptionEditIcon from "./EditIconOptionMenu.svg";
 import EventsIcon from "./Event.svg";
 import EyeIcon from "./Eye.svg";
 import FilterIcon from "./FilterIcon.svg";
-import General_community from "./General_community.svg";
 import HamburgerMenuIcon from "./HamburgerMenuIcon.svg";
 import IconPreview from "./IconPreview.svg";
 import CardOptionImbedIcon from "./ImbedIconOptionMenu.svg";
-import News_community from "./News_community.svg";
 import NoContentFoundSvg from "./NoContentFound.svg";
 import PlatXLogo from "./PlatX-logo.svg";
 import PlatXLogoWhite from "./PlatXWhite-logo.svg";
@@ -132,7 +130,7 @@ import RedDots from "./icon/RedDots.svg";
 import ScheduledUnpublishIcon from "./scheduleUnpublishIcon.svg";
 
 export {
-  GlobalImageIcon, News_community, GlobalVideoIcon, GlobalMiscIcon, FeatureStarIcon,
+  GlobalImageIcon, GlobalVideoIcon, GlobalMiscIcon, FeatureStarIcon,
   ArrowUpwardIcon,
   Icon,
   Refresh,
@@ -187,7 +185,6 @@ export {
   EyeIcon,
   FilterIcon,
   FooterMenuUpdated,
-  General_community,
   GradeIcon,
   GreenDot,
   HamburgerMenuIcon,
