@@ -10,7 +10,7 @@ import { CommonBoxWithNumber, RadioControlLabel, TitleSubTitle, } from '@platfor
 const Result = ({ state, setState, unsavedChanges, setFieldChanges }) => {
   const { t } = useTranslation();
   const [data, setData] = useState({});
-  const { comments, handleCommentClick, scrollToRef, selectedElementId } =
+  const { scrollToRef } =
     useComment();
   useEffect(() => {
     setData({
@@ -43,7 +43,7 @@ const Result = ({ state, setState, unsavedChanges, setFieldChanges }) => {
   const classes = useCustomStyle();
   return (
     <Box id='results' className={classes.mainStyleWrapper}>
-      <CommentWrapper elementId='4' scrollRef={scrollToRef}  >
+      <CommentWrapper elementId='4' scrollRef={scrollToRef} >
         <CommonBoxWithNumber
           number='04'
           title={t('results')}

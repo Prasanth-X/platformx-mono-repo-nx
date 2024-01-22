@@ -6,7 +6,7 @@ import { UserPermissions } from './Utils/constant';
 
 const PermissionsCheckBoxCard = () => {
   return (
-    <>
+
       <Box className="PermissionsCheckbox">
         <Box
           sx={{ padding: '10px 20px', background: ThemeConstants.WHITE_COLOR }}
@@ -14,8 +14,8 @@ const PermissionsCheckBoxCard = () => {
           <TitleSubTitle
             title="Page"
             subTitle=""
-            titleVarient="h5medium"
-            subTitleVarient="h7regular"
+            titleVariant="h5medium"
+            subTitleVariant="h7regular"
           />
         </Box>
         <Grid container sx={{ padding: '0 20px 15px 20px' }}>
@@ -49,7 +49,7 @@ const PermissionsCheckBoxCard = () => {
           })}
         </Grid>
       </Box>
-    </>
+
   );
 };
 

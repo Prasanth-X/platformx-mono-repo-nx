@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 import { Button, Divider, Grid } from "@mui/material";
 import { Box } from "@mui/system";
