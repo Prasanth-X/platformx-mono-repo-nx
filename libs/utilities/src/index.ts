@@ -16,6 +16,7 @@ import ContentListDesktopLoader from "./lib/components/Loader/ContentListDesktop
 import ContentListMobileLoader from "./lib/components/Loader/ContentListLoaderMobile";
 import { NoContentFound } from "./lib/components/NoContentFound/NoContentFound";
 import NoSearchResult from "./lib/components/NoSearchResult/NoSearchResult";
+
 import {
   default as DeletePopup,
   default as PlateformXDialog,

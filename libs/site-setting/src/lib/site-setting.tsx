@@ -1,4 +1,4 @@
-import FeatureFlagSetting from "./FeatureFlagSetting/FeatureFlagSetting";
+import { FeatureFlagSetting } from "./pages/FeatureFlagSetting/FeatureFlagSetting";
 
 /* eslint-disable-next-line */
 export interface SiteSettingProps {}

@@ -1,7 +1,7 @@
 import CachedIcon from "@mui/icons-material/Cached";
 import { Box, Divider, Grid, RadioGroup, Typography } from "@mui/material";
 import { ArrowUpwardIcon, AutoTextArea, CATEGORY_CONTENT, CommonBoxWithNumber, DuplicateContentPopup, Icon, PlateformXDialog, RadioControlLabel, Refresh, TextBox, ThemeConstants, TitleSubTitle, XLoader } from "@platformx/utilities";
-import { onBackButtonEvent, unloadCallback } from "libs/content/src/lib/utils/Helper";
+import { onBackButtonEvent, unloadCallback } from "../../../../utils/Helper";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CreateHeader } from "../../../../components/CreateHeader/CreateHeader";
