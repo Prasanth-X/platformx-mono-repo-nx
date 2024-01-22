@@ -14,7 +14,7 @@ import IconAndLabel from "./IconAndLabel";
 import { XTags } from "./SchemaComponents";
 import AutoCompleteText from "./AutoCompleteText/AutoCompleteText";
 import BasicSwitchText from "./BasicSwitchText";
-import ContentListMobileLoader from "./Loader/contentListLoaderMobile";
+import ContentListMobileLoader from "./Loader/ContentListLoaderMobile";
 
 export * from "./SchemaComponents/SubmitButton/helper";
 export * from "./DragAndDrop/index";

@@ -1,7 +1,7 @@
 import { Box, Radio, RadioProps, styled } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 // import InterRegular from '../../fonts/Inter/Inter-Regular.ttf';
-import ThemeConstants from '../../../themes/authoring/variable';
+import ThemeConstants from  '../../../themes/authoring/lightTheme/lightThemeVariable';
 
 const fontStyle = `
 @font-face {

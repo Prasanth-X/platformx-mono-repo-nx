@@ -1,7 +1,7 @@
 import { Box, RadioProps, styled } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import ThemeConstants from '../../../themes/authoring/variable'
+import ThemeConstants from '../../../themes/authoring/lightTheme/lightThemeVariable';
 
 const fontStyle = `
 @font-face {

@@ -1,40 +1,8 @@
 import { Box } from "@mui/material";
-import { PrelemTheme, ToastContainerHandle } from "@platformx/utilities";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { unstable_ClassNameGenerator } from "@mui/material/utils";
-import {
-  // AnimationOnPageScroll,
-  AboutUs2,
-  AboutUsThree,
-  ArticleDetail,
-  Banner7,
-  CoreHighlights,
-  FullWidthBanner3,
-  ImageAndVideoGallery,
-  InfoBox,
-  ProductSummaryViaImage,
-  ProductSummaryViaImage2,
-  ProductSummaryViaVideo2,
-  Quote,
-  ServiceCard,
-  ServiceShowcase,
-  Sponsor,
-  Testimonial,
-  WebsiteIntroduction,
-  WebsiteIntroduction2,
-  WebsiteIntroduction4,
-  FullWidthImage,
-  FullWidthVideo,
-  Banner6,
-  DynamicPrelemWithCarousel1,
-  DynamicPrelemWithCarousel2,
-  Banner3,
-  Banner1,
-  Description,
-  FullWidthText,
-  ImageCarousel,
-} from "@platformx/x-prelem-library";
+import { PrelemTheme, ToastContainerHandle } from "@platformx/utilities";
 // call this function at the root of the application
 unstable_ClassNameGenerator.configure((componentName) =>
   componentName.replace("Mui", "Platform-x-"),
@@ -48,7 +16,7 @@ function PrelemComponent() {
         <Box sx={{ margin: (themeOptions) => themeOptions.prelemMargin.value }}>
           <CssBaseline />
           {/* <AnimationOnPageScroll /> */}
-          <Banner6 />
+          {/* <Banner6 />
           <DynamicPrelemWithCarousel1 />
           <DynamicPrelemWithCarousel2 />
           <AboutUsThree />
@@ -76,7 +44,7 @@ function PrelemComponent() {
           <Banner3 />
           <Description />
           <FullWidthText />
-          <ImageCarousel />
+          <ImageCarousel /> */}
         </Box>
       </ThemeProvider>
     </div>
