@@ -1,5 +1,6 @@
 import useTheme from "@mui/material/styles/useTheme";
 import { makeStyles } from "@mui/styles";
+import "./Slider.css";
 
 export const useCustomStyle = makeStyles(() => {
   const theme = useTheme();
@@ -9,6 +10,7 @@ export const useCustomStyle = makeStyles(() => {
         width: "100%",
         position: "relative",
         margin: "auto",
+        overflow: "hidden",
         "& .prev, & .next": {
           cursor: "pointer",
           position: "absolute",
@@ -41,8 +43,32 @@ export const useCustomStyle = makeStyles(() => {
           right: 0,
           borderRadius: "3px 0 0 3px",
         },
+        "& .prev.outside, & .next.outside": {
+          right: "45px",
+          width: "30px",
+          height: "30px",
+          padding: 0,
+          marginTop: 0,
+          borderRadius: theme.borderRadius.value1,
+          top: "10px",
+        },
+        "& .next.outside": {
+          right: "10px",
+        },
+
         "& .mySlides": {
           display: "none",
+          opacity: 0,
+          transition: "opacity 1s",
+        },
+        "&.slideIn .mySlides": {
+          width: "100%",
+          height: "100%",
+          animationName: "fade",
+          animationDuration: "2s",
+          display: "flex",
+          flex: "0 0 auto",
+          opacity: 1,
         },
         "& .dot": {
           cursor: "pointer",
@@ -57,20 +83,37 @@ export const useCustomStyle = makeStyles(() => {
             background: theme.palette.prelemType1.LINK,
           },
         },
-        "& .inside": {
+        "& .lines .dot": {
+          width: "20px",
+          height: "5px !important",
+          borderRadius: "4px",
+        },
+        "& .indicator.inside": {
           position: "absolute",
           left: "50%",
           transform: "translateX(-50%)",
           bottom: "8px",
         },
-        "& .outside": {
+        "& .indicator.outside": {
           textAlign: "center",
+          paddingTop: "15px",
+        },
+        "& .indicator.left": {
+          position: "absolute",
+          bottom: "8px",
+          left: 0,
+        },
+        "& .indicator.right": {
+          position: "absolute",
+          bottom: "8px",
+          textAlign: "right",
+          right: 0,
         },
         "& .fade": {
-          animationName: "fade",
-          animationDuration: "2s",
           width: "100%",
           height: "100%",
+          flex: "0 0 auto",
+          animation: "3s fadeInOut ease-out",
         },
         "&.cardType .fade": {
           display: "flex",
