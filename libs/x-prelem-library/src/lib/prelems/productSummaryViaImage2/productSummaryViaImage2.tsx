@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageRender from "../../components/ImageRender";
 import "../../Style.css";
-import { completeButtonUrl, formCroppedUrl, RedDot } from "@platformx/utilities";
+import { completeButtonUrl, formCroppedUrl, RedDots } from "@platformx/utilities";
 import BasicButton from "../../components/BasicButton/BasicButton";
 import TwoColumnLayout from "../../components/layouts/TwoColumns/TwoColumnLayout";
 import { useCustomStyle } from "./ProductSummaryViaImage2.style";
@@ -141,7 +141,7 @@ const ProductSummaryViaImage2 = ({
           }}
         />
         <Box className='dottedImageWrapper'>
-          <img alt='summary5' src={RedDot} width='140' height='63' />
+          <img alt='summary5' src={RedDots} width='140' height='63' />
         </Box>
       </Box>
     );

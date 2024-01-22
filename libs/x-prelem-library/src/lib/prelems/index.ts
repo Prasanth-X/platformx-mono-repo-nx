@@ -20,6 +20,13 @@ import AboutUsThree from "./AboutUsThree/AboutUsThree";
 import DynamicPrelemWithCarousel2 from "./DynamicPrelemWithCarousel2/DynamicPrelemWithCarousel2";
 import DynamicPrelemWithCarousel1 from "./DynamicPrelemWithCarousel1/DynamicPrelemWithCarousel1";
 import Banner6 from "./Banner6/Banner6";
+import FullWidthImage from "./fullWidthImage/fullWidthImage";
+import FullWidthVideo from "./fullWidthVideo/fullWidthVideo";
+import Banner1 from "./Banner1/Banner1";
+import Banner3 from "./Banner3/Banner3";
+import Description from "./Description/Description";
+import FullWidthText from "./FullWidthText/FullWidthText";
+import ImageCarousel from "./ImageCrousel1/ImageCrousel1";
 
 export {
   Banner6,
@@ -44,4 +51,11 @@ export {
   ServiceShowcase,
   ImageAndVideoGallery,
   ProductSummaryViaImage2,
+  FullWidthImage,
+  FullWidthVideo,
+  Banner1,
+  Banner3,
+  Description,
+  FullWidthText,
+  ImageCarousel,
 };
