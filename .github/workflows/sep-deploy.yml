@@ -77,10 +77,11 @@ jobs:
 
       - name: Build affected libraries and deploy authoring-web
         run: |
-          # npx nx affected --target=build --base=main --head=$GITHUB_SHA
-          npx nx build authoring-web
+          npx nx affected --target=build --base=main --head=$GITHUB_SHA --parallel 
+          
+          # npx nx build authoring-web
           # npx nx serve authoring-web --namespace=${{ secrets.NAMESPACE_NAME_DEVELOP }}
-          npx nx serve authoring-web --port=${{ secrets.PORT_NUMBER }} --public-host=${{ secrets.NAMESPACE_NAME_DEVELOP }}
+          npx nx serve authoring-web --port=3000 --public-host=${{ secrets.NAMESPACE_NAME_DEVELOP }}
 
 
   deploy-x-user-experience:
