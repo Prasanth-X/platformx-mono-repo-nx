@@ -1,8 +1,7 @@
 name: hep-caching
 on:
   push:
-    branches:
-    - develop-v1
+    branches: 
     - develop
     - qa 
     - master
