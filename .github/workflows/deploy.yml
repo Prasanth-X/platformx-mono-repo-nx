@@ -81,7 +81,7 @@ jobs:
       - name: Deploy Configmap on stg branch
         if: ${{ github.ref == 'refs/heads/stg' }}
         run: kubectl apply -f ./kubernetes/configmaps/hep-authoring-ui-config-develop.yaml
-      - name: Deploy  authoring-web
+      - name: Build affected libraries and deploy authoring-web
         run: |
           
           nx serve authoring-web --namespace=${{ secrets.NAMESPACE_NAME_DEVELOP }} 
